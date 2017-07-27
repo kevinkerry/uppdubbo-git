@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE segment SYSTEM "packetutf8.dtd">
+<segment>
+	<!-- 商户号 -->
+	<xmlTag tagName="MerNbr">
+		<String name="merNbr" defaultValue="" />
+	</xmlTag>
+	<!-- 商户流水号 -->
+	<xmlTag tagName="MerSeqNbr">
+		<String name="merSeqNbr" defaultValue="" />
+	</xmlTag>
+	<!-- 商户交易时间 -->
+	<xmlTag tagName="MerTransDateTime">
+		<String name="merTransDateTime" />
+	</xmlTag>
+		<!-- 账户名称 -->
+	<xmlTag tagName="AcctName">
+		<String name="acctName" defaultValue="" />
+	</xmlTag>
+		<!-- 付款账号-->
+	<xmlTag tagName="PayerAcctNbr">
+		<String name="payerAcctNbr" defaultValue="" />
+	</xmlTag>
+		<!-- 付款账户类型-->
+	<xmlTag tagName="PayerCardTypCd">
+		<String name="payerCardTypCd" defaultValue="" />
+	</xmlTag>
+		<!-- 证件类型-->
+	<xmlTag tagName="PayerIdTypCd">
+		<String name="payerIdTypCd" defaultValue="" />
+	</xmlTag>
+		<!--证件号码 -->
+	<xmlTag tagName="PayerIdNbr">
+		<String name="payerIdNbr" defaultValue="" />
+	</xmlTag>
+		<!-- 付款人手机号 -->
+	<xmlTag tagName="PayerPhoneNo">
+		<String name="payerPhoneNo" defaultValue="" />
+	</xmlTag>        
+		<!-- 备注 -->
+	<xmlTag tagName="Msgext">
+		<String name="msgext" defaultValue="" />
+	</xmlTag>
+</segment>

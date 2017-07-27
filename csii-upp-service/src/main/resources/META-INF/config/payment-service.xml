@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spring:beans xmlns:spring="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.csii.com.cn/schema/pe"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd 
+	http://www.csii.com.cn/schema/pe http://www.csii.com.cn/schema/pe/pe-config.xsd">
+
+	<config>
+		<sharedMap id="paymServiceMapping">
+			<map name="sourceMap">
+				<ref name="fee">feeService</ref>
+				<ref name="resultnotify">notifyService</ref>
+				<ref name="fdps">FDPSService</ref>
+				<ref name="core">coreService</ref>
+				<ref name="unionpay">unionPayService</ref>
+			</map>
+		</sharedMap>
+
+		<bean id="FDPSService" class="com.csii.upp.service.payment.FDPSService">
+			<!-- 日间异常最大处理次数 -->
+			<param name="expHandleMaxTimes">1</param>
+			<param name="mappingConfig">/META-INF/config/router/fdps-mapping.properties</param>
+			<!-- <ref name="transport">dummyTransport</ref> -->
+			<ref name="transport">fundprocess.transformTransport</ref>
+		</bean>
+
+		<bean id="notifyService" class="com.csii.upp.service.payment.NotifyService">
+			<ref name="transport">httpTransport</ref>
+		</bean>
+
+		<bean id="feeService" class="com.csii.upp.service.FeeService" />
+
+		<bean id="coreService" class="com.csii.upp.service.fundprocess.CoreService">
+			<!-- 日间异常最大处理次数 -->
+			<param name="expHandleMaxTimes">1</param>
+			<param name="mappingConfig">/META-INF/config/router/core-mapping.properties</param>
+			<ref name="transport">dummyTransport</ref>
+			<!-- <ref name="transport">esb.transformTransport</ref> -->
+			<!-- <ref name="transport">dubbo.transformTransport</ref> -->
+
+		</bean>
+
+		<bean id="unionPayService" class="com.csii.upp.service.fundprocess.UnionPayService">
+			<!-- 日间异常最大处理次数 -->
+			<param name="expHandleMaxTimes">1</param>
+			<!-- <ref name="transport">unionpay.transport</ref> -->
+			<param name="mappingConfig">/META-INF/config/router/unionpay-mapping.properties</param>
+			<!-- 不发送出去做档版 -->
+			<ref name="transport">dummyTransport</ref>
+		</bean>
+
+		<bean id="dummyTransport" class="com.csii.upp.transport.DummyTransport">
+			<ref name="transport">esb.transformTransport</ref>
+		</bean>
+	</config>
+</spring:beans>

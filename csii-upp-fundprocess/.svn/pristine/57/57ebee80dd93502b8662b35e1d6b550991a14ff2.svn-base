@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	xmlns:srv="http://www.csii.com.cn/pe/dubboServices"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd 
+	http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd 
+	http://www.csii.com.cn/pe/dubboServices http://www.csii.com.cn/pe/dubboServices/impl.xsd">
+						
+    <dubbo:service interface="com.csii.upp.custom.common.api.service.demo.DemoService"
+        ref="DemoService"  group="IS_PAY_DEMO_DEMO" protocol="dubbo" registry="dubboRegistry"/>
+    <srv:bridge id="DemoService" interface="com.csii.upp.custom.common.api.service.demo.DemoService" trsCode="DEMO">
+<!-- 		<srv:mapping method="execute" trsCode="DEMO"/> -->
+	</srv:bridge>
+	
+    <srv:bridge id="RTCTService" interface="com.csii.upp.custom.common.api.service.fundprocess.RTCTService" trsCode="RTCT" >
+    </srv:bridge>
+    <dubbo:service interface="com.csii.upp.custom.common.api.service.fundprocess.RTCTService"
+        ref="RTCTService" group="IS_PAY_FDPS_RTCT" protocol="dubbo" registry="dubboRegistry" />
+
+    <srv:bridge id="RTDTService" interface="com.csii.upp.custom.common.api.service.fundprocess.RTDTService" trsCode="RTDT" >
+    </srv:bridge>
+    <dubbo:service interface="com.csii.upp.custom.common.api.service.fundprocess.RTDTService"
+        ref="RTDTService" group="IS_PAY_FDPS_RTDT" protocol="dubbo" registry="dubboRegistry" />
+
+    <srv:bridge id="QOPSService" interface="com.csii.upp.custom.common.api.service.fundprocess.QOPSService" trsCode="QOPS" >
+    </srv:bridge>
+    <dubbo:service interface="com.csii.upp.custom.common.api.service.fundprocess.QOPSService"
+        ref="QOPSService" group="IS_PAY_FDPS_QOPS" protocol="dubbo" registry="dubboRegistry" />
+
+    <srv:bridge id="QRCOService" interface="com.csii.upp.custom.common.api.service.fundprocess.QRCOService" trsCode="QRCO" >
+    </srv:bridge>
+    <dubbo:service interface="com.csii.upp.custom.common.api.service.fundprocess.QRCOService"
+        ref="QRCOService" group="IS_PAY_FDPS_QRCO" protocol="dubbo" registry="dubboRegistry" />
+
+    <srv:bridge id="OEBPService" interface="com.csii.upp.custom.common.api.service.fundprocess.OEBPService" trsCode="OEBP" >
+    </srv:bridge>
+    <dubbo:service interface="com.csii.upp.custom.common.api.service.fundprocess.OEBPService"
+        ref="OEBPService" group="IS_PAY_FDPS_OEBP" protocol="dubbo" registry="dubboRegistry" />
+
+    <srv:bridge id="QVABService" interface="com.csii.upp.custom.common.api.service.fundprocess.QVABService" trsCode="QVAB" >
+    </srv:bridge>
+    <dubbo:service interface="com.csii.upp.custom.common.api.service.fundprocess.QVABService"
+        ref="QVABService" group="IS_PAY_FDPS_QVAB" protocol="dubbo" registry="dubboRegistry" />
+
+    <srv:bridge id="VATFService" interface="com.csii.upp.custom.common.api.service.fundprocess.VATFService" trsCode="VATF" >
+    </srv:bridge>
+    <dubbo:service interface="com.csii.upp.custom.common.api.service.fundprocess.VATFService"
+        ref="VATFService" group="IS_PAY_FDPS_VATF" protocol="dubbo" registry="dubboRegistry" />
+
+    <srv:bridge id="EATLService" interface="com.csii.upp.custom.common.api.service.fundprocess.EATLService" trsCode="EATL" >
+    </srv:bridge>
+    <dubbo:service interface="com.csii.upp.custom.common.api.service.fundprocess.EATLService"
+        ref="EATLService" group="IS_PAY_FDPS_EATL" protocol="dubbo" registry="dubboRegistry" />
+
+    <srv:bridge id="QIAIService" interface="com.csii.upp.custom.common.api.service.fundprocess.QIAIService" trsCode="QIAI" >
+    </srv:bridge>
+    <dubbo:service interface="com.csii.upp.custom.common.api.service.fundprocess.QIAIService"
+        ref="QIAIService" group="IS_PAY_FDPS_QIAI" protocol="dubbo" registry="dubboRegistry" />
+
+    <srv:bridge id="CVAPService" interface="com.csii.upp.custom.common.api.service.fundprocess.CVAPService" trsCode="CVAP" >
+    </srv:bridge>
+    <dubbo:service interface="com.csii.upp.custom.common.api.service.fundprocess.CVAPService"
+        ref="CVAPService" group="IS_PAY_FDPS_CVAP" protocol="dubbo" registry="dubboRegistry" />
+
+    <srv:bridge id="UPMIService" interface="com.csii.upp.custom.common.api.service.fundprocess.UPMIService" trsCode="UPMI" >
+    </srv:bridge>
+    <dubbo:service interface="com.csii.upp.custom.common.api.service.fundprocess.UPMIService"
+        ref="UPMIService" group="IS_PAY_FDPS_UPMI" protocol="dubbo" registry="dubboRegistry" />
+
+    <srv:bridge id="PAYRService" interface="com.csii.upp.custom.common.api.service.fundprocess.PAYRService" trsCode="PAYR" >
+    </srv:bridge>
+    <dubbo:service interface="com.csii.upp.custom.common.api.service.fundprocess.PAYRService"
+        ref="PAYRService" group="IS_PAY_FDPS_PAYR" protocol="dubbo" registry="dubboRegistry" />
+
+    <srv:bridge id="QCULService" interface="com.csii.upp.custom.common.api.service.fundprocess.QCULService" trsCode="QCUL" >
+    </srv:bridge>
+    <dubbo:service interface="com.csii.upp.custom.common.api.service.fundprocess.QCULService"
+        ref="QCULService" group="IS_PAY_FDPS_QCUL" protocol="dubbo" registry="dubboRegistry" />
+
+    <srv:bridge id="CHCPService" interface="com.csii.upp.custom.common.api.service.fundprocess.CHCPService" trsCode="CHCP" >
+    </srv:bridge>
+    <dubbo:service interface="com.csii.upp.custom.common.api.service.fundprocess.CHCPService"
+        ref="CHCPService" group="IS_PAY_FDPS_CHCP" protocol="dubbo" registry="dubboRegistry" />
+
+    <srv:bridge id="SYMIService" interface="com.csii.upp.custom.common.api.service.fundprocess.SYMIService" trsCode="SYMI" >
+    </srv:bridge>
+    <dubbo:service interface="com.csii.upp.custom.common.api.service.fundprocess.SYMIService"
+        ref="SYMIService" group="IS_PAY_FDPS_SYMI" protocol="dubbo" registry="dubboRegistry" />
+
+    <srv:bridge id="QCDIService" interface="com.csii.upp.custom.common.api.service.fundprocess.QCDIService" trsCode="QCDI" >
+    </srv:bridge>
+    <dubbo:service interface="com.csii.upp.custom.common.api.service.fundprocess.QCDIService"
+        ref="QCDIService" group="IS_PAY_FDPS_QCDI" protocol="dubbo" registry="dubboRegistry" />
+
+    <srv:bridge id="UPAYService" interface="com.csii.upp.custom.common.api.service.fundprocess.UPAYService" trsCode="UPAY" >
+    </srv:bridge>
+    <dubbo:service interface="com.csii.upp.custom.common.api.service.fundprocess.UPAYService"
+        ref="UPAYService" group="IS_PAY_FDPS_UPAY" protocol="dubbo" registry="dubboRegistry" />
+
+    <srv:bridge id="PNTFService" interface="com.csii.upp.custom.common.api.service.fundprocess.PNTFService" trsCode="PNTF" >
+    </srv:bridge>
+    <dubbo:service interface="com.csii.upp.custom.common.api.service.fundprocess.PNTFService"
+        ref="PNTFService" group="IS_PAY_FDPS_PNTF" protocol="dubbo" registry="dubboRegistry" />
+
+    <srv:bridge id="QUINService" interface="com.csii.upp.custom.common.api.service.fundprocess.QUINService" trsCode="QUIN" >
+    </srv:bridge>
+    <dubbo:service interface="com.csii.upp.custom.common.api.service.fundprocess.QUINService"
+        ref="QUINService" group="IS_PAY_FDPS_QUIN" protocol="dubbo" registry="dubboRegistry" />
+
+    <srv:bridge id="ROOPService" interface="com.csii.upp.custom.common.api.service.fundprocess.ROOPService" trsCode="ROOP" >
+    </srv:bridge>
+    <dubbo:service interface="com.csii.upp.custom.common.api.service.fundprocess.ROOPService"
+        ref="ROOPService" group="IS_PAY_FDPS_ROOP" protocol="dubbo" registry="dubboRegistry" />
+
+    <srv:bridge id="CATAService" interface="com.csii.upp.custom.common.api.service.fundprocess.CATAService" trsCode="CATA" >
+    </srv:bridge>
+    <dubbo:service interface="com.csii.upp.custom.common.api.service.fundprocess.CATAService"
+        ref="CATAService" group="IS_PAY_FDPS_CATA" protocol="dubbo" registry="dubboRegistry" />
+
+    <srv:bridge id="VTRTService" interface="com.csii.upp.custom.common.api.service.fundprocess.VTRTService" trsCode="VTRT" >
+    </srv:bridge>
+    <dubbo:service interface="com.csii.upp.custom.common.api.service.fundprocess.VTRTService"
+        ref="VTRTService" group="IS_PAY_FDPS_VTRT" protocol="dubbo" registry="dubboRegistry" />
+
+    <srv:bridge id="BTTFService" interface="com.csii.upp.custom.common.api.service.fundprocess.BTTFService" trsCode="BTTF" >
+    </srv:bridge>
+    <dubbo:service interface="com.csii.upp.custom.common.api.service.fundprocess.BTTFService"
+        ref="BTTFService" group="IS_PAY_FDPS_BTTF" protocol="dubbo" registry="dubboRegistry" />
+
+    <srv:bridge id="QRTSService" interface="com.csii.upp.custom.common.api.service.fundprocess.QRTSService" trsCode="QRTS" >
+    </srv:bridge>
+    <dubbo:service interface="com.csii.upp.custom.common.api.service.fundprocess.QRTSService"
+        ref="QRTSService" group="IS_PAY_FDPS_QRTS" protocol="dubbo" registry="dubboRegistry" />
+
+    <srv:bridge id="SMSXService" interface="com.csii.upp.custom.common.api.service.fundprocess.SMSXService" trsCode="SMSX" >
+    </srv:bridge>
+    <dubbo:service interface="com.csii.upp.custom.common.api.service.fundprocess.SMSXService"
+        ref="SMSXService" group="IS_PAY_FDPS_SMSX" protocol="dubbo" registry="dubboRegistry" />
+
+    <srv:bridge id="QAOSService" interface="com.csii.upp.custom.common.api.service.fundprocess.QAOSService" trsCode="QAOS" >
+    </srv:bridge>
+    <dubbo:service interface="com.csii.upp.custom.common.api.service.fundprocess.QAOSService"
+        ref="QAOSService" group="IS_PAY_FDPS_QAOS" protocol="dubbo" registry="dubboRegistry" />
+    
+</beans>

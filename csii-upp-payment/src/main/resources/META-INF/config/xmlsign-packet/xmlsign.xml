@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spring:beans xmlns:spring="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.csii.com.cn/schema/pe"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd 
+	http://www.csii.com.cn/schema/pe http://www.csii.com.cn/schema/pe/pe-config.xsd">
+	<config>
+		<bean id="notifyTransformFactory" class="com.csii.pe.transform.XmlTransformerFactory">
+			<param name="path">/META-INF/config/xmlsign-packet/packets</param>
+			<param name="debug">true</param>
+			<param name="cacheEnable">true</param>
+			<map name="parsers">
+				<ref name="xmlPacketParser">notifyXmlPacketParser</ref>
+			</map>
+		</bean>
+
+		<bean name="notifyXmlPacketParser" class="com.csii.pe.transform.stream.xml.XmlStreamParser">
+			<param name="debug">${xmlPacketParser.debug}</param>
+			<param name="usingRLCL">true</param>
+			<param name="tagClassMapping">/META-INF/config/xmlsign-packet/packets/tagmapping.properties</param>
+			<param name="tagAliasMapping">/META-INF/config/xmlsign-packet/packets/aliasmapping.properties</param>
+		</bean>
+
+		<bean id="xmlSignature" class="com.csii.upp.payment.helper.XmlSignatureHelper">
+			<ref name="transformFactory">notifyTransformFactory</ref>
+			<ref name="signature">commonSignature</ref>
+			<ref name="xmlParser">xmlParser</ref>
+		</bean>
+		<bean id="xmlParser" class="com.csii.pe.transform.stream.xml.XmlStreamParser">
+			<param name="debug">${xmlPacketParser.debug}</param>
+			<param name="usingRLCL">true</param>
+			<param name="tagClassMapping">/META-INF/config/xmlsign-packet/packets/tagmapping.properties</param>
+			<param name="tagAliasMapping">/META-INF/config/xmlsign-packet/packets/aliasmapping.properties</param>
+		</bean>
+	</config>
+</spring:beans>

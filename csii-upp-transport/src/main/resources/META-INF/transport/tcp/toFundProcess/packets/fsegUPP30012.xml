@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE segment SYSTEM "packetutf8.dtd">
+	<!-- 充值 -->
+<segment>
+	<!-- 付款账号 -->
+	<xmlTag tagName="PayerAcctNbr">
+		<String name="payerAcctNbr" />
+	</xmlTag>
+	<!-- 付款卡类型-->
+	<xmlTag tagName="PayerCardTypCd">
+		<String name="payerCardTypCd" />
+	</xmlTag>
+	<!-- 付款账户类型 -->
+	<xmlTag tagName="PayerAcctTypCd">
+		<String name="payerAcctTypCd" />
+	</xmlTag>
+	<!-- 付款名称 -->
+	<xmlTag tagName="PayerAcctName">
+		<String name="payerAcctName" />
+	</xmlTag>
+	<!-- 付款账户性质 -->
+	<xmlTag tagName="PayerAcctKind">
+		<String name="payerAcctKind" />
+	</xmlTag>
+	<!-- 付款机构号 -->
+	<xmlTag tagName="PayerAcctDeptNbr">
+		<String name="payerAcctDeptNbr" />
+	</xmlTag>
+	<!-- 付款人密码 -->
+	<xmlTag tagName="PayerCardPwd">
+		<String name="payerCardPwd" />
+	</xmlTag>
+	<!-- 付款卡CVV2-->
+	<xmlTag tagName="PayerCardCvv2">
+		<String name="payerCardCvv2" />
+	</xmlTag>
+	<!-- 付款卡有效期 -->
+	<xmlTag tagName="PayerCardExpiredDate">
+		<String name="payerCardExpiredDate" />
+	</xmlTag>
+	<!-- 付款人证件号 -->
+	<xmlTag tagName="PayerIdNbr">
+		<String name="payerIdNbr" />
+	</xmlTag>
+	<!-- 付款人证件类型-->
+	<xmlTag tagName="PayerIdTypCd">
+		<String name="payerIdTypCd" />
+	</xmlTag>
+	<!-- 付款人手机号 -->
+	<xmlTag tagName="PayerPhoneNo">
+		<String name="payerPhoneNo" />
+	</xmlTag>
+	<!-- 币种 -->
+	<xmlTag tagName="CurrencyCd">
+		<String name="currencyCd" defaultValue="CNY"/>
+	</xmlTag>
+	<!-- 交易金额 -->
+	<xmlTag tagName="TransAmt">
+		<String name="transAmt" />
+	</xmlTag>
+	<!-- 收款账号-->
+	<xmlTag tagName="PayeeAcctNbr">
+		<String name="payeeAcctNbr" />
+	</xmlTag>
+	<!-- 收款卡类型-->
+	<xmlTag tagName="PayeeCardTypCd">
+		<String name="payeeCardTypCd" />
+	</xmlTag>
+	<!-- 收款账户类型-->
+	<xmlTag tagName="PayeeAcctTypCd">
+		<String name="payeeAcctTypCd" />
+	</xmlTag>
+	<!-- 收款卡名称-->
+	<xmlTag tagName="PayeeAcctName">
+		<String name="payeeAcctName" />
+	</xmlTag>
+	<!-- 收款账户性质-->
+	<xmlTag tagName="PayeeAcctKind">
+		<String name="payeeAcctKind" />
+	</xmlTag>
+	<!-- 收款信用卡有效期-->
+	<xmlTag tagName="PayeeCardExpiredDate">
+		<String name="payeeCardExpiredDate" />
+	</xmlTag>
+	<!-- 收款信用卡cvv-->
+	<xmlTag tagName="PayeeCardCvv2">
+		<String name="payeeCardCvv2" />
+	</xmlTag>
+	<!-- 收款人证件号-->
+	<xmlTag tagName="PayeeIdNbr">
+		<String name="payeeIdNbr" />
+	</xmlTag>
+	<!-- 收款人证件类型-->
+	<xmlTag tagName="PayeeIdTypCd">
+		<String name="payeeIdTypCd" />
+	</xmlTag>
+	<!-- 收款人手机号-->
+	<xmlTag tagName="PayeePhoneNo">
+		<String name="payeePhoneNo" />
+	</xmlTag>
+	<!-- 备注-->
+	<xmlTag tagName="Note">
+		<String name="note" />
+	</xmlTag>
+</segment>

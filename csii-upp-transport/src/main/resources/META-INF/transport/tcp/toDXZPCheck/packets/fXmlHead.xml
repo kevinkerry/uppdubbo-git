@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="GBK"?>
+<!DOCTYPE Group SYSTEM "packetutf8.dtd">
+<Group name="Message"
+	xmlHead="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;">
+	<include keyName="TransId" />
+</Group>

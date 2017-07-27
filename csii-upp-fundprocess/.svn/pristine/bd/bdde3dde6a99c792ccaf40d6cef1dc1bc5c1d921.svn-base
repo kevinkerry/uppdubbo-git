@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE segment SYSTEM "packetutf8.dtd">
+<!-- 批量转账超时状态查询 -->
+<segment>
+	<xmlTag tagName="TransStatus">
+		<String name="TransStatus"></String>
+	</xmlTag>
+</segment>

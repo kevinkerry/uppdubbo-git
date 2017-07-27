@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spring:beans xmlns:spring="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.csii.com.cn/schema/pe"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd 
+	http://www.csii.com.cn/schema/pe http://www.csii.com.cn/schema/pe/pe-config.xsd">
+
+	<config>
+		<bean id="sessionMonitor" class="com.csii.upp.encrypt.hsm.SessionMonitor"></bean>
+
+		<bean id="hsmSession" class="com.csii.upp.encrypt.hsm.HsmSession"
+			init-method="init" destroy-method="clearAllSessions">
+			<ref name="sessionMonitor">sessionMonitor</ref>
+			<!-- 指明每台加密机负载,即在每台加密机允许多少个连接 -->
+			<param name="sBalance">${encrypt.balance}</param>
+			<!-- 加密机端口 -->
+			<param name="sPort">${encrypt.port}</param>
+			<!-- 以毫秒为单位 -->
+			<param name="sTimeOut">${encrypt.timeout}</param>
+			<!-- 加密机ip地址列表 -->
+			<list name="sIPs">
+				<param>${encrypt.ip}</param>
+			</list>
+		</bean>
+
+		<bean id="hsmApp" class="com.csii.upp.encrypt.hsm.HsmApp">
+			<ref name="hSession">hsmSession</ref>
+		</bean>
+
+		<bean id="pcPinConvertor" class="com.csii.pe.enter.CSIIPinConvertor">
+		</bean>
+
+		<bean id="wapPinConvert" class="com.csii.vx.webpe.WebViewPEConvertor">
+		</bean>
+
+		<bean id="passwordService" class="com.csii.upp.encrypt.CommonEncrypt">
+			<param name="pinSwitch">true</param>
+			<ref name="hsmApp">hsmApp</ref>
+			<ref name="pcPinConvertor">pcPinConvertor</ref>
+			<ref name="wapPinConvert">wapPinConvert</ref>
+		</bean>
+	</config>
+</spring:beans>

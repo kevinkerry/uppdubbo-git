@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Group SYSTEM "packetutf8.dtd">
+<Group name="Message"
+	xmlHead="&lt;?xml">
+	<include keyName="txnCode" />
+	
+</Group>

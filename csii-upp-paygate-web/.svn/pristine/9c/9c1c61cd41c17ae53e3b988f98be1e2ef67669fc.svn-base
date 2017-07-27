@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+                        http://www.springframework.org/schema/beans/spring-beans.xsd
+	                    http://www.springframework.org/schema/context
+                        http://www.springframework.org/schema/context/spring-context.xsd">
+                        
+	<import resource="classpath:/META-INF/config/peconfig.xml" />
+	<import resource="classpath:/META-INF/config/common.xml" />
+	<import resource="classpath:/META-INF/config/core.xml" />
+	<import resource="classpath:/META-INF/config/chain.xml" />
+	<import resource="classpath:/META-INF/config/style.xml" />
+	<import resource="classpath:/META-INF/config/validator.xml" />
+	<import resource="classpath:/META-INF/config/template.xml" />
+	<import resource="paygate-style.xml" />
+	<import resource="paygate-template.xml" />
+	<import resource="processor.xml" />
+	<import resource="token.xml" />
+	<import resource="classpath:/META-INF/config/paygate-transport.xml" />
+	<import resource="classpath:/META-INF/server/xml/transformer.xml" />
+	<import resource="classpath:/META-INF/server/http/http.xml" />
+	<import resource="classpath:/META-INF/config/transaction/cardpwdpay.xml" />
+	<import resource="classpath:/META-INF/config/transaction/cyberPay.xml" /> 
+	<import resource="classpath:/META-INF/config/transaction/foisonE.xml" /> 
+	<import resource="classpath:/META-INF/config/transaction/common.xml" />
+	<import resource="classpath:/META-INF/config/transaction/wap.xml" />
+	<import resource="classpath:/META-INF/config/transaction/specialmerpay.xml"/>
+	<import resource="classpath:/META-INF/config/transaction/otherQuickPay.xml"/>
+	<import resource="classpath:/META-INF/config/transaction/qRCodePay.xml"/>
+	<import resource="classpath:/META-INF/config/transaction/merCert.xml"/>
+
+	<!-- 并行方案临时配置文件 -->
+	<!-- <import resource="classpath:config/check-merchant.xml" /> -->
+</beans>

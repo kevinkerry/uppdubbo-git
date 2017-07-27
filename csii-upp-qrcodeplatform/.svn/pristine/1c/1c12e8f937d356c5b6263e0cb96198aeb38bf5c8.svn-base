@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans	http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<import resource="classpath:/META-INF/config/peconfig.xml" />
+	
+	<import resource="classpath:/config/core.xml" />
+	<import resource="classpath:/config/common.xml" />
+	 <import resource="classpath:/config/datasource1.xml" />
+	
+	<import resource="classpath:/config/idFactory.xml" />
+	<import resource="classpath:/config/chain.xml" />
+	<import resource="classpath:/config/style.xml" />
+	<import resource="classpath:/config/validator.xml" />
+	<import resource="classpath:/config/template.xml" />
+	
+	<import resource="qrcode-template.xml" />
+
+	<import resource="classpath:/META-INF/server/config.xml" />
+	
+	<import resource="classpath:/META-INF/transaction/wechat.xml"/>
+	
+</beans>

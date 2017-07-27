@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE segment SYSTEM "packetutf8.dtd">
+<!-- 支付宝商户信息同步（增加） -->
+<segment>
+	<!--服务代码  -->
+	<xmlTag tagName="txnCode">
+		<String name="txnCode" defaultValue="" />
+	</xmlTag>
+	<!-- 渠道编号 -->
+	<xmlTag tagName="channel">
+		<String name="channel" defaultValue="" />
+	</xmlTag>
+	<!-- 商户号 -->
+	<xmlTag tagName="merId">
+		<String name="merId" defaultValue="" />
+	</xmlTag>
+	<!-- 二级商户名称 -->
+	<xmlTag tagName="name">
+		<String name="name" defaultValue="" />
+	</xmlTag>
+	<!-- 客服电话 -->
+	<xmlTag tagName="servicePhone">
+		<String name="servicePhone" defaultValue="" />
+	</xmlTag>
+	<!-- 联系人名称 -->
+	<xmlTag tagName="contactName">
+		<String name="contactName" defaultValue="" />
+	</xmlTag>
+	<!--联系人电话 -->
+	<xmlTag tagName="contactPhone">
+		<String name="contactPhone" defaultValue="" />
+	</xmlTag>
+	<!--联系人手机号  -->
+	<xmlTag tagName="contactMobile">
+		<String name="contactMobile" defaultValue="" />
+	</xmlTag>
+	<!-- 联系人邮箱 -->
+	<xmlTag tagName="contactEmail">
+		<String name="contactEmail" defaultValue="" />
+	</xmlTag>
+	<!--经营类目 -->
+	<xmlTag tagName="categoryld">
+		<String name="categoryld" defaultValue="" />
+	</xmlTag>
+	<!--商户备注  -->
+	<xmlTag tagName="memo">
+		<String name="memo" defaultValue="" />
+	</xmlTag>
+</segment>

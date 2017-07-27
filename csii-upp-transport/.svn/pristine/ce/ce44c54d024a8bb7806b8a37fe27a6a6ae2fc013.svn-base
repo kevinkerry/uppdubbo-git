@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE segment SYSTEM "packetutf8.dtd">
+<segment>
+	<!-- 商户号 -->
+	<xmlTag tagName="MerNbr">
+		<String name="merNbr" defaultValue="" />
+	</xmlTag>
+	<!-- 商户流水号 -->
+	<xmlTag tagName="MerSeqNbr">
+		<String name="merSeqNbr" defaultValue="" />
+	</xmlTag>
+</segment>

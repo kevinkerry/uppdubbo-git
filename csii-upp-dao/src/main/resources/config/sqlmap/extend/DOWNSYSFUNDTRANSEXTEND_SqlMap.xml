@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="DOWNSYSFUNDTRANSEXTEND">
+	<insert id="InsertDownsysfundtransToHist" parameterClass="java.util.HashMap">
+		INSERT INTO DownSysFundTransHist ( INNERFUNDTRANSNBR, FUNDCHANNELCODE,
+		UPPERSYSNBR, UPPERTRANSDATE,
+		UPPERTRANSTIME, UPPERTRANSNBR, TRANSDATE, TRANSTIME, CLEARDATE,
+		TRANSCODE, PAYERACCTNBR, PAYERNAME, PAYEEACCTNBR, PAYEENAME,
+		ORIGUPPERSYSNBR, ORIGUPPERTRANSNBR, ORIGUPPERTRANSDATE, ORIGINNERTRANSNBR,
+		ORIGCLEARDATE, CURRENCYCD, TRANSAMT, FEEAMT, CHECKSTATUS, RETURNCODE,
+		RETURNMSG, TRANSSTATUS, DOWNTRANSNBR, DOWNTRANSDATE, DOWNTRANSTIME,
+		DOWNSYSNBR, OPENBRC, CHANNELNBR, CHANNELDATE, CHANNELSEQNBR,
+		FEECURRENCYCD, FEEPAYERACCOUNT, FEEGETACCOUNT, TRANSFERCURRENCYCD,
+		TRANSFERFEEAMT, TRANSFERPAYACCOUNT, TRANSFERGETACCOUNT, DATELASTMAINT)
+		SELECT INNERFUNDTRANSNBR, FUNDCHANNELCODE, UPPERSYSNBR,
+		UPPERTRANSDATE, UPPERTRANSTIME,UPPERTRANSNBR, TRANSDATE, TRANSTIME,
+		CLEARDATE, TRANSCODE, PAYERACCTNBR, PAYERNAME,
+		PAYEEACCTNBR, PAYEENAME, ORIGUPPERSYSNBR, ORIGUPPERTRANSNBR,
+		ORIGUPPERTRANSDATE,ORIGINNERTRANSNBR, ORIGCLEARDATE, CURRENCYCD,
+		TRANSAMT, FEEAMT, CHECKSTATUS, RETURNCODE,RETURNMSG, TRANSSTATUS,
+		DOWNTRANSNBR, DOWNTRANSDATE, DOWNTRANSTIME, DOWNSYSNBR, OPENBRC,
+		CHANNELNBR, CHANNELDATE, CHANNELSEQNBR, FEECURRENCYCD,
+		FEEPAYERACCOUNT, FEEGETACCOUNT,TRANSFERCURRENCYCD, TRANSFERFEEAMT,
+		TRANSFERPAYACCOUNT, TRANSFERGETACCOUNT, DATELASTMAINT
+		FROM DownSysFundTrans
+    <![CDATA[
+    where FUNDCHANNELCODE = #fundChannelCd:VARCHAR# and CHECKSTATUS <> #checkStatus#
+    ]]>
+	</insert>
+
+	<resultMap id="getTotalTransAmtAndFeeAmtResult" class="java.util.HashMap">
+		<result column="total_transamt" property="totalTransAmt" />
+		<result column="total_feeamt" property="totalFeeAmt" />
+	</resultMap>
+	<select id="getTotalTransAmtAndFeeAmt" parameterClass="java.util.HashMap"
+		resultMap="getTotalTransAmtAndFeeAmtResult">
+		SELECT SUM(TRANSAMT) AS total_transamt, SUM(FEEAMT) AS total_feeamt
+		FROM DOWNSYSFUNDTRANSHIST
+		WHERE FUNDCHANNELCODE =
+		#fundchannelcode:VARCHAR# and CLEARDATE = #cleardate:DATE#
+		<isNotNull prepend="AND" property="transcode">
+			TRANSCODE = #transcode:VARCHAR#
+		</isNotNull>
+	</select>
+
+	<resultMap id="getMerDeptTransAmtResult" class="java.util.HashMap">
+		<result column="merdevdeptnbr" property="merdevdeptnbr" />
+		<result column="transmode" property="transmode" />
+		<result column="merdevdeptnbr_transamt" property="merdevdeptnbrTransamt" />
+	</resultMap>
+	
+	<select id="getMerDeptTransAmt" parameterClass="java.util.HashMap"
+		resultMap="getMerDeptTransAmtResult">
+		select ost.merdevdeptnbr, ost.transmode, sum(ost.transamt)
+		merdevdeptnbr_transamt from (select
+		dt.innerfundtransnbr,it.uppertransnbr from downsysfundtranshist dt
+		left join innerfundtranshist it on it.innerfundtransnbr =
+		dt.innerfundtransnbr where
+		dt.fundchannelcode = #fundchannelcode:VARCHAR# and dt.cleardate = #cleardate:DATE#
+		<isNotNull prepend="AND" property="transcode">
+			dt.transcode = #transcode:VARCHAR#
+		</isNotNull>
+		) newt,(select * from onlinesubtranshist union all select * from
+		onlinesubtrans) ost where
+		ost.transseqnbr = newt.uppertransnbr group by ost.merdevdeptnbr, ost.transmode
+	</select>
+
+	<resultMap id="getMerDeptTransmodeResult" class="java.util.HashMap">
+		<result column="merdevdeptnbr" property="merdevdeptnbr" />
+		<result column="transmode" property="transmode" />
+	</resultMap>
+	
+	<select id="getMerDeptTransmode" parameterClass="java.util.HashMap" resultMap="getMerDeptTransmodeResult">
+		select ost.merdevdeptnbr, ost.transmode from (select
+		dt.innerfundtransnbr,it.uppertransnbr from downsysfundtranshist dt
+		left join innerfundtranshist it on it.innerfundtransnbr =
+		dt.innerfundtransnbr where
+		dt.fundchannelcode = #fundchannelcode:VARCHAR# and dt.cleardate = #cleardate:DATE#
+		and dt.transcode in ('01', '04', '31')
+		) newt,(select * from
+		onlinesubtranshist union all select * from onlinesubtrans) ost where
+		ost.transseqnbr = newt.uppertransnbr group by ost.merdevdeptnbr,
+		ost.transmode
+	</select>
+
+	<resultMap id="getCoreTodayClearAmtMap" class="java.util.HashMap">
+		<result column="coretodayclearamt" property="coretodayclearamt" />
+	</resultMap>
+	<select id="getCoreTodayClearAmt" parameterClass="java.util.HashMap"
+		resultMap="getCoreTodayClearAmtMap">
+		select sum(transamt) as coretodayclearamt from
+		innerfundtranshist where innerfundtransnbr in (
+		select INNERFUNDTRANSNBR from downsysfundtranshist where fundchannelcode =
+		'CORE' and cleardate = #cleardate:DATE#
+		) and transcode =
+		#transcode:VARCHAR#
+	</select>
+
+	<!-- 统计行社二维码支付金额 added by wangtao 2017-01-16 -->
+	<resultMap id="getMerDeptQrCodeAmtMap" class="java.util.HashMap">
+		<result column="merdevdeptnbr" property="merdevdeptnbr" />
+		<result column="transcode" property="transcode" />
+		<result column="transferfeeamt" property="transferfeeamt" />
+		<result column="feeamt" property="feeamt" />
+	</resultMap>
+	<select id="getMerDeptQrCodeAmt" parameterClass="java.util.HashMap"
+		resultMap="getMerDeptQrCodeAmtMap">
+		select
+		ost.merdevdeptnbr,newt.transcode,sum(newt.TRANSFERFEEAMT)
+		transferfeeamt,sum(newt.FEEAMT) feeamt from
+		(select dt.innerfundtransnbr,it.uppertransnbr,dt.TRANSFERFEEAMT,dt.transcode
+		from downsysfundtranshist dt
+		left join innerfundtranshist it on
+		it.innerfundtransnbr = dt.innerfundtransnbr where
+		dt.fundchannelcode = #fundchannelcode:VARCHAR# and dt.cleardate = #cleardate:DATE#
+		and dt.transcode in ('1', '2', '3')
+		) newt,(select * from
+		onlinesubtranshist union all select * from onlinesubtrans) ost where
+		ost.transseqnbr = newt.uppertransnbr group by
+		ost.merdevdeptnbr,newt.transcode
+	</select>
+
+	<resultMap id="getMerDeptQrCodeFeeAmtMap" class="java.util.HashMap">
+		<result column="merdevdeptnbr" property="merdevdeptnbr" />
+		<result column="transcode" property="transcode" />
+		<result column="transmode" property="transmode" />
+		<result column="feeamt" property="feeamt" />
+	</resultMap>
+	<select id="getMerDeptQrCodeFeeAmt" parameterClass="java.util.HashMap"
+		resultMap="getMerDeptQrCodeFeeAmtMap">
+		select
+		ost.merdevdeptnbr,newt.transcode,ost.transmode,sum(newt.FEEAMT) feeamt
+		from
+		(select dt.innerfundtransnbr,it.uppertransnbr,dt.TRANSFERFEEAMT,dt.transcode
+		from downsysfundtranshist dt
+		left join innerfundtranshist it on
+		it.innerfundtransnbr = dt.innerfundtransnbr where
+		dt.fundchannelcode = #fundchannelcode:VARCHAR# and dt.cleardate = #cleardate:DATE#
+		and dt.transcode in ('1', '2', '3')
+		) newt,(select * from
+		onlinesubtranshist union all select * from onlinesubtrans) ost where
+		ost.transseqnbr = newt.uppertransnbr group by
+		ost.merdevdeptnbr,newt.transcode,ost.transmode
+	</select>
+
+	<insert id="InsertDownsysfundtransFromInnerfundtrans" parameterClass="java.util.HashMap">
+		INSERT INTO DownSysFundTrans(innerfundtransnbr,fundchannelcode,transdate,cleardate,transamt,PAYERACCTNBR,checkstatus,datelastmaint)
+		SELECT innerfundtransnbr,fundchannelcode,transdate,cleardate,transamt,PAYERACCTNBR,'2',sysdate() from innerfundtrans 
+    <![CDATA[
+   		 where FUNDCHANNELCODE = #fundChannelCd:VARCHAR# 
+    ]]>	
+    </insert>
+    
+	<!-- 删除商户结算日结算表指定清算日期之前的记录 -->
+	<delete id="DeleteDownsysfundtrans" parameterClass="java.util.HashMap">
+		<![CDATA[
+		    DELETE FROM
+		    	DownSysFundTrans 
+		   	WHERE 
+ 			FUNDCHANNELCODE = #fundChannelCd:VARCHAR# 
+	   	]]>
+	</delete>    
+	
+</sqlMap>

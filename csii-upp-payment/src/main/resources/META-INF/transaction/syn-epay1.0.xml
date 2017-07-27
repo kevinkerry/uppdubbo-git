@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spring:beans xmlns:spring="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.csii.com.cn/schema/pe"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd 
+	http://www.csii.com.cn/schema/pe http://www.csii.com.cn/schema/pe/pe-config.xsd">
+	<config>
+		<!-- 同步1.0 -->
+		<action id="synSignExitAction" class="com.csii.upp.payment.action.syn.SynSignExitAction">
+		</action>
+		<!-- 同步信息给1.0 -->
+		<bean id="synSignExitEventHandler"
+			class="com.csii.upp.payment.action.syn.SynSignExitEventHandler">
+			<ref name="transport">pp.transformTransport</ref>
+			<param name="localPath">${sysSign.path}</param>
+		</bean>
+
+		<!-- 异常情况文件同步签约信息给1.0 -->
+		<transaction id="FileSynSignInfo" template="baseUppTemplate">
+			<actions>
+				<ref name="action">FileSynSignInfoAction</ref>
+			</actions>
+		</transaction>
+		<action id="FileSynSignInfoAction"
+			class="com.csii.upp.payment.action.syn.FileSynSignInfoAction">
+			<ref name="transport">pp.transformTransport</ref>
+			<param name="localPath">${sysSign.path}</param>
+			<param name="sysSignHist">${sysSignHist.path}</param>
+		</action>
+
+		<!-- 1.0发送签约信息到2.0同步 -->
+		<transaction id="SynSignInfo" template="baseUppTemplate">
+			<actions>
+				<ref name="action">SynSignInfoAction</ref>
+			</actions>
+		</transaction>
+		<action id="SynSignInfoAction" class="com.csii.upp.payment.action.syn.SynSignInfoAction" />
+	</config>
+</spring:beans>

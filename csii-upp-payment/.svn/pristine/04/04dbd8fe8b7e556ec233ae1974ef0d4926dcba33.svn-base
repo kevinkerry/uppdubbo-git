@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE segment SYSTEM "packetutf8.dtd">
+<segment>
+<!-- 订单支付状态信息 -->
+	<xmlTag tagName="PayStatus">
+		<String name="PayStatus"/>
+	</xmlTag>
+</segment>

@@ -1,0 +1,415 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spring:beans xmlns:spring="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.csii.com.cn/schema/pe"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd 
+	http://www.csii.com.cn/schema/pe http://www.csii.com.cn/schema/pe/pe-config.xsd">
+
+	<config>
+		<!-- 动态图片校验码产生器 -->
+		<transaction id="GenTokenImg" template="queryMgmtTemplate">
+			<actions>
+				<ref name="action">imageTokenGenAction</ref>
+			</actions>
+			<channels>
+				<channel type="http">
+					<param name="success">image,</param>
+				</channel>
+			</channels>
+		</transaction>
+		<!-- 产生动态图片校验码 -->
+		<action id="imageTokenGenAction"
+			class="com.csii.upp.paygate.action.common.ImageTokenGenExtAction">
+			<ref name="tokenManager">vercodeTokenManager</ref>
+		</action>
+
+		<!--图形验证码校验交易 -->
+		<transaction id="ImageTokenVerify" template="queryMgmtTemplate">
+			<actions>
+				<ref name="action">ImageTokenVerifyAction</ref>
+			</actions>
+			<!--<fields> <field name="_vTokenName">CommonStyle</field> </fields> -->
+			<channels>
+				<channel type="http">
+					<param name="success">stream,</param>
+				</channel>
+			</channels>
+		</transaction>
+
+		<!-- 图形验证码 -->
+		<action id="ImageTokenVerifyAction"
+			class="com.csii.upp.paygate.action.common.ImageTokenVerifyAction">
+			<param name="ignoreCase">true</param>
+		</action>
+
+
+		<!-- 手机动态校验码产生器 -->
+		<transaction id="SMS" template="queryMgmtTemplate">
+			<actions>
+				<ref name="action">SMSAction</ref>
+			</actions>
+			<channels>
+				<channel type="http">
+					<param name="success">stream,</param>
+					<param name="error">stream,</param>
+				</channel>
+			</channels>
+		</transaction>
+		<!-- 手机动态校验码 -->
+		<action id="SMSAction" class="com.csii.upp.paygate.action.common.SMSAction">
+		</action>
+
+		<!-- 卡信息验证 -->
+		<transaction id="CSVR" template="queryMgmtTemplate">
+			<actions>
+				<ref name="action">informationVerifiAction</ref>
+			</actions>
+			<channels>
+				<channel type="http">
+					<param name="success">stream,</param>
+					<param name="error">xmlSignStreamView,Error</param>
+				</channel>
+			</channels>
+		</transaction>
+		<action id="informationVerifiAction"
+			class="com.csii.upp.paygate.action.common.InformationVerifiAction">
+		</action>
+		<!-- 生成二级商户编号配制 -->
+		<transaction id="CTSM" template="queryMgmtTemplate">
+			<actions>
+				<ref name="action">createSubMerchantIdAction</ref>
+			</actions>
+			<channels>
+				<channel type="http">
+					<param name="error">xmlStream,Error</param>
+					<param name="OM0003">xmlStream,Error</param>
+					<param name="OM0008">xmlStream,Error</param>
+					<param name="success">stream,</param>
+				</channel>
+			</channels>
+		</transaction>
+		<action id="createSubMerchantIdAction"
+			class="com.csii.upp.paygate.action.common.CreateSubMerchantIdAction">
+		</action>
+
+		<!-- 单笔查询 -->
+		<transaction id="IQSR" template="queryMgmtTemplate">
+			<actions>
+				<ref name="action">querySingletransAction</ref>
+			</actions>
+			<channels>
+				<channel type="http">
+					<param name="success">stream,</param>
+					<param name="error">stream,Error</param>
+				</channel>
+			</channels>
+		</transaction>
+		<action id="querySingletransAction"
+			class="com.csii.upp.paygate.action.common.QuerySingleTransAction">
+		</action>
+
+		<!-- 短信查询 -->
+		<!-- <transaction id="PD18" template="queryMgmtTemplate"> <actions> <ref 
+			name="action">querySmsAction</ref> </actions> <channels> <channel type="http"> 
+			<param name="success">stream,</param> <param name="error">stream,Error</param> 
+			</channel> </channels> </transaction> <action id="querySmsAction" class="com.csii.upp.paygate.action.common.QuerySmsAction"> 
+			</action> -->
+
+		<!-- 富阳支付 -->
+		<transaction id="FYEP" template="queryMgmtTemplate">
+			<actions>
+				<ref name="action">bikeAction</ref>
+			</actions>
+			<channels>
+				<channel type="http">
+					<param name="success">payprepage</param>
+				</channel>
+			</channels>
+		</transaction>
+		<action id="bikeAction" class="com.csii.upp.paygate.action.common.BikeAction">
+		</action>
+
+		<!-- 富阳提现 -->
+		<transaction id="WHDW" template="paygatePayTemplate">
+			<actions>
+				<ref name="action">withdrawAction</ref>
+			</actions>
+			<channels>
+				<channel type="http">
+					<param name="success">bank/bankPay</param>   <!-- 企业网银跳转页面 -->
+				</channel>
+			</channels>
+		</transaction>
+		<action id="withdrawAction" class="com.csii.upp.paygate.action.cyber.EbankpayAction">
+			<param name="manyIp">${upp.paygate.whdw.ip}</param>
+			<param name="eweb">${upp.paygate.whdw.eweb}</param>
+		</action>
+
+		<!--退货 -->
+		<transaction id="IPSR" template="queryMgmtTemplate">
+			<actions>
+				<ref name="action">refundAction</ref>
+			</actions>
+			<channels>
+				<channel type="http">
+					<param name="error">stream,Error</param>
+					<param name="success">stream,</param>
+				</channel>
+			</channels>
+		</transaction>
+		<action id="refundAction" class="com.csii.upp.paygate.action.common.RefundAction">
+		</action>
+
+		<!-- 富阳退货 -->
+		<transaction id="FYSR" template="queryMgmtTemplate">
+			<actions>
+				<ref name="action">refundAction</ref>
+			</actions>
+			<channels>
+				<channel type="http">
+					<param name="error">stream,Error</param>
+					<param name="success">stream,</param>
+				</channel>
+			</channels>
+		</transaction>
+		<action id="refundAction" class="com.csii.upp.paygate.action.common.RefundAction">
+		</action>
+
+		<!-- 客户鉴权 -->
+		<transaction id="CATA" template="queryMgmtTemplate">
+			<actions>
+				<ref name="action">CATAAction</ref>
+			</actions>
+			<channels>
+				<channel type="http">
+					<param name="error">stream,Error</param>
+					<param name="success">stream,</param>
+				</channel>
+			</channels>
+		</transaction>
+		<action id="CATAAction"
+			class="com.csii.upp.paygate.action.common.CustomAuthenAction" />
+
+		<!-- 取消订单 -->
+		<transaction id="CCOD" template="queryMgmtTemplate">
+			<actions>
+				<ref name="action">CcodAction</ref>
+			</actions>
+			<channels>
+				<channel type="http">
+					<param name="error">stream,Error</param>
+					<param name="success">stream,</param>
+				</channel>
+			</channels>
+		</transaction>
+		<action id="CcodAction"
+			class="com.csii.upp.paygate.action.common.CancelOrderAction" />
+
+		<!-- 确认支付交易配置 -->
+		<transaction id="COPR" template="queryMgmtTemplate">
+			<actions>
+				<ref name="action">CoprAction</ref>
+			</actions>
+			<channels>
+				<channel type="http">
+					<param name="error">stream,Error</param>
+					<param name="success">stream,</param>
+				</channel>
+			</channels>
+		</transaction>
+		<action id="CoprAction" class="com.csii.upp.paygate.action.common.ConfimPayAction">
+		</action>
+		<!-- 富阳确认支付交易配置 -->
+		<transaction id="FYCP" template="queryMgmtTemplate">
+			<actions>
+				<ref name="action">FYConfimAction</ref>
+			</actions>
+			<channels>
+				<channel type="http">
+					<param name="error">stream,Error</param>
+					<param name="OM0003">stream,Error</param>
+					<param name="OM0008">stream,Error</param>
+					<param name="success">stream,</param>
+				</channel>
+			</channels>
+		</transaction>
+		<action id="FYConfimAction" class="com.csii.upp.paygate.action.common.ConfimPayAction">
+		</action>
+
+		<!-- 二级商户信息同步 -->
+		<transaction id="SMSR" template="queryMgmtTemplate">
+			<actions>
+				<ref name="action">SmSrAction</ref>
+			</actions>
+			<channels>
+				<channel type="http">
+					<param name="error">stream,Error</param>
+					<param name="success">stream,</param>
+				</channel>
+			</channels>
+		</transaction>
+		<action id="SmSrAction" class="com.csii.upp.paygate.action.common.SMSRAction" />
+		<!--富阳虚账户余额查询 -->
+		<transaction id="QYAT" template="queryMgmtTemplate">
+			<actions>
+				<ref name="action">QYATAction</ref>
+			</actions>
+			<channels>
+				<channel type="http">
+					<param name="error">stream,Error</param>
+					<param name="OM0003">stream,Error</param>
+					<param name="OM0008">stream,Error</param>
+					<param name="success">stream,</param>
+				</channel>
+			</channels>
+		</transaction>
+		<action id="QYATAction" class="com.csii.upp.paygate.action.common.QYATAction">
+		</action>
+
+		<!--他行网银支付后，订单支付状态查询 -->
+		<transaction id="QueryOrderStatus" template="queryMgmtTemplate">
+			<actions>
+				<ref name="action">QueryOrderStatusAction</ref>
+			</actions>
+			<channels>
+				<channel type="http">
+					<param name="error">bank/otherBankPayError</param>
+					<param name="success">bank/otherBankPayResult</param>
+				</channel>
+			</channels>
+		</transaction>
+		<action id="QueryOrderStatusAction"
+			class="com.csii.upp.paygate.action.common.QueryOrderStatusAction">
+		</action>
+
+		<!--批量转账 -->
+		<transaction id="BTTF" template="queryMgmtTemplate">
+			<actions>
+				<ref name="action">batchTransferAction</ref>
+			</actions>
+			<channels>
+				<channel type="http">
+					<param name="error">stream,Error</param>
+					<param name="success">stream,</param>
+				</channel>
+			</channels>
+		</transaction>
+		<action id="batchTransferAction"
+			class="com.csii.upp.paygate.action.common.BatchTransferAction">
+		</action>
+
+		<!--批量转账交易结果查询 -->
+		<transaction id="BTFR" template="queryMgmtTemplate">
+			<actions>
+				<ref name="action">queryBatchTransferAction</ref>
+			</actions>
+			<channels>
+				<channel type="http">
+					<param name="error">stream,Error</param>
+					<param name="success">stream,</param>
+				</channel>
+			</channels>
+		</transaction>
+		<action id="queryBatchTransferAction"
+			class="com.csii.upp.paygate.action.common.QueryBatchTransferAction">
+		</action>
+
+		<!--前端银联通知地址 -->
+		<transaction id="CLPA" template="queryMgmtTemplate">
+			<actions>
+				<ref name="action">closePayAction</ref>
+			</actions>
+			<channels>
+				<channel type="http">
+					<param name="success">bank/closePay</param>
+				</channel>
+			</channels>
+		</transaction>
+		<action id="closePayAction" class="com.csii.upp.paygate.action.common.ClosePayAction">
+		</action>
+		<!--判断本行它行卡 -->
+		<transaction id="QCFG" template="queryMgmtTemplate">
+			<actions>
+				<ref name="action">queryCardFlagAction</ref>
+			</actions>
+			<channels>
+				<channel type="http">
+					<param name="success">json,</param>
+				</channel>
+			</channels>
+		</transaction>
+		<action id="queryCardFlagAction"
+			class="com.csii.upp.paygate.action.common.QueryCardFlagAction">
+		</action>
+
+
+
+		<!-- 单笔查询 -->
+		<transaction id="QUAT" template="queryMgmtTemplate">
+			<actions>
+				<ref name="action">queryAuthtransAction</ref>
+			</actions>
+			<channels>
+				<channel type="http">
+					<param name="success">bank/queryAuthResult</param>
+
+				</channel>
+			</channels>
+		</transaction>
+		<action id="queryAuthtransAction"
+			class="com.csii.upp.paygate.action.common.QueryAuthTransAction">
+		</action>
+
+		<!-- 代收查询 -->
+		<transaction id="DSQX" template="queryMgmtTemplate">
+			<actions>
+				<ref name="action">queryAuthtransAction</ref>
+			</actions>
+			<channels>
+				<channel type="http">
+					<param name="success">bank/queryDsjyResult</param>
+
+				</channel>
+			</channels>
+		</transaction>
+		<action id="queryAuthtransAction"
+			class="com.csii.upp.paygate.action.common.QueryAuthTransAction">
+		</action>
+		<!-- 代发查询 -->
+		<transaction id="DFQX" template="queryMgmtTemplate">
+			<actions>
+				<ref name="action">queryAuthtransAction</ref>
+			</actions>
+			<channels>
+				<channel type="http">
+					<param name="success">bank/queryDfjyResult</param>
+
+				</channel>
+			</channels>
+		</transaction>
+		<action id="queryAuthtransAction"
+			class="com.csii.upp.paygate.action.common.QueryAuthTransAction">
+		</action>
+
+
+
+
+		<!-- 单笔查询 -->
+		<transaction id="DQPL" template="queryMgmtTemplate">
+			<actions>
+				<ref name="action">dbatchAction</ref>
+			</actions>
+			<channels>
+				<channel type="http">
+					<param name="success">bank/sucess</param>
+
+				</channel>
+			</channels>
+		</transaction>
+		<action id="dbatchAction"
+			class="com.csii.upp.paygate.action.common.BatchTransAction">
+		</action>
+
+
+
+	</config>
+</spring:beans>

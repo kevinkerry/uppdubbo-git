@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="FUNDCHANNELCLEARTRANSEXTEND">
+	<insert id="insertFundchannelcleartransToHist" parameterClass="java.util.HashMap">
+		insert into FUNDCHANNELCLEARTRANSHIST
+		select c.* from fundchannel a,overalltranshist b, fundchannelcleartrans c
+		where a.fundchannelcode = c.fundchannelcode
+		and a.fundchanneltype = #fundchanneltype# and
+		b.overalltransnbr=c.overalltransnbr
+	</insert>
+
+	<delete id="deleteFundchannelcleartransBeUsed" parameterClass="java.util.HashMap">
+		delete from fundchannelcleartrans
+		where cleartransnbr in (select * from
+		(select c.cleartransnbr from fundchannel a,overalltranshist b,
+		fundchannelcleartrans c where a.fundchannelcode = c.fundchannelcode
+		and a.fundchanneltype = #fundchanneltype# and
+		b.overalltransnbr=c.overalltransnbr) temp)
+	</delete>
+
+	<resultMap id="TotalOffsetBalanceResultMap" class="java.util.HashMap">
+		<result column="CLEARDATE" property="cleardate" jdbcType="DATE" />
+		<result column="TRANSAMT" property="transamt" jdbcType="DECIMAL" />
+		<result column="DOWNTRANSAMT" property="downtransamt" jdbcType="DECIMAL" />
+	</resultMap>
+	<select id="getTotalOffsetBalance" parameterClass="java.util.HashMap" resultMap="TotalOffsetBalanceResultMap">
+		select f.cleardate, f.transamt, a.downtransamt from fundchannelcleartrans f,
+		(select sum(transferfeeamt) downtransamt, cleardate from
+		downsysfundtranshist group by cleardate) a where f.cleardate =
+		a.cleardate and f.standbooktypcd = #standbooktypcd#
+	</select>
+</sqlMap>

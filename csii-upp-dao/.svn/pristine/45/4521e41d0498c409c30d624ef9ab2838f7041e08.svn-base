@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="INNERFUNDTRANSEXTEND">
+	
+	<select id="getInnerfundtrans" resultClass="com.csii.upp.dto.generate.Innerfundtrans"
+	parameterClass="java.util.HashMap">
+		select innerfundtrans.*
+		from
+		innerfundtrans where fundchannelcode = #fundchannelcode:VARCHAR#
+		and transstatus
+		= '5' and transcode = 'UnionPayQuickPay' and
+			<![CDATA[datelastmaint <= sysdate() - #timeoutsecs:INTEGER# seconds
+				and datelastmaint > sysdate() - #gridseconds:INTEGER# seconds]]>
+	</select>
+	
+	<select id="getInnertrans2query" resultClass="com.csii.upp.dto.generate.Innerfundtrans"
+	parameterClass="java.util.HashMap">
+		select innerfundtrans.*
+		from
+		innerfundtrans where fundchannelcode = #fundchannelcode:VARCHAR#
+		and transstatus
+		= '5' and transcode = 'UnionPayQuickPay' and
+			<![CDATA[datelastmaint <= sysdate() - #beforequeryseconds:INTEGER# seconds
+				and datelastmaint > sysdate() - #gridseconds:INTEGER# seconds]]>
+	</select>
+	<select id="getQrcodeInnerfundtrans" resultClass="com.csii.upp.dto.generate.Innerfundtrans"
+	parameterClass="java.util.HashMap">
+		select innerfundtrans.*
+		from
+		innerfundtrans where transstatus
+		in('5','8') and transcode 
+		in ('AlipayQrCodeActivePay','AlipayQrCodePassivePay','WeChatQrCodeActivePay','WeChatQrCodePassivePay') and
+			<![CDATA[datelastmaint <= sysdate() - #timeoutsecs:INTEGER# seconds
+				and datelastmaint > sysdate() - #gridseconds:INTEGER# seconds]]>
+	</select>
+	<select id="getQrcodeInnertrans2query" resultClass="com.csii.upp.dto.generate.Innerfundtrans"
+	parameterClass="java.util.HashMap">
+		select innerfundtrans.*
+		from
+		innerfundtrans where  transstatus
+		in('5','8') and transcode 
+		in ('AlipayQrCodeActivePay','AlipayQrCodePassivePay','WeChatQrCodeActivePay','WeChatQrCodePassivePay') and
+			<![CDATA[datelastmaint <= sysdate() - #beforequeryseconds:INTEGER# seconds
+				and datelastmaint > sysdate() - #gridseconds:INTEGER# seconds]]>
+	</select>
+	<insert id="InsertInnerfundtransToHist" parameterClass="java.util.HashMap">
+		INSERT INTO InnerFundTransHist 
+		(INNERFUNDTRANSNBR, OVERALLTRANSNBR, FUNDCHANNELCODE, UPPERSYSNBR,
+  UPPERTRANSDATE, UPPERTRANSTIME, UPPERTRANSNBR, TRANSDATE, TRANSTIME,
+  CLEARDATE, TRANSCODE, PAYERACCTNBR, PAYERNAME, PAYEEACCTNBR,
+  PAYEENAME, ORIGUPPERSYSNBR, ORIGUPPERTRANSNBR, ORIGUPPERTRANSDATE,
+  ORIGINNERTRANSNBR, ORIGCLEARDATE, CURRENCYCD, TRANSAMT, FEEAMT,
+  CHECKSTATUS, CHECKDATAFLAG, RETURNCODE, RETURNMSG, TRANSSTATUS,
+  DOWNTRANSNBR, DOWNTRANSDATE, DOWNTRANSTIME, DOWNSYSNBR, DATELASTMAINT,POINTDATAFLAG)
+		SELECT INNERFUNDTRANSNBR, OVERALLTRANSNBR, FUNDCHANNELCODE, UPPERSYSNBR,
+  UPPERTRANSDATE, UPPERTRANSTIME, UPPERTRANSNBR, TRANSDATE, TRANSTIME,
+  CLEARDATE, TRANSCODE, PAYERACCTNBR, PAYERNAME, PAYEEACCTNBR,
+  PAYEENAME, ORIGUPPERSYSNBR, ORIGUPPERTRANSNBR, ORIGUPPERTRANSDATE,
+  ORIGINNERTRANSNBR, ORIGCLEARDATE, CURRENCYCD, TRANSAMT, FEEAMT,
+  CHECKSTATUS, CHECKDATAFLAG, RETURNCODE, RETURNMSG, TRANSSTATUS,
+  DOWNTRANSNBR, DOWNTRANSDATE, DOWNTRANSTIME, DOWNSYSNBR, DATELASTMAINT,POINTDATAFLAG
+		FROM InnerFundTrans
+		where CHECKDATAFLAG = #checkdataFlag# and CHECKSTATUS = #checkStatus#
+	</insert>
+	<insert id="InsertInnerfundtransToPreClear" parameterClass="java.util.HashMap">
+		INSERT INTO InnerPreClearFundTrans
+		(INNERFUNDTRANSNBR, OVERALLTRANSNBR, FUNDCHANNELCODE, UPPERTRANSDATE,
+  UPPERTRANSTIME, TRANSDATE, UPPERTRANSNBR, TRANSTIME, CLEARDATE,
+  TRANSCODE, PAYERACCTNBR, PAYERNAME, PAYEEACCTNBR, PAYEENAME,
+  ORIGUPPERSYSNBR, ORIGUPPERTRANSNBR, ORIGUPPERTRANSDATE, ORIGINNERTRANSNBR,
+  ORIGCLEARDATE, CURRENCYCD, TRANSAMT, FEEAMT, CHECKSTATUS, CHECKDATAFLAG,
+  RETURNCODE, RETURNMSG, TRANSSTATUS, DOWNTRANSNBR, DOWNTRANSDATE,
+  DOWNTRANSTIME, DOWNSYSNBR, DATELASTMAINT, UPPERSYSNBR,POINTDATAFLAG)
+		SELECT INNERFUNDTRANSNBR, OVERALLTRANSNBR, FUNDCHANNELCODE, UPPERTRANSDATE,
+  UPPERTRANSTIME, TRANSDATE, UPPERTRANSNBR, TRANSTIME, CLEARDATE,
+  TRANSCODE, PAYERACCTNBR, PAYERNAME, PAYEEACCTNBR, PAYEENAME,
+  ORIGUPPERSYSNBR, ORIGUPPERTRANSNBR, ORIGUPPERTRANSDATE, ORIGINNERTRANSNBR,
+  ORIGCLEARDATE, CURRENCYCD, TRANSAMT, FEEAMT, CHECKSTATUS, CHECKDATAFLAG,
+  RETURNCODE, RETURNMSG, TRANSSTATUS, DOWNTRANSNBR, DOWNTRANSDATE,
+  DOWNTRANSTIME, DOWNSYSNBR, DATELASTMAINT, UPPERSYSNBR,POINTDATAFLAG
+		FROM InnerFundTrans
+		where CHECKDATAFLAG = #checkdataFlag# and CHECKSTATUS = #checkStatus#
+	</insert>
+	
+	
+	 <!--为什么 银联对账取5个小时前的数据：异步通知会查询当前表不能把对账时间点的当期表记录移动历史表和待清算流水表，银联T日24点前生成文件，T+1日10点对3小时前的数据是没问题的  -->
+	<update id="updateInnerFundTransForCheck"  parameterClass="com.csii.upp.dto.generate.Innerfundtrans">
+		UPDATE
+		InnerFundTrans
+		SET
+		CHECKSTATUS=#checkstatus:VARCHAR#
+		WHERE
+		TRANSSTATUS !=#transstatus:CHAR#
+		AND
+		CHECKDATAFLAG=#checkdataflag:VARCHAR#
+		<!-- 增加条件查询条件，避免未完成的交易被提取 modified by wangtao 20161229 -->
+		AND OVERALLTRANSNBR = #overalltransnbr:VARCHAR#
+		<isEqual property="checkdataflag" compareValue="UNIONPAY">
+			<![CDATA[ AND DATELASTMAINT < sysdate()]]>
+		</isEqual>
+	</update>	
+</sqlMap>

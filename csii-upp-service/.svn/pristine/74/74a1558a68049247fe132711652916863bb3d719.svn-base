@@ -1,0 +1,8 @@
+respCode=resultStatus
+respDesc=returnmsg
+txnSeqId=downsysnbr
+txnTime=downrtxntime
+wxOrderNo=downrtxnnbr
+wxPayTime=downrtxndate
+
+

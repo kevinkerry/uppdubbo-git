@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE segment SYSTEM "packetutf8.dtd">
+<segment>
+	<!-- 商户流水号 -->
+	<xmlTag tagName="MerSeqNbr">
+		<String name="merSeqNbr" defaultValue="" />
+	</xmlTag>
+		<!-- 商户交易时间 -->
+	<xmlTag tagName="MerTransDate">
+		<String name="merTransDate" defaultValue=""  />
+	</xmlTag>
+		<!-- 原交易金额 -->
+	<xmlTag tagName="TransAmt">
+		<String name="transAmt" defaultValue="" />
+	</xmlTag>
+		<!-- 商户url-->
+	<xmlTag tagName="MerUrl">
+		<String name="merUrl" defaultValue="" />
+	</xmlTag>
+</segment>

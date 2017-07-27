@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spring:beans xmlns:spring="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.csii.com.cn/schema/pe"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd 
+	http://www.csii.com.cn/schema/pe http://www.csii.com.cn/schema/pe/pe-config.xsd">
+	<config>
+		<bean name="sms.tcpTransport" class="com.csii.pe.service.comm.tcp.SimpleTcpTransport">
+			<param name="host">${sms.ip}</param>
+			<param name="port">${sms.port}</param>
+			<param name="timeout">${sms.timeout}</param>
+			<param name="uibs">true</param>
+		</bean>
+
+	</config>
+</spring:beans>

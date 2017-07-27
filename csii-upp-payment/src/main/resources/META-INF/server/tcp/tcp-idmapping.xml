@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spring:beans xmlns:spring="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.csii.com.cn/schema/pe"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd 
+	http://www.csii.com.cn/schema/pe http://www.csii.com.cn/schema/pe/pe-config.xsd">
+
+	<config>
+		<sharedMap id="transactionIdmapping">
+			<map name="sourceMap">
+				<param name="UPP10000">QueryCardInfo</param>
+				<param name="UPP10001">AddSignInfo</param>
+				<param name="UPP10002">QuerySignInfoList</param>
+				<param name="UPP10003">PayTrans</param>
+				<param name="UPP10005">HoldAcctStatus</param>
+				<param name="UPP10006">UnHoldAcctStatus</param>
+				<param name="UPP10007">QuerySignInfo</param>
+				<param name="UPP10008">CancelSignInfo</param>
+				<param name="UPP10009">ConfirmCancelSignInfo</param>
+				<param name="UPP10011">QuerySignDetail</param>
+				<param name="UPP10012">AddOrderInfo</param><!--添加订单 -->
+				<param name="UPP10013">QueryTransLimit</param>
+				<param name="UPP10014">UpdateTransLimit</param>
+				<param name="UPP10015">WithdrawTrans</param>
+				<param name="UPP10016">QueryYinYiTongSignInfo</param>
+				<param name="UPP10017">ReturnTrans</param>
+				<param name="UPP10018">ValidationInfo</param>
+				<param name="UPP10019">CancelSignStatus</param>
+				<param name="UPP10020">CancelOrder</param>
+				<param name="UPP10021">ConfirmedPay</param>
+				<param name="UPP10022">ValidateCardInfo</param>
+				<param name="UPP10023">SendSms</param>
+				<param name="UPP10024">ValidateSms</param>
+				<param name="UPP10025">GenerrateSubMerchantId</param>
+				<param name="UPP10026">QuerySingleOnlineTrans</param>
+				<param name="UPP10027">SychSubMer</param>
+				<param name="UPP10028">BankPay</param>
+				<param name="UPP10030">QueryVirtualAcctBalance</param>
+				<param name="UPP10031">QueryOrderStatusPayment</param>
+				<param name="UPP10032">NotifyTransResult</param>
+				<param name="UPP10033">QueryAcctOpenStatusPayment</param>
+				<param name="UPP10034">SendMessagePayment</param>
+				<param name="UPP10035">DeleteSignInfo</param>
+				<param name="UPP10036">QuerySmsCode</param>
+				<param name="UPP10037">SynSignInfo</param>
+				<param name="UPP10038">BatchTransferPayment</param>
+				<param name="UPP10039">QueryBatchTransferPayment</param>
+				<param name="UPP10041">QueryCardFlag</param>
+				<param name="UPP10042">RegisterOtherPay</param>
+				<param name="UPP10043">QueryReOtherPayStatus</param>
+				<param name="UPP10044">QueryIntegral</param>
+				<param name="UPP10045">QueryCardPhone</param>
+				<param name="UPP10046">QueryCardDept</param>
+				<param name="UPP10047">QueryQrCodeStatus</param>
+				<param name="UPP10048">CreateQrCodeByte</param>
+				<param name="UPP10049">QueryQrCodeUrl</param>
+				<param name="UPP10050">QueryOrderInfo</param>
+				<param name="UPP10080">SGCT</param>
+				<param name="UPP10081">SGPM</param>
+				<param name="UPP10134">QueryAuth</param>
+				<param name="UPP10112">XMLimitCX</param>
+
+
+				<!-- 客户鉴权 -->
+				<param name="UPP10060">CustomAuthen</param>
+
+
+				<!-- 生产测试 -->
+				<param name="UPP20160">QueryPay</param>
+			</map>
+		</sharedMap>
+	</config>
+</spring:beans>

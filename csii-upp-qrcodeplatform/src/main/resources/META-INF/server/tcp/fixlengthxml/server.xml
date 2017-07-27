@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spring:beans xmlns:spring="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.csii.com.cn/schema/pe"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	 http://www.springframework.org/schema/beans/spring-beans.xsd 
+	 http://www.springframework.org/schema/context 
+     http://www.springframework.org/schema/context/spring-context-4.0.xsd
+	 http://www.csii.com.cn/schema/pe 
+	 http://www.csii.com.cn/schema/pe/pe-config.xsd">
+
+<config namespace="fixlength">
+	<executor id="threadPool">
+		<param name="name">${threadPool.name}</param>
+		<param name="initSize">${threadPool.initSize}</param>
+		<param name="maxSize">${threadPool.maxSize}</param>
+		<param name="minSize">${threadPool.minSize}</param>
+		<param name="queueSize">${threadPool.queueSize}</param>
+		<param name="keepAliveTime">${threadPool.keepAliveTime}</param>
+	</executor>
+
+	<bean name="xmlPacketParser" class="com.csii.pe.transform.stream.xml.XmlStreamParser">
+		<param name="debug">${xmlPacketParser.debug}</param>
+		<param name="usingRLCL">true</param>
+		<param name="tagClassMapping">/META-INF/server/tcp/fixlengthxml/packets/tagmapping.properties</param>
+		<param name="tagAliasMapping">/META-INF/server/tcp/fixlengthxml/packets/aliasmapping.properties</param>
+	</bean>
+
+	<bean name="transformerFactory" class="com.csii.pe.transform.TransformerFactory">
+		<param name="path">/META-INF/server/tcp/fixlengthxml/packets</param>
+		<param name="debug">${transformerFactory.debug}</param>
+		<param name="cacheEnable">${transformerFactory.cacheEnable}</param>
+	</bean>
+
+	<bean id="parserResolver"
+		class="com.csii.pe.channel.stream.ChannelAttributeParserResolver">
+		<param name="defaultParser">InboundPacket</param>
+	</bean>
+
+	<bean id="transactionIdResolver" class="com.csii.pe.channel.stream.MappingTrsIdResolver">
+		<param name="idParameterName">TransCode</param>
+		<ref name="mapping">.transactionIdmapping</ref>
+	</bean>
+
+	<handler id="serverHandler" class="com.csii.upp.qrcodeplatform.action.handler.TcpDefaultHandler">
+		<ref name="transformerFactory">transformerFactory</ref>
+		<ref name="coreController">.coreController</ref>
+		<ref name="identityResolver">transactionIdResolver</ref>
+		<ref name="parserResolver">parserResolver</ref>
+		<param name="defaultFormat">OutboundPacket</param>
+		<param name="defaultErrorFormat">OutboundPacket</param>
+		<param name="debug">${serverHandler.debug}</param>
+		<param name="dumpPath">${serverHandler.dumpPath}</param>
+		<param name="headLength">8</param>
+		<param name="headIncluded">true</param>
+		<param name="singleLogFile">true</param>
+		<param name="type">LLLLLLLL</param>
+		<param name="encoding">UTF-8</param>
+		<param name="xmlBodyName">XMLBody</param>
+		<ref name="xmlParser">xmlPacketParser</ref>
+	</handler>
+
+	<handlerMapping id="handlerMapping">
+		<handlers>
+			<ref name="*">serverHandler</ref>
+		</handlers>
+	</handlerMapping>
+
+	<bean id="tcpServer" class="com.csii.pe.service.comm.tcp.TcpServer"
+		init-method="start" destroy-method="shutdown">
+		<param name="id">${qrcode.tcp.id}</param>
+		<param name="name">${qrcode.tcp.name}</param>
+		<param name="port">${qrcode.tcp.port}</param>
+		<param name="socketTimeout">${qrcode.tcp.timeout}</param>
+		<param name="backlog">-1</param>
+		<param name="reuseAddress">true</param>
+		<param name="clientAuth">false</param>
+		<param name="period">1000</param>
+		<param name="eventId">20001</param>
+		<ref name="executor">threadPool</ref>
+		<ref name="handlerMapping">handlerMapping</ref>
+	</bean>
+</config>
+</spring:beans>

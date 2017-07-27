@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spring:beans xmlns:spring="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.csii.com.cn/schema/pe"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd 
+	http://www.csii.com.cn/schema/pe http://www.csii.com.cn/schema/pe/pe-config.xsd">
+<config>
+	<!-- 卡信息查询 -->
+	<transaction id="QueryCardInfo" template="queryMgmtTemplate">
+		<actions>
+			<ref name="action">QueryCardInfoAction</ref>
+		</actions>
+	</transaction>
+	<action id="QueryCardInfoAction" class="com.csii.upp.payment.action.query.QueryCardInfoAction"/>
+	
+	<!-- 订单查询 -->
+	<transaction id="QueryOrderInfo" template="queryMgmtTemplate">
+		<actions>
+			<ref name="action">QueryOrderInfoAction</ref>
+		</actions>
+	</transaction>
+	<action id="QueryOrderInfoAction" class="com.csii.upp.payment.action.query.QueryCardInfoAction"/>
+	
+	<!-- 删除签约信息 -->
+	<transaction id="DeleteSignInfo" template="queryMgmtTemplate">
+		<actions>
+			<ref name="action">DeleteSignInfoAction</ref>
+		</actions>
+	</transaction>
+	<action id="DeleteSignInfoAction" class="com.csii.upp.payment.action.query.DeleteSignInfoAction"/>
+	
+	<!-- 查询签约信息-->
+	<transaction id="QuerySignInfo" template="queryMgmtTemplate">
+		<actions>
+			<ref name="action">querySignInfoAction</ref>
+		</actions>
+	</transaction>
+	<action id="querySignInfoAction" class="com.csii.upp.payment.action.query.QuerySignInfoAction"/> 
+	
+	<!-- 查询签约详细信息-->
+	<transaction id="QuerySignDetail" template="queryMgmtTemplate">
+		<actions>
+			<ref name="action">querySignDetailAction</ref>
+		</actions>
+	</transaction>
+	<action id="querySignDetailAction" class="com.csii.upp.payment.action.query.QuerySignDetailAction"/> 
+    
+    <transaction id="QuerySignInfoList" template="queryMgmtTemplate">
+        <actions>
+            <ref name="action">QuerySignInfoListAction</ref>
+        </actions>
+    </transaction>
+    <action id="QuerySignInfoListAction" class="com.csii.upp.payment.action.query.QuerySignInfoListAction">
+    </action>
+      <!-- 查询富阳虚账户余额 -->
+    <transaction id="QueryVirtualAcctBalance" template="signatureSignTemplate">
+        <actions>
+            <ref name="action">QueryVirtualAcctBalanceAction</ref>
+        </actions>
+    </transaction>
+    <action id="QueryVirtualAcctBalanceAction" class="com.csii.upp.payment.action.query.QueryVirtualAcctBalanceAction">
+    </action>
+    
+     <!-- 订单支付状态查询 -->
+    <transaction id="QueryOrderStatusPayment" template="queryMgmtTemplate">
+        <actions>
+            <ref name="action">QueryOrderStatusPaymentAction</ref>
+        </actions>
+    </transaction>
+    <action id="QueryOrderStatusPaymentAction" class="com.csii.upp.payment.action.query.QueryOrderStatusPaymentAction">
+    </action>
+    
+    <!-- 他行快捷支付开通状态查询 -->
+    <transaction id="QueryAcctOpenStatusPayment" template="queryMgmtTemplate">
+        <actions>
+            <ref name="action">QueryAcctOpenStatusPaymentAction</ref>
+        </actions>
+    </transaction>
+    <action id="QueryAcctOpenStatusPaymentAction" class="com.csii.upp.payment.action.query.QueryAcctOpenStatusPaymentAction">
+    </action>
+    
+    <!-- 单笔查询 -->
+	<transaction id="QuerySingleOnlineTrans" template="signatureSignTemplate">
+        <actions>
+            <ref name="action">querySingleOnlineTransAction</ref>
+        </actions>
+	</transaction>
+	<action id="querySingleOnlineTransAction" class="com.csii.upp.payment.action.query.QuerySingleOnlineTransAction">
+	</action>
+	
+	<!-- 快捷支付发短信验证码 -->
+	<transaction id="SendMessagePayment" template="queryMgmtTemplate">
+        <actions>
+            <ref name="action">sendMessagePaymentAction</ref>
+        </actions>
+	</transaction>
+	<action id="sendMessagePaymentAction" class="com.csii.upp.payment.action.query.SendMessagePaymentAction">
+	</action>
+	
+	    <!-- 商户查询短信验证码接口 -->
+	<transaction id="QuerySmsCode" template="signatureSignTemplate">
+        <actions>
+            <ref name="action">querySmsCodeAction</ref>
+        </actions>
+	</transaction>
+	<action id="querySmsCodeAction" class="com.csii.upp.payment.action.query.QuerySmsCodeAction">
+	</action>
+	
+	<!-- 批量转账 -->
+	<transaction id="BatchTransferPayment" template="signatureSignTemplate">
+		<actions>
+			<ref name="action">batchTransferPaymentAction</ref>
+		</actions>
+	</transaction>
+	<action id="batchTransferPaymentAction" class="com.csii.upp.payment.action.post.BatchTransferPaymentAction" />
+	
+	<!-- 批量转账交易结果查询 -->
+	<transaction id="QueryBatchTransferPayment" template="signatureSignTemplate">
+		<actions>
+			<ref name="action">queryBatchTransferPaymentAction</ref>
+		</actions>
+	</transaction>
+	<action id="queryBatchTransferPaymentAction" class="com.csii.upp.payment.action.query.QueryBatchTransferPaymentAction" />
+	
+	<!-- 日终批量查询 -->
+	<transaction id="QueryTransfer" template="baseUppTemplate">
+		<actions>
+			<ref name="action">QueryTransferAction</ref>
+		</actions>
+	</transaction>
+	<action id="QueryTransferAction"
+		class="com.csii.upp.payment.action.query.QueryTransferAction">
+	</action>
+	
+	<!-- 发送电子口岸通知 -->
+	<transaction id="SendMerNotify" template="baseUppTemplate">
+		<actions>
+			<ref name="action">SendMerNotifyAction</ref>
+		</actions>
+	</transaction>
+	<action id="SendMerNotifyAction"
+		class="com.csii.upp.payment.action.query.SendMerNotifyAction">
+	</action>
+	<!-- 查询卡标识-->
+	<transaction id="QueryCardFlag" template="queryMgmtTemplate">
+		<actions>
+			<ref name="action">QueryCardFlagAction</ref>
+		</actions>
+	</transaction>
+	<action id="QueryCardFlagAction"
+		class="com.csii.upp.payment.action.query.QueryCardFlagAction">
+	</action>
+	<!-- 查询积分 -->
+	<transaction id="QueryIntegral" template="queryMgmtTemplate">
+		<actions>
+			<ref name="action">QueryIntegralPaymentAction</ref>
+		</actions>
+	</transaction>
+	<action id="QueryIntegralPaymentAction"
+		class="com.csii.upp.payment.action.query.QueryIntegralPaymentAction">
+	</action>
+	<!-- 卡号手机号验证错误次数 -->
+	<transaction id="QueryCardPhone" template="queryMgmtTemplate">
+		<actions>
+			<ref name="action">QueryCardPhoneAction</ref>
+		</actions>
+	</transaction>
+	<action id="QueryCardPhoneAction"
+		class="com.csii.upp.payment.action.query.QueryCardPhoneAction">
+		<param name="maxTimes">${error.maxtimes}</param>
+	</action>
+	
+	<!-- 查询卡号的机构号 -->
+	<transaction id="QueryCardDept" template="queryMgmtTemplate">
+		<actions>
+			<ref name="action">QueryCardDeptAction</ref>
+		</actions>
+	</transaction>
+	<action id="QueryCardDeptAction"
+		class="com.csii.upp.payment.action.query.QueryCardDeptAction">
+	</action>
+	<!-- 查询二维码订单状态 -->
+	<transaction id="QueryQrCodeStatus" template="queryMgmtTemplate">
+		<actions>
+			<ref name="action">QueryQrCodeStatusAction</ref>
+		</actions>
+	</transaction>
+	<action id="QueryQrCodeStatusAction"
+		class="com.csii.upp.payment.action.query.QueryQrCodeStatusAction">
+	</action>
+	<!-- 生成二维码信息 -->
+	<transaction id="CreateQrCodeByte" template="signatureSignTemplate">
+		<actions>
+			<ref name="action">CreateQrCodeByteAction</ref>
+		</actions>
+	</transaction>
+	<action id="CreateQrCodeByteAction"
+		class="com.csii.upp.payment.action.query.CreateCodeByteAction">
+	</action>
+	<!-- 生成二维码信息 -->
+	<transaction id="QueryQrCodeUrl" template="queryMgmtTemplate">
+		<actions>
+			<ref name="action">QueryQrCodeUrlAction</ref>
+		</actions>
+	</transaction>
+	<action id="QueryQrCodeUrlAction"
+		class="com.csii.upp.payment.action.query.QueryQrCodeUrlAction">
+	</action>
+	<transaction id="QueryAuth" template="queryMgmtTemplate">
+		<actions>
+			<ref name="action">QueryListAuthAction</ref>
+		</actions>
+	</transaction>
+	<action id="QueryListAuthAction"
+		class="com.csii.upp.payment.action.query.QueryAuthAction">
+	</action>
+	
+		<!-- 银医通签约信息查询 -->
+	<transaction id="QueryYinYiTongSignInfo" template="queryMgmtTemplate">
+    	<actions>    		
+			<ref name="action">queryYinYiTongSignInfoAction</ref>
+			<ref name="action1">sendSmsAction</ref>			
+		</actions>
+   	 </transaction>
+   	 <action id="queryYinYiTongSignInfoAction" class="com.csii.upp.payment.action.query.QueryYinYiTongSignInfoAction"/>
+   	 
+   	 <!-- 查询额度信息-->
+	<transaction id="XMLimitCX" template="signatureSignTemplate">
+		<actions>
+			<ref name="action">XMLimitCXAction</ref>
+		</actions>
+	</transaction>
+    <action id="XMLimitCXAction" class="com.csii.upp.payment.action.query.XMLimitCXAction" />
+</config>
+</spring:beans>

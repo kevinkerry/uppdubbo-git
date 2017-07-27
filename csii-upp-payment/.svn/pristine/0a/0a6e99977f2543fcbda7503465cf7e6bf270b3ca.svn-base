@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Group SYSTEM "packetutf8.dtd">
+<Group name="Message"
+	xmlHead="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;">
+	<Group name="Head">
+		<xmlTag tagName="TransCode">
+			<String name="TransCode" />
+		</xmlTag>
+		<xmlTag tagName="ChannelNbr">
+			<String name="ChannelNbr" />
+		</xmlTag>
+		<xmlTag tagName="TransTime">
+			<String name="TransTime" />
+		</xmlTag>
+		<xmlTag tagName="MessageId">
+			<String name="MessageId" />
+		</xmlTag>
+		<xmlTag tagName="Version">
+			<String name="Version" />
+		</xmlTag>
+		<xmlTag tagName="RespCode">
+			<String name="RespCode" />
+		</xmlTag>
+		<xmlTag tagName="RespMessage">
+			<String name="RespMessage" />
+		</xmlTag>
+		
+		<xmlTag tagName="TransNbr">
+			<String name="TransNbr" />
+		</xmlTag>
+		
+		<xmlTag tagName="TransDate">
+			<String name="TransDate" />
+		</xmlTag>
+	</Group>
+	<Group name="Body">
+		<include condition='Content==null' keyName="TransCode" />
+		<!-- 加签明文和密文 -->
+		<xmlTag tagName="Content">
+			<String name="Content"/>
+		</xmlTag>
+	</Group>
+</Group>

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+    xmlns:srv="http://www.csii.com.cn/pe/dubboServices"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd http://www.csii.com.cn/pe/dubboServices http://www.csii.com.cn/pe/dubboServices/impl.xsd">
+
+    <dubbo:reference id="EATLService" interface="com.csii.upp.custom.common.api.service.fundprocess.EATLService"
+        group="IS_PAY_FDPS_EATL" protocol="dubbo" registry="dubboRegitry" />
+
+    <dubbo:reference id="RTCTService" interface="com.csii.upp.custom.common.api.service.fundprocess.RTCTService"
+        group="IS_PAY_FDPS_RTCT" protocol="dubbo" registry="dubboRegitry" />
+
+    <dubbo:reference id="QCULService" interface="com.csii.upp.custom.common.api.service.fundprocess.QCULService"
+        group="IS_PAY_FDPS_QCUL" protocol="dubbo" registry="dubboRegitry" />
+
+    <dubbo:reference id="RTDTService" interface="com.csii.upp.custom.common.api.service.fundprocess.RTDTService"
+        group="IS_PAY_FDPS_RTDT" protocol="dubbo" registry="dubboRegitry" />
+
+    <dubbo:reference id="SYMIService" interface="com.csii.upp.custom.common.api.service.fundprocess.SYMIService"
+        group="IS_PAY_FDPS_SYMI" protocol="dubbo" registry="dubboRegitry" />
+
+    <dubbo:reference id="QOPSService" interface="com.csii.upp.custom.common.api.service.fundprocess.QOPSService"
+        group="IS_PAY_FDPS_QOPS" protocol="dubbo" registry="dubboRegitry" />
+
+    <dubbo:reference id="UPMIService" interface="com.csii.upp.custom.common.api.service.fundprocess.UPMIService"
+        group="IS_PAY_FDPS_UPMI" protocol="dubbo" registry="dubboRegitry" />
+
+    <dubbo:reference id="QRCOService" interface="com.csii.upp.custom.common.api.service.fundprocess.QRCOService"
+        group="IS_PAY_FDPS_QRCO" protocol="dubbo" registry="dubboRegitry" />
+
+    <dubbo:reference id="CVAPService" interface="com.csii.upp.custom.common.api.service.fundprocess.CVAPService"
+        group="IS_PAY_FDPS_CVAP" protocol="dubbo" registry="dubboRegitry" />
+
+    <dubbo:reference id="CHCPService" interface="com.csii.upp.custom.common.api.service.fundprocess.CHCPService"
+        group="IS_PAY_FDPS_CHCP" protocol="dubbo" registry="dubboRegitry" />
+
+    <dubbo:reference id="PAYRService" interface="com.csii.upp.custom.common.api.service.fundprocess.PAYRService"
+        group="IS_PAY_FDPS_PAYR" protocol="dubbo" registry="dubboRegitry" />
+
+    <dubbo:reference id="QVABService" interface="com.csii.upp.custom.common.api.service.fundprocess.QVABService"
+        group="IS_PAY_FDPS_QVAB" protocol="dubbo" registry="dubboRegitry" />
+
+    <dubbo:reference id="OEBPService" interface="com.csii.upp.custom.common.api.service.fundprocess.OEBPService"
+        group="IS_PAY_FDPS_OEBP" protocol="dubbo" registry="dubboRegitry" />
+
+    <dubbo:reference id="QIAIService" interface="com.csii.upp.custom.common.api.service.fundprocess.QIAIService"
+        group="IS_PAY_FDPS_QIAI" protocol="dubbo" registry="dubboRegitry" />
+
+    <dubbo:reference id="VATFService" interface="com.csii.upp.custom.common.api.service.fundprocess.VATFService"
+        group="IS_PAY_FDPS_VATF" protocol="dubbo" registry="dubboRegitry" />
+
+    <dubbo:reference id="QCDIService" interface="com.csii.upp.custom.common.api.service.fundprocess.QCDIService"
+        group="IS_PAY_FDPS_QCDI" protocol="dubbo" registry="dubboRegitry" />
+
+    <dubbo:reference id="UPAYService" interface="com.csii.upp.custom.common.api.service.fundprocess.UPAYService"
+        group="IS_PAY_FDPS_UPAY" protocol="dubbo" registry="dubboRegitry" />
+
+    <dubbo:reference id="QUINService" interface="com.csii.upp.custom.common.api.service.fundprocess.QUINService"
+        group="IS_PAY_FDPS_QUIN" protocol="dubbo" registry="dubboRegitry" />
+
+    <dubbo:reference id="ROOPService" interface="com.csii.upp.custom.common.api.service.fundprocess.ROOPService"
+        group="IS_PAY_FDPS_ROOP" protocol="dubbo" registry="dubboRegitry" />
+
+    <dubbo:reference id="PNTFService" interface="com.csii.upp.custom.common.api.service.fundprocess.PNTFService"
+        group="IS_PAY_FDPS_PNTF" protocol="dubbo" registry="dubboRegitry" />
+
+    <dubbo:reference id="QAOSService" interface="com.csii.upp.custom.common.api.service.fundprocess.QAOSService"
+        group="IS_PAY_FDPS_QAOS" protocol="dubbo" registry="dubboRegitry" />
+
+    <dubbo:reference id="SMSXService" interface="com.csii.upp.custom.common.api.service.fundprocess.SMSXService"
+        group="IS_PAY_FDPS_SMSX" protocol="dubbo" registry="dubboRegitry" />
+
+    <dubbo:reference id="CATAService" interface="com.csii.upp.custom.common.api.service.fundprocess.CATAService"
+        group="IS_PAY_FDPS_CATA" protocol="dubbo" registry="dubboRegitry" />
+
+    <dubbo:reference id="QRTSService" interface="com.csii.upp.custom.common.api.service.fundprocess.QRTSService"
+        group="IS_PAY_FDPS_QRTS" protocol="dubbo" registry="dubboRegitry" />
+
+    <dubbo:reference id="BTTFService" interface="com.csii.upp.custom.common.api.service.fundprocess.BTTFService"
+        group="IS_PAY_FDPS_BTTF" protocol="dubbo" registry="dubboRegitry" />
+
+    <dubbo:reference id="VTRTService" interface="com.csii.upp.custom.common.api.service.fundprocess.VTRTService"
+        group="IS_PAY_FDPS_VTRT" protocol="dubbo" registry="dubboRegitry" />
+        
+    <dubbo:reference id="DemoService" interface="com.csii.upp.custom.common.api.service.demo.DemoService"
+        group="IS_PAY_DEMO_DEMO" protocol="dubbo" registry="dubboRegitry" />
+
+    <srv:transport trsCodeName="servcId" id="client">
+        <srv:mapping trsCode="IS_PAY_FDPS_EATL" method="EATLService" />
+        <srv:mapping trsCode="IS_PAY_FDPS_RTCT" method="RTCTService" />
+        <srv:mapping trsCode="IS_PAY_FDPS_QCUL" method="QCULService" />
+        <srv:mapping trsCode="IS_PAY_FDPS_RTDT" method="RTDTService" />
+        <srv:mapping trsCode="IS_PAY_FDPS_SYMI" method="SYMIService" />
+        <srv:mapping trsCode="IS_PAY_FDPS_QOPS" method="QOPSService" />
+        <srv:mapping trsCode="IS_PAY_FDPS_UPMI" method="UPMIService" />
+        <srv:mapping trsCode="IS_PAY_FDPS_QRCO" method="QRCOService" />
+        <srv:mapping trsCode="IS_PAY_FDPS_CVAP" method="CVAPService" />
+        <srv:mapping trsCode="IS_PAY_FDPS_CHCP" method="CHCPService" />
+        <srv:mapping trsCode="IS_PAY_FDPS_PAYR" method="PAYRService" />
+        <srv:mapping trsCode="IS_PAY_FDPS_QVAB" method="QVABService" />
+        <srv:mapping trsCode="IS_PAY_FDPS_OEBP" method="OEBPService" />
+        <srv:mapping trsCode="IS_PAY_FDPS_QIAI" method="QIAIService" />
+        <srv:mapping trsCode="IS_PAY_FDPS_VATF" method="VATFService" />
+        <srv:mapping trsCode="IS_PAY_FDPS_QCDI" method="QCDIService" />
+        <srv:mapping trsCode="IS_PAY_FDPS_UPAY" method="UPAYService" />
+        <srv:mapping trsCode="IS_PAY_FDPS_QUIN" method="QUINService" />
+        <srv:mapping trsCode="IS_PAY_FDPS_ROOP" method="ROOPService" />
+        <srv:mapping trsCode="IS_PAY_FDPS_PNTF" method="PNTFService" />
+        <srv:mapping trsCode="IS_PAY_FDPS_QAOS" method="QAOSService" />
+        <srv:mapping trsCode="IS_PAY_FDPS_SMSX" method="SMSXService" />
+        <srv:mapping trsCode="IS_PAY_FDPS_CATA" method="CATAService" />
+        <srv:mapping trsCode="IS_PAY_FDPS_QRTS" method="QRTSService" />
+        <srv:mapping trsCode="IS_PAY_FDPS_BTTF" method="BTTFService" />
+        <srv:mapping trsCode="IS_PAY_FDPS_VTRT" method="VTRTService" />
+        <srv:mapping trsCode="IS_PAY_DEMO_DEMO" method="DemoService" />
+    </srv:transport>
+
+</beans>

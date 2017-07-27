@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE segment SYSTEM "packetutf8.dtd">
+<!-- 批量转账-->
+<segment>
+	<xmlTag tagName="SubMerchantId">
+		<String name="subMerchantId"></String>
+	</xmlTag>
+	<xmlTag tagName="MerSeqNbr">
+		<String name="merSeqNbr"></String>
+	</xmlTag>
+	<xmlTag tagName="MerDateTime">
+		<String name="merDateTime"></String>
+	</xmlTag>
+	<xmlTag tagName="BatchNo">
+		<String name="batchNo"></String>
+	</xmlTag>
+	<xmlTag tagName="MerTfType">
+		<String name="merTfType"></String>
+	</xmlTag>
+	<xmlTag tagName="MerSettAcctBankNo">
+		<String name="merSettAcctBankNo"></String>
+	</xmlTag>
+	<xmlTag tagName="MerSettAcctName">
+		<String name="merSettAcctName"></String>
+	</xmlTag>
+	<xmlTag tagName="MerSettAcctNO">
+		<String name="merSettAcctNO"></String>
+	</xmlTag>
+	<xmlTag tagName="MerSettAcctType">
+		<String name="merSettAcctType"></String>
+	</xmlTag>
+	
+	<xmlTag tagName="CurrencyCd">
+		<String name="currencyCd"></String>
+	</xmlTag>
+	<xmlTag tagName="TransAmt">
+		<String name="transAmt"></String>
+	</xmlTag>
+	<xmlTag tagName="MsgExt">
+		<String name="msgExt"></String>
+	</xmlTag>
+	
+</segment>

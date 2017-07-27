@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE segment SYSTEM "packetutf8.dtd">
+<segment>
+<!-- 本行它行卡标识 -->
+	<xmlTag tagName="InnerCardFlag">
+		<String name="InnerCardFlag" defaultValue="" />
+	</xmlTag>
+</segment>

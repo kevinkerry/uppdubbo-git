@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+
+	<bean id="identityMapping" class="com.csii.pe.channel.ws.DefaultQNameMapping">
+		<property name="mapping">
+			<props>
+				
+				<prop key="{http://com.csii.bank.pay/batch}RB">RB</prop>
+				<prop key="{http://com.csii.bank.pay/online}RTDT">RTDT</prop>
+				<prop key="{http://com.csii.bank.pay/online}QueryLimitAmt">QueryLimitAmt</prop>
+				<prop key="{http://com.csii.bank.pay/online}XMPAY">XMPAY</prop>
+				<prop key="{http://com.csii.bank.pay/online}CCCPAY">CCCPAY</prop>
+				<prop key="{http://com.csii.bank.pay/online}RTCT">RTCT</prop>
+				<prop key="{http://com.csii.bank.pay/online}SPCT">SPCT</prop>
+				
+			</props>
+		</property>
+	</bean>
+</beans>

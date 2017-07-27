@@ -1,0 +1,1488 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch0="http://com.csii.bank.core/loan" xmlns:sch1="http://com.csii.bank.core/base" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://com.csii.bank.core/loan" targetNamespace="http://com.csii.bank.core/loan">
+  <wsdl:types>
+    <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:base="http://com.csii.bank.core/base" xmlns:loan="http://com.csii.bank.core/loan" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://com.csii.bank.core/loan"><import namespace="http://com.csii.bank.core/base"/><complexType name="accountInfo"><sequence><element name="contractcd" nillable="true" type="string"/><element name="contractdate" nillable="true" type="date"/><element name="maturedate" nillable="true" type="date"/><element name="creditlimitamt" nillable="true" type="decimal"/><element name="isrevolveloan" nillable="true" type="boolean"/><element name="mjaccttypcd" nillable="true" type="string"/><element name="currmiaccttypcd" nillable="true" type="string"/><element name="orgownernbr" nillable="true" type="long"/><element name="persownernbr" nillable="true" type="long"/><element name="ioucd" nillable="true" type="string"/><element name="loanamt" nillable="true" type="decimal"/><element name="effdate" nillable="true" type="date"/><element name="matdate" nillable="true" type="date"/></sequence></complexType><complexType name="OpenLoanAcctRequestType"><sequence><element minOccurs="0" ref="base:BaseRequest"/><element minOccurs="0" name="accountinfo" type="loan:accountInfo"/></sequence></complexType><element name="OpenLoanAcct" type="loan:OpenLoanAcctRequestType"/><complexType name="OpenLoanAcctResponseType"><sequence><element minOccurs="0" ref="base:BaseResponse"/><element name="acctnbr" nillable="true" type="long"/></sequence></complexType><element name="OpenLoanAcctResponse" type="loan:OpenLoanAcctResponseType"/><complexType name="contractInfo"><sequence><element name="contractcd" type="string"/><element name="contractdate" type="date"/><element name="datemat" type="date"/><element name="revolveloanyn" type="string"/><element name="availamt" type="decimal"/><element name="masteramt" type="decimal"/></sequence></complexType><complexType name="QueryContractRequestType"><sequence><element minOccurs="0" ref="base:BaseRequest"/><element name="contractcd" type="string"/></sequence></complexType><element name="QueryContract" type="loan:QueryContractRequestType"/><complexType name="QueryContractResponseType"><sequence><element minOccurs="0" ref="base:BaseResponse"/><element minOccurs="0" name="contractInfo" type="loan:contractInfo"/></sequence></complexType><element name="QueryContractResponse" type="loan:QueryContractResponseType"/><complexType name="LoanDisbTransferType"><sequence><element name="loandisbtransfermethcd" type="string"/><element name="payeeacctnbr" type="long"/><element name="payeemediid" type="string"/><element name="payeeacctname" type="string"/><element name="payeeamt" type="decimal"/><element name="payeepct" type="string"/></sequence></complexType><complexType name="PostLoanDisbRequestType"><sequence><element ref="base:BaseRequest"/><element name="acctnbr" type="long"/><element name="tranamt" type="decimal"/><element name="effdate" type="date"/><element name="postdate" type="date"/><element name="ioucd" type="string"/><element name="rtxndesc" type="string"/><element name="payeracctnbr" type="long"/><element name="dimediid" type="string"/><element name="payeracctname" type="string"/><element maxOccurs="unbounded" name="loopLoanDisbTransfer" type="loan:LoanDisbTransferType"/></sequence></complexType><element name="PostLoanDisb" type="loan:PostLoanDisbRequestType"/><complexType name="PostLoanDisbResponseType"><sequence><element ref="base:BaseResponse"/><element name="rtxnnbr" type="long"/></sequence></complexType><element name="PostLoanDisbResponse" type="loan:PostLoanDisbResponseType"/><complexType name="QueryLoanInfoByIOUCDRequestType"><sequence><element ref="base:BaseRequest"/><element name="ioucd" type="string"/></sequence></complexType><element name="QueryLoanInfoByIOUCD" type="loan:QueryLoanInfoByIOUCDRequestType"/><complexType name="QueryLoanInfoByIOUCDResponseType"><sequence><element ref="base:BaseResponse"/><element name="compactcd" nillable="true" type="string"/><element name="acctnbr" nillable="true" type="long"/><element name="currmiaccttypcd" nillable="true" type="string"/><element name="currencycd" nillable="true" type="string"/><element name="acctname" nillable="true" type="string"/><element name="contractdate" nillable="true" type="date"/><element name="datemat" nillable="true" type="date"/><element name="balamt" nillable="true" type="decimal"/><element name="intrate" nillable="true" type="decimal"/><element name="pmtschedid" nillable="true" type="string"/><element name="branchorgnbr" nillable="true" type="long"/><element name="unbillednotebal" nillable="true" type="decimal"/><element name="rcvbamt" nillable="true" type="decimal"/><element name="curracctstatcd" nillable="true" type="string"/><element name="mjaccttypcd" nillable="true" type="string"/></sequence></complexType><element name="QueryLoanInfoByIOUCDResponse" type="loan:QueryLoanInfoByIOUCDResponseType"/><complexType name="mjaccttyp"><sequence><element name="mjaccttypcd" type="string"/><element name="mjaccttypdesc" type="string"/><element name="mjaccttypcatcd" type="string"/></sequence></complexType><complexType name="GetLoanMjaccttypRequestType"><sequence><element minOccurs="0" ref="base:BaseRequest"/></sequence></complexType><element name="GetLoanMjaccttyp" type="loan:GetLoanMjaccttypRequestType"/><complexType name="GetLoanMjaccttypResponseType"><sequence><element minOccurs="0" ref="base:BaseResponse"/><element maxOccurs="unbounded" minOccurs="0" name="mjaccttyplist" type="loan:mjaccttyp"/></sequence></complexType><element name="GetLoanMjaccttypResponse" type="loan:GetLoanMjaccttypResponseType"/><complexType name="mjmiaccttyp"><sequence><element name="mjaccttypcd" type="string"/><element name="miaccttypdesc" type="string"/><element name="currencycd" type="string"/><element name="miaccttypcd" type="string"/></sequence></complexType><complexType name="GetLoanMjmiaccttypRequestType"><sequence><element minOccurs="0" ref="base:BaseRequest"/><element name="mjaccttypcd" type="string"/></sequence></complexType><element name="GetLoanMjmiaccttyp" type="loan:GetLoanMjmiaccttypRequestType"/><complexType name="GetLoanMjmiaccttypResponseType"><sequence><element minOccurs="0" ref="base:BaseResponse"/><element maxOccurs="unbounded" minOccurs="0" name="mjmiaccttyplist" type="loan:mjmiaccttyp"/></sequence></complexType><element name="GetLoanMjmiaccttypResponse" type="loan:GetLoanMjmiaccttypResponseType"/><complexType name="autopmtinfo"><sequence><element name="acctnbr" type="long"/><element name="pmtduedaynbr" nillable="true" type="long"/><element name="pmtschedid" type="string"/><element name="firstduedate" type="date"/><element name="gracedays" type="long"/><element name="partialpmtallowedyn" type="string"/><element name="unschedprinpmtsallowedyn" type="string"/><element name="autopmtyn" type="string"/><element name="oddfreqnextduedate" nillable="true" type="date"/></sequence></complexType><complexType name="UpdateAutopmtRequestType"><sequence><element minOccurs="0" ref="base:BaseRequest"/><element minOccurs="0" name="autopmtinfo" type="loan:autopmtinfo"/></sequence></complexType><element name="UpdateAutopmt" type="loan:UpdateAutopmtRequestType"/><complexType name="UpdateAutopmtResponseType"><sequence><element minOccurs="0" ref="base:BaseResponse"/></sequence></complexType><element name="UpdateAutopmtResponse" type="loan:UpdateAutopmtResponseType"/><complexType name="pmtschedtypinfo"><sequence><element name="pmtschedtypcd" type="string"/><element name="pmtschedtypdesc " type="string"/></sequence></complexType><complexType name="QueryPmtschedtypRequestType"><sequence><element minOccurs="0" ref="base:BaseRequest"/></sequence></complexType><element name="QueryPmtschedtyp" type="loan:QueryPmtschedtypRequestType"/><complexType name="QueryPmtschedtypResponseType"><sequence><element minOccurs="0" ref="base:BaseResponse"/><element maxOccurs="unbounded" minOccurs="0" name="pmtschedtyplist" type="loan:pmtschedtypinfo"/></sequence></complexType><element name="QueryPmtschedtypResponse" type="loan:QueryPmtschedtypResponseType"/><complexType name="QueryAcctLoanPmtRequestType"><sequence><element minOccurs="0" ref="base:BaseRequest"/><element name="acctnbr" type="string"/></sequence></complexType><element name="QueryAcctLoanPmt" type="loan:QueryAcctLoanPmtRequestType"/><complexType name="QueryAcctLoanPmtResponseType"><sequence><element minOccurs="0" ref="base:BaseResponse"/><element minOccurs="0" name="autopmtinfo" type="loan:autopmtinfo"/></sequence></complexType><element name="QueryAcctLoanPmtResponse" type="loan:QueryAcctLoanPmtResponseType"/><complexType name="ActToNpfmRequestType"><sequence><element ref="base:BaseRequest"/><element name="rtxndesc" nillable="true" type="string"/><element name="acctnbr" nillable="true" type="long"/></sequence></complexType><element name="ActToNpfm" type="loan:ActToNpfmRequestType"/><complexType name="ActToNpfmResponseType"><sequence><element ref="base:BaseResponse"/><element name="rtxnnbr" nillable="true" type="long"/></sequence></complexType><element name="ActToNpfmResponse" type="loan:ActToNpfmResponseType"/><complexType name="NpfmToActRequestType"><sequence><element ref="base:BaseRequest"/><element name="rtxndesc" nillable="true" type="string"/><element name="acctnbr" nillable="true" type="long"/></sequence></complexType><element name="NpfmToAct" type="loan:NpfmToActRequestType"/><complexType name="NpfmToActResponseType"><sequence><element ref="base:BaseResponse"/><element name="rtxnnbr" nillable="true" type="long"/></sequence></complexType><element name="NpfmToActResponse" type="loan:NpfmToActResponseType"/><complexType name="LoanTransferWithdrawRequestType"><sequence><element ref="base:BaseRequest"/><element name="drMediId" type="string"/><element name="drAcctNbr" type="long"/><element name="rtxnTypCd" type="string"/><element name="tranAmt" type="decimal"/><element name="effDate" nillable="true" type="date"/><element name="checkTypCd" nillable="true" type="string"/><element name="checkId" nillable="true" type="long"/><element name="checkPsw" nillable="true" type="string"/><element name="rtxnDesc" nillable="true" type="string"/><element name="checkDate" nillable="true" type="date"/><element name="rtxnReasonCd" nillable="true" type="string"/><element name="insfSeqNo" nillable="true" type="long"/><element name="vouchPsw" nillable="true" type="string"/></sequence></complexType><element name="LoanTransferWithdraw" type="loan:LoanTransferWithdrawRequestType"/><complexType name="LoanTransferWithdrawResponseType"><sequence><element ref="base:BaseResponse"/><element name="validateerrors" type="string"/><element name="rtxnnbr" type="string"/></sequence></complexType><element name="LoanTransferWithdrawResponse" type="loan:LoanTransferWithdrawResponseType"/><simpleType name="stringlist"><list itemType="string"/></simpleType><simpleType name="longlist"><list itemType="decimal"/></simpleType><complexType name="QuerySchedpmtRequestType"><sequence><element ref="base:BaseRequest"/><element name="acctnbr" type="long"/><element name="effDate" type="date"/></sequence></complexType><element name="QuerySchedpmt" type="loan:QuerySchedpmtRequestType"/><complexType name="QuerySchedpmtResponseType"><sequence><element ref="base:BaseResponse"/><element name="sublncount" type="long"/><element maxOccurs="unbounded" minOccurs="0" name="sublnacctnbrs" type="decimal"/><element maxOccurs="unbounded" minOccurs="0" name="rcvbbalcatcd" type="string"/><element maxOccurs="unbounded" minOccurs="0" name="rcvbbaltypcd" type="string"/><element maxOccurs="unbounded" minOccurs="0" name="childpmtamts" type="decimal"/><element maxOccurs="unbounded" minOccurs="0" name="duedate" type="date"/><element maxOccurs="unbounded" minOccurs="0" name="rcvbnbr" type="decimal"/><element name="rtxnnbr" nillable="true" type="long"/></sequence></complexType><element name="QuerySchedpmtResponse" type="loan:QuerySchedpmtResponseType"/><complexType name="GetratechangedateRequestType"><sequence><element ref="base:BaseRequest"/><element name="acctnbr" type="long"/><element name="rateeffecttypcd" nillable="true" type="string"/><element name="balcatcd" type="string"/><element name="rateeffdate" type="date"/></sequence></complexType><element name="Getratechangedate" type="loan:GetratechangedateRequestType"/><complexType name="GetratechangedateResponseType"><sequence><element ref="base:BaseResponse"/><element name="intmeth" nillable="true" type="string"/><element name="nextratechangedate" nillable="true" type="date"/><element name="ratechangecalperiod" nillable="true" type="string"/></sequence></complexType><element name="GetratechangedateResponse" type="loan:GetratechangedateResponseType"/><group name="baseacctinthist"><sequence><element name="effdate" nillable="true" type="date"/><element name="inactivedate" nillable="true" type="date"/><element name="calcschednbr" type="long"/><element name="intmethcd " type="string"/><element name="ratetypcd" type="string"/><element name="calcbaltypcd " type="string"/><element name="marginfixed" nillable="true" type="decimal"/><element name="marginpct " nillable="true" type="decimal"/><element name="rateeffecttypcd" nillable="true" type="string"/><element name="intbase " type="long"/><element name="maxratechangeup" nillable="true" type="decimal"/><element name="minratechangeup " nillable="true" type="decimal"/><element name="minintrate" nillable="true" type="decimal"/><element name="maxintrate " nillable="true" type="decimal"/><element name="datelastmaint" nillable="true" type="date"/><element name="daysmethcd " type="string"/><element name="amortterm" nillable="true" type="long"/><element name="ratechangerndmethcd " nillable="true" type="string"/><element name="minratechangedown" nillable="true" type="decimal"/><element name="maxratechangedown " nillable="true" type="decimal"/><element name="ratechangemethcd" nillable="true" type="string"/><element name="ratemethcd" type="string"/></sequence></group><complexType name="mjmiAcctintHistinfo"><sequence><element name="mjaccttypcd" type="string"/><element name="miaccttypcd " type="string"/><element name="balcatcd" type="string"/><element name="baltypcd " type="string"/><element name="acctdefaultreqdyn" type="string"/><element name="acctovryn " type="string"/><element name="segintyn " type="string"/><element name="contractdaterateyn" type="string"/><element name="intraterecalcmethcd " nillable="true" type="string"/><group ref="loan:baseacctinthist"/></sequence></complexType><complexType name="GetMjmiAcctintHistRequestType"><sequence><element ref="base:BaseRequest"/><element name="mjaccttypcd" type="string"/><element name="miaccttypcd" type="string"/><element name="balcatcd" type="string"/><element name="baltypcd" type="string"/><element name="effdate" type="date"/></sequence></complexType><element name="GetMjmiAcctintHist" type="loan:GetMjmiAcctintHistRequestType"/><complexType name="GetMjmiAcctintHistResponseType"><sequence><element ref="base:BaseResponse"/><element maxOccurs="unbounded" name="mjmiacctinthistlist" type="loan:mjmiAcctintHistinfo"/></sequence></complexType><element name="GetMjmiAcctintHistResponse" type="loan:GetMjmiAcctintHistResponseType"/><complexType name="acctintHistinfo"><sequence><element name="acctnbr" type="string"/><element name="subacctnbr " type="string"/><group ref="loan:baseacctinthist"/></sequence></complexType><complexType name="GetAcctintHistRequestType"><sequence><element ref="base:BaseRequest"/><element name="acctnbr" type="long"/><element name="subacctnbr" type="long"/><element name="effdate" type="date"/></sequence></complexType><element name="GetAcctintHist" type="loan:GetAcctintHistRequestType"/><complexType name="GetAcctintHistResponseType"><sequence><element ref="base:BaseResponse"/><element maxOccurs="unbounded" name="acctinthistlist" type="loan:acctintHistinfo"/></sequence></complexType><element name="GetAcctintHistResponse" type="loan:GetAcctintHistResponseType"/><complexType name="AcctinthistList"><sequence><element name="acctnbr" type="long"/><element name="subacctnbr" type="long"/><element name="effdate" type="date"/><element name="inactivedate" nillable="true" type="date"/><element name="calcschednbr" type="long"/><element name="intmethcd" type="string"/><element name="ratetypcd" type="string"/><element name="calcbaltypcd" type="string"/><element name="marginfixed" nillable="true" type="decimal"/><element name="marginpct" nillable="true" type="decimal"/><element name="ratechangecalpercd" type="string"/><element name="intbase" type="decimal"/><element name="maxratechangeup" nillable="true" type="decimal"/><element name="minratechangeup" nillable="true" type="decimal"/><element name="minintrate" nillable="true" type="decimal"/><element name="maxintrate" nillable="true" type="decimal"/><element name="daysmethcd" type="string"/><element name="amortterm" nillable="true" type="decimal"/><element name="minratechangedown" nillable="true" type="decimal"/><element name="maxratechangedown" nillable="true" type="decimal"/><element name="ratemethcd" type="string"/><element name="ratechangemethcd" type="string"/><element name="ratechangerndmethcd" type="string"/></sequence></complexType><complexType name="DoAddAcctintHistRequestType"><sequence><element ref="base:BaseRequest"/><element name="acctinthist" type="loan:AcctinthistList"/></sequence></complexType><element name="DoAddAcctintHist" type="loan:DoAddAcctintHistRequestType"/><complexType name="DoAddAcctintHistResponseType"><sequence><element ref="base:BaseResponse"/></sequence></complexType><element name="DoAddAcctintHistResponse" type="loan:DoAddAcctintHistResponseType"/><complexType name="DoUpdateAcctintHistRequestType"><sequence><element ref="base:BaseRequest"/><element name="acctinthist" type="loan:acctintHistinfo"/></sequence></complexType><element name="DoUpdateAcctintHist" type="loan:DoUpdateAcctintHistRequestType"/><complexType name="DoUpdateAcctintHistResponseType"><sequence><element ref="base:BaseResponse"/></sequence></complexType><element name="DoUpdateAcctintHistResponse" type="loan:DoUpdateAcctintHistResponseType"/><complexType name="acctloanpmtbalInfo"><sequence><element name="loanacctnbr" type="string"/><element name="depacctnbr" type="string"/><element name="effdate" type="date"/><element name="mediid" type="string"/><element name="inactivedate" nillable="true" type="date"/><element name="checkbalcattypyn" type="string"/><element name="depacctprioritynbr" type="string"/><element name="notebalyn" type="string"/><element name="noteintyn" type="string"/><element name="odpintyn" type="string"/><element name="odiintyn" type="string"/><element name="noteint1yn" type="string"/></sequence></complexType><complexType name="AddAcctLoanPmtBalRequestType"><sequence><element ref="base:BaseRequest"/><element maxOccurs="unbounded" name="acctloanpmtbalList" type="loan:acctloanpmtbalInfo"/></sequence></complexType><element name="AddAcctLoanPmtBal" type="loan:AddAcctLoanPmtBalRequestType"/><complexType name="AddAcctLoanPmtBalResponseType"><sequence><element ref="base:BaseResponse"/></sequence></complexType><element name="AddAcctLoanPmtBalResponse" type="loan:AddAcctLoanPmtBalResponseType"/><complexType name="DoAddAcctMemoBalTypRequestType"><sequence><element ref="base:BaseRequest"/><element name="acctnbr" type="long"/><element name="balamt" nillable="true" type="decimal"/><element name="purpcd" nillable="true" type="string"/><element name="loansourcecd" nillable="true" type="string"/><element name="loanassurecd" nillable="true" type="string"/><element name="refiprioracctnbr" nillable="true" type="long"/><element maxOccurs="unbounded" minOccurs="0" name="acctuserfield" type="loan:acctuserfield"/></sequence></complexType><element name="DoAddAcctMemoBalTyp" type="loan:DoAddAcctMemoBalTypRequestType"/><complexType name="DoAddAcctMemoBalTypResponseType"><sequence><element ref="base:BaseResponse"/></sequence></complexType><element name="DoAddAcctMemoBalTypResponse" type="loan:DoAddAcctMemoBalTypResponseType"/><complexType name="acctuserfield"><sequence><element name="userfieldcd" nillable="true" type="string"/><element name="value" nillable="true" type="string"/></sequence></complexType><complexType name="ChargeOffRequestType"><sequence><element ref="base:BaseRequest"/><element name="amt" nillable="true" type="decimal"/><element name="acctnbr" nillable="true" type="long"/><element name="rtxndesc" nillable="true" type="string"/></sequence></complexType><element name="ChargeOff" type="loan:ChargeOffRequestType"/><complexType name="ChargeOffResponseType"><sequence><element ref="base:BaseResponse"/><element name="rtxnnbr" nillable="true" type="long"/></sequence></complexType><element name="ChargeOffResponse" type="loan:ChargeOffResponseType"/><complexType name="GetBalcatCountRequestType"><sequence><element ref="base:BaseRequest"/><element name="mjaccttypcd" type="string"/><element name="miaccttypcd" type="string"/></sequence></complexType><element name="GetBalcatCount" type="loan:GetBalcatCountRequestType"/><complexType name="GetBalcatCountResponseType"><sequence><element ref="base:BaseResponse"/><element name="count" type="long"/></sequence></complexType><element name="GetBalcatCountResponse" type="loan:GetBalcatCountResponseType"/><complexType name="DoSchedpmtRequestType"><sequence><element ref="base:BaseRequest"/><element name="acctNbr" type="long"/><element name="pmtAmt" nillable="true" type="decimal"/><element name="rcvbBalTypArraySize" type="int"/><element maxOccurs="unbounded" minOccurs="0" name="rcvbBalCatCd" type="string"/><element maxOccurs="unbounded" minOccurs="0" name="rcvbBaltypCd" type="string"/><element maxOccurs="unbounded" minOccurs="0" name="rcvbPmtAmt" type="decimal"/><element maxOccurs="unbounded" minOccurs="0" name="rcvbNbr" type="decimal"/><element name="rtxnDesc" nillable="true" type="string"/><element name="checkId" nillable="true" type="string"/><element name="checkTypCd" nillable="true" type="string"/><element name="effDate" type="date"/><element name="rtxnReasonCd" nillable="true" type="string"/><element name="rtxnTypCd" type="string"/><element name="drMediId" type="string"/><element name="drAcctNbr" type="decimal"/><element name="checkPsw" nillable="true" type="string"/><element name="checkDate" nillable="true" type="date"/></sequence></complexType><element name="DoSchedpmt" type="loan:DoSchedpmtRequestType"/><complexType name="DoSchedpmtResponseType"><sequence><element ref="base:BaseResponse"/><element name="validateerrors" type="string"/><element name="sublncount" type="int"/><element maxOccurs="unbounded" minOccurs="0" name="sublnacctnbrs" type="decimal"/><element maxOccurs="unbounded" minOccurs="0" name="sublnrtxnnbrs" type="decimal"/><element maxOccurs="unbounded" minOccurs="0" name="sublnvalidateerrors" type="string"/><element maxOccurs="unbounded" minOccurs="0" name="rtxntypcds" type="string"/><element maxOccurs="unbounded" minOccurs="0" name="childpmtamts" type="decimal"/><element name="rtxnnbr" type="long"/></sequence></complexType><element name="DoSchedpmtResponse" type="loan:DoSchedpmtResponseType"/><complexType name="acctintinfo"><sequence><element name="calcschednbr" nillable="true" type="string"/><element name="intmethcd" nillable="true" type="string"/><element name="ratetypcd" nillable="true" type="string"/><element name="calcbaltypcd" nillable="true" type="string"/><element name="marginfixed" nillable="true" type="string"/><element name="marginpct" nillable="true" type="string"/><element name="rateeffecttypcd" nillable="true" type="string"/><element name="intbase" nillable="true" type="string"/><element name="maxratechangeup" nillable="true" type="string"/><element name="minratechangeup" nillable="true" type="string"/><element name="minintrate" nillable="true" type="string"/><element name="maxintrate" nillable="true" type="string"/><element name="datelastmaint" nillable="true" type="string"/><element name="daysmethcd" nillable="true" type="string"/><element name="acctdefaultreqdyn" nillable="true" type="string"/><element name="acctovryn" nillable="true" type="string"/><element name="amortterm" nillable="true" type="string"/><element name="ratechangerndmethcd" nillable="true" type="string"/><element name="minratechangedown" nillable="true" type="string"/><element name="maxratechangedown" nillable="true" type="string"/><element name="ratechangemethcd" nillable="true" type="string"/><element name="segintyn" nillable="true" type="string"/><element name="contractdaterateyn" nillable="true" type="string"/><element name="intraterecalcmethcd" nillable="true" type="string"/><element name="ratemethcd" nillable="true" type="string"/></sequence></complexType><complexType name="GetAcctIntInfoRequestType"><sequence><element ref="base:BaseRequest"/><element name="acctnbr" type="long"/><element name="balno" type="string"/><element name="effdate" nillable="true" type="string"/></sequence></complexType><element name="GetAcctIntInfo" type="loan:GetAcctIntInfoRequestType"/><complexType name="GetAcctIntInfoResponseType"><sequence><element ref="base:BaseResponse"/><element maxOccurs="unbounded" name="acctintinfolist" type="loan:acctintinfo"/></sequence></complexType><element name="GetAcctIntInfoResponse" type="loan:GetAcctIntInfoResponseType"/><complexType name="InsUpdAcctIntHistRequestType"><sequence><element ref="base:BaseRequest"/><element name="acctnbr" type="long"/><element name="balno" type="string"/><element name="effdate" nillable="true" type="string"/><element name="rateeffdate" nillable="true" type="string"/><element name="ratechangeeffmethcd" nillable="true" type="string"/><element name="rcodpiyn" nillable="true" type="string"/><element name="rcodiiyn" nillable="true" type="string"/><element name="ratemethcd" nillable="true" type="string"/><element name="marginfixed" nillable="true" type="string"/><element name="marginpct" nillable="true" type="string"/><element name="ratetypcd" nillable="true" type="string"/><element name="calcschednbr" nillable="true" type="string"/></sequence></complexType><element name="InsUpdAcctIntHist" type="loan:InsUpdAcctIntHistRequestType"/><complexType name="InsUpdAcctIntHistResponseType"><sequence><element ref="base:BaseResponse"/></sequence></complexType><element name="InsUpdAcctIntHistResponse" type="loan:InsUpdAcctIntHistResponseType"/><complexType name="DoValidateSpmtRequestType"><sequence><element ref="base:BaseRequest"/><element name="acctnbr" type="long"/><element name="fundtyparraysize" nillable="true" type="int"/><element maxOccurs="unbounded" minOccurs="0" name="fundtypcd" type="string"/><element maxOccurs="unbounded" minOccurs="0" name="fundtypdtlcd" type="string"/><element maxOccurs="unbounded" minOccurs="0" name="fundsamt" type="decimal"/><element name="balcatarraysize" type="int"/><element maxOccurs="unbounded" minOccurs="0" name="balcatcd" type="string"/><element maxOccurs="unbounded" minOccurs="0" name="baltypcd" type="string"/><element maxOccurs="unbounded" minOccurs="0" name="balamt" type="decimal"/><element name="effdate" type="date"/><element name="postdate" type="date"/><element name="tellernbr" nillable="true" type="long"/><element name="onlineyn" nillable="true" type="string"/><element name="cashboxnbr" nillable="true" type="long"/><element name="gentotal" nillable="true" type="decimal"/><element name="checkid" nillable="true" type="string"/></sequence></complexType><element name="DoValidateSpmt" type="loan:DoValidateSpmtRequestType"/><complexType name="DoValidateSpmtResponseType"><sequence><element ref="base:BaseResponse"/><element name="validateerrors" type="string"/></sequence></complexType><element name="DoValidateSpmtResponse" type="loan:DoValidateSpmtResponseType"/><complexType name="GetCalcschedInfoRequestType"><sequence><element ref="base:BaseRequest"/><element name="acctnbr" type="long"/><element name="calcschednbr" type="long"/><element name="effdate" type="string"/></sequence></complexType><element name="GetCalcschedInfo" type="loan:GetCalcschedInfoRequestType"/><complexType name="GetCalcschedInfoResponseType"><sequence><element ref="base:BaseResponse"/><element name="rate" type="string"/></sequence></complexType><element name="GetCalcschedInfoResponse" type="loan:GetCalcschedInfoResponseType"/><complexType name="PayOffInqMultiRequestType"><sequence><element ref="base:BaseRequest"/><element name="acctnbr" type="long"/><element name="effdate" nillable="true" type="date"/></sequence></complexType><element name="PayOffInqMulti" type="loan:PayOffInqMultiRequestType"/><complexType name="PayOffInqMultiResponseType"><sequence><element ref="base:BaseResponse"/><element name="remainopenyn" nillable="true" type="string"/><element name="payoffamt" type="decimal"/><element name="totamtduebank" nillable="true" type="decimal"/><element name="totamtduecust" nillable="true" type="decimal"/></sequence></complexType><element name="PayOffInqMultiResponse" type="loan:PayOffInqMultiResponseType"/><complexType name="ValReceiptMultiRequestType"><sequence><element ref="base:BaseRequest"/><element name="acctnbr" type="long"/><element name="onlineyn" nillable="true" type="string"/><element name="rtxntypcd" nillable="true" type="string"/><element minOccurs="0" name="amt" type="decimal"/><element name="effdate" nillable="true" type="string"/></sequence></complexType><element name="ValReceiptMulti" type="loan:ValReceiptMultiRequestType"/><complexType name="ValReceiptMultiResponseType"><sequence><element ref="base:BaseResponse"/></sequence></complexType><element name="ValReceiptMultiResponse" type="loan:ValReceiptMultiResponseType"/><complexType name="CloseLoanAcctRequestType"><sequence><element ref="base:BaseRequest"/><element name="drMediId" type="string"/><element name="drAcctNbr" type="long"/><element name="tranAmt" type="decimal"/><element name="rtxnTypCd" type="string"/><element name="currencyCd" type="string"/><element name="effDate" type="date"/><element name="rtxnDesc" nillable="true" type="string"/><element name="crAcctNbr" type="long"/><element name="checkTypCd" nillable="true" type="string"/><element name="checkId" nillable="true" type="string"/><element name="checkPsw" nillable="true" type="string"/><element name="checkDate" nillable="true" type="date"/></sequence></complexType><element name="CloseLoanAcct" type="loan:CloseLoanAcctRequestType"/><complexType name="CloseLoanAcctResponseType"><sequence><element ref="base:BaseResponse"/></sequence></complexType><element name="CloseLoanAcctResponse" type="loan:CloseLoanAcctResponseType"/><complexType name="GetAcctAmortSchedType"><sequence><element ref="base:BaseRequest"/><element name="acctnbr" type="long"/></sequence></complexType><element name="GetAcctAmortSched" type="loan:GetAcctAmortSchedType"/><complexType name="GetAcctAmortSchedResponseType"><sequence><element ref="base:BaseResponse"/><element name="acctnbr" nillable="true" type="long"/><element name="postdate" nillable="true" type="date"/><element name="debugyn" nillable="true" type="string"/><element name="totalint" nillable="true" type="decimal"/><element name="startbal" nillable="true" type="decimal"/><element name="pmtcount" nillable="true" type="long"/><element maxOccurs="unbounded" minOccurs="0" name="rcvbcounts" nillable="true" type="long"/><element maxOccurs="unbounded" minOccurs="0" name="prinpmts" nillable="true" type="decimal"/><element maxOccurs="unbounded" minOccurs="0" name="intpmts" nillable="true" type="decimal"/><element maxOccurs="unbounded" minOccurs="0" name="duedates" nillable="true" type="date"/><element name="ratecount" nillable="true" type="long"/><element maxOccurs="unbounded" minOccurs="0" name="rateeffdates" nillable="true" type="date"/><element maxOccurs="unbounded" minOccurs="0" name="intrates" nillable="true" type="decimal"/><element name="intbase" nillable="true" type="decimal"/><element name="daysmethcd" nillable="true" type="string"/><element maxOccurs="unbounded" minOccurs="0" name="initialbals" nillable="true" type="decimal"/><element maxOccurs="unbounded" minOccurs="0" name="arrearbals" nillable="true" type="decimal"/><element name="pmttypmsg" nillable="true" type="string"/></sequence></complexType><element name="GetAcctAmortSchedResponse" type="loan:GetAcctAmortSchedResponseType"/><complexType name="Contractinfo"><sequence><element name="contractid" nillable="true" type="string"/><element name="bankorgnbr" nillable="true" type="decimal"/><element name="orgownernbr" nillable="true" type="decimal"/><element name="persownernbr" nillable="true" type="decimal"/><element name="creditlimitamt" nillable="true" type="decimal"/><element name="currencycd" nillable="true" type="string"/><element name="isrevolveloan" nillable="true" type="boolean"/><element name="contractdate" nillable="true" type="date"/><element name="contractdatestart" nillable="true" type="date"/><element name="contractdateend" nillable="true" type="date"/><element name="maturedate" nillable="true" type="date"/><element name="maturedatestart" nillable="true" type="date"/><element name="maturedateend" nillable="true" type="date"/><element name="tellernbr" nillable="true" type="decimal"/><element name="datelastmaint" nillable="true" type="date"/><element name="orgownername" nillable="true" type="string"/><element name="persownername" nillable="true" type="string"/><element name="availamt" nillable="true" type="decimal"/></sequence></complexType><complexType name="GetContractinfoListType"><sequence><element ref="base:BaseRequest"/><element name="Contractinfo" nillable="true" type="loan:Contractinfo"/></sequence></complexType><element name="GetContractinfoList" type="loan:GetContractinfoListType"/><complexType name="GetContractinfoListResponseType"><sequence><element ref="base:BaseResponse"/><element maxOccurs="unbounded" minOccurs="0" name="list" nillable="true" type="loan:Contractinfo"/></sequence></complexType><element name="GetContractinfoListResponse" type="loan:GetContractinfoListResponseType"/><complexType name="AddContractinfoType"><sequence><element ref="base:BaseRequest"/><element name="Contractinfo" nillable="true" type="loan:Contractinfo"/></sequence></complexType><element name="AddContractinfo" type="loan:AddContractinfoType"/><complexType name="AddContractinfoResponseType"><sequence><element ref="base:BaseResponse"/><element name="Contractinfo" nillable="true" type="loan:Contractinfo"/></sequence></complexType><element name="AddContractinfoResponse" type="loan:AddContractinfoResponseType"/><complexType name="UpdContractinfoType"><sequence><element ref="base:BaseRequest"/><element name="Contractinfo" nillable="true" type="loan:Contractinfo"/></sequence></complexType><element name="UpdContractinfo" type="loan:UpdContractinfoType"/><complexType name="UpdContractinfoResponseType"><sequence><element ref="base:BaseResponse"/></sequence></complexType><element name="UpdContractinfoResponse" type="loan:UpdContractinfoResponseType"/><complexType name="DelContractinfoType"><sequence><element ref="base:BaseRequest"/><element name="Contractinfo" nillable="true" type="loan:Contractinfo"/></sequence></complexType><element name="DelContractinfo" type="loan:DelContractinfoType"/><complexType name="DelContractinfoResponseType"><sequence><element ref="base:BaseResponse"/></sequence></complexType><element name="DelContractinfoResponse" type="loan:DelContractinfoResponseType"/><complexType name="GetOfferLoansContractCountType"><sequence><element ref="base:BaseRequest"/><element name="contractcd" nillable="true" type="string"/><element name="bankorgnbr" nillable="true" type="decimal"/></sequence></complexType><element name="GetOfferLoansContractCount" type="loan:GetOfferLoansContractCountType"/><complexType name="GetOfferLoansContractCountResponseType"><sequence><element ref="base:BaseResponse"/><element name="contractcount" type="decimal"/></sequence></complexType><element name="GetOfferLoansContractCountResponse" type="loan:GetOfferLoansContractCountResponseType"/><complexType name="Ioucdinfo"><sequence><element name="ioucd" nillable="true" type="string"/><element name="bankorgnbr" nillable="true" type="decimal"/></sequence></complexType><complexType name="GetIoucdinfoListType"><sequence><element ref="base:BaseRequest"/><element name="Ioucdinfo" nillable="true" type="loan:Ioucdinfo"/></sequence></complexType><element name="GetIoucdinfoList" type="loan:GetIoucdinfoListType"/><complexType name="GetIoucdinfoListResponseType"><sequence><element ref="base:BaseResponse"/><element maxOccurs="unbounded" minOccurs="0" name="list" nillable="true" type="loan:Ioucdinfo"/></sequence></complexType><element name="GetIoucdinfoListResponse" type="loan:GetIoucdinfoListResponseType"/><complexType name="LoanDepAcctConsistencyInfo"><sequence><element name="loanacctnbr" nillable="true" type="decimal"/><element name="depacctnbr" nillable="true" type="decimal"/><element name="orgownernbr" nillable="true" type="decimal"/><element name="persownernbr" nillable="true" type="decimal"/><element name="currencycd" nillable="true" type="string"/></sequence></complexType><complexType name="CheckLoanDepAcctConsistencyType"><sequence><element ref="base:BaseRequest"/><element name="LoanDepAcctConsistencyInfo" nillable="true" type="loan:LoanDepAcctConsistencyInfo"/></sequence></complexType><element name="CheckLoanDepAcctConsistency" type="loan:CheckLoanDepAcctConsistencyType"/><complexType name="CheckLoanDepAcctConsistencyResponseType"><sequence><element ref="base:BaseResponse"/><element name="LoanDepAcctConsistencyInfo" nillable="true" type="loan:LoanDepAcctConsistencyInfo"/></sequence></complexType><element name="CheckLoanDepAcctConsistencyResponse" type="loan:CheckLoanDepAcctConsistencyResponseType"/><complexType name="AcctUserFieldsInfo"><sequence><element name="acctnbr" nillable="true" type="long"/><element name="userfieldcd" nillable="true" type="string"/><element name="value" nillable="true" type="string"/><element name="mjaccttypcd" nillable="true" type="string"/><element name="currmiaccttypcd" nillable="true" type="string"/></sequence></complexType><complexType name="GetAcctUserFieldsType"><sequence><element ref="base:BaseRequest"/><element name="Ioucdinfo" nillable="true" type="loan:Ioucdinfo"/><element name="bankorgnbr" nillable="true" type="decimal"/></sequence></complexType><element name="GetAcctUserFields" type="loan:GetAcctUserFieldsType"/><complexType name="GetAcctUserFieldsResponseType"><sequence><element ref="base:BaseResponse"/><element maxOccurs="unbounded" minOccurs="0" name="list" nillable="true" type="loan:AcctUserFieldsInfo"/></sequence></complexType><element name="GetAcctUserFieldsResponse" type="loan:GetAcctUserFieldsResponseType"/><complexType name="updacctuserfield"><sequence><element name="acctnbr" nillable="true" type="long"/><element name="userfieldcd" nillable="true" type="string"/><element name="value" nillable="true" type="string"/></sequence></complexType><complexType name="UpdAcctuserfieldType"><sequence><element ref="base:BaseRequest"/><element name="updacctuserfield" nillable="true" type="loan:updacctuserfield"/></sequence></complexType><element name="UpdAcctuserfield" type="loan:UpdAcctuserfieldType"/><complexType name="UpdAcctuserfieldResponseType"><sequence><element ref="base:BaseResponse"/></sequence></complexType><element name="UpdAcctuserfieldResponse" type="loan:UpdAcctuserfieldResponseType"/><complexType name="AddacctuserfieldType"><sequence><element ref="base:BaseRequest"/><element name="acctnbr" type="long"/><element name="acctuserfield" nillable="true" type="loan:acctuserfield"/></sequence></complexType><element name="Addacctuserfield" type="loan:AddacctuserfieldType"/><complexType name="AddacctuserfieldResponseType"><sequence><element ref="base:BaseResponse"/></sequence></complexType><element name="AddacctuserfieldResponse" type="loan:AddacctuserfieldResponseType"/><complexType name="BalamtInterestInfo"><sequence><element name="calcschednbr" nillable="true" type="long"/><element name="balcatcd" nillable="true" type="string"/><element name="baltypcd" nillable="true" type="string"/><element name="balcattypdesc" nillable="true" type="string"/><element name="origbalamt" nillable="true" type="decimal"/><element name="curbalamt" nillable="true" type="decimal"/><element name="interestrate" nillable="true" type="decimal"/><element name="perdiem" nillable="true" type="decimal"/><element name="accruedinttotal" nillable="true" type="decimal"/></sequence></complexType><complexType name="getBalamtInterestInfoType"><sequence><element ref="base:BaseRequest"/><element name="ioucd" nillable="true" type="string"/></sequence></complexType><element name="GetBalamtInterestInfo" type="loan:getBalamtInterestInfoType"/><complexType name="getBalamtInterestInfoResponseType"><sequence><element ref="base:BaseResponse"/><element name="duedate" nillable="true" type="date"/><element name="amountdue" nillable="true" type="decimal"/><element name="lastpaymentdate" nillable="true" type="date"/><element name="lastpaymentamount" nillable="true" type="decimal"/><element name="lastadvancedate" nillable="true" type="date"/><element name="lastadvanceamount" nillable="true" type="decimal"/><element name="lastaccrualdate" nillable="true" type="date"/><element name="bankaccruedintrest" nillable="true" type="decimal"/><element name="bankaccruedodp" nillable="true" type="decimal"/><element name="bankaccruedodi" nillable="true" type="decimal"/><element name="bankaccruedtotal" nillable="true" type="decimal"/><element name="otherbankaccruedintrest" nillable="true" type="decimal"/><element name="otherbankaccruedodp" nillable="true" type="decimal"/><element name="otherbankaccruedodi" nillable="true" type="decimal"/><element name="otherbankaccruedtotal" nillable="true" type="decimal"/><element maxOccurs="unbounded" minOccurs="0" name="list" nillable="true" type="loan:BalamtInterestInfo"/></sequence></complexType><element name="GetBalamtInterestInfoResponse" type="loan:getBalamtInterestInfoResponseType"/><complexType name="DelAcctUserFieldType"><sequence><element ref="base:BaseRequest"/><element name="acctnbr" type="long"/><element name="acctuserfield" nillable="true" type="loan:acctuserfield"/></sequence></complexType><element name="DelAcctUserField" type="loan:DelAcctUserFieldType"/><complexType name="DelAcctUserFieldResponseType"><sequence><element ref="base:BaseResponse"/></sequence></complexType><element name="DelAcctUserFieldResponse" type="loan:DelAcctUserFieldResponseType"/><complexType name="LoanAcctRateInfoMaint"><sequence><element name="balcatcd" nillable="true" type="string"/><element name="baltypcd" nillable="true" type="string"/><element name="ratemethcd" nillable="true" type="string"/><element name="calcschednbr" nillable="true" type="long"/><element name="marginfixed" nillable="true" type="decimal"/><element name="marginpct" nillable="true" type="decimal"/><element name="ratetypcd" nillable="true" type="string"/></sequence></complexType><complexType name="LoanPayAcctInfo"><sequence><element name="mediid" nillable="true" type="string"/><element name="depacctnbr" nillable="true" type="long"/><element name="miaccttypdesc" nillable="true" type="string"/><element name="orgacctname" nillable="true" type="string"/><element name="persacctname" nillable="true" type="string"/><element name="mjmibalcattypdesc" nillable="true" type="string"/><element name="effdate" nillable="true" type="date"/></sequence></complexType><complexType name="GetLoanAcctInfoMaintType"><sequence><element ref="base:BaseRequest"/><element name="ioucd" nillable="true" type="string"/><element name="bankorgnbr" nillable="true" type="decimal"/><element name="effdate" nillable="true" type="date"/></sequence></complexType><element name="GetLoanAcctInfoMaint" type="loan:GetLoanAcctInfoMaintType"/><complexType name="GetLoanAcctInfoMaintResponseType"><sequence><element ref="base:BaseResponse"/><element name="acctnbr" nillable="true" type="long"/><element name="orgownername" nillable="true" type="string"/><element name="persownername" nillable="true" type="string"/><element name="contractcd" nillable="true" type="string"/><element name="branchorgnbr" nillable="true" type="long"/><element name="mjaccttypcd" nillable="true" type="string"/><element name="currmiaccttypcd" nillable="true" type="string"/><element name="contractdate" nillable="true" type="date"/><element name="datemat" nillable="true" type="date"/><element name="ioucd" nillable="true" type="string"/><element name="currencycd" nillable="true" type="string"/><element name="origbalamt" nillable="true" type="long"/><element name="bal" nillable="true" type="long"/><element name="pmtschedid" nillable="true" type="string"/><element name="pmtschediddesc" nillable="true" type="string"/><element name="pmtduedaynbr" nillable="true" type="long"/><element name="firstduedate" nillable="true" type="date"/><element name="nextduedate" nillable="true" type="date"/><element name="gracedays" nillable="true" type="long"/><element name="autopmtyn" nillable="true" type="string"/><element name="partialpmtallowedyn" nillable="true" type="string"/><element name="unschedprinpmtsallowedyn" nillable="true" type="string"/><element maxOccurs="unbounded" minOccurs="0" name="ratelist" nillable="true" type="loan:LoanAcctRateInfoMaint"/><element name="intrate" nillable="true" type="long"/><element name="rateeffecttypcd" nillable="true" type="string"/><element name="nextratechangedate" nillable="true" type="date"/><element name="rcodpiyn" nillable="true" type="string"/><element name="rcodiiyn" nillable="true" type="string"/><element maxOccurs="unbounded" minOccurs="0" name="paylist" nillable="true" type="loan:LoanPayAcctInfo"/><element name="loanassurecd" nillable="true" type="string"/><element name="purpcd" nillable="true" type="string"/><element name="loansourcecd" nillable="true" type="string"/><element name="refiprioracctnbr" nillable="true" type="long"/><element name="balamt" nillable="true" type="long"/><element maxOccurs="unbounded" minOccurs="0" name="userinfolist" nillable="true" type="loan:AcctUserFieldsInfo"/></sequence></complexType><element name="GetLoanAcctInfoMaintResponse" type="loan:GetLoanAcctInfoMaintResponseType"/><complexType name="getAcctRateHistInfoListRequestType"><sequence><element ref="base:BaseRequest"/><element name="acctnbr" type="long"/><element name="subacctnbr" type="long"/><element name="effdate" type="date"/></sequence></complexType><element name="getAcctRateHistInfoList" type="loan:getAcctRateHistInfoListRequestType"/><complexType name="getAcctRateHistInfoListResponseType"><sequence><element ref="base:BaseResponse"/><element maxOccurs="unbounded" name="acctRateHistInfoList" nillable="true" type="loan:AcctRateHistInfoList"/></sequence></complexType><element name="getAcctRateHistInfoListResponse" type="loan:getAcctRateHistInfoListResponseType"/><complexType name="AcctRateHistInfoList"><sequence><element name="mjmibalcattypdesc" nillable="true" type="string"/><element name="intrate" nillable="true" type="decimal"/><element name="effdate" nillable="true" type="date"/><element name="inactivedate" nillable="true" type="date"/><element name="postdate" nillable="true" type="date"/><element name="datelastmaint" nillable="true" type="date"/><element name="calcschedeffdate" nillable="true" type="date"/><element name="balcatcd" nillable="true" type="string"/><element name="baltypcd" nillable="true" type="string"/><element name="status" nillable="true" type="string"/></sequence></complexType><complexType name="getMjmiBalCatTypListRequestType"><sequence><element ref="base:BaseRequest"/><element name="acctnbr" type="long"/><element name="mjaccttypcd" type="string"/><element name="miaccttypcd" type="string"/></sequence></complexType><element name="getMjmiBalCatTypList" type="loan:getMjmiBalCatTypListRequestType"/><complexType name="getMjmiBalCatTypListResponseType"><sequence><element ref="base:BaseResponse"/><element maxOccurs="unbounded" name="mjmiBalCatTypList" nillable="true" type="loan:MjmiBalCatTypList"/></sequence></complexType><element name="getMjmiBalCatTypListResponse" type="loan:getMjmiBalCatTypListResponseType"/><complexType name="MjmiBalCatTypList"><sequence><element name="subacctnbr" nillable="true" type="string"/><element name="mjmibalcattypdesc" nillable="true" type="string"/><element name="balcatcd" nillable="true" type="string"/><element name="baltypcd" nillable="true" type="string"/></sequence></complexType><complexType name="addAcctRateRequestType"><sequence><element ref="base:BaseRequest"/><element name="acctnbr" type="long"/><element name="subacctnbr" type="long"/><element name="effdate" type="date"/><element name="inactivedate" nillable="true" type="date"/><element name="intrate" type="decimal"/><element name="calcschedeffdate" nillable="true" type="date"/></sequence></complexType><element name="addAcctRate" type="loan:addAcctRateRequestType"/><complexType name="addAcctRateResponseType"><sequence><element ref="base:BaseResponse"/></sequence></complexType><element name="addAcctRateResponse" type="loan:addAcctRateResponseType"/><complexType name="updAcctRateRequestType"><sequence><element ref="base:BaseRequest"/><element name="acctnbr" type="long"/><element name="subacctnbr" type="long"/><element name="effdate" type="date"/><element name="intrate" type="decimal"/></sequence></complexType><element name="updAcctRate" type="loan:updAcctRateRequestType"/><complexType name="updAcctRateResponseType"><sequence><element ref="base:BaseResponse"/></sequence></complexType><element name="updAcctRateResponse" type="loan:updAcctRateResponseType"/><complexType name="deleteAcctRateRequestType"><sequence><element ref="base:BaseRequest"/><element name="acctnbr" type="long"/><element name="subacctnbr" type="long"/><element name="effdate" type="date"/></sequence></complexType><element name="deleteAcctRate" type="loan:deleteAcctRateRequestType"/><complexType name="deleteAcctRateResponseType"><sequence><element ref="base:BaseResponse"/></sequence></complexType><element name="deleteAcctRateResponse" type="loan:deleteAcctRateResponseType"/><complexType name="getAcctLoanPmtRequestType"><sequence><element ref="base:BaseRequest"/><element name="ioucd" type="string"/><element name="startdate" type="date"/></sequence></complexType><element name="getAcctLoanPmt" type="loan:getAcctLoanPmtRequestType"/><complexType name="LoanPmtListInfo"><sequence><element name="effdate" type="date"/><element name="pmtschedid" type="string"/><element name="pmtduedaynbr" type="long"/><element name="nextduedate" nillable="true" type="date"/></sequence></complexType><complexType name="getAcctLoanPmtResponseType"><sequence><element ref="base:BaseResponse"/><element maxOccurs="unbounded" minOccurs="0" name="loanpmtlist" nillable="true" type="loan:LoanPmtListInfo"/></sequence></complexType><element name="getAcctLoanPmtResponse" type="loan:getAcctLoanPmtResponseType"/><complexType name="insupdAcctLoanPmtRequestType"><sequence><element ref="base:BaseRequest"/><element name="ioucd" type="string"/><element name="effdate" type="date"/><element name="pmtschedid" type="string"/><element name="pmtduedaynbr" nillable="true" type="long"/><element name="nextduedate" type="date"/><element name="acctstatcd" type="string"/><element name="oddfreqnextduedate" nillable="true" type="date"/></sequence></complexType><element name="insupdAcctLoanPmt" type="loan:insupdAcctLoanPmtRequestType"/><complexType name="insupdAcctLoanPmtResponseType"><sequence><element ref="base:BaseResponse"/><element name="pmtamt" nillable="true" type="decimal"/></sequence></complexType><element name="insupdAcctLoanPmtResponse" type="loan:insupdAcctLoanPmtResponseType"/><complexType name="UpdAcctLoanPmtBalRequestType"><sequence><element ref="base:BaseRequest"/><element maxOccurs="unbounded" minOccurs="0" name="acctloanpmtbalList" type="loan:acctloanpmtbalInfo"/></sequence></complexType><element name="UpdAcctLoanPmtBal" type="loan:UpdAcctLoanPmtBalRequestType"/><complexType name="UpdAcctLoanPmtBalResponseType"><sequence><element ref="base:BaseResponse"/></sequence></complexType><element name="UpdAcctLoanPmtBalResponse" type="loan:UpdAcctLoanPmtBalResponseType"/><complexType name="AcctRcvbInfo"><sequence><element name="duedate" nillable="true" type="date"/><element name="mjmibalcattypdesc" nillable="true" type="string"/><element name="rcvbstatcd" nillable="true" type="string"/><element name="amt" nillable="true" type="decimal"/><element name="paidamt" nillable="true" type="decimal"/><element name="subamt" nillable="true" type="decimal"/><element name="postdate" nillable="true" type="date"/><element name="gentypcd" nillable="true" type="string"/><element name="gendate" nillable="true" type="date"/></sequence></complexType><complexType name="GetAcctRcvbInfoType"><sequence><element ref="base:BaseRequest"/><element name="ioucd" type="string"/><element name="datestart" type="date"/><element name="dateend" type="date"/><element maxOccurs="unbounded" minOccurs="0" name="mjmibalcattyp" type="string"/><element maxOccurs="unbounded" minOccurs="0" name="currrcvbstatcd" type="string"/></sequence></complexType><element name="GetAcctRcvbInfo" type="loan:GetAcctRcvbInfoType"/><complexType name="GetAcctRcvbInfoResponseType"><sequence><element ref="base:BaseResponse"/><element maxOccurs="unbounded" minOccurs="0" name="rcvbinfolist" nillable="true" type="loan:AcctRcvbInfo"/></sequence></complexType><element name="GetAcctRcvbInfoResponse" type="loan:GetAcctRcvbInfoResponseType"/><complexType name="AddAcctRcvbInfoType"><sequence><element ref="base:BaseRequest"/><element name="acctnbr" type="long"/><element name="ioucd" type="string"/><element name="mjmibalcattypdesc" type="string"/><element name="duedate" type="date"/><element name="gendate" type="date"/><element name="rcvbamt" type="decimal"/><element name="rcvbstatcd" type="string"/></sequence></complexType><element name="AddAcctRcvbInfo" type="loan:AddAcctRcvbInfoType"/><complexType name="AddAcctRcvbInfoResponseType"><sequence><element ref="base:BaseResponse"/></sequence></complexType><element name="AddAcctRcvbInfoResponse" type="loan:AddAcctRcvbInfoResponseType"/><complexType name="UpdAcctRcvbCurrrcvbStatcdType"><sequence><element ref="base:BaseRequest"/><element name="acctnbr" type="long"/><element name="duedate" type="date"/></sequence></complexType><element name="UpdAcctRcvbCurrrcvbStatcd" type="loan:UpdAcctRcvbCurrrcvbStatcdType"/><complexType name="UpdAcctRcvbCurrrcvbStatcdResponseType"><sequence><element ref="base:BaseResponse"/></sequence></complexType><element name="UpdAcctRcvbCurrrcvbStatcdResponse" type="loan:UpdAcctRcvbCurrrcvbStatcdResponseType"/><complexType name="LoanPaymentTyp"><sequence><element ref="base:BaseRequest"/><element name="TO_CARD_NO" type="string"/><element maxOccurs="unbounded" minOccurs="0" name="TO_CARD_NO_Acctnbr" type="decimal"/><element name="TRAN_AMT" type="decimal"/></sequence></complexType><element name="LoanPayment" type="loan:LoanPaymentTyp"/><complexType name="LoanPaymentResponseType"><sequence><element ref="base:BaseResponse"/></sequence></complexType><element name="LoanPaymentResponse" type="loan:LoanPaymentResponseType"/><complexType name="LoanAccountDetailTyp"><sequence><element ref="base:BaseRequest"/><element name="mediid" type="string"/></sequence></complexType><element name="LoanAccountDetail" type="loan:LoanAccountDetailTyp"/><complexType name="LoanAccountDetailResponseType"><sequence><element ref="base:BaseResponse"/><element maxOccurs="unbounded" minOccurs="0" name="details" nillable="true" type="loan:LoanDetailInfo"/></sequence></complexType><element name="LoanAccountDetailResponse" type="loan:LoanAccountDetailResponseType"/><complexType name="LoanDetailInfo"><sequence><element name="opendate" nillable="true" type="date"/><element name="waiveintenddate" nillable="true" type="date"/><element name="datemat" nillable="true" type="date"/><element name="ndsbamt" nillable="true" type="decimal"/><element name="currnotebalamt" nillable="true" type="decimal"/><element name="totalaccruedint" nillable="true" type="decimal"/><element name="ndsnote" nillable="true" type="string"/><element name="acctnbr" nillable="true" type="long"/></sequence></complexType><complexType name="LoanSchedpmtDetailTyp"><sequence><element ref="base:BaseRequest"/><element name="mediid" type="string"/><element name="acctnbr" nillable="true" type="decimal"/></sequence></complexType><element name="LoanSchedpmtDetail" type="loan:LoanSchedpmtDetailTyp"/><complexType name="LoanSchedpmtDetailResponseType"><sequence><element ref="base:BaseResponse"/><element maxOccurs="unbounded" minOccurs="0" name="details" nillable="true" type="loan:LoanSchedpmtInfo"/></sequence></complexType><element name="LoanSchedpmtDetailResponse" type="loan:LoanSchedpmtDetailResponseType"/><complexType name="LoanSchedpmtInfo"><sequence><element name="txndate" nillable="true" type="date"/><element name="pmtbalamt" nillable="true" type="decimal"/><element name="pmtintamt" nillable="true" type="decimal"/><element name="rtxndesc" nillable="true" type="string"/><element name="acctnbr" nillable="true" type="decimal"/><element name="suptxnsourcecd" nillable="true" type="string"/></sequence></complexType><complexType name="GetAcctLoanLinesAmtType"><sequence><element ref="base:BaseRequest"/><element name="MEDIID" type="string"/></sequence></complexType><element name="GetAcctLoanLinesAmt" type="loan:GetAcctLoanLinesAmtType"/><complexType name="GetAcctLoanLinesAmtResponseType"><sequence><element ref="base:BaseResponse"/><element name="MLNAVAILAMT" nillable="true" type="decimal"/><element name="MLNNOTEBALAMT" nillable="true" type="decimal"/></sequence></complexType><element name="GetAcctLoanLinesAmtResponse" type="loan:GetAcctLoanLinesAmtResponseType"/><complexType name="TerminateAcctLoanType"><sequence><element ref="base:BaseRequest"/><element name="mediid" type="string"/></sequence></complexType><element name="TerminateAcctLoan" type="loan:TerminateAcctLoanType"/><complexType name="TerminateAcctLoanResponseType"><sequence><element ref="base:BaseResponse"/></sequence></complexType><element name="TerminateAcctLoanResponse" type="loan:TerminateAcctLoanResponseType"/><complexType name="PettyLoanSignTypeRequestType"><sequence><element minOccurs="0" ref="base:BaseRequest"/><element name="mediid" type="string"/></sequence></complexType><element name="PettyLoanSignType" type="loan:PettyLoanSignTypeRequestType"/><complexType name="PettyLoanSignTypeResponseType"><sequence><element minOccurs="0" ref="base:BaseResponse"/><element name="signtype" type="string"/></sequence></complexType><element name="PettyLoanSignTypeResponse" type="loan:PettyLoanSignTypeResponseType"/><complexType name="InsRtxnRequestType"><sequence><element ref="base:BaseRequest"/><element name="acctnbr" nillable="true" type="decimal"/><element name="balcatcd" nillable="true" type="string"/><element name="baltypcd" nillable="true" type="string"/><element name="txnamt" nillable="true" type="decimal"/><element name="rtxntypcd" nillable="true" type="string"/><element name="upyn" nillable="true" type="string"/><element name="txnseqid" nillable="true" type="string"/><element name="mediid" nillable="true" type="string"/></sequence></complexType><element name="InsRtxn" type="loan:InsRtxnRequestType"/><complexType name="InsRtxnResponseType"><sequence><element ref="base:BaseResponse"/></sequence></complexType><element name="InsRtxnResponse" type="loan:InsRtxnResponseType"/></schema>
+    <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:base="http://com.csii.bank.core/base" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://com.csii.bank.core/base"><simpleType name="bankType"><annotation><documentation>法人编号类型定义</documentation></annotation><restriction base="string"><pattern value="[0-9]{1,22}"/></restriction></simpleType><simpleType name="sourceType"><annotation><documentation>渠道类型定义</documentation></annotation><restriction base="string"><enumeration value="ONLI"><annotation><documentation>柜面</documentation></annotation></enumeration></restriction></simpleType><simpleType name="retCodeType"><annotation><documentation>返回码类型定义，0000表示正常结束</documentation></annotation><restriction base="string"><pattern value="[0-9]{4}"/></restriction></simpleType><simpleType name="acctNbrType"><annotation><documentation>账号类型定义</documentation></annotation><restriction base="string"><pattern value="[0-9]{1,22}"/></restriction></simpleType><simpleType name="rtxnTypeCdType"><annotation><documentation>交易类型定义</documentation></annotation><restriction base="string"><pattern value="\w{4}"/></restriction></simpleType><simpleType name="excpNbrType"><annotation><documentation>授权编号定义</documentation></annotation><restriction base="string"><pattern value="[0-9]{1,22}"/></restriction></simpleType><complexType name="authorizeInfoType"><sequence><element name="acctNbr" type="base:acctNbrType"><annotation><documentation>授权检查帐号</documentation></annotation></element><element name="rtxnTypeCd" type="base:rtxnTypeCdType"><annotation><documentation>授权检查交易类型</documentation></annotation></element><element name="excpNbr" type="base:excpNbrType"><annotation><documentation>授权检查编号</documentation></annotation></element></sequence></complexType><complexType name="svcRealtimeType"><sequence><element name="payType" nillable="true" type="string"/><element name="acctNbr" nillable="true" type="decimal"/><element name="svcTxntyp" nillable="true" type="string"/><element name="chg" nillable="true" type="decimal"/><element name="waveChg" nillable="true" type="decimal"/><element name="chargNbr" nillable="true" type="string"/><element name="pricDebitMethCd" nillable="true" type="string"/><element name="pricDebitMethDesc" nillable="true" type="string"/><element name="pricRuleOnLineCatDesc" nillable="true" type="string"/><element name="negApplyRuleNbr" nillable="true" type="string"/><element name="parentacctnbr" nillable="true" type="decimal"/><element name="PID" nillable="true" type="decimal"/><element name="ruleonlinecatnbr" nillable="true" type="decimal"/><element name="PAYMODECD" nillable="true" type="string"/><element name="PAYMODEDESC" nillable="true" type="string"/><element name="TRANSFERYN" nillable="true" type="string"/><element name="TELLERMODIFYYN" nillable="true" type="string"/><element name="DEDUCTACCTMODE" nillable="true" type="string"/><element name="CHARGEMODE" nillable="true" type="string"/><element name="DEDUCTIONMODECD" nillable="true" type="string"/></sequence></complexType><complexType name="requestHeader"><sequence><element name="bankId" type="base:bankType"><annotation><documentation>法人编号</documentation></annotation></element><element name="sourceId" type="base:sourceType"><annotation><documentation>渠道编号</documentation></annotation></element><element name="branchId" type="string"><annotation><documentation>分支行号</documentation></annotation></element><element name="userId" type="string"><annotation><documentation>柜员号</documentation></annotation></element><element name="cashboxId" nillable="true" type="string"><annotation><documentation>钱箱号</documentation></annotation></element><element name="workDate" type="date"><annotation><documentation>渠道工作日期</documentation></annotation></element><element name="postDate" nillable="true" type="date"><annotation><documentation>核心交易日期</documentation></annotation></element><element name="seqNo" type="string"><annotation><documentation>渠道流水号</documentation></annotation></element><element name="apprRefId" nillable="true" type="string"><annotation><documentation>授权参考号</documentation></annotation></element><element name="tranTime" type="dateTime"><annotation><documentation>交易时间戳</documentation></annotation></element><element name="macValue" nillable="true" type="string"><annotation><documentation>接入设备MAC地址</documentation></annotation></element><element maxOccurs="unbounded" minOccurs="0" name="rtxnexcpnbr" nillable="true" type="long"><annotation><documentation>授权检查异常号数组</documentation></annotation></element><element maxOccurs="unbounded" minOccurs="0" name="svcRealtimeListReq" nillable="true" type="base:svcRealtimeType"/></sequence></complexType><complexType name="responseHeader"><sequence><element name="retCode" type="base:retCodeType"><annotation><documentation>返回码</documentation></annotation></element><element name="retMsg" nillable="true" type="string"><annotation><documentation>返回信息</documentation></annotation></element><element maxOccurs="unbounded" name="authorizeInfo" nillable="true" type="base:authorizeInfoType"><annotation><documentation>授权检查信息</documentation></annotation></element><element maxOccurs="unbounded" minOccurs="0" name="svcRealtimeListRes" nillable="true" type="base:svcRealtimeType"/></sequence></complexType><complexType name="queryRequestHeader"><sequence><element name="pageNum" type="int"><annotation><documentation>请求页数（从1开始）</documentation></annotation></element><element name="pageSize" type="int"><annotation><documentation>每页记录条目数</documentation></annotation></element></sequence></complexType><complexType name="queryResponseHeader"><sequence><element name="totalNum" type="int"><annotation><documentation>总记录数</documentation></annotation></element></sequence></complexType><element name="BaseRequest" type="base:requestHeader"/><element name="BaseResponse" type="base:responseHeader"/><element name="QueryRequest" type="base:queryRequestHeader"/><element name="QueryResponse" type="base:queryResponseHeader"/></schema>
+  </wsdl:types>
+  <wsdl:message name="GetAcctAmortSchedResponse">
+    <wsdl:part element="tns:GetAcctAmortSchedResponse" name="GetAcctAmortSchedResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="LoanPaymentResponse">
+    <wsdl:part element="tns:LoanPaymentResponse" name="LoanPaymentResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="OpenLoanAcct">
+    <wsdl:part element="tns:OpenLoanAcct" name="OpenLoanAcct">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="DelContractinfo">
+    <wsdl:part element="tns:DelContractinfo" name="DelContractinfo">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AddacctuserfieldResponse">
+    <wsdl:part element="tns:AddacctuserfieldResponse" name="AddacctuserfieldResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="LoanAccountDetailResponse">
+    <wsdl:part element="tns:LoanAccountDetailResponse" name="LoanAccountDetailResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="UpdAcctRcvbCurrrcvbStatcdResponse">
+    <wsdl:part element="tns:UpdAcctRcvbCurrrcvbStatcdResponse" name="UpdAcctRcvbCurrrcvbStatcdResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="InsRtxnResponse">
+    <wsdl:part element="tns:InsRtxnResponse" name="InsRtxnResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CloseLoanAcct">
+    <wsdl:part element="tns:CloseLoanAcct" name="CloseLoanAcct">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetBalcatCountResponse">
+    <wsdl:part element="tns:GetBalcatCountResponse" name="GetBalcatCountResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="QueryLoanInfoByIOUCD">
+    <wsdl:part element="tns:QueryLoanInfoByIOUCD" name="QueryLoanInfoByIOUCD">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="InsUpdAcctIntHistResponse">
+    <wsdl:part element="tns:InsUpdAcctIntHistResponse" name="InsUpdAcctIntHistResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="QueryPmtschedtyp">
+    <wsdl:part element="tns:QueryPmtschedtyp" name="QueryPmtschedtyp">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AddAcctLoanPmtBalResponse">
+    <wsdl:part element="tns:AddAcctLoanPmtBalResponse" name="AddAcctLoanPmtBalResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="UpdAcctuserfieldResponse">
+    <wsdl:part element="tns:UpdAcctuserfieldResponse" name="UpdAcctuserfieldResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="insupdAcctLoanPmtResponse">
+    <wsdl:part element="tns:insupdAcctLoanPmtResponse" name="insupdAcctLoanPmtResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetAcctUserFieldsResponse">
+    <wsdl:part element="tns:GetAcctUserFieldsResponse" name="GetAcctUserFieldsResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="InsUpdAcctIntHist">
+    <wsdl:part element="tns:InsUpdAcctIntHist" name="InsUpdAcctIntHist">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetOfferLoansContractCountResponse">
+    <wsdl:part element="tns:GetOfferLoansContractCountResponse" name="GetOfferLoansContractCountResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ActToNpfmResponse">
+    <wsdl:part element="tns:ActToNpfmResponse" name="ActToNpfmResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="PettyLoanSignTypeResponse">
+    <wsdl:part element="tns:PettyLoanSignTypeResponse" name="PettyLoanSignTypeResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetratechangedateResponse">
+    <wsdl:part element="tns:GetratechangedateResponse" name="GetratechangedateResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetLoanAcctInfoMaint">
+    <wsdl:part element="tns:GetLoanAcctInfoMaint" name="GetLoanAcctInfoMaint">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ChargeOff">
+    <wsdl:part element="tns:ChargeOff" name="ChargeOff">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="OpenLoanAcctResponse">
+    <wsdl:part element="tns:OpenLoanAcctResponse" name="OpenLoanAcctResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="UpdAcctLoanPmtBal">
+    <wsdl:part element="tns:UpdAcctLoanPmtBal" name="UpdAcctLoanPmtBal">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="QueryContractResponse">
+    <wsdl:part element="tns:QueryContractResponse" name="QueryContractResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetAcctIntInfo">
+    <wsdl:part element="tns:GetAcctIntInfo" name="GetAcctIntInfo">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getMjmiBalCatTypList">
+    <wsdl:part element="tns:getMjmiBalCatTypList" name="getMjmiBalCatTypList">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetAcctAmortSched">
+    <wsdl:part element="tns:GetAcctAmortSched" name="GetAcctAmortSched">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetContractinfoListResponse">
+    <wsdl:part element="tns:GetContractinfoListResponse" name="GetContractinfoListResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="DoUpdateAcctintHist">
+    <wsdl:part element="tns:DoUpdateAcctintHist" name="DoUpdateAcctintHist">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="PostLoanDisbResponse">
+    <wsdl:part element="tns:PostLoanDisbResponse" name="PostLoanDisbResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetIoucdinfoList">
+    <wsdl:part element="tns:GetIoucdinfoList" name="GetIoucdinfoList">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updAcctRateResponse">
+    <wsdl:part element="tns:updAcctRateResponse" name="updAcctRateResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetCalcschedInfo">
+    <wsdl:part element="tns:GetCalcschedInfo" name="GetCalcschedInfo">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="BaseResponse">
+    <wsdl:part element="sch1:BaseResponse" name="BaseResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetLoanMjaccttyp">
+    <wsdl:part element="tns:GetLoanMjaccttyp" name="GetLoanMjaccttyp">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="DelAcctUserFieldResponse">
+    <wsdl:part element="tns:DelAcctUserFieldResponse" name="DelAcctUserFieldResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetLoanAcctInfoMaintResponse">
+    <wsdl:part element="tns:GetLoanAcctInfoMaintResponse" name="GetLoanAcctInfoMaintResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="DelAcctUserField">
+    <wsdl:part element="tns:DelAcctUserField" name="DelAcctUserField">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="PettyLoanSignType">
+    <wsdl:part element="tns:PettyLoanSignType" name="PettyLoanSignType">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ValReceiptMulti">
+    <wsdl:part element="tns:ValReceiptMulti" name="ValReceiptMulti">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addAcctRateResponse">
+    <wsdl:part element="tns:addAcctRateResponse" name="addAcctRateResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetBalamtInterestInfo">
+    <wsdl:part element="tns:GetBalamtInterestInfo" name="GetBalamtInterestInfo">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="BaseRequest">
+    <wsdl:part element="sch1:BaseRequest" name="BaseRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="LoanTransferWithdrawResponse">
+    <wsdl:part element="tns:LoanTransferWithdrawResponse" name="LoanTransferWithdrawResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAcctRateHistInfoListResponse">
+    <wsdl:part element="tns:getAcctRateHistInfoListResponse" name="getAcctRateHistInfoListResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="UpdAcctLoanPmtBalResponse">
+    <wsdl:part element="tns:UpdAcctLoanPmtBalResponse" name="UpdAcctLoanPmtBalResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetIoucdinfoListResponse">
+    <wsdl:part element="tns:GetIoucdinfoListResponse" name="GetIoucdinfoListResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="DoUpdateAcctintHistResponse">
+    <wsdl:part element="tns:DoUpdateAcctintHistResponse" name="DoUpdateAcctintHistResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="QueryLoanInfoByIOUCDResponse">
+    <wsdl:part element="tns:QueryLoanInfoByIOUCDResponse" name="QueryLoanInfoByIOUCDResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="LoanPayment">
+    <wsdl:part element="tns:LoanPayment" name="LoanPayment">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CheckLoanDepAcctConsistency">
+    <wsdl:part element="tns:CheckLoanDepAcctConsistency" name="CheckLoanDepAcctConsistency">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="DoAddAcctintHist">
+    <wsdl:part element="tns:DoAddAcctintHist" name="DoAddAcctintHist">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="InsRtxn">
+    <wsdl:part element="tns:InsRtxn" name="InsRtxn">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="LoanSchedpmtDetail">
+    <wsdl:part element="tns:LoanSchedpmtDetail" name="LoanSchedpmtDetail">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetAcctintHistResponse">
+    <wsdl:part element="tns:GetAcctintHistResponse" name="GetAcctintHistResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="DoAddAcctintHistResponse">
+    <wsdl:part element="tns:DoAddAcctintHistResponse" name="DoAddAcctintHistResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetCalcschedInfoResponse">
+    <wsdl:part element="tns:GetCalcschedInfoResponse" name="GetCalcschedInfoResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="Addacctuserfield">
+    <wsdl:part element="tns:Addacctuserfield" name="Addacctuserfield">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="DoAddAcctMemoBalTyp">
+    <wsdl:part element="tns:DoAddAcctMemoBalTyp" name="DoAddAcctMemoBalTyp">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="Getratechangedate">
+    <wsdl:part element="tns:Getratechangedate" name="Getratechangedate">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="UpdContractinfoResponse">
+    <wsdl:part element="tns:UpdContractinfoResponse" name="UpdContractinfoResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAcctRateHistInfoList">
+    <wsdl:part element="tns:getAcctRateHistInfoList" name="getAcctRateHistInfoList">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="QueryAcctLoanPmtResponse">
+    <wsdl:part element="tns:QueryAcctLoanPmtResponse" name="QueryAcctLoanPmtResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="NpfmToAct">
+    <wsdl:part element="tns:NpfmToAct" name="NpfmToAct">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="UpdAcctuserfield">
+    <wsdl:part element="tns:UpdAcctuserfield" name="UpdAcctuserfield">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="DoSchedpmtResponse">
+    <wsdl:part element="tns:DoSchedpmtResponse" name="DoSchedpmtResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="QuerySchedpmtResponse">
+    <wsdl:part element="tns:QuerySchedpmtResponse" name="QuerySchedpmtResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="DoValidateSpmtResponse">
+    <wsdl:part element="tns:DoValidateSpmtResponse" name="DoValidateSpmtResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetAcctLoanLinesAmt">
+    <wsdl:part element="tns:GetAcctLoanLinesAmt" name="GetAcctLoanLinesAmt">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="UpdAcctRcvbCurrrcvbStatcd">
+    <wsdl:part element="tns:UpdAcctRcvbCurrrcvbStatcd" name="UpdAcctRcvbCurrrcvbStatcd">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetBalcatCount">
+    <wsdl:part element="tns:GetBalcatCount" name="GetBalcatCount">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetBalamtInterestInfoResponse">
+    <wsdl:part element="tns:GetBalamtInterestInfoResponse" name="GetBalamtInterestInfoResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="UpdateAutopmt">
+    <wsdl:part element="tns:UpdateAutopmt" name="UpdateAutopmt">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CloseLoanAcctResponse">
+    <wsdl:part element="tns:CloseLoanAcctResponse" name="CloseLoanAcctResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="DoAddAcctMemoBalTypResponse">
+    <wsdl:part element="tns:DoAddAcctMemoBalTypResponse" name="DoAddAcctMemoBalTypResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ActToNpfm">
+    <wsdl:part element="tns:ActToNpfm" name="ActToNpfm">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="LoanTransferWithdraw">
+    <wsdl:part element="tns:LoanTransferWithdraw" name="LoanTransferWithdraw">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ValReceiptMultiResponse">
+    <wsdl:part element="tns:ValReceiptMultiResponse" name="ValReceiptMultiResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetAcctRcvbInfo">
+    <wsdl:part element="tns:GetAcctRcvbInfo" name="GetAcctRcvbInfo">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CheckLoanDepAcctConsistencyResponse">
+    <wsdl:part element="tns:CheckLoanDepAcctConsistencyResponse" name="CheckLoanDepAcctConsistencyResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="UpdContractinfo">
+    <wsdl:part element="tns:UpdContractinfo" name="UpdContractinfo">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetOfferLoansContractCount">
+    <wsdl:part element="tns:GetOfferLoansContractCount" name="GetOfferLoansContractCount">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updAcctRate">
+    <wsdl:part element="tns:updAcctRate" name="updAcctRate">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ChargeOffResponse">
+    <wsdl:part element="tns:ChargeOffResponse" name="ChargeOffResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="DelContractinfoResponse">
+    <wsdl:part element="tns:DelContractinfoResponse" name="DelContractinfoResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="QueryRequest">
+    <wsdl:part element="sch1:QueryRequest" name="QueryRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AddContractinfoResponse">
+    <wsdl:part element="tns:AddContractinfoResponse" name="AddContractinfoResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAcctLoanPmt">
+    <wsdl:part element="tns:getAcctLoanPmt" name="getAcctLoanPmt">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="QueryContract">
+    <wsdl:part element="tns:QueryContract" name="QueryContract">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AddAcctRcvbInfo">
+    <wsdl:part element="tns:AddAcctRcvbInfo" name="AddAcctRcvbInfo">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="TerminateAcctLoanResponse">
+    <wsdl:part element="tns:TerminateAcctLoanResponse" name="TerminateAcctLoanResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="DoValidateSpmt">
+    <wsdl:part element="tns:DoValidateSpmt" name="DoValidateSpmt">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="LoanSchedpmtDetailResponse">
+    <wsdl:part element="tns:LoanSchedpmtDetailResponse" name="LoanSchedpmtDetailResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAcctLoanPmtResponse">
+    <wsdl:part element="tns:getAcctLoanPmtResponse" name="getAcctLoanPmtResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetAcctIntInfoResponse">
+    <wsdl:part element="tns:GetAcctIntInfoResponse" name="GetAcctIntInfoResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="QueryResponse">
+    <wsdl:part element="sch1:QueryResponse" name="QueryResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteAcctRate">
+    <wsdl:part element="tns:deleteAcctRate" name="deleteAcctRate">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="PostLoanDisb">
+    <wsdl:part element="tns:PostLoanDisb" name="PostLoanDisb">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addAcctRate">
+    <wsdl:part element="tns:addAcctRate" name="addAcctRate">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="QueryPmtschedtypResponse">
+    <wsdl:part element="tns:QueryPmtschedtypResponse" name="QueryPmtschedtypResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AddAcctRcvbInfoResponse">
+    <wsdl:part element="tns:AddAcctRcvbInfoResponse" name="AddAcctRcvbInfoResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getMjmiBalCatTypListResponse">
+    <wsdl:part element="tns:getMjmiBalCatTypListResponse" name="getMjmiBalCatTypListResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="insupdAcctLoanPmt">
+    <wsdl:part element="tns:insupdAcctLoanPmt" name="insupdAcctLoanPmt">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="NpfmToActResponse">
+    <wsdl:part element="tns:NpfmToActResponse" name="NpfmToActResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetMjmiAcctintHistResponse">
+    <wsdl:part element="tns:GetMjmiAcctintHistResponse" name="GetMjmiAcctintHistResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="TerminateAcctLoan">
+    <wsdl:part element="tns:TerminateAcctLoan" name="TerminateAcctLoan">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetAcctintHist">
+    <wsdl:part element="tns:GetAcctintHist" name="GetAcctintHist">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetContractinfoList">
+    <wsdl:part element="tns:GetContractinfoList" name="GetContractinfoList">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetAcctLoanLinesAmtResponse">
+    <wsdl:part element="tns:GetAcctLoanLinesAmtResponse" name="GetAcctLoanLinesAmtResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AddAcctLoanPmtBal">
+    <wsdl:part element="tns:AddAcctLoanPmtBal" name="AddAcctLoanPmtBal">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetAcctRcvbInfoResponse">
+    <wsdl:part element="tns:GetAcctRcvbInfoResponse" name="GetAcctRcvbInfoResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="QueryAcctLoanPmt">
+    <wsdl:part element="tns:QueryAcctLoanPmt" name="QueryAcctLoanPmt">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetAcctUserFields">
+    <wsdl:part element="tns:GetAcctUserFields" name="GetAcctUserFields">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="PayOffInqMultiResponse">
+    <wsdl:part element="tns:PayOffInqMultiResponse" name="PayOffInqMultiResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="UpdateAutopmtResponse">
+    <wsdl:part element="tns:UpdateAutopmtResponse" name="UpdateAutopmtResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetLoanMjaccttypResponse">
+    <wsdl:part element="tns:GetLoanMjaccttypResponse" name="GetLoanMjaccttypResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetMjmiAcctintHist">
+    <wsdl:part element="tns:GetMjmiAcctintHist" name="GetMjmiAcctintHist">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="LoanAccountDetail">
+    <wsdl:part element="tns:LoanAccountDetail" name="LoanAccountDetail">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteAcctRateResponse">
+    <wsdl:part element="tns:deleteAcctRateResponse" name="deleteAcctRateResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetLoanMjmiaccttypResponse">
+    <wsdl:part element="tns:GetLoanMjmiaccttypResponse" name="GetLoanMjmiaccttypResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AddContractinfo">
+    <wsdl:part element="tns:AddContractinfo" name="AddContractinfo">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="PayOffInqMulti">
+    <wsdl:part element="tns:PayOffInqMulti" name="PayOffInqMulti">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetLoanMjmiaccttyp">
+    <wsdl:part element="tns:GetLoanMjmiaccttyp" name="GetLoanMjmiaccttyp">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="DoSchedpmt">
+    <wsdl:part element="tns:DoSchedpmt" name="DoSchedpmt">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="QuerySchedpmt">
+    <wsdl:part element="tns:QuerySchedpmt" name="QuerySchedpmt">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="LoanServicePortType">
+    <wsdl:operation name="NpfmToAct">
+      <wsdl:input message="tns:NpfmToAct" name="NpfmToAct">
+    </wsdl:input>
+      <wsdl:output message="tns:NpfmToActResponse" name="NpfmToActResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdAcctuserfield">
+      <wsdl:input message="tns:UpdAcctuserfield" name="UpdAcctuserfield">
+    </wsdl:input>
+      <wsdl:output message="tns:UpdAcctuserfieldResponse" name="UpdAcctuserfieldResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OpenLoanAcct">
+      <wsdl:input message="tns:OpenLoanAcct" name="OpenLoanAcct">
+    </wsdl:input>
+      <wsdl:output message="tns:OpenLoanAcctResponse" name="OpenLoanAcctResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAcctRateHistInfoList">
+      <wsdl:input message="tns:getAcctRateHistInfoList" name="getAcctRateHistInfoList">
+    </wsdl:input>
+      <wsdl:output message="tns:getAcctRateHistInfoListResponse" name="getAcctRateHistInfoListResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CloseLoanAcct">
+      <wsdl:input message="tns:CloseLoanAcct" name="CloseLoanAcct">
+    </wsdl:input>
+      <wsdl:output message="tns:CloseLoanAcctResponse" name="CloseLoanAcctResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBalcatCount">
+      <wsdl:input message="tns:GetBalcatCount" name="GetBalcatCount">
+    </wsdl:input>
+      <wsdl:output message="tns:GetBalcatCountResponse" name="GetBalcatCountResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DelContractinfo">
+      <wsdl:input message="tns:DelContractinfo" name="DelContractinfo">
+    </wsdl:input>
+      <wsdl:output message="tns:DelContractinfoResponse" name="DelContractinfoResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAcctLoanLinesAmt">
+      <wsdl:input message="tns:GetAcctLoanLinesAmt" name="GetAcctLoanLinesAmt">
+    </wsdl:input>
+      <wsdl:output message="tns:GetAcctLoanLinesAmtResponse" name="GetAcctLoanLinesAmtResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdAcctRcvbCurrrcvbStatcd">
+      <wsdl:input message="tns:UpdAcctRcvbCurrrcvbStatcd" name="UpdAcctRcvbCurrrcvbStatcd">
+    </wsdl:input>
+      <wsdl:output message="tns:UpdAcctRcvbCurrrcvbStatcdResponse" name="UpdAcctRcvbCurrrcvbStatcdResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActToNpfm">
+      <wsdl:input message="tns:ActToNpfm" name="ActToNpfm">
+    </wsdl:input>
+      <wsdl:output message="tns:ActToNpfmResponse" name="ActToNpfmResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsUpdAcctIntHist">
+      <wsdl:input message="tns:InsUpdAcctIntHist" name="InsUpdAcctIntHist">
+    </wsdl:input>
+      <wsdl:output message="tns:InsUpdAcctIntHistResponse" name="InsUpdAcctIntHistResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoanTransferWithdraw">
+      <wsdl:input message="tns:LoanTransferWithdraw" name="LoanTransferWithdraw">
+    </wsdl:input>
+      <wsdl:output message="tns:LoanTransferWithdrawResponse" name="LoanTransferWithdrawResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryLoanInfoByIOUCD">
+      <wsdl:input message="tns:QueryLoanInfoByIOUCD" name="QueryLoanInfoByIOUCD">
+    </wsdl:input>
+      <wsdl:output message="tns:QueryLoanInfoByIOUCDResponse" name="QueryLoanInfoByIOUCDResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAutopmt">
+      <wsdl:input message="tns:UpdateAutopmt" name="UpdateAutopmt">
+    </wsdl:input>
+      <wsdl:output message="tns:UpdateAutopmtResponse" name="UpdateAutopmtResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryPmtschedtyp">
+      <wsdl:input message="tns:QueryPmtschedtyp" name="QueryPmtschedtyp">
+    </wsdl:input>
+      <wsdl:output message="tns:QueryPmtschedtypResponse" name="QueryPmtschedtypResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAcctLoanPmt">
+      <wsdl:input message="tns:getAcctLoanPmt" name="getAcctLoanPmt">
+    </wsdl:input>
+      <wsdl:output message="tns:getAcctLoanPmtResponse" name="getAcctLoanPmtResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdAcctLoanPmtBal">
+      <wsdl:input message="tns:UpdAcctLoanPmtBal" name="UpdAcctLoanPmtBal">
+    </wsdl:input>
+      <wsdl:output message="tns:UpdAcctLoanPmtBalResponse" name="UpdAcctLoanPmtBalResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryContract">
+      <wsdl:input message="tns:QueryContract" name="QueryContract">
+    </wsdl:input>
+      <wsdl:output message="tns:QueryContractResponse" name="QueryContractResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddAcctRcvbInfo">
+      <wsdl:input message="tns:AddAcctRcvbInfo" name="AddAcctRcvbInfo">
+    </wsdl:input>
+      <wsdl:output message="tns:AddAcctRcvbInfoResponse" name="AddAcctRcvbInfoResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAcctIntInfo">
+      <wsdl:input message="tns:GetAcctIntInfo" name="GetAcctIntInfo">
+    </wsdl:input>
+      <wsdl:output message="tns:GetAcctIntInfoResponse" name="GetAcctIntInfoResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DoValidateSpmt">
+      <wsdl:input message="tns:DoValidateSpmt" name="DoValidateSpmt">
+    </wsdl:input>
+      <wsdl:output message="tns:DoValidateSpmtResponse" name="DoValidateSpmtResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getMjmiBalCatTypList">
+      <wsdl:input message="tns:getMjmiBalCatTypList" name="getMjmiBalCatTypList">
+    </wsdl:input>
+      <wsdl:output message="tns:getMjmiBalCatTypListResponse" name="getMjmiBalCatTypListResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAcctRcvbInfo">
+      <wsdl:input message="tns:GetAcctRcvbInfo" name="GetAcctRcvbInfo">
+    </wsdl:input>
+      <wsdl:output message="tns:GetAcctRcvbInfoResponse" name="GetAcctRcvbInfoResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLoanAcctInfoMaint">
+      <wsdl:input message="tns:GetLoanAcctInfoMaint" name="GetLoanAcctInfoMaint">
+    </wsdl:input>
+      <wsdl:output message="tns:GetLoanAcctInfoMaintResponse" name="GetLoanAcctInfoMaintResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOfferLoansContractCount">
+      <wsdl:input message="tns:GetOfferLoansContractCount" name="GetOfferLoansContractCount">
+    </wsdl:input>
+      <wsdl:output message="tns:GetOfferLoansContractCountResponse" name="GetOfferLoansContractCountResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updAcctRate">
+      <wsdl:input message="tns:updAcctRate" name="updAcctRate">
+    </wsdl:input>
+      <wsdl:output message="tns:updAcctRateResponse" name="updAcctRateResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdContractinfo">
+      <wsdl:input message="tns:UpdContractinfo" name="UpdContractinfo">
+    </wsdl:input>
+      <wsdl:output message="tns:UpdContractinfoResponse" name="UpdContractinfoResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChargeOff">
+      <wsdl:input message="tns:ChargeOff" name="ChargeOff">
+    </wsdl:input>
+      <wsdl:output message="tns:ChargeOffResponse" name="ChargeOffResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetIoucdinfoList">
+      <wsdl:input message="tns:GetIoucdinfoList" name="GetIoucdinfoList">
+    </wsdl:input>
+      <wsdl:output message="tns:GetIoucdinfoListResponse" name="GetIoucdinfoListResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addAcctRate">
+      <wsdl:input message="tns:addAcctRate" name="addAcctRate">
+    </wsdl:input>
+      <wsdl:output message="tns:addAcctRateResponse" name="addAcctRateResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Base">
+      <wsdl:input message="tns:BaseRequest" name="BaseRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:BaseResponse" name="BaseResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCalcschedInfo">
+      <wsdl:input message="tns:GetCalcschedInfo" name="GetCalcschedInfo">
+    </wsdl:input>
+      <wsdl:output message="tns:GetCalcschedInfoResponse" name="GetCalcschedInfoResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Query">
+      <wsdl:input message="tns:QueryRequest" name="QueryRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:QueryResponse" name="QueryResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLoanMjaccttyp">
+      <wsdl:input message="tns:GetLoanMjaccttyp" name="GetLoanMjaccttyp">
+    </wsdl:input>
+      <wsdl:output message="tns:GetLoanMjaccttypResponse" name="GetLoanMjaccttypResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAcctAmortSched">
+      <wsdl:input message="tns:GetAcctAmortSched" name="GetAcctAmortSched">
+    </wsdl:input>
+      <wsdl:output message="tns:GetAcctAmortSchedResponse" name="GetAcctAmortSchedResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteAcctRate">
+      <wsdl:input message="tns:deleteAcctRate" name="deleteAcctRate">
+    </wsdl:input>
+      <wsdl:output message="tns:deleteAcctRateResponse" name="deleteAcctRateResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DoUpdateAcctintHist">
+      <wsdl:input message="tns:DoUpdateAcctintHist" name="DoUpdateAcctintHist">
+    </wsdl:input>
+      <wsdl:output message="tns:DoUpdateAcctintHistResponse" name="DoUpdateAcctintHistResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PostLoanDisb">
+      <wsdl:input message="tns:PostLoanDisb" name="PostLoanDisb">
+    </wsdl:input>
+      <wsdl:output message="tns:PostLoanDisbResponse" name="PostLoanDisbResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DelAcctUserField">
+      <wsdl:input message="tns:DelAcctUserField" name="DelAcctUserField">
+    </wsdl:input>
+      <wsdl:output message="tns:DelAcctUserFieldResponse" name="DelAcctUserFieldResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TerminateAcctLoan">
+      <wsdl:input message="tns:TerminateAcctLoan" name="TerminateAcctLoan">
+    </wsdl:input>
+      <wsdl:output message="tns:TerminateAcctLoanResponse" name="TerminateAcctLoanResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValReceiptMulti">
+      <wsdl:input message="tns:ValReceiptMulti" name="ValReceiptMulti">
+    </wsdl:input>
+      <wsdl:output message="tns:ValReceiptMultiResponse" name="ValReceiptMultiResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PettyLoanSignType">
+      <wsdl:input message="tns:PettyLoanSignType" name="PettyLoanSignType">
+    </wsdl:input>
+      <wsdl:output message="tns:PettyLoanSignTypeResponse" name="PettyLoanSignTypeResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAcctintHist">
+      <wsdl:input message="tns:GetAcctintHist" name="GetAcctintHist">
+    </wsdl:input>
+      <wsdl:output message="tns:GetAcctintHistResponse" name="GetAcctintHistResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insupdAcctLoanPmt">
+      <wsdl:input message="tns:insupdAcctLoanPmt" name="insupdAcctLoanPmt">
+    </wsdl:input>
+      <wsdl:output message="tns:insupdAcctLoanPmtResponse" name="insupdAcctLoanPmtResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoanPayment">
+      <wsdl:input message="tns:LoanPayment" name="LoanPayment">
+    </wsdl:input>
+      <wsdl:output message="tns:LoanPaymentResponse" name="LoanPaymentResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckLoanDepAcctConsistency">
+      <wsdl:input message="tns:CheckLoanDepAcctConsistency" name="CheckLoanDepAcctConsistency">
+    </wsdl:input>
+      <wsdl:output message="tns:CheckLoanDepAcctConsistencyResponse" name="CheckLoanDepAcctConsistencyResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryAcctLoanPmt">
+      <wsdl:input message="tns:QueryAcctLoanPmt" name="QueryAcctLoanPmt">
+    </wsdl:input>
+      <wsdl:output message="tns:QueryAcctLoanPmtResponse" name="QueryAcctLoanPmtResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAcctUserFields">
+      <wsdl:input message="tns:GetAcctUserFields" name="GetAcctUserFields">
+    </wsdl:input>
+      <wsdl:output message="tns:GetAcctUserFieldsResponse" name="GetAcctUserFieldsResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DoAddAcctintHist">
+      <wsdl:input message="tns:DoAddAcctintHist" name="DoAddAcctintHist">
+    </wsdl:input>
+      <wsdl:output message="tns:DoAddAcctintHistResponse" name="DoAddAcctintHistResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBalamtInterestInfo">
+      <wsdl:input message="tns:GetBalamtInterestInfo" name="GetBalamtInterestInfo">
+    </wsdl:input>
+      <wsdl:output message="tns:GetBalamtInterestInfoResponse" name="GetBalamtInterestInfoResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetContractinfoList">
+      <wsdl:input message="tns:GetContractinfoList" name="GetContractinfoList">
+    </wsdl:input>
+      <wsdl:output message="tns:GetContractinfoListResponse" name="GetContractinfoListResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddAcctLoanPmtBal">
+      <wsdl:input message="tns:AddAcctLoanPmtBal" name="AddAcctLoanPmtBal">
+    </wsdl:input>
+      <wsdl:output message="tns:AddAcctLoanPmtBalResponse" name="AddAcctLoanPmtBalResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddContractinfo">
+      <wsdl:input message="tns:AddContractinfo" name="AddContractinfo">
+    </wsdl:input>
+      <wsdl:output message="tns:AddContractinfoResponse" name="AddContractinfoResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PayOffInqMulti">
+      <wsdl:input message="tns:PayOffInqMulti" name="PayOffInqMulti">
+    </wsdl:input>
+      <wsdl:output message="tns:PayOffInqMultiResponse" name="PayOffInqMultiResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLoanMjmiaccttyp">
+      <wsdl:input message="tns:GetLoanMjmiaccttyp" name="GetLoanMjmiaccttyp">
+    </wsdl:input>
+      <wsdl:output message="tns:GetLoanMjmiaccttypResponse" name="GetLoanMjmiaccttypResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DoAddAcctMemoBalTyp">
+      <wsdl:input message="tns:DoAddAcctMemoBalTyp" name="DoAddAcctMemoBalTyp">
+    </wsdl:input>
+      <wsdl:output message="tns:DoAddAcctMemoBalTypResponse" name="DoAddAcctMemoBalTypResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QuerySchedpmt">
+      <wsdl:input message="tns:QuerySchedpmt" name="QuerySchedpmt">
+    </wsdl:input>
+      <wsdl:output message="tns:QuerySchedpmtResponse" name="QuerySchedpmtResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DoSchedpmt">
+      <wsdl:input message="tns:DoSchedpmt" name="DoSchedpmt">
+    </wsdl:input>
+      <wsdl:output message="tns:DoSchedpmtResponse" name="DoSchedpmtResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Getratechangedate">
+      <wsdl:input message="tns:Getratechangedate" name="Getratechangedate">
+    </wsdl:input>
+      <wsdl:output message="tns:GetratechangedateResponse" name="GetratechangedateResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoanSchedpmtDetail">
+      <wsdl:input message="tns:LoanSchedpmtDetail" name="LoanSchedpmtDetail">
+    </wsdl:input>
+      <wsdl:output message="tns:LoanSchedpmtDetailResponse" name="LoanSchedpmtDetailResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsRtxn">
+      <wsdl:input message="tns:InsRtxn" name="InsRtxn">
+    </wsdl:input>
+      <wsdl:output message="tns:InsRtxnResponse" name="InsRtxnResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMjmiAcctintHist">
+      <wsdl:input message="tns:GetMjmiAcctintHist" name="GetMjmiAcctintHist">
+    </wsdl:input>
+      <wsdl:output message="tns:GetMjmiAcctintHistResponse" name="GetMjmiAcctintHistResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Addacctuserfield">
+      <wsdl:input message="tns:Addacctuserfield" name="Addacctuserfield">
+    </wsdl:input>
+      <wsdl:output message="tns:AddacctuserfieldResponse" name="AddacctuserfieldResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoanAccountDetail">
+      <wsdl:input message="tns:LoanAccountDetail" name="LoanAccountDetail">
+    </wsdl:input>
+      <wsdl:output message="tns:LoanAccountDetailResponse" name="LoanAccountDetailResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="LoanServicePortTypeSoap11" type="tns:LoanServicePortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="NpfmToAct">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="NpfmToAct">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="NpfmToActResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdAcctuserfield">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="UpdAcctuserfield">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="UpdAcctuserfieldResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OpenLoanAcct">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="OpenLoanAcct">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="OpenLoanAcctResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAcctRateHistInfoList">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getAcctRateHistInfoList">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAcctRateHistInfoListResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CloseLoanAcct">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="CloseLoanAcct">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="CloseLoanAcctResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBalcatCount">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="GetBalcatCount">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="GetBalcatCountResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DelContractinfo">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="DelContractinfo">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="DelContractinfoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAcctLoanLinesAmt">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="GetAcctLoanLinesAmt">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="GetAcctLoanLinesAmtResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdAcctRcvbCurrrcvbStatcd">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="UpdAcctRcvbCurrrcvbStatcd">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="UpdAcctRcvbCurrrcvbStatcdResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActToNpfm">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="ActToNpfm">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="ActToNpfmResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsUpdAcctIntHist">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="InsUpdAcctIntHist">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="InsUpdAcctIntHistResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoanTransferWithdraw">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="LoanTransferWithdraw">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="LoanTransferWithdrawResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryLoanInfoByIOUCD">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="QueryLoanInfoByIOUCD">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="QueryLoanInfoByIOUCDResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAutopmt">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="UpdateAutopmt">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="UpdateAutopmtResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryPmtschedtyp">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="QueryPmtschedtyp">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="QueryPmtschedtypResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAcctLoanPmt">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getAcctLoanPmt">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAcctLoanPmtResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdAcctLoanPmtBal">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="UpdAcctLoanPmtBal">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="UpdAcctLoanPmtBalResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryContract">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="QueryContract">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="QueryContractResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddAcctRcvbInfo">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="AddAcctRcvbInfo">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="AddAcctRcvbInfoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAcctIntInfo">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="GetAcctIntInfo">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="GetAcctIntInfoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DoValidateSpmt">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="DoValidateSpmt">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="DoValidateSpmtResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getMjmiBalCatTypList">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getMjmiBalCatTypList">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getMjmiBalCatTypListResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAcctRcvbInfo">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="GetAcctRcvbInfo">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="GetAcctRcvbInfoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLoanAcctInfoMaint">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="GetLoanAcctInfoMaint">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="GetLoanAcctInfoMaintResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOfferLoansContractCount">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="GetOfferLoansContractCount">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="GetOfferLoansContractCountResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updAcctRate">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="updAcctRate">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="updAcctRateResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdContractinfo">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="UpdContractinfo">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="UpdContractinfoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChargeOff">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="ChargeOff">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="ChargeOffResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetIoucdinfoList">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="GetIoucdinfoList">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="GetIoucdinfoListResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addAcctRate">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="addAcctRate">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="addAcctRateResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Base">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="BaseRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="BaseResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCalcschedInfo">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="GetCalcschedInfo">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="GetCalcschedInfoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Query">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="QueryRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="QueryResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLoanMjaccttyp">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="GetLoanMjaccttyp">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="GetLoanMjaccttypResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAcctAmortSched">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="GetAcctAmortSched">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="GetAcctAmortSchedResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteAcctRate">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="deleteAcctRate">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="deleteAcctRateResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DoUpdateAcctintHist">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="DoUpdateAcctintHist">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="DoUpdateAcctintHistResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PostLoanDisb">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="PostLoanDisb">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="PostLoanDisbResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DelAcctUserField">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="DelAcctUserField">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="DelAcctUserFieldResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TerminateAcctLoan">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="TerminateAcctLoan">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="TerminateAcctLoanResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValReceiptMulti">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="ValReceiptMulti">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="ValReceiptMultiResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PettyLoanSignType">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="PettyLoanSignType">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="PettyLoanSignTypeResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAcctintHist">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="GetAcctintHist">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="GetAcctintHistResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insupdAcctLoanPmt">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="insupdAcctLoanPmt">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="insupdAcctLoanPmtResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoanPayment">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="LoanPayment">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="LoanPaymentResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckLoanDepAcctConsistency">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="CheckLoanDepAcctConsistency">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="CheckLoanDepAcctConsistencyResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryAcctLoanPmt">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="QueryAcctLoanPmt">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="QueryAcctLoanPmtResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAcctUserFields">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="GetAcctUserFields">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="GetAcctUserFieldsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DoAddAcctintHist">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="DoAddAcctintHist">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="DoAddAcctintHistResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBalamtInterestInfo">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="GetBalamtInterestInfo">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="GetBalamtInterestInfoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetContractinfoList">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="GetContractinfoList">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="GetContractinfoListResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddAcctLoanPmtBal">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="AddAcctLoanPmtBal">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="AddAcctLoanPmtBalResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddContractinfo">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="AddContractinfo">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="AddContractinfoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PayOffInqMulti">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="PayOffInqMulti">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="PayOffInqMultiResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLoanMjmiaccttyp">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="GetLoanMjmiaccttyp">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="GetLoanMjmiaccttypResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DoAddAcctMemoBalTyp">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="DoAddAcctMemoBalTyp">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="DoAddAcctMemoBalTypResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QuerySchedpmt">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="QuerySchedpmt">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="QuerySchedpmtResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DoSchedpmt">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="DoSchedpmt">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="DoSchedpmtResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Getratechangedate">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="Getratechangedate">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="GetratechangedateResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoanSchedpmtDetail">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="LoanSchedpmtDetail">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="LoanSchedpmtDetailResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsRtxn">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="InsRtxn">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="InsRtxnResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMjmiAcctintHist">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="GetMjmiAcctintHist">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="GetMjmiAcctintHistResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Addacctuserfield">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="Addacctuserfield">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="AddacctuserfieldResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoanAccountDetail">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="LoanAccountDetail">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="LoanAccountDetailResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="LoanService">
+    <wsdl:port binding="tns:LoanServicePortTypeSoap11" name="LoanServicePortTypeSoap11">
+      <soap:address location="http://localhost:8088/loanService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

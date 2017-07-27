@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE segment SYSTEM "packetutf8.dtd">
+<!-- 微信退货状态查询支付 -->
+<segment>
+	<!--服务代码  -->
+	<xmlTag tagName="txnCode">
+		<String name="txnCode" defaultValue="" />
+	</xmlTag>
+	<!--商户编号 -->
+	<xmlTag tagName="merId">
+		<String name="merId" defaultValue="" />
+	</xmlTag>
+	<!-- 交易类型 -->
+	<xmlTag tagName="transType">
+		<String name="transType" defaultValue="" />
+	</xmlTag>
+	<!-- 渠道编号 -->
+	<xmlTag tagName="channel">
+		<String name="channel" defaultValue="" />
+	</xmlTag>
+	<!-- 接入类型 -->
+	<xmlTag tagName="payAccessType">
+		<String name="payAccessType" defaultValue="" />
+	</xmlTag>
+	<!-- 原二维码前置流水号 -->
+	<xmlTag tagName="initOrderNumber">
+		<String name="initOrderNumber" defaultValue="" />
+	</xmlTag>
+	<!-- 原二位码前置交易时间 -->
+	<xmlTag tagName="initOrderTime">
+		<String name="initOrderTime" defaultValue="" />
+	</xmlTag>
+	<!-- 原二位码前置交易时间 -->
+	<xmlTag tagName="outRequestNo">
+		<String name="outRequestNo" defaultValue="" />
+	</xmlTag>
+</segment>

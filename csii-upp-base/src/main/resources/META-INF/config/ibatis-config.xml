@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spring:beans xmlns:spring="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.csii.com.cn/schema/pe"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd 
+	http://www.csii.com.cn/schema/pe http://www.csii.com.cn/schema/pe/pe-config.xsd">
+
+	<config>
+		<transactionManager id="transactionManager">
+			<ref name="dataSource">dataSource</ref>
+		</transactionManager>
+
+		<sqlExecutor id="sqlExecutor">
+			<ref name="dataSource">dataSource</ref>
+		</sqlExecutor>
+
+		<bean name="sqlMapClient" class="com.csii.upp.dao.ibatis.SqlMapClientFactoryBean">
+			<bean name="sqlExecutor" class="com.csii.upp.dao.ibatis.LimitSqlExecutor">
+				<bean name="dialect" class="com.csii.upp.dao.dialect.OracleDialect" /> 
+				<!-- <bean name="dialect" class="com.csii.upp.dao.dialect.DB2Dialect" />  -->
+				<!-- <bean name="dialect" class="com.csii.upp.dao.dialect.MySQLDialect" /> -->
+				<param name="enableLimit">true</param>
+			</bean>
+			<list name="configLocations">
+				<param>classpath:/config/sqlmap/config.xml</param>
+				<param>classpath:/config/sqlmap/extend/config.xml</param>
+			</list>
+		</bean>
+
+		<bean id="sqlMapClientTemplate" class="org.springframework.orm.ibatis.SqlMapClientTemplate">
+			<ref name="dataSource">dataSource</ref>
+			<ref name="sqlMapClient">sqlMapClient</ref>
+		</bean>
+
+		<transactionTemplate id="transactionTemplate">
+			<ref name="transactionManager">transactionManager</ref>
+			<param name="propagationBehaviorName">PROPAGATION_REQUIRED</param>
+			<param name="isolationLevelName">ISOLATION_DEFAULT</param>
+			<param name="readOnly">false</param>
+			<param name="timeout">150</param><!-- in seconds -->
+		</transactionTemplate>
+
+		<bean id="jdbcAccessAwareProcessor" class="com.csii.pe.config.support.JdbcAccessAwareProcessor">
+			<ref name="sqlExecutor">sqlExecutor</ref>
+			<ref name="sqlMap">sqlMapClientTemplate</ref>
+			<ref name="transactionTemplate">transactionTemplate</ref>
+		</bean>
+
+		<bean class="com.csii.upp.dao.BasePayDAO" />
+	</config>
+</spring:beans>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spring:beans xmlns:spring="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.csii.com.cn/schema/pe"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd 
+	http://www.csii.com.cn/schema/pe http://www.csii.com.cn/schema/pe/pe-config.xsd">
+	<config>
+
+		<bean id="eventManager" class="com.csii.upp.event.DefaultEventManager">
+			<list name="eventHandlers">
+				<ref>notifyMerResultEventHandler</ref>
+				<ref>NotifyDZKNResultEventHandler</ref>
+				<ref>regOnlineJnlEventHandler</ref>
+				<ref>synSignExitEventHandler</ref>
+				<ref>batchTransferHandler</ref>
+			</list>
+			<ref name="executor">eventManagerThreadPool</ref>
+		</bean>
+
+		<!-- 商户异步通知 -->
+		<bean id="notifyMerResultEventHandler"
+			class="com.csii.upp.payment.event.handler.NotifyMerResultEventHandler">
+			<param name="formatName">merNotifyPacket</param>
+			<ref name="xmlSignature">xmlSignature</ref>
+		</bean>
+
+		<bean id="NotifyDZKNResultEventHandler"
+			class="com.csii.upp.payment.event.handler.NotifyDZKNResultEventHandler">
+			<ref name="signature">commonSignature</ref>
+			<ref name="xmlSignature">xmlSignature</ref>
+			<param name="notifyTime">${electronPort.Notify.Time}</param>
+			<param name="messageTypCd">${electronPort.Notify.messageTypCd}</param>
+			<param name="userId">${electronPort.Notify.UserId}</param>
+			<param name="secret">${electronPort.Notify.Secret}</param>
+			<param name="URL">${electronPort.Notify.URL}</param>
+			<param name="source">${electronPort.Notify.PayTypCd}</param>
+		</bean>
+
+		<!-- 异步登记交易流水 -->
+		<bean id="regOnlineJnlEventHandler"
+			class="com.csii.upp.payment.event.handler.RegOnlineJnlEventHandler">
+			<param name="xmlBodyName">XMLBody</param>
+		</bean>
+
+		<!-- 批量转账 -->
+		<bean id="batchTransferHandler"
+			class="com.csii.upp.payment.event.handler.BatchTransferHandler">
+		</bean>
+
+	</config>
+</spring:beans>

@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spring:beans xmlns:spring="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.csii.com.cn/schema/pe"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd 
+	http://www.csii.com.cn/schema/pe http://www.csii.com.cn/schema/pe/pe-config.xsd">
+	<config>
+		<!-- 实时借记交易 -->
+		<transaction id="RTDT" template="fundUppTemplate">
+			<actions>
+				<ref name="action">RealTimeDebitRtxnAction</ref>
+			</actions>
+		</transaction>
+		<!-- 小米白条消费 -->
+		<transaction id="XMPAY" template="fundUppTemplate">
+			<actions>
+				<ref name="action">XiaoMiPaymentAction</ref>
+			</actions>
+		</transaction>
+		<action id="XiaoMiPaymentAction"
+			class="com.csii.upp.fundprocess.action.payment.XiaoMiPaymentAction"></action>
+
+		<!-- 二维码下单 -->
+		<transaction id="QRCO" template="fundUppTemplate">
+			<actions>
+				<ref name="action">QRCOAction</ref>
+			</actions>
+		</transaction>
+		<action id="QRCOAction"
+			class="com.csii.upp.fundprocess.action.online.QRCodeCreateOrderAction"></action>
+
+
+		<!-- 类信用卡付 -->
+		<transaction id="CCCPAY" template="fundUppTemplate">
+			<actions>
+				<ref name="action">CccPayPaymentAction</ref>
+			</actions>
+		</transaction>
+		<action id="CccPayPaymentAction"
+			class="com.csii.upp.fundprocess.action.payment.CccPaymentAction"></action>
+
+		<transaction id="QueryLimitAmt" template="queryRegUppTemplate">
+			<actions>
+				<ref name="action">XiaoMiTransLimitAction</ref>
+			</actions>
+		</transaction>
+		<action id="XiaoMiTransLimitAction"
+			class="com.csii.upp.fundprocess.action.online.XiaoMiTransLimitAction" />
+		<!--实时贷记 -->
+		<transaction id="RTCT" template="fundUppTemplate">
+			<actions>
+				<ref name="action">RealTimeCreditRtxnAction</ref>
+			</actions>
+		</transaction>
+		<action id="RealTimeCreditRtxnAction"
+			class="com.csii.upp.fundprocess.action.online.RealTimeCreditRtxnAction" />
+		<action id="RealTimeDebitRtxnAction"
+			class="com.csii.upp.fundprocess.action.online.RealTimeDebitRtxnAction" />
+
+		<!-- 客户鉴权 -->
+		<transaction id="CATA" template="fundUppTemplate">
+			<actions>
+				<ref name="action">CustomAuthenAction</ref>
+			</actions>
+		</transaction>
+		<action id="CustomAuthenAction"
+			class="com.csii.upp.fundprocess.action.online.CustomAuthenAction" />
+
+		<!--普通贷记 -->
+		<transaction id="SPCT" template="fundUppTemplate">
+			<actions>
+				<ref name="action">CommonCreditRtxnAction</ref>
+			</actions>
+		</transaction>
+		<action id="CommonCreditRtxnAction"
+			class="com.csii.upp.fundprocess.action.online.CommonCreditRtxnAction" />
+
+		<!-- 单笔记账 -->
+		<transaction id="STXN" template="fundUppTemplate">
+			<actions>
+				<ref name="action">SingleRtxnAction</ref>
+			</actions>
+		</transaction>
+		<action id="SingleRtxnAction"
+			class="com.csii.upp.fundprocess.action.online.SingleRtxnAction" />
+		<!-- 撤销 -->
+		<transaction id="REVK" template="fundUppTemplate">
+			<actions>
+				<ref name="action">RevokeRtxnAction</ref>
+			</actions>
+		</transaction>
+		<action id="RevokeRtxnAction"
+			class="com.csii.upp.fundprocess.action.online.RevokeRtxnAction" />
+
+		<!-- 人行代收前半部分 -->
+		<transaction id="PBCB" template="fundUppTemplate">
+			<actions>
+				<ref name="action">PbcCollectionBeforeAction</ref>
+			</actions>
+		</transaction>
+		<action id="PbcCollectionBeforeAction"
+			class="com.csii.upp.fundprocess.action.online.PbcCollectionBeforeAction" />
+
+		<!-- 人行代收后半部分 -->
+		<transaction id="PBCA" template="fundUppTemplate">
+			<actions>
+				<ref name="action">PbcCollectionAfterAction</ref>
+			</actions>
+		</transaction>
+		<action id="PbcCollectionAfterAction"
+			class="com.csii.upp.fundprocess.action.online.PbcCollectionAfterAction" />
+
+
+		<!-- 基金申购交易 -->
+		<transaction id="FPUR" template="fundUppTemplate">
+			<actions>
+				<ref name="action">FundPurchaseAction</ref>
+			</actions>
+		</transaction>
+		<action id="FundPurchaseAction"
+			class="com.csii.upp.fundprocess.action.online.FundPurchaseAction" />
+
+		<!-- 基金赎回交易 -->
+		<transaction id="FRED" template="fundUppTemplate">
+			<actions>
+				<ref name="action">FundRedemptionAction</ref>
+			</actions>
+		</transaction>
+		<action id="FundRedemptionAction"
+			class="com.csii.upp.fundprocess.action.online.FundRedemptionAction" />
+
+		<!-- 查询交易流水交易 -->
+		<transaction id="QTXN" template="queryRegUppTemplate">
+			<actions>
+				<ref name="action">QueryOverallRtxnAction</ref>
+			</actions>
+		</transaction>
+		<action id="QueryOverallRtxnAction"
+			class="com.csii.upp.fundprocess.action.online.QueryOverallRtxnAction" />
+
+		<!-- 查询交易状态 -->
+		<transaction id="QRTS" template="queryRegUppTemplate">
+			<actions>
+				<ref name="action">QueryOverallRtxnStatAction</ref>
+			</actions>
+		</transaction>
+		<action id="QueryOverallRtxnStatAction"
+			class="com.csii.upp.fundprocess.action.online.QueryOverallRtxnStatAction" />
+
+		<!-- 实名认证 -->
+		<transaction id="AUTN" template="queryRegUppTemplate">
+			<actions>
+				<ref name="action">AuthenticateNameAction</ref>
+			</actions>
+		</transaction>
+		<action id="AuthenticateNameAction"
+			class="com.csii.upp.fundprocess.action.online.AuthenticateNameAction" />
+
+
+		<!-- 冲正 -->
+		<transaction id="CRAC" template="fundUppTemplate">
+			<actions>
+				<ref name="action">CorrectAccountAction</ref>
+			</actions>
+		</transaction>
+		<action id="CorrectAccountAction"
+			class="com.csii.upp.fundprocess.action.online.CorrectAccountAction" />
+
+		<!-- 账户关系验证与查询 -->
+		<transaction id="VDAT" template="queryRegUppTemplate">
+			<actions>
+				<ref name="action">CupsValidateAcctAction</ref>
+			</actions>
+		</transaction>
+		<action id="CupsValidateAcctAction"
+			class="com.csii.upp.fundprocess.action.online.CupsValidateAcctAction" />
+
+		<!-- 消费 -->
+		<transaction id="CONS" template="fundUppTemplate">
+			<actions>
+				<ref name="action">CupsConsumeAction</ref>
+			</actions>
+		</transaction>
+		<action id="CupsConsumeAction"
+			class="com.csii.upp.fundprocess.action.online.CupsConsumeAction" />
+
+		<!-- 消费撤销 -->
+		<transaction id="CONC" template="fundUppTemplate">
+			<actions>
+				<ref name="action">CupsConsumeCancelAction</ref>
+			</actions>
+		</transaction>
+		<action id="CupsConsumeCancelAction"
+			class="com.csii.upp.fundprocess.action.online.CupsConsumeCancelAction" />
+
+		<!-- 消费退货 -->
+		<transaction id="CONR" template="fundUppTemplate">
+			<actions>
+				<ref name="action">CupsConsumeReturnAction</ref>
+			</actions>
+		</transaction>
+		<action id="CupsConsumeReturnAction"
+			class="com.csii.upp.fundprocess.action.online.CupsConsumeReturnAction" />
+
+		<!-- 挂账 -->
+		<transaction id="BBOC" template="fundUppTemplate">
+			<actions>
+				<ref name="action">DepositOnCreditAcctAction</ref>
+			</actions>
+		</transaction>
+		<action id="DepositOnCreditAcctAction"
+			class="com.csii.upp.fundprocess.action.online.DepositOnCreditAcctAction" />
+
+		<!-- 银联清算汇总查询 -->
+		<transaction id="QDTA" template="queryRegUppTemplate">
+			<actions>
+				<ref name="action">QueryDateTotalAmtAction</ref>
+			</actions>
+		</transaction>
+		<action id="QueryDateTotalAmtAction"
+			class="com.csii.upp.fundprocess.action.online.QueryDateTotalAmtAction"></action>
+
+
+	</config>
+</spring:beans>

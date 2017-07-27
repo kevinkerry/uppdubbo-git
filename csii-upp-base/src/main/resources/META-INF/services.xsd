@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://www.csii.com.cn/pe/dubboServices"
+	xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.csii.com.cn/pe/dubboServices"
+	xmlns:spring="http://www.springframework.org/schema/beans">
+	
+<!-- 	<xsd:import namespace="http://www.w3.org/XML/1998/namespace" /> -->
+	<import namespace="http://www.springframework.org/schema/beans" />
+	<import namespace="http://www.springframework.org/schema/tool" />
+
+	<element name="impl" type="tns:implType"></element>
+
+	<complexType name="implType">
+		<attribute name="id" type="string" use="required"></attribute>
+		<attribute name="interface" type="string" use="required"></attribute>
+		<attribute name="coreController" type="string" use="optional">
+		</attribute>
+	</complexType>
+
+	<element name="bridge" type="tns:simplType"></element>
+
+	<complexType name="simplType">
+		<complexContent>
+			<extension base="tns:implType">
+				<sequence>
+					<element ref="tns:mapping" minOccurs="0" maxOccurs="unbounded"></element>
+				</sequence>
+				<attribute name="trsCode" type="string"
+					use="optional">
+				</attribute>
+				<attribute name="mapping" type="string"
+					use="optional">
+				</attribute>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<element name="mapping" type="tns:methodType"/>
+	<complexType name="methodType">
+		<attribute name="method" type="string" use="required"></attribute>
+		<attribute name="trsCode" type="string" use="required"></attribute>
+	</complexType>
+
+	<element name="transport" type="tns:transportType"></element>
+	<complexType name="transportType">
+		<sequence>
+			<element ref="tns:mapping" minOccurs="0" maxOccurs="unbounded"></element>
+		</sequence>
+		<attribute name="id" type="string" use="required"></attribute>
+		<attribute name="trsCodeName" type="string" use="required"></attribute>
+	</complexType>
+</schema>

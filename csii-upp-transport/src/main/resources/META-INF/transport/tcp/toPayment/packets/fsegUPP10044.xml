@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE segment SYSTEM "packetutf8.dtd">
+<!-- 积分查询 -->
+<segment>
+	<!-- 客户卡号 -->
+	<xmlTag tagName="PayerAcctNbr">
+		<String name="payerAcctNbr" />
+	</xmlTag>
+	<!-- 订单金额 -->
+	<xmlTag tagName="TransAmt">
+		<String name="transAmt" />
+	</xmlTag>
+</segment>

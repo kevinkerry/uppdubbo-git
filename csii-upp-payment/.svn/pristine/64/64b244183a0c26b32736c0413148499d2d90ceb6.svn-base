@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 电子口岸通知报文体 -->
+<!DOCTYPE segment SYSTEM "packetutf8.dtd">
+<segment>
+	<Group name="Message"
+		xmlHead="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;">
+		<Group name="Header">
+			<xmlTag tagName="CreateTime">
+				<Date name="transTime" pattern="yyyy-MM-dd HH:mm:ss"></Date>
+			</xmlTag>
+		</Group>
+		<Group name="Body">
+			<Group name="Pay">
+				<xmlTag tagName="PaymentNo">
+					<String name="TransSeqNbr" />
+				</xmlTag>
+				<xmlTag tagName="OrderSeqNo">
+					<String name="MerSeqNbr" />
+				</xmlTag>
+				<xmlTag tagName="Amount">
+					<String name="TransAmt" />
+				</xmlTag>
+				<xmlTag tagName="CurrCode">
+					<String name="currCode" defaultValue="RMB" />
+				</xmlTag>
+				<xmlTag tagName="Source">
+					<String name="source" defaultValue="32" />
+				</xmlTag>
+				<xmlTag tagName="Idnum">
+					<String name="PayerIdNbr" />
+				</xmlTag>
+				<xmlTag tagName="Name">
+					<String name="PayerAcctName" />
+				</xmlTag>
+				<xmlTag tagName="Phone">
+					<String name="PayerPhoneNo" defaultValue="" />
+				</xmlTag>
+				<xmlTag tagName="Email">
+					<String name="Email" defaultValue="" />
+				</xmlTag>
+			</Group>
+		</Group>
+	</Group>
+</segment>

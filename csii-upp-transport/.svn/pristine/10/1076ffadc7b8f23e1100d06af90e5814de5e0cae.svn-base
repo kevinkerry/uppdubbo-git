@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spring:beans xmlns:spring="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.csii.com.cn/schema/pe"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd 
+	http://www.csii.com.cn/schema/pe http://www.csii.com.cn/schema/pe/pe-config.xsd">
+	<config>
+		<transport id="httpTransport" class="com.csii.upp.transport.HttpTransPort">
+			<param name="proxyIP">${merResult.Notify.proxyIP}</param>
+			<param name="proxyPort">${merResult.Notify.proxyPort}</param>
+			<param name="isProxy">${merResult.Notify.isProxy}</param>
+			<param name="connectTimeOut">${merResult.Notify.connectTimeOut}</param>
+		</transport>
+	</config>
+</spring:beans>

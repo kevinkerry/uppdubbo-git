@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE inboundPacket SYSTEM "packetutf8.dtd">
+<inboundPacket parsePrefix="p">
+	<segment>
+		<fixInteger name="BodyLength" length="8" />
+		<fixString name="TransCode" length="8"/><!-- 交易代码 -->
+		<fixString name="SystemCode" length="2"/><!-- 系统代码 -->
+	</segment>
+	<include include="XmlHead" />
+</inboundPacket>

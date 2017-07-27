@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="QUEAPPLHISTADNAPPL">
+	<resultMap class="com.csii.upp.dto.extend.QueapplhistAndAppl"
+		id="BaseResultMap">
+		<result column="QUENBR" jdbcType="DECIMAL" property="quenbr" />
+		<result column="APPLNBR" jdbcType="DECIMAL" property="applnbr" />
+		<result column="QUESUBNBR" jdbcType="DECIMAL" property="quesubnbr" />
+		<result column="RUNSEQNBR" jdbcType="DECIMAL" property="runseqnbr" />
+		<result column="STARTDATETIME" jdbcType="VARCHAR" property="startdatetime" />
+		<result column="STOPDATETIME" jdbcType="VARCHAR" property="stopdatetime" />
+		<result column="RUNNTWKNODENBR" jdbcType="DECIMAL" property="runntwknodenbr" />
+		<result column="DATELASTMAINT" jdbcType="TIMESTAMP" property="datelastmaint" />
+		<result column="RUNNINGSTATUS" jdbcType="DECIMAL" property="runningstatus" />
+		<result column="RUNDATE" jdbcType="DATE" property="rundate" />
+		<result column="DATACOUNT" jdbcType="DECIMAL" property="datacount" />
+		<result column="RERUNSEQNBR" jdbcType="DECIMAL" property="rerunseqnbr" />
+		<result column="DETAIL" property="detail" />
+		<result column="APPLDESC" property="appldesc" />
+	</resultMap>
+	<select id="selectByPrimaryKey" parameterClass="com.csii.upp.dto.extend.QueapplhistAndAppl"
+		resultMap="BaseResultMap">
+		SELECT QAH.QUENBR, QAH.APPLNBR, QAH.QUESUBNBR, QAH.RUNSEQNBR,
+		date_format(QAH.STARTDATETIME,'%Y/%m/%d %H:%i:%s')STARTDATETIME,date_format(QAH.STOPDATETIME,'%Y/%m/%d %H:%i:%s')STOPDATETIME, QAH.RUNNTWKNODENBR,
+		QAH.DATELASTMAINT,
+		QAH.RUNNINGSTATUS, QAH.RUNDATE, QAH.DATACOUNT,
+		QAH.RERUNSEQNBR,
+		QAH.DETAIL, A.APPLDESC
+		FROM QUEAPPLHIST AS QAH
+		INNER JOIN APPL AS A ON QAH.APPLNBR = A.APPLNBR
+		WHERE QAH.QUENBR = #quenbr#
+		<isNotEmpty prepend="AND" property="rundate">
+			QAH.rundate =#rundate#
+		</isNotEmpty>
+		AND QAH.RUNSEQNBR IN (SELECT
+		MAX(QUEAPPLHIST.RUNSEQNBR) AS
+		RUNSEQNBR
+		FROM QUEAPPLHIST
+		WHERE QUEAPPLHIST.QUENBR = #quenbr#
+		<isNotEmpty prepend="AND" property="rundate">
+			QAH.rundate =#rundate#
+		</isNotEmpty>
+		GROUP
+		BY QUEAPPLHIST.RUNDATE, QUEAPPLHIST.APPLNBR)
+		ORDER BY
+		QAH.RUNDATE DESC, QAH.APPLNBR
+	</select>
+
+</sqlMap>

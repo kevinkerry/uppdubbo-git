@@ -1,0 +1,11 @@
+#internalName=externalName
+RETCODE=resultStatus
+resultStatus=resultStatus
+STATUS=resultStatus
+rtxnstate=rtxnstate
+returnmsg=retMsg
+downrtxndate=postDate
+downrtxnnbr=txnSeqId
+channeltype=sourceId
+rtxncode=transactionCode
+rtxnnbr=seqNo

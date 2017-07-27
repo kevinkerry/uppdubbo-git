@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE segment SYSTEM "packetutf8.dtd">
+<segment>
+		<!-- 交易id -->
+	<xmlTag tagName="TransId">
+		<String name="TransId"/>
+	</xmlTag>
+	<!-- 利润流水号 -->
+	<xmlTag tagName="ProfitSeqNo">
+		<String name="ProfitSeqNbr"/>
+	</xmlTag>
+	<!-- 一级商户 -->
+	<xmlTag tagName="MerchantId">
+		<String name="MerNbr"/>
+	</xmlTag>
+	<!-- 代理同步类型 -->
+	<xmlTag tagName="ProxySynType">
+		<String name="ProxySynType"/>
+	</xmlTag>
+	<!-- 代理同步状态 -->
+	<xmlTag tagName="ProxySynStatus">
+		<String name="ProxySynStatus"/>
+	</xmlTag>
+</segment>

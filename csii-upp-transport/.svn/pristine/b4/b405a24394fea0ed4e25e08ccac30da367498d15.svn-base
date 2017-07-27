@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE segment SYSTEM "packetutf8.dtd">
+<!-- 支付交易 -->
+<segment>
+	<!-- 总金额 -->
+	<xmlTag tagName="TransAmt">
+		<String name="transAmt" />
+	</xmlTag>
+	<!-- 总金额 -->
+	<xmlTag tagName="code">
+		<String name="code" />
+	</xmlTag>
+	<!-- 总金额 -->
+	<xmlTag tagName="url">
+		<String name="url" />
+	</xmlTag>
+	
+	<!--  商户号 -->
+	<xmlTag tagName="merNbr">
+		<String name="merNbr" />
+	</xmlTag>
+</segment>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spring:beans xmlns:spring="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.csii.com.cn/schema/pe"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	 http://www.springframework.org/schema/beans/spring-beans.xsd 
+	 http://www.springframework.org/schema/context 
+     http://www.springframework.org/schema/context/spring-context-4.0.xsd
+	 http://www.csii.com.cn/schema/pe 
+	 http://www.csii.com.cn/schema/pe/pe-config.xsd">
+
+<config>
+    <bean id="defaultSupportor" class="com.csii.upp.qrcodeplatform.sequence.DefaultSupportor"></bean>
+	
+	<!-- 异常处理类 -->
+	<bean id="exceptionHandler" class="com.csii.upp.qrcodeplatform.action.handler.UppExceptionHandler" />
+	
+	<executor id="eventManagerThreadPool">
+		<param name="name">event Manager Thread Pool</param>
+		<param name="initSize">50</param>
+		<param name="maxSize">100</param>
+		<param name="minSize">50</param>
+		<param name="queueSize">100</param>
+		<param name="keepAliveTime">3000</param>
+	</executor>
+</config>
+</spring:beans>

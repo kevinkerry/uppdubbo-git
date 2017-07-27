@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE segment SYSTEM "packetutf8.dtd">
+<!-- 二维码商户同步修改 -->
+<segment>
+	<!-- 同步类型 -->
+	<xmlTag tagName="ProxySynType">
+		<String name="proxySynType" />
+	</xmlTag>
+	<!-- 商户号 -->
+	<xmlTag tagName="SubMerchantId">
+		<String name="subMerchantId" />
+	</xmlTag>
+	<!-- 商户名称 -->
+	<xmlTag tagName="MertName">
+		<String name="mertName" />
+	</xmlTag>
+    <!-- 商户简称 -->
+	<xmlTag tagName="MerShortName">
+		<String name="merShortName" />
+	</xmlTag>
+	<!-- 服务电话 -->
+	<xmlTag tagName="ServicePhone">
+		<String name="servicePhone" />
+	</xmlTag>
+	<!-- 联系人名称 -->
+	<xmlTag tagName="ContactName">
+		<String name="contactName" />
+	</xmlTag>
+	
+</segment>

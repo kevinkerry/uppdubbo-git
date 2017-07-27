@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="CARDPHONELIMITEXTEND">
+
+	<select id="sumErrorTimes" parameterClass="java.util.HashMap" resultClass="java.math.BigDecimal">
+		select sum(errortime) from cardphonelimit
+		WHERE 1=1
+		<dynamic prepend=" AND ">
+			<isNotEmpty prepend=" AND " property="cardnbr">
+				CARDNBR=#cardnbr:VARCHAR#
+			</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="mobile">
+				MOBILE =#mobile:VARCHAR#
+			</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="dealDate">
+				DEALDATE =#dealDate:DATE#
+			</isNotEmpty>
+		</dynamic>
+	</select>
+</sqlMap>

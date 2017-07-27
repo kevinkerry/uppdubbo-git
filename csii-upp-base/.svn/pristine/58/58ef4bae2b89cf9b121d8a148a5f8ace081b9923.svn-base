@@ -1,0 +1,147 @@
+# **********************************************************
+#	core banking parameters definition.
+# **********************************************************
+
+#==========================begin TCP服务配置=================================#
+threadPool.name=XML-APP-ThreadPool
+threadPool.initSize=100
+threadPool.maxSize=1000
+threadPool.minSize=100
+threadPool.queueSize=0
+threadPool.keepAliveTime=600
+
+transformerFactory.debug=false
+transformerFactory.cacheEnable=true
+xmlPacketParser.debug=false
+
+serverHandler.debug=true
+serverHandler.dumpPath=F:/home/epp
+serverHandler.endTagName=msg
+serverHandler.maxErrorMessageLength=0
+serverHandler.errorMessageEncoding=UTF-8
+serverHandler.defaultMappingCode=99999
+serverHandler.compress=true
+serverHandler.encrypt=true
+#==========================begin TCP服务配置================================#
+
+#==========================begin 发送服务IP和端口============================#
+#积分系统url前缀
+point.prefix.url=http://158.222.14.80:8080/rest
+point.connect.timeout=6000
+point.read.timeout=6000
+point.threadpool.size=200
+point.redirect.flag=true
+
+#fundprocess发送报文到esb的服务IP和端口
+esb.host=158.222.2.34
+#esb.host=158.222.67.144
+esb.port=11006
+esb.timeout=50000
+
+#fundprocess发送报文到二维码前置的服务IP和端口
+codePre.host=158.222.27.159
+codePre.port=18001
+codePre.timeout=50000
+
+#paygate发送报文到payment的服务IP和端口用于
+payment.host=localhost
+payment.port=18002
+payment.timeout=60000
+
+#payment发送报文到fundprocess的服务IP和端口
+fundprocess.host=localhost
+fundprocess.port=18001
+fundprocess.timeout=60000
+
+#paygate发送报文到batch的服务IP和端口
+batch.host=localhost
+batch.port=18003
+batch.timeout=60000
+#==========================end 发送服务IP和端口==============================#
+
+#==========================begin 银联在线发送服务IP和端口==========================#
+#公共报文
+#版本号
+unionpay.contentData.version=5.0.0
+#默认取值：UTF-8
+unionpay.contentData.encoding=UTF-8
+#签名方式 取值：01（表示采用RSA）
+unionpay.contentData.signMethod=01
+#接入类型0：普通商户直连接入 1：收单机构接入 2：平台类商户接入
+unionpay.contentData.accessType=0
+#渠道类型 07互联网
+unionpay.contentData.channelType=07
+#交易币种 156人民币
+unionpay.contentData.currencyCode=156
+#后台通知基础地址 具体地址各交易不同
+unionpay.contentData.baseBackUrl=http://60.190.244.46:9090/unionpay/
+#前台通知基础地址 具体地址各交易不同
+unionpay.contentData.baseFrontUrl=http://60.190.244.46:35880/paygate/
+#商户代码
+unionpay.contentData.merId=929331053110008 
+#802290049000180
+#代理服务器ip
+unionpay.contentData.proxyIp=158.222.25.196
+#代理服务器port
+unionpay.contentData.proxyPort=22808
+#代acp_sdk配置文件位置
+unionpay.acp_sdk.path=/META-INF/transport/http/unionpay/certs/acp_sdk_test.properties
+#银联支付对账文件下载本地保存路径
+unionpay.download.path=F:\\checkFile\\unionpay\\
+
+#==========================end 银联在线发送服务IP和端口====================＝======#
+
+#==========================begin 支付结果通知参数==========================#
+#商户结果通知代理IP
+merResult.Notify.proxyIP=1.0.0.0
+#商户结果通知代理Port
+merResult.Notify.proxyPort=8080
+#是否使用代理标志
+merResult.Notify.isProxy=false
+#商户结果通知超时时间
+merResult.Notify.connectTimeOut=6000
+
+#电子口岸通知用户名
+electronPort.Notify.UserId=zjrcu
+#电子口岸通知密码
+electronPort.Notify.Secret=c3b23027-6891-4485-8d3b-c8d26090c4c0
+#电子口岸通知支付方式
+electronPort.Notify.PayTypCd=32
+#电子口岸通知URL地址
+electronPort.Notify.URL=http://pay.trainer.kjb2c.com/orgpay/orgpay.do
+#电子口岸通知次数
+electronPort.Notify.Time=3
+#电子口岸通知消息类型
+electronPort.Notify.messageTypCd=cnec_org_pay
+#==========================end 支付结果通知参数====================＝======#
+
+#==========================begin 加密平台配置==========================#
+#加密机ip
+encrypt.ip=158.222.65.161
+#加密机端口
+encrypt.port=9998
+#加密机连接数
+encrypt.balance=2
+#超时时间
+encrypt.timeout=5000
+#==========================end 加密平台配置=============================#
+
+#==========================短信平台配置信息begin========================#
+sms.ip=158.222.2.222
+sms.port=5051
+sms.timeout=30000
+smsCode.timeout=120000
+#==========================短信平台配置信息end==========================#
+
+#==========================卡号手机号错误次数配置信息begin========================#
+error.maxtimes=5
+#==========================卡号手机号错误次数配置信息end==========================#
+
+#==========================电信诈骗验证配置信息begin========================#
+telecom.ip=158.222.65.160
+telecom.port=4001
+telecom.timeout=1000
+telecom.flag=false
+telecomCode.timeout=1000
+#==========================电信诈骗验证配置信息end==========================#
+

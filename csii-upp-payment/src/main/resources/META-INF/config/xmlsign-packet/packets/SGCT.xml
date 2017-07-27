@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE segment SYSTEM "packetutf8.dtd">
+<segment>
+	<Group name="Message">
+		<!-- 交易id -->
+		<xmlTag tagName="TransId">
+			<String name="TransId" />
+		</xmlTag>
+		<!-- 一级商户 -->
+		<xmlTag tagName="MerchantId">
+			<String name="MerNbr" />
+		</xmlTag>
+		<!-- 商户交易流水号 -->
+		<xmlTag tagName="MerSeqNo">
+			<String name="MerSeqNbr" />
+		</xmlTag>
+		<!-- 商户交易时间 -->
+		<xmlTag tagName="MerDateTime">
+			<String name="MerTransDateTime" />
+		</xmlTag>
+		<!-- 原商户交易流水号 -->
+		<xmlTag tagName="OrgMerSeqNo">
+			<String name="OrigMerSeqNbr" />
+		</xmlTag>
+		<!-- 原商户交易日期 -->
+		<xmlTag tagName="OrgMerDate">
+			<String name="OrigMerDate" />
+		</xmlTag>
+		<!-- 原商户交易金额 -->
+		<xmlTag tagName="OrgTransAmt">
+			<String name="OrigTransAmt" />
+		</xmlTag>
+		<!-- 退货金额 -->
+		<xmlTag tagName="TransAmt">
+			<String name="SubTransAmt" />
+		</xmlTag>
+		<!-- 应答码 -->
+		<xmlTag tagName="RespCode">
+			<String name="RespCode" />
+		</xmlTag>
+		<!-- 应答消息 -->
+		<xmlTag tagName="RespMessage">
+			<String name="RespMessage" />
+		</xmlTag>
+	</Group>
+</segment>

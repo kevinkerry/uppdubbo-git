@@ -1,0 +1,586 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spring:beans xmlns:spring="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.csii.com.cn/schema/pe"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd 
+	http://www.csii.com.cn/schema/pe http://www.csii.com.cn/schema/pe/pe-config.xsd">
+
+	<config>
+		<!-- 交易明细结果下载 -->
+		<transaction id="DownloadTransDetail" template="queryMgmtTemplate">
+			<description>
+			</description>
+			<actions>
+				<ref name="action">DownloadTransDetailAction</ref>
+			</actions>
+			<channels>
+				<channel type="http">
+					<param name="success1">download,</param>
+				</channel>
+			</channels>
+		</transaction>
+		<action id="DownloadTransDetailAction"
+			class="com.csii.upp.paygate.action.foison.DownloadTransDetailAction">
+			<map name="actions">
+				<ref name="draw">DrawTransDownloadAction</ref>
+				<ref name="pay">PayTransDownloadAction</ref>
+			</map>
+		</action>
+		<action id="DrawTransDownloadAction" class="com.csii.ibs.action.IbsDownloadAction">
+			<param name="dateFormat">yyyy-MM-dd</param>
+			<param name="fileNameSuffix">.xls</param>
+			<ref name="transformer">DrawTransDownload</ref>
+		</action>
+		<action id="PayTransDownloadAction" class="com.csii.ibs.action.IbsDownloadAction">
+			<param name="dateFormat">yyyy-MM-dd</param>
+			<param name="fileNameSuffix">.xls</param>
+			<ref name="transformer">PayTransDownload</ref>
+		</action>
+
+
+		<!-- 电子回单二维码的生成 -->
+		<transaction id="QueryElectronicReceipt" template="emptyTemplate">
+			<channels>
+				<channel type="http">
+					<param name="success">foison/QueryDetailtab</param>
+				</channel>
+			</channels>
+		</transaction>
+
+		<transaction id="GenerateElectronicReceipt" template="queryMgmtTemplate">
+			<actions>
+				<ref name="action">GenerateElecReceiptAction</ref>
+			</actions>
+			<fields>
+				<field name="content"></field>
+			</fields>
+			<channels>
+				<channel type="http">
+					<param name="success">image,</param>
+				</channel>
+			</channels>
+		</transaction>
+		<action name="GenerateElecReceiptAction"
+			class="com.csii.upp.paygate.action.foison.GenerateElecReceiptAction">
+			<param name="imageWidth">${ElecReceipt.imageWidth}</param>
+			<param name="imageHeight">${ElecReceipt.imageHeight}</param>
+		</action>
+
+		<!-- 交易明细查询 -->
+		<transaction id="FS02" template="emptyTemplate">
+			<channels>
+				<channel type="http">
+					<param name="success">foison/QureyDetailPre</param>
+				</channel>
+			</channels>
+		</transaction>
+
+		<transaction id="FS02Login" template="queryMgmtTemplate">
+			<actions>
+				<ref name="action">QueryDetailLoginAction</ref>
+			</actions>
+			<channels>
+				<channel type="http">
+					<param name="success">foison/QueryTransInput</param>
+					<param name="success1">foison/FoisonResultError</param>
+				</channel>
+			</channels>
+		</transaction>
+		<action id="QueryDetailLoginAction"
+			class="com.csii.upp.paygate.action.foison.QueryDetailLoginAction">
+			<param name="ignoreCase">true</param>
+		</action>
+
+		<transaction id="FS02Input" template="queryMgmtTemplate">
+			<actions>
+				<ref name="action">QueryTransInputAction</ref>
+			</actions>
+			<channels>
+				<channel type="http">
+					<param name="success">foison/QueryTransPre</param>
+					<param name="success1">foison/FoisonResultError</param>
+				</channel>
+			</channels>
+		</transaction>
+		<action id="QueryTransInputAction"
+			class="com.csii.upp.paygate.action.foison.QueryTransInputAction" />
+
+		<transaction id="FS02Confirm" template="queryMgmtTemplate">
+			<actions>
+				<ref name="action">QueryDetailConfimAction</ref>
+			</actions>
+			<channels>
+				<channel type="http">
+					<param name="success">foison/QueryDetail</param>
+					<param name="success1">foison/QueryDetail</param>
+					<param name="success2">foison/FoisonResultError</param>
+				</channel>
+			</channels>
+		</transaction>
+		<action id="QueryDetailConfimAction"
+			class="com.csii.upp.paygate.action.foison.QueryDetailConfimAction" />
+
+		<transaction id="FS02QueryDetail" template="emptyTemplate">
+			<channels>
+				<channel type="http">
+					<param name="success">foison/OneQueryDetail</param>
+				</channel>
+			</channels>
+		</transaction>
+
+		<transaction id="QryTrsDetailPre" template="emptyTemplate">
+			<channels>
+				<channel type="http">
+					<param name="success">foison/QueryTransPre</param>
+				</channel>
+			</channels>
+		</transaction>
+
+		<!-- 注册 -->
+		<transaction id="FS01" template="emptyTemplate">
+			<channels>
+				<channel type="http">
+					<param name="success">foison/RegisterLogin</param>
+				</channel>
+			</channels>
+		</transaction>
+		<transaction id="FS01RegLogin" template="queryMgmtTemplate">
+			<actions>
+				<ref name="action">RegisterLogin</ref>
+			</actions>
+			<channels>
+				<channel type="http">
+					<param name="success">foison/RegisterInputForDebit</param>
+					<param name="success1">foison/RegisterInputForCredit</param>
+					<param name="success2">foison/RegisterForCancelAcctConfirm</param>
+					<param name="success3">bank/otherBankPay</param>
+					<param name="success10">foison/FoisonResultError</param>
+				</channel>
+			</channels>
+		</transaction>
+		<action id="RegisterLogin"
+			class="com.csii.upp.paygate.action.foison.RegisterLoginAction">
+			<param name="ignoreCase">true</param>
+		</action>
+
+
+
+		<transaction id="queryQuickPayRegisterStatus" template="queryMgmtTemplate">
+			<actions>
+				<ref name="action">QuickPayRegisterStatus</ref>
+			</actions>
+			<channels>
+				<channel type="http">
+					<param name="success">foison/RegisterStatus</param>
+					<param name="error">foison/FoisonResultError</param>
+				</channel>
+			</channels>
+		</transaction>
+		<action id="QuickPayRegisterStatus"
+			class="com.csii.upp.paygate.action.foison.QuickPayRegisterStatusAction" />
+
+
+		<transaction id="FS01CancelAcctConfirm" template="queryMgmtTemplate">
+			<actions>
+				<ref name="action">RegisterCancelAcctConfirm</ref>
+			</actions>
+			<channels>
+				<channel type="http">
+					<param name="success">foison/RegisterInputForDebit</param>
+					<param name="success1">foison/RegisterInputForCredit</param>
+					<param name="success10">foison/FoisonResultError</param>
+				</channel>
+			</channels>
+		</transaction>
+		<action id="RegisterCancelAcctConfirm"
+			class="com.csii.upp.paygate.action.foison.RegisterForCancelAcctConfirmAction" />
+
+
+		<transaction id="FS01RegisterInput" template="queryMgmtTemplate">
+			<actions>
+				<ref name="action">RegisterInput</ref>
+			</actions>
+			<channels>
+				<channel type="http">
+					<param name="success">foison/RegisterConfirm</param>
+					<param name="success1">foison/FoisonResultError</param>
+				</channel>
+			</channels>
+		</transaction>
+		<action id="RegisterInput"
+			class="com.csii.upp.paygate.action.foison.RegisterInputdataAction">
+		</action>
+
+
+
+		<transaction id="FS01Confirm" template="queryMgmtTemplate">
+			<actions>
+				<ref name="action">RegisterConfirm</ref>
+			</actions>
+			<channels>
+				<channel type="http">
+					<param name="success">foison/RegisterStatus</param>
+					<param name="success1">foison/FoisonResultError</param>
+					<param name="error">foison/FoisonResultError</param>
+				</channel>
+			</channels>
+		</transaction>
+		<action id="RegisterConfirm"
+			class="com.csii.upp.paygate.action.foison.RegisterconfirmAction">
+		</action>
+
+
+		<!-- 解冻 -->
+		<transaction id="FS05" template="emptyTemplate">
+			<channels>
+				<channel type="http">
+					<param name="success">foison/thawAcctLogin</param>
+				</channel>
+			</channels>
+		</transaction>
+
+		<transaction id="FS05ThawAcctPre" template="queryMgmtTemplate">
+			<actions>
+				<ref name="action">thawAcctLogin</ref>
+			</actions>
+			<channels>
+				<channel type="http">
+					<param name="success">foison/ThawAcctInputForDebit</param>
+					<param name="success1">foison/ThawAcctInputForCredit</param>
+					<param name="success10">foison/FoisonResultError</param>
+					<param name="success2">foison/thawAcctConfirm2</param>
+				</channel>
+			</channels>
+		</transaction>
+		<action id="thawAcctLogin"
+			class="com.csii.upp.paygate.action.foison.ThawAcctInfoAction">
+			<param name="ignoreCase">true</param>
+		</action>
+
+		<transaction id="FS05thawInput" template="queryMgmtTemplate">
+			<actions>
+				<ref name="action">thawAcctInput</ref>
+			</actions>
+			<channels>
+				<channel type="http">
+					<param name="success">foison/thawAcctConfirm</param>
+					<param name="success1">foison/FoisonResultError</param>
+				</channel>
+			</channels>
+		</transaction>
+		<action id="thawAcctInput"
+			class="com.csii.upp.paygate.action.foison.ThawAcctInfoInputAction">
+		</action>
+
+		<transaction id="FS05ThawConfirm" template="queryMgmtTemplate">
+			<actions>
+				<ref name="action">thawAcctConfirm</ref>
+			</actions>
+			<channels>
+				<channel type="http">
+					<param name="success">foison/thawAcctConfirm2</param>
+					<param name="success1">foison/FoisonResultError</param>
+				</channel>
+			</channels>
+		</transaction>
+		<action id="thawAcctConfirm"
+			class="com.csii.upp.paygate.action.foison.ThawAcctInfoValidateMessageAction">
+		</action>
+
+		<transaction id="FS05ThawUpdateStatus" template="queryMgmtTemplate">
+			<actions>
+				<ref name="action">thawAcctUpdateStatusAction</ref>
+			</actions>
+			<channels>
+				<channel type="http">
+					<param name="success">foison/thawAcctStatus</param>
+					<param name="success1">foison/FoisonResultError</param>
+				</channel>
+			</channels>
+		</transaction>
+		<action id="thawAcctUpdateStatusAction"
+			class="com.csii.upp.paygate.action.foison.ThawAcctInfoUpdateStatusAction">
+		</action>
+
+		<!-- 丰收E支付 -->
+		<transaction id="fsEpayPre" template="paygatePayTemplate">
+			<actions>
+				<ref name="action">querySignDetailAction</ref>
+			</actions>
+			<channels>
+				<channel type="http">
+					<param name="success">foison/foisonconfirm</param>
+					<param name="success1">foison/RegisterAndEpayLogin</param>
+					<param name="error">foison/foisonerror</param>
+				</channel>
+			</channels>
+		</transaction>
+		<action id="querySignDetailAction"
+			class="com.csii.upp.paygate.action.foison.QuerySignDetailAction"></action>
+
+		<transaction id="foisonEpay" template="paygatePayTemplate">
+			<actions>
+				<ref name="action">foisonEpayAction</ref>
+			</actions>
+			<channels>
+				<channel type="http">
+					<param name="success">foison/foisonsuccess</param>
+
+					<param name="error">foison/foisonerror3</param>
+				</channel>
+			</channels>
+		</transaction>
+		<action id="foisonEpayAction"
+			class="com.csii.upp.paygate.action.foison.FoisonEpayAction" />
+
+		<!-- 冻结 -->
+		<transaction id="FS04" template="emptyTemplate">
+			<channels>
+				<channel type="http">
+					<param name="success">foison/FreezeLogin</param>
+				</channel>
+			</channels>
+		</transaction>
+
+		<transaction id="FS04Login" template="queryMgmtTemplate">
+			<actions>
+				<ref name="action">FreezeLogin</ref>
+			</actions>
+			<channels>
+				<channel type="http">
+					<param name="success">foison/FreezeInput</param>
+					<param name="success1">foison/FoisonResultError</param>
+					<param name="success2">foison/FreezeConfirm2</param>
+				</channel>
+			</channels>
+		</transaction>
+		<action id="FreezeLogin"
+			class="com.csii.upp.paygate.action.foison.FreezeAccountLoginAction">
+			<param name="ignoreCase">true</param>
+		</action>
+
+		<transaction id="FS04Input" template="queryMgmtTemplate">
+			<actions>
+				<ref name="action">FreezeInputAction</ref>
+			</actions>
+			<channels>
+				<channel type="http">
+					<param name="success">foison/FreezeConfirm</param>
+					<param name="success2">foison/FreezeInput</param>
+					<param name="success1">foison/FoisonResultError</param>
+				</channel>
+			</channels>
+		</transaction>
+		<action id="FreezeInputAction"
+			class="com.csii.upp.paygate.action.foison.FreezeInputAction" />
+
+		<!-- 丰收E支付 冻结 -->
+		<transaction id="FS04Confirm" template="queryMgmtTemplate">
+			<actions>
+				<ref name="action">FreezeConfirmAction</ref>
+			</actions>
+			<channels>
+				<channel type="http">
+					<param name="success">foison/FreezeStatus</param>
+					<param name="success1">foison/FoisonResultError</param>
+				</channel>
+			</channels>
+		</transaction>
+		<action id="FreezeConfirmAction"
+			class="com.csii.upp.paygate.action.foison.FreezeConfirmAction" />
+
+		<!-- 丰收e支付调整交易限额 -->
+		<transaction id="FS03" template="emptyTemplate">
+			<channels>
+				<channel type="http">
+					<param name="success">foison/UpdateCtrlLogin</param>
+				</channel>
+			</channels>
+		</transaction>
+
+		<transaction id="FS03Login" template="queryMgmtTemplate">
+			<actions>
+				<ref name="action">UpdateCtrlLogin</ref>
+			</actions>
+			<channels>
+				<channel type="http">
+					<param name="success">foison/UpdateCtrlInput</param>
+					<param name="success1">foison/FoisonResultError</param>
+					<param name="success2">foison/UpdateCtrlStatusOther</param>
+				</channel>
+			</channels>
+		</transaction>
+		<action id="UpdateCtrlLogin"
+			class="com.csii.upp.paygate.action.foison.UpdateCtrlLoginAction">
+			<param name="ignoreCase">true</param>
+		</action>
+
+		<transaction id="FS03Input" template="queryMgmtTemplate">
+			<actions>
+				<ref name="action">UpdateCtrlInput</ref>
+			</actions>
+			<channels>
+				<channel type="http">
+					<param name="success">foison/UpdateCtrlConfirm</param>
+					<param name="success1">foison/FoisonResultError</param>
+				</channel>
+			</channels>
+		</transaction>
+		<action id="UpdateCtrlInput"
+			class="com.csii.upp.paygate.action.foison.UpdateCtrlInputAction"></action>
+
+		<transaction id="FS03Confirm" template="queryMgmtTemplate">
+			<actions>
+				<ref name="action">UpdateCtrlConfirm</ref>
+			</actions>
+			<channels>
+				<channel type="http">
+					<param name="success">foison/UpdateCtrlConfirm2</param>
+					<param name="success1">foison/UpdateCtrlConfirm</param>
+				</channel>
+			</channels>
+		</transaction>
+		<action id="UpdateCtrlConfirm"
+			class="com.csii.upp.paygate.action.foison.UpdateCtrlConfirmAction"></action>
+
+		<transaction id="FS03ConfirmNext" template="queryMgmtTemplate">
+			<actions>
+				<ref name="action">UpdateCtrlConfirmNext</ref>
+			</actions>
+			<channels>
+				<channel type="http">
+					<param name="success">foison/UpdateCtrlStatus</param>
+					<param name="success1">foison/FoisonResultError</param>
+				</channel>
+			</channels>
+		</transaction>
+		<action id="UpdateCtrlConfirmNext"
+			class="com.csii.upp.paygate.action.foison.UpdateCtrlConfirmNextAction"></action>
+
+		<!-- 丰收e支付注册并查询明细交易 -->
+		<transaction id="fsRegisterAndEpay" template="queryMgmtTemplate">
+			<actions>
+				<ref name="action">RegisterLogin</ref>
+			</actions>
+			<channels>
+				<channel type="http">
+					<param name="success">foison/RegisterAndEpayForDebitConfirm</param>
+					<param name="success1">foison/RegisterAndEpayForCreditConfirm</param>
+					<param name="success2">foison/foisonerror2</param>
+					<param name="success3">bank/quickpaypre</param>
+					<param name="success10">foison/foisonerror2</param>
+				</channel>
+			</channels>
+		</transaction>
+
+		<!-- 丰收e支付注册并支付交易 -->
+		<transaction id="fsRegisterAndEpayConfirm" template="paygatePayTemplate">
+			<actions>
+				<ref name="action">fsRegisterAndEpayConfirmAction</ref>
+			</actions>
+			<channels>
+				<channel type="http">
+					<param name="success">foison/foisonsuccess</param>
+					<param name="success1">foison/foisonerror2</param>
+					<param name="error">foison/foisonerror2</param>
+				</channel>
+			</channels>
+		</transaction>
+		<action id="fsRegisterAndEpayConfirmAction"
+			class="com.csii.upp.paygate.action.foison.FsRegisterAndEpayConfirmAction">
+		</action>
+
+
+		<!-- 丰收E支付 注销 -->
+		<transaction id="FS07" template="emptyTemplate">
+			<channels>
+				<channel type="http">
+					<param name="success">foison/LogoutLogin</param>
+				</channel>
+			</channels>
+		</transaction>
+
+		<transaction id="FS07Login" template="queryMgmtTemplate">
+			<actions>
+				<ref name="action">LogoutLogin</ref>
+			</actions>
+			<channels>
+				<channel type="http">
+					<param name="success">foison/LogoutConfirm</param>
+					<param name="success1">foison/FoisonResultError</param>
+				</channel>
+			</channels>
+		</transaction>
+		<action id="LogoutLogin"
+			class="com.csii.upp.paygate.action.foison.CancelAccountLoginAction">
+			<param name="ignoreCase">true</param>
+		</action>
+
+
+
+		<transaction id="FS07Confirm" template="queryMgmtTemplate">
+			<actions>
+				<ref name="action">LogoutConfrim</ref>
+			</actions>
+			<channels>
+				<channel type="http">
+					<param name="success">foison/LogoutInput</param>
+					<param name="success1">foison/FoisonResultError</param>
+				</channel>
+			</channels>
+		</transaction>
+		<action id="LogoutConfrim"
+			class="com.csii.upp.paygate.action.foison.LogoutConfrimAction" />
+
+		<transaction id="FS07Input" template="queryMgmtTemplate">
+			<actions>
+				<ref name="action">CancelSelectAction</ref>
+			</actions>
+			<channels>
+				<channel type="http">
+					<param name="success">foison/LogoutStatus</param>
+					<param name="success1">foison/FoisonResultError</param>
+				</channel>
+			</channels>
+		</transaction>
+		<action id="CancelSelectAction"
+			class="com.csii.upp.paygate.action.foison.CancelSelectAction" />
+
+		<!-- 生产测试 -->
+		<transaction id="Test" template="queryMgmtTemplate">
+			<actions>
+				<ref name="action">QueryPayerName</ref>
+			</actions>
+			<channels>
+				<channel type="http">
+					<param name="success">bank/transAmt</param>
+					<param name="success1">foison/foisonerror</param>
+				</channel>
+			</channels>
+		</transaction>
+		<action id="QueryPayerName" class="com.csii.upp.paygate.action.test.QueryPayerName" />
+
+		<!-- 查询payeracctdeptnbr，更新 （签约）表 -->
+		<transaction id="FS08" template="emptyTemplate">
+			<channels>
+				<channel type="http">
+					<param name="success">foison/querypayeracctdeptnbr</param>
+				</channel>
+			</channels>
+		</transaction>
+
+		<transaction id="FS08Exe" template="queryMgmtTemplate">
+			<actions>
+				<ref name="action">queryDeptNbr</ref>
+			</actions>
+			<channels>
+				<channel type="http">
+					<param name="success">foison/queryDeptResult</param>
+					<param name="error">foison/FoisonResultError</param>
+				</channel>
+			</channels>
+		</transaction>
+		<action id="queryDeptNbr"
+			class="com.csii.upp.paygate.action.foison.QueryDeptNbrAction">
+		</action>
+	</config>
+</spring:beans>

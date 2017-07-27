@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE segment SYSTEM "packetutf8.dtd">
+<segment>
+	<!-- 账户号 -->
+	<xmlTag tagName="PayerAcctNbr">
+		<String name="payerAcctNbr" defaultValue="" />
+	</xmlTag>
+	<!-- 账户类型 -->
+	<xmlTag tagName="PayerCardTypCd">
+		<String name="payerCardTypCd" defaultValue="" />
+	</xmlTag>
+	<!-- 密码 -->
+	<xmlTag tagName="PayerCardPwd">
+		<String name="payerCardPwd" defaultValue="" />
+	</xmlTag>
+	<!-- 证件类型  -->
+	<xmlTag tagName="PayerIdTypCd">
+		<String name="payerIdTypCd" defaultValue="" />
+	</xmlTag>
+	<!-- 证件号 -->
+	<xmlTag tagName="PayerIdNbr">
+		<String name="payerIdNbr" defaultValue="" />
+	</xmlTag>
+	<!-- 手机号 -->
+	<xmlTag tagName="PayerPhoneNo">
+		<String name="payerPhoneNo" defaultValue="" />
+	</xmlTag>
+</segment>

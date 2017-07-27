@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE segment SYSTEM "packetutf8.dtd">
+<segment>
+	<!-- 支付宝入驻标识号 -->
+	<xmlTag tagName="AlipayMerchantId">
+		<String name="AlipayMerchantId" />
+	</xmlTag>
+	<!-- 微信返回同步子商户 -->
+	<xmlTag tagName="WeChatSubMerchatId">
+		<String name="WeChatSubMerchatId" />
+	</xmlTag>
+	<!-- 微信代理机构商户号 -->
+	<xmlTag tagName="ProxyMerNbr">
+		<String name="ProxyMerNbr" />
+	</xmlTag>
+</segment>

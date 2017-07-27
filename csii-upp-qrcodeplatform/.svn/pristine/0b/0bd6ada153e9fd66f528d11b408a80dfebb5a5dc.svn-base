@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spring:beans xmlns:spring="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.csii.com.cn/schema/pe"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	 http://www.springframework.org/schema/beans/spring-beans.xsd 
+	 http://www.springframework.org/schema/context 
+     http://www.springframework.org/schema/context/spring-context-4.0.xsd
+	 http://www.csii.com.cn/schema/pe 
+	 http://www.csii.com.cn/schema/pe/pe-config.xsd">
+
+<config>
+   
+	<!-- 支付交易模版 -->
+	<template id="qrCodeTemplate" class="com.csii.upp.qrcodeplatform.template.BaseUppTemplate" chain="defaultChain">
+		<ref name="exceptionHandler">exceptionHandler</ref>
+		<actions>
+			<ref name="prepaycheck">commonCheck</ref>
+			<ref name="addorder">commonAddOrder</ref>
+			<ref name="payaction">placeholderAction</ref>
+			<ref name="afterpayhandle">commonAfterHandle</ref>
+		</actions>
+	</template>
+	
+	<!-- 查询模版 -->
+	<template id="qrCodeQueryTemplate" class="com.csii.upp.qrcodeplatform.template.BaseUppTemplate" chain="defaultChain">
+		<ref name="exceptionHandler">exceptionHandler</ref>
+		<actions>
+			<ref name="prepaycheck">commonCheck</ref>
+			<ref name="queryction">placeholderAction</ref>
+		</actions>
+	</template>
+	
+	<action id="commonCheck" class="com.csii.upp.qrcodeplatform.action.check.CommonCheckAction" />
+	<action id="commonAddOrder" class="com.csii.upp.qrcodeplatform.action.before.AddOrderAction" />
+	<action id="commonAfterHandle" class="com.csii.upp.qrcodeplatform.action.after.AfterHandleAction"/>
+	
+</config>
+</spring:beans>

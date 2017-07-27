@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE segment SYSTEM "packetutf8.dtd">
+<!-- 他行快捷支付开通状态查询 -->
+<segment>
+	<xmlTag tagName="PayerAcctNbr">
+		<String name="payerAcctNbr" />
+	</xmlTag>
+</segment>

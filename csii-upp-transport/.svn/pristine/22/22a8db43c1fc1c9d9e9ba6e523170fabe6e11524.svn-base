@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE segment SYSTEM "packetutf8.dtd">
+	<!-- 借记卡卡密支付交易 -->
+<segment>
+	<!--交易类型  -->
+	<xmlTag tagName="BWRAJYLX">
+		<String name="transTypCd" defaultValue="" />
+	</xmlTag>
+	<!-- 币种 -->
+	<xmlTag tagName="BWRACCYC">
+		<String name="currencyCd" defaultValue="" />
+	</xmlTag>
+	<!-- 验密标志 -->
+	<xmlTag tagName="BWRAPWFG">
+		<String name="checkPwdFlag" defaultValue="" />
+	</xmlTag>
+	<!-- 卡密码 -->
+	<xmlTag tagName="BWRACHIP">
+		<String name="payerCardPwd" defaultValue="" />
+	</xmlTag>
+	<!-- 对账分类编号 -->
+	<xmlTag tagName="BWRADZBH">
+		<String name="checkNumber" defaultValue="" />
+	</xmlTag>
+	<!--支付总金额 -->
+	<xmlTag tagName="BWRBAMT">
+		<String name="totalAmt" defaultValue="" />
+	</xmlTag>
+	<!--商户编号  -->
+	<xmlTag tagName="BWRASHCD">
+		<String name="BWRASHCD" defaultValue="999999999999992" />
+	</xmlTag>
+	<!-- 转出卡号 -->
+	<xmlTag tagName="BWRAAC22">
+		<String name="payerAcctnbr" defaultValue="" />
+	</xmlTag>
+	
+	<xmlTag tagName="List">
+		<idxField name="payeeAcctList" maxLoop="9999999">
+			<Group name="Map">
+				<!-- 转入账号 (担保账户开户使用) -->
+				<xmlTag tagName="BWRBAC22">
+					<String name="PayeeAcctNbr" />
+				</xmlTag>
+				<!-- 子订单发生额 -->
+				<xmlTag tagName="BWRAAMT">
+					<String name="SubTransAmt" />
+				</xmlTag>
+			</Group>
+		</idxField>
+	</xmlTag>
+	<!-- 备用字段 -->
+	<xmlTag tagName="BWRABAKE">
+		<String name="note" defaultValue="" />
+	</xmlTag>
+</segment>

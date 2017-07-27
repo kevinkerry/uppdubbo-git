@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spring:beans xmlns:spring="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.csii.com.cn/schema/pe"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd 
+	http://www.csii.com.cn/schema/pe http://www.csii.com.cn/schema/pe/pe-config.xsd">
+
+	<config>
+		<!-- 二维码支付 -->
+		<transaction id="QrCodePay" template="paygatePayTemplate">
+			<actions>
+				<ref name="action">qRCodePayAction</ref>
+			</actions>
+			<channels>
+				<channel type="http">
+					<param name="success">json,</param>
+				</channel>
+			</channels>
+		</transaction>
+		<action id="qRCodePayAction"
+			class="com.csii.upp.paygate.action.qrcodepay.QRCodePayAction">
+		</action>
+		<!-- 创建二维码图形 -->
+		<transaction id="CreatCode" template="queryMgmtTemplate">
+			<actions>
+				<ref name="action">creatQRCodeAction</ref>
+			</actions>
+			<fields>
+				<field name="content"></field>
+			</fields>
+			<channels>
+				<channel type="http">
+					<param name="success">image,</param>
+				</channel>
+			</channels>
+		</transaction>
+		<action id="creatQRCodeAction"
+			class="com.csii.upp.paygate.action.qrcodepay.CreatQRCodeAction">
+			<param name="imageWidth">${QRCode.imageWidth}</param>
+			<param name="imageHeight">${QRCode.imageHeight}</param>
+			<param name="picImageWidth">${PicQRCode.imageWidth}</param>
+			<param name="picImageHeight">${PicQRCode.imageHeight}</param>
+			<param name="frameWidth">${PicQRCode.frameWidth}</param>
+		</action>
+		<!--支付并生成二维码 -->
+		<transaction id="CQCD" template="paygatePayTemplate">
+			<actions>
+				<ref name="action">creatCodePayAction</ref>
+			</actions>
+			<channels>
+				<channel type="http">
+					<param name="success">stream,</param>
+				</channel>
+			</channels>
+		</transaction>
+		<action id="creatCodePayAction"
+			class="com.csii.upp.paygate.action.qrcodepay.CreatCodePayAction">
+		</action>
+	</config>
+</spring:beans>

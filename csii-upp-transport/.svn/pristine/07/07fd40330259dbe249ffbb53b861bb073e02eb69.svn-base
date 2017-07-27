@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE segment SYSTEM "packetutf8.dtd">
+<segment>
+	<!-- 商户号-->
+	<xmlTag tagName="MerNbr">
+		<String name="merNbr" defaultValue="" />
+	</xmlTag>
+	<!-- 商户流水号-->
+	<xmlTag tagName="MerSeqNbr">
+		<String name="merSeqNbr" defaultValue="" />
+	</xmlTag>
+	<!-- 商户时间-->
+	<xmlTag tagName="MerTransDateTime">
+		<String name="merTransDateTime"  />
+	</xmlTag>
+	<!-- 订单号-->
+	<xmlTag tagName="OrderNbr">
+		<String name="orderNbr" defaultValue="" />
+	</xmlTag>
+	<!--接入类型-->
+	<xmlTag tagName="PayType">
+		<String name="payType" defaultValue="" />
+	</xmlTag>
+	<!-- 扫码模式-->
+	<xmlTag tagName="ScanCodeMode"><String name="scanCodeMode" /></xmlTag>
+	<!-- 二维码类型-->
+	<xmlTag tagName="CodeTypCd"><String name="codeTypCd" /></xmlTag>
+	 <!--商户接入类型-->
+	 <xmlTag tagName="PayAccessType"><String name="payAccessType"/></xmlTag>
+	<!-- 商品编号-->
+	 <xmlTag tagName="ProductId"><String name="productId"/></xmlTag>
+	 <!-- 商品描述 -->
+	 <xmlTag tagName="ProBody"><String name="proBody" /></xmlTag>
+	 <!-- 商品标题-->
+	 <xmlTag tagName="Subject"><String name="subject" /></xmlTag>
+	 <!-- 商户门店号-->
+	 <xmlTag tagName="StoreId"><String name="storeId" /></xmlTag>
+	 <!-- 支付场景-->
+	 <xmlTag tagName="Scene"><String name="scene" /></xmlTag>
+	 <!-- 支付授权码-->
+	 <xmlTag tagName="AuthCode"><String name="authCode" /></xmlTag>
+	<!-- 子商户列表-->
+	<xmlTag tagName="MerTransList">
+	    <idxField name="merTransList" maxLoop="9999999">
+			<Group name="MerTransDetail">
+		   		<xmlTag><String name="SubMerchantId" /></xmlTag>
+	   		</Group>
+		</idxField>
+	</xmlTag>
+</segment>

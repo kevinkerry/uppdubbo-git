@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE segment SYSTEM "packetutf8.dtd">
+<!-- 支付宝被扫支付 -->
+<segment>
+		<!--服务代码  -->
+	<xmlTag tagName="txnCode">
+		<String name="txnCode" defaultValue="" />
+	</xmlTag>
+	<!-- 交易金额 -->
+	<xmlTag tagName="orderAmount">
+		<String name="orderAmount" defaultValue="" />
+	</xmlTag>
+	<!--商户编号 -->
+	<xmlTag tagName="merId">
+		<String name="merId" defaultValue="" />
+	</xmlTag>
+	<!--商户名称  -->
+	<xmlTag tagName="merName">
+		<String name="merName" defaultValue="" />
+	</xmlTag>
+	<!-- 交易时间 -->
+	<xmlTag tagName="orderTime">
+		<String name="orderTime" defaultValue="" />
+	</xmlTag>
+	<!-- 订单号 -->
+	<xmlTag tagName="orderNumber">
+		<String name="orderNumber" defaultValue="" />
+	</xmlTag>
+	<!-- 打折金额 -->
+	<xmlTag tagName="discountableAmount">
+		<String name="discountableAmount" defaultValue="" />
+	</xmlTag>
+	<!-- 不可打折金额 -->
+	<xmlTag tagName="undiscountableAmount">
+		<String name="undiscountableAmount" defaultValue="" />
+	</xmlTag>
+	<!-- 交易类型 -->
+	<xmlTag tagName="transType">
+		<String name="transType" defaultValue="" />
+	</xmlTag>
+	<!-- 渠道编号 -->
+	<xmlTag tagName="channel">
+		<String name="channel" defaultValue="" />
+	</xmlTag>
+	<!-- 接入类型 -->
+	<xmlTag tagName="payAccessType">
+		<String name="payAccessType" defaultValue="" />
+	</xmlTag>
+	<!--商户编号 -->
+	<xmlTag tagName="currencyType">
+		<String name="currencyType" defaultValue="" />
+	</xmlTag>
+	<!--商户名称  -->
+	<xmlTag tagName="payType">
+		<String name="payType" defaultValue="" />
+	</xmlTag>
+	<!--支付场景 -->
+	<xmlTag tagName="scene">
+		<String name="scene" defaultValue="" />
+	</xmlTag>
+	<!-- 授权码 -->
+	<xmlTag tagName="authCode">
+		<String name="authCode" defaultValue="" />
+	</xmlTag>
+	<!-- 订单标题 -->
+	<xmlTag tagName="subject">
+		<String name="subject" defaultValue="" />
+	</xmlTag>
+	<!-- 商品描述 -->
+	<xmlTag tagName="body">
+		<String name="body" defaultValue="" />
+	</xmlTag>
+	<!-- 商品信息列表 -->
+	<xmlTag tagName="goodsDetail">
+		<String name="goodsDetail" defaultValue="" />
+	</xmlTag>
+	<!--商户操作号 -->
+	<xmlTag tagName="operatorId">
+		<String name="operatorId" defaultValue="" />
+	</xmlTag>
+	<!--商户门店号  -->
+	<xmlTag tagName="storeId">
+		<String name="storeId" defaultValue="" />
+	</xmlTag>
+	<!-- 终端IP -->
+	<xmlTag tagName="termId">
+		<String name="termId" defaultValue="" />
+	</xmlTag>
+	<!-- 允许付款时间-->
+	<xmlTag tagName="timeoutExpress">
+		<String name="timeoutExpress" defaultValue="" />
+	</xmlTag>
+	<!--支付宝店铺编号 -->
+	<xmlTag tagName="alipayStoreId">
+		<String name="alipayStoreId" defaultValue="" />
+	</xmlTag>
+	<!--支付宝商户号 -->
+	<xmlTag tagName="alipayMerchantId">
+		<String name="alipayMerchantId" defaultValue="" />
+	</xmlTag>
+	
+</segment>

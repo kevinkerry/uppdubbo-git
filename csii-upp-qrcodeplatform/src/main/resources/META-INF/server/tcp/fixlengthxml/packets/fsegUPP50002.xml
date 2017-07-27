@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE segment SYSTEM "packetutf8.dtd">
+<segment>	
+	<!-- 二维码地址 -->
+	<xmlTag tagName="CodeUrl">
+		<String name="CodeUrl"></String>
+	</xmlTag> 
+	
+</segment>

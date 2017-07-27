@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE segment SYSTEM "packetutf8.dtd">
+<!-- 支付交易 -->
+<segment>
+	<!-- 卡账号 -->
+	<xmlTag tagName="cifNo">
+		<String name="cifNo" />
+	</xmlTag>
+	<!-- 短信验证码 -->
+	<xmlTag tagName="SmsCode">
+		<String name="smsCode" />
+	</xmlTag>
+	<!-- 币种 -->
+	<xmlTag tagName="CurrencyCd">
+		<String name="currencyCd" />
+	</xmlTag>
+	<!-- 卡密码 -->
+	<xmlTag tagName="PayerCardPwd">
+		<String name="payerCardPwd" />
+	</xmlTag>
+	<!-- 对账分类编号 -->
+	<xmlTag tagName="CheckNumber">
+		<String name="checkNumber" />
+	</xmlTag>
+	<!-- 总金额 -->
+	<xmlTag tagName="TransAmt">
+		<String name="transAmt" />
+	</xmlTag>
+	<!-- 备用字段 -->
+	<xmlTag tagName="Note">
+		<String name="note" />
+	</xmlTag>
+	<!-- 付款人手机号 -->
+	<xmlTag tagName="PayerPhoneNo">
+		<String name="payerPhoneNo" />
+	</xmlTag>
+	<!-- 付款人卡类型 -->
+	<xmlTag tagName="PayerCardTypCd">
+		<String name="payerCardTypCd" />
+	</xmlTag>
+	<!-- 付款人账号类型 -->
+	<xmlTag tagName="PayerAcctTypCd">
+		<String name="payerAcctTypCd" />
+	</xmlTag>
+	<!-- 账户类型 -->
+	<xmlTag tagName="PayerAcctKind">
+		<String name="payerAcctKind" />
+	</xmlTag>
+	<!-- 客户号 -->
+	<xmlTag tagName="CustCifNo">
+		<String name="custCifNo" />
+	</xmlTag>
+	<!-- 信用卡cvv -->
+	<xmlTag tagName="PayerCardCvv2">
+		<String name="payerCardCvv2" />
+	</xmlTag>
+	<!-- 信用卡有效期 -->
+	<xmlTag tagName="PayerCardExpiredDate">
+		<String name="payerCardExpiredDate" />
+	</xmlTag>
+	<!-- 付款人账户姓名 -->
+	<xmlTag tagName="PayerAcctName">
+		<String name="payerAcctName" />
+	</xmlTag>
+	<!-- 付款账户机构 -->
+	<xmlTag tagName="PayerAcctDeptNbr">
+		<String name="payerAcctDeptNbr" />
+	</xmlTag>
+	<!-- 网银支付类型 -->
+	<xmlTag tagName="CyberTypCd">
+		<String name="cyberTypCd" />
+	</xmlTag>
+	<!-- 他行快捷支付，短信支付的流水号 -->
+	<xmlTag tagName="SmsInnerFundTransNbr">
+		<String name="smsInnerFundTransNbr" />
+	</xmlTag>
+	<!-- 他行快捷支付，短信支付的流水时间-->
+	<xmlTag tagName="SendUnionPayTime">
+		<String name="sendUnionPayTime" />
+	</xmlTag>
+	<!-- 银联前端调用地址-->
+	<xmlTag tagName="FrontCallBackUrl">
+		<String name="frontCallBackUrl" />
+	</xmlTag>
+	<!-- 支付方式 贷记卡支付用-->
+	<xmlTag tagName="PayTypCd">
+		<String name="payTypCd" />
+	</xmlTag>
+	<!-- 本次消费积分金额 -->
+	<xmlTag tagName="DeductAmt">
+		<BigDecimal name="deductAmt" />
+	</xmlTag>
+	<!-- 本次商户实际支付金额 -->
+	<xmlTag tagName="RealAmt">
+		<BigDecimal name="realAmt" />
+	</xmlTag>
+	<!-- 行社号-->
+	<xmlTag tagName="BranchNo">
+		<String name="branchNo" />
+	</xmlTag>
+	<!-- 客户内码-->
+	<xmlTag tagName="ClientNo">
+		<String name="clientNo" />
+	</xmlTag>
+	<!-- 积分标识-->
+	<xmlTag tagName="InteralFlag">
+		<String name="interalFlag" />
+	</xmlTag>
+	<!-- 积分账户-->
+	<xmlTag tagName="PointReacctdeptNbr">
+		<String name="pointReacctdeptNbr" />
+	</xmlTag>
+	<!-- 扫码模式-->
+	<xmlTag tagName="ScanCodeMode">
+		<String name="scanCodeMode" />
+	</xmlTag>
+	<!-- 二维码类型-->
+	<xmlTag tagName="CodeTypCd">
+		<String name="codeTypCd" />
+	</xmlTag>
+	<!-- 二维码原订单号-->
+	<xmlTag tagName="Qrcodeordernbr">
+		<String name="qrcodeordernbr" />
+	</xmlTag>
+	<!-- 打折金额-->
+	<xmlTag tagName="Discountableamt">
+		<BigDecimal name="discountableamt" />
+	</xmlTag> 
+	<!-- 是否支持信用卡 -->
+	<xmlTag tagName="IsCredit">
+		<String name="isCredit"/>
+	</xmlTag>
+	 <!-- 订单开始时间 -->
+	<xmlTag tagName="TimeStart">
+		<String name="timeStart"/>
+	</xmlTag>
+	<!-- 订单截止时间 -->
+	<xmlTag tagName="TimeExpire">
+		<String name="timeExpire"/>
+	</xmlTag>
+	<!-- 终端IP-->
+	<xmlTag tagName="CustomerIp">
+		<String name="customerIp"/>
+	</xmlTag>
+	<!-- 商品信息列表-->
+	<xmlTag tagName="ProductInfoDetail">
+		<String name="productInfoDetail"/>
+	</xmlTag>
+	<!-- 商品编号-->
+	<xmlTag tagName="ProductId">
+		<String name="productId"/>
+	</xmlTag>
+	<!-- 商品描述 -->
+	<xmlTag tagName="ProBody">
+		<String name="proBody" />
+	</xmlTag>
+	<!-- 商品标题-->
+	<xmlTag tagName="Subject">
+		<String name="subject" />
+	</xmlTag>
+	<!-- 商户操作号-->
+	<xmlTag tagName="OperatorId">
+		<String name="operatorId" />
+	</xmlTag>
+	<!-- 商户门店号-->
+	<xmlTag tagName="StoreId">
+		<String name="storeId" />
+	</xmlTag>
+	<!-- 微信终端号-->
+	<xmlTag tagName="TermId">
+		<String name="termId" />
+	</xmlTag>
+	<!-- 允许付款时间-->
+	<xmlTag tagName="TimeoutExpress">
+		<String name="timeoutExpress" />
+	</xmlTag>
+	<!-- 支付宝门店号-->
+	<xmlTag tagName="AlipayStoreId">
+		<String name="alipayStoreId" />
+	</xmlTag>
+	<!-- 支付场景-->
+	<xmlTag tagName="Scene">
+		<String name="scene" />
+	</xmlTag>
+	<!-- 支付授权码-->
+	<xmlTag tagName="AuthCode">
+		<String name="authCode" />
+	</xmlTag>
+	<!-- 商品信息-->
+	<xmlTag tagName="GoodsDetail">
+		<String name="goodsDetail" />
+	</xmlTag>
+	 
+	<xmlTag tagName="PayeeAcctList">
+		<idxField name="payeeAcctList" maxLoop="9999999">
+			<Group name="Map">
+				<!-- 子订单发生额 -->
+				<xmlTag tagName="SubTransAmt">
+					<String name="SubTransAmt" />
+				</xmlTag>
+				<!-- 子订单积分抵扣金额 -->
+				<xmlTag tagName="SubDeductAmt">
+					<String name="SubDeductAmt" />
+				</xmlTag>
+				<!-- 子订单商户实际支付金额 -->
+				<xmlTag tagName="SubRealAmt">
+					<String name="SubRealAmt" />
+				</xmlTag>
+				<!-- 商户归属机构 -->
+				<xmlTag tagName="PayeeAcctDeptNbr">
+					<String name="PayeeAcctDeptNbr" />
+				</xmlTag>
+				<!-- 收款人账号 -->
+				<xmlTag tagName="PayeeAcctNbr">
+					<String name="PayeeAcctNbr" />
+				</xmlTag>
+				<!-- 收款人卡类型 -->
+				<xmlTag tagName="PayeeCardTypCd">
+					<String name="payeeCardTypCd" />
+				</xmlTag>
+				<!-- 收款人账号类型 -->
+				<xmlTag tagName="PayeeAcctTypCd">
+					<String name="payeeAcctTypCd" />
+				</xmlTag>
+				<!-- 收款账户类型 -->
+				<xmlTag tagName="PayeeAcctKind">
+					<String name="payeeAcctKind" />
+				</xmlTag>
+				<!-- 商户名称-->
+				<xmlTag tagName="MerName">
+					<String name="MerName" />
+				</xmlTag>
+				<!-- 第三方入驻商户标识号-->
+				<xmlTag tagName="ThirdMerNbr">
+					<String name="ThirdMerNbr" />
+				</xmlTag>
+				<!-- 商户号-->
+				<xmlTag tagName="ProxyMerNbr">
+					<String name="ProxyMerNbr" />
+				</xmlTag>
+				
+			</Group>
+		</idxField>
+	</xmlTag>
+</segment>

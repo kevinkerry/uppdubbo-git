@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:p1="http://com.csii.bank.core/customer/query" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://com.csii.bank.core/customer/query" targetNamespace="http://com.csii.bank.core/customer/query">
+  <wsdl:types>
+    <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:base="http://com.csii.bank.core/base" xmlns:cusquery="http://com.csii.bank.core/customer/query" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://com.csii.bank.core/customer/query"><import namespace="http://com.csii.bank.core/base" schemaLocation="base.xsd"/><complexType name="QueryPersonRequestType"><sequence><element ref="base:QueryRequest"/><element name="persnbr" type="long"/><element name="persname" type="string"/><element name="persidtypcd" type="string"/><element name="idnbr" type="string"/></sequence></complexType><element name="QueryPersonRequest" type="cusquery:QueryPersonRequestType"/><complexType name="persdetails"><sequence><element name="persnbr" type="long"/><element name="crcd" type="string"/><element name="salucd" type="string"/><element name="persname" type="string"/><element name="adddate" type="date"/><element name="datebirth" type="date"/><element name="datedeath" type="date"/><element name="educlevcd" type="string"/><element name="incomelevcd" type="string"/><element name="occptncd" type="string"/><element name="validyn" type="string"/><element name="locorgnbr" nillable="true" type="long"/><element name="persidtypcd" type="string"/><element name="idnbr" type="string"/></sequence></complexType><complexType name="QueryPersonResponseType"><sequence><element ref="base:BaseResponse"/><element maxOccurs="unbounded" minOccurs="0" name="persinfo" type="cusquery:persdetails"/></sequence></complexType><element name="QueryPersonResponse" type="cusquery:QueryPersonResponseType"/></schema>
+  </wsdl:types>
+  <wsdl:message name="QueryPersonResponse">
+    <wsdl:part element="tns:QueryPersonResponse" name="QueryPersonResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="QueryPersonRequest">
+    <wsdl:part element="tns:QueryPersonRequest" name="QueryPersonRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="CustomerQueryServicePortType">
+    <wsdl:operation name="QueryPerson">
+      <wsdl:input message="tns:QueryPersonRequest" name="QueryPersonRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:QueryPersonResponse" name="QueryPersonResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CustomerQueryServicePortTypeSoap11" type="tns:CustomerQueryServicePortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="QueryPerson">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="QueryPersonRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="QueryPersonResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CustomerQueryService">
+    <wsdl:port binding="tns:CustomerQueryServicePortTypeSoap11" name="CustomerQueryServicePortTypeSoap11">
+      <soap:address location="http://localhost:8099/customerQueryService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

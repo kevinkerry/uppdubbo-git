@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spring:beans xmlns:spring="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.csii.com.cn/schema/pe"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd 
+	http://www.csii.com.cn/schema/pe http://www.csii.com.cn/schema/pe/pe-config.xsd">
+
+	<config>
+
+		<!-- 信息输出的国际化定义 -->
+		<messageSource>
+			<param name="basenames">classpath:/config/message/dictionary_zh_CN,classpath:/config/message/errorCode_zh_CN</param>
+			<param name="cacheSeconds">10</param>
+			<param name="fallbackToSystemLocale">false</param>
+			<param name="defaultEncoding">UTF-8</param>
+		</messageSource>
+
+		<!-- 日志拦截器 -->
+		<bean id="loggingInterceptor" class="com.csii.upp.core.LoggingInterceptor">
+			<param name="loggingFields">BizTrackNo</param>
+		</bean>
+
+		<!-- 核心控制器 -->
+		<coreController id="coreController"
+			class="com.csii.upp.core.CoreControllerImpl">
+			<ref name="loggingInterceptor">loggingInterceptor</ref>
+		</coreController>
+
+		<!-- 模版级Action定义 -->
+		<action id="placeholderAction" class="com.csii.pe.action.PlaceholderAction" />
+		
+		<executor id="eventManagerThreadPool">
+			<param name="name">event Manager Thread Pool</param>
+			<param name="initSize">50</param>
+			<param name="maxSize">100</param>
+			<param name="minSize">50</param>
+			<param name="queueSize">100</param>
+			<param name="keepAliveTime">3000</param>
+		</executor>
+
+	</config>
+</spring:beans>

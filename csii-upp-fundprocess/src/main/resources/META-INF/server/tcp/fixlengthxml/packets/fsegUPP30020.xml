@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE segment SYSTEM "packetutf8.dtd">
+<segment>
+	<xmlTag tagName="ReturnForm">
+		<String name="ReturnForm"></String>
+	</xmlTag>
+	<!-- 核心返回日期 -->
+	<xmlTag tagName="HostClearDate">
+		<Date name="HostClearDate" pattern="yyyyMMdd"></Date>
+	</xmlTag>
+</segment>

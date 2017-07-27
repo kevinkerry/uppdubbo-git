@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spring:beans xmlns:spring="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.csii.com.cn/schema/pe"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd 
+	http://www.csii.com.cn/schema/pe http://www.csii.com.cn/schema/pe/pe-config.xsd">
+<config>
+	<!-- 卡信息验证 -->
+	<transaction id="ValidateCardInfo" template="signatureSignTemplate">
+        <actions>
+            <ref name="action">validateCardInfoAction</ref>
+        </actions>
+	</transaction>
+	<action id="validateCardInfoAction" class="com.csii.upp.payment.action.post.ValidateCardInfoAction">
+	</action>
+	
+	<!-- 通知交易结果 -->
+    <transaction id="NotifyTransResult" template="queryMgmtTemplate">
+    	<actions>
+    		<ref name="action">notifyTransResultAction</ref>
+    	</actions>
+    </transaction>
+    <action id="notifyTransResultAction" class="com.csii.upp.payment.action.end.NotifyTransResultAction">
+    </action>
+    
+    <!-- 确认支付交易配置 -->
+	<transaction id="ConfirmedPay" template="signatureSignTemplate">
+        <actions>
+            <ref name="action">confirmedPayAction</ref>
+        </actions>
+	</transaction>
+	<action id="confirmedPayAction" class="com.csii.upp.payment.action.post.ConfirmedPayAction">
+	</action>
+	
+		<!-- 取消订单 -->
+	<transaction id="CancelOrder" template="signatureSignTemplate">
+        <actions>
+            <ref name="action">cancelOrderAction</ref>
+        </actions>
+	</transaction>
+	<action id="cancelOrderAction" class="com.csii.upp.payment.action.post.CancelOrderAction">
+	</action>
+	
+	<!-- 生成二级商户编号配制 -->
+	<transaction id="GenerrateSubMerchantId" template="signatureSignTemplate">
+        <actions>
+            <ref name="action">generrateSubMerchantIdAction</ref>
+        </actions>
+	</transaction>
+	<action id="generrateSubMerchantIdAction" class="com.csii.upp.payment.action.post.GenerrateSubMerchantIdAction">
+	</action>
+
+	<!-- 二级商户信息同步 -->
+	<transaction id="SychSubMer" template="signatureSignTemplate">
+        <actions>
+            <ref name="action">sychSubMerAction</ref>
+        </actions>
+	</transaction>
+	<action id="sychSubMerAction" class="com.csii.upp.payment.action.post.SychSubMerActionAction">
+	</action>
+	
+	<!--网银加签  -->
+	<transaction id="BankPay" template="queryMgmtTemplate">
+        <actions>
+            <ref name="action">bankPayAction</ref>
+        </actions>
+	</transaction>
+	<action id="bankPayAction" class="com.csii.upp.payment.action.post.BankPayOnlineAction">
+		<ref name="signature">commonSignature</ref>
+	</action>
+	
+	<!-- 插入订单信息-->
+	<transaction id="AddOrderInfo" template="queryMgmtTemplate">
+		<actions>
+			<ref name="action">addOrderInfoAction</ref>
+		</actions>
+	</transaction>
+    <action id="addOrderInfoAction" class="com.csii.upp.payment.action.post.AddOrderInfoAction" />
+    
+    
+	<!-- 支付交易 -->
+	<transaction id="PayTrans" template="onlineTransTemplate">
+		<actions>
+			<ref name="action">payTransAction</ref>
+		</actions>
+	</transaction>
+	<action id="payTransAction" class="com.csii.upp.payment.action.post.PayTransAction" />
+
+	<!-- 退货交易 -->
+	<transaction id="ReturnTrans" template="onlineTransTemplate">
+		<actions>
+			<ref name="action">returnTransAction</ref>
+		</actions>
+	</transaction>
+	<action id="returnTransAction" class="com.csii.upp.payment.action.post.ReturnTransAction" />
+
+	<!-- 提现交易 -->
+	<transaction id="WithdrawTrans" template="onlineTransTemplate">
+		<actions>
+			<ref name="action">withdrawTransAction</ref>
+		</actions>
+	</transaction>
+	<action id="withdrawTransAction" class="com.csii.upp.payment.action.post.WithdrawTransAction" />
+	
+	<!-- 代发交易 -->
+	<transaction id="SGCT" template="onlineTransTemplate">
+		<actions>
+			<ref name="action">SGCTAction</ref>
+		</actions>
+	</transaction>
+	<action id="SGCTAction" class="com.csii.upp.payment.action.post.PayTransAction" />
+	
+	<!-- 代发交易 -->
+	<transaction id="SGPM" template="signatureSignTemplate">
+		<actions>
+			<ref name="action">SGPMAction</ref>
+		</actions>
+	</transaction>
+	<action id="SGPMAction" class="com.csii.upp.payment.action.post.SGPMAction" />
+</config>
+</spring:beans>

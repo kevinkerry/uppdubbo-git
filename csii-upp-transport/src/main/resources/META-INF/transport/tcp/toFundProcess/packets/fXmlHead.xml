@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Group SYSTEM "packetutf8.dtd">
+<Group name="Message"
+	xmlHead="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;">
+	<Group name="Head">
+		<xmlTag tagName="TransCode">
+			<String name="transCode" />
+		</xmlTag>
+		<xmlTag tagName="ReqSeqNo">
+			<String name="reqSeqNo" />
+		</xmlTag>
+		<xmlTag tagName="ChnlId">
+			<String name="chnlId" defaultValue="PAYM" />
+		</xmlTag>
+		<xmlTag tagName="ReqTime">
+			<String name="reqTime"/>
+		</xmlTag>
+		<xmlTag tagName="ChannelNbr">
+			<String name="channelNbr" defaultValue="" />
+		</xmlTag>
+		<xmlTag tagName="BizTrackNo">
+			<String name="bizTrackNo" defaultValue="" />
+		</xmlTag>
+		
+	</Group>
+	<Group name="Body">
+		<include keyName="transCode" />
+	</Group>
+</Group>

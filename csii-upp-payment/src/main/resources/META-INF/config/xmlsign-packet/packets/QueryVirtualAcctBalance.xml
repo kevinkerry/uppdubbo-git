@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE segment SYSTEM "packetutf8.dtd">
+<segment>
+	<Group name="Message">
+	<!-- 交易号 -->
+	<xmlTag tagName="TransId">
+		<String name="TransId" defaultValue="" />
+	</xmlTag>
+	<!-- 响应码 -->
+	<xmlTag tagName="RespCode">
+		<String name="RespCode"/>
+	</xmlTag>
+	<!-- 响应信息-->
+	<xmlTag tagName="RespMessage">
+		<String name="RespMessage" />
+	</xmlTag>
+	<!-- 商户号 -->
+	<xmlTag tagName="MerchantId">
+		<String name="MerNbr" defaultValue="" />
+	</xmlTag>
+	<!-- 二级商户号 -->
+	<xmlTag tagName="SubMerchantId">
+		<String name="SubMerchantId" defaultValue="" />
+	</xmlTag>
+	<!-- 用户编号 -->
+	<xmlTag tagName="UserNo">
+		<String name="UserNbr" defaultValue="" />
+	</xmlTag>
+	<!-- 商户交易时间 -->
+	<xmlTag tagName="MerDateTime">
+		<Date name="MerTransDateTime" pattern="yyyyMMddHHmmss"/>
+	</xmlTag>
+	<!-- 当前余额 -->
+	<xmlTag tagName="TotalBal">
+		<String name="BdoABal" />
+	</xmlTag>
+	<!-- 可用余额 -->
+	<xmlTag tagName="AvailableBal">
+		<String name="BdoBBal" />
+	</xmlTag>
+	<!-- 保留余额 -->
+	<xmlTag tagName="BlockedBal">
+		<String name="BdoGBal" />
+	</xmlTag>
+	</Group>
+</segment>

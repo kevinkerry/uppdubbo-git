@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE segment SYSTEM "packetutf8.dtd">
+<segment>
+	<!-- 	文件名 -->
+	<xmlTag tagName="FileName">
+		<String name="filename" defaultValue="" />
+	</xmlTag>
+	<!-- 	地址 -->
+	<xmlTag tagName="IP">
+		<String name="IP" defaultValue="" />
+	</xmlTag>
+	<!-- 	端口 -->
+	<xmlTag tagName="Port">
+		<String name="Port" defaultValue="" />
+	</xmlTag>
+	<!-- 	用户名 -->
+	<xmlTag tagName="UserName">
+		<String name="UserName" defaultValue="" />
+	</xmlTag>
+	<!-- 	密码 -->
+	<xmlTag tagName="Password">
+		<String name="Password" defaultValue="" />
+	</xmlTag>
+	<!-- 	存储路径 -->
+	<xmlTag tagName="RemotePath">
+		<String name="RemotePath" defaultValue="" />
+	</xmlTag>
+	<!-- 	清算日期 -->
+	<xmlTag tagName="ClearDate">
+		<Date name="clearDate" defaultValue="" pattern="yyyyMMdd" />
+	</xmlTag>
+	<!-- 接收方 -->
+	<xmlTag tagName="FileAccepter">
+		<String name="fileaccepter" defaultValue="" />
+	</xmlTag>
+	<!-- 本地路径 -->
+	<xmlTag tagName="LocalPath">
+		<String name="LocalPath" defaultValue="" />
+	</xmlTag>
+</segment>

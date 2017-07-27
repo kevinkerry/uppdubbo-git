@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE segment SYSTEM "packetutf8.dtd">
+<!-- 卡标识查询-->
+<segment>
+	<!-- 流水号 -->
+	<xmlTag tagName="transSeqNbr">
+		<String name="transSeqNbr" defaultValue="" />
+	</xmlTag>
+</segment>

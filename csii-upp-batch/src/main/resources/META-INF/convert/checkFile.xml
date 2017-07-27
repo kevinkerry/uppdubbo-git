@@ -1,0 +1,1073 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE files SYSTEM "file.dtd">
+<files>
+	<!--电子账户对账文件模板 -->
+	<file id="eaccount" prefix="eaccount" skipLine="" delimiter="|"
+		suffix=".txt" lineSeparator="\n" stringSymbol="1" encoding="GBK">
+		<field name="downrtxndate" type="date" /><!-- 账务系统记账日期 -->
+		<field name="downrtxnnbr" /><!-- 账务系统记账序号 -->
+		<field name="rtxndate" type="date" /><!-- 资金平台交易日期 -->
+		<field name="innerrtxnnbr" /><!--资金平台交易序号 -->
+		<field name="channelInd" /><!-- 渠道标识(暂未使用) -->
+		<field name="payeracctnbr" /><!-- 付款账号 -->
+		<field name="payername" /><!--付款名称 -->
+		<field name="payeeacctnbr" /><!--收款账号 -->
+		<field name="payeename" /><!-- 收款名称 -->
+		<field name="currency" /><!-- 币种 -->
+		<field name="transamt" /><!-- 金额 -->
+		<field name="note" /><!-- 附言 -->
+	</file>
+
+	<!--核心对账文件模板 -->
+	<!-- <file id="core" prefix="core" skipLine="" delimiter="|" suffix=".txt"
+		lineSeparator="\n" stringSymbol="1" encoding="utf-8">
+		<field name="downrtxnnbr" />   主机流水号REF_NO：RB35100600000067005620
+		<field name="innerrtxnnbr" /> 直销银行交易渠道流水号CHANNEL_SEQ_NO：00006202
+		<field name="rtxndate" type="date" /> 委托日期CONSIGN_DATE：20150422
+		<field name="currency" /> 交易币种CCY
+		<field name="transamt" /> 金额TRAN_AMT
+		<field name="dr_cr_ind" />  借贷标识DR_CR_IND
+		<field name="payeracctnbr" />  付款人账号PAYER_ACCT
+		<field name="payername" /> 付款名称
+		<field name="payeeacctnbr" /> 收款人账号PAYEE_ACCT
+		<field name="payeename" /> 收款名称
+		<field name="tran_type" /> 交易类型TRAN_TYPE
+		<field name="status" />  交易状态RESPONSE_STATUS
+	</file> -->
+	
+	<!--核心对账文件模板 -->
+	<file id="core" prefix="core" skipLine="" delimiter="|" suffix=".txt"
+		lineSeparator="\n" stringSymbol="1" encoding="utf-8" skipBeginLine="false" skipEndLine="false">
+		<field name="BWOANUM" /><!-- 卡号 -->
+		<field name="BWOACDFG" /><!-- 借贷标志 1.借，2.贷-->
+		<field name="transamt" /><!-- 交易金额 -->
+		<field name="innerfundtransnbr" /><!-- 前置流水号 -->
+		<field name="BWOASQDB" /><!-- 商户号 -->
+		<field name="BWOCSTP" /><!-- 企业/个人标志 -->
+		<field name="BWOARMRK" /><!-- 备用  前8位下游日期，后面是核心流水号-->
+<!-- 		<field name="downrtxnnbr" />   核心流水号 -->
+<!-- 		<field name="innerrtxnnbr" /> 前置流水号 -->
+<!-- 		<field name="BusTyp" /> 业务种类代码 -->
+<!-- 		<field name="CasFlg" /> 转现标志 -->
+<!-- 		<field name="payeracctnbr" />  借方账号 -->
+<!-- 		<field name="payeeacctnbr" /> 贷方账号 -->
+<!-- 		<field name="DbtVchTyp" />  借方凭证类型 -->
+<!-- 		<field name="DbtVchNum" />  借方凭证号 -->
+<!-- 		<field name="DbtSmrCod" />  借方摘要代码 -->
+<!-- 		<field name="DbtSmr" />  借方摘要内容 -->
+<!-- 		<field name="CdtVchTyp" />  贷方凭证类型 -->
+<!-- 		<field name="CdtVchNum" />  贷方凭证号 -->
+<!-- 		<field name="CdtSmrCod" />  贷方摘要代码 -->
+<!-- 		<field name="CdtSmr" />  贷方摘要内容 -->
+<!-- 		<field name="transamt" /> 交易金额 -->
+<!-- 		<field name="feeamt" /> 手续费金额 -->
+<!-- 		<field name="TlrID3" /> 柜员号 -->
+	</file>
+	<!-- FDPS对账文件模板 -->
+	<file id="fdps" prefix="fdps" skipLine="" delimiter="|" suffix=".txt"
+		lineSeparator="\n" stringSymbol="1" encoding="utf-8" skipBeginLine="false" skipEndLine="false">
+		<field name="downsystransnbr" /><!-- 下游系统交易流水号 -->
+		<field name="transseqnbr" /><!-- 支付平台流水号 -->
+		<field name="transdate" /><!-- 交易日期 -->
+		<field name="downsysdate" /><!-- 下游日期 -->
+		<field name="transcode" /><!-- 交易代码 -->
+		<field name="transstatus" /><!-- 交易状态 -->
+		<field name="transamt" /><!-- 交易金额 -->
+		<field name="payeracctnbr" /><!-- 付款账号 -->
+		<field name="payeeacctnbr" /><!-- 收款账号 -->
+	</file>
+	
+	<!-- 中间业务平台对账摸版 -->
+		<file id="iybs" prefix="iybs" skipLine="" delimiter="|" suffix=".txt"
+		lineSeparator="\n" stringSymbol="1" encoding="utf-8" skipBeginLine="false" skipEndLine="false">
+		<field name="innerfundtransnbr" /><!-- 渠道流水号（支付平台流水号）【12位】-->
+		<field name="transdate" /><!-- 交易日期（核心日期）【长度8位】 -->
+		<field name="downsysdate" /><!-- 业务跟踪号（网络核心相关一笔业务的唯一标志）【长度20位】 -->
+		<field name="transamt" /><!-- 交易金额【长度暂定19位】 -->
+		<field name="payeracctnbr" /><!-- 付款账号【建议32位】 -->
+	</file>	
+		
+		<!--九江bt核心对账文件模板 -->
+	<!-- <file id="core" prefix="core" skipLine="1" delimiter="|" suffix=".txt"
+		lineSeparator="\n" stringSymbol="1" encoding="gbk" skipBeginLine="true" skipEndLine="true"> 
+		<field name="ywlx" 		parser="trim"/>  交易代码
+		<field name="zhdh" parser="trim"/>  业务类型
+		<field name="gylsh" parser="trim"/>  账户代号
+		<field name="downrtxnnbr" parser="trim"/>  柜员流水号
+		<field name="innerrtxnnbr" parser="trim"/> 系统跟踪号
+	    <field name="jdbj" parser="trim" />  借贷标记
+		<field name="transamt" parser="trim"/>  交易金额
+		<field name="bczbz"  parser="trim"/> 被冲正标志
+		<field name="downrtxndate"  type="date"  />  提出日期
+		<field name="downrtxndate"  type="date" />  交易日期
+	</file> -->
+	
+
+	<!--二代对账文件模板 -->
+	<file id="cnaps2" prefix="cnaps2" skipLine="" delimiter="|"
+		suffix=".txt" lineSeparator="\n" stringSymbol="1" encoding="gbk">
+		<field name="downrtxndate" type="date" /><!--平台日期 -->
+		<field name="downrtxnnbr" /><!--平台流水 -->
+		<field name="rtxndate" type="date" /><!-- 渠道日期 -->
+		<field name="channelcd" /><!--渠道代码 -->
+		<field name="path" /><!-- 汇路代码 -->
+		<field name="innerrtxnnbr" /><!--渠道流水 -->
+		<field name="cleardate" type="date" /><!-- |清算日期 -->
+		<field name="payeracctnbr" /><!-- 付款账号 -->
+		<field name="payername" /><!--付款名称 -->
+		<field name="payeeacctnbr" /><!--收款账号 -->
+		<field name="payeename" /><!-- 收款名称 -->
+		<field name="transamt" /><!-- 金额 -->
+		<field name="rtxnstate" type="date" /><!-- 人行处理状态 -->
+		<field name="rtxntypcd" /><!-- 交易类型 -->
+		<field name="downrtxnnbr" /><!-- 原平台流水 -->
+		<field name="downrtxndate" type="date" /><!-- 原平台日期 -->
+	</file>
+
+	<!--快钱对账文件模板 -->
+	<file id="bill99" prefix="bill99" skipLine="" delimiter=","
+		suffix=".txt" lineSeparator="\n" stringSymbol="1" encoding="gbk">
+		<field name="downrtxnnbr" /><!-- 检索参考号 -->
+		<field name="rtxntypcd" /><!-- 交易类型 -->
+		<field name="merchantId" /><!--商户编号 -->
+		<field name="terminalId" /><!--终端号 -->
+		<field name="storablecardno" /><!-- 缩略卡号 -->
+		<field name="cardorg" /><!-- 卡组织编号 -->
+		<field name="issuer" /><!-- 发卡银行名称 -->
+		<field name="transamt" /><!-- 金额 -->
+		<field name="feeamt" /><!-- 手续费 -->
+		<field name="settleamount" /><!-- 结算金额 -->
+		<field name="rtxntime" /><!-- 交易时间 -->
+		<field name="authorizationcode" /><!-- 授权码 -->
+		<field name="innerrtxnnbr" /><!-- 外部检索参考号 -->
+		<field name="payername" /><!--付款名称 -->
+		<field name="payeeacctnbr" /><!--收款账号 -->
+		<field name="payeename" /><!-- 收款名称 -->
+		<field name="transamt" /><!-- 金额 -->
+	</file>
+
+	<!-- 超级网银对账文件模板 -->
+	<file delimiter="|" id="ibps" prefix="ZXDZ_IBPS_" suffix=".dat"
+		lineSeparator="\n" stringSymbol="1" encoding="GBK">
+		<field name="direction" />  <!--往来标志HBB -->
+		<field name="CDFlag" />  <!--借贷标志HBB -->
+		<field name="innerrtxnnbr" /> <!--直销银行交易渠道流水号CHANNEL_SEQ_NO -->
+		<field name="rtxndate" type="date" />  <!--委托日期CONSIGN_DATE -->
+		<field name="ActDat" />  <!--主机记账日期HBB -->
+		<field name="HLogNo" />  <!--主机记账流水HBB -->
+		<field name="payeracctnbr" />  <!--付款人账号PAYER_ACCT -->
+		<field name="payername" />  <!--付款人名称PAYER_NAME -->
+		<field name="send_settle_bank" /> <!--发起清算行行号SEND_SETTLE_BANK -->
+		<field name="payeeacctnbr" />  <!--收款人账号PAYEE_ACCT -->
+		<field name="payeename" />  <!--收款人名称PAYEE_NAME -->
+		<field name="rcv_settle_bank" /> <!--  接收清算行行号PyeSetBk  -->
+		<field name="currency" /> <!--交易币种CCY -->
+		<field name="transamt" />  <!--金额TRAN_AMT -->
+		<field name="rtxnstate" />  <!-- 交易状态 -->
+		<field name="id" />  <!-- 报文标识 -->	
+	</file>
+	
+	<!-- 大同城对账文件模板 -->
+	<file delimiter="|" id="dpc" prefix="dpc" suffix=".txt"
+		lineSeparator="\n" stringSymbol="1" encoding="utf-8">
+		<field name="downrtxnnbr" />  <!--主机流水号REFERENCE -->
+		<field name="innerrtxnnbr" />  <!--直销银行交易渠道流水号CHANNEL_SEQ_NO -->
+		<field name="send_bank_code" />  <!--发起行行号SEND_BANK_CODE -->
+		<field name="rcv_bank_code" />  <!--接收行行号RCV_BANK_CODE -->
+		<field name="send_settle_bank" />  <!--发起清算行行号SEND_SETTLE_BANK -->
+		<field name="rcv_settle_bank" />  <!--接收清算行行号RCV_SETTLE_BANK -->
+		<field name="rtxndate" type="date" />  <!--委托日期DEAL_DATE -->
+		<field name="workround" /><!-- 对账场次WORKROUND -->
+		<field name="currency" />  <!--交易币种CUR_CODE -->
+		<field name="tranamt" />  <!--金额TRAN_AMT -->
+		<field name="dr_cr_ind" />  <!--借贷标识DR_CR_IND -->
+		<field name="payeracctnbr" />  <!--付款人账号PAYER_ACCT -->
+		<field name="payername" />  <!--付款人名称PAYER_NAME -->
+		<field name="payeeacctnbr" />  <!--收款人账号PAYEE_ACCT -->
+		<field name="payeename" />  <!--收款人名称PAYEE_NAME -->
+<!-- 		<field name="rtxnstate" />人行处理状态 -->
+		<field name="deal_code" />  <!--报文交易码DEAL_CODE -->
+		<field name="direction" />  <!--往来标志IN_OTH_FLAG -->
+		<field name="bill_code" />  <!--票据种类BILL_CODE -->
+		<field name="busi_type" />  <!--业务种类BUSI_TYPE -->
+		<field name="returncode" />  <!--响应状态STATUS -->
+		<field name="settle_date" type="date" />  <!--清算日期SETTLE_DATE -->
+	</file>
+	<!-- 大额对账文件模板 -->
+	<!-- <file delimiter="|" id="hvps" prefix="ZXDZ_HVPS_" suffix=".txt"
+		lineSeparator="\n" stringSymbol="1" encoding="utf-8">
+		<field name="downrtxnnbr" />  二代支付平台交易参考号REF_NO
+		<field name="innerrtxnnbr" />  直销银行交易渠道流水号CHANNEL_SEQ_NO
+		<field name="send_bank_code" />  发起行行号SEND_BANK_CODE
+		<field name="rcv_bank_code" />  接收行行号RCV_BANK_CODE
+		<field name="send_settle_bank" />  发起清算行行号SEND_SETTLE_BANK
+		<field name="rcv_settle_bank" />  接收清算行行号RCV_SETTLE_BANK
+		<field name="rtxndate" type="date" />  委托日期DEAL_DATE
+		<field name="currency" />  交易币种CUR_CODE
+		<field name="transamt" />  金额TRAN_AMT
+		<field name="dr_cr_ind" />  借贷标识DR_CR_IND
+		<field name="payeracctnbr" />  付款人账号PAYER_ACCT
+		<field name="payername" />  付款人名称PAYER_NAME
+		<field name="payeeacctnbr" />  收款人账号PAYEE_ACCT
+		<field name="payeename" />  收款人名称PAYEE_NAME
+		<field name="msg_code" />  报文交易码DEAL_CODE
+		<field name="direction" />  往来标志IN_OTH_FLAG
+		<field name="BUSITYPE" />  票据种类BILL_CODE
+		<field name="TRAN_CATEGORY" />  业务种类BUSI_TYPE
+		<field name="rtxnstate" />  响应状态RESPONSE_STATUS
+		<field name="cleardate" type="date" />  清算日期SETTLE_DATE
+		<field name="originnerrtxnnbr"/>  原直销银行交易渠道流水号ORIG_CHANNEL_SEQ_NO
+		<field name="origdownrtxnnbr"/>  原二代支付平台交易参考号ORIG_REF_NO
+	</file> -->
+	
+	<!-- 大额对账文件模板 -->
+	<file delimiter="|" id="hvps" prefix="ZXDZ_HVPS_" suffix=".dat"
+		lineSeparator="\n" stringSymbol="1" encoding="GBK">
+	    <field name="direction" />  <!-- 往来标志IOFlag -->
+		<field name="CDFlag" />  <!-- 借贷标志 CDFlag-->
+		<field name="innerrtxnnbr" />  <!-- 交易流水号SysLog -->
+		<field name="rtxndate" />  <!-- 交易日期RegDat -->
+		<field name="ActDat" />  <!-- 主机记账日期ActDat  -->
+		<field name="HLogNo" />  <!--主机记账流水HLogNo -->
+		<field name="payeracctnbr" />  <!--付款人账号PyrAct -->
+		<field name="payername" />  <!--付款人名称PyeNam -->
+		<field name="send_bank_code" />  <!--发起清算行行号PyrSetBk -->
+		<field name="payeeacctnbr" />  <!--收款人账号PyeAct -->
+		<field name="payeename" />  <!--收款人名称PyeNam -->
+		<field name="rcv_settle_bank" /> <!--  接收清算行行号PyeSetBk  -->
+		<field name="currency" />  <!--交易币种CcyCod -->
+		<field name="transamt" />  <!--金额TRAN_AMT -->	
+		<field name="rtxnstate" />  <!-- 交易状态 -->
+		<field name="id" />  <!-- 报文标识 -->
+	</file>
+	
+	<!-- 小额对账文件模板 -->
+	<!-- <file delimiter="|" id="beps" prefix="ZXDZ_BEPS_" suffix=".txt"
+		lineSeparator="\n" stringSymbol="1" encoding="utf-8">
+		<field name="downrtxnnbr" />  二代支付平台交易参考号REF_NO
+		<field name="innerrtxnnbr" />  直销银行交易渠道流水号CHANNEL_SEQ_NO
+		<field name="send_bank_code" />  发起行行号SEND_BANK_CODE
+		<field name="rcv_bank_code" />  接收行行号RCV_BANK_CODE
+		<field name="send_settle_bank" />  发起清算行行号SEND_SETTLE_BANK
+		<field name="rcv_settle_bank" />  接收清算行行号RCV_SETTLE_BANK
+		<field name="rtxndate" type="date" />  委托日期DEAL_DATE
+		<field name="XCHG_DATE" type="date" />  轧差日期XCHG_DATE
+		<field name="currency" />  交易币种CUR_CODE
+		<field name="transamt" />  金额TRAN_AMT
+		<field name="dr_cr_ind" />  借贷标识DR_CR_IND
+		<field name="payeracctnbr" />  付款人账号PAYER_ACCT
+		<field name="payername" />  付款人名称PAYER_NAME
+		<field name="payeeacctnbr" />  收款人账号PAYEE_ACCT
+		<field name="payeename" />  收款人名称PAYEE_NAME
+		<field name="msg_code" />  报文交易码DEAL_CODE
+		<field name="direction" />  往来标志IN_OTH_FLAG
+		<field name="BUSITYPE" />  票据种类BILL_CODE
+		<field name="TRAN_CATEGORY" />  业务种类BUSI_TYPE
+		<field name="rtxnstate" />  响应状态RESPONSE_STATUS
+		<field name="cleardate" type="date" />  清算日期SETTLE_DATE
+		<field name="originnerrtxnnbr"/>  原直销银行交易渠道流水号ORIG_CHANNEL_SEQ_NO
+		<field name="origdownrtxnnbr"/>  原二代支付平台交易参考号ORIG_REF_NO
+	</file> -->
+	
+	<!-- 小额对账文件模板 -->
+	<file delimiter="|" id="beps" prefix="ZXDZ_BEPS_" suffix=".dat"
+		lineSeparator="\n" stringSymbol="1" encoding="GBK">
+	    <field name="direction" />  <!-- 往来标志IOFlag -->
+		<field name="CDFlag" />  <!-- 借贷标志 CDFlag-->
+		<field name="innerrtxnnbr" />  <!-- 交易流水号SysLog -->
+		<field name="rtxndate" />  <!-- 交易日期RegDat -->
+		<field name="ActDat" />  <!-- 主机记账日期ActDat  -->
+		<field name="HLogNo" />  <!--主机记账流水HLogNo -->
+		<field name="payeracctnbr" />  <!--付款人账号PyrAct -->
+		<field name="payername" />  <!--付款人名称PyeNam -->
+		<field name="send_settle_bank" />  <!--发起清算行行号PyrSetBk -->
+		<field name="payeeacctnbr" />  <!--收款人账号PyeAct -->
+		<field name="payeename" />  <!--收款人名称PyeNam -->
+		<field name="rcv_settle_bank" /> <!--  接收清算行行号PyeSetBk  -->
+		<field name="currency" />  <!--交易币种CcyCod -->
+		<field name="transamt" />  <!--金额TRAN_AMT -->	
+		<field name="rtxnstate" />  <!--金额 -->
+		<field name="id" />  <!-- 报文标识 -->
+	</file>
+	
+	<!--银联对账文件模板 -->
+	<file id="unionpayds1" prefix="unionpayds1" skipLine="" delimiter=""
+		suffix="" lineSeparator="\n" stringSymbol="1" encoding="gbk">
+		<field name="innerrtxntyp" length="3"/><!-- 交易代码 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="acqInsCode" length="11" parser="rigthTrim"/><!-- 代理机构标识码 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="sndInsCode" length="11" parser="rigthTrim"/><!-- 发送机构标识码 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="downrtxnnbr" length="6" /><!-- 系统跟踪号 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="rtxndate" length="10" parser="addRightYear"/><!-- 交易传输时间 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="payeracctnbr" length="19" parser="rigthTrim"/><!-- 帐号-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="transamt" length="12" parser="formatAmt" decimal="2"/><!-- 交易金额 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="merCatCode" length="4" /><!-- 商户类别 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="termType" length="2"/><!-- 终端类型 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="queryId" length="21"/><!-- 查询流水号 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="payTypeOld" length="2" parser="rigthTrim"/><!-- 支付方式（旧） -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="innerrtxnnbr" length="32" parser="rigthTrim"/><!-- 商户订单号 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="payCardType" length="2"/><!-- 支付卡类型 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="origTraceNo" length="6" parser="rigthTrim"/><!--原始交易的系统跟踪号 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="origTxnTime" length="10" parser="addYear"/><!-- 原始交易日期时间 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="merFee" length="13" parser="formatSymbolAmt" decimal="2"/><!-- 商户手续费 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="settAmt" length="13" parser="formatSymbolAmt" decimal="2"/><!-- 结算金额(取值为“交易金额”与“商户手续费”的扎差) -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="payType" length="4" /><!-- 支付方式 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="groupMerId" length="15" parser="rigthTrim"/><!-- 集团商户代码 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="txnType" length="2" parser="rigthTrim"/><!-- 交易类型 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="txnSubType" length="2" parser="rigthTrim"/><!-- 交易子类 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="bizType" length="6" parser="rigthTrim"/><!-- 业务类型-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="accType" length="2" parser="rigthTrim"/><!--帐号类型-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="billType" length="4" parser="rigthTrim"/><!--账单类型 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="billNo" length="32" parser="rigthTrim"/><!--账单号码(截取交易接口中“账单号码”的后32位)-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="interactMode" length="1" parser="rigthTrim"/><!--交互方式-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="origQryId" length="21" parser="rigthTrim"/><!-- 原交易查询流水号 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="merId" length="15" parser="rigthTrim"/><!-- 商户代码-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="splitAccountType" length="1" parser="rigthTrim"/><!-- 分账入账方式-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="subMerId" length="15" parser="rigthTrim"/><!--二级商户代码 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="subMerAbbr" length="32" parser="rigthTrim"/><!-- 二级商户简称 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="subSplitAccountAmt" length="13" parser="formatSymbolAmt" decimal="2"/><!-- 二级商户分账入账金额-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="settNetAmt" length="13" parser="formatSymbolAmt" decimal="2"/><!--清算净额(取值为“结算金额”与“二级商户分账入账净额”的扎差)-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="termId" length="8" /><!-- 终端号-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="merReserved" length="32" parser="rigthTrim"/><!--商户自定义域(截取交易接口中“商户自定义域”的前32位)-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="discountAmt" length="13" parser="formatSymbolAmt" decimal="2"/><!-- 优惠金额-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="billAmt" length="13" parser="formatSymbolAmt" decimal="2"/><!-- 发票金额-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="periodPaymentAddfee" length="12" parser="formatSymbolAmt" decimal="2"/><!-- 分期付款附加手续费-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="periodPaymentNum" length="2" parser="rigthTrim"/><!--分期付款期数-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="txnMedi" length="1" parser="rigthTrim"/><!--交易介质-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="remark" length="131" parser="rigthTrim"/><!--保留使用-->
+	</file>
+	<!--银联代收2对账文件模板 -->
+	<file id="unionpayds2" prefix="unionpayds2" skipLine="" delimiter=""
+		suffix="" lineSeparator="\n" stringSymbol="1" encoding="gbk">
+		<field name="innerrtxntyp" length="3"/><!-- 交易代码 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="acqInsCode" length="11" parser="rigthTrim"/><!-- 代理机构标识码 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="sndInsCode" length="11" parser="rigthTrim"/><!-- 发送机构标识码 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="downrtxnnbr" length="6" /><!-- 系统跟踪号 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="rtxndate" length="10" parser="addRightYear"/><!-- 交易传输时间 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="payeracctnbr" length="19" parser="rigthTrim"/><!-- 帐号-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="transamt" length="12" parser="formatAmt" decimal="2"/><!-- 交易金额 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="merCatCode" length="4" /><!-- 商户类别 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="termType" length="2"/><!-- 终端类型 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="queryId" length="21"/><!-- 查询流水号 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="payTypeOld" length="2" parser="rigthTrim"/><!-- 支付方式（旧） -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="innerrtxnnbr" length="32" parser="rigthTrim"/><!-- 商户订单号 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="payCardType" length="2"/><!-- 支付卡类型 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="origTraceNo" length="6" parser="rigthTrim"/><!--原始交易的系统跟踪号 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="origTxnTime" length="10" parser="addYear"/><!-- 原始交易日期时间 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="merFee" length="13" parser="formatSymbolAmt" decimal="2"/><!-- 商户手续费 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="settAmt" length="13" parser="formatSymbolAmt" decimal="2"/><!-- 结算金额(取值为“交易金额”与“商户手续费”的扎差) -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="payType" length="4" /><!-- 支付方式 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="groupMerId" length="15" parser="rigthTrim"/><!-- 集团商户代码 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="txnType" length="2" parser="rigthTrim"/><!-- 交易类型 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="txnSubType" length="2" parser="rigthTrim"/><!-- 交易子类 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="bizType" length="6" parser="rigthTrim"/><!-- 业务类型-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="accType" length="2" parser="rigthTrim"/><!--帐号类型-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="billType" length="4" parser="rigthTrim"/><!--账单类型 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="billNo" length="32" parser="rigthTrim"/><!--账单号码(截取交易接口中“账单号码”的后32位)-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="interactMode" length="1" parser="rigthTrim"/><!--交互方式-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="origQryId" length="21" parser="rigthTrim"/><!-- 原交易查询流水号 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="merId" length="15" parser="rigthTrim"/><!-- 商户代码-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="splitAccountType" length="1" parser="rigthTrim"/><!-- 分账入账方式-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="subMerId" length="15" parser="rigthTrim"/><!--二级商户代码 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="subMerAbbr" length="32" parser="rigthTrim"/><!-- 二级商户简称 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="subSplitAccountAmt" length="13" parser="formatSymbolAmt" decimal="2"/><!-- 二级商户分账入账金额-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="settNetAmt" length="13" parser="formatSymbolAmt" decimal="2"/><!--清算净额(取值为“结算金额”与“二级商户分账入账净额”的扎差)-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="termId" length="8" /><!-- 终端号-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="merReserved" length="32" parser="rigthTrim"/><!--商户自定义域(截取交易接口中“商户自定义域”的前32位)-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="discountAmt" length="13" parser="formatSymbolAmt" decimal="2"/><!-- 优惠金额-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="billAmt" length="13" parser="formatSymbolAmt" decimal="2"/><!-- 发票金额-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="periodPaymentAddfee" length="12" parser="formatSymbolAmt" decimal="2"/><!-- 分期付款附加手续费-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="periodPaymentNum" length="2" parser="rigthTrim"/><!--分期付款期数-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="txnMedi" length="1" parser="rigthTrim"/><!--交易介质-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="remark" length="131" parser="rigthTrim"/><!--保留使用-->
+	</file>
+	<!--银联代付对账文件模板 -->
+	<file id="unionpaydf" prefix="unionpaydf" skipLine="" delimiter=""
+		suffix="" lineSeparator="\n" stringSymbol="1" encoding="gbk">
+		<field name="innerrtxntyp" length="3"/><!-- 交易代码 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="acqInsCode" length="11" parser="rigthTrim"/><!-- 代理机构标识码 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="sndInsCode" length="11" parser="rigthTrim"/><!-- 发送机构标识码 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="downrtxnnbr" length="6" /><!-- 系统跟踪号 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="rtxndate" length="10" parser="addRightYear"/><!-- 交易传输时间 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="payeracctnbr" length="19" parser="rigthTrim"/><!-- 帐号-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="transamt" length="12" parser="formatAmt" decimal="2"/><!-- 交易金额 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="merCatCode" length="4" /><!-- 商户类别 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="termType" length="2"/><!-- 终端类型 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="queryId" length="21"/><!-- 查询流水号 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="payTypeOld" length="2" parser="rigthTrim"/><!-- 支付方式（旧） -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="innerrtxnnbr" length="32" parser="rigthTrim"/><!-- 商户订单号 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="payCardType" length="2"/><!-- 支付卡类型 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="origTraceNo" length="6" parser="rigthTrim"/><!--原始交易的系统跟踪号 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="origTxnTime" length="10" parser="addYear"/><!-- 原始交易日期时间 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="merFee" length="13" parser="formatSymbolAmt" decimal="2"/><!-- 商户手续费 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="settAmt" length="13" parser="formatSymbolAmt" decimal="2"/><!-- 结算金额(取值为“交易金额”与“商户手续费”的扎差) -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="payType" length="4" /><!-- 支付方式 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="groupMerId" length="15" parser="rigthTrim"/><!-- 集团商户代码 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="txnType" length="2" parser="rigthTrim"/><!-- 交易类型 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="txnSubType" length="2" parser="rigthTrim"/><!-- 交易子类 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="bizType" length="6" parser="rigthTrim"/><!-- 业务类型-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="accType" length="2" parser="rigthTrim"/><!--帐号类型-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="billType" length="4" parser="rigthTrim"/><!--账单类型 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="billNo" length="32" parser="rigthTrim"/><!--账单号码(截取交易接口中“账单号码”的后32位)-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="interactMode" length="1" parser="rigthTrim"/><!--交互方式-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="origQryId" length="21" parser="rigthTrim"/><!-- 原交易查询流水号 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="merId" length="15" parser="rigthTrim"/><!-- 商户代码-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="splitAccountType" length="1" parser="rigthTrim"/><!-- 分账入账方式-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="subMerId" length="15" parser="rigthTrim"/><!--二级商户代码 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="subMerAbbr" length="32" parser="rigthTrim"/><!-- 二级商户简称 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="subSplitAccountAmt" length="13" parser="formatSymbolAmt" decimal="2"/><!-- 二级商户分账入账金额-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="settNetAmt" length="13" parser="formatSymbolAmt" decimal="2"/><!--清算净额(取值为“结算金额”与“二级商户分账入账净额”的扎差)-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="termId" length="8" /><!-- 终端号-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="merReserved" length="32" parser="rigthTrim"/><!--商户自定义域(截取交易接口中“商户自定义域”的前32位)-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="discountAmt" length="13" parser="formatSymbolAmt" decimal="2"/><!-- 优惠金额-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="billAmt" length="13" parser="formatSymbolAmt" decimal="2"/><!-- 发票金额-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="periodPaymentAddfee" length="12" parser="formatSymbolAmt" decimal="2"/><!-- 分期付款附加手续费-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="periodPaymentNum" length="2" parser="rigthTrim"/><!--分期付款期数-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="txnMedi" length="1" parser="rigthTrim"/><!--交易介质-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="remark" length="131" parser="rigthTrim"/><!--保留使用-->
+	</file>
+	<!--银联对账文件模板 -->
+	<file id="unionpay" prefix="unionpay" skipLine="" delimiter=""
+		suffix="" lineSeparator="\n" stringSymbol="1" encoding="gbk">
+		<field name="innerrtxntyp" length="3"/><!-- 交易代码 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="acqInsCode" length="11" parser="rigthTrim"/><!-- 代理机构标识码 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="sndInsCode" length="11" parser="rigthTrim"/><!-- 发送机构标识码 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="traceNo" length="6" /><!-- 系统跟踪号 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="transdate" length="10" parser="addRightYear"/><!-- 交易传输时间 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="payeracctnbr" length="19" parser="rigthTrim"/><!-- 帐号-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="transamt" length="12" parser="formatAmt" decimal="2"/><!-- 交易金额 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="merCatCode" length="4" /><!-- 商户类别 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="termType" length="2"/><!-- 终端类型 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="downtransnbr" length="21"/><!-- 查询流水号 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="payTypeOld" length="2" parser="rigthTrim"/><!-- 支付方式（旧） -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="innerfundtransnbr" length="32" parser="rigthTrim"/><!-- 商户订单号 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="payCardType" length="2"/><!-- 支付卡类型 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="origTraceNo" length="6" parser="rigthTrim"/><!--原始交易的系统跟踪号 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="origTxnTime" length="10" parser="addYear"/><!-- 原始交易日期时间 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="feeamt" length="13" parser="formatSymbolAmt" decimal="2"/><!-- 商户手续费 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="transferfeeamt" length="13" parser="formatSymbolAmt" decimal="2"/><!-- 结算金额(取值为“交易金额”与“商户手续费”的扎差) -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="payType" length="4" /><!-- 支付方式 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="groupMerId" length="15" parser="rigthTrim"/><!-- 集团商户代码 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="transcode" length="2" parser="rigthTrim"/><!-- 交易类型 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="txnSubType" length="2" parser="rigthTrim"/><!-- 交易子类 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="bizType" length="6" parser="rigthTrim"/><!-- 业务类型-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="accType" length="2" parser="rigthTrim"/><!--帐号类型-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="billType" length="4" parser="rigthTrim"/><!--账单类型 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="billNo" length="32" parser="rigthTrim"/><!--账单号码(截取交易接口中“账单号码”的后32位)-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="interactMode" length="1" parser="rigthTrim"/><!--交互方式-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="originnerrtxnnbr" length="21" parser="rigthTrim"/><!-- 原交易查询流水号 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="merId" length="15" parser="rigthTrim"/><!-- 商户代码-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="splitAccountType" length="1" parser="rigthTrim"/><!-- 分账入账方式-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="subMerId" length="15" parser="rigthTrim"/><!--二级商户代码 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="subMerAbbr" length="32" parser="rigthTrim"/><!-- 二级商户简称 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="subSplitAccountAmt" length="13" parser="formatSymbolAmt" decimal="2"/><!-- 二级商户分账入账金额-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="settNetAmt" length="13" parser="formatSymbolAmt" decimal="2"/><!--清算净额(取值为“结算金额”与“二级商户分账入账净额”的扎差)-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="termId" length="8" /><!-- 终端号-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="merReserved" length="32" parser="rigthTrim"/><!--商户自定义域(截取交易接口中“商户自定义域”的前32位)-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="discountAmt" length="13" parser="formatSymbolAmt" decimal="2"/><!-- 优惠金额-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="billAmt" length="13" parser="formatSymbolAmt" decimal="2"/><!-- 发票金额-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="periodPaymentAddfee" length="12" parser="formatSymbolAmt" decimal="2"/><!-- 分期付款附加手续费-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="periodPaymentNum" length="2" parser="rigthTrim"/><!--分期付款期数-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="txnMedi" length="1" parser="rigthTrim"/><!--交易介质-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="remark" length="99" parser="rigthTrim"/><!--保留使用-->
+	</file>
+	<!--银联-湖北银行差错处理(ERR)文件模板 -->
+	<file id="cups99IERR" prefix="IND" skipLine="" delimiter=""
+		suffix="99IERR" lineSeparator="\n" stringSymbol="1" encoding="gbk">
+		<field name="rtxntypcd" length="3"/><!-- 差错交易标志  NEW -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="acqInsCode" length="11" parser="rigthTrim"/><!-- 代理机构标识码 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="sndInsCode" length="11" parser="rigthTrim"/><!-- 发送机构标识码 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="traceNo" length="6" /><!-- 系统跟踪号 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="transDate" length="10" /><!-- 交易传输时间 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="payeracctnbr" length="19" parser="rigthTrim"/><!-- 主帐号-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="transamt" length="12" parser="formatAmt" decimal="2"/><!-- 交易金额 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="msgtype" length="4" /><!-- 报文类型  -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="rtxntypecode" length="6" /><!-- 交易类型码  NEW -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="merCatCode" length="4" /><!-- 商户类别 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="termType" length="8"/><!-- 终端类型 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="lastrtxnseq" length="12"/><!-- 上一笔交易检索参考号  -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="sptconcode" length="2"/><!-- 服务点条件码  -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="authanscode" length="6"/><!-- 授权应答码  NEW -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="recorgid" length="11"/><!-- 接收机构标识码  NEW -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="queryId" length="11"/><!-- 发卡银行标识码  -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="origTraceNo" length="6" parser="rigthTrim"/><!--原始交易的系统跟踪号 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="rtxnrtncode" length="2"/><!-- 交易返回码  NEW -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="servintype" length="3"/><!-- 服务点输入方式  -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="sndInsPayeeFeeAmt" length="12"  parser="formatAmt" decimal="2"/><!-- 发卡方应收手续费  -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="sndInsPayerFeeAmt" length="12"  parser="formatAmt" decimal="2"/><!-- 发卡方应付手续费  -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="periodPaymentAddfee" length="12" parser="formatSymbolAmt" decimal="2"/><!-- 分期付款附加手续费-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="cdrtxnpee" length="12"  parser="formatAmt" decimal="2"/><!-- 持卡人交易手续费  -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="payeefeeamt" length="12" parser="formatAmt" decimal="2"/><!-- 应收费用  -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="payerfeeamt" length="12"  parser="formatAmt" decimal="2"/><!-- 应付费用  -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="erreson" length="4"/><!-- 差错原因  -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="recsenorgid" length="11"/><!-- 接收机构标识码/转出机构标识码  -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="rolloutcdid" length="19"/><!-- 转出卡号  -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="rollinorgid" length="11"/><!-- 转入机构标识码  -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="rollincd" length="19"/><!-- 转入卡号   -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="lastrtxndate" length="10"/><!-- 上一笔交易的日期时间   -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="cdid" length="3"/><!-- 卡片序列号   -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="tereadability" length="1"/><!-- 终端读取能力   -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="cdcondcode" length="1"/><!-- IC 卡条件代码  -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="ltrtxncledate" length="4"/><!-- 上一笔交易清算日期  NEW -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="ltrtxnamt" length="12"/><!-- 上一笔交易金额 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="rtxnregiflag" length="1"/><!-- 交易地域标志 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="eciflag" length="2"/><!-- ECI 标志   -->
+	</file>
+	<!--银联-湖北银行差错处理(ERRPED)文件模板 -->
+	<file id="cups32IERRPED" prefix="IND" skipLine="" delimiter=""
+		suffix="32IERRPED" lineSeparator="\n" stringSymbol="1" encoding="gbk">
+		<field name="rtxntypcd" length="3"/><!-- 差错交易标志  NEW -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="acqInsCode" length="11" parser="rigthTrim"/><!-- 代理机构标识码 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="sndInsCode" length="11" parser="rigthTrim"/><!-- 发送机构标识码 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="traceNo" length="6" /><!-- 系统跟踪号 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="transDate" length="10" /><!-- 交易传输时间 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="payeracctnbr" length="19" parser="rigthTrim"/><!-- 主帐号-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="amount" length="12" parser="formatAmt" decimal="2"/><!-- 交易金额 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="msgtype" length="4" /><!-- 报文类型  -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="rtxntypecode" length="6" /><!-- 交易类型码  NEW -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="merCatCode" length="4" /><!-- 商户类别 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="termType" length="8"/><!-- 终端类型 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="lastrtxnseq" length="12"/><!-- 上一笔交易检索参考号  -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="sptconcode" length="2"/><!-- 服务点条件码  -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="authanscode" length="6"/><!-- 授权应答码  NEW -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="recorgid" length="11"/><!-- 接收机构标识码  NEW -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="queryId" length="11"/><!-- 发卡银行标识码  -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="origTraceNo" length="6" parser="rigthTrim"/><!--原始交易的系统跟踪号 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="rtxnrtncode" length="2"/><!-- 交易返回码  NEW -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="servintype" length="3"/><!-- 服务点输入方式  -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="sndInsPayeeFeeAmt" length="12"  parser="formatAmt" decimal="2"/><!-- 发卡方应收手续费  -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="sndInsPayerFeeAmt" length="12"  parser="formatAmt" decimal="2"/><!-- 发卡方应付手续费  -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="periodPaymentAddfee" length="12" parser="formatSymbolAmt" decimal="2"/><!-- 分期付款附加手续费-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="cdrtxnpee" length="12"  parser="formatAmt" decimal="2"/><!-- 持卡人交易手续费  -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="payeefeeamt" length="12" parser="formatAmt" decimal="2"/><!-- 应收费用  -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="payerfeeamt" length="12"  parser="formatAmt" decimal="2"/><!-- 应付费用  -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="erreson" length="4"/><!-- 差错原因  -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="recsenorgid" length="11"/><!-- 接收机构标识码/转出机构标识码  -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="rolloutcdid" length="19"/><!-- 转出卡号  -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="rollinorgid" length="11"/><!-- 转入机构标识码  -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="rollincd" length="19"/><!-- 转入卡号   -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="lastrtxndate" length="10"/><!-- 上一笔交易的日期时间   -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="cdid" length="3"/><!-- 卡片序列号   -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="tereadability" length="1"/><!-- 终端读取能力   -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="cdcondcode" length="1"/><!-- IC 卡条件代码  -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="ltrtxncledate" length="4"/><!-- 上一笔交易清算日期  NEW -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="ltrtxnamt" length="12"/><!-- 上一笔交易金额 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="rtxnregiflag" length="1"/><!-- 交易地域标志 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="eciflag" length="2"/><!-- ECI 标志   -->
+	</file>
+	<!--银联-湖北银行对账处理(COM)文件模板 -->
+	<file id="cups01ICOM" prefix="IND" skipLine="" delimiter=""
+		suffix="01ICOM" lineSeparator="\n" stringSymbol="1" encoding="gbk">
+		<field name="acqInsCode" length="11" parser="rigthTrim"/><!-- 代理机构标识码 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="sndInsCode" length="11" parser="rigthTrim"/><!-- 发送机构标识码 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="traceNo" length="6" /><!-- 系统跟踪号 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="transDate" length="10"/><!-- 交易传输时间 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="payeracctnbr" length="19" parser="rigthTrim"/><!-- 主帐号-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="transamt" length="12" parser="formatAmt" decimal="2"/><!-- 交易金额 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="ptacptacptamt" length="12" parser="formatAmt" decimal="2"/><!-- 部分代收时的承兑金额  NEW-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="cdrtxnpee" length="12" parser="formatSymbolAmt" decimal="2"/><!-- 持卡人交易手续费  NEW-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="msgtype" length="4" /><!-- 报文类型  NEW-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="rtxntypecode" length="6" /><!-- 交易类型码  NEW -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="merCatCode" length="4" /><!-- 商户类型 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="cdapterid" length="8"/><!-- 受卡机终端标识码  NEW-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="cdaptid" length="15"/><!-- 受卡方标识码 NEW -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="rtxnseq" length="12"/><!-- 检索参考号 NEW -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="sptconcode" length="2"/><!-- 服务点条件码  NEW-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="authanscode" length="6"/><!-- 授权应答码  NEW -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="recorgid" length="11"/><!-- 接收机构标识码  NEW -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="origTraceNo" length="6" parser="rigthTrim"/><!--原始交易的系统跟踪号 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="rtxnrtncode" length="2"/><!-- 交易返回码  NEW -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="servintype" length="3"/><!-- 服务点输入方式  NEW-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="payeefeeamt" length="12" parser="formatAmt" decimal="2"/><!-- 发卡方应收手续费  NEW-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="payerfeeamt" length="12" parser="formatAmt" decimal="2"/><!-- 发卡方应付手续费  NEW-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="throConnFeeAmt" length="12" parser="formatSymbolAmt" decimal="2"/><!-- 转接服务费  NEW-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="sdthrconflag" length="1"/><!-- 单双转换标志  NEW-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="cdid" length="3"/><!-- 卡片序列号   NEW-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="tereadability" length="1"/><!-- 终端读取能力   NEW-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="cdcondcode" length="1"/><!-- IC 卡条件代码  NEW-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="origTxnTime" length="10" /><!-- 原始交易日期时间 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="cdissuerid" length="11"/><!-- 发卡机构标识码  NEW-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="rtxnregiflag" length="1"/><!-- 交易地域标志 NEW-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="termType" length="2"/><!-- 终端类型 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="eciflag" length="2"/><!-- ECI 标志   NEW-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="periodPaymentAddfee" length="12" parser="formatSymbolAmt" decimal="2"/><!-- 分期付款附加手续费-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="otherinfo" length="14"/><!-- 其他信息  NEW-->
+	</file>
+	<!--银联-湖北银行对账处理(PED)文件模板 -->
+	<file id="cups32IPED" prefix="IND" skipLine="" delimiter=""
+		suffix="32IPED" lineSeparator="\n" stringSymbol="1" encoding="gbk">
+		<field name="acqInsCode" length="11" parser="rigthTrim"/><!-- 代理机构标识码 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="sndInsCode" length="11" parser="rigthTrim"/><!-- 发送机构标识码 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="traceNo" length="6" /><!-- 系统跟踪号 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="transDate" length="10"/><!-- 交易传输时间 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="payeracctnbr" length="19" parser="rigthTrim"/><!-- 主帐号-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="amount" length="12" parser="formatAmt" decimal="2"/><!-- 交易金额 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="ptacptacptamt" length="12" parser="formatAmt" decimal="2"/><!-- 部分代收时的承兑金额  NEW-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="cdrtxnpee" length="12" parser="formatSymbolAmt" decimal="2"/><!-- 持卡人交易手续费  NEW-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="msgtype" length="4" /><!-- 报文类型  NEW-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="rtxntypecode" length="6" /><!-- 交易类型码  NEW -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="merCatCode" length="4" /><!-- 商户类型 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="cdapterid" length="8"/><!-- 受卡机终端标识码  NEW-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="cdaptid" length="15"/><!-- 受卡方标识码 NEW -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="rtxnseq" length="12"/><!-- 检索参考号 NEW -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="sptconcode" length="2"/><!-- 服务点条件码  NEW-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="authanscode" length="6"/><!-- 授权应答码  NEW -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="recorgid" length="11"/><!-- 接收机构标识码  NEW -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="origTraceNo" length="6" parser="rigthTrim"/><!--原始交易的系统跟踪号 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="rtxnrtncode" length="2"/><!-- 交易返回码  NEW -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="servintype" length="3"/><!-- 服务点输入方式  NEW-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="payeefeeamt" length="12" parser="formatAmt" decimal="2"/><!-- 发卡方应收手续费  NEW-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="payerfeeamt" length="12" parser="formatAmt" decimal="2"/><!-- 发卡方应付手续费  NEW-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="throConnFeeAmt" length="12" parser="formatSymbolAmt" decimal="2"/><!-- 转接服务费  NEW-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="sdthrconflag" length="1"/><!-- 单双转换标志  NEW-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="cdid" length="3"/><!-- 卡片序列号   NEW-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="tereadability" length="1"/><!-- 终端读取能力   NEW-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="cdcondcode" length="1"/><!-- IC 卡条件代码  NEW-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="origTxnTime" length="10" parser="addYear"/><!-- 原始交易日期时间 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="cdissuerid" length="11"/><!-- 发卡机构标识码  NEW-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="rtxnregiflag" length="1"/><!-- 交易地域标志 NEW-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="termType" length="2"/><!-- 终端类型 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="eciflag" length="2"/><!-- ECI 标志   NEW-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="periodPaymentAddfee" length="12" parser="formatSymbolAmt" decimal="2"/><!-- 分期付款附加手续费-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="otherinfo" length="14"/><!-- 其他信息  NEW-->
+	</file>
+	<!--银联-湖北银行收付费文件处理(FCP)文件模板 -->
+	<file id="cups99FCP" prefix="IND" skipLine="" delimiter=""
+		suffix="99FCP" lineSeparator="\n" stringSymbol="1" encoding="gbk">
+		<field name="rtxntypcd" length="3"/><!-- 交易代码 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="transamt" length="12" parser="formatSymbolAmt" decimal="2"/><!-- 交易金额 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="reasonid" length="4" parser="rigthTrim"/><!-- 原因码  NEW-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="sendfstlevorg" length="11" /><!-- 发起方一级机构  NEW-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="sendsndlevorg" length="11"/><!-- 发起方二级机构  NEW-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="recefstlevorg" length="11"/><!-- 接收方一级机构  NEW-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="recesndlevorg" length="11"/><!-- 接收方二级机构  NEW-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="transDate" length="10"/><!-- 交易日期时间  NEW-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="traceNo" length="6" /><!-- 系统跟踪号 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="payeracctnbr" length="19" parser="rigthTrim"/><!-- 主帐号-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="postscript" length="100" /><!-- 收付费附言  NEW-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="keepuse3" length="99"/><!--保留使用 NEW-->
+	</file>
+	<!--银联-湖北银行交易品牌服务费(LFE)文件模板 -->
+	<file id="cups99ILFEE" prefix="IND" skipLine="" delimiter=""
+		suffix="99ILFEE" lineSeparator="\n" stringSymbol="1" encoding="gbk">
+		<field name="cdissufstid" length="11"/><!-- 发卡方一级分行代码 NEW -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="iscupsstandcd" length="1"/><!-- 是否银联标准卡  NEW-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="debcreflag" length="1"/><!-- 借贷记卡标志  NEW-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="termitype" length="2"/><!-- 终端类型 NEW -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="medicd" length="1"/><!-- 卡介质  NEW -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="rtxnregiflag" length="1"/><!-- 交易地域标志 NEW-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="merCatCode" length="4" /><!-- 商户类型 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="cdissusedbkid" length="11"/><!-- 发卡方二级分行代码  NEW -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="delorgcode" length="11"/><!-- 受理机构代码  NEW -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="transorgcode" length="11"/><!-- 转发机构代码  NEW -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="cdissuerid" length="11"/><!-- 发卡机构标识码  NEW-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="recorgid" length="11"/><!-- 接收机构代码  NEW-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="cdaccporgid" length="11"/><!-- 收单机构代码  NEW-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="msgtype" length="4" /><!-- 报文类型  NEW-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="rtxndelid" length="6" /><!-- 交易处理码  NEW-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="sptconcode" length="2"/><!-- 服务点条件码  NEW-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="downrtxnnbr" length="6" /><!-- 系统跟踪号 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="rtxntransdate" length="10" /><!-- 交易传输日期时间 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="mainacct" length="19" /><!-- 主账号 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="rolloutcd" length="28"/><!-- 转出卡 NEW-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="rollincd" length="28"/><!-- 转入卡  NEW-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="origrtxninfo" length="42"/><!-- 原始交易信息  NEW-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="accpcdtermid" length="8"/><!-- 受卡方终端标识码  NEW-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="cdaptid" length="15"/><!-- 受卡方标识码 NEW -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="rtxnseq" length="12"/><!-- 检索参考号 NEW -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="amount" length="12" parser="formatAmt" decimal="2"/><!-- 交易金额 -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="cdissufee" length="12" parser="formatSymbolAmt" decimal="2"/><!-- 发卡方手续费  NEW -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="transamt" length="12" parser="formatSymbolAmt" decimal="2"/><!-- 品牌服务费  NEW -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="keepuse4" length="12"/><!-- 保留使用  NEW -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="balance" length="13"/><!-- 净金额  NEW -->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="rtxnstart" length="1"/><!-- 交易发起方式  NEW-->
+		<field name="blank" length="1"/><!-- 空格分隔符 -->
+		<field name="keepuse5" length="99"/><!-- 保留使用  NEW -->
+	</file>
+	<!--二维码支付宝对账文件模板 -->
+	<file id="alipaycode" prefix="" skipLine="" delimiter="," suffix=""
+		lineSeparator="\n" stringSymbol="1" encoding="utf-8" skipBeginLine="true" skipEndLine="false">
+		<field name="transdate" type="date"/><!-- 交易日期 -->
+		<field name="transtime"/><!-- 交易时间-->
+		<field name="downtransnbr" /><!-- 下游流水号 -->
+		<field name="innerfundtransnbr" /><!-- 资金流水号 -->
+		<field name="transcode" /><!-- 业务类型 -->
+		<field name="termid" /><!-- 业终端号 -->
+		<field name="orderamt" /><!-- 订单金额 -->
+		<field name="transamt" /><!-- 商家实收金额 -->
+		<field name="merpreferentialamt" /><!-- 商家优惠金额 -->  
+		<field name="coucanveramt" /><!-- 核销金额 -->  
+		<field name="merredenvelopamt" /><!-- 红包优惠金额 -->  
+		<field name="originnertransnbr" /><!-- 退货批次号 -->
+		<field name="feeamt" /><!-- 手续费金额 -->
+		<field name="transferfeeamt" /><!-- 实收金额 -->
+		<field name="alipaymerchantid" /><!-- 商户识别号 -->
+
+	</file>
+	<!--二维码微信对账文件模板 -->
+	<file id="wechatcode" prefix="" skipLine="" delimiter="," suffix=""
+		lineSeparator="\n" stringSymbol="1" encoding="utf-8" skipBeginLine="true" skipEndLine="false">
+		<field name="transdate" type="date"/><!-- 交易日期 -->
+		<field name="transtime" /><!-- 交易时间-->
+		<field name="innerfundtransnbr" /><!-- 资金流水号 -->
+		<field name="downtransnbr" /><!-- 下游流水号 -->
+		<field name="transcode" /><!-- 交易类型 -->
+		<field name="transstatus" /><!-- 交易状态 -->
+		<field name="currencycd" /><!-- 币种 -->
+		<field name="transamt" /><!-- 交易金额 -->
+		<field name="feeamt" /><!-- 手续费金额 -->
+		<field name="transferfeeamt" /><!-- 清算金额 -->
+	</file>
+		<!--鉴权文件模板 -->
+	<file id="auth" prefix="IPP" skipLine="" delimiter="|"
+		suffix=".txt" lineSeparator="\n" stringSymbol="1" encoding="GBK">
+		<field name="customname" /><!-- 账务系统记账日期 -->
+		<field name="certtyp" /><!-- 账务系统记账序号 -->
+		<field name="certno" />
+		<field name="cardtyp" />
+		<field name="cardno" />
+		<field name="customtyp" />
+		<field name="phoneno" />
+		<field name="transtatus" />
+	</file>
+</files>

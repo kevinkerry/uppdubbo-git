@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="	http://www.springframework.org/schema/beans	http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<import resource="classpath:/META-INF/config/peconfig.xml" />
+<!-- 	<import resource="classpath:/META-INF/config/cache.xml" /> -->
+	<import resource="classpath:/META-INF/config/common.xml" />
+	<import resource="classpath:/META-INF/config/core.xml" />
+	<import resource="classpath:/META-INF/config/datasource.xml" />
+	<import resource="classpath:/META-INF/config/ibatis-config.xml" />
+	<import resource="classpath:/META-INF/config/idFactory.xml" />
+	<import resource="classpath:/META-INF/config/chain.xml" />
+	<import resource="classpath:/META-INF/config/style.xml" />
+	<import resource="classpath:/META-INF/config/validator.xml" />
+	<import resource="classpath:/META-INF/config/template.xml" />
+ <import resource="classpath:/META-INF/config/fundprocess-transport.xml" /> 
+	<import resource="classpath:/META-INF/config/fundprocess-service.xml" /> 
+	<import resource="classpath:/META-INF/config/payment-transport.xml" />
+	<import resource="classpath:/META-INF/config/payment-service.xml" />
+	<import resource="batchEventManager.xml" />
+	<import resource="runner.xml" />
+	<import resource="supportor.xml" />
+	<import resource="classpath:/META-INF/convert/errorCat.xml" />
+	<import resource="classpath:/META-INF/server/config.xml" />
+	<import resource="classpath:/META-INF/transaction/batch.xml" />
+	<import resource="classpath:/META-INF/config/schedule.xml" />
+</beans>

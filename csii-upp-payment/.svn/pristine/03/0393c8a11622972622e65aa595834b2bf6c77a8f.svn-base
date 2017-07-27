@@ -1,0 +1,474 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	xmlns:srv="http://www.csii.com.cn/pe/dubboServices"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd 
+	http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd 
+	http://www.csii.com.cn/pe/dubboServices http://www.csii.com.cn/pe/dubboServices/impl.xsd">
+
+	<srv:bridge id="QueryOrderInfoService"
+		interface="com.csii.upp.custom.common.api.service.payment.QueryOrderInfoService"
+		trsCode="QueryOrderInfo">
+	</srv:bridge>
+	<dubbo:service
+		interface="com.csii.upp.custom.common.api.service.payment.QueryOrderInfoService"
+		ref="QueryOrderInfoService" group="IS_PAY_PAYM_QUERYORDERINFO"
+		protocol="dubbo" registry="dubboRegistry" />
+
+	<srv:bridge id="QuerySignInfoListService"
+		interface="com.csii.upp.custom.common.api.service.payment.QuerySignInfoListService"
+		trsCode="QuerySignInfoList">
+	</srv:bridge>
+	<dubbo:service
+		interface="com.csii.upp.custom.common.api.service.payment.QuerySignInfoListService"
+		ref="QuerySignInfoListService" group="IS_PAY_PAYM_QUERYSIGNINFOLIST"
+		protocol="dubbo" registry="dubboRegistry" />
+
+	<srv:bridge id="PayTransService"
+		interface="com.csii.upp.custom.common.api.service.payment.PayTransService"
+		trsCode="PayTrans">
+	</srv:bridge>
+	<dubbo:service
+		interface="com.csii.upp.custom.common.api.service.payment.PayTransService"
+		ref="PayTransService" group="IS_PAY_PAYM_PAYTRANS" protocol="dubbo"
+		registry="dubboRegistry" />
+
+	<srv:bridge id="QueryCardInfoService"
+		interface="com.csii.upp.custom.common.api.service.payment.QueryCardInfoService"
+		trsCode="QueryCardInfo">
+	</srv:bridge>
+	<dubbo:service
+		interface="com.csii.upp.custom.common.api.service.payment.QueryCardInfoService"
+		ref="QueryCardInfoService" group="IS_PAY_PAYM_QUERYCARDINFO" protocol="dubbo"
+		registry="dubboRegistry" />
+
+	<srv:bridge id="AddSignInfoService"
+		interface="com.csii.upp.custom.common.api.service.payment.AddSignInfoService"
+		trsCode="AddSignInfo">
+	</srv:bridge>
+	<dubbo:service
+		interface="com.csii.upp.custom.common.api.service.payment.AddSignInfoService"
+		ref="AddSignInfoService" group="IS_PAY_PAYM_ADDSIGNINFO" protocol="dubbo"
+		registry="dubboRegistry" />
+
+	<srv:bridge id="CreateQrCodeByteService"
+		interface="com.csii.upp.custom.common.api.service.payment.CreateQrCodeByteService"
+		trsCode="CreateQrCodeByte">
+	</srv:bridge>
+	<dubbo:service
+		interface="com.csii.upp.custom.common.api.service.payment.CreateQrCodeByteService"
+		ref="CreateQrCodeByteService" group="IS_PAY_PAYM_CREATEQRCODEBYTE"
+		protocol="dubbo" registry="dubboRegistry" />
+
+	<srv:bridge id="QueryQrCodeUrlService"
+		interface="com.csii.upp.custom.common.api.service.payment.QueryQrCodeUrlService"
+		trsCode="QueryQrCodeUrl">
+	</srv:bridge>
+	<dubbo:service
+		interface="com.csii.upp.custom.common.api.service.payment.QueryQrCodeUrlService"
+		ref="QueryQrCodeUrlService" group="IS_PAY_PAYM_QUERYQRCODEURL"
+		protocol="dubbo" registry="dubboRegistry" />
+
+	<srv:bridge id="CustomAuthenService"
+		interface="com.csii.upp.custom.common.api.service.payment.CustomAuthenService"
+		trsCode="CustomAuthen">
+	</srv:bridge>
+	<dubbo:service
+		interface="com.csii.upp.custom.common.api.service.payment.CustomAuthenService"
+		ref="CustomAuthenService" group="IS_PAY_PAYM_CUSTOMAUTHEN" protocol="dubbo"
+		registry="dubboRegistry" />
+
+	<srv:bridge id="QueryPayService"
+		interface="com.csii.upp.custom.common.api.service.payment.QueryPayService"
+		trsCode="QueryPay">
+	</srv:bridge>
+	<dubbo:service
+		interface="com.csii.upp.custom.common.api.service.payment.QueryPayService"
+		ref="QueryPayService" group="IS_PAY_PAYM_QUERYPAY" protocol="dubbo"
+		registry="dubboRegistry" />
+
+	<srv:bridge id="QueryAuthService"
+		interface="com.csii.upp.custom.common.api.service.payment.QueryAuthService"
+		trsCode="QueryAuth">
+	</srv:bridge>
+	<dubbo:service
+		interface="com.csii.upp.custom.common.api.service.payment.QueryAuthService"
+		ref="QueryAuthService" group="IS_PAY_PAYM_QUERYAUTH" protocol="dubbo"
+		registry="dubboRegistry" />
+
+	<srv:bridge id="CancelOrderService"
+		interface="com.csii.upp.custom.common.api.service.payment.CancelOrderService"
+		trsCode="CancelOrder">
+	</srv:bridge>
+	<dubbo:service
+		interface="com.csii.upp.custom.common.api.service.payment.CancelOrderService"
+		ref="CancelOrderService" group="IS_PAY_PAYM_CANCELORDER" protocol="dubbo"
+		registry="dubboRegistry" />
+
+	<srv:bridge id="NotifyTransResultService"
+		interface="com.csii.upp.custom.common.api.service.payment.NotifyTransResultService"
+		trsCode="NotifyTransResult">
+	</srv:bridge>
+	<dubbo:service
+		interface="com.csii.upp.custom.common.api.service.payment.NotifyTransResultService"
+		ref="NotifyTransResultService" group="IS_PAY_PAYM_NOTIFYTRANSRESULT"
+		protocol="dubbo" registry="dubboRegistry" />
+
+	<srv:bridge id="ConfirmedPayService"
+		interface="com.csii.upp.custom.common.api.service.payment.ConfirmedPayService"
+		trsCode="ConfirmedPay">
+	</srv:bridge>
+	<dubbo:service
+		interface="com.csii.upp.custom.common.api.service.payment.ConfirmedPayService"
+		ref="ConfirmedPayService" group="IS_PAY_PAYM_CONFIRMEDPAY" protocol="dubbo"
+		registry="dubboRegistry" />
+
+	<srv:bridge id="QueryOrderStatusPaymentService"
+		interface="com.csii.upp.custom.common.api.service.payment.QueryOrderStatusPaymentService"
+		trsCode="QueryOrderStatusPayment">
+	</srv:bridge>
+	<dubbo:service
+		interface="com.csii.upp.custom.common.api.service.payment.QueryOrderStatusPaymentService"
+		ref="QueryOrderStatusPaymentService" group="IS_PAY_PAYM_QUERYORDERSTATUSPAYMENT"
+		protocol="dubbo" registry="dubboRegistry" />
+
+	<srv:bridge id="QueryVirtualAcctBalanceService"
+		interface="com.csii.upp.custom.common.api.service.payment.QueryVirtualAcctBalanceService"
+		trsCode="QueryVirtualAcctBalance">
+	</srv:bridge>
+	<dubbo:service
+		interface="com.csii.upp.custom.common.api.service.payment.QueryVirtualAcctBalanceService"
+		ref="QueryVirtualAcctBalanceService" group="IS_PAY_PAYM_QUERYVIRTUALACCTBALANCE"
+		protocol="dubbo" registry="dubboRegistry" />
+
+	<srv:bridge id="ValidateSmsService"
+		interface="com.csii.upp.custom.common.api.service.payment.ValidateSmsService"
+		trsCode="ValidateSms">
+	</srv:bridge>
+	<dubbo:service
+		interface="com.csii.upp.custom.common.api.service.payment.ValidateSmsService"
+		ref="ValidateSmsService" group="IS_PAY_PAYM_VALIDATESMS" protocol="dubbo"
+		registry="dubboRegistry" />
+
+	<srv:bridge id="QuerySmsCodeService"
+		interface="com.csii.upp.custom.common.api.service.payment.QuerySmsCodeService"
+		trsCode="QuerySmsCode">
+	</srv:bridge>
+	<dubbo:service
+		interface="com.csii.upp.custom.common.api.service.payment.QuerySmsCodeService"
+		ref="QuerySmsCodeService" group="IS_PAY_PAYM_QUERYSMSCODE" protocol="dubbo"
+		registry="dubboRegistry" />
+
+	<srv:bridge id="GenerrateSubMerchantIdService"
+		interface="com.csii.upp.custom.common.api.service.payment.GenerrateSubMerchantIdService"
+		trsCode="GenerrateSubMerchantId">
+	</srv:bridge>
+	<dubbo:service
+		interface="com.csii.upp.custom.common.api.service.payment.GenerrateSubMerchantIdService"
+		ref="GenerrateSubMerchantIdService" group="IS_PAY_PAYM_GENERRATESUBMERCHANTID"
+		protocol="dubbo" registry="dubboRegistry" />
+
+	<srv:bridge id="DeleteSignInfoService"
+		interface="com.csii.upp.custom.common.api.service.payment.DeleteSignInfoService"
+		trsCode="DeleteSignInfo">
+	</srv:bridge>
+	<dubbo:service
+		interface="com.csii.upp.custom.common.api.service.payment.DeleteSignInfoService"
+		ref="DeleteSignInfoService" group="IS_PAY_PAYM_DELETESIGNINFO"
+		protocol="dubbo" registry="dubboRegistry" />
+
+	<srv:bridge id="ValidateCardInfoService"
+		interface="com.csii.upp.custom.common.api.service.payment.ValidateCardInfoService"
+		trsCode="ValidateCardInfo">
+	</srv:bridge>
+	<dubbo:service
+		interface="com.csii.upp.custom.common.api.service.payment.ValidateCardInfoService"
+		ref="ValidateCardInfoService" group="IS_PAY_PAYM_VALIDATECARDINFO"
+		protocol="dubbo" registry="dubboRegistry" />
+
+	<srv:bridge id="SendMessagePaymentService"
+		interface="com.csii.upp.custom.common.api.service.payment.SendMessagePaymentService"
+		trsCode="SendMessagePayment">
+	</srv:bridge>
+	<dubbo:service
+		interface="com.csii.upp.custom.common.api.service.payment.SendMessagePaymentService"
+		ref="SendMessagePaymentService" group="IS_PAY_PAYM_SENDMESSAGEPAYMENT"
+		protocol="dubbo" registry="dubboRegistry" />
+
+	<srv:bridge id="SendSmsService"
+		interface="com.csii.upp.custom.common.api.service.payment.SendSmsService"
+		trsCode="SendSms">
+	</srv:bridge>
+	<dubbo:service
+		interface="com.csii.upp.custom.common.api.service.payment.SendSmsService"
+		ref="SendSmsService" group="IS_PAY_PAYM_SENDSMS" protocol="dubbo"
+		registry="dubboRegistry" />
+
+	<srv:bridge id="QueryAcctOpenStatusPaymentService"
+		interface="com.csii.upp.custom.common.api.service.payment.QueryAcctOpenStatusPaymentService"
+		trsCode="QueryAcctOpenStatusPayment">
+	</srv:bridge>
+	<dubbo:service
+		interface="com.csii.upp.custom.common.api.service.payment.QueryAcctOpenStatusPaymentService"
+		ref="QueryAcctOpenStatusPaymentService" group="IS_PAY_PAYM_QUERYACCTOPENSTATUSPAYMENT"
+		protocol="dubbo" registry="dubboRegistry" />
+
+	<srv:bridge id="ValidationInfoService"
+		interface="com.csii.upp.custom.common.api.service.payment.ValidationInfoService"
+		trsCode="ValidationInfo">
+	</srv:bridge>
+	<dubbo:service
+		interface="com.csii.upp.custom.common.api.service.payment.ValidationInfoService"
+		ref="ValidationInfoService" group="IS_PAY_PAYM_VALIDATIONINFO"
+		protocol="dubbo" registry="dubboRegistry" />
+
+	<srv:bridge id="BankPayService"
+		interface="com.csii.upp.custom.common.api.service.payment.BankPayService"
+		trsCode="BankPay">
+	</srv:bridge>
+	<dubbo:service
+		interface="com.csii.upp.custom.common.api.service.payment.BankPayService"
+		ref="BankPayService" group="IS_PAY_PAYM_BANKPAY" protocol="dubbo"
+		registry="dubboRegistry" />
+
+	<srv:bridge id="ReturnTransService"
+		interface="com.csii.upp.custom.common.api.service.payment.ReturnTransService"
+		trsCode="ReturnTrans">
+	</srv:bridge>
+	<dubbo:service
+		interface="com.csii.upp.custom.common.api.service.payment.ReturnTransService"
+		ref="ReturnTransService" group="IS_PAY_PAYM_RETURNTRANS" protocol="dubbo"
+		registry="dubboRegistry" />
+
+	<srv:bridge id="QueryYinYiTongSignInfoService"
+		interface="com.csii.upp.custom.common.api.service.payment.QueryYinYiTongSignInfoService"
+		trsCode="QueryYinYiTongSignInfo">
+	</srv:bridge>
+	<dubbo:service
+		interface="com.csii.upp.custom.common.api.service.payment.QueryYinYiTongSignInfoService"
+		ref="QueryYinYiTongSignInfoService" group="IS_PAY_PAYM_QUERYYINYITONGSIGNINFO"
+		protocol="dubbo" registry="dubboRegistry" />
+
+	<srv:bridge id="QuerySingleOnlineTransService"
+		interface="com.csii.upp.custom.common.api.service.payment.QuerySingleOnlineTransService"
+		trsCode="QuerySingleOnlineTrans">
+	</srv:bridge>
+	<dubbo:service
+		interface="com.csii.upp.custom.common.api.service.payment.QuerySingleOnlineTransService"
+		ref="QuerySingleOnlineTransService" group="IS_PAY_PAYM_QUERYSINGLEONLINETRANS"
+		protocol="dubbo" registry="dubboRegistry" />
+
+	<srv:bridge id="WithdrawTransService"
+		interface="com.csii.upp.custom.common.api.service.payment.WithdrawTransService"
+		trsCode="WithdrawTrans">
+	</srv:bridge>
+	<dubbo:service
+		interface="com.csii.upp.custom.common.api.service.payment.WithdrawTransService"
+		ref="WithdrawTransService" group="IS_PAY_PAYM_WITHDRAWTRANS" protocol="dubbo"
+		registry="dubboRegistry" />
+
+	<srv:bridge id="SychSubMerService"
+		interface="com.csii.upp.custom.common.api.service.payment.SychSubMerService"
+		trsCode="SychSubMer">
+	</srv:bridge>
+	<dubbo:service
+		interface="com.csii.upp.custom.common.api.service.payment.SychSubMerService"
+		ref="SychSubMerService" group="IS_PAY_PAYM_SYCHSUBMER" protocol="dubbo"
+		registry="dubboRegistry" />
+
+	<srv:bridge id="CancelSignStatusService"
+		interface="com.csii.upp.custom.common.api.service.payment.CancelSignStatusService"
+		trsCode="CancelSignStatus">
+	</srv:bridge>
+	<dubbo:service
+		interface="com.csii.upp.custom.common.api.service.payment.CancelSignStatusService"
+		ref="CancelSignStatusService" group="IS_PAY_PAYM_CANCELSIGNSTATUS"
+		protocol="dubbo" registry="dubboRegistry" />
+
+	<srv:bridge id="QueryCardFlagService"
+		interface="com.csii.upp.custom.common.api.service.payment.QueryCardFlagService"
+		trsCode="QueryCardFlag">
+	</srv:bridge>
+	<dubbo:service
+		interface="com.csii.upp.custom.common.api.service.payment.QueryCardFlagService"
+		ref="QueryCardFlagService" group="IS_PAY_PAYM_QUERYCARDFLAG" protocol="dubbo"
+		registry="dubboRegistry" />
+
+	<srv:bridge id="QueryReOtherPayStatusService"
+		interface="com.csii.upp.custom.common.api.service.payment.QueryReOtherPayStatusService"
+		trsCode="QueryReOtherPayStatus">
+	</srv:bridge>
+	<dubbo:service
+		interface="com.csii.upp.custom.common.api.service.payment.QueryReOtherPayStatusService"
+		ref="QueryReOtherPayStatusService" group="IS_PAY_PAYM_QUERYREOTHERPAYSTATUS"
+		protocol="dubbo" registry="dubboRegistry" />
+
+	<srv:bridge id="RegisterOtherPayService"
+		interface="com.csii.upp.custom.common.api.service.payment.RegisterOtherPayService"
+		trsCode="RegisterOtherPay">
+	</srv:bridge>
+	<dubbo:service
+		interface="com.csii.upp.custom.common.api.service.payment.RegisterOtherPayService"
+		ref="RegisterOtherPayService" group="IS_PAY_PAYM_REGISTEROTHERPAY"
+		protocol="dubbo" registry="dubboRegistry" />
+
+	<srv:bridge id="QuerySignDetailService"
+		interface="com.csii.upp.custom.common.api.service.payment.QuerySignDetailService"
+		trsCode="QuerySignDetail">
+	</srv:bridge>
+	<dubbo:service
+		interface="com.csii.upp.custom.common.api.service.payment.QuerySignDetailService"
+		ref="QuerySignDetailService" group="IS_PAY_PAYM_QUERYSIGNDETAIL"
+		protocol="dubbo" registry="dubboRegistry" />
+
+	<srv:bridge id="QueryCardPhoneService"
+		interface="com.csii.upp.custom.common.api.service.payment.QueryCardPhoneService"
+		trsCode="QueryCardPhone">
+	</srv:bridge>
+	<dubbo:service
+		interface="com.csii.upp.custom.common.api.service.payment.QueryCardPhoneService"
+		ref="QueryCardPhoneService" group="IS_PAY_PAYM_QUERYCARDPHONE"
+		protocol="dubbo" registry="dubboRegistry" />
+
+	<srv:bridge id="SGCTService"
+		interface="com.csii.upp.custom.common.api.service.payment.SGCTService"
+		trsCode="SGCT">
+	</srv:bridge>
+	<dubbo:service
+		interface="com.csii.upp.custom.common.api.service.payment.SGCTService"
+		ref="SGCTService" group="IS_PAY_PAYM_SGCT" protocol="dubbo" registry="dubboRegistry" />
+
+	<srv:bridge id="SGPMService"
+		interface="com.csii.upp.custom.common.api.service.payment.SGPMService"
+		trsCode="SGPM">
+	</srv:bridge>
+	<dubbo:service
+		interface="com.csii.upp.custom.common.api.service.payment.SGPMService"
+		ref="SGPMService" group="IS_PAY_PAYM_SGPM" protocol="dubbo" registry="dubboRegistry" />
+
+	<srv:bridge id="AddOrderInfoService"
+		interface="com.csii.upp.custom.common.api.service.payment.AddOrderInfoService"
+		trsCode="AddOrderInfo">
+	</srv:bridge>
+	<dubbo:service
+		interface="com.csii.upp.custom.common.api.service.payment.AddOrderInfoService"
+		ref="AddOrderInfoService" group="IS_PAY_PAYM_ADDORDERINFO" protocol="dubbo"
+		registry="dubboRegistry" />
+
+	<srv:bridge id="QueryIntegralService"
+		interface="com.csii.upp.custom.common.api.service.payment.QueryIntegralService"
+		trsCode="QueryIntegral">
+	</srv:bridge>
+	<dubbo:service
+		interface="com.csii.upp.custom.common.api.service.payment.QueryIntegralService"
+		ref="QueryIntegralService" group="IS_PAY_PAYM_QUERYINTEGRAL" protocol="dubbo"
+		registry="dubboRegistry" />
+
+	<srv:bridge id="QueryTransLimitService"
+		interface="com.csii.upp.custom.common.api.service.payment.QueryTransLimitService"
+		trsCode="QueryTransLimit">
+	</srv:bridge>
+	<dubbo:service
+		interface="com.csii.upp.custom.common.api.service.payment.QueryTransLimitService"
+		ref="QueryTransLimitService" group="IS_PAY_PAYM_QUERYTRANSLIMIT"
+		protocol="dubbo" registry="dubboRegistry" />
+
+	<srv:bridge id="QueryQrCodeStatusService"
+		interface="com.csii.upp.custom.common.api.service.payment.QueryQrCodeStatusService"
+		trsCode="QueryQrCodeStatus">
+	</srv:bridge>
+	<dubbo:service
+		interface="com.csii.upp.custom.common.api.service.payment.QueryQrCodeStatusService"
+		ref="QueryQrCodeStatusService" group="IS_PAY_PAYM_QUERYQRCODESTATUS"
+		protocol="dubbo" registry="dubboRegistry" />
+
+	<srv:bridge id="UpdateTransLimitService"
+		interface="com.csii.upp.custom.common.api.service.payment.UpdateTransLimitService"
+		trsCode="UpdateTransLimit">
+	</srv:bridge>
+	<dubbo:service
+		interface="com.csii.upp.custom.common.api.service.payment.UpdateTransLimitService"
+		ref="UpdateTransLimitService" group="IS_PAY_PAYM_UPDATETRANSLIMIT"
+		protocol="dubbo" registry="dubboRegistry" />
+
+	<srv:bridge id="QueryCardDeptService"
+		interface="com.csii.upp.custom.common.api.service.payment.QueryCardDeptService"
+		trsCode="QueryCardDept">
+	</srv:bridge>
+	<dubbo:service
+		interface="com.csii.upp.custom.common.api.service.payment.QueryCardDeptService"
+		ref="QueryCardDeptService" group="IS_PAY_PAYM_QUERYCARDDEPT" protocol="dubbo"
+		registry="dubboRegistry" />
+
+	<srv:bridge id="HoldAcctStatusService"
+		interface="com.csii.upp.custom.common.api.service.payment.HoldAcctStatusService"
+		trsCode="HoldAcctStatus">
+	</srv:bridge>
+	<dubbo:service
+		interface="com.csii.upp.custom.common.api.service.payment.HoldAcctStatusService"
+		ref="HoldAcctStatusService" group="IS_PAY_PAYM_HOLDACCTSTATUS"
+		protocol="dubbo" registry="dubboRegistry" />
+
+	<srv:bridge id="BatchTransferPaymentService"
+		interface="com.csii.upp.custom.common.api.service.payment.BatchTransferPaymentService"
+		trsCode="BatchTransferPayment">
+	</srv:bridge>
+	<dubbo:service
+		interface="com.csii.upp.custom.common.api.service.payment.BatchTransferPaymentService"
+		ref="BatchTransferPaymentService" group="IS_PAY_PAYM_BATCHTRANSFERPAYMENT"
+		protocol="dubbo" registry="dubboRegistry" />
+
+	<srv:bridge id="XMLimitCXService"
+		interface="com.csii.upp.custom.common.api.service.payment.XMLimitCXService"
+		trsCode="XMLimitCX">
+	</srv:bridge>
+	<dubbo:service
+		interface="com.csii.upp.custom.common.api.service.payment.XMLimitCXService"
+		ref="XMLimitCXService" group="IS_PAY_PAYM_XMLIMITCX" protocol="dubbo"
+		registry="dubboRegistry" />
+
+	<srv:bridge id="QuerySignInfoService"
+		interface="com.csii.upp.custom.common.api.service.payment.QuerySignInfoService"
+		trsCode="QuerySignInfo">
+	</srv:bridge>
+	<dubbo:service
+		interface="com.csii.upp.custom.common.api.service.payment.QuerySignInfoService"
+		ref="QuerySignInfoService" group="IS_PAY_PAYM_QUERYSIGNINFO" protocol="dubbo"
+		registry="dubboRegistry" />
+
+	<srv:bridge id="QueryBatchTransferPaymentService"
+		interface="com.csii.upp.custom.common.api.service.payment.QueryBatchTransferPaymentService"
+		trsCode="QueryBatchTransferPayment">
+	</srv:bridge>
+	<dubbo:service
+		interface="com.csii.upp.custom.common.api.service.payment.QueryBatchTransferPaymentService"
+		ref="QueryBatchTransferPaymentService" group="IS_PAY_PAYM_QUERYBATCHTRANSFERPAYMENT"
+		protocol="dubbo" registry="dubboRegistry" />
+
+	<srv:bridge id="UnHoldAcctStatusService"
+		interface="com.csii.upp.custom.common.api.service.payment.UnHoldAcctStatusService"
+		trsCode="UnHoldAcctStatus">
+	</srv:bridge>
+	<dubbo:service
+		interface="com.csii.upp.custom.common.api.service.payment.UnHoldAcctStatusService"
+		ref="UnHoldAcctStatusService" group="IS_PAY_PAYM_UNHOLDACCTSTATUS"
+		protocol="dubbo" registry="dubboRegistry" />
+
+	<srv:bridge id="ConfirmCancelSignInfoService"
+		interface="com.csii.upp.custom.common.api.service.payment.ConfirmCancelSignInfoService"
+		trsCode="ConfirmCancelSignInfo">
+	</srv:bridge>
+	<dubbo:service
+		interface="com.csii.upp.custom.common.api.service.payment.ConfirmCancelSignInfoService"
+		ref="ConfirmCancelSignInfoService" group="IS_PAY_PAYM_CONFIRMCANCELSIGNINFO"
+		protocol="dubbo" registry="dubboRegistry" />
+
+	<srv:bridge id="CancelSignInfoService"
+		interface="com.csii.upp.custom.common.api.service.payment.CancelSignInfoService"
+		trsCode="CancelSignInfo">
+	</srv:bridge>
+	<dubbo:service
+		interface="com.csii.upp.custom.common.api.service.payment.CancelSignInfoService"
+		ref="CancelSignInfoService" group="IS_PAY_PAYM_CANCELSIGNINFO"
+		protocol="dubbo" registry="dubboRegistry" />
+</beans>

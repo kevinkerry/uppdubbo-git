@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spring:beans xmlns:spring="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.csii.com.cn/schema/pe"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd 
+	http://www.csii.com.cn/schema/pe http://www.csii.com.cn/schema/pe/pe-config.xsd">
+
+	<config>
+		<!-- 提现交易结束操作装入类 -->
+		<action id="withdrawTransEndAction"
+			class="com.csii.upp.payment.action.supportor.BeanFactoryAction">
+			<list name="actions">
+				<!-- 加签 -->
+				<ref>signatureSignAction</ref>
+			</list>
+		</action>
+
+		<!-- 支付交易结束操作装入类 -->
+		<action id="returnTransEndAction"
+			class="com.csii.upp.payment.action.supportor.BeanFactoryAction">
+			<list name="actions">
+				<!-- 加签 -->
+				<ref>signatureSignAction</ref>
+			</list>
+		</action>
+
+		<!-- 支付交易结束操作装入类 -->
+		<action id="payTransEndAction"
+			class="com.csii.upp.payment.action.supportor.BeanFactoryAction">
+			<!-- <list name="actions"> 商户结果通知 <ref>notifyMerResultAction</ref> 电子口岸结果通知 
+				<ref>notifyDZKNResultAction</ref> </list> -->
+		</action>
+
+		<!-- 商户结果通知 -->
+		<action id="notifyMerResultAction"
+			class="com.csii.upp.payment.action.end.NotifyMerResultAction">
+		</action>
+
+		<!-- 电子口岸结果通知 -->
+		<action id="notifyDZKNResultAction"
+			class="com.csii.upp.payment.action.end.NotifyDZKNResultAction">
+		</action>
+
+	</config>
+</spring:beans>

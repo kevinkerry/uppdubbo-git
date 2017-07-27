@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="identityMapping" class="com.csii.pe.channel.ws.DefaultQNameMapping">
+		<property name="mapping">
+			<props>
+				<prop key="{http://com.csii.bank.pay/batch}RB">RB</prop>
+				<prop key="{http://com.csii.bank.pay/online}RTDT">RTDT</prop>
+				<prop key="{http://com.csii.bank.pay/online}QueryLimitAmt">QueryLimitAmt</prop>
+				<prop key="{http://com.csii.bank.pay/online}XMPAY">XMPAY</prop>
+				<prop key="{http://com.csii.bank.pay/online}CCCPAY">CCCPAY</prop>
+				<prop key="{http://com.csii.bank.pay/online}RTCT">RTCT</prop>
+				<prop key="{http://com.csii.bank.pay/online}SPCT">SPCT</prop>
+				<!-- 单笔记账 -->
+				<prop key="{http://com.csii.bank.pay/online}STXN">STXN</prop>
+				<prop key="{http://com.csii.bank.pay/online}REVK">REVK</prop>
+				<!--电子账户日切 -->
+				<prop key="{http://com.csii.bank.pay/batch}CutOff">cutOff</prop>
+				<!--超级网银日切 -->
+				<prop key="{http://com.csii.bank.pay/batch}ibpsCutOff">ibpscutOff</prop>
+				<!--大额日切 -->
+				<prop key="{http://com.csii.bank.pay/batch}hvpsCutOff">hvpscutOff</prop>
+				<!--同城日切 -->
+				<prop key="{http://com.csii.bank.pay/batch}dpcCutOff">dpccutOff</prop>
+				<!--RunQueAction -->
+				<prop key="{http://com.csii.bank.pay/batch}RunQue">runQue</prop>
+				<!--FileNotifyAction -->
+				<prop key="{http://com.csii.bank.pay/batch}FileNotify">fileNotify</prop>
+				<!--生成对账文件用于测试 -->
+				<prop key="{http://com.csii.bank.pay/batch}CreateCheckFile">createCheckFile</prop>
+				<!--生成对账文件用于测试 -->
+				<prop key="{http://com.csii.bank.pay/batch}QueList">queList</prop>
+				<!--队列详细信息查询 -->
+				<prop key="{http://com.csii.bank.pay/batch}LoadQue">loadQue</prop>
+				<!--编辑队列详细信息查询 -->
+				<prop key="{http://com.csii.bank.pay/batch}EditQue">editQue</prop>
+				<!--队列历史状态查询 -->
+				<prop key="{http://com.csii.bank.pay/batch}QueApplHist">queApplHist</prop>
+				<!-- 资金通道查询 -->
+				<prop key="{http://com.csii.bank.pay/batch}GetAllFundchannelList">getAllFundchannelList</prop>
+				<!-- 差错管理查询  -->
+				<prop key="{http://com.csii.bank.pay/batch}GetErrort">getErrort</prop>
+				<!-- 差错管理修改人工处理 -->
+				<prop key="{http://com.csii.bank.pay/batch}EditError">editError</prop>
+				<!-- 支付交易查询(大额、小额、超网分别对应来账、往账  信息查询  湖北银行功能) -->
+				<prop key="{http://com.csii.bank.pay/batch}GetPayTransInfo">getPayTransInfo</prop>
+				<prop key="{http://com.csii.bank.pay/online}STXNIBPS">STIB</prop> <!-- 单笔记账超级网银来账入账 -->
+				<prop key="{http://com.csii.bank.pay/online}FPUR">FPUR</prop> <!-- 基金申购 -->
+				<prop key="{http://com.csii.bank.pay/online}FRED">FRED</prop> <!-- 基金赎回 -->
+				<prop key="{http://com.csii.bank.pay/online}QTXN">QTXN</prop> <!-- 基金赎回 -->
+				<!-- 查询交易状态流水 -->
+				<prop key="{http://com.csii.bank.pay/online}QRTS">QRTS</prop> 
+				<!-- 实名认证 -->
+				<prop key="{http://com.csii.bank.pay/online}AUTN">AUTN</prop> 
+				<!-- 冲正 -->
+				<prop key="{http://com.csii.bank.pay/online}CRAC">CRAC</prop> 
+				<!-- 待挂退处理 -->
+				<prop key="{http://com.csii.bank.pay/batch}PBPS">PBPS</prop> 
+				<prop key="{http://com.csii.bank.pay/online}STXN">STHP</prop> 
+				<prop key="{http://com.csii.bank.pay/batch}queryErrList">getErrList</prop><!-- 银联差错流水查询  -->
+			    <prop key="{http://com.csii.bank.pay/batch}updUnionErrorStream">updUnionErrorStream</prop><!-- 银联差错流水查询  -->
+				<!-- 总交易流水查询 -->
+				<prop key="{http://com.csii.bank.pay/batch}QueryOverAllRtxnHist">queryOverAllRtxnHist</prop>
+				<prop key="{http://com.csii.bank.pay/batch}QueryInnerFundRtxn">queryInnerFundRtxn</prop>
+				<!-- 下游系统渠道查询 -->
+				<prop key="{http://com.csii.bank.pay/batch}GetDownSysfundRtxn">queryDownSysfundRtxn</prop>
+			</props>
+		</property>
+	</bean>
+</beans>

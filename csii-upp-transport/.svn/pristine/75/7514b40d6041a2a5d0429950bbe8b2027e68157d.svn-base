@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE segment SYSTEM "packetutf8.dtd">
+<segment>
+	<!-- 客户号 -->
+	 <xmlTag tagName="CifNo">
+	 	<String name="cifNo"/>
+	 </xmlTag>
+
+	<xmlTag tagName="MerNbr">
+		<String name="merNbr" defaultValue="" />
+	</xmlTag>
+	<xmlTag tagName="MerSeqNbr">
+		<String name="merSeqNbr" defaultValue="" />
+	</xmlTag>
+	<xmlTag tagName="MerTransDateTime">
+		<String name="merTransDateTime"  />
+	</xmlTag>
+	<xmlTag tagName="OrderNbr">
+		<String name="orderNbr" defaultValue="" />
+	</xmlTag>
+	<xmlTag tagName="TransAmt">
+		<String name="transAmt" defaultValue="" />
+	</xmlTag>
+	<xmlTag tagName="CurrencyCd">
+		<String name="currencyCd" defaultValue="" />
+	</xmlTag>
+</segment>

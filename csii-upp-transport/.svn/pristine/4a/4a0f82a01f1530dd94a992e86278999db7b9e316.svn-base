@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE segment SYSTEM "packetutf8.dtd">
+<!-- 贷记卡卡密校验接口 -->
+<segment>
+	<xmlTag tagName="CARDNO">
+		<String name="payerAcctNbr" defaultValue=""/>
+	</xmlTag>
+	<xmlTag tagName="BNKNBR">
+		<String name="BNKNBR" defaultValue="1429" />
+	</xmlTag>
+	<xmlTag tagName="BRN_NO">
+		<String name="BRN_NO" defaultValue="999000" />
+	</xmlTag>
+	<xmlTag tagName="OPE_NO">
+		<String name="OPE_NO" defaultValue="999S40"/>
+	</xmlTag>
+	<xmlTag tagName="SEQNO">
+		<String name="transNbr" defaultValue=""/>
+	</xmlTag>
+	<xmlTag tagName="SOURCE">
+		<String name="SOURCE" defaultValue="TB" />
+	</xmlTag>
+	<xmlTag tagName="PIN_FLAG">
+		<String name="checkPwdFlag" defaultValue=""/>
+	</xmlTag>
+	<xmlTag tagName="PIN">
+		<String name="PIN" defaultValue=""/>
+	</xmlTag>
+	<xmlTag tagName="PASSWD">
+		<String name="payerCardPwd" defaultValue=""/>
+	</xmlTag>
+	<xmlTag tagName="AcctType">
+		<String name="AcctType" defaultValue="C"/>
+	</xmlTag>
+</segment>

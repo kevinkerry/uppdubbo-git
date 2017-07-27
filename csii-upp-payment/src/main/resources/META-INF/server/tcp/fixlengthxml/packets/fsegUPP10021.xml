@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE segment SYSTEM "packetutf8.dtd">
+<segment>
+	<!-- 交易id -->
+	<xmlTag tagName="TransId">
+		<String name="TransId"/>
+	</xmlTag>	
+
+</segment>

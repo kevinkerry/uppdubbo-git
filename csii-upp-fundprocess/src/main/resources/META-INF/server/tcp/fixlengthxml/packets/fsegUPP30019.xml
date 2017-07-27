@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE segment SYSTEM "packetutf8.dtd">
+<segment>
+	<!-- 上日未清算资金 -->
+	<xmlTag tagName="PreUnClearAmt">
+		<String name="PreUnClearAmt"></String>
+	</xmlTag>
+	<!-- 本日银联清算资金 -->
+	<xmlTag tagName="UnionPayClearAmt">
+		<String name="UnionPayClearAmt"></String>
+	</xmlTag>
+	<!--本日核心清算资金  -->
+	<xmlTag tagName="CoreClearAmt">
+		<String name="CoreClearAmt"></String>
+	</xmlTag>
+	<!--未清算资金  -->
+	<xmlTag tagName="UnClearAmt">
+		<String name="UnClearAmt"></String>
+	</xmlTag>
+</segment>

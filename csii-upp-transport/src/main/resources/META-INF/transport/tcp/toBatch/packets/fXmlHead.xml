@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Group SYSTEM "packetutf8.dtd">
+<Group name="Message"
+	xmlHead="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;">
+	<Group name="Head">
+		<xmlTag tagName="PayTypCd">
+			<String name="payTypCd" />
+		</xmlTag>
+		<xmlTag tagName="TransId">
+			<String name="transId" />
+		</xmlTag>
+		<xmlTag tagName="MerNbr">
+			<String name="merNbr" />
+		</xmlTag>
+		<xmlTag tagName="Plain">
+			<String name="plain" />
+		</xmlTag>
+		<xmlTag tagName="Signature">
+			<String name="signature" />
+		</xmlTag>
+		<xmlTag tagName="BizTrackNo">
+			<String name="bizTrackNo" defaultValue="" />
+		</xmlTag>
+	</Group>
+	<Group name="Body">
+		<include keyName="transCode" />
+	</Group>
+</Group>

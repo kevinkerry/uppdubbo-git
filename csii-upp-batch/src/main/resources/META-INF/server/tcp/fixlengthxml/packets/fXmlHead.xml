@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Group SYSTEM "packetutf8.dtd">
+<Group name="Message"
+	xmlHead="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;">
+	<Group name="Head">
+		<xmlTag tagName="UpperTransNbr">
+			<String name="UpperTransNbr" />
+		</xmlTag>
+		<xmlTag>
+			<String name="AccNo" defaultValue="" />
+		</xmlTag>
+		<xmlTag>
+			<String name="TranAmt" defaultValue="" />
+		</xmlTag>
+		<xmlTag>
+			<String name="PageNum" defaultValue="" />
+		</xmlTag>
+		<xmlTag>
+			<String name="TransCode" defaultValue="" />
+		</xmlTag>
+		<xmlTag tagName="RespStatus">
+			<String name="RespStatus" />
+		</xmlTag>
+		<xmlTag tagName="RespCode">
+			<String name="RespCode" />
+		</xmlTag>
+		<xmlTag tagName="RespMessage">
+			<String name="RespMessage" />
+		</xmlTag>
+	</Group>
+	<Group name="Body">
+		<include keyName="TransCode" />
+	</Group>
+</Group>

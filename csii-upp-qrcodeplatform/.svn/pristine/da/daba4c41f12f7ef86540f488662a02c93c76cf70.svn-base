@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spring:beans xmlns:spring="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.csii.com.cn/schema/pe"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	 http://www.springframework.org/schema/beans/spring-beans.xsd 
+	 http://www.springframework.org/schema/context 
+     http://www.springframework.org/schema/context/spring-context-4.0.xsd
+	 http://www.csii.com.cn/schema/pe 
+	 http://www.csii.com.cn/schema/pe/pe-config.xsd">
+
+<config>
+	
+	<!-- 序列号编号规则：Twitter的分布式自增ID算法snowflake 18位 -->
+	<idFactory id="seqNbrFactory" class="com.csii.upp.qrcodeplatform.sequence.UppSnowflakeIdWorker" >
+		<param name="workerId">${seqnbr.workerId}</param>
+		<param name="datacenterId">${seqnbr.datacenterId}</param>
+	</idFactory>
+</config>
+</spring:beans>

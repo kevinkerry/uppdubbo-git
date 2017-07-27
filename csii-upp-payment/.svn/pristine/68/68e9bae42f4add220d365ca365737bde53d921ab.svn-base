@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE segment SYSTEM "packetutf8.dtd">
+<segment>
+<Group name="Message">
+	<!-- 交易id -->
+	<xmlTag tagName="TransId">
+		<String name="TransId"/>
+	</xmlTag>	
+	<!-- 响应码-->
+	<xmlTag tagName="RespCode">
+		<String name="RespCode" />
+	</xmlTag>
+	<!-- 返回信息-->
+	<xmlTag tagName="RespMessage">
+		<String name="RespMessage" defaultValue="交易成功"/>
+	</xmlTag>
+	</Group>
+</segment>

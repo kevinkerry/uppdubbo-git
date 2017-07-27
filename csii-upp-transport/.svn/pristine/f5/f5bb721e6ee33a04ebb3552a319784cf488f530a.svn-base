@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE segment SYSTEM "packetutf8.dtd">
+<!-- 微信被扫支付 -->
+<segment>
+	<!--服务代码  -->
+	<xmlTag tagName="txnCode">
+		<String name="txnCode" defaultValue="" />
+	</xmlTag>
+	<!-- 交易金额 -->
+	<xmlTag tagName="orderAmount">
+		<String name="orderAmount" defaultValue="" />
+	</xmlTag>
+	<!-- 交易时间 -->
+	<xmlTag tagName="orderTime">
+		<String name="orderTime" defaultValue="" />
+	</xmlTag>
+	<!-- 订单号 -->
+	<xmlTag tagName="orderNumber">
+		<String name="orderNumber" defaultValue="" />
+	</xmlTag>
+	<!-- 交易类型 -->
+	<xmlTag tagName="transType">
+		<String name="transType" defaultValue="" />
+	</xmlTag>
+	<!--商户编号 -->
+	<xmlTag tagName="merId">
+		<String name="merId" defaultValue="" />
+	</xmlTag>
+	<!--商户名称  -->
+	<xmlTag tagName="merName">
+		<String name="merName" defaultValue="" />
+	</xmlTag>
+	<!-- 渠道编号 -->
+	<xmlTag tagName="channel">
+		<String name="channel" defaultValue="" />
+	</xmlTag>
+	<!-- 接入类型 -->
+	<xmlTag tagName="payAccessType">
+		<String name="payAccessType" defaultValue="" />
+	</xmlTag>
+	<!--商户编号 -->
+	<xmlTag tagName="currencyType">
+		<String name="currencyType" defaultValue="" />
+	</xmlTag>
+	<!--商户名称  -->
+	<xmlTag tagName="payType">
+		<String name="payType" defaultValue="" />
+	</xmlTag>
+	<!-- 是否支持信用卡 -->
+	<xmlTag tagName="isCredit">
+		<String name="isCredit" defaultValue="" />
+	</xmlTag>
+	
+	<!-- 订单生成时间 -->
+	<xmlTag tagName="timeStart">
+		<String name="timeStart" defaultValue="" />
+	</xmlTag>
+	<!--订单截止时间 -->
+	<xmlTag tagName="timeExpire">
+		<String name="timeExpire" defaultValue="" />
+	</xmlTag>
+	<!--微信子商户标识码  -->
+	<xmlTag tagName="subWxMerId">
+		<String name="subWxMerId" defaultValue="" />
+	</xmlTag>
+	<!-- 终端IP -->
+	<xmlTag tagName="customerIP">
+		<String name="customerIP" defaultValue="" />
+	</xmlTag>
+	<!-- 订单详细信息 -->
+	<xmlTag tagName="productInfoDetail">
+		<String name="productInfoDetail" defaultValue="" />
+	</xmlTag>
+	<!--设备信息 -->
+	<xmlTag tagName="deviceInfo">
+		<String name="deviceInfo" defaultValue="" />
+	</xmlTag>
+	<!--产品代码  -->
+	<xmlTag tagName="productId">
+		<String name="productId" defaultValue="" />
+	</xmlTag>
+	<!-- 商品描述 -->
+	<xmlTag tagName="body">
+		<String name="body" defaultValue="" />
+	</xmlTag>
+	<!-- 授权码 -->
+	<xmlTag tagName="authCode">
+		<String name="authCode" defaultValue="" />
+	</xmlTag>
+</segment>

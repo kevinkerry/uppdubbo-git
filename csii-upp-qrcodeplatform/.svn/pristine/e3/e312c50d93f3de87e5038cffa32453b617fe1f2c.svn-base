@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE segment SYSTEM "packetutf8.dtd">
+<segment>
+	
+	<!-- 微信预支付会话id -->
+	<xmlTag tagName="prepay_id">
+		<String name="prepay_id"></String>
+	</xmlTag> 
+	<!-- 随机字符串-->
+	<xmlTag tagName="nonce_str">
+		<String name="nonce_str"></String>
+	</xmlTag>
+	<!-- 时间戳 -->
+	<xmlTag tagName="timestamp">
+		<String name="timestamp"></String>
+	</xmlTag>
+	<!-- 二维码平台流水号 -->
+	<xmlTag tagName="qrcodetransnbr">
+		<String name="QrcodeTransSeqNo"></String>
+	</xmlTag>
+	<!-- 签名 -->
+	<xmlTag tagName="signature">
+		<String name="signature"></String>
+	</xmlTag>
+	<!-- 签名 -->
+	<xmlTag tagName="paySign">
+		<String name="paySign"></String>
+	</xmlTag>
+</segment>

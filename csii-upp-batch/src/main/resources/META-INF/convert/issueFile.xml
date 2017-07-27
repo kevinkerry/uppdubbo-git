@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE files SYSTEM "file.dtd">
+<files>
+	<!--电子账户下发文件模板 -->
+	<file id="issueEAccountFile" prefix="_eaccount_checkFile_" skipLine="1" delimiter="|"
+		suffix=".txt" lineSeparator="\n" stringSymbol="1" encoding="gbk">
+		<field name="rtxnnbr" /><!-- 账务流水号 -->
+		<field name="rtxndate" /><!--账务日期 -->
+		<field name="rtxntypcd" /><!-- 渠道流水号 -->
+		<field name="upperrtxnnbr" /><!-- 渠道流水号 -->
+		<field name="upperrtxndate" /><!-- 渠道日期 -->
+		<field name="payeracctnbr" /><!-- 转出账号 -->
+		<field name="payeeacctnbr" /><!-- 转入账号 -->
+		<field name="currency" /><!-- 币种 -->
+		<field name="transamt" /><!-- 金额/积分 -->
+		<field name="feeamt" /><!-- 手续费 -->
+		<field name="note1" /><!-- 备注1 -->
+		<field name="note2" /><!-- 备注2 -->
+	</file>
+	<!--电子账户下发文件模板 -->
+	<file id="issueOtherFile" prefix="_other_checkFile_" skipLine="1" delimiter="|"
+		suffix=".txt" lineSeparator="\n" stringSymbol="1" encoding="gbk">
+		<field name="rtxnnbr" /><!-- 账务流水号 -->
+		<field name="rtxndate" /><!--账务日期 -->
+		<field name="rtxntypcd" /><!-- 渠道流水号 -->
+		<field name="upperrtxnnbr" /><!-- 渠道流水号 -->
+		<field name="upperrtxndate" /><!-- 渠道日期 -->
+		<field name="payeracctnbr" /><!-- 转出账号 -->
+		<field name="payeeacctnbr" /><!-- 转入账号 -->
+		<field name="currency" /><!-- 币种 -->
+		<field name="transamt" /><!-- 金额/积分 -->
+		<field name="feeamt" /><!-- 手续费 -->
+		<field name="note1" /><!-- 备注1 -->
+		<field name="note2" /><!-- 备注2 -->
+	</file>
+	<!-- paym下发文件模板 -->
+	<file id="merchantFilePaym" prefix="CCF" skipLine="1" delimiter="|"
+		suffix=".txt" lineSeparator="\r\n" stringSymbol="1" encoding="utf-8">
+		<field name = "transcode" /><!-- 交易代码 -->
+		<field name = "cleardate"   type="date"  pattern="yyyyMMdd" /><!-- 清算日期 -->
+		<field name = "mertransdatetime"  type="date"  pattern="yyyyMMddHHmmss" /><!-- 商户时间戳 -->
+		<field name = "merseqnbr" /><!-- 商户交易流水号 -->
+		<field name = "transseqnbr" /><!-- 支付平台流水号 -->
+		<field name = "mernbr" /><!-- 商户号 -->
+		<field name = "termcode" />
+		<field name = "transamt" /><!-- 交易金额 -->
+<!-- 		<field name = "feeamt" />手续费 -->
+<!-- 		<field name = "" /> -->
+		<field name = "transstatus" /><!-- 交易状态 -->
+		<field name = "memo1" /><!--备注1 -->
+		<field name = "memo2" /><!-- 备注2 -->
+		<field name="test123"></field><!-- 手动添加无效字段 -->
+	</file>	
+	
+	<!-- paym积分下发文件模板  added by wangtao 20161107-->
+	<file id="merchantPointFilePaym" prefix="ICCF" skipLine="1" delimiter="|"
+		suffix=".txt" lineSeparator="\r\n" stringSymbol="1" encoding="utf-8">
+		<field name = "transcode" /><!-- 交易代码 -->
+		<field name = "cleardate"   type="date"  pattern="yyyyMMdd" /><!-- 清算日期 -->
+		<field name = "mertransdatetime"  type="date"  pattern="yyyyMMddHHmmss" /><!-- 商户时间戳 -->
+		<field name = "pointflag" defaultValue = "1" /> <!-- 积分标识，默认1 -->
+		<field name = "supermerseqnbr" /><!-- 商户交易流水号 -->
+		<field name = "mernbr" /><!-- 商户号 -->
+		<field name = "merseqnbr" /><!-- 商户交易子流水号 -->
+		<field name = "transamt" /><!-- 交易金额 -->
+		<field name = "deductamt" /><!-- 积分抵扣金额 -->
+		<field name = "realamt" /><!-- 实际支付金额 -->
+		<field name = "transstatus" /><!-- 交易状态 -->
+		<field name = "memo1" /><!--备注1 -->
+		<field name = "memo2" /><!-- 备注2 -->
+		<field name="test123"></field><!-- 手动添加无效字段 -->
+	</file>		
+	<!-- paym商户结算文件摸版 -->
+	<file id="settlePaymFile" prefix="EPAY" skipLine="1" delimiter="|"
+		suffix=".txt" lineSeparator="\r\n" stringSymbol="1" encoding="utf-8">
+		<field name="deptNbr"></field><!-- 机构号 -->
+		<field name="clearDate"></field><!-- 清算日期 -->
+		<field name="payAmount"></field><!-- 支付金额 -->
+		<field name="prncAmount"></field><!-- 结算金额 -->
+		<field name="withdrawAmount"></field><!-- 未结算退货金额 -->
+		<field name="withdrawFeeAmount"></field><!-- 退还手续费金额 -->
+		<field name="inFeeAmount"></field><!-- 手续费收入金额 -->
+		<field name="meno"></field>
+		<field name="test123"></field><!-- 手动添加无效字段 -->
+	</file>
+	
+	<!--  -->
+	<file id="mer-prncpfee-sett" prefix="EPAY" skipLine="1" delimiter="|"
+		suffix=".txt" lineSeparator="\n" stringSymbol="1" encoding="utf-8">
+		<field name="MerchantId"></field><!-- 商户编号 -->
+		<field name="MerchantName"></field><!-- 商户名称 -->
+		<field name="PayAcctNo"></field><!-- 借方账号 -->
+		<field name="RcvAcctNo"></field><!-- 贷方账号 -->
+		<field name="AFFlag"></field><!-- 红字标识 -->
+		<field name="TransAmount"></field><!-- 交易金额 -->
+		<field name="AmountType"></field><!-- 交易类型 -->
+		<field name="Remarker"></field> <!-- 备用字段 -->
+	</file>
+	
+	<!-- 一级商户旗下所有二级商户结算明细，上送给电商平台 -->
+	<file id="submer_sett_detail" prefix="STF" skipLine="1" delimiter="|"
+		suffix=".txt" lineSeparator="\r\n" stringSymbol="1" encoding="utf-8">
+		<field name="ClearDate" type="date"  pattern="yyyyMMdd" ></field>
+		<field name="MerchantId"></field><!-- 商户编号 -->
+		<field name="TermNo" defaultValue = "00"></field>	
+		<field name="InFeeAmount" defaultValue="0.00"></field> <!-- 手续费金额 -->	
+		<field name="PrncAmount"    defaultValue="0.00"></field><!-- 净清算金额 -->
+		<field name="RfdFeeAmount" defaultValue="0.00"></field><!-- 退还手续费金额 -->
+		<field name="Remark1"></field><!-- 备注1 -->
+		<field name="Remark2"></field><!-- 备注2 -->
+		<field name="test123"></field><!-- 手动添加无效字段 -->
+	</file>
+	
+	<!-- 一级商户旗下所有二级商户结算交易明细，上送给电商平台 -->
+	<file id="submer_trans_detail" prefix="SSTF" skipLine="1" delimiter="|"
+		suffix=".txt" lineSeparator="\r\n" stringSymbol="1" encoding="utf-8">
+		<field name="TransSettDate" type="date"  pattern="yyyyMMdd" ></field>
+		<field name="TransDateTime" type="date"  pattern="yyyyMMddHHmmss" ></field>
+		<field name="MerSeqNo"></field>	
+		<field name="TransSeqNo"></field> 	
+		<field name="MerId"></field>
+		<field name="TransAmt"></field><!-- 交易金额 -->
+		<field name="SettStatus"></field>
+		<field name="MerAcctType"></field>
+		<field name="Remark1"></field><!-- 备注1 -->
+		<field name="Remark2"></field><!-- 备注2 -->
+		<field name="test123"></field><!-- 手动添加无效字段 -->
+	</file>
+		<!-- FDPS对账文件模板 -->
+	<file id="issueFileFdps" prefix="fdps" skipLine="" delimiter="|" suffix=".txt"
+		lineSeparator="\r\n" stringSymbol="1" encoding="utf-8" skipBeginLine="false" skipEndLine="false">
+<!-- 		<field name="downsystransnbr" />下游系统交易流水号 -->
+<!-- 		<field name="transseqnbr" />支付平台流水号 -->
+<!-- 		<field name="transdate" />交易日期 -->
+<!-- 		<field name="downsysdate" />下游日期 -->
+<!-- 		<field name="transcode" />交易代码 -->
+<!-- 		<field name="transstatus" />交易状态 -->
+<!-- 		<field name="transamt" />交易金额 -->
+<!-- 		<field name="payeracctnbr" />付款账号 -->
+<!-- 		<field name="payeeacctnbr" />收款账号 -->
+		<field name="rtxnnbr" /><!-- 下游系统交易流水号 -->
+		<field name="upperrtxnnbr"  /><!-- 支付平台流水号 -->
+		<field name="upperrtxndate"  type="date"  pattern="yyyy-MM-dd" /><!-- 交易日期 -->
+		<field name="rtxndate"  type="date"  pattern="yyyy-MM-dd" /><!-- 下游日期 -->
+		<field name="rtxntypcd" /><!-- 交易代码 -->
+		<field name="transstatus" /><!-- 交易状态 -->
+		<field name="transamt" /><!-- 交易金额 -->
+		<field name="payeracctnbr" /><!-- 付款账号 -->
+		<field name="payeeacctnbr" /><!-- 收款账号 -->
+	</file>
+</files>

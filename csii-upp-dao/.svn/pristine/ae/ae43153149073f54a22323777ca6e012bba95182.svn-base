@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="BATCHFEEPROFITSETTLEEXTEND">
+	<resultMap id="merchantSettMap" class="java.util.HashMap">
+		<result property="TransAmt" column="TRANSAMT" /> <!-- 交易金额 -->
+		<result property="SettPeriod" column="SETTPERIOD" /> <!-- 结算周期 -->
+		<result property="MerNbr" column="MERNBR" />
+		<result property="PayerAcctNbr" column="PAYERACCTNBR" />
+		<result property="PayeeAcctDeptNbr" column="PAYEEACCTDEPTNBR" />
+		<result property="SettleSeqNbr" column="SETTLESEQNBR" />
+		<result property="TransDate" column="TRANSDATE" />
+		<result property="PayeeAcctNbr" column="PAYEEACCTNBR" />
+	</resultMap>
+	<select id="queryMerchantSettExtForDeposit" resultMap="merchantSettMap"
+		parameterClass="java.util.HashMap">
+		SELECT
+		A.TRANSDATE,
+		A.TRANSAMT,
+		B.SETTPERIOD,
+		A.MERNBR,
+		A.PAYERACCTNBR,
+		A.PAYEEACCTDEPTNBR,
+		A.SETTLESEQNBR,
+		A.PAYEEACCTNBR
+		FROM BATCHFEEPROFITSETTLE A, MERACCTINFO B
+		where A.SendStatus = #SendStatus#
+		<isNotEmpty prepend="AND" property="ClearDate">
+			A.ClearDate =
+			#ClearDate#
+		</isNotEmpty>
+		AND A.MerNbr = B.MerNbr
+		ORDER BY A.SettleSeqNbr
+	</select>
+
+	<!-- 将商户结算表临时表记录转移到历史表中 -->
+	<insert id="transferMerchantSettExtToHistory" parameterClass="com.csii.upp.dto.generate.Batchfeeprofitsettle">
+		<![CDATA[
+			INSERT INTO BATCHFEEPROFITSETTLEHIST 
+			(SETTLESEQNBR, TRANSDATE,  CLEARDATE, TRANSTIME,
+			DOWNSYSDATE, DOWNSYSSEQNBR, SENDSTATUS, DOWNSYSRESPCODE, MERNBR,
+			CUSTCIFNBR, PAYERACCTNBR, PAYERACCTTYPCD, PAYERACCTDEPTNBR,
+			PAYERACCTNAME, PAYEEACCTNBR, PAYEEACCTDEPTNBR, PAYEEACCTTYPCD,
+			PAYEEACCTNAME, PAYERACCTKIND, PAYEEACCTKIND, PAYERCARDTYPCD,
+			PAYEECARDTYPCD, TRANSAMT, CHECKSTATUS, MEMO,DEPARTMENTNBR)
+			VALUES(
+			#settleseqnbr#,#transdate#,#cleardate#,#transtime#,
+			#downsysdate#,#downsysseqnbr#,#sendstatus#,#downsysrespcode#,
+			#mernbr#,#custcifnbr#,#payeracctnbr#,#payeraccttypcd#,
+			#payeracctdeptnbr#,#payeracctname#,#payeeacctnbr#,
+			#payeeacctdeptnbr#,#payeeaccttypcd#,#payeeacctname#,
+			#payeracctkind#,#payeeacctkind#,#payercardtypcd#,#payeecardtypcd#,
+			#transamt#,#checkstatus#,#memo#,#departmentnbr#
+			)
+		]]>
+	</insert>
+
+	<!-- 删除商户结算日结算表指定清算日期之前的记录 -->
+	<delete id="deleteMerchantSettExtBeforeDate" parameterClass="HashMap">
+		<![CDATA[
+		    DELETE FROM
+		    	BATCHFEEPROFITSETTLE 
+		   	WHERE 
+		   		CLEARDATE < #ClearDate# 
+		   	AND 
+		   		SENDSTATUS = '0'
+	   	]]>
+	</delete>
+	<select id="getMerNbrFromBatchmersettle" parameterClass="java.util.HashMap"
+		resultClass="java.util.HashMap">
+		select MERPLATFORMNBR,MERNBR from meracctinfo where mernbr in (
+		select distinct mernbr from
+		(select a.mernbr from batchmersettle a,meracctinfo b where a.mernbr=b.mernbr
+		and b.isparentmer='1' and a.sendstatus=#SendStatus# and
+		a.cleardate=#ClearDate#
+		union
+		select b.supermernbr from batchfeeprofitsettle a,meracctinfo b where
+		a.mernbr=b.mernbr and b.isparentmer='0' and a.sendstatus=#SendStatus#
+		and a.cleardate=#ClearDate#) tmp
+		)
+	</select>
+
+</sqlMap>

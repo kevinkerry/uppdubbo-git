@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE segment SYSTEM "packetutf8.dtd">
+<segment>
+	<!-- 付款卡号-->
+	<xmlTag tagName="PayerAcctNbr">
+		<String name="PayerAcctNbr" defaultValue="" />
+	</xmlTag>
+	<!-- 卡类型 -->
+	<xmlTag tagName="PayerCardTypCd">
+		<String name="PayerCardTypCd" />
+	</xmlTag>
+</segment>

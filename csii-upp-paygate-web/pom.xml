@@ -1,0 +1,100 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>cn.com.csii.upp</groupId>
+		<artifactId>csii-upp-parent</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+		<relativePath>../csii-upp-parent</relativePath>
+	</parent>
+	<artifactId>csii-upp-paygate-web</artifactId>
+	<packaging>war</packaging>
+	<name>Upp Paygate Web</name>
+
+	<properties>
+		<weblogic.ip>172.16.0.112</weblogic.ip>
+		<weblogic.port>7001</weblogic.port>
+		<weblogic.username>weblogic</weblogic.username>
+		<weblogic.password>weblogic123</weblogic.password>
+		<weblogic.target>PaygateServer</weblogic.target>
+		<weblogic.deploy.app.name>PAYGATE</weblogic.deploy.app.name>
+	</properties>
+
+
+	<dependencies>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>csii-upp-dto</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>csii-upp-custom-common-api</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>csii-upp-transport</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+	</dependencies>
+
+
+	<build>
+		<resources>
+			<resource>
+				<directory>src/main/java</directory>
+				<excludes>
+					<exclude>**/*.java</exclude>
+				</excludes>
+			</resource>
+			<resource>
+				<directory>src/main/resources</directory>
+			</resource>
+		</resources>
+
+		<plugins>
+			<!-- WebLogic部署插件 -->
+			<plugin>
+				<groupId>com.oracle.weblogic</groupId>
+				<artifactId>weblogic-maven-plugin</artifactId>
+				<configuration>
+					<adminurl>t3://${weblogic.ip}:${weblogic.port}</adminurl>
+					<user>${weblogic.username}</user>
+					<password>${weblogic.password}</password>
+					<targets>${weblogic.target}</targets>
+					<remote>true</remote>
+					<verbose>true</verbose>
+					<upload>true</upload>
+					<source>${project.build.directory}/${project.build.finalName}.${project.packaging}</source>
+					<!-- 部署的应用名称 -->
+					<name>${weblogic.deploy.app.name}</name>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<profiles>
+		<profile>
+			<id>weblogic</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>com.oracle.weblogic</groupId>
+						<artifactId>weblogic-maven-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>deploy-to-weblogic</id>
+								<phase>install</phase>
+								<goals>
+									<goal>deploy</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+
+</project>

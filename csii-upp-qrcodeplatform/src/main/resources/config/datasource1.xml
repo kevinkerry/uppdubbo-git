@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spring:beans xmlns:spring="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.csii.com.cn/schema/pe"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	 http://www.springframework.org/schema/beans/spring-beans.xsd 
+	 http://www.springframework.org/schema/context 
+     http://www.springframework.org/schema/context/spring-context-4.0.xsd
+	 http://www.csii.com.cn/schema/pe 
+	 http://www.csii.com.cn/schema/pe/pe-config.xsd
+	 http://www.springframework.org/schema/tx 
+	 http://www.springframework.org/schema/tx/spring-tx.xsd">
+	 
+	 
+	<!-- JDNI使用web容器的数据库连接池	 -->
+	<!-- 	
+	<bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiName">
+			<value>DB2</value>
+		</property>
+		<property name="resourceRef">
+			<value>true</value>
+		</property>
+	</bean> 
+	-->
+	
+	<context:component-scan base-package="com.csii.upp.qrcodeplatform.action.*"></context:component-scan>
+	
+	<bean id="dataSource" class="org.apache.tomcat.jdbc.pool.DataSource"
+		init-method="createPool" destroy-method="close">
+		<param name="driverClassName">${datasource.driver}</param>
+		<param name="url">${datasource.url}</param>
+		<param name="username">${datasource.username}</param>
+		<param name="password">${datasource.password}</param>
+		<param name="initialSize">50</param>
+		<param name="maxActive">200</param>
+		<param name="maxWait">3000</param><!-- ms -->
+		<param name="maxIdle">1</param>
+		<param name="minIdle">0</param>
+		<param name="testWhileIdle">true</param>
+		<param name="testOnBorrow">false</param>
+		<param name="validationQuery">${datasource.validationQuery}</param>
+		<param name="fairQueue">true</param>
+		<param name="jmxEnabled">false</param>
+		<param name="name">dataSource</param>
+		<param name="defaultAutoCommit">true</param>
+		<param name="jdbcInterceptors">ConnectionState(useEquals=true,fast=yes)</param>
+		<!--<param name ="jdbcInterceptors">SlowQueryReport(threshold=500)</param> -->
+	</bean>
+	
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<ref name="dataSource">dataSource</ref>
+		<param name="configLocation">classpath:/config/sqlmap/mybatis-config.xml</param>
+	</bean>
+	
+	<bean id="sqlOperation" class="com.csii.upp.qrcodeplatform.base.dao.SqlOperationImpl">
+		<ref name="sqlSessionFactory">sqlSessionFactory</ref>
+	</bean>
+	
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<param name="basePackage">com.csii.upp.qrcodeplatform.generate.dao</param>
+	</bean>
+	
+	<!-- 基于注解@Transactional声明式事务管理配置 --> 
+	<tx:annotation-driven transaction-manager="transactionManager"/>
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<ref name="dataSource">dataSource</ref>
+	</bean>
+</spring:beans>

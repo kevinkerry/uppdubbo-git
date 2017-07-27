@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="BATCHFEEPROFITTRANSEXTEND">
+	<resultMap id="deptSettlementMap" class="com.csii.upp.dto.extend.DeptSettlementMap">
+		<result column="TotalCount" property="TotalCount" jdbcType="INTEGER" />
+		<result column="TransAmount" property="TransAmount" jdbcType="DECIMAL" />
+		<result column="PAYERACCTNBR" property="payeracctnbr" jdbcType="VARCHAR" />
+		<result column="PAYERACCTTYPCD" property="payeraccttypcd" jdbcType="CHAR" />
+		<result column="PAYERACCTDEPTNBR" property="payeracctdeptnbr" jdbcType="VARCHAR" />
+		<result column="PAYEEACCTNBR" property="payeeacctnbr" jdbcType="VARCHAR" />
+		<result column="PAYEEACCTDEPTNBR" property="payeeacctdeptnbr" jdbcType="VARCHAR" />
+		<result column="PAYEEACCTTYPCD" property="payeeaccttypcd" jdbcType="CHAR" />
+		<result column="PAYERACCTKIND" property="payeracctkind" jdbcType="VARCHAR" />
+		<result column="PAYEEACCTKIND" property="payeeacctkind" jdbcType="VARCHAR" />
+		<result column="MERNBR" property="mernbr" jdbcType="VARCHAR" />
+		<result column="DEPARTMENTNBR" property="departmentnbr" jdbcType="VARCHAR" />
+		<result column="MEMO" property="memo" jdbcType="VARCHAR" />
+	</resultMap>
+	<insert id="insertBatchFeeProfitTransToHist"  parameterClass="java.util.HashMap">
+     insert into BATCHFEEPROFITTRANSHIST
+     (PROFITCLEARTRANSNBR, TRANSSEQNBR, SETTLESEQNBR,
+   MERSEQNBR, CLEARDATE, SETTLEDATE, TRANSTIME, FEERCVTYP,SETTLESTATUS,
+   MERNBR, CUSTCIFNBR, PAYERACCTNBR, PAYERACCTTYPCD,
+   PAYERACCTDEPTNBR, PAYERACCTNAME, PAYEEACCTNBR, PAYEEACCTDEPTNBR,
+   PAYEEACCTTYPCD, PAYEEACCTNAME, PAYERACCTKIND, PAYEEACCTKIND,
+   PAYERCARDTYPCD, PAYEECARDTYPCD,  TRANSAMT, DEPARTMENTNBR,
+   MEMO,CLEARTRANSNBR)
+     select PROFITCLEARTRANSNBR, TRANSSEQNBR, SETTLESEQNBR,
+   MERSEQNBR, CLEARDATE, SETTLEDATE, TRANSTIME, FEERCVTYP,SETTLESTATUS,
+   MERNBR, CUSTCIFNBR, PAYERACCTNBR, PAYERACCTTYPCD,
+   PAYERACCTDEPTNBR, PAYERACCTNAME, PAYEEACCTNBR, PAYEEACCTDEPTNBR,
+   PAYEEACCTTYPCD, PAYEEACCTNAME, PAYERACCTKIND, PAYEEACCTKIND,
+   PAYERCARDTYPCD, PAYEECARDTYPCD, TRANSAMT, DEPARTMENTNBR,
+   MEMO,CLEARTRANSNBR
+     from BATCHFEEPROFITTRANS
+     where settledate = #date#
+	</insert>
+
+	<select id="selectFromBatchFeeProfitTrans" parameterClass="HashMap"
+		resultMap="deptSettlementMap">
+		SELECT count(payeracctnbr) as TotalCount,
+		sum(transamt) as TransAmount,
+		payeracctnbr,
+		payeraccttypcd,
+		payeracctdeptnbr,
+		payeeacctnbr,
+		payeeacctdeptnbr,
+		payeeaccttypcd,
+		payeracctkind,
+		payeeacctkind,
+		mernbr,
+		departmentnbr,
+		memo
+		FROM BatchFeeProfitTrans
+		WHERE settledate = #settleDate# AND settlestatus=#settleStatus#
+		GROUP BY
+		payeracctnbr,
+		payeraccttypcd,
+		payeracctdeptnbr,
+		payeeacctnbr,
+		payeeacctdeptnbr,
+		payeeaccttypcd,
+		payeracctkind,
+		payeeacctkind,
+		mernbr,
+		departmentnbr,
+		memo
+	</select>
+	<select id="getDateFromBatchFeeProfitTrans" parameterClass="java.util.HashMap"
+		resultClass="com.csii.upp.dto.generate.Batchfeeprofittrans">
+		select a.* from Batchfeeprofittrans a,meracctinfo b where a.mernbr =
+		b.mernbr and a.cleardate =#ClearDate# and b.merplatformnbr in
+		( select merplatformnbr from meracctinfo where mernbr=#merNbr#)
+	</select>
+</sqlMap>

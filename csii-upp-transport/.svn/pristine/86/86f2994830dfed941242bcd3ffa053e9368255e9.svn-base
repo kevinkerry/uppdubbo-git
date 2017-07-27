@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Group SYSTEM "packetutf8.dtd">
+<Group name="Message"
+	xmlHead="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;">
+	<Group name="Head">
+		<xmlTag tagName="MSG_ID">
+			<String name="MSG_ID" defaultValue="REQ"></String><!-- 信息类型 -->
+		</xmlTag>
+		<xmlTag tagName="CONV_CTL">
+			<String name="CONV_CTL" defaultValue="0"></String><!-- 交互控制0：非交互式控制,1：交互式交易 新建会话,2：非交互式交易 现有会话 -->
+		</xmlTag>
+		<xmlTag tagName="PG_CTL">
+			<String name="PG_CTL" defaultValue="0"></String><!-- 翻页模式 0：非翻页,1：翻页 -->
+		</xmlTag>
+		<xmlTag tagName="RES">
+			<String name="RES" defaultValue=""></String><!-- 预留-->
+		</xmlTag>
+		<xmlTag tagName="CH_PID">
+			<String name="CH_PID" defaultValue="ND"></String><!-- 渠道代码 -->
+		</xmlTag>
+		<xmlTag tagName="CH_AID">
+			<String name="CH_AID" defaultValue="ND"></String><!-- 渠道分析代码 -->
+		</xmlTag>
+		<xmlTag tagName="CT_ID">
+			<String name="CT_ID" defaultValue=""></String><!-- 客户端应用种类代码 -->
+		</xmlTag>
+		<xmlTag tagName="TEL_TXID">
+			<String name="transCode" defaultValue=""></String><!-- 柜员输入交易码 -->
+		</xmlTag>
+		<xmlTag tagName="SYS_TXID">
+			<String name="transCode" defaultValue=""></String><!-- 主机启动原交易码 -->
+		</xmlTag>
+		<xmlTag tagName="TX_DTE">
+			<Date name="transDate" defaultValue=""></Date><!-- 交易日期 -->
+		</xmlTag>
+		<xmlTag tagName="SYS_DTE">
+			<String name="systime"  defaultValue=""></String><!-- 系统日期 -->
+		</xmlTag>
+		<xmlTag tagName="SYS_TME">
+			<String name="time" defaultValue=""></String><!-- 系统时间 -->
+		</xmlTag>
+		<xmlTag tagName="TX_OUNO">
+			<String name="transerDeptNbr" defaultValue="999000"></String><!-- 交易机构号 -->
+		</xmlTag>
+		<xmlTag tagName="TX_DPT">
+			<String name="TX_DPT" defaultValue=""></String><!-- 交易部门 -->
+		</xmlTag>
+		<xmlTag tagName="TX_DIS">
+			<String name="TX_DIS" defaultValue=""></String><!-- 交易地区号 -->
+		</xmlTag>
+		<xmlTag tagName="SRV_ID">
+			<String name="SRV_ID" defaultValue=""></String><!-- Unix服务器号 -->
+		</xmlTag>
+		<xmlTag tagName="TRM_ID">
+			<String name="TRM_ID" defaultValue="IPP00002"></String><!-- 终端号 -->
+		</xmlTag>
+		<xmlTag tagName="TEL_ID">
+			<String name="TEL_ID" defaultValue="999S400"></String><!-- 柜员号 -->
+		</xmlTag>
+		<xmlTag tagName="ATEL_ID">
+			<String name="ATEL_ID" defaultValue=""></String><!-- 静态授权柜员号 -->
+		</xmlTag>
+		<xmlTag tagName="APRC_FLG">
+			<String name="APRC_FLG" defaultValue="0"></String><!-- 已预警和授权标志 -->
+		</xmlTag>
+		<xmlTag tagName="TX_MODE">
+			<String name="transKind" defaultValue="0"></String><!-- 交易性质 -->
+		</xmlTag>
+		<xmlTag tagName="SRS_ID">
+			<String name="SRS_ID" defaultValue="3210"></String><!-- 发起方系统代码 -->
+		</xmlTag>
+		<xmlTag tagName="ORG_SYS">
+			<String name="ORG_SYS" defaultValue="0"></String><!-- 老系统交易标志 -->
+		</xmlTag>
+		<xmlTag tagName="SRV_JNO">
+			<String name="reqSeqNo" defaultValue=""></String><!-- 渠道流水 -->
+		</xmlTag>
+		<xmlTag tagName="SRV_REV_JNO">
+			<String name="origTransnbr" defaultValue=""></String><!-- 抹账用前端（渠道） 交易流水号 -->
+		</xmlTag>
+		<xmlTag tagName="HOST_JNO">
+			<String name="downTransNbr" defaultValue=""></String><!-- 抹账用核心交易流 水号 -->
+		</xmlTag>
+	</Group>
+	<Group name="Body">
+		<include keyName="transCode" />
+	</Group>
+</Group>

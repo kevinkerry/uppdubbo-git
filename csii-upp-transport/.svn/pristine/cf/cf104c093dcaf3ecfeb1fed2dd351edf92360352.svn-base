@@ -1,0 +1,684 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch0="http://com.csii.bank.core/itl" xmlns:sch1="http://com.csii.bank.core/base" xmlns:sch2="http://com.csii.bank.core/typeref" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://com.csii.bank.core/itl" targetNamespace="http://com.csii.bank.core/itl">
+  <wsdl:types>
+    <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:base="http://com.csii.bank.core/base" xmlns:itl="http://com.csii.bank.core/itl" xmlns:typeref="http://com.csii.bank.core/typeref" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://com.csii.bank.core/itl"><import namespace="http://com.csii.bank.core/base"/><import namespace="http://com.csii.bank.core/typeref"/><complexType name="queryItlAcctnbrRequestType"><sequence><element ref="base:BaseRequest"/><element name="mjaccttypcd" nillable="true" type="string"/><element name="miaccttypcd" nillable="true" type="string"/><element name="balcatcd" nillable="true" type="string"/><element name="baltypcd" nillable="true" type="string"/><element name="branchorgnbr" nillable="true" type="decimal"/><element name="currencycd" nillable="true" type="string"/></sequence></complexType><element name="QueryItlAcctnbr" type="itl:queryItlAcctnbrRequestType"/><complexType name="ItlAcctnbr"><sequence><element name="glaccttitlenbr" nillable="true" type="decimal"/><element name="acctnbr" nillable="true" type="decimal"/><element name="acctname" nillable="true" type="string"/><element name="glaccttitlename" nillable="true" type="string"/><element name="currencycd" nillable="true" type="string"/></sequence></complexType><complexType name="queryItlAcctnbrResponseType"><sequence><element ref="base:BaseResponse"/><element maxOccurs="unbounded" minOccurs="0" name="acctnbrlist" nillable="true" type="itl:ItlAcctnbr"/></sequence></complexType><element name="QueryItlAcctnbrResponse" type="itl:queryItlAcctnbrResponseType"/><complexType name="queryAcctItlIntInfoRequestType"><sequence><element ref="base:BaseRequest"/><element name="acctnbr" nillable="true" type="decimal"/><element name="orgnbr" nillable="true" type="decimal"/><element name="acctjxdatebegin" nillable="true" type="date"/><element name="acctjxdateend" nillable="true" type="date"/></sequence></complexType><element name="QueryAcctItlIntInfo" type="itl:queryAcctItlIntInfoRequestType"/><complexType name="queryAcctItlIntInfoResponseType"><sequence><element ref="base:BaseResponse"/><element name="rtxnnbr" nillable="true" type="decimal"/><element name="acctnbr" nillable="true" type="decimal"/><element name="acctname" nillable="true" type="string"/><element name="firstrtxndate" nillable="true" type="date"/><element name="acctjxdate" nillable="true" type="date"/><element name="acctbalamt" nillable="true" type="decimal"/><element name="acctrate" nillable="true" type="decimal"/><element name="intacmtotal" nillable="true" type="decimal"/><element name="normaldays" nillable="true" type="date"/><element name="odpdate" nillable="true" type="date"/><element name="acctamt" nillable="true" type="decimal"/><element name="calcrate" nillable="true" type="decimal"/></sequence></complexType><element name="QueryAcctItlIntInfoResponse" type="itl:queryAcctItlIntInfoResponseType"/><complexType name="queryAcctItlGlInfoRequestType"><sequence><element ref="base:BaseRequest"/><element name="mjaccttypcd" nillable="true" type="string"/><element name="miaccttypcd" nillable="true" type="string"/></sequence></complexType><element name="QueryAcctItlGlInfo" type="itl:queryAcctItlGlInfoRequestType"/><complexType name="queryAcctItlGlInfoResponseType"><sequence><element ref="base:BaseResponse"/><element name="glaccttitlenbr" nillable="true" type="decimal"/><element name="glaccttitlename" nillable="true" type="string"/></sequence></complexType><element name="QueryAcctItlGlInfoResponse" type="itl:queryAcctItlGlInfoResponseType"/><complexType name="queryMjmiacctItlInfoRequestType"><sequence><element ref="base:BaseRequest"/><element name="mjaccttyp" nillable="true" type="string"/><element name="miaccttyp" nillable="true" type="string"/></sequence></complexType><element name="QueryMjmiacctItlInfo" type="itl:queryMjmiacctItlInfoRequestType"/><complexType name="queryMjmiacctItlInfoResponseType"><sequence><element ref="base:BaseResponse"/><element name="mjmiaccttypdesc" nillable="true" type="string"/><element name="acctcyclecd" nillable="true" type="string"/><element name="currencycd" nillable="true" type="string"/><element name="currperiodcd" nillable="true" type="string"/><element name="instrumenttypcd" nillable="true" type="string"/><element name="applyyn" nillable="true" type="string"/><element name="hangupyn" nillable="true" type="string"/><element name="miaccttypdesc" nillable="true" type="string"/><element name="defaultterm" nillable="true" type="string"/><element name="baserate" nillable="true" type="decimal"/><element name="spreadrate" nillable="true" type="decimal"/><element name="annualrate" nillable="true" type="decimal"/><element name="odpspreadrate" nillable="true" type="decimal"/><element name="odpannualrate" nillable="true" type="decimal"/><element name="baldirecd" nillable="true" type="decimal"/><element name="nextacctnbr" nillable="true" type="decimal"/></sequence></complexType><element name="QueryMjmiacctItlInfoResponse" type="itl:queryMjmiacctItlInfoResponseType"/><complexType name="createAcctItlRequestType"><sequence><element ref="base:BaseRequest"/><element name="rtxntypcd" nillable="true" type="string"/><element name="namethcd" nillable="true" type="string"/><element name="itlbranchorgnbr" nillable="true" type="long"/><element name="mjaccttypcd" nillable="true" type="string"/><element name="miaccttypcd" nillable="true" type="string"/><element name="nextacctnbr" nillable="true" type="long"/><element name="amt" nillable="true" type="decimal"/><element name="glaccttitlenbr" nillable="true" type="long"/><element name="applyyn" nillable="true" type="string"/><element name="hungupyn" nillable="true" type="string"/><element name="matdate" nillable="true" type="date"/><element name="acctname" nillable="true" type="string"/></sequence></complexType><element name="CreateAcctItl" type="itl:createAcctItlRequestType"/><complexType name="createAcctItlResponseType"><sequence><element ref="base:BaseResponse"/><element name="acctnbr" nillable="true" type="long"/><element name="applystatcd" nillable="true" type="string"/><element name="currencycd" nillable="true" type="string"/><element name="glaccttitlenbr" nillable="true" type="long"/><element name="baldirecd" nillable="true" type="string"/><element name="hupseqnbr" nillable="true" type="long"/></sequence></complexType><element name="CreateAcctItlResponse" type="itl:createAcctItlResponseType"/><complexType name="acctItlCashDepRequestType"><annotation><documentation>内部账户现金存入 请求数据</documentation></annotation><sequence><element ref="base:BaseRequest"/><element name="acctNbr" type="long"><annotation><documentation>账号</documentation></annotation></element><element name="amt" type="decimal"><annotation><documentation>金额</documentation></annotation></element><element name="cashAnalysisTypCd" nillable="true" type="string"><annotation><documentation>现金分析号</documentation></annotation></element><element name="rtxnDesc" nillable="true" type="string"><annotation><documentation>摘要</documentation></annotation></element></sequence></complexType><element name="acctItlCashDep" type="itl:acctItlCashDepRequestType"/><complexType name="acctItlCashDepResponseType"><annotation><documentation>内部账户现金存入 应答数据</documentation></annotation><sequence><element ref="base:BaseResponse"/><element name="applyStatCd" nillable="true" type="string"><annotation><documentation>合同状态</documentation></annotation></element><element name="hupSeqNbr" nillable="true" type="long"><annotation><documentation>挂账编号</documentation></annotation></element><element name="noteBalAmt" nillable="true" type="decimal"><annotation><documentation>账户余额</documentation></annotation></element></sequence></complexType><element name="acctItlCashDepResponse" type="itl:acctItlCashDepResponseType"/><complexType name="acctItlCashWithdrawRequestType"><annotation><documentation>内部账户现金支取 请求数据</documentation></annotation><sequence><element ref="base:BaseRequest"/><element name="acctNbr" type="long"><annotation><documentation>账号</documentation></annotation></element><element name="amt" type="decimal"><annotation><documentation>金额</documentation></annotation></element><element name="cashAnalysisTypCd" nillable="true" type="string"><annotation><documentation>现金分析号</documentation></annotation></element><element name="rtxnDesc" nillable="true" type="string"><annotation><documentation>摘要</documentation></annotation></element><element maxOccurs="unbounded" minOccurs="0" name="orgHupSeqNbr" nillable="true" type="long"><annotation><documentation>销账编号</documentation></annotation></element></sequence></complexType><element name="acctItlCashWithdraw" type="itl:acctItlCashWithdrawRequestType"/><complexType name="acctItlCashWithdrawResponseType"><annotation><documentation>内部账户现金支取 应答数据</documentation></annotation><sequence><element ref="base:BaseResponse"/><element name="applyStatCd" nillable="true" type="string"><annotation><documentation>合同状态</documentation></annotation></element></sequence></complexType><element name="acctItlCashWithdrawResponse" type="itl:acctItlCashWithdrawResponseType"/><complexType name="queryAcctItlInfoRequestType"><annotation><documentation>获取内部账账户信息</documentation></annotation><sequence><element ref="base:BaseRequest"/><element name="acctnbr" type="long"><annotation><documentation>账号</documentation></annotation></element></sequence></complexType><element name="QueryAcctItlInfo" type="itl:queryAcctItlInfoRequestType"/><complexType name="queryAcctItlInfoResponseType"><annotation><documentation>获取内部账账户信息应答数据</documentation></annotation><sequence><element ref="base:BaseResponse"/><element name="miaccttypdesc" nillable="true" type="string"><annotation><documentation>产品名称</documentation></annotation></element><element name="notebalamt" nillable="true" type="decimal"><annotation><documentation>金额</documentation></annotation></element><element name="contractdate" nillable="true" type="date"><annotation><documentation>开户日期</documentation></annotation></element><element name="branchorgnbr" nillable="true" type="long"><annotation><documentation>开户网点</documentation></annotation></element><element name="currencydesc" nillable="true" type="string"><annotation><documentation>币种</documentation></annotation></element><element name="instrumenttypcd" nillable="true" type="string"><annotation><documentation>钞汇标志</documentation></annotation></element><element name="acctname" nillable="true" type="string"><annotation><documentation>别名</documentation></annotation></element><element name="datemat" nillable="true" type="date"><annotation><documentation>到期日</documentation></annotation></element><element name="odprate" nillable="true" type="decimal"><annotation><documentation>逾期利率</documentation></annotation></element><element name="noteRate" nillable="true" type="decimal"><annotation><documentation>实际利率</documentation></annotation></element><element name="mjaccttypcatcd" nillable="true" type="string"><annotation><documentation>产品大类类型</documentation></annotation></element></sequence></complexType><element name="QueryAcctItlInfoResponse" type="itl:queryAcctItlInfoResponseType"/><complexType name="acctItlOffBalanceSheetDepRequestType"><annotation><documentation>内部账表外收入 请求数据</documentation></annotation><sequence><element ref="base:BaseRequest"/><element name="acctNbr" type="long"><annotation><documentation>账号</documentation></annotation></element><element name="amt" type="decimal"><annotation><documentation>金额/数量</documentation></annotation></element><element name="rtxnDesc" nillable="true" type="string"><annotation><documentation>摘要</documentation></annotation></element></sequence></complexType><element name="acctItlOffBalanceSheetDep" type="itl:acctItlOffBalanceSheetDepRequestType"/><complexType name="acctItlOffBalanceSheetDepResponseType"><annotation><documentation>内部账表外收入 应答数据</documentation></annotation><sequence><element ref="base:BaseResponse"/><element name="applyStatCd" nillable="true" type="string"><annotation><documentation>合同状态</documentation></annotation></element><element name="hupSeqNbr" nillable="true" type="long"><annotation><documentation>挂账编号</documentation></annotation></element><element name="noteBalAmt" nillable="true" type="decimal"><annotation><documentation>账户余额</documentation></annotation></element></sequence></complexType><element name="acctItlOffBalanceSheetDepResponse" type="itl:acctItlOffBalanceSheetDepResponseType"/><complexType name="acctItlOffBalanceSheetWithdrawRequestType"><annotation><documentation>内部账表外支取 请求数据</documentation></annotation><sequence><element ref="base:BaseRequest"/><element name="acctNbr" type="long"><annotation><documentation>账号</documentation></annotation></element><element name="amt" type="decimal"><annotation><documentation>金额/数量</documentation></annotation></element><element name="rtxnDesc" nillable="true" type="string"><annotation><documentation>摘要</documentation></annotation></element><element maxOccurs="unbounded" minOccurs="0" name="orgHupSeqNbr" nillable="true" type="long"><annotation><documentation>销账编号</documentation></annotation></element></sequence></complexType><element name="acctItlOffBalanceSheetWithdraw" type="itl:acctItlOffBalanceSheetWithdrawRequestType"/><complexType name="acctItlOffBalanceSheetWithdrawResponseType"><annotation><documentation>内部账表外支取 应答数据</documentation></annotation><sequence><element ref="base:BaseResponse"/><element name="applyStatCd" nillable="true" type="string"><annotation><documentation>合同状态</documentation></annotation></element></sequence></complexType><element name="acctItlOffBalanceSheetWithdrawResponse" type="itl:acctItlOffBalanceSheetWithdrawResponseType"/><complexType name="rtxnfortransefer"><sequence><element name="acctNbr" type="typeref:acctNbrType"/><element name="rtxnTyp" type="typeref:rtxnTypCdType"/><element name="rtxnDesc" type="typeref:rtxnDescType"/><element name="tranAmt" type="typeref:tranAmtType"/><element name="currencyCd" type="typeref:currencyCdType"/><element maxOccurs="unbounded" minOccurs="0" name="hupSeqNbr" nillable="true" type="long"/><element name="acctName" type="string"/></sequence></complexType><complexType name="itlTransferWithDrawRequestType"><annotation><documentation>通用记账请求信息</documentation></annotation><sequence><element ref="base:BaseRequest"/><element maxOccurs="unbounded" minOccurs="0" name="rtxnfortranseferList" type="itl:rtxnfortransefer"/></sequence></complexType><element name="ItlTransferWithDraw" type="itl:itlTransferWithDrawRequestType"/><complexType name="itlTransferWithDrawResponseType"><annotation><documentation>通用记账返回信息</documentation></annotation><sequence><element ref="base:BaseResponse"/><element name="hupseqnbr" nillable="true" type="string"><annotation><documentation>挂账编号</documentation></annotation></element></sequence></complexType><element name="ItlTransferWithDrawResponse" type="itl:itlTransferWithDrawResponseType"/><complexType name="CloseAcctItlRequestType"><annotation><documentation>销户</documentation></annotation><sequence><element ref="base:BaseRequest"/><element name="notebal" nillable="true" type="decimal"/><element name="acctNbr" nillable="true" type="decimal"/></sequence></complexType><element name="CloseAcctItl" type="itl:CloseAcctItlRequestType"/><complexType name="CloseAcctItlResponseType"><sequence><element ref="base:BaseResponse"/><element name="exchamt" nillable="true" type="decimal"/></sequence></complexType><element name="CloseAcctItlResponse" type="itl:CloseAcctItlResponseType"/><complexType name="acctItlTransRequestType"><annotation><documentation>内部账户转账 请求数据</documentation></annotation><sequence><element ref="base:BaseRequest"/><element name="debitAcctNbr" type="long"><annotation><documentation>借方账号</documentation></annotation></element><element name="creditAcctNbr" type="long"><annotation><documentation>贷方账号</documentation></annotation></element><element name="amt" type="decimal"><annotation><documentation>交易金额</documentation></annotation></element><element name="rtxnDesc" nillable="true" type="string"><annotation><documentation>摘要</documentation></annotation></element><element maxOccurs="unbounded" minOccurs="0" name="orgHupSeqNbr" nillable="true" type="long"><annotation><documentation>销账编号</documentation></annotation></element></sequence></complexType><element name="acctItlTrans" type="itl:acctItlTransRequestType"/><complexType name="acctItlTransResponseType"><annotation><documentation>内部账户转账  应答数据</documentation></annotation><sequence><element ref="base:BaseResponse"/><element name="applyStatCd" nillable="true" type="string"><annotation><documentation>合同状态</documentation></annotation></element><element name="hupSeqNbr" nillable="true" type="long"><annotation><documentation>挂账编号</documentation></annotation></element><element name="noteBalAmt" nillable="true" type="decimal"><annotation><documentation>账户余额</documentation></annotation></element></sequence></complexType><element name="acctItlTransResponse" type="itl:acctItlTransResponseType"/><complexType name="queryAcctItlMainInfoRequestType"><annotation><documentation>内部账分户查询 请求数据</documentation></annotation><sequence><element ref="base:BaseRequest"/><element name="orgnbr" type="string"><annotation><documentation>机构代码</documentation></annotation></element><element name="currencycd" type="string"><annotation><documentation>币种</documentation></annotation></element><element name="mjaccttypcd" type="string"><annotation><documentation>产品大类</documentation></annotation></element><element name="miaccttypcd" nillable="true" type="string"><annotation><documentation>产品小类</documentation></annotation></element><element name="acctNbr" nillable="true" type="long"><annotation><documentation>账号</documentation></annotation></element><element name="acctName" nillable="true" type="typeref:acctNameType"/><element name="startBalAmt" nillable="true" type="decimal"><annotation><documentation>超始余额</documentation></annotation></element><element name="endBalAmt" nillable="true" type="decimal"><annotation><documentation>终止余额</documentation></annotation></element></sequence></complexType><element name="queryAcctItlMainInfo" type="itl:queryAcctItlMainInfoRequestType"/><complexType name="queryAcctItlMainInfoResponseType"><annotation><documentation>内部账分户查询   应答数据</documentation></annotation><sequence><element ref="base:BaseResponse"/><element maxOccurs="unbounded" minOccurs="0" name="acctItlMainInfoRef" type="itl:acctItlMainInfoRefType"/></sequence></complexType><element name="queryAcctItlMainInfoResponse" type="itl:queryAcctItlMainInfoResponseType"/><complexType name="acctItlMainInfoRefType"><annotation><documentation>内部账分户主要信息</documentation></annotation><sequence><element name="acctNbr" nillable="true" type="long"><annotation><documentation>账号</documentation></annotation></element><element name="acctName" nillable="true" type="typeref:acctNameType"/><element name="currencycd" type="string"><annotation><documentation>币种</documentation></annotation></element><element name="balRirection" nillable="true" type="string"><annotation><documentation>余额方向</documentation></annotation></element><element name="balAmt" nillable="true" type="decimal"><annotation><documentation>余额</documentation></annotation></element><element name="glaccttitlenbr" nillable="true" type="long"><annotation><documentation>科目号</documentation></annotation></element><element name="calIntSign" nillable="true" type="string"><annotation><documentation>计息标志</documentation></annotation></element><element name="calIntDate" nillable="true" type="date"><annotation><documentation>计息时间</documentation></annotation></element><element name="intrate" nillable="true" type="decimal"><annotation><documentation>正常利率</documentation></annotation></element><element name="overdueIntrate" nillable="true" type="decimal"><annotation><documentation>逾期利率</documentation></annotation></element><element name="contractdate" nillable="true" type="date"><annotation><documentation>开户日期</documentation></annotation></element><element name="datemat" nillable="true" type="date"><annotation><documentation>到期日</documentation></annotation></element><element name="curracctstatcd" nillable="true" type="string"><annotation><documentation>账户状态</documentation></annotation></element></sequence></complexType><complexType name="acctItlRenewalRequestType"><annotation><documentation>拆借资金展期请求数据</documentation></annotation><sequence><element ref="base:BaseRequest"/><element name="acctNbr" type="long"><annotation><documentation>账号</documentation></annotation></element><element name="tranamt" type="decimal"><annotation><documentation>金额</documentation></annotation></element><element name="matDate" type="date"><annotation><documentation>到期日期</documentation></annotation></element><element name="renewalMatDate" type="date"><annotation><documentation>展期到期日期</documentation></annotation></element><element name="renewalNoteRate" type="decimal"><annotation><documentation>展期利率</documentation></annotation></element><element name="renewalODPRate" type="decimal"><annotation><documentation>逾期利率</documentation></annotation></element></sequence></complexType><element name="acctItlRenewal" type="itl:acctItlRenewalRequestType"/><complexType name="acctItlRenewalResponseType"><annotation><documentation>拆借资金展期应答数据</documentation></annotation><sequence><element ref="base:BaseResponse"/></sequence></complexType><element name="acctItlRenewalResponse" type="itl:acctItlRenewalResponseType"/><complexType name="queryAcctItlDetailInfoRequestType"><annotation><documentation>内部明细查询 请求数据</documentation></annotation><sequence><element ref="base:BaseRequest"/><element name="orgnbr" type="string"><annotation><documentation>机构代码</documentation></annotation></element><element name="acctNbr" nillable="true" type="long"><annotation><documentation>账号</documentation></annotation></element><element name="acctName" nillable="true" type="typeref:acctNameType"/><element name="startDate" nillable="true" type="date"><annotation><documentation>超始余额</documentation></annotation></element><element name="endDate" nillable="true" type="date"><annotation><documentation>终止余额</documentation></annotation></element><element name="startBalAmt" nillable="true" type="decimal"><annotation><documentation>超始余额</documentation></annotation></element><element name="endBalAmt" nillable="true" type="decimal"><annotation><documentation>终止余额</documentation></annotation></element></sequence></complexType><element name="queryAcctItlMainDetailInfo" type="itl:queryAcctItlDetailInfoRequestType"/><complexType name="queryAcctItlDetailInfoResponseType"><annotation><documentation>内部明细查询   应答数据</documentation></annotation><sequence><element ref="base:BaseResponse"/><element maxOccurs="unbounded" minOccurs="0" name="acctItlDetailInfoRef" type="itl:acctItlDetailInfoRefType"/></sequence></complexType><element name="queryAcctItlMainDetailInfoResponse" type="itl:queryAcctItlDetailInfoResponseType"/><complexType name="acctItlDetailInfoRefType"><annotation><documentation>内部账分户主要信息</documentation></annotation><sequence><element name="origPostDate" nillable="true" type="date"><annotation><documentation>交易日期</documentation></annotation></element><element name="rtxnNbr" type="long"><annotation><documentation>交易流水号</documentation></annotation></element><element name="currencycd" type="string"><annotation><documentation>币种</documentation></annotation></element><element name="tranRirection" nillable="true" type="string"><annotation><documentation>交易方向</documentation></annotation></element><element name="tranAmt" nillable="true" type="decimal"><annotation><documentation>交易余额</documentation></annotation></element><element name="balRirection" nillable="true" type="string"><annotation><documentation>余额方向</documentation></annotation></element><element name="balAmt" nillable="true" type="decimal"><annotation><documentation>余额</documentation></annotation></element><element name="rtxntypcd" nillable="true" type="string"><annotation><documentation>现转标志</documentation></annotation></element><element name="parentacctnbr" nillable="true" type="long"><annotation><documentation>计息标志</documentation></annotation></element><element name="huprelseqnbr" nillable="true" type="long"><annotation><documentation>销账编号</documentation></annotation></element><element name="tellerNbr" nillable="true" type="long"><annotation><documentation>交易柜员</documentation></annotation></element><element name="apprseqnbr" nillable="true" type="long"><annotation><documentation>授权柜员</documentation></annotation></element></sequence></complexType><complexType name="itlIntCreditRequestType"><annotation><documentation>内部账结息 请求数据</documentation></annotation><sequence><element ref="base:BaseRequest"/><element name="acctNbr" type="long"><annotation><documentation>账号</documentation></annotation></element></sequence></complexType><element name="ItlIntCredit" type="itl:itlIntCreditRequestType"/><complexType name="itlIntCreditResponseType"><annotation><documentation>内部账结息   应答数据</documentation></annotation><sequence><element ref="base:BaseResponse"/><element name="accruedint" nillable="true" type="decimal"><annotation><documentation>利息</documentation></annotation></element><element name="newrcvbsamttotal" nillable="true" type="decimal"><annotation><documentation>新产生应收的金额合计</documentation></annotation></element></sequence></complexType><element name="ItlIntCreditResponse" type="itl:itlIntCreditResponseType"/><complexType name="liquidateRequestType"><annotation><documentation>内部账多级清算 请求数据</documentation></annotation><sequence><element ref="base:BaseRequest"/><element name="acctNbr" type="long"><annotation><documentation>账号</documentation></annotation></element></sequence></complexType><element name="Liquidate" type="itl:liquidateRequestType"/><complexType name="liquidateResponseType"><annotation><documentation>内部账多级清算   应答数据</documentation></annotation><sequence><element ref="base:BaseResponse"/></sequence></complexType><element name="LiquidateResponse" type="itl:liquidateResponseType"/><complexType name="queryAcctItlHupregInfoRequestType"><annotation><documentation>内部账挂账明细查询 请求数据</documentation></annotation><sequence><element ref="base:BaseRequest"/><element name="orgnbr" type="string"><annotation><documentation>机构代码</documentation></annotation></element><element name="acctNbr" nillable="true" type="long"><annotation><documentation>账号</documentation></annotation></element><element name="acctName" nillable="true" type="typeref:acctNameType"/><element name="startDate" nillable="true" type="date"><annotation><documentation>起始日期</documentation></annotation></element><element name="endDate" nillable="true" type="date"><annotation><documentation>结束日期</documentation></annotation></element></sequence></complexType><element name="queryAcctItlHupregInfo" type="itl:queryAcctItlHupregInfoRequestType"/><complexType name="queryAcctItlHupregInfoResponseType"><annotation><documentation>内部账挂账明细查询  应答数据</documentation></annotation><sequence><element ref="base:BaseResponse"/><element maxOccurs="unbounded" minOccurs="0" name="acctItlHupregInfoRef" type="itl:acctItlHupregInfoRefType"/></sequence></complexType><element name="queryAcctItlHupregInfoResponse" type="itl:queryAcctItlHupregInfoResponseType"/><complexType name="acctItlHupregInfoRefType"><annotation><documentation>内部账挂账明细信息</documentation></annotation><sequence><element name="acctNbr" nillable="true" type="long"><annotation><documentation>账号</documentation></annotation></element><element name="orgnbr" type="string"><annotation><documentation>机构代码</documentation></annotation></element><element name="acctName" nillable="true" type="typeref:acctNameType"/><element name="hupseqnbr" nillable="true" type="long"><annotation><documentation>销账编号</documentation></annotation></element><element name="tranRirection" nillable="true" type="string"><annotation><documentation>交易方向</documentation></annotation></element><element name="currencycd" type="string"><annotation><documentation>交易币种</documentation></annotation></element><element name="tranAmt" nillable="true" type="decimal"><annotation><documentation>交易金额</documentation></annotation></element><element name="hupamt" nillable="true" type="decimal"><annotation><documentation>可用金额</documentation></annotation></element><element name="postdate" nillable="true" type="date"><annotation><documentation>交易日期</documentation></annotation></element><element name="tranOrgnbr" type="string"><annotation><documentation>交易机构</documentation></annotation></element><element name="rtxntypcd" nillable="true" type="string"><annotation><documentation>交易类型代码</documentation></annotation></element><element name="rtxntypdesc" nillable="true" type="string"><annotation><documentation>交易名称</documentation></annotation></element><element name="tellerNbr" nillable="true" type="long"><annotation><documentation>交易柜员</documentation></annotation></element><element name="trtxnnbr" nillable="true" type="long"><annotation><documentation>交易流水号</documentation></annotation></element><element name="hupstatcd" nillable="true" type="string"><annotation><documentation>状态编码</documentation></annotation></element><element name="hupstatdesc" nillable="true" type="string"><annotation><documentation>挂账状态</documentation></annotation></element></sequence></complexType><complexType name="queryAcctItlApplyInfoRequestType"><annotation><documentation>内部账合同明细查询 请求数据</documentation></annotation><sequence><element ref="base:BaseRequest"/><element name="orgnbr" type="string"><annotation><documentation>机构代码</documentation></annotation></element><element name="acctNbr" nillable="true" type="long"><annotation><documentation>账号</documentation></annotation></element><element name="acctName" nillable="true" type="typeref:acctNameType"/><element name="startDate" nillable="true" type="date"><annotation><documentation>起始日期</documentation></annotation></element><element name="endDate" nillable="true" type="date"><annotation><documentation>结束日期</documentation></annotation></element></sequence></complexType><element name="queryAcctItlApplyInfo" type="itl:queryAcctItlApplyInfoRequestType"/><complexType name="queryAcctItlApplyInfoResponseType"><annotation><documentation>内部账合同明细查询  应答数据</documentation></annotation><sequence><element ref="base:BaseResponse"/><element maxOccurs="unbounded" minOccurs="0" name="acctItlApplyInfoRef" type="itl:acctItlApplyInfoRefType"/></sequence></complexType><element name="queryAcctItlApplyInfoResponse" type="itl:queryAcctItlApplyInfoResponseType"/><complexType name="acctItlApplyInfoRefType"><annotation><documentation>内部账合同明细信息</documentation></annotation><sequence><element name="applySeqnbr" nillable="true" type="long"><annotation><documentation>合同号</documentation></annotation></element><element name="orgnbr" type="string"><annotation><documentation>机构代码</documentation></annotation></element><element name="acctNbr" nillable="true" type="long"><annotation><documentation>账号</documentation></annotation></element><element name="acctName" nillable="true" type="typeref:acctNameType"/><element name="targetBranchOrgnbr" type="string"><annotation><documentation>对应上级机构</documentation></annotation></element><element name="targetAcctnbr" nillable="true" type="long"><annotation><documentation>对应上级账号</documentation></annotation></element><element name="rtxntypcd" nillable="true" type="string"><annotation><documentation>交易类型代码</documentation></annotation></element><element name="rtxntypdesc" nillable="true" type="string"><annotation><documentation>交易名称</documentation></annotation></element><element name="currencycd" type="string"><annotation><documentation>交易币种</documentation></annotation></element><element name="contractDate" nillable="true" type="date"><annotation><documentation>开户日期</documentation></annotation></element><element name="datemat" nillable="true" type="date"><annotation><documentation>到期日期</documentation></annotation></element><element name="postdate" nillable="true" type="date"><annotation><documentation>交易日期</documentation></annotation></element><element name="tranOrgnbr" type="string"><annotation><documentation>交易机构</documentation></annotation></element><element name="tellerNbr" nillable="true" type="long"><annotation><documentation>交易柜员</documentation></annotation></element><element name="trtxnnbr" nillable="true" type="long"><annotation><documentation>交易流水号</documentation></annotation></element><element name="applystatcd" nillable="true" type="string"><annotation><documentation>状态编码</documentation></annotation></element><element name="applystatdesc" nillable="true" type="string"><annotation><documentation>合同状态</documentation></annotation></element></sequence></complexType><complexType name="queryPositionDetailsRequestType"><annotation><documentation>内部账头寸明细查询 请求数据</documentation></annotation><sequence><element ref="base:BaseRequest"/><element name="orgnbr" type="string"><annotation><documentation>机构代码</documentation></annotation></element><element name="acctNbr" nillable="true" type="long"><annotation><documentation>账号</documentation></annotation></element><element name="acctName" nillable="true" type="typeref:acctNameType"/><element name="startDate" nillable="true" type="date"><annotation><documentation>起始日期</documentation></annotation></element><element name="endDate" nillable="true" type="date"><annotation><documentation>结束日期</documentation></annotation></element></sequence></complexType><element name="queryPositionDetails" type="itl:queryPositionDetailsRequestType"/><complexType name="queryPositionDetailsResponseType"><annotation><documentation>内部账头寸明细查询  应答数据</documentation></annotation><sequence><element ref="base:BaseResponse"/><element maxOccurs="unbounded" minOccurs="0" name="itlliquidatehistInfo" type="itl:itlLiquidateInfoRefType"/></sequence></complexType><element name="queryPositionDetailsResponse" type="itl:queryPositionDetailsResponseType"/><complexType name="itlLiquidateInfoRefType"><annotation><documentation>内部账头寸明细信息</documentation></annotation><sequence><element name="orgnbr" type="string"><annotation><documentation>机构代码</documentation></annotation></element><element name="acctNbr" type="long"><annotation><documentation>账号</documentation></annotation></element><element name="targetacctnbr" type="long"><annotation><documentation>上级帐号</documentation></annotation></element><element name="rtxntypcd" type="string"><annotation><documentation>交易类型代码</documentation></annotation></element><element name="currencycd" type="string"><annotation><documentation>交易币种</documentation></annotation></element><element name="tranamt" type="decimal"><annotation><documentation>交易金额</documentation></annotation></element><element name="tranRirection" type="string"><annotation><documentation>借贷标志</documentation></annotation></element><element name="yesteramt" type="decimal"><annotation><documentation>上日金额</documentation></annotation></element><element name="balamt" type="decimal"><annotation><documentation>截止本次交易金额</documentation></annotation></element></sequence></complexType><complexType name="GetGlaccttitleByBranchorgnbrType"><sequence><element ref="base:BaseRequest"/><element name="branchorgnbr" nillable="true" type="decimal"/><element name="currencycd" nillable="true" type="string"/><element name="mjaccttypcd" type="string"/></sequence></complexType><element name="GetGlaccttitleByBranchorgnbr" type="itl:GetGlaccttitleByBranchorgnbrType"/><complexType name="GetGlaccttitleByBranchorgnbrResponseType"><sequence><element ref="base:BaseResponse"/><element maxOccurs="unbounded" minOccurs="0" name="list" nillable="true" type="itl:GetGlaccttitle"/></sequence></complexType><element name="GetGlaccttitleByBranchorgnbrResponse" type="itl:GetGlaccttitleByBranchorgnbrResponseType"/><complexType name="GetGlaccttitle"><sequence><element name="acctnbr" nillable="true" type="decimal"/><element name="glacctnbr" nillable="true" type="decimal"/><element name="branchorgnbr" nillable="true" type="decimal"/><element name="glaccttitlenbr" nillable="true" type="decimal"/><element name="glaccttitlename" nillable="true" type="string"/><element name="currencycd" nillable="true" type="string"/></sequence></complexType><complexType name="doCashPayOutRequestType"><annotation><documentation>现金缴出请求数据</documentation></annotation><sequence><element ref="base:BaseRequest"/><element name="acctNbr" type="long"><annotation><documentation>账号</documentation></annotation></element><element name="amt" type="decimal"><annotation><documentation>金额</documentation></annotation></element><element name="cashAnalysisTypCd" nillable="true" type="string"><annotation><documentation>现金分析号</documentation></annotation></element><element name="rtxnDesc" nillable="true" type="string"><annotation><documentation>摘要</documentation></annotation></element></sequence></complexType><element name="doCashPayOut" type="itl:doCashPayOutRequestType"/><complexType name="doCashPayOutResponseType"><annotation><documentation>现金缴出应答数据</documentation></annotation><sequence><element ref="base:BaseResponse"/><element name="applyStatCd" nillable="true" type="string"><annotation><documentation>合同状态</documentation></annotation></element><element name="hupSeqNbr" nillable="true" type="long"><annotation><documentation>挂账编号</documentation></annotation></element><element name="noteBalAmt" nillable="true" type="decimal"><annotation><documentation>账户余额</documentation></annotation></element></sequence></complexType><element name="doCashPayOutResponse" type="itl:doCashPayOutResponseType"/><complexType name="doCashShortRequestType"><annotation><documentation>现金领回请求数据</documentation></annotation><sequence><element ref="base:BaseRequest"/><element name="acctNbr" type="long"><annotation><documentation>账号</documentation></annotation></element><element name="amt" type="decimal"><annotation><documentation>金额</documentation></annotation></element><element name="cashAnalysisTypCd" nillable="true" type="string"><annotation><documentation>现金分析号</documentation></annotation></element><element name="rtxnDesc" nillable="true" type="string"><annotation><documentation>摘要</documentation></annotation></element></sequence></complexType><element name="doCashShort" type="itl:doCashShortRequestType"/><complexType name="doCashShortResponseType"><annotation><documentation>现金领回应答数据</documentation></annotation><sequence><element ref="base:BaseResponse"/><element name="applyStatCd" nillable="true" type="string"><annotation><documentation>合同状态</documentation></annotation></element><element name="hupSeqNbr" nillable="true" type="long"><annotation><documentation>挂账编号</documentation></annotation></element><element name="noteBalAmt" nillable="true" type="decimal"><annotation><documentation>账户余额</documentation></annotation></element></sequence></complexType><element name="doCashShortResponse" type="itl:doCashShortResponseType"/><complexType name="AccountRechargeRequestType"><annotation><documentation>电子账户充值请求数据</documentation></annotation><sequence><element ref="base:BaseRequest"/><element name="FROM_ACCT_NO" type="string"><annotation><documentation>转出账号</documentation></annotation></element><element name="CCY" type="string"><annotation><documentation>币种</documentation></annotation></element><element name="TRAN_AMT" type="decimal"><annotation><documentation>金额</documentation></annotation></element><element name="TRAN_PWD" nillable="true" type="string"><annotation><documentation>密码</documentation></annotation></element><element name="TO_CARD_NO" nillable="true" type="string"><annotation><documentation>转入卡号</documentation></annotation></element><element name="REMARK1" nillable="true" type="string"><annotation><documentation>摘要</documentation></annotation></element><element name="OPPOSING_ACCT_NO" nillable="true" type="string"><annotation><documentation>对方行账号</documentation></annotation></element><element name="OPPOSING_ACCT_NAME" nillable="true" type="string"><annotation><documentation>对方账户名称</documentation></annotation></element><element name="OPPOSING_OPEN_ACCT_BRANCH_ID" nillable="true" type="string"><annotation><documentation>对方开户机构</documentation></annotation></element></sequence></complexType><element name="AccountRecharge" type="itl:AccountRechargeRequestType"/><complexType name="AccountRechargeResponseType"><annotation><documentation>电子账户充值应答数据</documentation></annotation><sequence><element ref="base:BaseResponse"/></sequence></complexType><element name="AccountRechargeResponse" type="itl:AccountRechargeResponseType"/><complexType name="upPwdRequestType"><annotation><documentation>电子账户密码修改</documentation></annotation><sequence><element ref="base:BaseRequest"/><element name="mediid" nillable="true" type="string"/><element name="oldpwd" nillable="true" type="string"/><element name="newpwd" nillable="true" type="string"/><element name="flagid" nillable="true" type="string"/><element name="trsidnbr" nillable="true" type="string"/></sequence></complexType><element name="UpPwd" type="itl:upPwdRequestType"/><complexType name="upPwdResponseType"><sequence><element ref="base:BaseResponse"/><element name="wrongmes" nillable="true" type="string"/></sequence></complexType><element name="UpPwdResponse" type="itl:upPwdResponseType"/><complexType name="PwdValidRequestType"><annotation><documentation>电子账户密码验证</documentation></annotation><sequence><element ref="base:BaseRequest"/><element name="account" nillable="true" type="string"/><element name="trsPassword" nillable="true" type="string"/></sequence></complexType><element name="PwdValid" type="itl:PwdValidRequestType"/><complexType name="PwdValidResponseType"><sequence><element ref="base:BaseResponse"/><element name="PwdValidYN" nillable="true" type="string"/></sequence></complexType><element name="PwdValidResponse" type="itl:PwdValidResponseType"/></schema>
+    <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:base="http://com.csii.bank.core/base" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://com.csii.bank.core/base"><simpleType name="bankType"><annotation><documentation>法人编号类型定义</documentation></annotation><restriction base="string"><pattern value="[0-9]{1,22}"/></restriction></simpleType><simpleType name="sourceType"><annotation><documentation>渠道类型定义</documentation></annotation><restriction base="string"><enumeration value="ONLI"><annotation><documentation>柜面</documentation></annotation></enumeration></restriction></simpleType><simpleType name="retCodeType"><annotation><documentation>返回码类型定义，0000表示正常结束</documentation></annotation><restriction base="string"><pattern value="[0-9]{4}"/></restriction></simpleType><simpleType name="acctNbrType"><annotation><documentation>账号类型定义</documentation></annotation><restriction base="string"><pattern value="[0-9]{1,22}"/></restriction></simpleType><simpleType name="rtxnTypeCdType"><annotation><documentation>交易类型定义</documentation></annotation><restriction base="string"><pattern value="\w{4}"/></restriction></simpleType><simpleType name="excpNbrType"><annotation><documentation>授权编号定义</documentation></annotation><restriction base="string"><pattern value="[0-9]{1,22}"/></restriction></simpleType><complexType name="authorizeInfoType"><sequence><element name="acctNbr" type="base:acctNbrType"><annotation><documentation>授权检查帐号</documentation></annotation></element><element name="rtxnTypeCd" type="base:rtxnTypeCdType"><annotation><documentation>授权检查交易类型</documentation></annotation></element><element name="excpNbr" type="base:excpNbrType"><annotation><documentation>授权检查编号</documentation></annotation></element></sequence></complexType><complexType name="svcRealtimeType"><sequence><element name="payType" nillable="true" type="string"/><element name="acctNbr" nillable="true" type="decimal"/><element name="svcTxntyp" nillable="true" type="string"/><element name="chg" nillable="true" type="decimal"/><element name="waveChg" nillable="true" type="decimal"/><element name="chargNbr" nillable="true" type="string"/><element name="pricDebitMethCd" nillable="true" type="string"/><element name="pricDebitMethDesc" nillable="true" type="string"/><element name="pricRuleOnLineCatDesc" nillable="true" type="string"/><element name="negApplyRuleNbr" nillable="true" type="string"/><element name="parentacctnbr" nillable="true" type="decimal"/><element name="PID" nillable="true" type="decimal"/><element name="ruleonlinecatnbr" nillable="true" type="decimal"/><element name="PAYMODECD" nillable="true" type="string"/><element name="PAYMODEDESC" nillable="true" type="string"/><element name="TRANSFERYN" nillable="true" type="string"/><element name="TELLERMODIFYYN" nillable="true" type="string"/><element name="DEDUCTACCTMODE" nillable="true" type="string"/><element name="CHARGEMODE" nillable="true" type="string"/><element name="DEDUCTIONMODECD" nillable="true" type="string"/></sequence></complexType><complexType name="requestHeader"><sequence><element name="bankId" type="base:bankType"><annotation><documentation>法人编号</documentation></annotation></element><element name="sourceId" type="base:sourceType"><annotation><documentation>渠道编号</documentation></annotation></element><element name="branchId" type="string"><annotation><documentation>分支行号</documentation></annotation></element><element name="userId" type="string"><annotation><documentation>柜员号</documentation></annotation></element><element name="cashboxId" nillable="true" type="string"><annotation><documentation>钱箱号</documentation></annotation></element><element name="workDate" type="date"><annotation><documentation>渠道工作日期</documentation></annotation></element><element name="postDate" nillable="true" type="date"><annotation><documentation>核心交易日期</documentation></annotation></element><element name="seqNo" type="string"><annotation><documentation>渠道流水号</documentation></annotation></element><element name="apprRefId" nillable="true" type="string"><annotation><documentation>授权参考号</documentation></annotation></element><element name="tranTime" type="dateTime"><annotation><documentation>交易时间戳</documentation></annotation></element><element name="macValue" nillable="true" type="string"><annotation><documentation>接入设备MAC地址</documentation></annotation></element><element maxOccurs="unbounded" minOccurs="0" name="rtxnexcpnbr" nillable="true" type="long"><annotation><documentation>授权检查异常号数组</documentation></annotation></element><element maxOccurs="unbounded" minOccurs="0" name="svcRealtimeListReq" nillable="true" type="base:svcRealtimeType"/></sequence></complexType><complexType name="responseHeader"><sequence><element name="retCode" type="base:retCodeType"><annotation><documentation>返回码</documentation></annotation></element><element name="retMsg" nillable="true" type="string"><annotation><documentation>返回信息</documentation></annotation></element><element maxOccurs="unbounded" name="authorizeInfo" nillable="true" type="base:authorizeInfoType"><annotation><documentation>授权检查信息</documentation></annotation></element><element maxOccurs="unbounded" minOccurs="0" name="svcRealtimeListRes" nillable="true" type="base:svcRealtimeType"/></sequence></complexType><complexType name="queryRequestHeader"><sequence><element name="pageNum" type="int"><annotation><documentation>请求页数（从1开始）</documentation></annotation></element><element name="pageSize" type="int"><annotation><documentation>每页记录条目数</documentation></annotation></element></sequence></complexType><complexType name="queryResponseHeader"><sequence><element name="totalNum" type="int"><annotation><documentation>总记录数</documentation></annotation></element></sequence></complexType><element name="BaseRequest" type="base:requestHeader"/><element name="BaseResponse" type="base:responseHeader"/><element name="QueryRequest" type="base:queryRequestHeader"/><element name="QueryResponse" type="base:queryResponseHeader"/></schema>
+    <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:typeref="http://com.csii.bank.core/typeref" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://com.csii.bank.core/typeref"><simpleType name="drMediIdType"><annotation><documentation>转出介质号卡号</documentation></annotation><restriction base="string"/></simpleType><simpleType name="drAcctNbrType"><annotation><documentation>转出交易账号</documentation></annotation><restriction base="long"/></simpleType><simpleType name="rtxnTypCdType"><annotation><documentation>交易类型</documentation></annotation><restriction base="string"/></simpleType><simpleType name="vouchNoType"><annotation><documentation>凭证号码</documentation></annotation><restriction base="string"/></simpleType><simpleType name="vouchTypType"><annotation><documentation>凭证类型</documentation></annotation><restriction base="string"/></simpleType><simpleType name="vouchPswType"><annotation><documentation>凭证密码</documentation></annotation><restriction base="string"/></simpleType><simpleType name="tranAmtType"><annotation><documentation>交易金额</documentation></annotation><restriction base="decimal"/></simpleType><simpleType name="rtxnDescType"><annotation><documentation>交易描述</documentation></annotation><restriction base="string"/></simpleType><simpleType name="crMediIdType"><annotation><documentation>转入介质号卡号</documentation></annotation><restriction base="string"/></simpleType><simpleType name="crAcctNbrType"><annotation><documentation>转入交易账号</documentation></annotation><restriction base="long"/></simpleType><simpleType name="acctBalAmtType"><annotation><documentation>账户余额</documentation></annotation><restriction base="decimal"/></simpleType><simpleType name="currencyCdType"><annotation><documentation>币种</documentation></annotation><restriction base="string"/></simpleType><simpleType name="acctNameType"><annotation><documentation>账户名称</documentation></annotation><restriction base="string"/></simpleType><simpleType name="acctNbrType"><annotation><documentation>账号</documentation></annotation><restriction base="long"/></simpleType><simpleType name="mediIdType"><annotation><documentation>介质号/卡号</documentation></annotation><restriction base="string"/></simpleType><simpleType name="acctTctdTypType"><annotation><documentation>通存通兑类型</documentation></annotation><restriction base="string"/></simpleType><simpleType name="amountType"><annotation><documentation>金额</documentation></annotation><restriction base="decimal"/></simpleType><simpleType name="checkPswType"><annotation><documentation>支票密码</documentation></annotation><restriction base="string"/></simpleType><simpleType name="currAcctStatCdType"><annotation><documentation>当前账户状态</documentation></annotation><restriction base="string"/></simpleType><simpleType name="currVouchIdType"><annotation><documentation>当前凭证号</documentation></annotation><restriction base="string"/></simpleType><simpleType name="currVouchTypCdType"><annotation><documentation>当前凭证类型</documentation></annotation><restriction base="string"/></simpleType><simpleType name="newVouchIdType"><annotation><documentation>新凭证号</documentation></annotation><restriction base="string"/></simpleType><simpleType name="newVouchTypCdType"><annotation><documentation>新凭证类型</documentation></annotation><restriction base="string"/></simpleType><simpleType name="newVouchPswType"><annotation><documentation>新凭证密码</documentation></annotation><restriction base="string"/></simpleType><simpleType name="foreignAcctTypCdType"><annotation><documentation>外汇账户种类</documentation></annotation><restriction base="string"/></simpleType><simpleType name="foreignAcctCapTypCdType"><annotation><documentation>外汇账户种类</documentation></annotation><restriction base="string"/></simpleType><simpleType name="foreignAcctAttrCdType"><annotation><documentation>外汇账户性质</documentation></annotation><restriction base="string"/></simpleType><simpleType name="foreignAcctAuthIdType"><annotation><documentation>外汇账户核准件编号</documentation></annotation><restriction base="string"/></simpleType><simpleType name="foreignAcctSpcOrgIdType"><annotation><documentation>外汇账户特殊机构代码</documentation></annotation><restriction base="string"/></simpleType><simpleType name="customerNbrType"><annotation><documentation>客户号</documentation></annotation><restriction base="long"/></simpleType><simpleType name="persidTypCdType"><annotation><documentation>开户用个人证件类型</documentation></annotation><restriction base="string"/></simpleType><simpleType name="persidNbrType"><annotation><documentation>开户用个人证件号码</documentation></annotation><restriction base="string"/></simpleType><simpleType name="orgidTypCdType"><annotation><documentation>开户用组织证件类型</documentation></annotation><restriction base="string"/></simpleType><simpleType name="orgidNbrType"><annotation><documentation>开户用组织证件号码</documentation></annotation><restriction base="string"/></simpleType><simpleType name="idNbrType"><annotation><documentation>证件号码</documentation></annotation><restriction base="string"/></simpleType><simpleType name="idTypCdType"><annotation><documentation>证件类型</documentation></annotation><restriction base="string"/></simpleType><simpleType name="isReNewType"><annotation><documentation>是否自动转存</documentation></annotation><restriction base="boolean"/></simpleType><simpleType name="miAcctTypCdType"><annotation><documentation>产品小类代码</documentation></annotation><restriction base="string"/></simpleType><simpleType name="mjAcctTypCdType"><annotation><documentation>产品大类代码</documentation></annotation><restriction base="string"/></simpleType><simpleType name="prodPropType"><annotation><documentation>产品属性</documentation></annotation><restriction base="string"/></simpleType><simpleType name="checkTypCdType"><annotation><documentation>支票类型</documentation></annotation><restriction base="string"/></simpleType><simpleType name="checkIdType"><annotation><documentation>支票编号</documentation></annotation><restriction base="long"/></simpleType><simpleType name="insfSeqNoType"><annotation><documentation>通知序号</documentation></annotation><restriction base="long"/></simpleType><simpleType name="effDateType"><annotation><documentation>生效日期</documentation></annotation><restriction base="date"/></simpleType><simpleType name="checkDateType"><annotation><documentation>出票日期</documentation></annotation><restriction base="date"/></simpleType><simpleType name="rtxnReasonCdType"><annotation><documentation>交易原因类型</documentation></annotation><restriction base="string"/></simpleType><simpleType name="vouchTypCdType"><annotation><documentation>凭证类型</documentation></annotation><restriction base="string"/></simpleType><simpleType name="vouchNbrType"><annotation><documentation>交易原因类型</documentation></annotation><restriction base="string"/></simpleType><simpleType name="vouchSealfType"><annotation><documentation>密印标志</documentation></annotation><restriction base="string"/></simpleType><simpleType name="vouchPasswordType"><annotation><documentation>凭证密码</documentation></annotation><restriction base="string"/></simpleType><simpleType name="vouchRemarkType"><annotation><documentation>凭证备注</documentation></annotation><restriction base="string"/></simpleType><simpleType name="cardTypType"><annotation><documentation>卡类型</documentation></annotation><restriction base="string"/></simpleType><simpleType name="cardNbrType"><annotation><documentation>卡号</documentation></annotation><restriction base="string"/></simpleType><simpleType name="cashAnalysisCdType"><annotation><documentation>现金分析号</documentation></annotation><restriction base="string"/></simpleType><simpleType name="tellerNbrType"><annotation><documentation>柜员号</documentation></annotation><restriction base="long"/></simpleType><simpleType name="openLicNbrType"><annotation><documentation>开户许可证号</documentation></annotation><restriction base="string"/></simpleType><simpleType name="instrumentCdType"><annotation><documentation>钞汇标记</documentation></annotation><restriction base="string"/></simpleType><simpleType name="customerTypType"><annotation><documentation>客户类型</documentation></annotation><restriction base="string"><enumeration value="PERS"><annotation><documentation>个人</documentation></annotation></enumeration><enumeration value="ORG"><annotation><documentation>单位</documentation></annotation></enumeration></restriction></simpleType></schema>
+  </wsdl:types>
+  <wsdl:message name="QueryItlAcctnbr">
+    <wsdl:part element="tns:QueryItlAcctnbr" name="QueryItlAcctnbr">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="QueryAcctItlIntInfo">
+    <wsdl:part element="tns:QueryAcctItlIntInfo" name="QueryAcctItlIntInfo">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="queryAcctItlMainDetailInfoResponse">
+    <wsdl:part element="tns:queryAcctItlMainDetailInfoResponse" name="queryAcctItlMainDetailInfoResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="QueryItlAcctnbrResponse">
+    <wsdl:part element="tns:QueryItlAcctnbrResponse" name="QueryItlAcctnbrResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CloseAcctItlResponse">
+    <wsdl:part element="tns:CloseAcctItlResponse" name="CloseAcctItlResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CreateAcctItl">
+    <wsdl:part element="tns:CreateAcctItl" name="CreateAcctItl">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="QueryResponse">
+    <wsdl:part element="sch1:QueryResponse" name="QueryResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ItlIntCredit">
+    <wsdl:part element="tns:ItlIntCredit" name="ItlIntCredit">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="queryAcctItlMainInfo">
+    <wsdl:part element="tns:queryAcctItlMainInfo" name="queryAcctItlMainInfo">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="Liquidate">
+    <wsdl:part element="tns:Liquidate" name="Liquidate">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="queryAcctItlApplyInfoResponse">
+    <wsdl:part element="tns:queryAcctItlApplyInfoResponse" name="queryAcctItlApplyInfoResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="BaseResponse">
+    <wsdl:part element="sch1:BaseResponse" name="BaseResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="QueryAcctItlInfo">
+    <wsdl:part element="tns:QueryAcctItlInfo" name="QueryAcctItlInfo">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="acctItlCashWithdraw">
+    <wsdl:part element="tns:acctItlCashWithdraw" name="acctItlCashWithdraw">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ItlIntCreditResponse">
+    <wsdl:part element="tns:ItlIntCreditResponse" name="ItlIntCreditResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ItlTransferWithDrawResponse">
+    <wsdl:part element="tns:ItlTransferWithDrawResponse" name="ItlTransferWithDrawResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="QueryAcctItlIntInfoResponse">
+    <wsdl:part element="tns:QueryAcctItlIntInfoResponse" name="QueryAcctItlIntInfoResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="PwdValidResponse">
+    <wsdl:part element="tns:PwdValidResponse" name="PwdValidResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="doCashShort">
+    <wsdl:part element="tns:doCashShort" name="doCashShort">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AccountRecharge">
+    <wsdl:part element="tns:AccountRecharge" name="AccountRecharge">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="acctItlCashDepResponse">
+    <wsdl:part element="tns:acctItlCashDepResponse" name="acctItlCashDepResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="acctItlOffBalanceSheetWithdrawResponse">
+    <wsdl:part element="tns:acctItlOffBalanceSheetWithdrawResponse" name="acctItlOffBalanceSheetWithdrawResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="acctItlTransResponse">
+    <wsdl:part element="tns:acctItlTransResponse" name="acctItlTransResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="queryAcctItlMainDetailInfo">
+    <wsdl:part element="tns:queryAcctItlMainDetailInfo" name="queryAcctItlMainDetailInfo">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="BaseRequest">
+    <wsdl:part element="sch1:BaseRequest" name="BaseRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="UpPwd">
+    <wsdl:part element="tns:UpPwd" name="UpPwd">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="acctItlCashWithdrawResponse">
+    <wsdl:part element="tns:acctItlCashWithdrawResponse" name="acctItlCashWithdrawResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="acctItlCashDep">
+    <wsdl:part element="tns:acctItlCashDep" name="acctItlCashDep">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="acctItlOffBalanceSheetDep">
+    <wsdl:part element="tns:acctItlOffBalanceSheetDep" name="acctItlOffBalanceSheetDep">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="acctItlRenewal">
+    <wsdl:part element="tns:acctItlRenewal" name="acctItlRenewal">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="LiquidateResponse">
+    <wsdl:part element="tns:LiquidateResponse" name="LiquidateResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="doCashPayOut">
+    <wsdl:part element="tns:doCashPayOut" name="doCashPayOut">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="queryPositionDetails">
+    <wsdl:part element="tns:queryPositionDetails" name="queryPositionDetails">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CloseAcctItl">
+    <wsdl:part element="tns:CloseAcctItl" name="CloseAcctItl">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="queryAcctItlMainInfoResponse">
+    <wsdl:part element="tns:queryAcctItlMainInfoResponse" name="queryAcctItlMainInfoResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="queryAcctItlApplyInfo">
+    <wsdl:part element="tns:queryAcctItlApplyInfo" name="queryAcctItlApplyInfo">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="acctItlTrans">
+    <wsdl:part element="tns:acctItlTrans" name="acctItlTrans">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="QueryMjmiacctItlInfo">
+    <wsdl:part element="tns:QueryMjmiacctItlInfo" name="QueryMjmiacctItlInfo">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetGlaccttitleByBranchorgnbrResponse">
+    <wsdl:part element="tns:GetGlaccttitleByBranchorgnbrResponse" name="GetGlaccttitleByBranchorgnbrResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="QueryRequest">
+    <wsdl:part element="sch1:QueryRequest" name="QueryRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="acctItlOffBalanceSheetDepResponse">
+    <wsdl:part element="tns:acctItlOffBalanceSheetDepResponse" name="acctItlOffBalanceSheetDepResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="PwdValid">
+    <wsdl:part element="tns:PwdValid" name="PwdValid">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="acctItlRenewalResponse">
+    <wsdl:part element="tns:acctItlRenewalResponse" name="acctItlRenewalResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="QueryAcctItlInfoResponse">
+    <wsdl:part element="tns:QueryAcctItlInfoResponse" name="QueryAcctItlInfoResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="queryAcctItlHupregInfoResponse">
+    <wsdl:part element="tns:queryAcctItlHupregInfoResponse" name="queryAcctItlHupregInfoResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="doCashPayOutResponse">
+    <wsdl:part element="tns:doCashPayOutResponse" name="doCashPayOutResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="acctItlOffBalanceSheetWithdraw">
+    <wsdl:part element="tns:acctItlOffBalanceSheetWithdraw" name="acctItlOffBalanceSheetWithdraw">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="QueryAcctItlGlInfoResponse">
+    <wsdl:part element="tns:QueryAcctItlGlInfoResponse" name="QueryAcctItlGlInfoResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetGlaccttitleByBranchorgnbr">
+    <wsdl:part element="tns:GetGlaccttitleByBranchorgnbr" name="GetGlaccttitleByBranchorgnbr">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="QueryAcctItlGlInfo">
+    <wsdl:part element="tns:QueryAcctItlGlInfo" name="QueryAcctItlGlInfo">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="QueryMjmiacctItlInfoResponse">
+    <wsdl:part element="tns:QueryMjmiacctItlInfoResponse" name="QueryMjmiacctItlInfoResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AccountRechargeResponse">
+    <wsdl:part element="tns:AccountRechargeResponse" name="AccountRechargeResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="queryAcctItlHupregInfo">
+    <wsdl:part element="tns:queryAcctItlHupregInfo" name="queryAcctItlHupregInfo">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="doCashShortResponse">
+    <wsdl:part element="tns:doCashShortResponse" name="doCashShortResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="UpPwdResponse">
+    <wsdl:part element="tns:UpPwdResponse" name="UpPwdResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="queryPositionDetailsResponse">
+    <wsdl:part element="tns:queryPositionDetailsResponse" name="queryPositionDetailsResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ItlTransferWithDraw">
+    <wsdl:part element="tns:ItlTransferWithDraw" name="ItlTransferWithDraw">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CreateAcctItlResponse">
+    <wsdl:part element="tns:CreateAcctItlResponse" name="CreateAcctItlResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="ItlServicePortType">
+    <wsdl:operation name="Base">
+      <wsdl:input message="tns:BaseRequest" name="BaseRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:BaseResponse" name="BaseResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="acctItlTrans">
+      <wsdl:input message="tns:acctItlTrans" name="acctItlTrans">
+    </wsdl:input>
+      <wsdl:output message="tns:acctItlTransResponse" name="acctItlTransResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="queryAcctItlApplyInfo">
+      <wsdl:input message="tns:queryAcctItlApplyInfo" name="queryAcctItlApplyInfo">
+    </wsdl:input>
+      <wsdl:output message="tns:queryAcctItlApplyInfoResponse" name="queryAcctItlApplyInfoResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Liquidate">
+      <wsdl:input message="tns:Liquidate" name="Liquidate">
+    </wsdl:input>
+      <wsdl:output message="tns:LiquidateResponse" name="LiquidateResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Query">
+      <wsdl:input message="tns:QueryRequest" name="QueryRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:QueryResponse" name="QueryResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="queryPositionDetails">
+      <wsdl:input message="tns:queryPositionDetails" name="queryPositionDetails">
+    </wsdl:input>
+      <wsdl:output message="tns:queryPositionDetailsResponse" name="queryPositionDetailsResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="queryAcctItlMainInfo">
+      <wsdl:input message="tns:queryAcctItlMainInfo" name="queryAcctItlMainInfo">
+    </wsdl:input>
+      <wsdl:output message="tns:queryAcctItlMainInfoResponse" name="queryAcctItlMainInfoResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CloseAcctItl">
+      <wsdl:input message="tns:CloseAcctItl" name="CloseAcctItl">
+    </wsdl:input>
+      <wsdl:output message="tns:CloseAcctItlResponse" name="CloseAcctItlResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ItlIntCredit">
+      <wsdl:input message="tns:ItlIntCredit" name="ItlIntCredit">
+    </wsdl:input>
+      <wsdl:output message="tns:ItlIntCreditResponse" name="ItlIntCreditResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateAcctItl">
+      <wsdl:input message="tns:CreateAcctItl" name="CreateAcctItl">
+    </wsdl:input>
+      <wsdl:output message="tns:CreateAcctItlResponse" name="CreateAcctItlResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="doCashPayOut">
+      <wsdl:input message="tns:doCashPayOut" name="doCashPayOut">
+    </wsdl:input>
+      <wsdl:output message="tns:doCashPayOutResponse" name="doCashPayOutResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryItlAcctnbr">
+      <wsdl:input message="tns:QueryItlAcctnbr" name="QueryItlAcctnbr">
+    </wsdl:input>
+      <wsdl:output message="tns:QueryItlAcctnbrResponse" name="QueryItlAcctnbrResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="acctItlOffBalanceSheetDep">
+      <wsdl:input message="tns:acctItlOffBalanceSheetDep" name="acctItlOffBalanceSheetDep">
+    </wsdl:input>
+      <wsdl:output message="tns:acctItlOffBalanceSheetDepResponse" name="acctItlOffBalanceSheetDepResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="acctItlRenewal">
+      <wsdl:input message="tns:acctItlRenewal" name="acctItlRenewal">
+    </wsdl:input>
+      <wsdl:output message="tns:acctItlRenewalResponse" name="acctItlRenewalResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryAcctItlIntInfo">
+      <wsdl:input message="tns:QueryAcctItlIntInfo" name="QueryAcctItlIntInfo">
+    </wsdl:input>
+      <wsdl:output message="tns:QueryAcctItlIntInfoResponse" name="QueryAcctItlIntInfoResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="acctItlCashDep">
+      <wsdl:input message="tns:acctItlCashDep" name="acctItlCashDep">
+    </wsdl:input>
+      <wsdl:output message="tns:acctItlCashDepResponse" name="acctItlCashDepResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ItlTransferWithDraw">
+      <wsdl:input message="tns:ItlTransferWithDraw" name="ItlTransferWithDraw">
+    </wsdl:input>
+      <wsdl:output message="tns:ItlTransferWithDrawResponse" name="ItlTransferWithDrawResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="queryAcctItlHupregInfo">
+      <wsdl:input message="tns:queryAcctItlHupregInfo" name="queryAcctItlHupregInfo">
+    </wsdl:input>
+      <wsdl:output message="tns:queryAcctItlHupregInfoResponse" name="queryAcctItlHupregInfoResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpPwd">
+      <wsdl:input message="tns:UpPwd" name="UpPwd">
+    </wsdl:input>
+      <wsdl:output message="tns:UpPwdResponse" name="UpPwdResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGlaccttitleByBranchorgnbr">
+      <wsdl:input message="tns:GetGlaccttitleByBranchorgnbr" name="GetGlaccttitleByBranchorgnbr">
+    </wsdl:input>
+      <wsdl:output message="tns:GetGlaccttitleByBranchorgnbrResponse" name="GetGlaccttitleByBranchorgnbrResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryAcctItlGlInfo">
+      <wsdl:input message="tns:QueryAcctItlGlInfo" name="QueryAcctItlGlInfo">
+    </wsdl:input>
+      <wsdl:output message="tns:QueryAcctItlGlInfoResponse" name="QueryAcctItlGlInfoResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="queryAcctItlMainDetailInfo">
+      <wsdl:input message="tns:queryAcctItlMainDetailInfo" name="queryAcctItlMainDetailInfo">
+    </wsdl:input>
+      <wsdl:output message="tns:queryAcctItlMainDetailInfoResponse" name="queryAcctItlMainDetailInfoResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="acctItlOffBalanceSheetWithdraw">
+      <wsdl:input message="tns:acctItlOffBalanceSheetWithdraw" name="acctItlOffBalanceSheetWithdraw">
+    </wsdl:input>
+      <wsdl:output message="tns:acctItlOffBalanceSheetWithdrawResponse" name="acctItlOffBalanceSheetWithdrawResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AccountRecharge">
+      <wsdl:input message="tns:AccountRecharge" name="AccountRecharge">
+    </wsdl:input>
+      <wsdl:output message="tns:AccountRechargeResponse" name="AccountRechargeResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PwdValid">
+      <wsdl:input message="tns:PwdValid" name="PwdValid">
+    </wsdl:input>
+      <wsdl:output message="tns:PwdValidResponse" name="PwdValidResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="doCashShort">
+      <wsdl:input message="tns:doCashShort" name="doCashShort">
+    </wsdl:input>
+      <wsdl:output message="tns:doCashShortResponse" name="doCashShortResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryMjmiacctItlInfo">
+      <wsdl:input message="tns:QueryMjmiacctItlInfo" name="QueryMjmiacctItlInfo">
+    </wsdl:input>
+      <wsdl:output message="tns:QueryMjmiacctItlInfoResponse" name="QueryMjmiacctItlInfoResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryAcctItlInfo">
+      <wsdl:input message="tns:QueryAcctItlInfo" name="QueryAcctItlInfo">
+    </wsdl:input>
+      <wsdl:output message="tns:QueryAcctItlInfoResponse" name="QueryAcctItlInfoResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="acctItlCashWithdraw">
+      <wsdl:input message="tns:acctItlCashWithdraw" name="acctItlCashWithdraw">
+    </wsdl:input>
+      <wsdl:output message="tns:acctItlCashWithdrawResponse" name="acctItlCashWithdrawResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ItlServicePortTypeSoap11" type="tns:ItlServicePortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="Base">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="BaseRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="BaseResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="acctItlTrans">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="acctItlTrans">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="acctItlTransResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="queryAcctItlApplyInfo">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="queryAcctItlApplyInfo">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="queryAcctItlApplyInfoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Liquidate">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="Liquidate">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="LiquidateResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Query">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="QueryRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="QueryResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="queryPositionDetails">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="queryPositionDetails">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="queryPositionDetailsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="queryAcctItlMainInfo">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="queryAcctItlMainInfo">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="queryAcctItlMainInfoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CloseAcctItl">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="CloseAcctItl">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="CloseAcctItlResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ItlIntCredit">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="ItlIntCredit">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="ItlIntCreditResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateAcctItl">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="CreateAcctItl">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="CreateAcctItlResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="doCashPayOut">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="doCashPayOut">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="doCashPayOutResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryItlAcctnbr">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="QueryItlAcctnbr">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="QueryItlAcctnbrResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="acctItlOffBalanceSheetDep">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="acctItlOffBalanceSheetDep">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="acctItlOffBalanceSheetDepResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="acctItlRenewal">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="acctItlRenewal">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="acctItlRenewalResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryAcctItlIntInfo">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="QueryAcctItlIntInfo">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="QueryAcctItlIntInfoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="acctItlCashDep">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="acctItlCashDep">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="acctItlCashDepResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ItlTransferWithDraw">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="ItlTransferWithDraw">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="ItlTransferWithDrawResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="queryAcctItlHupregInfo">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="queryAcctItlHupregInfo">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="queryAcctItlHupregInfoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpPwd">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="UpPwd">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="UpPwdResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGlaccttitleByBranchorgnbr">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="GetGlaccttitleByBranchorgnbr">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="GetGlaccttitleByBranchorgnbrResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryAcctItlGlInfo">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="QueryAcctItlGlInfo">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="QueryAcctItlGlInfoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="queryAcctItlMainDetailInfo">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="queryAcctItlMainDetailInfo">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="queryAcctItlMainDetailInfoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="acctItlOffBalanceSheetWithdraw">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="acctItlOffBalanceSheetWithdraw">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="acctItlOffBalanceSheetWithdrawResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AccountRecharge">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="AccountRecharge">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="AccountRechargeResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PwdValid">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="PwdValid">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="PwdValidResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="doCashShort">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="doCashShort">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="doCashShortResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryMjmiacctItlInfo">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="QueryMjmiacctItlInfo">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="QueryMjmiacctItlInfoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryAcctItlInfo">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="QueryAcctItlInfo">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="QueryAcctItlInfoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="acctItlCashWithdraw">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="acctItlCashWithdraw">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="acctItlCashWithdrawResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ItlService">
+    <wsdl:port binding="tns:ItlServicePortTypeSoap11" name="ItlServicePortTypeSoap11">
+      <soap:address location="http://localhost:8088/itlService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

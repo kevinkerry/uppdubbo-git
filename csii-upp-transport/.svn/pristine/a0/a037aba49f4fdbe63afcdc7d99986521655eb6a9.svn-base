@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE segment SYSTEM "packetutf8.dtd">
+<segment>
+	<!--结算帐号 -->
+	<xmlTag tagName="BGR10AC201">
+		<String name="payerAcctNbr" defaultValue=""/>
+	</xmlTag>
+	<!--余额查询方式1- 全部 -->
+	<xmlTag tagName="BGR10OPAT1">
+		<String name="BGR10OPAT1" defaultValue = "1" />
+	</xmlTag>
+</segment>

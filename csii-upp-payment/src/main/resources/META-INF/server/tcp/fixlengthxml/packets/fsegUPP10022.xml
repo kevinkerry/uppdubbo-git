@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE segment SYSTEM "packetutf8.dtd">
+<segment>
+	<!-- 交易id -->
+	<xmlTag tagName="TransId">
+		<String name="TransId"/>
+	</xmlTag>
+	<!-- 一级商户 -->
+	<xmlTag tagName="MerchantId">
+		<String name="MerNbr"/>
+	</xmlTag>
+	<!-- 卡号 -->
+	<xmlTag tagName="Account">
+		<String name="PayerAcctNbr"/>
+	</xmlTag>
+	<!-- 检查序列0 -->
+	<xmlTag tagName="CheckStatus">
+		<String name="CheckStatus"/>
+	</xmlTag>
+</segment>

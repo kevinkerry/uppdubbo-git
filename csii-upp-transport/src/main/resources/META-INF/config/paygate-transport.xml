@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	   http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+<!-- 	<import resource="classpath:/META-INF/transport/tcp/toPayment/transport.xml" />
+	<import resource="classpath:/META-INF/transport/tcp/toFundProcess/transport.xml" /> -->
+	<import resource="classpath:/META-INF/transport/tcp/toBatch/transport.xml" />
+	<import resource="classpath:/META-INF/config/dubbo-registry.xml" />
+ 	<import resource="classpath:/META-INF/transport/dubbo/toPayment/dubbo-consumer-idmapping.xml" />
+ 	<import resource="classpath:/META-INF/transport/dubbo/toPayment/dubbo-consummer.xml" />
+ 	<import resource="classpath:/META-INF/transport/dubbo/toFundProcess/dubbo-consumer-idmapping.xml" />
+ 	<import resource="classpath:/META-INF/transport/dubbo/toFundProcess/dubbo-consummer.xml" />
+ 	
+ 	<!-- dubbo service config -->
+	<dubbo:application name="paygate-consumer" logger="slf4j"/>
+	<dubbo:consumer timeout="${dubbo.consumer.timeout}" retries="0" check="${dubbo.registry.check}" />
+		
+ 	<bean id="dubboConsumerIdResolver"  class="com.csii.upp.transport.DubboConsumerIdResolver">
+		<property name="idParameterName" value="srvChnlId" />
+		<property name="IdMapping">
+			 <map>
+                <entry key="paym" value-ref="dubboPaymentResolver" />
+             </map>
+		</property>
+	</bean>
+ 
+</beans>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spring:beans xmlns:spring="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.csii.com.cn/schema/pe"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd 
+	http://www.csii.com.cn/schema/pe http://www.csii.com.cn/schema/pe/pe-config.xsd">
+	<config>
+
+		<bean id="eventManager" class="com.csii.upp.event.DefaultEventManager">
+			<list name="eventHandlers">
+				<ref>regOverallRequestEventHandler</ref>
+				<ref>notifyPaymentResultEventHandler</ref>
+			</list>
+			<ref name="executor">eventManagerThreadPool</ref>
+		</bean>
+
+
+		<!-- 异步登记交易流水 -->
+		<bean id="regOverallRequestEventHandler"
+			class="com.csii.upp.fundprocess.action.event.handler.RegOverallRequestEventHandler">
+		</bean>
+		<!-- 异步通知payment支付结果 -->
+		<bean id="notifyPaymentResultEventHandler"
+			class="com.csii.upp.fundprocess.action.event.handler.NotifyPaymentResultEventHandler">
+		</bean>
+	</config>
+</spring:beans>

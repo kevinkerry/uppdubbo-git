@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spring:beans xmlns:spring="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.csii.com.cn/schema/pe"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd 
+	http://www.csii.com.cn/schema/pe http://www.csii.com.cn/schema/pe/pe-config.xsd">
+	<config namespace="unionpay">
+		<transport id="transport" class="com.csii.upp.transport.UnionPayTransport">
+			<param name="acpSdkConfig">${unionpay.acp_sdk.path}</param>
+			<param name="version">${unionpay.contentData.version}</param>
+			<param name="encoding">${unionpay.contentData.encoding}</param>
+			<param name="signMethod">${unionpay.contentData.signMethod}</param>
+			<param name="accessType">${unionpay.contentData.accessType}</param>
+			<param name="channelType">${unionpay.contentData.channelType}</param>
+			<param name="currencyCode">${unionpay.contentData.currencyCode}</param>
+			<param name="baseBackUrl">${unionpay.contentData.baseBackUrl}</param>
+			<param name="baseFrontUrl">${unionpay.contentData.baseFrontUrl}</param>
+			<param name="merId">${unionpay.contentData.merId}</param>
+			<param name="downloadPath">${unionpay.download.path}</param>
+			<ref name="httpClient">httpClientImpl</ref>
+		</transport>
+
+
+		<bean id="httpClientImpl" class="com.csii.upp.transport.HttpClientImpl">
+			<param name="connectionTimeout">30000</param>
+			<param name="readTimeOut">30000</param>
+			<param name="proxyIp">${unionpay.contentData.proxyIp}</param>
+			<param name="proxyPort">${unionpay.contentData.proxyPort}</param>
+		</bean>
+	</config>
+</spring:beans>

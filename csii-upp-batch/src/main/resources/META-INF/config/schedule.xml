@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spring:beans xmlns:spring="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.csii.com.cn/schema/pe"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd 
+	http://www.csii.com.cn/schema/pe http://www.csii.com.cn/schema/pe/pe-config.xsd">
+	<config>
+		<bean id="checkAlarmServer" class="com.csii.pe.service.schedule.AlarmServer"
+			init-method="start" destroy-method="shutdown">
+			<param name="name">cronScheduler</param>
+			<param name="transCodeFieldName">transCode</param>
+			<ref name="coreController">coreController</ref>
+			<ref name="executor">eventManagerThreadPool</ref>
+			<param name="cronOfLoader">0 0 0 * * * *</param>
+			<ref name="alarmLoader">jobLoader</ref>
+			<ref name="alarmListener">jobListener</ref>
+		</bean>
+		<bean id="jobListener" class="com.csii.pe.service.schedule.DefaultAlarmListener">
+			<!-- no other config, because no alarm table -->
+		</bean>
+		<bean id="jobLoader" class="com.csii.pe.service.schedule.BeanAlarmLoader">
+			<list name="entries">
+				<!-- 日间异常处理 -->
+				<bean class="com.csii.pe.service.schedule.AlarmRecord">
+					<param name="key">runTransExcep</param>
+					<param name="mode">0</param>
+					<param name="rule">0 */1 * * * * *</param>
+				</bean>
+				<!-- <bean class="com.csii.pe.service.schedule.AlarmRecord"> <param name="key">modifyTimeOutUnionPayTrans</param> 
+					<param name="mode">0</param> <param name="rule">0 */1 * * * * *</param> </bean> -->
+				<!-- 二维码订单状态查询查询 <bean class="com.csii.pe.service.schedule.AlarmRecord"> 
+					<param name="key">queryQrCodePayStatus</param> <param name="mode">0</param> 
+					<param name="rule">0 */60 * * * * *</param> </bean> 微信退货查询查询 <bean class="com.csii.pe.service.schedule.AlarmRecord"> 
+					<param name="key">queryQrCodeRefStatus</param> <param name="mode">0</param> 
+					<param name="rule">0 0 0 * * * *</param> </bean> -->
+			</list>
+		</bean>
+	</config>
+</spring:beans>

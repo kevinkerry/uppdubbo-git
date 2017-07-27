@@ -1,0 +1,966 @@
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:base="http://com.csii.bank.pay/base"
+	xmlns:online="http://com.csii.bank.pay/online" targetNamespace="http://com.csii.bank.pay/online"
+	elementFormDefault="qualified">
+	<import namespace="http://com.csii.bank.pay/base"
+		schemaLocation="base.xsd" />
+	<complexType name="RTDTRequestType">
+		<complexContent>
+			<annotation>
+				<documentation>实时借记请求参数类型</documentation>
+			</annotation>
+			<extension base="base:RequestHeader">
+				<sequence>
+					<element name="PayerAcctNbr" type="string">
+						<annotation>
+							<documentation>付款人账号</documentation>
+						</annotation>
+					</element>
+					<element name="PayerCardTypCd" type="string" minOccurs="0">
+						<annotation>
+							<documentation>付款卡类型</documentation>
+						</annotation>
+					</element>
+					<element name="PayerAcctTypCd" type="string">
+						<annotation>
+							<documentation>付款账户类型</documentation>
+						</annotation>
+					</element>
+					<element name="PayerAcctName" type="string" minOccurs="0">
+						<annotation>
+							<documentation>付款名称</documentation>
+						</annotation>
+					</element>
+					<element name="PayerAcctKind" type="string" minOccurs="0">
+						<annotation>
+							<documentation>付款账户性质</documentation>
+						</annotation>
+					</element>
+					<element name="PayerAcctDeptNbr" type="string" minOccurs="0">
+						<annotation>
+							<documentation>付款机构号</documentation>
+						</annotation>
+					</element>
+					<element name="PayerCardPwd" type="string" minOccurs="0">
+						<annotation>
+							<documentation>付款人密码</documentation>
+						</annotation>
+					</element>
+					<element name="PayerCardCvv2" type="string" minOccurs="0">
+						<annotation>
+							<documentation>付款卡CVV2</documentation>
+						</annotation>
+					</element>
+					<element name="PayerCardExpiredDate" type="string" minOccurs="0">
+						<annotation>
+							<documentation>付款卡有效期</documentation>
+						</annotation>
+					</element>
+					<element name="PayerIdNbr" type="string" minOccurs="0">
+						<annotation>
+							<documentation>付款人证件号</documentation>
+						</annotation>
+					</element>
+					<element name="PayerIdTypCd" type="string" minOccurs="0">
+						<annotation>
+							<documentation>付款人证件类型</documentation>
+						</annotation>
+					</element>
+					<element name="PayerPhoneNo" type="string" minOccurs="0">
+						<annotation>
+							<documentation>付款人手机号</documentation>
+						</annotation>
+					</element>
+					<element name="CurrencyCd" type="string" minOccurs="0">
+						<annotation>
+							<documentation>币种</documentation>
+						</annotation>
+					</element>
+					<element name="TransAmt" type="string" minOccurs="0">
+						<annotation>
+							<documentation>交易金额</documentation>
+						</annotation>
+					</element>
+					<element name="PayeeAcctNbr" type="string" minOccurs="0">
+						<annotation>
+							<documentation>收款账号</documentation>
+						</annotation>
+					</element>
+					<element name="PayeeCardTypCd" type="string" minOccurs="0">
+						<annotation>
+							<documentation>收款卡类型</documentation>
+						</annotation>
+					</element>
+					<element name="PayeeAcctTypCd" type="string" minOccurs="0">
+						<annotation>
+							<documentation>收款账户类型</documentation>
+						</annotation>
+					</element>
+					<element name="PayeeAcctName" type="string" minOccurs="0">
+						<annotation>
+							<documentation>收款卡名称</documentation>
+						</annotation>
+					</element>
+					<element name="PayeeAcctKind" type="string" minOccurs="0">
+						<annotation>
+							<documentation>收款账户性质</documentation>
+						</annotation>
+					</element>
+					<element name="PayeeCardExpiredDate" type="string" minOccurs="0">
+						<annotation>
+							<documentation>收款信用卡有效期</documentation>
+						</annotation>
+					</element>
+					<element name="PayeeCardCvv2" type="string" minOccurs="0">
+						<annotation>
+							<documentation>收款信用卡cvv</documentation>
+						</annotation>
+					</element>
+					<element name="PayeeIdNbr" type="string" minOccurs="0">
+						<annotation>
+							<documentation>收款人证件号</documentation>
+						</annotation>
+					</element>
+					<element name="PayeeIdTypCd" type="string" minOccurs="0">
+						<annotation>
+							<documentation>收款人证件类型</documentation>
+						</annotation>
+					</element>
+					<element name="PayeePhoneNo" type="string" minOccurs="0">
+						<annotation>
+							<documentation>收款人手机号</documentation>
+						</annotation>
+					</element>
+					<element name="Note" type="string" minOccurs="0">
+						<annotation>
+							<documentation>备注</documentation>
+						</annotation>
+					</element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="RTDT" type="online:RTDTRequestType" />
+	<complexType name="RTDTResponseType">
+		<complexContent>
+			<annotation>
+				<documentation>实时借记返回参数类型</documentation>
+			</annotation>
+			<extension base="base:ResponseHeader" />
+		</complexContent>
+	</complexType>
+	<element name="RTDTResponse" type="online:RTDTResponseType" />
+
+	<complexType name="RTCTRequestType">
+		<complexContent>
+			<extension base="base:RequestHeader">
+				<sequence>
+					<element name="PayerAcctNbr" type="string">
+						<annotation>
+							<documentation>付款人账号</documentation>
+						</annotation>
+					</element>
+					<element name="PayerCardTypCd" type="string">
+						<annotation>
+							<documentation>付款卡类型</documentation>
+						</annotation>
+					</element>
+					<element name="PayerAcctTypCd" type="string">
+						<annotation>
+							<documentation>付款账户类型</documentation>
+						</annotation>
+					</element>
+					<element name="PayerAcctKind" type="string">
+						<annotation>
+							<documentation>付款账户性质</documentation>
+						</annotation>
+					</element>
+					<element name="PayerAcctDeptNbr" type="string">
+						<annotation>
+							<documentation>付款机构号</documentation>
+						</annotation>
+					</element>
+					<element name="PayerCardPwd" type="string">
+						<annotation>
+							<documentation>付款人密码</documentation>
+						</annotation>
+					</element>
+					<element name="PayerCardCvv2" type="string">
+						<annotation>
+							<documentation>付款卡CVV2</documentation>
+						</annotation>
+					</element>
+					<element name="PayerCardExpiredDate" type="string">
+						<annotation>
+							<documentation>付款卡有效期</documentation>
+						</annotation>
+					</element>
+					<element name="PayerIdNbr" type="string">
+						<annotation>
+							<documentation>付款人证件号</documentation>
+						</annotation>
+					</element>
+					<element name="PayerIdTypCd" type="string">
+						<annotation>
+							<documentation>付款人证件类型</documentation>
+						</annotation>
+					</element>
+					<element name="PayerPhoneNo" type="string">
+						<annotation>
+							<documentation>付款人手机号</documentation>
+						</annotation>
+					</element>
+					<element name="CurrencyCd" type="string">
+						<annotation>
+							<documentation>币种</documentation>
+						</annotation>
+					</element>
+					<element name="TransAmt" type="string">
+						<annotation>
+							<documentation>交易金额</documentation>
+						</annotation>
+					</element>
+					<element name="PayeeAcctNbr" type="string">
+						<annotation>
+							<documentation>收款账号</documentation>
+						</annotation>
+					</element>
+					<element name="PayeeCardTypCd" type="string">
+						<annotation>
+							<documentation>收款卡类型</documentation>
+						</annotation>
+					</element>
+					<element name="PayeeAcctTypCd" type="string">
+						<annotation>
+							<documentation>收款账户类型</documentation>
+						</annotation>
+					</element>
+					<element name="PayeeAcctKind" type="string">
+						<annotation>
+							<documentation>收款账户性质</documentation>
+						</annotation>
+					</element>
+					<element name="PayeeCardExpiredDate" type="string">
+						<annotation>
+							<documentation>收款信用卡有效期</documentation>
+						</annotation>
+					</element>
+					<element name="PayeeCardCvv2" type="string">
+						<annotation>
+							<documentation>收款信用卡cvv</documentation>
+						</annotation>
+					</element>
+					<element name="PayeeIdNbr" type="string">
+						<annotation>
+							<documentation>收款人证件号</documentation>
+						</annotation>
+					</element>
+					
+					<element name="payeeIdTypCd" type="string">
+						<annotation>
+							<documentation>收款人证件类型</documentation>
+						</annotation>
+					</element>
+					<element name="PayeePhoneNo" type="string">
+						<annotation>
+							<documentation>收款人手机号</documentation>
+						</annotation>
+					</element>
+					<element name="Note" type="string">
+						<annotation>
+							<documentation>备注</documentation>
+						</annotation>
+					</element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="RTCT" type="online:RTCTRequestType" />
+	<complexType name="RTCTResponseType">
+		<complexContent>
+			<annotation>
+				<documentation>实时贷记返回参数类型</documentation>
+			</annotation>
+			<extension base="base:ResponseHeader" />
+		</complexContent>
+	</complexType>
+	<element name="RTCTResponse" type="online:RTCTResponseType" />
+
+	<complexType name="SPCTRequestType">
+		<complexContent>
+			<extension base="base:RequestHeader">
+				<sequence>
+					<element name="payeeCardNbr" type="string">
+						<annotation>
+							<documentation>收款卡号 </documentation>
+						</annotation>
+					</element>
+					<element name="payeeCardName" type="string" minOccurs="0">
+						<annotation>
+							<documentation>收款卡姓名</documentation>
+						</annotation>
+					</element>
+					<element name="payerCardNbr" type="string">
+						<annotation>
+							<documentation>付款卡号</documentation>
+						</annotation>
+					</element>
+					<element name="payerCardName" type="string" minOccurs="0">
+						<annotation>
+							<documentation>付款卡姓名</documentation>
+						</annotation>
+					</element>
+					<element name="bankNbr" type="string" minOccurs="0">
+						<annotation>
+							<documentation>收款行号</documentation>
+						</annotation>
+					</element>
+					<element name="transAmt" type="base:AmountType">
+						<annotation>
+							<documentation>交易金额</documentation>
+						</annotation>
+					</element>
+					<element name="feeAmt" type="base:AmountType" minOccurs="0">
+						<annotation>
+							<documentation>手续费金额</documentation>
+						</annotation>
+					</element>
+					<element name="currencyCd" type="base:CurrencyType">
+						<annotation>
+							<documentation>币种</documentation>
+						</annotation>
+					</element>
+					<element name="note" type="string" minOccurs="0">
+						<annotation>
+							<documentation>摘要</documentation>
+						</annotation>
+					</element>
+					<element name="isEmerge" type="string" minOccurs="0">
+						<annotation>
+							<documentation>是否加急</documentation>
+						</annotation>
+					</element>
+					<element name="payerAccType" type="string" minOccurs="0">
+						<annotation>
+							<documentation>付款人账户类型</documentation>
+						</annotation>
+					</element>
+					<element name="payerCardPwd" type="string" minOccurs="0">
+						<annotation>
+							<documentation>付款卡密码</documentation>
+						</annotation>
+					</element>
+
+					<element name="dpcFlag" type="string" minOccurs="0">
+						<annotation>
+							<documentation>是否同城</documentation>
+						</annotation>
+					</element>
+					<element name="sendBankCode" type="string" minOccurs="0">
+						<annotation>
+							<documentation>发起行行号</documentation>
+						</annotation>
+					</element>
+					<!-- <element name="payerBankCode" type="string" minOccurs="0"> <annotation> 
+						<documentation>收款行号</documentation> </annotation> </element> -->
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="SPCT" type="online:SPCTRequestType" />
+	<complexType name="SPCTResponseType">
+		<complexContent>
+			<annotation>
+				<documentation>普通贷记返回参数类型</documentation>
+			</annotation>
+			<extension base="base:ResponseHeader" />
+		</complexContent>
+	</complexType>
+	<element name="SPCTResponse" type="online:SPCTResponseType" />
+	<!-- 单笔记账 -->
+	<complexType name="SingleRtxnRequestType">
+		<complexContent>
+			<annotation>
+				<documentation>单笔记账请求参数类型</documentation>
+			</annotation>
+			<extension base="base:RequestHeader">
+				<sequence>
+					<element name="payerCardNbr" type="string">
+						<annotation>
+							<documentation>付款人账号</documentation>
+						</annotation>
+					</element>
+					<element name="payerCardName" type="string">
+						<annotation>
+							<documentation>付款人名称</documentation>
+						</annotation>
+					</element>
+					<element name="payerCardPwd" type="string">
+						<annotation>
+							<documentation>付款人密码</documentation>
+						</annotation>
+					</element>
+					<element name="payeeCardNbr" type="string">
+						<annotation>
+							<documentation>收款人账号</documentation>
+						</annotation>
+					</element>
+					<element name="currencyCd" type="base:CurrencyType">
+						<annotation>
+							<documentation>币种</documentation>
+						</annotation>
+					</element>
+					<element name="transAmt" type="base:AmountType">
+						<annotation>
+							<documentation>交易金额</documentation>
+						</annotation>
+					</element>
+					<element name="note" type="string" minOccurs="0">
+						<annotation>
+							<documentation>摘要</documentation>
+						</annotation>
+					</element>
+					<element name="payeeName" type="string" minOccurs="0">
+						<annotation>
+							<documentation>收款户名</documentation>
+						</annotation>
+					</element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="STXN" type="online:SingleRtxnRequestType" />
+	<complexType name="STXNResponseType">
+		<complexContent>
+			<annotation>
+				<documentation>单笔记账返回参数类型</documentation>
+			</annotation>
+			<extension base="base:ResponseHeader" />
+		</complexContent>
+	</complexType>
+	<element name="STXNResponse" type="online:STXNResponseType" />
+
+	<!-- 撤销交易 -->
+	<complexType name="REVKRequestType">
+		<complexContent>
+			<annotation>
+				<documentation>撤销请求参数类型</documentation>
+			</annotation>
+			<extension base="base:RequestHeader">
+				<sequence>
+					<element name="origUpperRtxnNbr" type="string">
+						<annotation>
+							<documentation>原始流水号</documentation>
+						</annotation>
+					</element>
+					<element name="origUpperRtxnDate" type="date">
+						<annotation>
+							<documentation>原始流水日期</documentation>
+						</annotation>
+					</element>
+					<element name="origUpperSysNbr" type="string">
+						<annotation>
+							<documentation>原始系统号</documentation>
+						</annotation>
+					</element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="REVK" type="online:REVKRequestType" />
+
+	<complexType name="REVKResponseType">
+		<complexContent>
+			<annotation>
+				<documentation>撤销返回参数类型</documentation>
+			</annotation>
+			<extension base="base:ResponseHeader" />
+		</complexContent>
+	</complexType>
+	<element name="REVKResponse" type="online:REVKResponseType" />
+	<!-- 超级网银单笔记账 -->
+	<complexType name="STXNIBPSRequestType">
+		<complexContent>
+			<annotation>
+				<documentation>超级网银单笔记账请求参数</documentation>
+			</annotation>
+			<extension base="base:RequestHeader">
+				<sequence>
+					<element name="payer_acct" type="string" nillable="false" /> <!-- 付款人账号 -->
+					<element name="payer_name" type="string" nillable="false" /> <!-- 付款人名称 -->
+					<element name="send_bank_code" type="string" nillable="false" /> <!-- 发起行行号 -->
+					<element name="payee_acct" type="string" nillable="false" /> <!-- 收款人账号 -->
+					<element name="payee_name" type="string" nillable="false" /> <!-- 收款人名称 -->
+					<element name="rcv_bank_code" type="string" nillable="false" /> <!-- 接收行行号 -->
+					<element name="ccy" type="string" nillable="false" /> <!-- 交易币种 -->
+					<element name="tran_amt" type="decimal" nillable="false" /> <!-- 交易金额 -->
+					<element name="msg_code" type="string" nillable="false" /> <!-- 报文类型标识号 -->
+					<element name="format" type="string" nillable="false" /> <!-- 渠道类型 -->
+					<element name="msg_seq_no" type="string" nillable="false" /> <!-- 报文标识号 -->
+					<element name="busi_type" type="string" nillable="false" /> <!-- 业务类型 -->
+					<element name="tran_category" type="string" nillable="false" /> <!-- 业务种类 -->
+					<element name="remark" type="string" nillable="false" /> <!-- 附言 -->
+					<element name="consign_date" type="string" nillable="false" /> <!-- 委托日期 -->
+					<element name="ref_no" type="string" nillable="false" /> <!-- 支付平台交易参考号 -->
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="STXNIBPS" type="online:STXNIBPSRequestType" />
+	<complexType name="STXNIBPSResponseType">
+		<complexContent>
+			<annotation>
+				<documentation>超级网银单笔记账响应参数</documentation>
+			</annotation>
+			<extension base="base:ResponseHeader"></extension>
+		</complexContent>
+	</complexType>
+	<element name="STXNIBPSResponse" type="online:STXNIBPSResponseType" />
+
+	<!-- 基金申购 -->
+	<complexType name="FPURRequestType">
+		<complexContent>
+			<annotation>
+				<documentation>基金申购请求参数类型</documentation>
+			</annotation>
+			<extension base="base:RequestHeader">
+				<sequence>
+					<element name="payerCardNbr" type="string">
+						<annotation>
+							<documentation>电子账户</documentation>
+						</annotation>
+					</element>
+					<element name="currencyCd" type="base:CurrencyType">
+						<annotation>
+							<documentation>币种</documentation>
+						</annotation>
+					</element>
+					<element name="mediPwdCheck" type="string">
+						<annotation>
+							<documentation>是否验密</documentation>
+						</annotation>
+					</element>
+					<element name="mediPwd" type="string" minOccurs="0">
+						<annotation>
+							<documentation>电子账号交易密码</documentation>
+						</annotation>
+					</element>
+					<element name="transAmt" type="base:AmountType">
+						<annotation>
+							<documentation>交易金额</documentation>
+						</annotation>
+					</element>
+					<element name="agreementtypcd" type="string">
+						<annotation>
+							<documentation>签约类型</documentation>
+						</annotation>
+					</element>
+					<element name="feeAmt" type="base:AmountType" minOccurs="0">
+						<annotation>
+							<documentation>手续费金额</documentation>
+						</annotation>
+					</element>
+					<element name="note" type="string" minOccurs="0">
+						<annotation>
+							<documentation>备注</documentation>
+						</annotation>
+					</element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="FPUR" type="online:FPURRequestType" />
+	<complexType name="FPURResponseType">
+		<sequence>
+			<element ref="base:BaseResponse" />
+		</sequence>
+	</complexType>
+	<element name="FPURResponse" type="online:FPURResponseType" />
+
+	<!-- 基金赎回 -->
+	<complexType name="FREDRequestType">
+		<complexContent>
+			<annotation>
+				<documentation>基金赎回请求参数类型</documentation>
+			</annotation>
+			<extension base="base:RequestHeader">
+				<sequence>
+					<element name="payeeCardNbr" type="string">
+						<annotation>
+							<documentation>收款人账号(卡号）</documentation>
+						</annotation>
+					</element>
+					<element name="currencyCd" type="base:CurrencyType">
+						<annotation>
+							<documentation>币种</documentation>
+						</annotation>
+					</element>
+					<element name="redemptionTypCd" type="string">
+						<annotation>
+							<documentation>赎回类型</documentation>
+						</annotation>
+					</element>
+					<element name="transAmt" type="base:AmountType">
+						<annotation>
+							<documentation>交易金额</documentation>
+						</annotation>
+					</element>
+					<element name="feeAmt" type="base:AmountType" minOccurs="0">
+						<annotation>
+							<documentation>手续费金额</documentation>
+						</annotation>
+					</element>
+					<element name="note" type="string" minOccurs="0">
+						<annotation>
+							<documentation>备注</documentation>
+						</annotation>
+					</element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="FRED" type="online:FREDRequestType" />
+	<complexType name="FREDResponseType">
+		<sequence>
+			<element ref="base:BaseResponse" />
+		</sequence>
+	</complexType>
+	<element name="FREDResponse" type="online:FREDResponseType" />
+
+	<!-- 查询交易流水 -->
+	<complexType name="QTXNRequestType">
+		<complexContent>
+			<annotation>
+				<documentation>查询交易流水请求参数类型</documentation>
+			</annotation>
+			<extension base="base:RequestHeader">
+				<sequence>
+					<element name="origUpperRtxnNbr" type="string">
+						<annotation>
+							<documentation>原上游交易流水号</documentation>
+						</annotation>
+					</element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="QTXN" type="online:QTXNRequestType" />
+	<complexType name="overallrtxndetails">
+		<sequence>
+			<element name="overallRtxnnbr" type="string" />
+			<element name="overallRtxntypcd" type="string" />
+			<element name="overallRtxnDate" type="date" />
+			<element name="overallRtxnTime" type="date" />
+			<element name="overallRtxnStatus" type="string" />
+			<element name="note" type="string" />
+		</sequence>
+	</complexType>
+	<complexType name="QTXNResponseType">
+		<sequence>
+			<element ref="base:BaseResponse" />
+			<element name="overallrtxninfo" type="online:overallrtxndetails"
+				nillable="true" />
+		</sequence>
+	</complexType>
+	<element name="QTXNResponse" type="online:QTXNResponseType" />
+	
+		<!-- 查询交易状态信息 -->
+	<complexType name="QRTSRequestType">
+		<complexContent>
+			<annotation>
+				<documentation>查询交易状态信息 请求参数类型</documentation>
+			</annotation>
+			<extension base="base:RequestHeader">
+				<sequence>
+					<element name="mediId" type="string">
+						<annotation>
+							<documentation>账号</documentation>
+						</annotation>
+					</element>
+					<element name="statDate" type="string">
+						<annotation>
+							<documentation></documentation>
+						</annotation>
+					</element>
+					<element name="endDate" type="string">
+						<annotation>
+							<documentation></documentation>
+						</annotation>
+					</element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="QRTS" type="online:QRTSRequestType" />
+	<complexType name="overallrtxnstatdetails">
+		<sequence>
+			<element name="overallrtxnnbr" type="string" />
+			<element name="overallrtxntypcd" type="string" />
+			<element name="overallrtxnstate" type="string" />
+			<element name="overallrtxndate" type="date" />
+			<element name="payeeacctnbr" type="string" />
+			<element name="payeracctnbr" type="string" />
+			<element name="transamt" type="string" />
+			<element name="payeename" type="string" />
+			<element name="payername" type="string" />
+		</sequence>
+	</complexType>
+	<complexType name="QRTSResponseType">
+		<sequence>
+			<element ref="base:BaseResponse" />
+			<element name="overallrtxnstatinfo" type="online:overallrtxnstatdetails"
+				nillable="true" />
+		</sequence>
+	</complexType>
+	<element name="QRTSResponse" type="online:QRTSResponseType" />
+	<!-- 实名认证 -->
+	<complexType name="AUTNRequestType">
+		<complexContent>
+			<annotation>
+				<documentation>实名认证请求参数类型</documentation>
+			</annotation>
+			<extension base="base:RequestHeader">
+				<sequence>
+					<element name="payerCardNbr" type="string">
+						<annotation>
+							<documentation>认证帐号</documentation>
+						</annotation>
+					</element>
+					<element name="certifTp" type="string">
+						<annotation>
+							<documentation>证件类型</documentation>
+						</annotation>
+					</element>
+					<element name="certifId" type="string">
+						<annotation>
+							<documentation>证件号码</documentation>
+						</annotation>
+					</element>
+					<element name="customerNm" type="string">
+						<annotation>
+							<documentation>姓名</documentation>
+						</annotation>
+					</element>
+					<element name="payerPhoneNo" type="string">
+						<annotation>
+							<documentation>手机号</documentation>
+						</annotation>
+					</element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="AUTN" type="online:AUTNRequestType" />
+	<complexType name="AUTNResponseType">
+		<complexContent>
+			<annotation>
+				<documentation>实名认证返回参数类型</documentation>
+			</annotation>
+			<extension base="base:ResponseHeader">
+				<sequence>
+					<element name="result" type="string">
+						<annotation>
+							<documentation>认证结果</documentation>
+						</annotation>
+					</element>
+					<element name="phoneNo" type="string">
+						<annotation>
+							<documentation>手机号</documentation>
+						</annotation>
+					</element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="AUTNResponse" type="online:AUTNResponseType" />
+
+	
+	<!-- 冲正 -->
+	<complexType name="CRACRequestType">
+		<complexContent>
+			<annotation>
+				<documentation>冲正请求参数类型</documentation>
+			</annotation>
+			<extension base="base:RequestHeader">
+				<sequence>
+					<element name="BrchNo" type="string">
+						<annotation>
+							<documentation>机构</documentation>
+						</annotation>
+					</element>
+					<element name="TlrNo" type="string">
+						<annotation>
+							<documentation>柜员</documentation>
+						</annotation>
+					</element>
+					<element name="ChnlNo" type="string">
+						<annotation>
+							<documentation>渠道</documentation>
+						</annotation>
+					</element>
+					<element name="BatchNo" type="string">
+						<annotation>
+							<documentation>批次号</documentation>
+						</annotation>
+					</element>
+					<element name="SumryCd" type="string">
+						<annotation>
+							<documentation>摘要码</documentation>
+						</annotation>
+					</element>
+					<element name="CrdNo" type="string">
+						<annotation>
+							<documentation>卡号</documentation>
+						</annotation>
+					</element>
+					<element name="CVN2" type="string">
+						<annotation>
+							<documentation>卡CVN2码</documentation>
+						</annotation>
+					</element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="CRAC" type="online:CRACRequestType" />
+	<complexType name="CRACResponseType">
+		<complexContent>
+			<annotation>
+				<documentation>冲正返回参数类型</documentation>
+			</annotation>
+			<extension base="base:ResponseHeader">
+				<sequence>
+					
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="CRACResponse" type="online:CRACResponseType" />
+	
+	<complexType name="QueryLimitAmtRequestType">
+		<complexContent>
+			<annotation>
+				<documentation>小米白条额度查询</documentation>
+			</annotation>
+			<extension base="base:QueryRequestHeader">
+				<sequence>
+					<element name="cifNo" type="string">
+						<annotation>
+							<documentation>客户号</documentation>
+						</annotation>
+					</element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="QueryLimitAmt" type="online:QueryLimitAmtRequestType" />
+	<complexType name="QueryLimitAmtResponseType">
+		<complexContent>
+			<annotation>
+				<documentation>小米白条额度查询返回参数类型</documentation>
+			</annotation>
+			<extension base="base:QueryResponseHeader">
+				<sequence>
+					
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="QueryLimitAmtResponse" type="online:QueryLimitAmtResponseType" />
+	
+	<complexType name="XMPAYRequestType">
+		<complexContent>
+			<annotation>
+				<documentation>小米付</documentation>
+			</annotation>
+			<extension base="base:QueryRequestHeader">
+				<sequence>
+					<element name="customerId" type="string">
+						<annotation>
+							<documentation>客户号</documentation>
+						</annotation>
+					</element>
+					<element name="TransAmt" type="string">
+						<annotation>
+							<documentation>消费金额</documentation>
+						</annotation>
+					</element>
+					<element name="payMethod" type="string">
+						<annotation>
+							<documentation>支付方式</documentation>
+						</annotation>
+					</element>
+					<element name="term" type="string">
+						<annotation>
+							<documentation>分期期数</documentation>
+						</annotation>
+					</element>
+					<element name="orderNbr" type="string">
+						<annotation>
+							<documentation>订单号</documentation>
+						</annotation>
+					</element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="XMPAY" type="online:XMPAYRequestType" />
+	<complexType name="XMPAYResponseType">
+		<complexContent>
+			<annotation>
+				<documentation>小米付返回参数类型</documentation>
+			</annotation>
+			<extension base="base:QueryResponseHeader">
+				<sequence>
+					
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="XMPAYResponse" type="online:XMPAYResponseType" />
+	
+	<complexType name="CCCPAYRequestType">
+		<complexContent>
+			<annotation>
+				<documentation>类信用卡付</documentation>
+			</annotation>
+			<extension base="base:QueryRequestHeader">
+				<sequence>
+					<element name="customerId" type="string">
+						<annotation>
+							<documentation>客户号</documentation>
+						</annotation>
+					</element>
+					<element name="TransAmt" type="string">
+						<annotation>
+							<documentation>消费金额</documentation>
+						</annotation>
+					</element>
+					<element name="tranDate" type="date">
+						<annotation>
+							<documentation>交易日期</documentation>
+						</annotation>
+					</element>
+					<element name="orderNbr" type="string">
+						<annotation>
+							<documentation>订单号</documentation>
+						</annotation>
+					</element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="CCCPAY" type="online:CCCPAYRequestType" />
+	<complexType name="CCCPAYResponseType">
+		<complexContent>
+			<annotation>
+				<documentation>类信用卡付返回参数类型</documentation>
+			</annotation>
+			<extension base="base:QueryResponseHeader">
+				<sequence>
+					
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="CCCPAYResponse" type="online:CCCPAYResponseType" />
+</schema>

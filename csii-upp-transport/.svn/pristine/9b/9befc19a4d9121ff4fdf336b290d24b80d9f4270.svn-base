@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:util="http://www.springframework.org/schema/util" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       					   http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+	<!-- <bean id="registerTransMapper" class="com.csii.upp.transport.restful.ws.RegisterTransMapper"
+		init-method="initRegister">
+		<property name="propPath"
+			value="META-INF/transport/webservice/point/idmethodmapping.properties"></property>
+		<property name="clientPath" value="com.csii.upp.transport.restful.ws.PointCRUD"></property>
+	</bean> -->
+	
+	<bean id="restClient" class="com.csii.upp.transport.restful.ws.RestClientImpl" init-method="initClient">
+		<property name="config" ref="restClientconfig"></property>
+	</bean>
+	
+	<bean id="restClientconfig" class="com.csii.upp.transport.restful.ws.RestClientConfig">
+		<property name="connectTimeout" value="${point.connect.timeout}"></property>
+		<property name="readTimeout" value="${point.read.timeout}"></property>
+		<property name="threadPoolSize" value="${point.threadpool.size}"></property>
+		<property name="redireactFlag" value="${point.redirect.flag}"></property>
+	</bean>
+	
+	
+	<bean id="restWebServiceTransport"
+		class="com.csii.upp.transport.restful.ws.RestWebServiceTransport">
+		<property name="restClient" ref="restClient"></property>
+		<property name="prefixUrl" value="${point.prefix.url}"></property>
+	</bean>
+
+</beans>

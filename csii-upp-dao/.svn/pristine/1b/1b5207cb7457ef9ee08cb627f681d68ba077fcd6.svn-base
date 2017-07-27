@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="OVERALLTRANSEXTEND">
+	<insert id="insertOverralltransToHist" parameterClass="com.csii.upp.dto.generate.Overalltrans">
+		INSERT INTO OVERALLTRANSHIST (OVERALLTRANSNBR,
+		OVERALLTRANSTYPCD, TRANSDATE, TRANSTIME,
+		OVERALLTRANSSTATUS, MEMO, UPPERTRANSNBR, UPPERTRANSDATE, UPPERTRANSTIME,
+		UPPERSYSNBR, RETURNCODE, RETURNMSG, DATELASTMAINT, ORIGOVERALLTRANSNBR,
+		CHECKSTATUS, CHECKDATAFLAG, PAYERACCTNBR, PAYERACCTNAME, PAYEEACCTNBR,
+		PAYEEACCTNAME, PAYEEACCTLIST, TRANSAMT, CURRENCYCD,POINTDATAFLAG)
+		VALUES(#overalltransnbr#,#overalltranstypcd#,#transdate#,
+		#transtime#,#overalltransstatus#,#memo#,#uppertransnbr#,
+		#uppertransdate#,#uppertranstime#,#uppersysnbr#,
+		#returncode#,#returnmsg#,#datelastmaint#,#origoveralltransnbr#,
+		#checkstatus#,#checkdataflag#,#payeracctnbr#,#payeracctname#,
+		#payeeacctnbr#,#payeeacctname#,#payeeacctlist#,#transamt#,
+		#currencycd#,#pointdataflag#
+		)
+	</insert>
+
+	<!--为什么 银联对账取5个小时前的数据：异步通知会查询当前表不能把对账时间点的当期表记录移动历史表和待清算流水表，银联T日24点前生成文件，T+1日10点对3小时前的数据是没问题的 -->
+	<update id="updateOverrallTransForCheck" parameterClass="com.csii.upp.dto.generate.Overalltrans">
+		UPDATE
+		OVERALLTRANS
+		SET
+		CHECKSTATUS = #checkstatus:VARCHAR#
+		WHERE
+		OVERALLTRANSSTATUS != #overalltransstatus:VARCHAR#
+		AND CHECKDATAFLAG=#checkdataflag:VARCHAR#
+		<isEqual property="checkdataflag" compareValue="UNIONPAY">
+			<![CDATA[ AND DATELASTMAINT < sysdate()]]>
+		</isEqual>
+	</update>
+</sqlMap>

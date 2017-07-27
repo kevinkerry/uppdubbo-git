@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spring:beans xmlns:spring="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.csii.com.cn/schema/pe"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	 http://www.springframework.org/schema/beans/spring-beans.xsd 
+	 http://www.springframework.org/schema/context 
+     http://www.springframework.org/schema/context/spring-context-4.0.xsd
+	 http://www.csii.com.cn/schema/pe 
+	 http://www.csii.com.cn/schema/pe/pe-config.xsd">
+
+<config>
+
+	<style id="CommonStyle">
+		<setting>
+			<param name="option">false</param>
+		</setting>
+	</style>
+	
+	<!-- 手机号验证 -->
+	<style id="MobileStyle">
+		<setting>
+			<param name="option">false</param>
+			<param name="pattern">^((13[0-9])|(15[036789])|(18[0-9]))\d{8}$</param>
+		</setting>
+	</style>
+
+	<!-- 手机号码样式 -->
+	<style id="MobilePhoneStyle">
+		<setting>
+			<param name="option">false</param>
+			<param name="pattern">^[0-9\+\-()]{7,15}$</param>
+		</setting>
+	</style>
+	
+	<!-- 地址样式 -->
+	<style id="AddrStyle">
+		<setting>
+			<param name="option">false</param>
+		</setting>
+	</style>
+
+	<!-- 邮编样式 -->
+	<style id="ZipCodeStyle">
+		<setting>
+			<param name="option">false</param>
+			<param name="pattern">^[0-9]{6}$</param>
+		</setting>
+	</style>
+
+	<!-- 账户名称样式 -->
+	<style id="AcNameStyle">
+		<setting>
+			<param name="option">false</param>
+			<param name="pattern">[ A-Za-z0-9',.\-/()\u4E00-\u9FBB\u3400-\u4DBF\uF900-\uFAD9\u3000-\u303F\u2000-\u206F\uFF00-\uFFEF&amp;&amp;[^，。　]]{1,60}</param>
+		</setting>
+		<messages>
+			<param name="pattern">validation.name</param>
+		</messages>
+	</style>
+
+	<!-- 账号样式表 -->
+	<style id="AcNoStyle">
+		<setting>
+			<param name="option">false</param>
+			<param name="pattern">^[0-9\-]{1,32}$</param>
+		</setting>
+	</style>
+	
+	<!-- 账号类型样式表 -->
+	<style id="AcNoTypeStyle">
+		<setting>
+			<param name="option">false</param>
+			<param name="pattern">^\d{1,2}$</param>
+		</setting>
+	</style>
+
+	<!-- 金额样式表 -->
+	<style id="AmountStyle">
+		<setting>
+			<param name="option">false</param>
+			<param name="pattern">^(\d*|\d{1,3}(,\d{3})*)(\.\d{1,2})?$</param>
+			<param name="type">decimal</param>
+		</setting>
+	</style>
+
+	<!-- 币种样式 -->
+	<style id="CurrencyStyle">
+		<setting>
+			<param name="option">false</param>
+			<param name="pattern">^[A-Z]{3}$</param>
+		</setting>
+	</style>
+
+	<!-- 日期样式 -->
+	<style id="DateStyle">
+		<setting>
+			<param name="option">false</param>
+			<param name="type">date</param>
+		</setting>
+	</style>
+	
+	<!-- 日期样式 -->
+	<style id="DateV1Style">
+		<setting>
+			<param name="option">false</param>
+			<param name="type">dateV1</param>
+		</setting>
+	</style>
+
+	<!-- 电子邮箱样式 -->
+	<style id="EmailStyle">
+		<setting>
+			<param name="option">false</param>
+			<param name="length">5,36</param>
+			<param name="pattern">^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[\w-]{2,4}$</param>
+		</setting>
+	</style>
+
+	<!-- 数字样式 -->
+	<style id="NumberStyle">
+		<setting>
+			<param name="option">false</param>
+			<param name="pattern">^[0-9]{1,20}$</param>
+		</setting>
+	</style>
+
+	<!-- 收款人名称 -->
+	<style id="PayeeAcNameStyle">
+		<setting>
+			<param name="option">false</param>
+			<param name="rulePattern">^[A-Za-z0-9\u4E00-\u9FBB\u3400-\u4DBF\uF900-\uFAD9\u3000-\u303F\u2000-\u206F\uFF00-\uFFEF]{1,60}$</param>
+		</setting>
+	</style>
+
+	<!-- 转入账号样式 -->
+	<style id="PayeeAcNoStyle">
+		<setting>
+			<param name="option">false</param>
+			<param name="pattern">^[0-9]{16}$</param>
+		</setting>
+	</style>
+
+	<!-- 付款人名称样式 -->
+	<style id="PayerAcNameStyle">
+		<setting>
+			<param name="option">false</param>
+			<param name="pattern">^.{1,60}$</param>
+		</setting>
+	</style>
+
+	<!-- 转出账号样式 -->
+	<style id="PayerAcNoStyle">
+		<setting>
+			<param name="option">false</param>
+			<param name="pattern">^[0-9]{30}$</param>
+		</setting>
+	</style>
+
+	<!-- 电话样式 -->
+	<style id="PhoneStyle">
+		<setting>
+			<param name="ruleFilter">Y</param>
+			<param name="option">false</param>
+			<param name="pattern">^\d+([ \-]\d+)*$</param>
+		</setting>
+	</style>
+
+	<!-- 省代码样式 -->
+	<style id="ProvinceCodeStyle">
+		<setting>
+			<param name="option">false</param>
+			<param name="pattern">[0-9]{3}</param>
+		</setting>
+	</style>
+
+	<!-- 性别 -->
+	<style id="SexStyle">
+		<setting>
+			<param name="option">false</param>
+			<param name="pattern">^[0,1,2,9]{1}$</param>
+		</setting>
+	</style>
+	
+	<!--CVV2  -->
+	<style id="CVV2Style">
+		<setting>
+			<param name="option">true</param>
+			<param name="length">3</param>
+		</setting>
+	</style>
+	
+	<!--有效期style  -->
+	<style id="ValidateDateStyle">
+		<setting>
+			<param name="option">true</param>
+			<param name="pattern">[0-9]{4}</param>
+		</setting>
+	</style>
+	
+	<!--信用卡有效期 年份  -->
+	<style id="CardValidYearStyle">
+		<setting>
+			<param name="option">true</param>
+			<param name="length">2</param>
+		</setting>
+	</style>
+	
+	<!--信用卡有效期 月份  -->
+	<style id="CardValidMonthStyle">
+		<setting>
+			<param name="option">true</param>
+			<param name="length">2</param>
+		</setting>
+	</style>
+	
+	<!--证件类型  -->
+	<style id="PaperTypeStyle">
+		<setting>
+			<param name="option">false</param>
+			<param name="length">2</param>
+		</setting>
+	</style>
+	
+	<!--证件类型  -->
+	<style id="PaperNoStyle">
+		<setting>
+			<param name="option">false</param>
+			<param name="pattern">^[\d|\w]{1,20}$</param>
+		</setting>
+	</style>
+	
+	<!--交易密码  -->
+	<style id="TransPwdStyle">
+		<setting>
+			<param name="option">false</param>
+			<param name="pattern">^[0-9]{6}$</param>
+		</setting>
+	</style>
+	
+	<!--商户idstyle  -->
+	<style id="MerchantIdStyle">
+		<setting>
+			<param name="option">false</param>
+			<param name="pattern">^[0-9]{1,20}$</param>
+			<param name="merchantCheck">MerchantBean</param>
+		</setting>
+	</style>
+	
+	<!--商户交易时间style  -->
+	<style id="MerchantDateTimeStyle">
+		<setting>
+			<param name="option">false</param>
+			<param name="type">shorttimestamp</param>
+		</setting>
+	</style>
+	
+	<!--商户日期style  -->
+	<style id="MerchantDateStyle">
+		<setting>
+			<param name="option">false</param>
+			<param name="length">8</param>
+			<param name="type">dateV1</param>
+		</setting>
+	</style>
+
+	<style id="shorttimestampStyle">
+		<setting>
+			<param name="option">false</param>
+			<param name="type">shorttimestamp</param>
+		</setting>
+	</style>
+	
+	<style id="AcctTypeStyle">
+		<setting>
+			<param name="option">false</param>
+			<param name="length">2</param>
+			<param name="pattern">^0[1,2,5]$</param>
+		</setting>
+	</style>
+
+	<!--证书style  -->
+	<style id="CertStyle">
+		<setting>
+			<param name="option">false</param>
+			<param name="length">1,2048</param>
+		</setting>
+	</style>
+	
+	<!--交易类型style  -->
+	<style id="TransTypeStyle">
+		<setting>
+			<param name="option">true</param>
+			<param name="length">1</param>
+			<param name="pattern">^[1,2,3]$</param>
+		</setting>
+	</style>
+	
+	<!--支付类型style  -->
+	<style id="PayTypeStyle">
+		<setting>
+			<param name="option">false</param>
+			<param name="length">2</param>
+			<param name="pattern">^01|03|04|15|16$</param>
+		</setting>
+	</style>
+	
+	<style id="Obj2IntStyle">
+		<setting>
+			<param name="option">false</param>
+			<param name="type">int</param>
+		</setting>
+	</style>
+	
+	<!--短信回执密码style  -->
+	<style id="MsgPassWordStyle">
+		<setting>
+			<param name="option">false</param>
+			<param name="length">6</param>
+		</setting>
+	</style>
+	
+	<!-- 渠道样式 -->
+	<style id="ChannelIdStyle">
+		<setting>
+			<param name="option">false</param>
+			<param name="pattern">^(0[1-6])$</param>
+		</setting>
+	</style>
+</config>
+</spring:beans>

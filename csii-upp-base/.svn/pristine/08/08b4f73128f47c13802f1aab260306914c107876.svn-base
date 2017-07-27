@@ -1,0 +1,6 @@
+#==========================begin pfx证书配置=================================#
+pp.config.app.diskname=D:
+pp.config.app.homedir=${pp.config.app.diskname}\\app\\epay\\jks
+pp.pfx.path=${pp.config.app.diskname}\\app\\epay\\jks\\iifs_test.pfx
+pp.pfx.keystore.alias=zjrcu
+#==========================end pfx证书配置===================================#

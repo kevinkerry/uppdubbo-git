@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans	http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<import resource="classpath:/META-INF/config/peconfig.xml" />
+	<import resource="classpath:/META-INF/config/encrypt.xml" />
+	<import resource="classpath:/META-INF/config/common.xml" />
+	<import resource="classpath:/META-INF/config/core.xml" />
+ 	<import resource="classpath:/META-INF/config/datasource.xml" />
+ 	<import resource="classpath:/META-INF/config/ibatis-config.xml" />
+	<import resource="classpath:/META-INF/config/idFactory.xml" />
+	<import resource="classpath:/META-INF/config/chain.xml" />
+	<import resource="classpath:/META-INF/config/style.xml" />
+	<import resource="classpath:/META-INF/config/validator.xml" />
+	<import resource="classpath:/META-INF/config/template.xml" />
+	<import resource="classpath:/META-INF/config/signature.xml" />
+ 	<import resource="classpath:/META-INF/config/payment-service.xml" />
+	<import resource="classpath:/META-INF/config/payment-transport.xml" />
+	<import resource="processor.xml" />
+	<import resource="action-start.xml" />
+	<import resource="action-end.xml" />
+	<import resource="paym-template.xml" />
+ 	<import resource="event-manager.xml" />
+	<import resource="classpath:/META-INF/server/config.xml" />
+	<import resource="classpath:/META-INF/config/xmlsign-packet/xmlsign.xml" />
+	<import resource="classpath:/META-INF/config/schedule.xml" />
+	<import resource="classpath:/META-INF/transaction/paym-mgmt.xml" />
+	<import resource="classpath:/META-INF/transaction/paym-query.xml" />
+	<import resource="classpath:/META-INF/transaction/paym-mer.xml" />
+	<!--生产测试  -->
+	<import resource="classpath:/META-INF/transaction/paym-test.xml" />
+	<import resource="classpath:/META-INF/transaction/paym-post.xml" />
+	<import resource="classpath:/META-INF/transaction/syn-epay1.0.xml" />
+	<!--电信诈骗  -->
+	<import resource="classpath:/META-INF/transport/tcp/toDXZPCheck/transport.xml" />
+	
+</beans>

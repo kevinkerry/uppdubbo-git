@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spring:beans xmlns:spring="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.csii.com.cn/schema/pe"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd 
+	http://www.csii.com.cn/schema/pe http://www.csii.com.cn/schema/pe/pe-config.xsd">
+
+	<config>
+
+
+		<!-- 银医通查询接口 -->
+		<transaction id="YYTPRE" template="queryMgmtTemplate">
+			<actions>
+				<ref name="action">yinYiTongQueryAction</ref>
+			</actions>
+			<channels>
+				<channel type="http">
+					<param name="success">stream,</param>
+					<param name="error">stream,Error</param>
+				</channel>
+			</channels>
+		</transaction>
+		<action id="yinYiTongQueryAction"
+			class="com.csii.upp.paygate.action.specialpay.YinYiTongQueryAction">
+		</action>
+
+		<!-- 银医通支付接口 -->
+		<transaction id="YYTPAY" template="queryMgmtTemplate">
+			<actions>
+				<ref name="action">yinYiTongPayAction</ref>
+			</actions>
+			<channels>
+				<channel type="http">
+					<param name="success">stream,</param>
+					<param name="error">stream,Error</param>
+				</channel>
+			</channels>
+		</transaction>
+		<action id="yinYiTongPayAction" class="com.csii.upp.paygate.action.specialpay.YinYiTongPayAction">
+		</action>
+	</config>
+</spring:beans>

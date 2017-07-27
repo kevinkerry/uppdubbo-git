@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE segment SYSTEM "packetutf8.dtd">
+<segment>
+		<!-- 付款账户号 -->
+	 <xmlTag tagName="PayerAcctNbr"><String name="payerAcctNbr"/></xmlTag>
+	 <!-- 证件类型 -->
+	 <xmlTag tagName="CertType"><String name="certTyp"/></xmlTag>
+	 <!-- 证件号 -->
+	 <xmlTag tagName="CertNo"><String name="certNo"/></xmlTag>
+	 
+	 <xmlTag tagName="PayerAcctOrgDeptNbr"><String name="payerAcctOrgDeptNbr"/></xmlTag>
+	
+	 <!-- 证件类型 -->
+	 <xmlTag tagName="PayTypeCd"><String name="payType"/></xmlTag>
+	<!-- 付款账户类型 -->
+	 <xmlTag tagName="PayerCardTypCd"><String name="payerCardTypCd"/></xmlTag>
+	<!-- 手机号 -->
+	 <xmlTag tagName="PayerPhoneNo"><String name="payerPhoneNo"/></xmlTag>
+
+	<!-- 商户号 -->
+	 <xmlTag tagName="MerNbr"><String name="merNbr"/></xmlTag>
+	 <!-- 二级商户号 -->
+	 <xmlTag tagName="SubMerchantId"><String name="subMerchantId"/></xmlTag>
+	<!-- 商户流水号 -->
+	 <xmlTag tagName="MerSeqNbr"><String name="merSeqNbr"/></xmlTag>
+	
+	<!-- 交易金额 -->
+	 <xmlTag tagName="TransAmt"><String name="transAmt"/></xmlTag>
+	<!-- 商户时间戳 -->
+	 <xmlTag tagName="MerTransDateTime"><String name="merTransDateTime" /></xmlTag>
+	<!-- 币种 -->
+	 <xmlTag tagName="CurrencyCd"><String name="currencyCd"/></xmlTag>
+	
+	<!-- 付款账户机构 -->
+	 <xmlTag tagName="PayerAcctDeptNbr"><String name="payerAcctDeptNbr"/></xmlTag>
+	<!-- 付款账户名称 -->
+	<xmlTag tagName="PayerAcctName"><String name="payerAcctName"/></xmlTag>
+</segment>

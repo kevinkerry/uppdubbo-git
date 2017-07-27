@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE segment SYSTEM "packetutf8.dtd">
+	<!-- 查询核心账务日期 -->
+<segment>
+	<!-- 虚账号 -->
+	<xmlTag tagName="PayeeAcctNbr">
+		<String name="payeeAcctNbr" />
+	</xmlTag>
+	<!--交易金额 -->
+	<xmlTag tagName="TransAmt">
+		<BigDecimal name="transAmt" />
+	</xmlTag>
+	<!-- 原支付交易号 -->
+	<xmlTag tagName="OrigUpperTransNbr">
+		<String name="origSeqNbr"/>
+	</xmlTag>
+	<!-- 原支付子交易号 -->
+	<xmlTag tagName="OrigUpperSubTransNbr">
+		<String name="origSubTransNbr"/>
+	</xmlTag>
+	<!-- 备用字段 -->
+	<xmlTag tagName="Note">
+		<String name="note" defaultValue="" />
+	</xmlTag>
+</segment>

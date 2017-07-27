@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE segment SYSTEM "packetutf8.dtd">
+<segment>
+	<!-- 清算日期 -->
+	<xmlTag tagName="BDRADATE">
+		<String name="trandate" defaultValue=""/>
+	</xmlTag>
+	<!-- 交易流水号 -->
+	<xmlTag tagName="BDRASN12">
+		<String name="channelseqno" defaultValue=""/>
+	</xmlTag>
+</segment>

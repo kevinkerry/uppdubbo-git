@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE segment SYSTEM "packetutf8.dtd">
+<segment>
+	<!-- 签约号 -->
+	<xmlTag tagName="SignNbr">
+		<String name="SignNbr" defaultValue="" />
+	</xmlTag>
+	<!-- 签约类型 -->
+	<xmlTag tagName="SignTypCd">
+		<String name="SignTypCd" defaultValue="" />
+	</xmlTag>
+	<!-- 日累计限额 -->
+	<xmlTag tagName="PerDayLimit">
+		<String name="PerDayLimit" defaultValue="" />
+	</xmlTag>
+	<!-- 单笔交易限额 -->
+	<xmlTag tagName="PerTransLimit">
+		<String name="PerTransLimit" defaultValue="" />
+	</xmlTag>
+	<!-- 日累计最大限额 -->
+	<xmlTag tagName="PerDayMax">
+		<String name="PerDayMax" defaultValue="" />
+	</xmlTag>
+	<!-- 单笔交易最大限额 -->
+	<xmlTag tagName="PerTransMax">
+		<String name="PerTransMax" defaultValue="" />
+	</xmlTag>
+</segment>

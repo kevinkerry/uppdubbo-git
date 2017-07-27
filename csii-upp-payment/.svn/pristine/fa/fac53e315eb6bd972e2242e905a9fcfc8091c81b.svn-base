@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE segment SYSTEM "packetutf8.dtd">
+<segment>
+<Group name="Message">
+	<!-- 交易id -->
+	<xmlTag tagName="TransId">
+		<String name="TransId"/>
+	</xmlTag>
+	<!-- 商户交易流水号 -->
+	<xmlTag tagName="MerSeqNo">
+		<String name="OrigMerSeqNbr"/>
+	</xmlTag>
+
+	<!-- 一级商户 -->
+	<xmlTag tagName="MerchantId">
+		<String name="MerNbr"/>
+	</xmlTag>
+	<!-- 交易金额 -->
+	<xmlTag tagName="TransAmt">
+		<String name="OrigTransAmt"/>
+	</xmlTag>
+
+	<!-- 相应码-->
+	<xmlTag tagName="RespCode">
+		<String name="RespCode" />
+	</xmlTag>
+	<!-- 卡号 -->
+	<xmlTag tagName="RespMessage">
+		<String name="RespMessage"/>
+	</xmlTag>
+
+	</Group>
+</segment>

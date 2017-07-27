@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spring:beans xmlns:spring="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.csii.com.cn/schema/pe"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd 
+	http://www.csii.com.cn/schema/pe http://www.csii.com.cn/schema/pe/pe-config.xsd">
+
+	<config>
+		<!-- 他行快捷开通并支付 -->
+		<transaction id="otherQuickOpenAndPay" template="paygatePayTemplate">
+			<actions>
+				<ref name="action">OtherQuickOpenAndPayAction</ref>
+			</actions>
+			<channels>
+				<channel type="http">
+					<param name="success">bank/otherBankPay</param>
+					<param name="error">bank/quickOpenPayError</param>
+					<param name="success2">mobile/PayGateMobileOtherBankError</param>
+				</channel>
+			</channels>
+		</transaction>
+		<action id="OtherQuickOpenAndPayAction"
+			class="com.csii.upp.paygate.action.otherquickpay.OtherQuickOpenAndPayAction"></action>
+
+		<!-- 他行快捷支付 -->
+		<transaction id="otherQuickPay" template="paygatePayTemplate">
+			<actions>
+				<ref name="action">OtherQuickPayAction</ref>
+			</actions>
+			<channels>
+				<channel type="http">
+					<param name="success">bank/quickPayResult</param>
+					<param name="error">bank/quickPayError</param>
+					<param name="success1">mobile/PaygateMobileOtherBankSuccess</param>
+					<param name="success2">mobile/PayGateMobileOtherBankError</param>
+					<param name="success3">bank/quickPayResult_received</param>
+					<param name="success4">mobile/PaygateMobileOtherBank_received</param>
+				</channel>
+			</channels>
+		</transaction>
+		<action id="OtherQuickPayAction"
+			class="com.csii.upp.paygate.action.otherquickpay.OtherQuickPayAction"></action>
+
+
+		<!-- 智能支付根据手机号查询卡列表 -->
+		<transaction id="otherQuickPayPre" template="paygatePayTemplate">
+			<actions>
+				<ref name="action">otherQuickPayPreAction</ref>
+			</actions>
+			<channels>
+				<channel type="http">
+					<param name="success">bank/quickpaypre</param>
+					<param name="success1">mobile/PayGateMobileQuickPayPre</param>
+					<param name="success2">foison/foisonconfirm</param>
+					<param name="error">foison/foisonerror</param>
+				</channel>
+			</channels>
+		</transaction>
+		<action id="otherQuickPayPreAction"
+			class="com.csii.upp.paygate.action.otherquickpay.OtherQuickPayPreAction"></action>
+
+		<!-- 他行快捷支付开通状态查询 -->
+		<transaction id="qAOSPaygate" template="queryMgmtTemplate">
+			<actions>
+				<ref name="action">queryAcctOpenStatusPaygate</ref>
+			</actions>
+			<channels>
+				<channel type="http">
+					<param name="success">json,</param>
+				</channel>
+			</channels>
+		</transaction>
+		<action id="queryAcctOpenStatusPaygate"
+			class="com.csii.upp.paygate.action.otherquickpay.QueryAcctOpenStatusPaygateAction"></action>
+
+		<!-- 他行快捷支付发送短信 -->
+		<transaction id="sendMessagePaygate" template="queryMgmtTemplate">
+			<actions>
+				<ref name="action">sendMessagePaygateAction</ref>
+			</actions>
+			<channels>
+				<channel type="http">
+					<param name="success">json,</param>
+				</channel>
+			</channels>
+		</transaction>
+		<action id="sendMessagePaygateAction"
+			class="com.csii.upp.paygate.action.otherquickpay.SendMessagePaygateAction"></action>
+
+		<!--他行快捷开通并支付，订单支付状态查询 -->
+		<transaction id="qQPOS" template="queryMgmtTemplate">
+			<actions>
+				<ref name="action">QueryQuickPayOrderStatusAction</ref>
+			</actions>
+			<channels>
+				<channel type="http">
+					<param name="error">bank/quickPayError</param>
+					<param name="success">bank/quickPayResult</param>
+					<param name="success1">mobile/PaygateMobileOtherBankSuccess</param>
+					<param name="success2">mobile/PayGateMobileOtherBankError</param>
+					<param name="success3">bank/quickPayResult_received</param>
+					<param name="success4">mobile/PaygateMobileOtherBank_received</param>
+				</channel>
+			</channels>
+		</transaction>
+		<action id="QueryQuickPayOrderStatusAction"
+			class="com.csii.upp.paygate.action.otherquickpay.QueryQuickPayOrderStatusAction">
+		</action>
+	</config>
+</spring:beans>
+

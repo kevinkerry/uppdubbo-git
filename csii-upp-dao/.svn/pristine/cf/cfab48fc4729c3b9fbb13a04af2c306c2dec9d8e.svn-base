@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="BATCHFEEPROFITDAYSETTLEEXTEND">
+
+	<!-- 将商户结算表记录转移到历史表中 -->
+	<insert id="transferMerchantSettExtTmpToHistory" parameterClass="com.csii.upp.dto.generate.Batchfeeprofitdaysettle">
+		<![CDATA[
+		INSERT INTO BATCHFEEPROFITDAYSETTLEHIST 
+		(SETTLESEQNBR, TRANSDATE, CLEARDATE, TRANSTIME, SETTLESTATUS,
+		MERNBR, CUSTCIFNBR, PAYERACCTNBR, PAYERACCTTYPCD, PAYERACCTDEPTNBR,
+		PAYERACCTNAME, PAYEEACCTNBR, PAYEEACCTDEPTNBR, PAYEEACCTTYPCD,
+		PAYEEACCTNAME, PAYERACCTKIND, PAYEEACCTKIND, PAYERCARDTYPCD,
+		PAYEECARDTYPCD, TRANSAMT, DEPARTMENTNBR, DATELASTMAINT)
+		VALUES(
+		#settleseqnbr#,#transdate#,#cleardate#,#transtime#,
+		#settlestatus#,#mernbr#,#custcifnbr#,#payeracctnbr#,
+		#payeraccttypcd#,#payeracctdeptnbr#,#payeracctname#,
+		#payeeacctnbr#,#payeeacctdeptnbr#,#payeeaccttypcd#,
+		#payeeacctname#,#payeracctkind#,#payeeacctkind#,#payercardtypcd#,
+		#payeecardtypcd#,#transamt#,#departmentnbr#,#datelastmaint#
+		)
+		]]>
+	</insert>
+
+	<!-- 删除商户结算表指定清算日期之前的记录 -->
+	<delete id="deleteMerchantSettExtTmpBeforeDate" parameterClass="HashMap">
+		<![CDATA[
+		    DELETE FROM
+		    	BATCHFEEPROFITDAYSETTLE 
+		   	WHERE 
+		   		CLEARDATE <= #ClearDate# 
+		   	AND 
+		   		SETTLESTATUS = '1'
+	   	]]>
+	</delete>
+
+	<!-- 统计汇总 -->
+	<resultMap id="merchantSettCollectMap" class="java.util.HashMap">
+		<result property="TotalCount" column="TotalCount" />
+		<result property="TransAmount" column="TotalAmount" />
+		<result property="ClearDate" column="CLEARDATE" />
+		<result property="PayAcctNo" column="PAYERACCTNBR" />
+		<result property="PayAcctType" column="PAYERACCTTYPCD" />
+		<result property="PayAcctKind" column="PAYERACCTKIND" />
+		<result property="RcvAcctNo" column="PAYEEACCTNBR" />
+		<result property="RcvAcctType" column="PAYEEACCTTYPCD" />
+		<result property="RcvAcctKind" column="PAYEEACCTKIND" />
+	</resultMap>
+	<select id="queryMerchantSettForExt" resultMap="merchantSettCollectMap"
+		parameterClass="HashMap">
+		SELECT
+		COUNT(PAYERACCTNBR) AS TotalCount,
+		SUM(TRANSAMT)
+		AS TotalAmount,
+		CLEARDATE,
+		PAYERACCTNBR,
+		PAYERACCTTYPCD,
+		PAYERACCTKIND,
+		PAYEEACCTNBR,
+		PAYEEACCTTYPCD,
+		PAYEEACCTKIND
+		FROM
+		BATCHFEEPROFITDAYSETTLE
+		WHERE
+		MERNBR = #MerNbr#
+		AND
+		CLEARDATE=#ClearDate#
+		AND
+		SETTLESTATUS =
+		#SettleStatus#
+		GROUP BY
+		CLEARDATE,
+		PAYERACCTNBR,
+		PAYERACCTTYPCD,
+		PAYERACCTKIND,
+		PAYEEACCTNBR,
+		PAYEEACCTTYPCD,
+		PAYEEACCTKIND
+	</select>
+
+	<select id="getDateFromBatchFeeProfitDaySettle" parameterClass="java.util.HashMap"
+		resultClass="com.csii.upp.dto.generate.Batchmerdaysettle">
+	<![CDATA[
+	select a.* from BatchFeeProfitDaySettle a,meracctinfo b where   a.mernbr = b.mernbr and a.cleardate =#ClearDate# and b.merplatformnbr in
+	( select merplatformnbr from meracctinfo where mernbr=#merNbr#)
+	]]>
+	</select>
+</sqlMap>

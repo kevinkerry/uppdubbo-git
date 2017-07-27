@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spring:beans xmlns:spring="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.csii.com.cn/schema/pe"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	 http://www.springframework.org/schema/beans/spring-beans.xsd 
+	 http://www.springframework.org/schema/context 
+     http://www.springframework.org/schema/context/spring-context-4.0.xsd
+	 http://www.csii.com.cn/schema/pe 
+	 http://www.csii.com.cn/schema/pe/pe-config.xsd">
+
+<config>
+	<sharedMap id="transactionIdmapping">
+		<map name="sourceMap">
+			<!-- 资金类交易码映射 -->
+			<param name="UPP50001">WechatPay</param><!--微信刷卡支付 -->
+			<param name="UPP50002">WechatQrCodePay</param><!--微信二维码统一下单 -->
+			<param name="UPP50003">WechatJsApiPay</param><!--微信公众号统一下单 -->
+			<param name="UPP50004">GetCodeUrl</param><!--获取codeurl -->
+			<param name="UPP50005">CodeCheckTimeOut</param><!--二维码超时检查 -->
+		</map>
+	</sharedMap>
+</config>
+
+</spring:beans>

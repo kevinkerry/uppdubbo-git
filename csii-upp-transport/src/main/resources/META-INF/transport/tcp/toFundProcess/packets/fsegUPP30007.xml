@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE segment SYSTEM "packetutf8.dtd">
+<!-- 虚账户转账交易 -->
+<segment>
+	<!-- 卡账号 -->
+	<xmlTag tagName="PayerAcctNbr">
+		<String name="payerAcctNbr" />
+	</xmlTag>
+	<!-- 卡类型 -->
+	<xmlTag tagName="PayerCardTypCd">
+		<String name="payerCardTypCd" />
+	</xmlTag>
+	<!-- 付款账户类型 -->
+	<xmlTag tagName="PayerAcctTypCd">
+		<String name="payerAcctTypCd" />
+	</xmlTag>
+	<!--付款账户类型 -->
+	<xmlTag tagName="PayerAcctKind">
+		<String name="payerAcctKind" />
+	</xmlTag>
+	<!--付款机构号 -->
+	<xmlTag tagName="PayerAcctDeptNbr">
+		<String name="payerAcctDeptNbr" />
+	</xmlTag>
+	<!--付款账户名称 -->
+	<xmlTag tagName="PayerAcctName">
+		<String name="payerAcctName" />
+	</xmlTag>
+	<!--付款机构号 -->
+	<!-- 付款密码 -->
+	<xmlTag tagName="PayerCardPwd">
+		<String name="payerCardPwd" />
+	</xmlTag>
+	<!--付款证件号码-->
+	<xmlTag tagName="PayerIdNbr">
+		<String name="payerIdNbr" />
+	</xmlTag>
+	<!-- 付款证件类型 -->
+	<xmlTag tagName="PayerIdTypCd">
+		<String name="payerIdTypCd" />
+	</xmlTag>
+	
+	<!--收款卡类型 -->
+	<xmlTag tagName="PayeeCardTypCd">
+		<String name="payeeCardTypCd" />
+	</xmlTag>
+	<!--收款账户类型 -->
+	<xmlTag tagName="PayeeAcctTypCd">
+		<String name="payeeAcctTypCd" />
+	</xmlTag>
+	<!--收款账户性质 -->
+	<xmlTag tagName="PayeeAcctKind">
+		<String name="payeeAcctKind" />
+	</xmlTag>
+	<!--收款人手机号 -->
+	<xmlTag tagName="PayeePhoneNo">
+		<String name="payeePhoneNo" />
+	</xmlTag>
+	<!-- 收款人账号 -->
+	<xmlTag tagName="PayeeAcctNbr">
+		<String name="payeeAcctNbr" defaultValue="" />
+	</xmlTag>
+	<!--收款行号 -->
+	<xmlTag tagName="PayeeBankNbr">
+		<String name="payeeBankNbr" />
+	</xmlTag>
+	<!-- 收款账号姓名 -->
+	<xmlTag tagName="PayeeAcctName">
+		<String name="payeeAcctName" defaultValue="" />
+	</xmlTag>
+	<!-- 收款人账号 -->
+		<!-- 收款人信用卡有效期 -->
+	<xmlTag tagName="PayeeCardExpiredDate">
+		<String name="payeeCardExpiredDate" defaultValue="" />
+	</xmlTag>
+	<!-- 收款人信用卡cvv -->
+	<xmlTag tagName="PayeeCardCvv2">
+		<String name="payeeCardCvv2" defaultValue="" />
+	</xmlTag>
+	<!-- 币种 -->
+	<xmlTag tagName="CurrencyCd">
+		<String name="currencyCd" defaultValue="" />
+	</xmlTag>
+	<!-- 对账分类编号 -->
+	<xmlTag tagName="CheckNumber">
+		<String name="checkNumber" />
+	</xmlTag>
+	<!-- 处理方式 -->
+	<xmlTag tagName="ProcessMode">
+		<String name="processMode"/>
+	</xmlTag>
+	<!-- 交易金额 -->
+	<xmlTag tagName="TransAmt">
+		<BigDecimal name="transAmt" />
+	</xmlTag>
+	<!-- 支付方式 贷记卡支付用-->
+	<xmlTag tagName="PayTypCd">
+		<String name="payTypCd" />
+	</xmlTag>
+	<!-- 转账机构号 -->
+	<xmlTag tagName="TranserDeptNbr">
+		<String name="transerDeptNbr" />
+	</xmlTag>
+	<!-- 备用字段 -->
+	<xmlTag tagName="Note">
+		<String name="note" defaultValue="" />
+	</xmlTag>
+</segment>

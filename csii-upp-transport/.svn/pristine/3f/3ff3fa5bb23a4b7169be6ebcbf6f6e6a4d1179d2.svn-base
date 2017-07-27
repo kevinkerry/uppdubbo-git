@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE outboundPacket SYSTEM "packetutf8.dtd">
+<outboundPacket formatPrefix="f" nameOfBodyLength="BodyLength">
+	<segment>
+		<fixNumber name="BodyLength" length="8" add="90" encoding="GB2312" filling="0"/><!-- 报文长度 -->
+		<fixString name="transCode" length="20" defaultValue=""/><!-- 交易代码 -->
+		<fixString name="FileSender" length="4" defaultValue="3210"/><!-- 报文发起方 -->
+		<fixString name="receiver" length="4" /><!-- 报文接收方 核心:3101  信用卡 :3901 -->
+		<fixString name="transNbr" length="32"/><!-- 报文标志号-->
+		<fixDate name="transDate" length="8" pattern="yyyyMMdd"/><!-- 交易日期 -->
+		<fixDate name="transTime" length="6" pattern="HHmmss"/><!-- 交易时间-->
+		<fixString name="Remained" length="8"/><!-- 保留字段 -->
+	</segment>
+	<include include="XmlHead" />
+</outboundPacket>

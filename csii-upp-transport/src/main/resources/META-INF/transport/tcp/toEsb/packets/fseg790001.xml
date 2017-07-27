@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE segment SYSTEM "packetutf8.dtd">
+<!-- 支付跨行转账 -->
+<segment>
+	<!-- 清算途径 -->
+	<xmlTag tagName="CLEARBZ">
+		<String name="hvbepsFlag" defaultValue=""/>
+	</xmlTag>
+	<!-- 交易种类 -->
+	<xmlTag tagName="TRANSBZ">
+		<String name="TRANSBZ" defaultValue="2"/>
+	</xmlTag>
+	<!--业务类型-->
+	<xmlTag tagName="BUSIBZ">
+		<String name="BUSIBZ" defaultValue="A100"/>
+	</xmlTag>
+	<!--业务种类 -->
+	<xmlTag tagName="BUSICD">
+		<String name="BUSICD" defaultValue="02103"/>
+	</xmlTag>
+	<!--付款账号类型 -->
+	<xmlTag tagName="BWRAAC19BZ">
+		<String name="BWRAAC19BZ" defaultValue="2"/>
+	</xmlTag>
+	<!--付款账号 -->
+	<xmlTag tagName="BWRAAC19">
+		<String name="payerAcctNbr" defaultValue=""/>
+	</xmlTag>
+	<!--付款账号名称 -->
+	<xmlTag tagName="BWRAACNM">
+		<String name="payerAcctName" defaultValue=""/>
+	</xmlTag>
+	<!-- 付款人地址 -->
+	<xmlTag tagName="BWRADZ">
+		<String name="BWRADZ" defaultValue="" />
+	</xmlTag>
+	<!-- 收款行号 -->
+	<xmlTag tagName="BWRBDEPT">
+		<String name="payeebanknbr" defaultValue="" />
+	</xmlTag>
+	<!-- 收款账号 -->
+	<xmlTag tagName="BWRBAC22">
+		<String name="payeeAcctNbr" defaultValue=""/>
+	</xmlTag>
+	<!--收款账号名称 -->
+	<xmlTag tagName="BWRBACNM">
+		<String name="payeeAcctName" defaultValue=""/>
+	</xmlTag>
+	<!--收款人地址 -->
+	<xmlTag tagName="BWRBDZ">
+		<String name="BWRBDZ" defaultValue=""/>
+	</xmlTag>
+	<!-- 币种 -->
+	<xmlTag tagName="BWRACCYC">
+		<String name="currencyCd" defaultValue="CNY" />
+	</xmlTag>
+	<!-- 交易金额 -->
+	<xmlTag tagName="BWRAAMT">
+		<String name="transAmt" defaultValue="" />
+	</xmlTag>
+	<!-- 钞汇标志 -->
+	<xmlTag tagName="BWRACHBZ">
+		<String name="BWRACHBZ" defaultValue="1"/>
+	</xmlTag>
+	<!--汇款方式 -->
+	<xmlTag tagName="BWRAHKBZ">
+		<String name="BWRAHKBZ" defaultValue="0"/>
+	</xmlTag>
+	<!--凭证种类 -->
+	<xmlTag tagName="BWRAPZBZ">
+		<String name="BWRAPZBZ" defaultValue=""/>
+	</xmlTag>
+	<!-- 凭证日期 -->
+	<xmlTag tagName="BWRAPZDT">
+		<String name="BWRAPZDT" defaultValue="" />
+	</xmlTag>
+	<!-- 凭证号 -->
+	<xmlTag tagName="BWRAPZAC">
+		<String name="BWRAPZAC" defaultValue="" />
+	</xmlTag>
+	<!--附言 -->
+	<xmlTag tagName="MSGEXT">
+		<String name="msgExt" defaultValue=""/>
+	</xmlTag>
+	<!-- 付款账号开户机构号 -->
+	<xmlTag tagName="BWRADEPT">
+		<String name="BWRADEPT" defaultValue="805020" />
+	</xmlTag>
+	<!-- 验密标识 -->
+	<xmlTag tagName="PASSWDFLAG">
+		<String name="checkPwdFlag" defaultValue="" />
+	</xmlTag>
+	<!-- 密码 -->
+	<xmlTag tagName="PASSWD">
+		<String name="payerCardPwd" defaultValue=""/>
+	</xmlTag>
+	<!--收费标志 -->
+	<xmlTag tagName="BWRAFEEBZ">
+		<String name="BWRAFEEBZ" defaultValue="0"/>
+	</xmlTag>
+	<!--客户选集中收费标志 -->
+	<xmlTag tagName="BWRAFEEJZBZ">
+		<String name="BWRAFEEJZBZ" defaultValue="0"/>
+	</xmlTag>
+	<!-- 客户类型-->
+	<xmlTag tagName="BWRACUSBZ">
+		<String name="BWRACUSBZ" defaultValue="0" />
+	</xmlTag>
+	<!-- 附加数据类型 -->
+	<xmlTag tagName="BWRADABZ">
+		<String name="BWRADABZ" defaultValue="" />
+	</xmlTag>
+	<!-- 收费记录数 -->
+	<xmlTag tagName="BWRAFEECT">
+		<String name="BWRAFEECT" defaultValue=""/>
+	</xmlTag>
+	<!--收费记录体子格式 -->
+	<xmlTag tagName="BWRAFEEGS">
+		<String name="BWRAFEEGS" defaultValue=""/>
+	</xmlTag>
+	<!--附加数据 -->
+	<xmlTag tagName="DATAEXT">
+		<String name="DATAEXT" defaultValue=""/>
+	</xmlTag>
+	<!-- 备用字段 -->
+	<xmlTag tagName="BWRABAKE">
+		<String name="BWRABAKE" defaultValue="" />
+	</xmlTag>
+	<!-- 备用字段2 -->
+	<xmlTag tagName="BWRABAKE2">
+		<String name="BWRABAKE2" defaultValue="" />
+	</xmlTag>
+</segment>

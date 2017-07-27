@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE segment SYSTEM "packetutf8.dtd">
+<segment>
+	<!-- 清算日期 -->
+	<xmlTag tagName="BWRADATE">
+		<String name="clearDate" defaultValue=""/>
+	</xmlTag>
+	<!-- 分析渠道代码 -->
+	<xmlTag tagName="BWRAQDLB">
+		<String name="channelId" defaultValue="ND" />
+	</xmlTag>
+	<!--查询种类 1借记卡，2信用卡 -->
+	<xmlTag tagName="BWRAFLAG">
+		<String name="checkFileType" defaultValue="1"/>
+	</xmlTag>
+	<!-- 渠道类别 A-网银支付 C-互联网金融支付(旧) H-互联网金融支付(新) -->
+	<xmlTag tagName="BWRACNCD">
+		<String name="bwracncd" defaultValue="H" />
+	</xmlTag>
+	<xmlTag tagName="BWRABAKE">
+		<String name="bwrabake" defaultValue="" />
+	</xmlTag>
+	<xmlTag tagName="checkapplynbr">
+		<String name="checkapplynbr" defaultValue="" />
+	</xmlTag>
+	<xmlTag tagName="filename">
+		<String name="filename" defaultValue="" />
+	</xmlTag>
+	<xmlTag tagName="CheckDataFlag">
+		<String name="CheckDataFlag" defaultValue="" />
+	</xmlTag>
+</segment>

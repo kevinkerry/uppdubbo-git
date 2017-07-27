@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE segment SYSTEM "packetutf8.dtd">
+<segment>
+	<!-- 他行快捷支付开通状态查询 -->
+	<xmlTag tagName="OpenStatus">
+		<String name="OpenStatus"/>
+	</xmlTag>
+	<xmlTag tagName="PayerCardTypCd">
+		<String name="PayerCardTypCd"/>
+	</xmlTag>
+	<xmlTag tagName="CardBinName">
+		<String name="CardBinName"/>
+	</xmlTag>
+	<xmlTag tagName="InnerCardFlag">
+		<String name="InnerCardFlag"/>
+	</xmlTag>
+</segment>

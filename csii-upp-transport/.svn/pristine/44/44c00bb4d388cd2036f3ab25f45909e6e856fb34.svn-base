@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE segment SYSTEM "packetutf8.dtd">
+	<!-- 借记卡卡信息查询 -->
+<segment>
+	<!-- 币种 -->
+	<xmlTag tagName="BWRACCYC">
+		<String name="currencyCd" defaultValue=""/>
+	</xmlTag>
+	<!-- 钞汇标志 -->
+	<xmlTag tagName="BWRACHSX">
+		<String name="cashFlag" defaultValue=""/>
+	</xmlTag>
+	<!-- 卡账号 -->
+	<xmlTag tagName="BWRAAC19">
+		<String name="payerAcctNbr" defaultValue=""/>
+	</xmlTag>
+</segment>

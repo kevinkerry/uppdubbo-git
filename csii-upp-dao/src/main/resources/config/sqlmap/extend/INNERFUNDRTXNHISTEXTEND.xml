@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="INNERFUNDRTXNHISTEXTEND">
+	<select id="getOrigInnerRtxnNbr" parameterClass="java.lang.String" resultClass="java.lang.String">
+		select innerrtxnnbr from InnerFundRtxnHist where OverallRtxnnbr = (select
+		OverallRtxnnbr from InnerFundRtxnHist where innerrtxnnbr=#innerrtxnnbr#)
+		and innerrtxnnbr != #innerrtxnnbr#
+	</select>
+</sqlMap>

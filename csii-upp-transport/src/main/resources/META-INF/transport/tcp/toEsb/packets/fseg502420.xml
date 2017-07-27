@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE segment SYSTEM "packetutf8.dtd">
+	<!-- 担保账入商户账 -->
+<segment>
+	<!-- 转出卡号 -->
+	<xmlTag tagName="BWRAAC22">
+		<String name="payerAcctnbr" defaultValue="" />
+	</xmlTag>
+	<!-- 转入账号 -->
+	<xmlTag tagName="BWRBAC22">
+		<String name="payeeAcctnbr" defaultValue="" />
+	</xmlTag>
+	<!-- 币种 -->
+	<xmlTag tagName="BWRACCYC">
+		<String name="currencyCd" defaultValue="" />
+	</xmlTag>
+	<!-- 对账分类编号 -->
+	<xmlTag tagName="BWRADZBH">
+		<String name="checkNumber" defaultValue="" />
+	</xmlTag>
+	<!--支付总金额 -->
+	<xmlTag tagName="BWRAAMT">
+		<String name="totalAmt" defaultValue="" />
+	</xmlTag>
+	<!--商户编号  -->
+	<xmlTag tagName="BWRASHCD">
+		<String name="BWRASHCD" defaultValue="999999999999992" />
+	</xmlTag>
+	<!-- 备用字段 -->
+	<xmlTag tagName="BWMABAKE">
+		<String name="note" defaultValue="" />
+	</xmlTag>
+</segment>

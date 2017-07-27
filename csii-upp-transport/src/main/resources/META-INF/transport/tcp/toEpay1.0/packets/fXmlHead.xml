@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Group SYSTEM "packetutf8.dtd">
+<Group name="Message"
+	xmlHead="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;">
+	<Group name="Head">
+		<xmlTag tagName="TransId">
+			<String name="TransId" defaultValue=""></String><!-- 交易ID　-->
+		</xmlTag>
+		<xmlTag tagName="TransType">
+			<String name="TransType" defaultValue=""></String><!-- 交易类型 -->
+		</xmlTag>
+		<xmlTag tagName="TransChannelId">
+			<String name="TransChannelId" defaultValue=""></String><!-- 交易渠道-->
+		</xmlTag>
+	</Group>
+	<Group name="Body">
+		<include keyName="TransId" />
+	</Group>
+</Group>

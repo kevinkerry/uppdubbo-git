@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE segment SYSTEM "packetutf8.dtd">
+<segment>
+
+	<!-- 手机号 -->
+	<xmlTag tagName="PayerPhoneNo">
+		<String name="PayerPhoneNo" defaultValue="" />
+	</xmlTag>
+	<!-- 签约状态-->
+	<xmlTag tagName="SignStatus">
+		<String name="SignStatus" />
+	</xmlTag>
+	<!-- 付款账号 -->
+	<xmlTag tagName="PayerAcctNbr">
+		<String name="PayerAcctNbr" defaultValue="" />
+	</xmlTag>
+	<!-- 签约号 -->
+	<xmlTag tagName="SignNbr">
+		<String name="SignNbr" defaultValue="" />
+	</xmlTag>
+	<!-- 签约类型 -->
+	<xmlTag tagName="SignTypCd">
+		<String name="SignTypCd" defaultValue="" />
+	</xmlTag>
+	<!-- 卡类型 -->
+	<xmlTag tagName="PayerCardTypCd">
+		<String name="PayerCardTypCd" defaultValue="" />
+	</xmlTag>
+</segment>

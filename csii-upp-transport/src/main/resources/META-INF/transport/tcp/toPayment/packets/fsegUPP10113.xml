@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE segment SYSTEM "packetutf8.dtd">
+<segment>
+	<!-- 小米付客户号 -->
+	 <xmlTag tagName="CifNo">
+	 	<String name="cifNo"/>
+	 </xmlTag>
+	 
+	 <xmlTag tagName="Term">
+	 	<String name="term"/>
+	 </xmlTag>
+
+	<xmlTag tagName="OrderNbr">
+		<String name="orderNbr" defaultValue="" />
+	</xmlTag>
+	
+	<!-- 付款电子账户号 -->
+	 <xmlTag tagName="PayerAcctNbr"><String name="payerAcctNbr"/></xmlTag>
+	<!-- 付款账户类型 -->
+	 <xmlTag tagName="PayerCardTypCd"><String name="payerCardTypCd" defaultValue="0"/></xmlTag>
+	<!-- 手机号 -->
+	 <xmlTag tagName="PayerPhoneNo"><String name="payerPhoneNo"/></xmlTag>
+	<!-- 商户号 -->
+	 <xmlTag tagName="MerNbr"><String name="merNbr"/></xmlTag>
+	<!-- 商户流水号 -->
+	 <xmlTag tagName="MerSeqNbr"><String name="merSeqNbr"/></xmlTag>
+	<!-- 交易金额 -->
+	 <xmlTag tagName="TransAmt"><String name="transAmt"/></xmlTag>
+	<!-- 商户时间戳 -->
+	 <xmlTag tagName="MerTransDateTime"><String name="merTransDateTime" /></xmlTag>
+	<!-- 币种 -->
+	 <xmlTag tagName="CurrencyCd"><String name="currencyCd"/></xmlTag>
+	<!-- 附加信息 -->
+	 <xmlTag tagName="MsgExt"><String name="msgExt"/></xmlTag>
+	<!-- 付款账户机构 -->
+	 <xmlTag tagName="PayerAcctDeptNbr"><String name="payerAcctDeptNbr"/></xmlTag>
+	<!-- 付款账户名称 -->
+	<xmlTag tagName="PayerAcctName"><String name="payerAcctName"/></xmlTag>
+	 <!-- 行社号-->
+	 <xmlTag tagName="BranchNo"><String name="branchNo" /></xmlTag>
+	 <!-- 子商户交易列表 -->
+	 <xmlTag tagName="MerTransList">
+	    <idxField name="merTransList" maxLoop="9999999">
+			<Group name="MerTransDetail">
+		   		<xmlTag><String name="SubMerchantId" /></xmlTag>
+	   		    <xmlTag><String name="SubMerSeqNo" /></xmlTag>
+	   		    <xmlTag><String name="ProductInfo" /></xmlTag>
+	   		    <xmlTag><String name="SubTransAmt" /></xmlTag>
+	   		    <xmlTag><String name="SubMerDateTime" /></xmlTag>
+			</Group>
+		</idxField>
+	</xmlTag> 
+</segment>

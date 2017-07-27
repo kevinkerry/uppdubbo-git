@@ -1,0 +1,4 @@
+Message=java.util.HashMap
+Head=com.csii.pe.transform.stream.xml.Merge2ParentMap
+Body=com.csii.pe.transform.stream.xml.Merge2ParentMap
+list=java.util.ArrayList

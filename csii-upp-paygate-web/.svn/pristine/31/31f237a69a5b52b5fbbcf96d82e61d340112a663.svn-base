@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spring:beans xmlns:spring="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.csii.com.cn/schema/pe"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd 
+	http://www.csii.com.cn/schema/pe http://www.csii.com.cn/schema/pe/pe-config.xsd">
+
+	<config>
+		<action id="parsePlainAction"
+			class="com.csii.upp.paygate.action.ParsePlainAction">
+			<ref name="transformerFactory">xmlParserTransformerFactory</ref>
+			<param name="parserResolverName">xmlPacketParser</param>
+		</action>
+		
+		<action id="lowerCaseKeyAction"
+			class="com.csii.upp.paygate.action.LowerCaseKeyAction">
+		</action>
+		
+		
+		<!-- 空模板 -->
+		<template id="emptyTemplate" class="com.csii.pe.template.EmptyTemplate"
+			chain="emptyChain">
+		</template>
+
+		<!-- 支付模板 -->
+		<template id="paygatePayTemplate" class="com.csii.upp.template.BaseUppTemplate"
+			chain="defaultChain">
+			<actions>
+				<ref name="parsePlain">parsePlainAction</ref>
+				<ref name="lowerCaseKey">lowerCaseKeyAction</ref>
+				<ref name="action">placeholderAction</ref>
+			</actions>
+		</template>
+
+		<template id="queryMgmtTemplate" class="com.csii.upp.template.BaseUppTemplate"
+			chain="defaultChain">
+			<actions>
+				<ref name="lowerCaseKey">lowerCaseKeyAction</ref>
+				<ref name="action">placeholderAction</ref>
+			</actions>
+		</template>
+	</config>
+</spring:beans>

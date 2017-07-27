@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spring:beans xmlns:spring="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.csii.com.cn/schema/pe"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	 http://www.springframework.org/schema/beans/spring-beans.xsd 
+	 http://www.springframework.org/schema/context 
+     http://www.springframework.org/schema/context/spring-context-4.0.xsd
+	 http://www.csii.com.cn/schema/pe 
+	 http://www.csii.com.cn/schema/pe/pe-config.xsd">
+<config>
+
+	<bean id="wxUtil" class="com.csii.upp.qrcodeplatform.action.util.WxUtil">
+		<param name="userProxy">${pp.weixin.useProxy}</param>
+		<param name="proxyHost">${pp.weixin.proxyHost}</param>
+		<param name="proxyPort">${pp.weixin.proxyPort}</param>
+		<param name="key">${pp.weixin.tenPaykey}</param>
+	</bean>
+	
+	<!-- 微信刷卡支付 -->
+	<transaction id="WechatPay" template="qrCodeTemplate">
+		<actions>
+			<ref name="payaction">WechatPayAction</ref>
+		</actions>
+	</transaction>
+	<action id="WechatPayAction" class="com.csii.upp.qrcodeplatform.action.pay.WeChatPay">
+		<ref name="wxUtil">wxUtil</ref>
+		<param name="url">${pp.weixin.micropay.url}</param>
+		<param name="queryurl">${pp.weixin.orderquery.url}</param>
+	</action>
+	
+	<!-- 微信扫码支付下单生成二维码 -->
+	<transaction id="WechatQrCodePay" template="qrCodeTemplate">
+		<actions>
+			<ref name="payaction">WechatQrCodePayAction</ref>
+		</actions>
+	</transaction>
+	<action id="WechatQrCodePayAction" class="com.csii.upp.qrcodeplatform.action.pay.WechatQrCodePay">
+		<ref name="wxUtil">wxUtil</ref>
+		<param name="appid">${tenpayQRcode.appId}</param>
+		<param name="mch_id">${tenpayQRcode.merchentId}</param>
+		<param name="sub_mch_id">${tenpayQRcode.sub_mch_id}</param>
+		<param name="url">${pp.weixin.unifiedorder.url}</param>
+		<param name="notifyUrl">${pp.notifyUrl}</param>
+	</action>
+	
+	<!--通过http请求，微信jsapi公众号支付  -->
+	<transaction id="WechatJsApiPay" template="qrCodeTemplate">
+		<actions>
+			<ref name="payaction">WechatJsApiPayAction</ref>
+		</actions>
+	</transaction>
+	<action id="WechatJsApiPayAction" class="com.csii.upp.qrcodeplatform.action.pay.WechatJsApiPayAction">
+		<ref name="wxUtil">wxUtil</ref>
+		<param name="appid">${tenpayQRcode.appId}</param>
+		<param name="appsecret">${tenpayQRcode.appSecret}</param>
+		<param name="mch_id">${tenpayQRcode.merchentId}</param>
+		<param name="sub_mch_id">${tenpayQRcode.sub_mch_id}</param>
+		<param name="url">${pp.weixin.unifiedorder.url}</param>
+		<param name="notifyUrl">${pp.notifyUrl}</param>
+	</action>
+	
+	<!--获取codeurl  -->
+	<transaction id="GetCodeUrl" template="qrCodeQueryTemplate">
+		<actions>
+			<ref name="queryaction">GetCodeUrlAction</ref>
+		</actions>
+	</transaction>
+	<action id="GetCodeUrlAction" class="com.csii.upp.qrcodeplatform.action.pay.GetCodeUrlAction">
+	</action>
+	
+	<!--检查codeurl是否超时 -->
+	<transaction id="CodeCheckTimeOut" template="qrCodeQueryTemplate">
+		<actions>
+			<ref name="queryaction">CodeCheckTimeOutAction</ref>
+		</actions>
+	</transaction>
+	<action id="CodeCheckTimeOutAction" class="com.csii.upp.qrcodeplatform.action.pay.CodeCheckTimeOutAction">
+	</action>
+	
+</config>
+
+</spring:beans>

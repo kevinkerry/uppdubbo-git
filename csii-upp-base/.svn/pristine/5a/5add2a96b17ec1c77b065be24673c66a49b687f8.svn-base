@@ -1,0 +1,185 @@
+package com.csii.upp.converter;
+
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+import javax.xml.namespace.QName;
+import javax.xml.stream.XMLStreamException;
+import javax.xml.stream.XMLStreamReader;
+import javax.xml.stream.XMLStreamWriter;
+
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.apache.tuscany.sdo.api.SDOUtil;
+import org.apache.tuscany.sdo.api.XMLStreamHelper;
+import org.apache.tuscany.sdo.util.resource.XMLDocumentStreamReader;
+import org.apache.ws.commons.schema.XmlSchema;
+import org.springframework.xml.xsd.XsdSchema;
+
+import com.csii.pe.channel.ws.databinding.sdo.SdoObjectFactory;
+import com.csii.pe.channel.ws.support.CommonsXsdSchema1;
+
+import commonj.sdo11.DataObject;
+import commonj.sdo11.Property;
+import commonj.sdo11.Type;
+import commonj.sdo11.helper.HelperContext;
+import commonj.sdo11.helper.XMLDocument;
+import commonj.sdo11.helper.XSDHelper;
+
+public class SdoUtils
+{
+  private static ClassLoader cl = SdoUtils.class.getClassLoader();
+
+  private static Log logger = LogFactory.getLog(SdoUtils.class);
+  private static HelperContext DEFAULT_CONTEXT;
+
+  private static ClassLoader updateTccl()
+  {
+    Thread me = Thread.currentThread();
+    ClassLoader cur = me.getContextClassLoader();
+    me.setContextClassLoader(cl);
+    return cur;
+  }
+
+  private static void restoreTccl(ClassLoader cl) {
+    Thread.currentThread().setContextClassLoader(cl);
+  }
+
+  static HelperContext getContext(String scope, boolean create)
+  {
+    return DEFAULT_CONTEXT;
+  }
+
+  public static DataObject createDataObjectDirectly(String scope, QName type)
+  {
+    ClassLoader cl = updateTccl();
+    try {
+      DataObject dso = getContext(scope, false).getDataFactory().create(type.getNamespaceURI(), type
+        .getLocalPart());
+      return dso;
+    }
+    catch (Exception e)
+    {
+      throw new IllegalArgumentException("No DataObject for {" + type.getNamespaceURI() + "}" + type
+        .getLocalPart(), e);
+    } finally {
+      restoreTccl(cl);
+    }
+  }
+
+  public static void save(String scope, QName element, DataObject obj, XMLStreamWriter writer) throws XMLStreamException
+  {
+    ClassLoader cl = updateTccl();
+    try {
+      if (obj == null) {
+        return;
+      }
+      HelperContext ctx = getContext(scope, false);
+      XMLDocument doc = ctx.getXMLHelper().createDocument(obj, element.getNamespaceURI(), element.getLocalPart());
+
+      XMLStreamHelper xml = SDOUtil.createXMLStreamHelper(ctx);
+
+      xml.save(doc, writer);
+    }
+    catch (RuntimeException e) {
+      throw e;
+    }
+    catch (Error e) {
+      throw e;
+    } finally {
+      restoreTccl(cl);
+    }
+  }
+
+  public static DataObject load(String scope, XMLStreamReader reader) throws XMLStreamException {
+    ClassLoader cl = updateTccl();
+    try
+    {
+      reader = new XMLDocumentStreamReader(reader);
+
+      HelperContext ctx = getContext(scope, false);
+      XMLStreamHelper xml = SDOUtil.createXMLStreamHelper(ctx);
+
+      XMLDocument xmlDoc = xml.load(reader);
+      return xmlDoc.getRootObject();
+    }
+    catch (RuntimeException e) {
+      throw e;
+    }
+    catch (Error e) {
+      throw e;
+    } finally {
+      restoreTccl(cl);
+    }
+  }
+
+  public static DataObject createDataTypeWrapper(Class<?> type, Object value) {
+    Type t = getContext(null, false).getTypeHelper().getType(type);
+    return SDOUtil.createDataTypeWrapper(t, value);
+  }
+
+  public static List<Type> defineSdoTypes(SdoObjectFactory objectFactory, String scope, XsdSchema[] xsds)
+  {
+    ClassLoader cl = updateTccl();
+    try {
+      List types = new ArrayList();
+
+      ByteArrayOutputStream buf = new ByteArrayOutputStream(1024);
+
+      for (int i = 0; i < xsds.length; ++i) {
+        XmlSchema xsd = ((CommonsXsdSchema1)xsds[i]).getSchema();
+
+        buf.reset();
+        xsd.write(buf);
+
+        XSDHelper xsdHelper = getContext(scope, true).getXSDHelper();
+
+        synchronized (xsdHelper) {
+          List l = xsdHelper.define(new ByteArrayInputStream(buf.toByteArray()), xsd.getSourceURI());
+          Type type;
+          Iterator it;
+          for (int j = 0; j < l.size(); ++j) {
+            type = (Type)l.get(j);
+            if (!("DocumentRoot".equals(type.getName()))) {
+              types.add(type);
+              if (logger.isDebugEnabled()) {
+                logger.debug("TYPE: {" + type.getURI() + "}" + type.getName());
+              }
+            }
+            List ps = type.getProperties();
+            for (it = ps.iterator(); it.hasNext(); ) {
+              Property p = (Property)it.next();
+              if (xsdHelper.isAttribute(p))
+                continue;
+              QName q = new QName(type.getURI(), p.getName());
+              QName t = new QName(p.getType().getURI(), p.getType().getName());
+
+              objectFactory.setElement2Type(scope, q, t);
+            }
+
+          }
+
+        }
+
+      }
+
+      return types;
+    } finally {
+      restoreTccl(cl);
+    }
+  }
+
+  static
+  {
+    ClassLoader cl = updateTccl();
+    try
+    {
+      DEFAULT_CONTEXT = SDOUtil.createHelperContext(true);
+
+      restoreTccl(cl); } finally { restoreTccl(cl);
+    }
+  }
+}

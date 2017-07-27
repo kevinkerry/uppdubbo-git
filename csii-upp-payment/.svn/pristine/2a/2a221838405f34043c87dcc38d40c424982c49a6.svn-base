@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE segment SYSTEM "packetutf8.dtd">
+<segment>
+	<!--手机号 -->
+	<xmlTag tagName="PayerPhoneNo">
+		<String name="PayerPhoneNo"/>
+	</xmlTag>
+	<!-- 付款人姓名 -->
+	<xmlTag tagName="PayerAcctName">
+		<String name="PayerAcctName"/>
+	</xmlTag>
+	<!-- 卡列表 -->
+	<xmlTag tagName="CardList">
+	    <idxField name="CardList">
+			<Group name="Map">
+		   		<xmlTag><String name="PayerAcctNbr" /></xmlTag>
+		   		<xmlTag><String name="PayerAcctDeptNbr" /></xmlTag>
+		   		<xmlTag><String name="PayerAcctNo" /></xmlTag>
+		   		<xmlTag><String name="PayTypCd" /></xmlTag>
+			</Group>
+		</idxField>
+	</xmlTag>
+</segment>

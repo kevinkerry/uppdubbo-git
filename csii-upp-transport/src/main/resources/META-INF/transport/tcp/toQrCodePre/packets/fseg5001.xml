@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE segment SYSTEM "packetutf8.dtd">
+<!-- 微信商户信息同步（增加） -->
+<segment>
+	<!--服务代码  -->
+	<xmlTag tagName="txnCode">
+		<String name="txnCode" defaultValue="" />
+	</xmlTag>
+	<!-- 商户名称 -->
+	<xmlTag tagName="mchtName">
+		<String name="mchtName" defaultValue="" />
+	</xmlTag>
+	<!-- 户简称商 -->
+	<xmlTag tagName="mchtShortName">
+		<String name="mchtShortName" defaultValue="" />
+	</xmlTag>
+	<!-- 客服电话 -->
+	<xmlTag tagName="servicePhone">
+		<String name="servicePhone" defaultValue="" />
+	</xmlTag>
+	<!-- 联系人名称 -->
+	<xmlTag tagName="contactName">
+		<String name="contactName" defaultValue="" />
+	</xmlTag>
+	<!--联系人电话 -->
+	<xmlTag tagName="contactPhone">
+		<String name="contactPhone" defaultValue="" />
+	</xmlTag>
+	<!-- 联系人邮箱 -->
+	<xmlTag tagName="contactEmail">
+		<String name="contactEmail" defaultValue="" />
+	</xmlTag>
+	<!--经营类目 -->
+	<xmlTag tagName="business">
+		<String name="business" defaultValue="" />
+	</xmlTag>
+	<!--商户备注  -->
+	<xmlTag tagName="mchtRemark">
+		<String name="mchtRemark" defaultValue="" />
+	</xmlTag>
+</segment>

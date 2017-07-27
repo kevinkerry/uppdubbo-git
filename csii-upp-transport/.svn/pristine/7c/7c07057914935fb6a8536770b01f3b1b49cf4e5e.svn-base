@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE segment SYSTEM "packetutf8.dtd">
+<segment>
+	<xmlTag tagName="CyberTypCd">
+		<String name="cyberTypCd"/>
+	</xmlTag>
+	<!-- 二级商户编号 -->
+	<xmlTag tagName="SubMerchantId">
+		<String name="subMerchantId"/>
+	</xmlTag>
+	<!-- 用户编号 -->
+	<xmlTag tagName="UserNbr">
+		<String name="userNbr" defaultValue="" />
+	</xmlTag>
+</segment>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE segment SYSTEM "packetutf8.dtd">
+<segment>
+	<xmlTag tagName="creditLimitAmtRemain1">
+		<String name="creditLimitAmtRemain1" />
+	</xmlTag>
+	<xmlTag tagName="creditLimitAmtRemain2">
+		<String name="creditLimitAmtRemain2" />
+	</xmlTag>
+
+</segment>

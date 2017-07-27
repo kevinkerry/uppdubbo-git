@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+                        http://www.springframework.org/schema/beans/spring-beans.xsd
+	                    http://www.springframework.org/schema/context
+                        http://www.springframework.org/schema/context/spring-context.xsd">
+	
+    <import resource="classpath:/META-INF/config/peconfig.xml" />
+	<import resource="classpath:/META-INF/config/common.xml" />
+	<import resource="classpath:/META-INF/config/core.xml" />
+ 	<import resource="classpath:/META-INF/config/datasource.xml" />
+ 	<import resource="classpath:/META-INF/config/ibatis-config.xml" />
+	<import resource="classpath:/META-INF/config/idFactory.xml" />
+	<import resource="classpath:/META-INF/config/chain.xml" />
+	<import resource="classpath:/META-INF/config/style.xml" />
+	<import resource="classpath:/META-INF/config/validator.xml" />
+	<import resource="classpath:/META-INF/config/template.xml" />
+	<import resource="classpath:/META-INF/config/fundprocess-transport.xml" />
+	<import resource="classpath:/META-INF/config/fundprocess-service.xml" />
+	<import resource="fund-template.xml" />
+	<import resource="processor.xml" />
+ 	<import resource="event-manager.xml" />
+	<import resource="classpath:/META-INF/server/config.xml" />
+	<import resource="classpath:/META-INF/transaction/callback.xml" />
+	<import resource="classpath:/META-INF/transaction/online.xml" />
+	<import resource="classpath:/META-INF/transaction/payment.xml"/>
+	<import resource="classpath:/META-INF/transaction/demo.xml"/>
+</beans>

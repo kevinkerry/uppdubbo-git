@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE segment SYSTEM "packetutf8.dtd">
+
+<segment>
+	<Group name="Message">
+
+		<!-- 应答码 -->
+		<xmlTag tagName="RespCode">
+			<String name="RespCode" />
+		</xmlTag>
+		
+		<xmlTag tagName="RespMessage">
+			<String name="RespMessage" />
+		</xmlTag>
+		
+		<xmlTag tagName="TransDate">
+			<Date name="TransDate"  pattern="yyyyMMdd"/>
+		</xmlTag>
+		
+		<xmlTag tagName="TransSeqNo">
+			<String name="TransSeqNbr" />
+		</xmlTag>
+		
+		<xmlTag tagName="ClearDate">
+			<Date name="HostClearDate" pattern="yyyyMMdd"/>
+		</xmlTag>
+		
+		<xmlTag tagName="TransAmt">
+			<String name="TransAmt" />
+		</xmlTag>
+	</Group>
+</segment>

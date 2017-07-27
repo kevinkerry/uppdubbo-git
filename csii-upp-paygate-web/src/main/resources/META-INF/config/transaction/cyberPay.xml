@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spring:beans xmlns:spring="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.csii.com.cn/schema/pe"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd 
+	http://www.csii.com.cn/schema/pe http://www.csii.com.cn/schema/pe/pe-config.xsd">
+
+	<config>
+		<!--个人网银加签 -->
+		<transaction id="PbankPay" template="paygatePayTemplate">
+			<actions>
+				<ref name="action">PbankPayAction</ref>
+			</actions>
+			<channels>
+				<channel type="http">
+					<param name="success">bank/bankPay</param>   <!-- 个人网银跳转页面 -->
+				</channel>
+			</channels>
+		</transaction>
+		<action id="PbankPayAction" class="com.csii.upp.paygate.action.cyber.PbankpayAction">
+			<param name="oneIp">${upp.paygate.one.ip}</param>
+			<param name="pweb">${upp.paygate.one.pweb}</param>
+		</action>
+
+		<!-- 企业网银加签 -->
+		<transaction id="EbankPay" template="paygatePayTemplate">
+			<actions>
+				<ref name="action">EbankPayAction</ref>
+			</actions>
+			<channels>
+				<channel type="http">
+					<param name="success">bank/bankPay</param>   <!-- 企业网银跳转页面 -->
+				</channel>
+			</channels>
+		</transaction>
+		<action id="EbankPayAction" class="com.csii.upp.paygate.action.cyber.EbankpayAction">
+			<param name="manyIp">${upp.paygate.many.ip}</param>
+			<param name="eweb">${upp.paygate.many.eweb}</param>
+		</action>
+
+		<!-- 他行个人网银支付 -->
+		<transaction id="otherPerBankPay" template="paygatePayTemplate">
+			<actions>
+				<ref name="action">OtherPerBankAction</ref>
+			</actions>
+			<channels>
+				<channel type="http">
+					<param name="success">bank/otherBankPay</param>
+					<param name="error">bank/error</param>
+				</channel>
+			</channels>
+		</transaction>
+		<action id="OtherPerBankAction"
+			class="com.csii.upp.paygate.action.cyber.OtherPerBankAction"></action>
+
+		<!-- 他行企业网银支付 -->
+		<transaction id="otherEnterBankPay" template="paygatePayTemplate">
+			<actions>
+				<ref name="action">OtherEnterBankAction</ref>
+			</actions>
+			<channels>
+				<channel type="http">
+					<param name="success">bank/otherBankPay</param>   <!-- 企业网银跳转页面 -->
+					<param name="error">bank/error</param>   <!-- 企业网银跳转页面 -->
+				</channel>
+			</channels>
+		</transaction>
+		<action id="OtherEnterBankAction"
+			class="com.csii.upp.paygate.action.cyber.OtherEnterBankAction"></action>
+
+	</config>
+</spring:beans>

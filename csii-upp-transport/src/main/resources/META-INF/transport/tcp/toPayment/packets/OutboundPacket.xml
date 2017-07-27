@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE outboundPacket SYSTEM "packetutf8.dtd">
+<outboundPacket formatPrefix="f" nameOfBodyLength="BodyLength">
+	<segment>
+		<fixNumber name="BodyLength" length="8" add="18" encoding="GB2312" filling="0"/>
+		<fixString name="transCode" length="8" defaultValue=""/><!-- 交易代码 -->
+		<fixString name="systemCode" length="2"/><!-- 系统代码 -->
+	</segment>
+	<include include="XmlHead" />
+</outboundPacket>

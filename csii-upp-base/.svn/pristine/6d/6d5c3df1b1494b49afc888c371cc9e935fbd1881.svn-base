@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spring:beans xmlns:spring="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.csii.com.cn/schema/pe"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd 
+	http://www.csii.com.cn/schema/pe http://www.csii.com.cn/schema/pe/pe-config.xsd">
+
+	<config>
+		<!-- 普通签名验签 -->
+		<bean id="commonSignature" class="com.csii.upp.signature.CommonSignature">
+			<param name="cardPwdAlias">${pp.pfx.keystore.alias}</param>
+			<param name="keyPath">${pp.pfx.path}</param>
+		</bean>
+	</config>
+</spring:beans>

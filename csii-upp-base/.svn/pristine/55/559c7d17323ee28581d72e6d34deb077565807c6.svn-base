@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:util="http://www.springframework.org/schema/util" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       					   http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+		<bean  id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
+		 <!-- 基本属性 url、user、password -->  
+			<property name="driverClassName" value="${datasource.driver}" />
+			<property name="url" value="${datasource.url}" />
+			<property name="username" value="${datasource.username}" />
+			<property name="password" value="${datasource.password}" />
+			<property name="filters" value="${datasource.filters}" />
+			<!-- 配置初始化大小、最小、最大 -->  
+			<property name="initialSize" value="${datasource.initialSize}" />
+			<property name="minIdle" value="${datasource.minIdle}" />
+			<property name="maxActive" value="${datasource.maxActive}" />
+			 <!-- 配置获取连接等待超时的时间 -->  
+			<property name="maxWait" value="${datasource.maxWait}" />
+			<!-- 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 -->  
+			<property name="timeBetweenEvictionRunsMillis" value="${datasource.timeBetweenEvictionRunsMillis}" />
+			<!-- 配置一个连接在池中最小生存的时间，单位是毫秒 -->  
+			<property name="minEvictableIdleTimeMillis" value="${datasource.minEvictableIdleTimeMillis}" />
+	
+			<property name="validationQuery" value="${datasource.validationQuery}" />
+			<property name="testWhileIdle" value="${datasource.testWhileIdle}" />
+			<property name="testOnBorrow" value="${datasource.testOnBorrow}" />
+			<property name="testOnReturn" value="${datasource.testOnReturn}" />
+			<!-- 是否缓存preparedStatement，也就是PSCache。PSCache对支持游标的数据库性能提升巨大，比如说oracle。在mysql下建议关闭 -->
+			<property name="poolPreparedStatements" value="${datasource.poolPreparedStatements}" />
+			 <!-- 打开PSCache，并且指定每个连接上PSCache的大小 -->  
+			<property name="maxPoolPreparedStatementPerConnectionSize"
+				value="${datasource.maxPoolPreparedStatementPerConnectionSize}" />
+	</bean>
+</beans>

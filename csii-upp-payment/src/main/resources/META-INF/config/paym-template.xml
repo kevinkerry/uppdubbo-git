@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spring:beans xmlns:spring="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.csii.com.cn/schema/pe"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd 
+	http://www.csii.com.cn/schema/pe http://www.csii.com.cn/schema/pe/pe-config.xsd">
+
+	<config>
+		<!--查询交易模版 -->
+		<template id="queryMgmtTemplate" class="com.csii.upp.template.BaseUppTemplate"
+			chain="defaultChain">
+			<ref name="exceptionHandler">exceptionHandler</ref>
+			<actions>
+				<!-- 验签 -->
+				<ref name="signatureValidAction">signatureValidateAction</ref>
+				<ref name="action">placeholderAction</ref>
+				<!-- 异步登记交易流水 -->
+				<ref name="onlineJnlRegAction">onlineJnlRegAction</ref>
+				<!-- 同步1.0 -->
+				<!-- <ref name="synSignExitAction">synSignExitAction</ref> -->
+			</actions>
+		</template>
+
+		<!--加签交易模版 -->
+		<template id="signatureSignTemplate" class="com.csii.upp.template.BaseUppTemplate"
+			chain="defaultChain">
+			<ref name="exceptionHandler">exceptionHandler</ref>
+			<actions>
+				<!-- 验签 -->
+				<!-- <ref name="signatureValidAction">signatureValidateAction</ref> -->
+				<ref name="action">placeholderAction</ref>
+				<!-- 加签 -->
+				<ref name="signatureSignAction">signatureSignAction</ref>
+				<!-- 异步登记交易流水 -->
+				<ref name="onlineJnlRegAction">onlineJnlRegAction</ref>
+			</actions>
+		</template>
+
+		<!--账务交易模版 -->
+		<template id="onlineTransTemplate" class="com.csii.upp.template.BaseUppTemplate"
+			chain="defaultChain">
+			<ref name="exceptionHandler">exceptionHandler</ref>
+			<actions>
+				<!-- 验签 -->
+				<ref name="signatureValidAction">signatureValidateAction</ref>
+				<!-- 交易流水保存和检查操作 -->
+				<ref name="startGroupsAction">startGroupsAction</ref>
+				<!-- 支付交易 -->
+				<ref name="action">placeholderAction</ref>
+				<!-- 更新交易明细 -->
+				<ref name="updOnlineTransAction">updOnlineTransAction</ref>
+				<!-- 交易结束操作 -->
+				<ref name="endGroupsAction">endGroupsAction</ref>
+				<!-- 加签 -->
+				<!-- <ref name="signatureSignAction">signatureSignAction</ref> -->
+				<!-- 异步登记交易流水 -->
+				<ref name="onlineJnlRegAction">onlineJnlRegAction</ref>
+				<!-- 同步1.0 -->
+				<!-- <ref name="synSignExitAction">synSignExitAction</ref> -->
+			</actions>
+		</template>
+
+		<!-- 验签 -->
+		<action id="signatureValidateAction"
+			class="com.csii.upp.payment.action.common.SignatureValidateAction">
+			<ref name="signature">commonSignature</ref>
+		</action>
+
+		<!-- 加签 -->
+		<action id="signatureSignAction"
+			class="com.csii.upp.payment.action.common.SignatureSignAction">
+			<ref name="xmlSignature">xmlSignature</ref>
+		</action>
+
+		<!-- 登记交易流水 -->
+		<action id="onlineJnlRegAction"
+			class="com.csii.upp.payment.action.common.OnlineJnlRegAction" />
+
+		<!-- 交易开始操作 -->
+		<action id="startGroupsAction"
+			class="com.csii.upp.payment.action.supportor.ExecuteGroupAction">
+			<map name="groups">
+				<!-- key为交易码:支付交易 -->
+				<ref name="PayTrans">payTransStartAction</ref>
+				<!-- key为交易码:单笔退货交易 -->
+				<ref name="ReturnTrans">returnTransStartAction</ref>
+				<!-- key为交易码:提现交易 -->
+				<ref name="WithdrawTrans">withdrawTransStartAction</ref>
+				<!-- key为交易码:代收交易 -->
+				<ref name="SGCT">collectionAction</ref>
+				<!-- key为交易码:代付交易 -->
+				<ref name="SGPM">negotiationAction</ref>
+			</map>
+		</action>
+
+		<!-- 更新交易明细 -->
+		<action id="updOnlineTransAction"
+			class="com.csii.upp.payment.action.common.UpdOnlineTransAction" />
+
+
+		<!-- 交易结束操作 -->
+		<action id="endGroupsAction"
+			class="com.csii.upp.payment.action.supportor.ExecuteGroupAction">
+			<map name="groups">
+				<!-- key为交易码:支付交易 -->
+				<ref name="PayTrans">payTransEndAction</ref>
+				<!-- key为交易码:单笔退货交易 -->
+				<ref name="ReturnTrans">returnTransEndAction</ref>
+				<!-- key为交易码:提现交易 -->
+				<ref name="WithdrawTrans">withdrawTransEndAction</ref>
+			</map>
+		</action>
+
+	</config>
+</spring:beans>

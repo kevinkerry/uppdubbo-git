@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spring:beans xmlns:spring="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.csii.com.cn/schema/pe"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd 
+	http://www.csii.com.cn/schema/pe http://www.csii.com.cn/schema/pe/pe-config.xsd">
+
+	<config>
+		<bean id="idGenerateFactory" class="com.csii.upp.supportor.IDGenerateFactory">
+		</bean>
+
+		<!-- 因为浙江核心要求流水号12，所以内部交易流水号编号规则为系统简称(2位)+日(2位)+序列号(8位) -->
+		<idFactory id="innerFundTransNbrFactory" class="com.csii.upp.sequence.UppSequenceIdFactory">
+			<ref name="dataSource">dataSource</ref>
+			<param name="format">97{dd}{########}</param>
+			<param name="sql">SELECT INNERFUNDTRANSNBR_SEQ.NEXTVAL FROM DUAL
+			</param>
+		</idFactory>
+
+		<!-- 交易流水号编号规则：日期(8位)+序列号(10位) -->
+		<idFactory id="rtxnNbrFactory" class="com.csii.upp.sequence.UppSequenceIdFactory">
+			<ref name="dataSource">dataSource</ref>
+			<param name="format">{yyyyMMdd}{##########}</param>
+			<param name="sql">SELECT TRANSNBR_SEQ.NEXTVAL FROM DUAL</param>
+		</idFactory>
+
+		<!-- 序列号编号规则：日期(8位)+序列号(10位) -->
+		<idFactory id="seqIdFactory" class="com.csii.upp.sequence.UppSequenceIdFactory">
+			<ref name="dataSource">dataSource</ref>
+			<param name="format">{yyyyMMdd}{##########}</param>
+			<param name="sql">SELECT ID_SEQ.NEXTVAL FROM DUAL</param>
+		</idFactory>
+
+		<!-- 序列号编号规则：Twitter的分布式自增ID算法snowflake 18位 -->
+		<bean id="snowflakeIdWorker" class="com.csii.upp.sequence.UppSnowflakeIdWorker">
+			<param name="workerId">${seqnbr.workerId}</param>
+			<param name="datacenterId">${seqnbr.datacenterId}</param>
+		</bean>
+	</config>
+</spring:beans>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE segment SYSTEM "packetutf8.dtd">
+<!-- 支付宝撤消 -->
+<segment>
+	<!--服务代码  -->
+	<xmlTag tagName="txnCode">
+		<String name="txnCode" defaultValue="" />
+	</xmlTag>
+	<!-- 订单号 -->
+	<xmlTag tagName="orderNumber">
+		<String name="orderNumber" defaultValue="" />
+	</xmlTag>
+	<!-- 交易时间 -->
+	<xmlTag tagName="orderTime">
+		<String name="orderTime" defaultValue="" />
+	</xmlTag>
+	<!-- 交易金额 -->
+	<xmlTag tagName="orderAmount">
+		<String name="orderAmount" defaultValue="" />
+	</xmlTag>
+	<!--商户编号 -->
+	<xmlTag tagName="merId">
+		<String name="merId" defaultValue="" />
+	</xmlTag>
+	<!-- 交易类型 -->
+	<xmlTag tagName="transType">
+		<String name="transType"  />
+	</xmlTag>
+	<!-- 渠道编号 -->
+	<xmlTag tagName="channel">
+		<String name="channel" defaultValue="" />
+	</xmlTag>
+	<!-- 接入类型 -->
+	<xmlTag tagName="payAccessType">
+		<String name="payAccessType" defaultValue="" />
+	</xmlTag>
+	<!--原商户流水号  -->
+	<xmlTag tagName="initTxnSeqId">
+		<String name="initTxnSeqId" defaultValue="" />
+	</xmlTag>
+	<!-- 原商户交易时间 -->
+	<xmlTag tagName="initTxnTime">
+		<String name="initTxnTime" defaultValue="" />
+	</xmlTag>
+</segment>

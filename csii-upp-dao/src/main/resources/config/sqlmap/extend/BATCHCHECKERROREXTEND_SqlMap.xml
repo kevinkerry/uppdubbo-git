@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="BATCHCHECKERROREXTEND">
+	<resultMap id="BatchCheckErrorResultMap" class="java.util.HashMap" >		
+		<result column="TRANSDATE" property="transdate" jdbcType="DATE" />
+		<result column="PAYERACCTNBR" property="payeracctnbr" jdbcType="VARCHAR" />
+		<result column="PAYEEACCTNBR" property="payeeacctnbr" jdbcType="VARCHAR" />
+		<result column="DEALDATE" property="dealdate" jdbcType="DATE" />
+		<result column="DEALSTATUS" property="dealstatus" jdbcType="CHAR" />
+		<result column="TRANSCODE" property="transcode" jdbcType="VARCHAR" />
+		<result column="TRANSAMT" property="transamt" jdbcType="DECIMAL" />
+		<result column="CURRENCYCD" property="currencycd" jdbcType="VARCHAR" />
+		<result column="TRANSSTATUS" property="transstatus" jdbcType="CHAR" />
+		<result column="CHECKERRORTYP" property="checkerrortyp" jdbcType="VARCHAR" />
+		<result column="DATELASTMAINT" property="datelastmaint" jdbcType="TIMESTAMP" />
+	</resultMap>
+	
+	<select id="getBatchCheckErrors" parameterClass="java.util.HashMap" resultMap="BatchCheckErrorResultMap">
+		select TRANSDATE,PAYERACCTNBR,PAYEEACCTNBR,DEALDATE,DEALSTATUS,TRANSCODE,
+			TRANSAMT,CURRENCYCD,TRANSSTATUS,CHECKERRORTYP,DATELASTMAINT from batchcheckerror
+		union all 
+		select TRANSDATE,PAYERACCTNBR,PAYEEACCTNBR,DEALDATE,DEALSTATUS,TRANSCODE,
+			TRANSAMT,CURRENCYCD,TRANSSTATUS,CHECKERRORTYP,DATELASTMAINT from epaybatchcheckerror
+	</select>
+</sqlMap>

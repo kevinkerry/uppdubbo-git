@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:p1="http://com.csii.bank.core/system/post" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://com.csii.bank.core/system/post" targetNamespace="http://com.csii.bank.core/system/post">
+  <wsdl:types>
+    <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:base="http://com.csii.bank.core/base" xmlns:syspost="http://com.csii.bank.core/system/post" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://com.csii.bank.core/system/post"><import namespace="http://com.csii.bank.core/base" schemaLocation="base.xsd"/><complexType name="NextBussDayRequestType"><sequence><element ref="base:BaseRequest"/><element name="PostDate" type="string"/></sequence></complexType><element name="NextBussDayRequest" type="syspost:NextBussDayRequestType"/><complexType name="NextBussDayResponseType"><sequence><element ref="base:BaseResponse"/></sequence></complexType><element name="NextBussDayResponse" type="syspost:NextBussDayResponseType"/><complexType name="UpdateAcctRateHistRequestType"><sequence><element ref="base:BaseRequest"/><element name="AcctNbr" type="long"/><element name="SubAcctNbr" type="long"/><element name="EffDate" type="date"/><element name="IntRate" type="decimal"/></sequence></complexType><element name="UpdateAcctRateHistRequest" type="syspost:UpdateAcctRateHistRequestType"/><complexType name="UpdateAcctRateHistResponseType"><sequence><element ref="base:BaseResponse"/><element name="Rows" type="int"/></sequence></complexType><element name="UpdateAcctRateHistResponse" type="syspost:UpdateAcctRateHistResponseType"/><complexType name="UpdateAcctIntHistRequestType"><sequence><element ref="base:BaseRequest"/><element name="AcctNbr" type="long"/><element name="SubAcctNbr" type="long"/><element name="EffDate" type="date"/><element name="CalcSchedNbr" type="long"/><element name="IntMethCd" type="string"/><element name="RateTypCd" type="string"/><element name="CalcBalTypCd" type="string"/><element name="MarginFixed" type="decimal"/><element name="MarginPct" type="decimal"/><element name="RateChangeCalPerCd" type="string"/><element name="IntBase" type="long"/><element name="MaxRateChangeUp" type="decimal"/><element name="MinRateChangeUp" type="decimal"/><element name="MinIntRate" type="decimal"/><element name="MaxIntRate" type="decimal"/><element name="DaysMethCd" type="string"/><element name="AmortTerm" type="long"/><element name="RateChangeRndMethCd" type="string"/><element name="MinRateChangeDown" type="decimal"/><element name="MaxRateChangeDown" type="decimal"/><element name="RateChangeMethCd" type="string"/><element name="RateMethCd" type="string"/></sequence></complexType><element name="UpdateAcctIntHistRequest" type="syspost:UpdateAcctIntHistRequestType"/><complexType name="UpdateAcctIntHistResponseType"><sequence><element ref="base:BaseResponse"/><element name="Rows" type="int"/></sequence></complexType><element name="UpdateAcctIntHistResponse" type="syspost:UpdateAcctIntHistResponseType"/><complexType name="FlushDataCacheRequestType"><sequence><element ref="base:BaseRequest"/><element name="cacheId" type="string"/></sequence></complexType><element name="FlushDataCache" type="syspost:FlushDataCacheRequestType"/><complexType name="FlushDataCacheResponseType"><sequence><element ref="base:BaseResponse"/></sequence></complexType><element name="FlushDataCacheResponse" type="syspost:FlushDataCacheResponseType"/></schema>
+  </wsdl:types>
+  <wsdl:message name="NextBussDayResponse">
+    <wsdl:part element="tns:NextBussDayResponse" name="NextBussDayResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="UpdateAcctIntHistResponse">
+    <wsdl:part element="tns:UpdateAcctIntHistResponse" name="UpdateAcctIntHistResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="FlushDataCache">
+    <wsdl:part element="tns:FlushDataCache" name="FlushDataCache">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="NextBussDayRequest">
+    <wsdl:part element="tns:NextBussDayRequest" name="NextBussDayRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="UpdateAcctRateHistRequest">
+    <wsdl:part element="tns:UpdateAcctRateHistRequest" name="UpdateAcctRateHistRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="UpdateAcctIntHistRequest">
+    <wsdl:part element="tns:UpdateAcctIntHistRequest" name="UpdateAcctIntHistRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="FlushDataCacheResponse">
+    <wsdl:part element="tns:FlushDataCacheResponse" name="FlushDataCacheResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="UpdateAcctRateHistResponse">
+    <wsdl:part element="tns:UpdateAcctRateHistResponse" name="UpdateAcctRateHistResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="SystemPostServicePortType">
+    <wsdl:operation name="UpdateAcctIntHist">
+      <wsdl:input message="tns:UpdateAcctIntHistRequest" name="UpdateAcctIntHistRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:UpdateAcctIntHistResponse" name="UpdateAcctIntHistResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="NextBussDay">
+      <wsdl:input message="tns:NextBussDayRequest" name="NextBussDayRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:NextBussDayResponse" name="NextBussDayResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAcctRateHist">
+      <wsdl:input message="tns:UpdateAcctRateHistRequest" name="UpdateAcctRateHistRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:UpdateAcctRateHistResponse" name="UpdateAcctRateHistResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FlushDataCache">
+      <wsdl:input message="tns:FlushDataCache" name="FlushDataCache">
+    </wsdl:input>
+      <wsdl:output message="tns:FlushDataCacheResponse" name="FlushDataCacheResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SystemPostServicePortTypeSoap11" type="tns:SystemPostServicePortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="UpdateAcctIntHist">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="UpdateAcctIntHistRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="UpdateAcctIntHistResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="NextBussDay">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="NextBussDayRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="NextBussDayResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAcctRateHist">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="UpdateAcctRateHistRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="UpdateAcctRateHistResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FlushDataCache">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="FlushDataCache">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="FlushDataCacheResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SystemPostService">
+    <wsdl:port binding="tns:SystemPostServicePortTypeSoap11" name="SystemPostServicePortTypeSoap11">
+      <soap:address location="http://192.168.110.160:8099/systemPostService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

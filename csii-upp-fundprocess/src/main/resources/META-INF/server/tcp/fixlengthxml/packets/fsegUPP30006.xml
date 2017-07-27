@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE segment SYSTEM "packetutf8.dtd">
+<segment>
+ 	<!-- 开户机构 -->
+	<xmlTag tagName="MerOpenDeptNbr">
+		<String name="MerOpenDeptNbr" />
+	</xmlTag>
+	<!-- 内部户状态 -->
+	<xmlTag tagName="InnerAcctStatus">
+		<String name="InnerAcctStatus" />
+	</xmlTag>
+</segment>

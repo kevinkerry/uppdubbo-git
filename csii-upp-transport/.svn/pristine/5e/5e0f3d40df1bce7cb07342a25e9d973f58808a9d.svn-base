@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="dubboFundProcessResolver"  class="com.csii.pe.channel.stream.MappingTrsIdResolver">
+		<property name="idParameterName" value="transCode" />
+		<property name="mapping">
+            <map>
+                <entry key="UPP30029" value="IS_PAY_FDPS_EATL" />
+                <entry key="UPP30012" value="IS_PAY_FDPS_RTCT" />
+                <entry key="UPP30025" value="IS_PAY_FDPS_QCUL" />
+                <entry key="UPP30011" value="IS_PAY_FDPS_RTDT" />
+                <entry key="UPP30024" value="IS_PAY_FDPS_SYMI" />
+                <entry key="UPP30010" value="IS_PAY_FDPS_QOPS" />
+                <entry key="UPP30027" value="IS_PAY_FDPS_UPMI" />
+                <entry key="UPP30032" value="IS_PAY_FDPS_QRCO" />
+                <entry key="UPP30005" value="IS_PAY_FDPS_CVAP" />
+                <entry key="UPP30002" value="IS_PAY_FDPS_CHCP" />
+                <entry key="UPP30003" value="IS_PAY_FDPS_PAYR" />
+                <entry key="UPP30008" value="IS_PAY_FDPS_QVAB" />
+                <entry key="UPP30009" value="IS_PAY_FDPS_OEBP" />
+                <entry key="UPP30006" value="IS_PAY_FDPS_QIAI" />
+                <entry key="UPP30007" value="IS_PAY_FDPS_VATF" />
+                <entry key="UPP30001" value="IS_PAY_FDPS_QCDI" />
+                <entry key="UPP30000" value="IS_PAY_FDPS_UPAY" />
+                <entry key="UPP30021" value="IS_PAY_FDPS_QUIN" />
+                <entry key="UPP30020" value="IS_PAY_FDPS_ROOP" />
+                <entry key="UPP30022" value="IS_PAY_FDPS_PNTF" />
+                <entry key="UPP30013" value="IS_PAY_FDPS_QAOS" />
+                <entry key="UPP30014" value="IS_PAY_FDPS_SMSX" />
+                <entry key="UPP30060" value="IS_PAY_FDPS_CATA" />
+                <entry key="UPP30015" value="IS_PAY_FDPS_QRTS" />
+                <entry key="UPP30016" value="IS_PAY_FDPS_BTTF" />
+                <entry key="UPP30018" value="IS_PAY_FDPS_VTRT" />
+            </map>
+        </property>
+	</bean>
+
+</beans>

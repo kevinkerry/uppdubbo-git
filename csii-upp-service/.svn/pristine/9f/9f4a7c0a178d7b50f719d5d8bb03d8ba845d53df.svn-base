@@ -1,0 +1,9 @@
+#internalName=externalName
+resultStatus=responseCode
+returncode=responseCode
+returnmsg=responseTextMessage
+#downrtxndate=postDate
+downrtxnnbr=refNumber
+#channeltype=sourceId
+#rtxncode=transactionCode
+#rtxnnbr=seqNo

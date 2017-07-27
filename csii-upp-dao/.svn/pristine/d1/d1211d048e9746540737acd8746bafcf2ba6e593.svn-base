@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="QUEAPPLHISTADNAPPLGENERATE">
+  <resultMap class="java.util.HashMap" id="BaseResultMap">  
+    <result column="QUENBR" property="quenbr" />
+    <result column="APPLNBR" property="applnbr" />
+    <result column="QUESUBNBR" property="quesubnbr" />
+    <result column="RUNSEQNBR" property="runseqnbr" />
+    <result column="STARTDATETIME" property="startdatetime" javaType="java.sql.Timestamp"/>
+    <result column="STOPDATETIME" property="stopdatetime" javaType="java.sql.Timestamp"/>
+    <result column="RUNNTWKNODENBR" property="runntwknodenbr" />
+    <result column="DATELASTMAINT" property="datelastmaint" javaType="java.sql.Timestamp"/>
+    <result column="RUNNINGSTATUS" property="runningstatus" />
+    <result column="RUNDATE" property="rundate" javaType="String"/>
+    <result column="DATACOUNT" property="datacount" />
+    <result column="RERUNSEQNBR" property="rerunseqnbr" />
+    <result column="DETAIL" property="detail" />    
+    <result column="APPLDESC"  property="appldesc" />
+  </resultMap>
+  
+   <select id="selectByMapWithBLOBs" parameterClass="java.util.HashMap" resultMap="BaseResultMap">
+   select * from (
+    select 
+     QAH.QUENBR,  QAH.APPLNBR,  QAH.QUESUBNBR,  QAH.RUNSEQNBR,  QAH.STARTDATETIME,  QAH.STOPDATETIME,  QAH.RUNNTWKNODENBR, 
+     QAH.DATELASTMAINT,  QAH.RUNNINGSTATUS,  QAH.RUNDATE,  QAH.DATACOUNT,  QAH.RERUNSEQNBR, QAH.DETAIL,A.APPLDESC
+    from QUEAPPLHIST AS QAH INNER JOIN APPL AS A
+     ON QAH.APPLNBR = A.APPLNBR INNER JOIN (SELECT B.APPLNBR,MAX(B.RUNSEQNBR) AS RUNSEQNBR
+                    FROM QUEAPPLHIST AS B
+                    WHERE B.QUENBR = #queNbr# 
+				     <isNotEmpty prepend="AND" property="runDate">
+						B.rundate = #runDate#
+					 </isNotEmpty>
+                    GROUP BY B.RUNDATE, B.APPLNBR) C ON QAH.RUNSEQNBR=C.RUNSEQNBR AND QAH.APPLNBR=C.APPLNBR
+     WHERE QAH.QUENBR = #queNbr#
+     <isNotEmpty prepend="AND" property="runDate">
+		QAH.rundate = #runDate#
+	 </isNotEmpty>
+	 order by QAH.RUNDATE DESC,QAH.APPLNBR
+	 ) as D limit #pageNum#,#pageSize#
+  </select>
+</sqlMap>

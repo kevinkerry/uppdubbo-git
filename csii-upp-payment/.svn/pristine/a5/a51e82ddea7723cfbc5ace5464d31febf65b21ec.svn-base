@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spring:beans xmlns:spring="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.csii.com.cn/schema/pe"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd 
+	http://www.csii.com.cn/schema/pe http://www.csii.com.cn/schema/pe/pe-config.xsd">
+
+	<config>
+
+		<!-- 提现交易开始操作装入类 -->
+		<action id="withdrawTransStartAction"
+			class="com.csii.upp.payment.action.supportor.BeanFactoryAction">
+			<list name="actions">
+				<!-- 修改订单状态为处理中 -->
+				<ref>addHandOrderInfoAction</ref>
+				<!-- 插入子交易明细和总交易明细 -->
+				<ref>addWithdrawOnlineTransAction</ref>
+			</list>
+		</action>
+
+		<!-- 支付交易开始操作装入类 -->
+		<action id="payTransStartAction"
+			class="com.csii.upp.payment.action.supportor.BeanFactoryAction">
+			<list name="actions">
+				<!-- 子订单防重检查 -->
+				<ref>checkOrderRepeatLimitAction</ref>
+				<!-- 电信诈骗验证 -->
+				<!-- <ref>telecomCheatAction</ref> -->
+				<!-- 修改订单状态为处理中 -->
+				<ref>updOrderStatusAction</ref>
+				<!-- 支付交易插入子交易明细和总交易明细 -->
+				<ref>addPayOnlineTransAction</ref>
+				<!-- 机构支付方式限制检查 -->
+				<ref>checkDeptPayTypLimitAction</ref>
+				<!-- 商户支付方式交易限制检查 -->
+				<ref>checkMerPayTypTransLimitAction</ref>
+				<!-- 特殊商户支付方式交易限制检查 -->
+				<ref>checkSpecMerPayTypTransLimitAction</ref>
+				<!-- 用户支付方式交易限制检查 -->
+				<ref>checkUserPayTypTransLimitAction</ref>
+				<!-- 电子口岸验证 -->
+<!-- 				<ref>checkDZKNAction</ref> -->
+			</list>
+		</action>
+
+		<!-- 代收开始操作装入类 -->
+		<action id="collectionAction"
+			class="com.csii.upp.payment.action.supportor.BeanFactoryAction">
+			<list name="actions">
+				<!-- 修改订单状态为处理中 -->
+				<ref>updOrderStatusAction</ref>
+				<!-- 支付交易插入子交易明细和总交易明细 -->
+				<ref>addSGCTTransAction</ref>
+			</list>
+		</action>
+
+		<!-- 支付交易开始操作装入类 -->
+		<action id="negotiationAction"
+			class="com.csii.upp.payment.action.supportor.BeanFactoryAction">
+			<list name="actions">
+				<!-- 修改订单状态为处理中 -->
+				<ref>updOrderStatusAction</ref>
+				<!-- 支付交易插入子交易明细和总交易明细 -->
+				<ref>addPayOnlineTransAction</ref>
+
+			</list>
+		</action>
+		
+		<!-- 扫码支付交易开始操作装入类-->
+		<action id="codepayTransStartAction" class="com.csii.upp.payment.action.supportor.BeanFactoryAction">
+			<list name="actions">
+			    <!-- 子订单防重检查 -->
+			    <ref>checkOrderRepeatLimitAction</ref>
+			    <!-- 修改订单状态为处理中 -->
+			    <ref>updOrderStatusAction</ref>
+			    <!-- 支付交易插入子交易明细和总交易明细 -->
+			    <ref>addPayOnlineTransAction</ref>		 	 
+			</list>
+		</action>
+
+
+		<!-- 退货交易开始操作装入类 -->
+		<action id="returnTransStartAction"
+			class="com.csii.upp.payment.action.supportor.BeanFactoryAction">
+			<list name="actions">
+				<!-- 插入退货订单信息 -->
+				<ref>addHandOrderInfoAction</ref>
+				<!-- 退货交易插入子交易明细和总交易明细 -->
+				<ref>addReturnOnlineTransAction</ref>
+				<!--检查原子交易订单是否满足退货条件 -->
+				<ref>checkReturnOrigTransAction</ref>
+			</list>
+		</action>
+		<!-- 子订单防重检查 -->
+		<action id="checkOrderRepeatLimitAction"
+			class="com.csii.upp.payment.action.start.CheckOrderRepeatLimitAction" />
+		<!-- 电信诈骗验证 -->
+		<action id="telecomCheatAction"
+			class="com.csii.upp.payment.action.start.TelecomCheatAction">
+			<param name="flag">${telecom.flag}</param>
+			<ref name="transport">TC.transformTransport</ref>
+		</action>
+		<!-- 修改订单状态为处理中 -->
+		<action id="updOrderStatusAction"
+			class="com.csii.upp.payment.action.start.UpdOrderStatusAction" />
+		<!-- 插入状态为处理中的订单信息 -->
+		<action id="addHandOrderInfoAction"
+			class="com.csii.upp.payment.action.start.AddHandOrderInfoAction" />
+		<!-- 支付交易插入子交易明细和总交易明细 -->
+		<action id="addPayOnlineTransAction"
+			class="com.csii.upp.payment.action.start.AddPayOnlineTransAction" />
+		<!-- 退货交易插入子交易明细和总交易明细 -->
+		<action id="addReturnOnlineTransAction"
+			class="com.csii.upp.payment.action.start.AddReturnOnlineTransAction" />
+		<!-- 提现交易插入子交易明细和总交易明细 -->
+		<action id="addWithdrawOnlineTransAction"
+			class="com.csii.upp.payment.action.start.AddWithdrawOnlineTransAction" />
+		<!-- 机构支付方式限制检查 -->
+		<action id="checkDeptPayTypLimitAction"
+			class="com.csii.upp.payment.action.start.CheckDeptPayTypLimitAction" />
+		<!-- 商户支付方式交易限制检查 -->
+		<action id="checkMerPayTypTransLimitAction"
+			class="com.csii.upp.payment.action.start.CheckMerPayTypTransLimitAction" />
+		<!-- 特殊商户支付方式交易限制检查 -->
+		<action id="checkSpecMerPayTypTransLimitAction"
+			class="com.csii.upp.payment.action.start.CheckSpecMerPayTypTransLimitAction" />
+		<!-- 用户支付方式交易限制检查 -->
+		<action id="checkUserPayTypTransLimitAction"
+			class="com.csii.upp.payment.action.start.CheckUserPayTypTransLimitAction" />
+		<!-- 检查原子交易订单是否满足退货条件 -->
+		<action id="checkReturnOrigTransAction"
+			class="com.csii.upp.payment.action.start.CheckReturnOrigTransAction" />
+		<!-- 电子口岸验证 -->
+		<action id="checkDZKNAction" class="com.csii.upp.payment.action.start.CheckDZKNAction" />
+		<!-- 代收交易插入子交易明细和总交易明细 -->
+		<action id="addSGCTTransAction"
+			class="com.csii.upp.payment.action.start.AddSGCTTransAction" />
+
+	</config>
+</spring:beans>

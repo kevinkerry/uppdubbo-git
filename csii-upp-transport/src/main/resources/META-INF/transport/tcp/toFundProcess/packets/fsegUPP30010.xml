@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE segment SYSTEM "packetutf8.dtd">
+<!-- 发银联查询订单支付状态 -->
+<segment>
+	<!-- 个人和企业网银标志 -->
+	<xmlTag tagName="CyberTypCd">
+		<String name="cyberTypCd" />
+	</xmlTag>
+</segment>

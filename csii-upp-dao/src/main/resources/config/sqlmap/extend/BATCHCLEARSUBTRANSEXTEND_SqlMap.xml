@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="BATCHCLEARSUBTRANSEXTEND">
+	<resultMap id="BatchClearSubTransResultMap" class="java.util.HashMap" >		
+		<result column="SUPERMERSEQNBR" property="supermerseqnbr" jdbcType="VARCHAR" />
+		<result column="MERSEQNBR" property="merseqnbr" jdbcType="VARCHAR" />
+		<result column="TRANSTYPCD" property="transtypcd" jdbcType="VARCHAR" />
+		<result column="CLEARDATE" property="cleardate" jdbcType="DATE" />
+		<result column="MERTRANSDATETIME" property="mertransdatetime" jdbcType="TIMESTAMP" />
+		<result column="MERNBR" property="mernbr" jdbcType="VARCHAR" />
+		<result column="TRANSAMT" property="transamt" jdbcType="DECIMAL" />
+		<result column="DEDUCTAMT" property="deductamt" jdbcType="DECIMAL" />
+		<result column="REALAMT" property="realamt" jdbcType="DECIMAL" />
+		<result column="TRANSSTATUS" property="transstatus" jdbcType="VARCHAR" />
+		<result column="MEMO1" property="memo1" jdbcType="VARCHAR" />
+		<result column="MEMO2" property="memo2" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<select id="getBatchClearSubTrans" parameterClass="java.util.HashMap" resultMap="BatchClearSubTransResultMap">
+		SELECT 
+			BT.MERSEQNBR SUPERMERSEQNBR,BST.MERSEQNBR,
+			BST.TRANSTYPCD,BST.CLEARDATE,BST.MERTRANSDATETIME,
+			BST.MERNBR,BST.TRANSAMT,BST.DEDUCTAMT,
+			BST.REALAMT,BST.TRANSSTATUS,BST.MEMO1,BST.MEMO2			
+		FROM 
+			BATCHCLEARTRANS BT,BATCHCLEARSUBTRANS BST 
+		WHERE 
+			BST.TRANSSTATUS IN ('0','2','3','4')			
+		AND
+			BT.INTERALFLAG =#interalflag:CHAR#
+		AND 
+			BT.TRANSSEQNBR=BST.TRANSSEQNBR 
+		AND 
+			BT.CHECKSTATUS=#checkstatus#
+		AND 
+			BT.MERNBR = #mernbr:VARCHAR#
+		ORDER BY BST.MERNBR,BST.MERTRANSDATETIME	
+	</select>
+</sqlMap>

@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spring:beans xmlns:spring="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.csii.com.cn/schema/pe"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd 
+	http://www.csii.com.cn/schema/pe http://www.csii.com.cn/schema/pe/pe-config.xsd">
+	<config>
+		<!-- 日间异常交易调度交易 -->
+		<transaction id="runTransExcep" template="baseUppTemplate">
+			<actions>
+				<ref name="action">RunTransExcepAction</ref>
+			</actions>
+		</transaction>
+		<action id="RunTransExcepAction" class="com.csii.upp.batch.action.RunTransExcepAction" />
+
+		<!-- 银联超时交易更新为失败批量 -->
+		<transaction id="modifyTimeOutUnionPayTrans" template="baseUppTemplate">
+			<actions>
+				<ref name="action">ModifyTimeOutUnionPayTransAction</ref>
+			</actions>
+		</transaction>
+		<action id="ModifyTimeOutUnionPayTransAction"
+			class="com.csii.upp.batch.appl.unionpay.UpdateTimeOutOrdersAppl">
+			<param name="beforequeryseconds">600</param>
+			<param name="timeoutseconds">1800</param>
+		</action>
+		<!-- 扫码支付订单状态批量查询 -->
+		<transaction id="queryQrCodePayStatus" template="baseUppTemplate">
+			<actions>
+				<ref name="action">QueryQrCodePayStatusAction</ref>
+			</actions>
+		</transaction>
+		<action id="QueryQrCodePayStatusAction"
+			class="com.csii.upp.batch.action.QueryQrCodePayStatusAction">
+			<param name="beforequeryseconds">600</param>
+			<param name="timeoutseconds">1800</param>
+		</action>
+		<!-- 退货状态批量查询 -->
+		<transaction id="queryQrCodeRefStatus" template="baseUppTemplate">
+			<actions>
+				<ref name="action">QueryQrCodeRefStatusAction</ref>
+			</actions>
+		</transaction>
+		<action id="QueryQrCodeRefStatusAction"
+			class="com.csii.upp.batch.action.QueryQrCodeRefStatusAction" />
+		<!-- 资金平台日切交易 -->
+		<transaction id="cutOff" template="baseUppTemplate">
+			<actions>
+				<ref name="action">CutOffAction</ref>
+			</actions>
+		</transaction>
+		<action id="CutOffAction" class="com.csii.upp.batch.action.CutOffAction" />
+
+		<!-- 批量调度交易 -->
+		<transaction id="RB" template="baseUppTemplate">
+			<actions>
+				<ref name="action">RunBatchAction</ref>
+			</actions>
+		</transaction>
+		<action id="RunBatchAction" class="com.csii.upp.batch.action.RunBatchAction">
+			<ref name="coreController">coreController</ref>
+		</action>
+
+		<!--队列运行 -->
+		<transaction id="RunQue" template="baseUppTemplate">
+			<actions>
+				<!--<ref name="action1">queListAction</ref> -->
+				<ref name="action2">runQueAction</ref>
+			</actions>
+		</transaction>
+		<action id="runQueAction" class="com.csii.upp.batch.action.RunQueAction" />
+
+		<!--队列运行 -->
+		<transaction id="queApplHist" template="baseUppTemplate">
+			<actions>
+				<ref name="action1">queApplHistAction</ref>
+			</actions>
+		</transaction>
+		<action id="queApplHistAction" class="com.csii.upp.batch.action.QueApplHistAction" />
+
+
+		<!-- 文件对账通知 -->
+		<transaction id="fileNotify" template="baseUppTemplate">
+			<actions>
+				<ref name="action1">FileNotifyAction</ref>
+				<ref name="action2">runQueAction</ref>
+			</actions>
+		</transaction>
+		<action id="FileNotifyAction" class="com.csii.upp.batch.action.FileNotifyAction">
+			<!-- 调用队列号 -->
+			<map name="queMap">
+				<param name="AUTH">801</param>
+				<param name="UNIONPAY">15</param>
+			</map>
+		</action>
+
+		<!--生成对账文件用于测试 -->
+		<transaction id="createCheckFile" template="baseUppTemplate">
+			<actions>
+				<ref name="action">createCheckFileAction</ref>
+			</actions>
+		</transaction>
+		<action id="createCheckFileAction" class="com.csii.upp.batch.action.CreateCheckFileAction" />
+
+		<!--队列列表 -->
+		<transaction id="queList" template="baseUppTemplate">
+			<actions>
+				<ref name="action">queListAction</ref>
+			</actions>
+		</transaction>
+		<action id="queListAction" class="com.csii.upp.batch.action.QueListAction" />
+		<!--队列信息 -->
+		<transaction id="loadQue" template="baseUppTemplate">
+			<actions>
+				<ref name="action">loadQueAction</ref>
+			</actions>
+		</transaction>
+		<action id="loadQueAction" class="com.csii.upp.batch.action.LoadQueAction"></action>
+		<!--编辑队列信息 -->
+		<transaction id="editQue" template="baseUppTemplate">
+			<actions>
+				<ref name="action">editQueAction</ref>
+			</actions>
+		</transaction>
+		<action id="editQueAction" class="com.csii.upp.batch.action.EditQueAction"></action>
+
+		<!-- 批量对账通知 -->
+		<transaction id="FLNF" template="baseUppTemplate">
+			<actions>
+				<ref name="action">FileNotify</ref>
+			</actions>
+		</transaction>
+		<action id="FileNotify" class="com.csii.upp.batch.action.FileNotifyAction" />
+
+		<!-- 计算手续费 -->
+		<transaction id="CLTF" template="baseUppTemplate">
+			<actions>
+				<ref name="action">calculateFeeAction</ref>
+			</actions>
+		</transaction>
+		<action id="calculateFeeAction" class="com.csii.upp.batch.action.CalculateFeeAction" />
+
+		<!-- 待挂退处理 -->
+		<transaction id="PBPS" template="baseUppTemplate">
+			<actions>
+				<ref name="action">PrebackProcessAction</ref>
+			</actions>
+		</transaction>
+		<action id="PrebackProcessAction" class="com.csii.upp.batch.action.PrebackProcessAction" />
+
+		<!-- 差错结果查询 -->
+		<transaction id="QBES" template="baseUppTemplate">
+			<actions>
+				<ref name="action">QueryBatchCheckErrorStatusAction</ref>
+			</actions>
+		</transaction>
+		<action id="QueryBatchCheckErrorStatusAction"
+			class="com.csii.upp.batch.action.QueryBatchCheckErrorStatusAction" />
+
+		<!-- 银联核账查询 -->
+		<transaction id="CAMT" template="baseUppTemplate">
+			<actions>
+				<ref name="action">CheckAmountAction</ref>
+			</actions>
+		</transaction>
+		<action id="CheckAmountAction" class="com.csii.upp.batch.action.CheckAmountAction" />
+
+		<!-- 法人机构转账手续费 -->
+		<transaction id="SFEE" template="baseUppTemplate">
+			<actions>
+				<ref name="action">SettleFeeAction</ref>
+			</actions>
+		</transaction>
+		<action id="SettleFeeAction" class="com.csii.upp.batch.action.SettleFeeAction" />
+	</config>
+</spring:beans>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+     PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+     "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<mappers>
+		<!--自动生成的Mapper  -->
+		<mapper resource="com/csii/upp/qrcodeplatform/generate/dao/mapper/ChannelMapper.xml" />
+		<mapper resource="com/csii/upp/qrcodeplatform/generate/dao/mapper/ChanneltransMapper.xml" />
+		<mapper resource="com/csii/upp/qrcodeplatform/generate/dao/mapper/DownchannelMapper.xml" />
+		<mapper resource="com/csii/upp/qrcodeplatform/generate/dao/mapper/MarketactivectrlMapper.xml" />
+		<mapper resource="com/csii/upp/qrcodeplatform/generate/dao/mapper/MarketingactivitiesruleMapper.xml" />
+		<mapper resource="com/csii/upp/qrcodeplatform/generate/dao/mapper/QrcodeMapper.xml" />
+		<mapper resource="com/csii/upp/qrcodeplatform/generate/dao/mapper/UpperchannelMapper.xml" />
+		<mapper resource="com/csii/upp/qrcodeplatform/generate/dao/mapper/QrcodetimectrlMapper.xml" />
+		<!--手写的Mapper  -->
+	</mappers>
+</configuration>

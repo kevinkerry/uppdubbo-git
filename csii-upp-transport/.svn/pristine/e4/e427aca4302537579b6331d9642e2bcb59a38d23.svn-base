@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE segment SYSTEM "packetutf8.dtd">
+<!-- 贷记卡卡密支付及退货交易 -->
+<segment>
+
+	<!-- 转出卡号 -->
+	<xmlTag tagName="ACRAAC22">
+		<String name="payerAcctNbr" defaultValue=""/>
+	</xmlTag>
+	<!-- 转入账号 -->
+	<xmlTag tagName="ACRBAC22">
+		<String name="payeeAcctNbr" defaultValue=""/>
+	</xmlTag>
+		<!-- 信用卡有效期 -->
+	<xmlTag tagName="ACRALIM">
+		<String name="payerCardExpiredDate" defaultValue="" />
+	</xmlTag>
+	<!-- 信用卡cvv -->
+	<xmlTag tagName="ACRACVV">
+		<String name="payerCardCvv2" defaultValue="" />
+	</xmlTag>
+		<!-- 密码 -->
+	<xmlTag tagName="ACRACHIP">
+		<String name="password" defaultValue="" />
+	</xmlTag>
+	<!-- 币种 -->
+	<xmlTag tagName="ACRACCYC">
+		<String name="currencyCd" defaultValue=""/>
+	</xmlTag>
+	<!-- 交易金额 -->
+	<xmlTag tagName="ACRBAMT">
+		<String name="transAmt" defaultValue=""/>
+	</xmlTag>
+	<!-- 对帐分类编号 -->
+	<xmlTag tagName="ACRADZBH">
+		<String name="checkNumber" defaultValue=""/>
+	</xmlTag>
+	<!-- POS编号 -->
+	<xmlTag tagName="ACRAPOSC">
+		<String name="ACRAPOSC" defaultValue="IPP00001" />
+	</xmlTag>
+	<!-- 商户编号 -->
+	<xmlTag tagName="ACRASHCD">
+		<String name="merNbr" defaultValue="999999999999992" />
+	</xmlTag>
+	<!-- 备用字段 -->
+	<xmlTag tagName="ACRABAKE">
+		<String name="note" defaultValue=""/>
+	</xmlTag>
+</segment>

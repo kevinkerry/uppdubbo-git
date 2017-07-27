@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE segment SYSTEM "packetutf8.dtd">
+<!-- 退货 -->
+<segment>
+	<!-- 交易id -->
+		<xmlTag tagName="TransId">
+			<String name="TransId" />
+		</xmlTag>
+		<!-- 一级商户 -->
+		<xmlTag tagName="MerchantId">
+			<String name="MerNbr" />
+		</xmlTag>
+		<!-- 商户交易流水号 -->
+		<xmlTag tagName="MerSeqNo">
+			<String name="MerSeqNbr" />
+		</xmlTag>
+		<!-- 商户交易时间 -->
+		<xmlTag tagName="MerDateTime">
+			<String name="MerTransDateTime" />
+		</xmlTag>
+		<!-- 原商户交易流水号 -->
+		<xmlTag tagName="OrgMerSeqNo">
+			<String name="OrigMerSeqNbr" />
+		</xmlTag>
+		<!-- 原商户交易日期 -->
+		<xmlTag tagName="OrgMerDate">
+			<String name="OrigMerDate" />
+		</xmlTag>
+		<!-- 原商户交易金额 -->
+		<xmlTag tagName="OrgTransAmt">
+			<String name="OrigTransAmt" />
+		</xmlTag>
+		<!-- 退货金额 -->
+		<xmlTag tagName="TransAmt">
+			<String name="SubTransAmt" />
+		</xmlTag>
+		<!-- 退款原因 -->
+		<xmlTag tagName="RefundReason">
+			<String name="refundReason"/>
+		</xmlTag>
+		<!-- 操作员编号-->
+		<xmlTag tagName="OperatorId">
+			<String name="operatorId"/>
+		</xmlTag>
+		<!--门店编号-->
+		<xmlTag tagName="StoreId">
+			<String name="storeId"/>
+		</xmlTag>
+		<!--终端编号-->
+		<xmlTag tagName="TermId">
+			<String name="termId"/>
+		</xmlTag>
+</segment>

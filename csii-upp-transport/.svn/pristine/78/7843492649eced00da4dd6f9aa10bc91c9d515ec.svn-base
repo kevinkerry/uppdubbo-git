@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE segment SYSTEM "packetutf8.dtd">
+<segment>
+	<!-- 客户号 -->
+	<xmlTag tagName="CustCifNbr">
+		<String name="custCifNbr"/>
+	</xmlTag>
+	<!-- 账户号 -->
+	<xmlTag tagName="PayerAcctNbr">
+		<String name="payerAcctNbr"/>
+	</xmlTag>
+	<!-- 账户类型 -->
+	<xmlTag tagName="PayerCardTypCd">
+		<String name="payerCardTypCd" />
+	</xmlTag>
+	<!-- 手机号 -->
+	<xmlTag tagName="PayerPhoneNo">
+		<String name="payerPhoneNo"/>
+	</xmlTag>
+	<!-- 密码 -->
+	<xmlTag tagName="PayerCardPwd">
+		<String name="payerCardPwd"/>
+	</xmlTag>
+	<!-- 证件类型 -->
+	<xmlTag tagName="PayerIdTypCd">
+		<String name="payerIdTypCd"/>
+	</xmlTag> 
+	<!-- CVV2 -->
+	<xmlTag tagName="PayerCardCvv2">
+		<String name="payerCardCvv2"/>
+	</xmlTag>         
+	<!-- 证件号 -->
+	<xmlTag tagName="PayerIdNbr">
+		<String name="payerIdNbr"/>
+	</xmlTag>
+	<!-- 机构号 -->
+	<xmlTag tagName="PayerAcctDeptNbr">
+		<String name="payerAcctDeptNbr"/>
+	</xmlTag>
+	<!-- 户名 -->
+	<xmlTag tagName="PayerAcctName">
+		<String name="payerAcctName"/>
+	</xmlTag>
+	<!-- 柜员编号 -->
+	<xmlTag tagName="TellerNo">
+		<String name="tellerNo"/>
+	</xmlTag>
+</segment>

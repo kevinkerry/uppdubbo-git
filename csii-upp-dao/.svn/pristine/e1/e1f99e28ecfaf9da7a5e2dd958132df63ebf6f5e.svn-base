@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="MERTRANSCTRLEXTEND">
+	<resultMap id="MerResultMap" class="java.util.HashMap">
+		<result column="MERNBR" property="mernbr" jdbcType="VARCHAR" />
+		<result column="MERPLATFORMNBR" property="merplatformnbr" jdbcType="VARCHAR" />
+	</resultMap>
+
+	<select id="queryMerPayTyp" resultClass="java.lang.String" parameterClass="com.csii.upp.dto.generate.Mertransctrl">
+		select distinct PAYTYPCD
+		from MERTRANSCTRL
+		where MERNBR = #mernbr:VARCHAR#
+		and STATUS = #status:CHAR#
+	</select>
+
+	<select id="queryPointMer" resultMap="MerResultMap" parameterClass="com.csii.upp.dto.generate.Mertransctrl">
+		SELECT
+		DISTINCT M.MERNBR ,M.MERPLATFORMNBR
+		FROM
+		MERACCTINFO M,MERTRANSCTRL T
+		WHERE
+		M.MERNBR=T.MERNBR
+		AND T.PAYTYPCD=#paytypcd:VARCHAR#
+		AND T.STATUS=#status:CHAR#
+		AND
+		M.ISPARENTMER='1'
+	</select>
+</sqlMap>

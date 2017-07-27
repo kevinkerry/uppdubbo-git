@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE segment SYSTEM "packetutf8.dtd">
+<!-- 批量转账查询-->
+<segment>
+	<xmlTag tagName="MerDateTime">
+		<String name="merDateTime"></String>
+	</xmlTag>
+	<xmlTag tagName="BatchNo">
+		<String name="batchNo"></String>
+	</xmlTag>
+</segment>

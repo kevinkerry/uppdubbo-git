@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE segment SYSTEM "packetutf8.dtd">
+	<!-- 查询富阳虚账户余额 -->
+<segment>
+	<!-- 第三方账户 -->
+	<xmlTag tagName="PayeeAcctNbr">
+		<String name="payeeAcctNbr" defaultValue="" />
+	</xmlTag>
+</segment>

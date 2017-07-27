@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE segment SYSTEM "packetutf8.dtd">
+<segment>
+	<Group name="Message">
+	<xmlTag tagName="PayerPhoneNo"><String name="PayerPhoneNo"></String></xmlTag>
+	<xmlTag tagName="SMSList">
+	    <idxField name="SMSList" maxLoop="9999999">
+			<Group name="SMSDetail">
+		   		<xmlTag><String name="transTime" /></xmlTag>
+	   		    <xmlTag><String name="code" /></xmlTag>
+	   		    <xmlTag><String name="msg" /></xmlTag>
+			</Group>
+		</idxField>
+	</xmlTag>
+	</Group>
+</segment>

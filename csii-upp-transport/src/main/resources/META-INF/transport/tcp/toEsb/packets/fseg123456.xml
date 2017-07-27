@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE segment SYSTEM "packetutf8.dtd">
+<segment>
+	<!--转出帐号 -->
+	<xmlTag tagName="BGR10AC201">
+		<String name="payerAcctNbr" defaultValue=""/>
+	</xmlTag>
+	<!--转入帐号 -->
+	<xmlTag tagName="BGR10AC202">
+		<String name="payeeAcctNbr" defaultValue=""/>
+	</xmlTag>
+	<!--交易金额 -->
+	<xmlTag tagName="BGR10AC203">
+		<String name="transAmt" defaultValue=""/>
+	</xmlTag>
+</segment>

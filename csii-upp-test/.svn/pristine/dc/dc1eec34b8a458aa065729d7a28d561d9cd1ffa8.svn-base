@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+    xmlns:srv="http://www.csii.com.cn/pe/dubboServices"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd http://www.csii.com.cn/pe/dubboServices http://www.csii.com.cn/pe/dubboServices/impl.xsd">
+
+    <dubbo:reference id="QueryOrderInfoService" interface="com.csii.upp.custom.common.api.service.payment.QueryOrderInfoService"
+        group="IS_PAY_PAYM_QUERYORDERINFO" protocol="dubbo" registry="dubboRegitry" />
+
+    <dubbo:reference id="QuerySignInfoListService" interface="com.csii.upp.custom.common.api.service.payment.QuerySignInfoListService"
+        group="IS_PAY_PAYM_QUERYSIGNINFOLIST" protocol="dubbo" registry="dubboRegitry" />
+
+    <dubbo:reference id="PayTransService" interface="com.csii.upp.custom.common.api.service.payment.PayTransService"
+        group="IS_PAY_PAYM_PAYTRANS" protocol="dubbo" registry="dubboRegitry" />
+
+    <dubbo:reference id="QueryCardInfoService" interface="com.csii.upp.custom.common.api.service.payment.QueryCardInfoService"
+        group="IS_PAY_PAYM_QUERYCARDINFO" protocol="dubbo" registry="dubboRegitry" />
+
+    <dubbo:reference id="AddSignInfoService" interface="com.csii.upp.custom.common.api.service.payment.AddSignInfoService"
+        group="IS_PAY_PAYM_ADDSIGNINFO" protocol="dubbo" registry="dubboRegitry" />
+
+    <dubbo:reference id="CreateQrCodeByteService" interface="com.csii.upp.custom.common.api.service.payment.CreateQrCodeByteService"
+        group="IS_PAY_PAYM_CREATEQRCODEBYTE" protocol="dubbo" registry="dubboRegitry" />
+
+    <dubbo:reference id="QueryQrCodeUrlService" interface="com.csii.upp.custom.common.api.service.payment.QueryQrCodeUrlService"
+        group="IS_PAY_PAYM_QUERYQRCODEURL" protocol="dubbo" registry="dubboRegitry" />
+
+    <dubbo:reference id="CustomAuthenService" interface="com.csii.upp.custom.common.api.service.payment.CustomAuthenService"
+        group="IS_PAY_PAYM_CUSTOMAUTHEN" protocol="dubbo" registry="dubboRegitry" />
+
+    <dubbo:reference id="QueryPayService" interface="com.csii.upp.custom.common.api.service.payment.QueryPayService"
+        group="IS_PAY_PAYM_QUERYPAY" protocol="dubbo" registry="dubboRegitry" />
+
+    <dubbo:reference id="QueryAuthService" interface="com.csii.upp.custom.common.api.service.payment.QueryAuthService"
+        group="IS_PAY_PAYM_QUERYAUTH" protocol="dubbo" registry="dubboRegitry" />
+
+    <dubbo:reference id="CancelOrderService" interface="com.csii.upp.custom.common.api.service.payment.CancelOrderService"
+        group="IS_PAY_PAYM_CANCELORDER" protocol="dubbo" registry="dubboRegitry" />
+
+    <dubbo:reference id="NotifyTransResultService" interface="com.csii.upp.custom.common.api.service.payment.NotifyTransResultService"
+        group="IS_PAY_PAYM_NOTIFYTRANSRESULT" protocol="dubbo" registry="dubboRegitry" />
+
+    <dubbo:reference id="ConfirmedPayService" interface="com.csii.upp.custom.common.api.service.payment.ConfirmedPayService"
+        group="IS_PAY_PAYM_CONFIRMEDPAY" protocol="dubbo" registry="dubboRegitry" />
+
+    <dubbo:reference id="QueryOrderStatusPaymentService" interface="com.csii.upp.custom.common.api.service.payment.QueryOrderStatusPaymentService"
+        group="IS_PAY_PAYM_QUERYORDERSTATUSPAYMENT" protocol="dubbo" registry="dubboRegitry" />
+
+    <dubbo:reference id="QueryVirtualAcctBalanceService" interface="com.csii.upp.custom.common.api.service.payment.QueryVirtualAcctBalanceService"
+        group="IS_PAY_PAYM_QUERYVIRTUALACCTBALANCE" protocol="dubbo" registry="dubboRegitry" />
+
+    <dubbo:reference id="ValidateSmsService" interface="com.csii.upp.custom.common.api.service.payment.ValidateSmsService"
+        group="IS_PAY_PAYM_VALIDATESMS" protocol="dubbo" registry="dubboRegitry" />
+
+    <dubbo:reference id="QuerySmsCodeService" interface="com.csii.upp.custom.common.api.service.payment.QuerySmsCodeService"
+        group="IS_PAY_PAYM_QUERYSMSCODE" protocol="dubbo" registry="dubboRegitry" />
+
+    <dubbo:reference id="GenerrateSubMerchantIdService" interface="com.csii.upp.custom.common.api.service.payment.GenerrateSubMerchantIdService"
+        group="IS_PAY_PAYM_GENERRATESUBMERCHANTID" protocol="dubbo" registry="dubboRegitry" />
+
+    <dubbo:reference id="DeleteSignInfoService" interface="com.csii.upp.custom.common.api.service.payment.DeleteSignInfoService"
+        group="IS_PAY_PAYM_DELETESIGNINFO" protocol="dubbo" registry="dubboRegitry" />
+
+    <dubbo:reference id="ValidateCardInfoService" interface="com.csii.upp.custom.common.api.service.payment.ValidateCardInfoService"
+        group="IS_PAY_PAYM_VALIDATECARDINFO" protocol="dubbo" registry="dubboRegitry" />
+
+    <dubbo:reference id="SendMessagePaymentService" interface="com.csii.upp.custom.common.api.service.payment.SendMessagePaymentService"
+        group="IS_PAY_PAYM_SENDMESSAGEPAYMENT" protocol="dubbo" registry="dubboRegitry" />
+
+    <dubbo:reference id="SendSmsService" interface="com.csii.upp.custom.common.api.service.payment.SendSmsService"
+        group="IS_PAY_PAYM_SENDSMS" protocol="dubbo" registry="dubboRegitry" />
+
+    <dubbo:reference id="QueryAcctOpenStatusPaymentService" interface="com.csii.upp.custom.common.api.service.payment.QueryAcctOpenStatusPaymentService"
+        group="IS_PAY_PAYM_QUERYACCTOPENSTATUSPAYMENT" protocol="dubbo" registry="dubboRegitry" />
+
+    <dubbo:reference id="ValidationInfoService" interface="com.csii.upp.custom.common.api.service.payment.ValidationInfoService"
+        group="IS_PAY_PAYM_VALIDATIONINFO" protocol="dubbo" registry="dubboRegitry" />
+
+    <dubbo:reference id="BankPayService" interface="com.csii.upp.custom.common.api.service.payment.BankPayService"
+        group="IS_PAY_PAYM_BANKPAY" protocol="dubbo" registry="dubboRegitry" />
+
+    <dubbo:reference id="ReturnTransService" interface="com.csii.upp.custom.common.api.service.payment.ReturnTransService"
+        group="IS_PAY_PAYM_RETURNTRANS" protocol="dubbo" registry="dubboRegitry" />
+
+    <dubbo:reference id="QueryYinYiTongSignInfoService" interface="com.csii.upp.custom.common.api.service.payment.QueryYinYiTongSignInfoService"
+        group="IS_PAY_PAYM_QUERYYINYITONGSIGNINFO" protocol="dubbo" registry="dubboRegitry" />
+
+    <dubbo:reference id="QuerySingleOnlineTransService" interface="com.csii.upp.custom.common.api.service.payment.QuerySingleOnlineTransService"
+        group="IS_PAY_PAYM_QUERYSINGLEONLINETRANS" protocol="dubbo" registry="dubboRegitry" />
+
+    <dubbo:reference id="WithdrawTransService" interface="com.csii.upp.custom.common.api.service.payment.WithdrawTransService"
+        group="IS_PAY_PAYM_WITHDRAWTRANS" protocol="dubbo" registry="dubboRegitry" />
+
+    <dubbo:reference id="SychSubMerService" interface="com.csii.upp.custom.common.api.service.payment.SychSubMerService"
+        group="IS_PAY_PAYM_SYCHSUBMER" protocol="dubbo" registry="dubboRegitry" />
+
+    <dubbo:reference id="CancelSignStatusService" interface="com.csii.upp.custom.common.api.service.payment.CancelSignStatusService"
+        group="IS_PAY_PAYM_CANCELSIGNSTATUS" protocol="dubbo" registry="dubboRegitry" />
+
+    <dubbo:reference id="QueryCardFlagService" interface="com.csii.upp.custom.common.api.service.payment.QueryCardFlagService"
+        group="IS_PAY_PAYM_QUERYCARDFLAG" protocol="dubbo" registry="dubboRegitry" />
+
+    <dubbo:reference id="QueryReOtherPayStatusService" interface="com.csii.upp.custom.common.api.service.payment.QueryReOtherPayStatusService"
+        group="IS_PAY_PAYM_QUERYREOTHERPAYSTATUS" protocol="dubbo" registry="dubboRegitry" />
+
+    <dubbo:reference id="RegisterOtherPayService" interface="com.csii.upp.custom.common.api.service.payment.RegisterOtherPayService"
+        group="IS_PAY_PAYM_REGISTEROTHERPAY" protocol="dubbo" registry="dubboRegitry" />
+
+    <dubbo:reference id="QuerySignDetailService" interface="com.csii.upp.custom.common.api.service.payment.QuerySignDetailService"
+        group="IS_PAY_PAYM_QUERYSIGNDETAIL" protocol="dubbo" registry="dubboRegitry" />
+
+    <dubbo:reference id="QueryCardPhoneService" interface="com.csii.upp.custom.common.api.service.payment.QueryCardPhoneService"
+        group="IS_PAY_PAYM_QUERYCARDPHONE" protocol="dubbo" registry="dubboRegitry" />
+
+    <dubbo:reference id="SGCTService" interface="com.csii.upp.custom.common.api.service.payment.SGCTService"
+        group="IS_PAY_PAYM_SGCT" protocol="dubbo" registry="dubboRegitry" />
+
+    <dubbo:reference id="SGPMService" interface="com.csii.upp.custom.common.api.service.payment.SGPMService"
+        group="IS_PAY_PAYM_SGPM" protocol="dubbo" registry="dubboRegitry" />
+
+    <dubbo:reference id="AddOrderInfoService" interface="com.csii.upp.custom.common.api.service.payment.AddOrderInfoService"
+        group="IS_PAY_PAYM_ADDORDERINFO" protocol="dubbo" registry="dubboRegitry" />
+
+    <dubbo:reference id="QueryIntegralService" interface="com.csii.upp.custom.common.api.service.payment.QueryIntegralService"
+        group="IS_PAY_PAYM_QUERYINTEGRAL" protocol="dubbo" registry="dubboRegitry" />
+
+    <dubbo:reference id="QueryTransLimitService" interface="com.csii.upp.custom.common.api.service.payment.QueryTransLimitService"
+        group="IS_PAY_PAYM_QUERYTRANSLIMIT" protocol="dubbo" registry="dubboRegitry" />
+
+    <dubbo:reference id="QueryQrCodeStatusService" interface="com.csii.upp.custom.common.api.service.payment.QueryQrCodeStatusService"
+        group="IS_PAY_PAYM_QUERYQRCODESTATUS" protocol="dubbo" registry="dubboRegitry" />
+
+    <dubbo:reference id="UpdateTransLimitService" interface="com.csii.upp.custom.common.api.service.payment.UpdateTransLimitService"
+        group="IS_PAY_PAYM_UPDATETRANSLIMIT" protocol="dubbo" registry="dubboRegitry" />
+
+    <dubbo:reference id="QueryCardDeptService" interface="com.csii.upp.custom.common.api.service.payment.QueryCardDeptService"
+        group="IS_PAY_PAYM_QUERYCARDDEPT" protocol="dubbo" registry="dubboRegitry" />
+
+    <dubbo:reference id="HoldAcctStatusService" interface="com.csii.upp.custom.common.api.service.payment.HoldAcctStatusService"
+        group="IS_PAY_PAYM_HOLDACCTSTATUS" protocol="dubbo" registry="dubboRegitry" />
+
+    <dubbo:reference id="BatchTransferPaymentService" interface="com.csii.upp.custom.common.api.service.payment.BatchTransferPaymentService"
+        group="IS_PAY_PAYM_BATCHTRANSFERPAYMENT" protocol="dubbo" registry="dubboRegitry" />
+
+    <dubbo:reference id="XMLimitCXService" interface="com.csii.upp.custom.common.api.service.payment.XMLimitCXService"
+        group="IS_PAY_PAYM_XMLIMITCX" protocol="dubbo" registry="dubboRegitry" />
+
+    <dubbo:reference id="QuerySignInfoService" interface="com.csii.upp.custom.common.api.service.payment.QuerySignInfoService"
+        group="IS_PAY_PAYM_QUERYSIGNINFO" protocol="dubbo" registry="dubboRegitry" />
+
+    <dubbo:reference id="QueryBatchTransferPaymentService" interface="com.csii.upp.custom.common.api.service.payment.QueryBatchTransferPaymentService"
+        group="IS_PAY_PAYM_QUERYBATCHTRANSFERPAYMENT" protocol="dubbo" registry="dubboRegitry" />
+
+    <dubbo:reference id="UnHoldAcctStatusService" interface="com.csii.upp.custom.common.api.service.payment.UnHoldAcctStatusService"
+        group="IS_PAY_PAYM_UNHOLDACCTSTATUS" protocol="dubbo" registry="dubboRegitry" />
+
+    <dubbo:reference id="ConfirmCancelSignInfoService" interface="com.csii.upp.custom.common.api.service.payment.ConfirmCancelSignInfoService"
+        group="IS_PAY_PAYM_CONFIRMCANCELSIGNINFO" protocol="dubbo" registry="dubboRegitry" />
+
+    <dubbo:reference id="CancelSignInfoService" interface="com.csii.upp.custom.common.api.service.payment.CancelSignInfoService"
+        group="IS_PAY_PAYM_CANCELSIGNINFO" protocol="dubbo" registry="dubboRegitry" />
+
+    <srv:transport trsCodeName="servcId" id="client">
+        <srv:mapping trsCode="IS_PAY_PAYM_QUERYORDERINFO" method="QueryOrderInfoService" />
+        <srv:mapping trsCode="IS_PAY_PAYM_QUERYSIGNINFOLIST" method="QuerySignInfoListService" />
+        <srv:mapping trsCode="IS_PAY_PAYM_PAYTRANS" method="PayTransService" />
+        <srv:mapping trsCode="IS_PAY_PAYM_QUERYCARDINFO" method="QueryCardInfoService" />
+        <srv:mapping trsCode="IS_PAY_PAYM_ADDSIGNINFO" method="AddSignInfoService" />
+        <srv:mapping trsCode="IS_PAY_PAYM_CREATEQRCODEBYTE" method="CreateQrCodeByteService" />
+        <srv:mapping trsCode="IS_PAY_PAYM_QUERYQRCODEURL" method="QueryQrCodeUrlService" />
+        <srv:mapping trsCode="IS_PAY_PAYM_CUSTOMAUTHEN" method="CustomAuthenService" />
+        <srv:mapping trsCode="IS_PAY_PAYM_QUERYPAY" method="QueryPayService" />
+        <srv:mapping trsCode="IS_PAY_PAYM_QUERYAUTH" method="QueryAuthService" />
+        <srv:mapping trsCode="IS_PAY_PAYM_CANCELORDER" method="CancelOrderService" />
+        <srv:mapping trsCode="IS_PAY_PAYM_NOTIFYTRANSRESULT" method="NotifyTransResultService" />
+        <srv:mapping trsCode="IS_PAY_PAYM_CONFIRMEDPAY" method="ConfirmedPayService" />
+        <srv:mapping trsCode="IS_PAY_PAYM_QUERYORDERSTATUSPAYMENT" method="QueryOrderStatusPaymentService" />
+        <srv:mapping trsCode="IS_PAY_PAYM_QUERYVIRTUALACCTBALANCE" method="QueryVirtualAcctBalanceService" />
+        <srv:mapping trsCode="IS_PAY_PAYM_VALIDATESMS" method="ValidateSmsService" />
+        <srv:mapping trsCode="IS_PAY_PAYM_QUERYSMSCODE" method="QuerySmsCodeService" />
+        <srv:mapping trsCode="IS_PAY_PAYM_GENERRATESUBMERCHANTID" method="GenerrateSubMerchantIdService" />
+        <srv:mapping trsCode="IS_PAY_PAYM_DELETESIGNINFO" method="DeleteSignInfoService" />
+        <srv:mapping trsCode="IS_PAY_PAYM_VALIDATECARDINFO" method="ValidateCardInfoService" />
+        <srv:mapping trsCode="IS_PAY_PAYM_SENDMESSAGEPAYMENT" method="SendMessagePaymentService" />
+        <srv:mapping trsCode="IS_PAY_PAYM_SENDSMS" method="SendSmsService" />
+        <srv:mapping trsCode="IS_PAY_PAYM_QUERYACCTOPENSTATUSPAYMENT" method="QueryAcctOpenStatusPaymentService" />
+        <srv:mapping trsCode="IS_PAY_PAYM_VALIDATIONINFO" method="ValidationInfoService" />
+        <srv:mapping trsCode="IS_PAY_PAYM_BANKPAY" method="BankPayService" />
+        <srv:mapping trsCode="IS_PAY_PAYM_RETURNTRANS" method="ReturnTransService" />
+        <srv:mapping trsCode="IS_PAY_PAYM_QUERYYINYITONGSIGNINFO" method="QueryYinYiTongSignInfoService" />
+        <srv:mapping trsCode="IS_PAY_PAYM_QUERYSINGLEONLINETRANS" method="QuerySingleOnlineTransService" />
+        <srv:mapping trsCode="IS_PAY_PAYM_WITHDRAWTRANS" method="WithdrawTransService" />
+        <srv:mapping trsCode="IS_PAY_PAYM_SYCHSUBMER" method="SychSubMerService" />
+        <srv:mapping trsCode="IS_PAY_PAYM_CANCELSIGNSTATUS" method="CancelSignStatusService" />
+        <srv:mapping trsCode="IS_PAY_PAYM_QUERYCARDFLAG" method="QueryCardFlagService" />
+        <srv:mapping trsCode="IS_PAY_PAYM_QUERYREOTHERPAYSTATUS" method="QueryReOtherPayStatusService" />
+        <srv:mapping trsCode="IS_PAY_PAYM_REGISTEROTHERPAY" method="RegisterOtherPayService" />
+        <srv:mapping trsCode="IS_PAY_PAYM_QUERYSIGNDETAIL" method="QuerySignDetailService" />
+        <srv:mapping trsCode="IS_PAY_PAYM_QUERYCARDPHONE" method="QueryCardPhoneService" />
+        <srv:mapping trsCode="IS_PAY_PAYM_SGCT" method="SGCTService" />
+        <srv:mapping trsCode="IS_PAY_PAYM_SGPM" method="SGPMService" />
+        <srv:mapping trsCode="IS_PAY_PAYM_ADDORDERINFO" method="AddOrderInfoService" />
+        <srv:mapping trsCode="IS_PAY_PAYM_QUERYINTEGRAL" method="QueryIntegralService" />
+        <srv:mapping trsCode="IS_PAY_PAYM_QUERYTRANSLIMIT" method="QueryTransLimitService" />
+        <srv:mapping trsCode="IS_PAY_PAYM_QUERYQRCODESTATUS" method="QueryQrCodeStatusService" />
+        <srv:mapping trsCode="IS_PAY_PAYM_UPDATETRANSLIMIT" method="UpdateTransLimitService" />
+        <srv:mapping trsCode="IS_PAY_PAYM_QUERYCARDDEPT" method="QueryCardDeptService" />
+        <srv:mapping trsCode="IS_PAY_PAYM_HOLDACCTSTATUS" method="HoldAcctStatusService" />
+        <srv:mapping trsCode="IS_PAY_PAYM_BATCHTRANSFERPAYMENT" method="BatchTransferPaymentService" />
+        <srv:mapping trsCode="IS_PAY_PAYM_XMLIMITCX" method="XMLimitCXService" />
+        <srv:mapping trsCode="IS_PAY_PAYM_QUERYSIGNINFO" method="QuerySignInfoService" />
+        <srv:mapping trsCode="IS_PAY_PAYM_QUERYBATCHTRANSFERPAYMENT" method="QueryBatchTransferPaymentService" />
+        <srv:mapping trsCode="IS_PAY_PAYM_UNHOLDACCTSTATUS" method="UnHoldAcctStatusService" />
+        <srv:mapping trsCode="IS_PAY_PAYM_CONFIRMCANCELSIGNINFO" method="ConfirmCancelSignInfoService" />
+        <srv:mapping trsCode="IS_PAY_PAYM_CANCELSIGNINFO" method="CancelSignInfoService" />
+    </srv:transport>
+
+</beans>

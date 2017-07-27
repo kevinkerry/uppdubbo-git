@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE segment SYSTEM "packetutf8.dtd">
+	<!-- 卡信息查询返回报文 -->
+<segment>
+	<!-- 卡账号 -->
+	<xmlTag tagName="PayerAcctNbr">
+		<String name="PayerAcctNbr" />
+	</xmlTag>
+	<!-- 证件类型 -->
+	<xmlTag tagName="PayerIdTypCd">
+		<String name="PayerIdTypCd" />
+	</xmlTag>
+	<!-- 证件Id -->
+	<xmlTag tagName="PayerIdNbr">
+		<String name="PayerIdNbr" />
+	</xmlTag>
+	<!-- 卡账户状态 -->
+	<xmlTag tagName="PayerAcctStatus">
+		<String name="PayerAcctStatus" />
+	</xmlTag>
+	<!-- 手机号码 -->
+	<xmlTag tagName="PayerPhoneNoList">
+		<idxField name="PayerPhoneNoList">
+			<xmlTag tagName="PayerPhoneNo">
+				<String name="PayerPhoneNoList"></String>
+			</xmlTag>
+		</idxField>
+	</xmlTag>
+	<!-- 付款卡有效期 -->
+	<xmlTag tagName="PayerCardCvv2">
+		<String name="PayerCardCvv2" />
+	</xmlTag>
+	
+	<!-- 付款人姓名 -->
+	<xmlTag tagName="PayerAcctName">
+		<String name="PayerAcctName" />
+	</xmlTag>
+	<!-- 客户号 -->
+	<xmlTag tagName="CustCifNbr">
+		<String name="CustCifNbr" />
+	</xmlTag>
+	<!-- 开户机构 -->
+	<xmlTag tagName="PayerAcctDeptNbr">
+		<String name="PayerAcctDeptNbr" />
+	</xmlTag>
+	
+	<!-- 账户挂失状态 -->
+	<xmlTag tagName="AcctLossStatus">
+		<String name="AcctLossStatus" />
+	</xmlTag>
+	<!-- 账户状态字 -->
+	<xmlTag tagName="AcctStatusWord">
+		<String name="AcctStatusWord" />
+	</xmlTag>
+	<!-- 部分冻结止付标志-->
+	<xmlTag tagName="AcctFreezeFlag">
+		<String name="AcctFreezeFlag" />
+	</xmlTag>
+	<!-- 账户性质 -->
+	<xmlTag tagName="AcctNature">
+		<String name="AcctNature" />
+	</xmlTag>
+	<!-- 卡片状态 -->
+	<xmlTag tagName="CardStatus">
+		<String name="CardStatus" />
+	</xmlTag>
+	<!-- 卡状态字 -->
+	<xmlTag tagName="CardStatusWord">
+		<String name="CardStatusWord" />
+	</xmlTag>
+</segment>

@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="BATCHMERDAYSETTLEEXTEND">
+	<select id="sumPayAmount" parameterClass="java.util.HashMap"
+		resultClass="java.math.BigDecimal">
+		select sum(c.transamt) from DOWNSYSFUNDTRANSHIST a,INNERFUNDTRANSHIST
+		b,ONLINESUBTRANSHIST c
+		where a.cleardate=#clearDate# and
+		a.fundchannelcode='CORE'
+		and a.innerfundtransnbr=b.innerfundtransnbr
+		<!-- 根据流水号关联 modified by wangtao 2016-12-21 -->
+		and b.UPPERTRANSNBR=c.transseqnbr
+		and c.transtypcd='00' and
+		c.merdevdeptnbr=#deptNbr#
+		<!-- 增加过滤条件，排除虚账户交易 modified by wangtao 2016-10-25 -->
+		and b.transcode!='CoreVirAcctTransfer'
+		<!-- 增加过滤条件，排除积分抵扣交易 modified by wangtao 2016-12-08 -->
+		and b.POINTDATAFLAG='0'
+	</select>
+
+	<select id="sumwithdrawAmount" parameterClass="java.util.HashMap"
+		resultClass="java.math.BigDecimal">
+		select sum(c.transamt) from DOWNSYSFUNDTRANSHIST a,INNERFUNDTRANSHIST
+		b,ONLINESUBTRANSHIST c
+		where a.cleardate=#clearDate# and
+		a.fundchannelcode='CORE'
+		and a.innerfundtransnbr=b.innerfundtransnbr
+		<!-- 根据流水号关联 modified by wangtao 2016-12-21 -->
+		and b.UPPERTRANSNBR=c.transseqnbr
+		and c.transtypcd='01' and
+		c.merdevdeptnbr=#deptNbr# and c.refundmode = '1'
+		<!-- 增加过滤条件，排除虚账户交易 modified by wangtao 2016-10-25 -->
+		and (b.transcode!='CoreDebitVirtualRefoundTrans' and
+		b.transcode!='CoreCreditVirtualRefoundTrans')
+		<!-- 增加过滤条件，排除积分抵扣交易 modified by wangtao 2016-12-08 -->
+		and b.POINTDATAFLAG='0'
+	</select>
+
+	<!-- 将商户结算表记录转移到历史表中 -->
+	<insert id="transferMerchantSettExtTmpToHistory" parameterClass="com.csii.upp.dto.generate.Batchmerdaysettle">
+		<![CDATA[
+			INSERT INTO BATCHMERDAYSETTLEHIST 
+			(DAYSETTLESEQNBR, TRANSDATE, CLEARDATE, TRANSTIME, SETTLESTATUS,
+			MERNBR, CUSTCIFNBR, PAYERACCTNBR, PAYERACCTTYPCD, PAYERACCTDEPTNBR,
+			PAYERACCTNAME, PAYEEACCTNBR, PAYEEACCTDEPTNBR, PAYEEACCTTYPCD,
+			PAYEEACCTNAME, PAYERACCTKIND, PAYEEACCTKIND, PAYERCARDTYPCD,
+			PAYEECARDTYPCD, STANDBOOKTYPCD, TRANSAMT, DEPARTMENTNBR, MEMO,DATELASTMAINT)
+			VALUES(#daysettleseqnbr#,#transdate#,#cleardate#,#transtime#,#settlestatus#,
+			#mernbr#,#custcifnbr#,#payeracctnbr#,#payeraccttypcd#,#payeracctdeptnbr#,
+			#payeracctname#,#payeeacctnbr#,#payeeacctdeptnbr#,#payeeaccttypcd#,#payeeacctname#,
+			#payeracctkind#,#payeeacctkind#,#payercardtypcd#,#payeecardtypcd#,#standbooktypcd#,
+			#transamt#,#departmentnbr#,#memo#,#datelastmaint#
+			)
+		]]>
+	</insert>
+
+	<!-- 删除商户结算表指定清算日期之前的记录 -->
+	<delete id="deleteMerchantSettExtTmpBeforeDate" parameterClass="HashMap">
+		<![CDATA[
+		    DELETE FROM
+		    	BATCHMERDAYSETTLE 
+		   	WHERE 
+		   		CLEARDATE <= #ClearDate# 
+		   	AND 
+		   		SETTLESTATUS = '1'
+	   	]]>
+	</delete>
+
+	<!-- 统计汇总 -->
+	<resultMap id="merchantSettCollectMap" class="java.util.HashMap">
+		<result property="TotalCount" column="TotalCount" />
+		<result property="TransAmount" column="TotalAmount" />
+		<result property="ClearDate" column="CLEARDATE" />
+		<result property="MerchantTransType" column="STANDBOOKTYPCD" />
+		<result property="PayAcctNo" column="PAYERACCTNBR" />
+		<result property="PayAcctType" column="PAYERACCTTYPCD" />
+		<result property="PayAcctKind" column="PAYERACCTKIND" />
+		<result property="RcvAcctNo" column="PAYEEACCTNBR" />
+		<result property="RcvAcctType" column="PAYEEACCTTYPCD" />
+		<result property="RcvAcctKind" column="PAYEEACCTKIND" />
+		<result property="BriefCode" column="MEMO" />
+	</resultMap>
+	<select id="queryMerchantSettForExt" resultMap="merchantSettCollectMap"
+		parameterClass="HashMap">
+		SELECT
+		COUNT(PAYERACCTNBR) AS TotalCount,
+		SUM(TRANSAMT)
+		AS TotalAmount,
+		CLEARDATE,
+		PAYERACCTNBR,
+		PAYERACCTTYPCD,
+		PAYERACCTKIND,
+		PAYEEACCTNBR,
+		PAYEEACCTTYPCD,
+		PAYEEACCTKIND,
+		STANDBOOKTYPCD,
+		MEMO
+		FROM
+		BATCHMERDAYSETTLE
+		WHERE
+		MERNBR = #MerNbr#
+		AND
+		CLEARDATE=#ClearDate#
+		AND
+		SETTLESTATUS = #SettleStatus#
+		GROUP BY
+		CLEARDATE,
+		PAYERACCTNBR,
+		PAYERACCTTYPCD,
+		PAYERACCTKIND,
+		PAYEEACCTNBR,
+		PAYEEACCTTYPCD,
+		PAYEEACCTKIND,
+		STANDBOOKTYPCD,
+		MEMO
+	</select>
+
+	<select id="getDateFromBatchMerDaySettle" parameterClass="java.util.HashMap"
+		resultClass="com.csii.upp.dto.generate.Batchmerdaysettle">
+	<![CDATA[
+	select a.* from batchmerdaysettle a,meracctinfo b where   a.mernbr = b.mernbr and a.cleardate =#ClearDate# and b.merplatformnbr in
+	( select merplatformnbr from meracctinfo where mernbr=#merNbr#)
+	]]>
+	</select>
+</sqlMap>

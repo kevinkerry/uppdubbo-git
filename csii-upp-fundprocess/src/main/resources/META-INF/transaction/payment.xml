@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spring:beans xmlns:spring="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.csii.com.cn/schema/pe"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd 
+	http://www.csii.com.cn/schema/pe http://www.csii.com.cn/schema/pe/pe-config.xsd">
+	<config>
+		<!-- 支付交易 -->
+		<transaction id="UPAY" template="fundUppTemplate">
+			<actions>
+				<ref name="action">UnifiedPaymentAction</ref>
+			</actions>
+		</transaction>
+		<action id="UnifiedPaymentAction"
+			class="com.csii.upp.fundprocess.action.payment.UnifiedPaymentAction">
+		</action>
+
+
+		<!-- 他行网银支付交易 -->
+		<transaction id="OEBP" template="fundUppTemplate">
+			<actions>
+				<ref name="action">OtherBankPaymentAction</ref>
+			</actions>
+		</transaction>
+		<action id="OtherBankPaymentAction"
+			class="com.csii.upp.fundprocess.action.payment.OtherBankPaymentAction"></action>
+
+		<!-- 查询卡信息 -->
+		<transaction id="QCDI" template="queryRegUppTemplate">
+			<actions>
+				<ref name="action">QueryCardInfoAction</ref>
+			</actions>
+		</transaction>
+		<!-- <action id="QueryCardInfoAction"
+			class="com.csii.upp.fundprocess.action.online.WechatServiceAction"></action> -->
+          <action id="QueryCardInfoAction"
+			class="com.csii.upp.fundprocess.action.payment.QueryCardInfoAction"></action>
+		<!-- 跨行智能支付开通 -->
+		<transaction id="ROOP" template="queryRegUppTemplate">
+			<actions>
+				<ref name="action">RegisterOtherQuickPay</ref>
+			</actions>
+		</transaction>
+		<action id="RegisterOtherQuickPay"
+			class="com.csii.upp.fundprocess.action.payment.RegisterOtherQuickAction"></action>
+
+		<!-- 校验卡密码 -->
+		<transaction id="CHCP" template="queryRegUppTemplate">
+			<actions>
+				<ref name="action">CheckCardPwdAction</ref>
+			</actions>
+		</transaction>
+		<action id="CheckCardPwdAction"
+			class="com.csii.upp.fundprocess.action.payment.CheckCardPwdAction"></action>
+		<!-- 退货交易 -->
+		<transaction id="PAYR" template="fundUppTemplate">
+			<actions>
+				<ref name="action">RefoundTransAction</ref>
+			</actions>
+		</transaction>
+		<action id="RefoundTransAction"
+			class="com.csii.upp.fundprocess.action.payment.RefoundTransAction"></action>
+		<!-- 虚账户退货交易 -->
+		<transaction id="VTRT" template="fundUppTemplate">
+			<actions>
+				<ref name="action">VirtualRefoundTransAction</ref>
+			</actions>
+		</transaction>
+		<action id="VirtualRefoundTransAction"
+			class="com.csii.upp.fundprocess.action.payment.VirtualRefoundTransAction"></action>
+
+		<!--发送短信 -->
+		<transaction id="SMSX" template="queryRegUppTemplate">
+			<actions>
+				<ref name="action">SendMessageAction</ref>
+			</actions>
+		</transaction>
+		<action id="SendMessageAction"
+			class="com.csii.upp.fundprocess.action.payment.SendMessageAction" />
+
+		<!-- 查询核心账务日期 -->
+		<transaction id="QHDT" template="queryRegUppTemplate">
+			<actions>
+				<ref name="action">QueryHostDateAction</ref>
+			</actions>
+		</transaction>
+		<action id="QueryHostDateAction"
+			class="com.csii.upp.fundprocess.action.payment.QueryHostDateAction"></action>
+		<!-- 确认虚账户支付 -->
+		<transaction id="CVAP" template="fundUppTemplate">
+			<actions>
+				<ref name="action">ConfirmedVirtualAcctPayAction</ref>
+			</actions>
+		</transaction>
+		<action id="ConfirmedVirtualAcctPayAction"
+			class="com.csii.upp.fundprocess.action.payment.ConfirmedVirtualAcctPayAction"></action>
+
+		<!-- 查询内部账户信息 -->
+		<transaction id="QIAI" template="queryRegUppTemplate">
+			<actions>
+				<ref name="action">QueryInnerAcctInfoAction</ref>
+			</actions>
+		</transaction>
+		<action id="QueryInnerAcctInfoAction"
+			class="com.csii.upp.fundprocess.action.payment.QueryInnerAcctInfoAction"></action>
+		<!-- 虚账户余额查询 -->
+		<transaction id="QVAB" template="queryRegUppTemplate">
+			<actions>
+				<ref name="action">QueryVirtualAcctBalanceAction</ref>
+			</actions>
+		</transaction>
+		<action id="QueryVirtualAcctBalanceAction"
+			class="com.csii.upp.fundprocess.action.payment.QueryVirtualAcctBalanceAction"></action>
+
+		<!-- 虚账户转账 -->
+		<transaction id="VATF" template="fundUppTemplate">
+			<actions>
+				<ref name="action">VirtualAcctTransferAction</ref>
+			</actions>
+		</transaction>
+		<action id="VirtualAcctTransferAction"
+			class="com.csii.upp.fundprocess.action.payment.VirtualAcctTransferAction"></action>
+
+		<!-- fundproces到银联查询订单支付情况 -->
+		<transaction id="QOPS" template="queryRegUppTemplate">
+			<actions>
+				<ref name="action">QueryOrderPayStatusAction</ref>
+			</actions>
+		</transaction>
+		<action id="QueryOrderPayStatusAction"
+			class="com.csii.upp.fundprocess.action.payment.QueryOrderPayStatusAction"></action>
+
+		<!-- fundproces到银联查询他行卡快捷支付开通状态 -->
+		<transaction id="QAOS" template="queryRegUppTemplate">
+			<actions>
+				<ref name="action">QueryAcctOpenStatusAction</ref>
+			</actions>
+		</transaction>
+		<action id="QueryAcctOpenStatusAction"
+			class="com.csii.upp.fundprocess.action.payment.QueryAcctOpenStatusFundAction"></action>
+
+		<!-- 接收MQ消息交易 -->
+		<transaction id="AMQR" template="queryRegUppTemplate">
+			<actions>
+				<ref name="action">AMQRAction</ref>
+			</actions>
+		</transaction>
+		<action id="AMQRAction"
+			class="com.csii.upp.fundprocess.action.online.AMQReceiveAction" />
+
+		<!-- 批量转账交易 -->
+		<transaction id="BTTF" template="fundUppTemplate">
+			<actions>
+				<ref name="action">BatchTransferAction</ref>
+			</actions>
+		</transaction>
+		<action id="BatchTransferAction"
+			class="com.csii.upp.fundprocess.action.payment.BatchTransferAction"></action>
+
+		<!-- 批量转账交易超时状态查询 -->
+		<transaction id="QBTT" template="queryRegUppTemplate">
+			<actions>
+				<ref name="action">QueryBatchTransfer4TimeOutAction</ref>
+			</actions>
+		</transaction>
+		<action id="QueryBatchTransfer4TimeOutAction"
+			class="com.csii.upp.fundprocess.action.payment.QueryBatchTransfer4TimeOutAction"></action>
+
+		<!-- 发往积分网关查询积分 -->
+		<transaction id="QUIN" template="queryRegUppTemplate">
+			<actions>
+				<ref name="action">QueryIntegralFundAction</ref>
+			</actions>
+		</transaction>
+		<action id="QueryIntegralFundAction"
+			class="com.csii.upp.fundprocess.action.payment.QueryIntegralFundAction"></action>
+
+		<!-- 商户信息同步新增 -->
+		<transaction id="SYMI" template="queryRegUppTemplate">
+			<actions>
+				<ref name="action">SynMerchantInfoAction</ref>
+			</actions>
+		</transaction>
+		<action id="SynMerchantInfoAction"
+			class="com.csii.upp.fundprocess.action.payment.SynMerchantInfoAction"></action>
+		<!-- 商户信息同步修改 -->
+		<transaction id="UPMI" template="queryRegUppTemplate">
+			<actions>
+				<ref name="action">UpdMerchantInfoAction</ref>
+			</actions>
+		</transaction>
+		<action id="UpdMerchantInfoAction"
+			class="com.csii.upp.fundprocess.action.payment.UpdMerchantInfoAction"></action>
+
+		<!-- 发往二维码前置查询原二维码信息 -->
+		<transaction id="QCUL" template="queryRegUppTemplate">
+			<actions>
+				<ref name="action">QueryQrCodeFundAction</ref>
+			</actions>
+		</transaction>
+		<action id="QueryQrCodeFundAction"
+			class="com.csii.upp.fundprocess.action.payment.QueryQrCodeFundAction"></action>
+		<!-- 提现 -->
+		<transaction id="ETWA" template="fundUppTemplate">
+			<actions>
+				<ref name="action">NewWithDrawalAction</ref>
+			</actions>
+			<channels>
+				<channel type="http">
+					<param name="success">stream,</param>
+				</channel>
+			</channels>
+		</transaction>
+		<action id="NewWithDrawalAction"
+			class="com.csii.upp.fundprocess.action.payment.NewWithDrawalAction"></action>
+		<!-- 充值 -->
+		<transaction id="ETRA" template="fundUppTemplate">
+			<actions>
+				<ref name="action">RechargeAction</ref>
+			</actions>
+			<channels>
+				<channel type="http">
+					<param name="success">stream,</param>
+				</channel>
+			</channels>
+		</transaction>
+		<action id="RechargeAction"
+			class="com.csii.upp.fundprocess.action.payment.RechargeAction"></action>
+
+		<!-- 额度查询 -->
+		<transaction id="EATL" template="queryRegUppTemplate">
+			<actions>
+				<ref name="action">XiaoMiTransLimitAction</ref>
+			</actions>
+		</transaction>
+		<action id="XiaoMiTransLimitAction"
+			class="com.csii.upp.fundprocess.action.online.XiaoMiTransLimitAction" />
+
+		<!-- 小米消费 -->
+		<transaction id="EATC" template="fundUppTemplate">
+			<actions>
+				<ref name="action">XiaoMiConsumeAction</ref>
+			</actions>
+		</transaction>
+		<action id="XiaoMiConsumeAction"
+			class="com.csii.upp.fundprocess.action.online.XiaoMiConsumeAction" />
+
+	</config>
+</spring:beans>

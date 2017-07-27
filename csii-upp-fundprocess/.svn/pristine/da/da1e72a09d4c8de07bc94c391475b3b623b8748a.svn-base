@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spring:beans xmlns:spring="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.csii.com.cn/schema/pe"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd 
+	http://www.csii.com.cn/schema/pe http://www.csii.com.cn/schema/pe/pe-config.xsd">
+
+	<config>
+		<!-- 银联全渠道规范接入联机服务 -->
+		<localeResolver />
+		<bean id="mainController" class="com.csii.pe.channel.http.servlet.MainController">
+			<ref name="coreController">coreController</ref>
+			<ref name="contextResolver">unionpay.contextResolver</ref>
+		</bean>
+		<bean id="unionpay.contextResolver" class="com.csii.upp.fundprocess.resolver.URLContextResolver" />
+		<bean id="mainViewResolver" class="com.csii.pe.channel.http.servlet.HashMapViewResolver">
+			<map name="mapping">
+				<bean name="servlet" class="com.csii.pe.channel.http.servlet.UrlView">
+					<param name="cacheSeconds">0</param>
+					<param name="prefix"></param>
+					<param name="suffix">.do</param>
+					<param name="localeMode">0</param>
+					<!-- -1 prefix; 0 none; 1 suffix -->
+					<param name="clientType">false</param>
+				</bean>
+
+				<bean name="download" class="com.csii.pe.channel.http.servlet.DownloadView" />
+				<ref name="default">unionpay.stream</ref>
+				<ref name="defaultError">unionpay.stream</ref>
+				<ref name="stream">unionpay.stream</ref>
+			</map>
+		</bean>
+		<bean name="unionpay.stream" class="com.csii.pe.channel.http.servlet.StreamView">
+			<param name="contentType">text/plain;charset=UTF-8</param>
+		</bean>
+	</config>
+</spring:beans>

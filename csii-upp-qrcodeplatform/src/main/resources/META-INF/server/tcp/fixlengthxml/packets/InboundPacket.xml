@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE inboundPacket SYSTEM "packetutf8.dtd">
+<inboundPacket parsePrefix="p">
+	<segment>
+		<fixInteger name="BodyLength" length="8" />
+	</segment>
+	<include include="XmlHead" />
+</inboundPacket>

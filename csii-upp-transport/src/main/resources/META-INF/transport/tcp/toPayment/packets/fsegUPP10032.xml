@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE segment SYSTEM "packetutf8.dtd">
+<!-- 他行网银支付fundprocess异步通知pyament -->
+<segment>
+	<!-- 总资金流水号 -->
+	<xmlTag tagName="TransSeqNo">
+		<String name="overallTransNbr"></String>
+	</xmlTag>
+	<!-- 支付平台流水号 -->
+	<xmlTag tagName="TransSeqNbr">
+		<String name="upperTransNbr"></String>
+	</xmlTag>
+	<!-- 支付平台子流水号 -->
+	<xmlTag tagName="SubTransSeqNbr">
+		<String name="upperSubTransNbr"></String>
+	</xmlTag>
+	<!-- 确认支付金额 -->
+	<xmlTag tagName="TransAmt">
+		<BigDecimal name="transAmt" />
+	</xmlTag>
+	<!-- 商户交易时间 -->
+	<xmlTag tagName="MerTransDateTime">
+		<String name="merTransDateTime" />
+	</xmlTag>
+	<!-- 确认支付标志 -->
+	<xmlTag tagName="ComfirmPayYN">
+		<String name="comfirmPayYN"></String>
+	</xmlTag>	
+	<!-- 交易状态 -->
+	<xmlTag tagName="TransStatus">
+		<String name="transStatus" >
+		</String>
+	</xmlTag>
+	<xmlTag tagName="PayerAcctNbr">
+		<String name="payerAcctNbr" >
+		</String>
+	</xmlTag>
+	<xmlTag tagName="PayerCardTypCd">
+		<String name="payerCardTypCd" >
+		</String>
+	</xmlTag>
+	<xmlTag tagName="PayTypCd">
+		<String name="payTypCd" >
+		</String>
+	</xmlTag>
+	<xmlTag tagName="HostClearDate">
+		<String name="hostClearDate"  />
+	</xmlTag>
+	<xmlTag tagName="ReceiptAmount">
+		<String name="receiptAmount" >
+		</String>
+	</xmlTag>
+</segment>

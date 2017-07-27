@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE segment SYSTEM "packetutf8.dtd">
+<!-- 支付宝商户信息同步（修改） -->
+<segment>
+	<!--服务代码  -->
+	<xmlTag tagName="txnCode">
+		<String name="txnCode" defaultValue="" />
+	</xmlTag>
+	<!-- 渠道编号 -->
+	<xmlTag tagName="channel">
+		<String name="channel" defaultValue="" />
+	</xmlTag>
+	<!-- 商户号 -->
+	<xmlTag tagName="merId">
+		<String name="merId" defaultValue="" />
+	</xmlTag>
+	<!-- 客服电话 -->
+	<xmlTag tagName="servicePhone">
+		<String name="servicePhone" defaultValue="" />
+	</xmlTag>
+	<!-- 联系人名称 -->
+	<xmlTag tagName="contactName">
+		<String name="contactName" defaultValue="" />
+	</xmlTag>
+	<!-- 入驻标识号 -->
+	<xmlTag tagName="AlipayMerchantId">
+		<String name="alipayMerchantId" defaultValue="" />
+	</xmlTag>
+</segment>

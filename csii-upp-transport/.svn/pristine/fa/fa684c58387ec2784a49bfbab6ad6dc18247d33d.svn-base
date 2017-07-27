@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE segment SYSTEM "packetutf8.dtd">
+<!-- 退货 -->
+<segment>
+	<!-- 商户流水号 -->
+	<xmlTag tagName="MerSeqNbr">
+		<String name="merSeqNbr"/>
+	</xmlTag>
+	<!-- 商户时间 -->
+	<xmlTag tagName="MerTransDateTime">
+		<String name="merTransDateTime" />
+	</xmlTag>
+	<!-- 原商户流水号 -->
+	<xmlTag tagName="OrigMerSeqNbr">
+		<String name="origMerSeqNbr"/>
+	</xmlTag>
+	<!-- 原商户日期 -->
+	<xmlTag tagName="OrigMerDate">
+		<String name="origMerDate" />
+	</xmlTag>
+	<!-- 原支付交易日期 -->
+	<xmlTag tagName="OrigTransAmt">
+		<String name="origTransAmt"/>
+	</xmlTag>
+	<!-- 二级商户 -->
+	<xmlTag tagName="SubMerchantId">
+		<String name="subMerchantId"/>
+	</xmlTag>
+	<!-- 二级商户流水号 -->
+	<xmlTag tagName="SubMerSeqNo">
+		<String name="subMerSeqNo"/>
+	</xmlTag>  
+	<!-- 二级商户时间 -->
+	<xmlTag tagName="SubMerDateTime">
+		<String name="subMerDateTime" />
+	</xmlTag> 
+	<!-- 二级交易金额 -->
+	<xmlTag tagName="SubTransAmt">
+		<String name="subTransAmt"/>
+	</xmlTag>        
+	<!-- 原二级商户流水号 -->
+	<xmlTag tagName="OrigSubMerSeqNo">
+		<String name="origSubMerSeqNo"/>
+	</xmlTag>
+	<!-- 原二级商户日期 -->
+	<xmlTag tagName="OrigSubMerDate">
+		<String name="origSubMerDate" />
+	</xmlTag>
+	<!-- 退款原因 -->
+	<xmlTag tagName="RefundReason">
+		<String name="refundReason"/>
+	</xmlTag>
+	<!-- 操作员编号-->
+	<xmlTag tagName="OperatorId">
+		<String name="operatorId"/>
+	</xmlTag>
+	<!--门店编号-->
+	<xmlTag tagName="StoreId">
+		<String name="storeId"/>
+	</xmlTag>
+	<!--终端编号-->
+	<xmlTag tagName="TermId">
+		<String name="termId"/>
+	</xmlTag>
+	
+	
+</segment>

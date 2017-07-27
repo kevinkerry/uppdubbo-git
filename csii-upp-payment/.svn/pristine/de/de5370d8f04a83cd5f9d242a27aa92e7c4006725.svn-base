@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE segment SYSTEM "packetutf8.dtd">
+<segment>
+    <!-- 商户名称 -->
+	<xmlTag tagName="MerchantName">
+		<String name="MerchantName" />
+	</xmlTag>
+	<!-- 商户平台 -->
+	<xmlTag tagName="MerPlatformNbr">
+		<String name="MerPlatformNbr" />
+	</xmlTag>
+	
+	<xmlTag tagName="PayTypeCdStr">
+		<String name="PayTypeCdStr" />
+	</xmlTag>
+	
+</segment>

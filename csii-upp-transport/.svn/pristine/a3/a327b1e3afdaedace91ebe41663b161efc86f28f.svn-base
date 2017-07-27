@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE segment SYSTEM "packetutf8.dtd">
+<segment>
+	<!-- 交易ID -->
+	<xmlTag tagName="TransId">
+		<String name="TransId" defaultValue=""></String>
+	</xmlTag>
+	<!--同步内容类型 -->
+	<xmlTag tagName="SynType">
+		<String name="SynType" defaultValue="" />
+	</xmlTag>
+	<!-- 卡号 -->
+	<xmlTag tagName="AcctNo">
+		<String name="AcctNo" defaultValue="" />
+	</xmlTag>
+	<!-- 客户号 -->
+	<xmlTag tagName="CifNo">
+		<String name="CifNo" defaultValue="" />
+	</xmlTag>
+	<!-- 签约号 -->
+	<xmlTag tagName="SignId">
+		<String name="SignId" defaultValue="" />
+	</xmlTag>
+	<!-- 单日限额 -->
+	<xmlTag tagName="PerDayLimit">
+		<String name="PerDayLimit" defaultValue="" />
+	</xmlTag>
+	<!-- 单笔限额 -->
+	<xmlTag tagName="PerTransLimit">
+		<String name="PerTransLimit" defaultValue="" />
+	</xmlTag>
+	<!-- 交易金额 -->
+	<xmlTag tagName="TransAmt">
+		<String name="TransAmt" defaultValue="" />
+	</xmlTag>
+	<!-- 交易所属日期 -->
+	<xmlTag tagName="PayDate">
+		<String name="PayDate" defaultValue="" />
+	</xmlTag>
+	<!-- 签约手机号 -->
+	<xmlTag tagName="SignPhone">
+		<String name="SignPhone" defaultValue="" />
+	</xmlTag>
+	<!-- 签约机构号 -->
+	<xmlTag tagName="SignOpenDeptId">
+		<String name="SignOpenDeptId" defaultValue="" />
+	</xmlTag>
+	<!-- 签约推荐人编号 -->
+	<xmlTag tagName="SignRecommendedNo">
+		<String name="SignRecommendedNo" defaultValue="" />
+	</xmlTag>
+	<!-- 签约用户名 -->
+	<xmlTag tagName="SignUserName">
+		<String name="SignUserName" defaultValue="" />
+	</xmlTag>
+	<!-- 开户日期 -->
+	<xmlTag tagName="OpenDate">
+		<String name="OpenDate" defaultValue="" />
+	</xmlTag>
+	<!-- 开户操作用户 -->
+	<xmlTag tagName="OpenUser">
+		<String name="OpenUser" defaultValue="" />
+	</xmlTag>
+	<!-- 修改用户 -->
+	<xmlTag tagName="ModifyUser">
+		<String name="ModifyUser" defaultValue="" />
+	</xmlTag>
+	<!-- 修改日期 -->
+	<xmlTag tagName="ModifyDate">
+		<String name="ModifyDate" defaultValue="" />
+	</xmlTag>
+	<!-- 注销日期 -->
+	<xmlTag tagName="CloseDate">
+		<String name="CloseDate" defaultValue="" />
+	</xmlTag>
+	<!-- 注销操作用户 -->
+	<xmlTag tagName="CloseUser">
+		<String name="CloseUser" defaultValue="" />
+	</xmlTag>
+
+
+</segment>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE segment SYSTEM "packetutf8.dtd">
+<segment>
+	<!-- 卡号 -->
+	<xmlTag tagName="PayerAcctNbr">
+		<String name="PayerAcctNbr" />
+	</xmlTag>
+	<!-- 本地手机号 -->
+	<xmlTag tagName="LocalMobilePhone">
+		<String name="LocalMobilePhone"></String>
+	</xmlTag>
+	<!-- 户名 -->
+	<xmlTag tagName="PayerAcctName">
+		<String name="PayerAcctName"></String>
+	</xmlTag>
+	<!--手机号 -->
+	<xmlTag tagName="PayerPhoneNo">
+		<String name="PayerPhoneNo"></String>
+	</xmlTag>
+	<!-- 卡类型 -->	
+	<xmlTag tagName="PayerCardTypCd">
+		<String name="PayerCardTypCd"></String>
+	</xmlTag>
+	<!-- 客户号 -->	
+	<xmlTag tagName="CustCifNbr">
+		<String name="CustCifNbr"></String>
+	</xmlTag>
+	<!-- 机构号 -->	
+	<xmlTag tagName="PayerAcctDeptNbr">
+		<String name="PayerAcctDeptNbr"></String>
+	</xmlTag>
+	  <xmlTag tagName="payerAcctStatus">
+		<String name="payerAcctStatus" />
+	</xmlTag>
+	  <xmlTag tagName="acctLossStatus">
+		<String name="acctLossStatus" />
+	</xmlTag>
+	  <xmlTag tagName="acctStatusWord">
+		<String name="acctStatusWord" />
+	</xmlTag>
+	  <xmlTag tagName="cardStatusWord">
+		<String name="cardStatusWord" />
+	</xmlTag>
+	  <xmlTag tagName="cardStatus">
+		<String name="cardStatus" />
+	</xmlTag>
+</segment>

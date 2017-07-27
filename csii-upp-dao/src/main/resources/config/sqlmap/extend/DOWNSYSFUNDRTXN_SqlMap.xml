@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="DOWNSYSFUNDRTXN">
+
+	<select id="getDownRtxnCnt" parameterClass="com.csii.upp.dto.generate.Downsysfundrtxn" resultClass="java.lang.Integer">
+	<![CDATA[
+    select count(*) 
+    from DOWNSYSFUNDRTXN
+    where FUNDCHANNELCODE=#fundchannelcode:VARCHAR#
+      and RTXNDATE <= #rtxndate:DATE#
+      and CHECKSTATE = #checkstate:DECIMAL#
+     ]]>
+	</select>
+
+	<resultMap class="java.util.HashMap" id="DownSysfundRtxnList">
+		<result property="innerrtxnnbr" column="innerrtxnnbr" />
+		<result property="originnerrtxnnbr" column="originnerrtxnnbr" />
+		<result property="downrtxnnbr" column="downrtxnnbr" />
+		<result property="fundchannelcode" column="fundchannelcode" />
+		<result property="cleardate" column="cleardate" javaType="String" />
+		<result property="rtxntime" column="rtxntime" javaType="String" />
+		<result property="rtxntypcd" column="rtxntypcd" />
+		<result property="payeracctnbr" column="payeracctnbr" />
+		<result property="payername" column="payername" />
+		<result property="payeeacctnbr" column="payeeacctnbr" />
+		<result property="payeename" column="payeename" />
+		<result property="transamt" column="transamt" />
+		<result property="rtxnstate" column="rtxnstate" />
+		<result property="totalNum" column="totalnum_" />
+	</resultMap>
+
+</sqlMap>

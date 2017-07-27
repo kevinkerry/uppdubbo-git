@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE segment SYSTEM "packetutf8.dtd">
+<segment>
+	<!-- 交易ID-->
+	<xmlTag tagName="TransId">
+		<String name="TransId" defaultValue="SYFS" />
+	</xmlTag>
+	<!-- 同步内容类型类型-->
+	<xmlTag tagName="SynType">
+		<String name="SynType" />
+	</xmlTag>
+		<!-- 卡号-->
+	<xmlTag tagName="AcctNo">
+		<String name="AcctNo" />
+	</xmlTag>
+		<!-- 修改日期-->
+	<xmlTag tagName="ModifyDate">
+		<Date name="ModifyDate" pattern="yyyyMMdd" />
+	</xmlTag>
+		<!-- 修改用户-->
+	<xmlTag tagName="ModifyUser">
+		<String name="ModifyUser" />
+	</xmlTag>
+	
+</segment>

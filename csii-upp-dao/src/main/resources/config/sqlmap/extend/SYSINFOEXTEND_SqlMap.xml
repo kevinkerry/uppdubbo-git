@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="SYSINFO">
+	<select id="getMinSysInfo" resultMap="BaseResultMap">
+	 <![CDATA[  select FUNDCHANNELCODE,
+	       PREVPOSTDATE,
+	       POSTDATE,
+	       NEXTPOSTDATE,
+	       NOTE,
+	       CLEARRESULT,
+	       CHECKRESULT,
+	       EXFLD1,
+	       EXFLD2,
+	       EXFLD3,
+	       DATELASTMAINT,
+	       SYSSTATE,
+	       HOLIDAYFLAG,
+	       PREWORKROUND,
+	       WORKROUND
+	  from SYSINFO 
+	 where PREVPOSTDATE =
+	       (select min(PREVPOSTDATE)
+	          from SYSINFO
+	         where FUNDCHANNELCODE not in (select FUNDCHANNELCODE
+	                  from SYSINFO
+	                 where CHECKRESULT=1
+	                   and FUNDCHANNELCODE!='EPAY') and sysstate = '01')
+	                   and fundchannelcode = 'CORE'
+	   ]]>
+	</select>
+	
+	<update id="updateConfirmDate" parameterClass="java.util.HashMap">
+		update ONLINESUBTRANS set CONFIRMEDPAYDATE=#postdate#,CONFIRMEDCLEARDATE=#postdate#
+	</update>
+	
+	<insert id="insertCheckFIle" parameterClass="java.util.HashMap">
+		INSERT INTO INNERCHECKAPPLY (CHECKAPPLYNBR, UPPERSYSNBR, DOWNSYSNBR, CHECKSTARTDATE, CHECKENDDATE, FILENAME,  CHECKFLAG, DEALCODE, DEALMSG) VALUES (#CHECKAPPLYNBR1#, 'FDPS', 'CORE', #postdate#, #nextDate#, 'CORE.txt',  '1', 'UnDeal', '申请已处理')
+			, (#CHECKAPPLYNBR2#, 'FDPS', 'CORE', #nextDate#,  #nexttwoDate#, 'CORE.txt',  '1', 'UnDeal', '申请已处理')
+			, (#CHECKAPPLYNBR3#, 'FDPS', 'UNIONPAY', #postdate#,  #nextDate#, 'INN17040588ZM_929331053110008',  '1', 'UnDeal', '申请已提交' )
+	</insert>
+	
+	<insert id="insertDownSys">
+		insert into downsysfundtrans(innerfundtransnbr,fundchannelcode,transdate,cleardate,transamt,PAYERACCTNBR,checkstatus,datelastmaint) 
+			select innerfundtransnbr,fundchannelcode,transdate,cleardate,transamt,PAYERACCTNBR,'2',sysdate() from innerfundtrans where CLEARDATE='2020-10-3'
+	</insert>
+</sqlMap>

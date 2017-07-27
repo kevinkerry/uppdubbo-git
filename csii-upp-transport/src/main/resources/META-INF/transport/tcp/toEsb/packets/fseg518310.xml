@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE segment SYSTEM "packetutf8.dtd">
+<!-- 贷记卡支付 -->
+<segment>
+	<!-- 转出账号 -->
+	<xmlTag tagName="ACRAAC22">
+		<String name="payerAcctNbr" defaultValue=""/>
+	</xmlTag>
+	<!-- 转入账号 -->
+	<xmlTag tagName="ACRBAC22">
+		<String name="payeeAcctNbr" defaultValue=""/>
+	</xmlTag>
+	<!-- 交易金额 -->
+	<xmlTag tagName="ACRAMT1">
+		<String name="transAmt" defaultValue=""/>
+	</xmlTag>
+	<!-- 币种 -->
+	<xmlTag tagName="ACRCCYC">
+		<String name="currencyCd" defaultValue="CNY"/>
+	</xmlTag>
+	<!-- 钞汇标志 -->
+	<xmlTag tagName="ACRCHSX">
+		<String name="cashFlag" defaultValue="1"/>
+	</xmlTag>
+	<!-- 卡密码 -->
+	<xmlTag tagName="ACRACHIP">
+		<String name="payerCardPwd" defaultValue=""/>
+	</xmlTag>
+	<!-- 信用卡有效期 -->
+	<xmlTag tagName="ACRALIM">
+		<String name="payerCardExpiredDate" defaultValue="" />
+	</xmlTag>
+	<!-- 信用卡cvv -->
+	<xmlTag tagName="ACRACVV">
+		<String name="payerCardCvv2" defaultValue="" />
+	</xmlTag>
+	<!-- POS编号 -->
+	<xmlTag tagName="ACRAPOSC">
+		<String name="ACRAPOSC" defaultValue="IPP00001" />
+	</xmlTag>
+	<!-- 对账分类编号 -->
+	<xmlTag tagName="ACRFLBH">
+		<String name="checkNumber" defaultValue=""/>
+	</xmlTag>
+	<!-- 商户编号 -->
+	<xmlTag tagName="ACRASHCD">
+		<String name="merNbr" defaultValue="999999999999992" />
+	</xmlTag>
+	<!-- 摘要代码 -->
+	<xmlTag tagName="ACRNTCD1">
+		<String name="ACRNTCD1" defaultValue=""/>
+	</xmlTag>
+	<!-- 订单号 -->
+	<xmlTag tagName="ACRADDH">
+		<String name="transNbr" defaultValue=""/>
+	</xmlTag>
+	<!-- 前置营业日 -->
+	<xmlTag tagName="ACRDATE">
+		<Date name="transDate" defaultValue="" pattern="yyyyMMdd" />
+	</xmlTag>
+	<!-- 转入账户回单标志 -->
+	<xmlTag tagName="ACRBHDBZ">
+		<String name="ACRBHDBZ" defaultValue="1"/>
+	</xmlTag>
+	<!-- 商户地址 -->
+	<xmlTag tagName="ACRADDR">
+		<String name="payTypCd" defaultValue=""/>
+	</xmlTag>
+	<!-- 备注 -->
+	<xmlTag tagName="ACRRMRK">
+		<String name="payeeName"/>
+	</xmlTag>
+	<!-- 备用 -->
+	<xmlTag tagName="ACRMARK">
+		<String name="note" defaultValue=""/>
+	</xmlTag>
+</segment>

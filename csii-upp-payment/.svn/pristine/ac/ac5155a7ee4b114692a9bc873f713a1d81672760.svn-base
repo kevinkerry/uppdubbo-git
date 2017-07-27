@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE segment SYSTEM "packetutf8.dtd">
+<!--支付结果通知商户报文 -->
+<segment>
+	<Group name="Message">
+		<!-- 交易码 -->
+		<xmlTag tagName="TransId">
+			<String name="transId"></String>
+		</xmlTag>
+		<!-- 商户号 -->
+		<xmlTag tagName="MerchantId">
+			<String name="merchantId"></String>
+		</xmlTag>
+		<!-- 商户流水号 -->
+		<xmlTag tagName="MerSeqNo">
+			<String name="merSeqNo"></String>
+		</xmlTag>
+		<!-- 商户交易时间 -->
+		<xmlTag tagName="MerDateTime">
+			<Date name="merDateTime" pattern="yyyyMMddHHmmss"></Date>
+		</xmlTag>
+		<!-- 支付平台交易流水号 -->
+		<xmlTag tagName="TransSeqNo">
+			<String name="transSeqNo"></String>
+		</xmlTag>
+		<!-- 清算日期 -->
+		<xmlTag tagName="ClearDate">
+			<Date name="clearDate" pattern="yyyyMMdd"></Date>
+		</xmlTag>
+		<!-- 交易金额 -->
+		<xmlTag tagName="TransAmt">
+			<String name="transAmt"></String>
+		</xmlTag>
+		<!-- 交易响应吗 -->
+		<xmlTag tagName="RespCode">
+			<String name="respCode"></String>
+		</xmlTag>
+		<!-- 交易备注1 -->
+		<xmlTag tagName="Remark1">
+			<String name="remark1"></String>
+		</xmlTag>
+		<!-- 交易备注2 -->
+		<xmlTag tagName="Remark2">
+			<String name="remark2"></String>
+		</xmlTag>
+		<!-- 积分标识 -->
+		<xmlTag tagName="InteralFlag">
+			<String name="InteralFlag"></String>
+		</xmlTag>
+		<xmlTag tagName="MerTransList">
+		<idxField name="merTransDetailList" maxLoop="9999999">
+			<Group name="MerTransDetail">
+				<!-- 商户号-->
+				<xmlTag tagName="SubMerchantId">
+					<String name="MerNbr" />
+				</xmlTag>
+				<!-- 交易流水号 -->
+				<xmlTag tagName="SubMerSeqNo">
+					<String name="MerSeqNbr" />
+				</xmlTag>
+				<!-- 交易金额-->
+				<xmlTag tagName="SubTransAmt">
+					<String name="TransAmt" />
+				</xmlTag>
+				<!-- 积分抵扣金额 -->
+				<xmlTag tagName="SubDeductAmt">
+					<String name="DeductAmt" />
+				</xmlTag>
+				<!-- 实际支付金额-->
+				<xmlTag tagName="SubRealAmt">
+					<String name="RealAmt" />
+				</xmlTag>
+			</Group>
+		</idxField>
+	</xmlTag>
+	</Group>
+</segment>

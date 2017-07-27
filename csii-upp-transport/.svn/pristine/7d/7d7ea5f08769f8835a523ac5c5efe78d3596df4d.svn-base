@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE segment SYSTEM "packetutf8.dtd">
+<segment>
+	<!-- 原交易渠道日期 -->
+	<xmlTag tagName="SYS_DTE">
+		<Date name="origUpperTransDate" defaultValue="" pattern="yyyyMMdd"/>
+	</xmlTag>
+	<!-- 原交易渠道流水 -->
+	<xmlTag tagName="SRV_JNO">
+		<String name="origInnerFundTransNbr" defaultValue=""/>
+	</xmlTag>
+	<!-- 清算途径 -->
+	<xmlTag tagName="CLEARBZ">
+		<String name="hvbepsFlag" defaultValue=""/>
+	</xmlTag>
+</segment>

@@ -1,0 +1,363 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:util="http://www.springframework.org/schema/util" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       					   http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+	<bean id="depositPost"
+		class="com.csii.pe.channel.ws.extend.wsdl.WsdlWebServiceDefinition">
+		<property name="wsdl"
+			value="classpath:META-INF/transport/webservice/eaccount/wsdl/depositPostService.wsdl" />
+	</bean>
+	<bean id="itlPost"
+		class="com.csii.pe.channel.ws.extend.wsdl.WsdlWebServiceDefinition">
+		<property name="wsdl"
+			value="classpath:META-INF/transport/webservice/eaccount/wsdl/itlPostService.wsdl" />
+	</bean>
+	<bean id="depositQuery"
+		class="com.csii.pe.channel.ws.extend.wsdl.WsdlWebServiceDefinition">
+		<property name="wsdl"
+			value="classpath:META-INF/transport/webservice/eaccount/wsdl/depositQueryService.wsdl" />
+	</bean>
+	<bean id="customerQuery"
+		class="com.csii.pe.channel.ws.extend.wsdl.WsdlWebServiceDefinition">
+		<property name="wsdl"
+			value="classpath:META-INF/transport/webservice/eaccount/wsdl/customerQueryService.wsdl" />
+	</bean>
+	<bean id="loanPost"
+		class="com.csii.pe.channel.ws.extend.wsdl.WsdlWebServiceDefinition">
+		<property name="wsdl"
+			value="classpath:META-INF/transport/webservice/eaccount/wsdl/loanPostService.wsdl" />
+	</bean>
+	<bean id="loanQuery"
+		class="com.csii.pe.channel.ws.extend.wsdl.WsdlWebServiceDefinition">
+		<property name="wsdl"
+			value="classpath:META-INF/transport/webservice/eaccount/wsdl/loanQueryService.wsdl" />
+	</bean>
+<!-- 
+	<bean id="CreateAcct"
+		class="com.csii.pe.channel.ws.extend.wsdl.WsdlWebServiceDefinition">
+		<property name="wsdl"
+			value="src/META-INF/transport/eaccount/wsdl/depositeService.wsdl" />
+	</bean>
+
+	<bean id="QueryDirectAcctInfo"
+		class="com.csii.pe.channel.ws.extend.wsdl.WsdlWebServiceDefinition">
+		<property name="wsdl"
+			value="src/META-INF/transport/eaccount/wsdl/depositeService.wsdl" />
+	</bean>
+
+	<bean id="GetAcctLoanLinesAmt"
+		class="com.csii.pe.channel.ws.extend.wsdl.WsdlWebServiceDefinition">
+		<property name="wsdl"
+			value="src/META-INF/transport/eaccount/wsdl/loanService.wsdl" />
+	</bean>
+
+	<bean id="AcctTransOut"
+		class="com.csii.pe.channel.ws.extend.wsdl.WsdlWebServiceDefinition">
+		<property name="wsdl"
+			value="src/META-INF/transport/eaccount/wsdl/depositeService.wsdl" />
+	</bean>
+
+	<bean id="QueryTransDetail"
+		class="com.csii.pe.channel.ws.extend.wsdl.WsdlWebServiceDefinition">
+		<property name="wsdl"
+			value="src/META-INF/transport/eaccount/wsdl/depositQueryService.wsdl" />
+	</bean>
+
+	<bean id="QueryEcAcctTxnHist"
+		class="com.csii.pe.channel.ws.extend.wsdl.WsdlWebServiceDefinition">
+		<property name="wsdl"
+			value="src/META-INF/transport/eaccount/wsdl/depositeService.wsdl" />
+	</bean>
+
+	<bean id="AccountRecharge"
+		class="com.csii.pe.channel.ws.extend.wsdl.WsdlWebServiceDefinition">
+		<property name="wsdl"
+			value="src/META-INF/transport/eaccount/wsdl/itlService.wsdl" />
+	</bean>
+
+	<bean id="JCTisSign"
+		class="com.csii.pe.channel.ws.extend.wsdl.WsdlWebServiceDefinition">
+		<property name="wsdl"
+			value="src/META-INF/transport/eaccount/wsdl/depositeService.wsdl" />
+	</bean>
+
+	<bean id="InsAgreementAcctJCT"
+		class="com.csii.pe.channel.ws.extend.wsdl.WsdlWebServiceDefinition">
+		<property name="wsdl"
+			value="src/META-INF/transport/eaccount/wsdl/depositeService.wsdl" />
+	</bean>
+
+	<bean id="QueryAcctRegister"
+		class="com.csii.pe.channel.ws.extend.wsdl.WsdlWebServiceDefinition">
+		<property name="wsdl"
+			value="src/META-INF/transport/eaccount/wsdl/depositeService.wsdl" />
+	</bean>
+
+	<bean id="IntelAcctListQuery"
+		class="com.csii.pe.channel.ws.extend.wsdl.WsdlWebServiceDefinition">
+		<property name="wsdl"
+			value="src/META-INF/transport/eaccount/wsdl/depositQueryService.wsdl" />
+	</bean>
+
+	<bean id="UpdAgreementAcctJCT"
+		class="com.csii.pe.channel.ws.extend.wsdl.WsdlWebServiceDefinition">
+		<property name="wsdl"
+			value="src/META-INF/transport/eaccount/wsdl/depositeService.wsdl" />
+	</bean>
+
+	<bean id="GetPliesRichesActBalanceQry"
+		class="com.csii.pe.channel.ws.extend.wsdl.WsdlWebServiceDefinition">
+		<property name="wsdl"
+			value="src/META-INF/transport/eaccount/wsdl/depositeService.wsdl" />
+	</bean>	
+	<bean id="QueryIntelAcctInfo"
+		class="com.csii.pe.channel.ws.extend.wsdl.WsdlWebServiceDefinition">
+		<property name="wsdl"
+			value="src/META-INF/transport/eaccount/wsdl/depositQueryService.wsdl" />
+	</bean>
+	<bean id="IntelAcctEarningHistQuery"
+		class="com.csii.pe.channel.ws.extend.wsdl.WsdlWebServiceDefinition">
+		<property name="wsdl"
+			value="src/META-INF/transport/eaccount/wsdl/depositQueryService.wsdl" />
+	</bean>
+	<bean id="QueryIntelAcctTxnHist"
+		class="com.csii.pe.channel.ws.extend.wsdl.WsdlWebServiceDefinition">
+		<property name="wsdl"
+			value="src/META-INF/transport/eaccount/wsdl/depositQueryService.wsdl" />
+	</bean>
+	<bean id="AcctUnholdDBK"
+		class="com.csii.pe.channel.ws.extend.wsdl.WsdlWebServiceDefinition">
+		<property name="wsdl"
+			value="src/META-INF/transport/eaccount/wsdl/depositeService.wsdl" />
+	</bean>
+
+	<bean id="queryPettyLoanPayPlanInfo"
+		class="com.csii.pe.channel.ws.extend.wsdl.WsdlWebServiceDefinition">
+		<property name="wsdl"
+			value="src/META-INF/transport/eaccount/wsdl/loanService.wsdl" />
+	</bean>
+
+	<bean id="querySchedpmtDetail"
+		class="com.csii.pe.channel.ws.extend.wsdl.WsdlWebServiceDefinition">
+		<property name="wsdl"
+			value="src/META-INF/transport/eaccount/wsdl/loanService.wsdl" />
+	</bean>
+
+	<bean id="AcctHoldDBK"
+		class="com.csii.pe.channel.ws.extend.wsdl.WsdlWebServiceDefinition">
+		<property name="wsdl"
+			value="src/META-INF/transport/eaccount/wsdl/depositeService.wsdl" />
+	</bean>
+
+	<bean id="InsAgreementAcctCNS"
+		class="com.csii.pe.channel.ws.extend.wsdl.WsdlWebServiceDefinition">
+		<property name="wsdl"
+			value="src/META-INF/transport/eaccount/wsdl/depositeService.wsdl" />
+	</bean>
+
+	<bean id="TerminateAcctLoan"
+		class="com.csii.pe.channel.ws.extend.wsdl.WsdlWebServiceDefinition">
+		<property name="wsdl"
+			value="src/META-INF/transport/eaccount/wsdl/depositeService.wsdl" />
+	</bean>
+
+	<bean id="PettyLoanSignType"
+		class="com.csii.pe.channel.ws.extend.wsdl.WsdlWebServiceDefinition">
+		<property name="wsdl"
+			value="src/META-INF/transport/eaccount/wsdl/loanService.wsdl" />
+	</bean>
+
+	<bean id="PettyLoanSignAmt"
+		class="com.csii.pe.channel.ws.extend.wsdl.WsdlWebServiceDefinition">
+		<property name="wsdl"
+			value="src/META-INF/transport/eaccount/wsdl/loanService.wsdl" />
+	</bean>
+
+	<bean id="LoanPayment"
+		class="com.csii.pe.channel.ws.extend.wsdl.WsdlWebServiceDefinition">
+		<property name="wsdl"
+			value="src/META-INF/transport/eaccount/wsdl/depositeService.wsdl" />
+	</bean>
+
+	<bean id="LoanAccountDetail"
+		class="com.csii.pe.channel.ws.extend.wsdl.WsdlWebServiceDefinition">
+		<property name="wsdl"
+			value="src/META-INF/transport/eaccount/wsdl/loanService.wsdl" />
+	</bean>
+
+	<bean id="CnsIsSign"
+		class="com.csii.pe.channel.ws.extend.wsdl.WsdlWebServiceDefinition">
+		<property name="wsdl"
+			value="src/META-INF/transport/eaccount/wsdl/depositeService.wsdl" />
+	</bean>
+	<bean id="UpPwd"
+		class="com.csii.pe.channel.ws.extend.wsdl.WsdlWebServiceDefinition">
+		<property name="wsdl"
+			value="src/META-INF/transport/eaccount/wsdl/itlService.wsdl" />
+	</bean>
+
+	<bean id="PwdValid"
+		class="com.csii.pe.channel.ws.extend.wsdl.WsdlWebServiceDefinition">
+		<property name="wsdl"
+			value="src/META-INF/transport/eaccount/wsdl/itlService.wsdl" />
+	</bean>
+	PowerCoreTest Start
+	<bean id="CreatePers"
+		class="com.csii.pe.channel.ws.extend.wsdl.WsdlWebServiceDefinition">
+		<property name="wsdl"
+			value="src/META-INF/transport/eaccount/wsdl/customerPostService.wsdl" />
+	</bean>
+	<bean id="CreateDepositAcct"
+		class="com.csii.pe.channel.ws.extend.wsdl.WsdlWebServiceDefinition">
+		<property name="wsdl"
+			value="src/META-INF/transport/eaccount/wsdl/depositPostService.wsdl" />
+	</bean>
+	<bean id="AcctRecharge"
+		class="com.csii.pe.channel.ws.extend.wsdl.WsdlWebServiceDefinition">
+		<property name="wsdl"
+			value="src/META-INF/transport/eaccount/wsdl/depositPostService.wsdl" />
+	</bean>
+	<bean id="AcctOuterRecharge"
+		class="com.csii.pe.channel.ws.extend.wsdl.WsdlWebServiceDefinition">
+		<property name="wsdl"
+			value="src/META-INF/transport/eaccount/wsdl/depositPostService.wsdl" />
+	</bean>
+	<bean id="AcctInnerWithdrawal"
+		class="com.csii.pe.channel.ws.extend.wsdl.WsdlWebServiceDefinition">
+		<property name="wsdl"
+			value="src/META-INF/transport/eaccount/wsdl/depositPostService.wsdl" />
+	</bean>
+	<bean id="AcctOuterWithdrawal"
+		class="com.csii.pe.channel.ws.extend.wsdl.WsdlWebServiceDefinition">
+		<property name="wsdl"
+			value="src/META-INF/transport/eaccount/wsdl/depositPostService.wsdl" />
+	</bean>
+	<bean id="AcctDeposit"
+		class="com.csii.pe.channel.ws.extend.wsdl.WsdlWebServiceDefinition">
+		<property name="wsdl"
+			value="src/META-INF/transport/eaccount/wsdl/depositPostService.wsdl" />
+	</bean>
+	<bean id="AcctWithdrawal"
+		class="com.csii.pe.channel.ws.extend.wsdl.WsdlWebServiceDefinition">
+		<property name="wsdl"
+			value="src/META-INF/transport/eaccount/wsdl/depositPostService.wsdl" />
+	</bean>
+	<bean id="QueryDirectAcctInfo_PowerCore"
+		class="com.csii.pe.channel.ws.extend.wsdl.WsdlWebServiceDefinition">
+		<property name="wsdl"
+			value="src/META-INF/transport/eaccount/wsdl/depositQueryService.wsdl" />
+	</bean>
+	<bean id="AcctHold"
+		class="com.csii.pe.channel.ws.extend.wsdl.WsdlWebServiceDefinition">
+		<property name="wsdl"
+			value="src/META-INF/transport/eaccount/wsdl/depositPostService.wsdl" />
+	</bean>
+	<bean id="AcctUnhold"
+		class="com.csii.pe.channel.ws.extend.wsdl.WsdlWebServiceDefinition">
+		<property name="wsdl"
+			value="src/META-INF/transport/eaccount/wsdl/depositPostService.wsdl" />
+	</bean>
+	<bean id="PwdValid_PowerCore"
+		class="com.csii.pe.channel.ws.extend.wsdl.WsdlWebServiceDefinition">
+		<property name="wsdl"
+			value="src/META-INF/transport/eaccount/wsdl/depositPostService.wsdl" />
+	</bean>
+	<bean id="UpPwd_PowerCore"
+		class="com.csii.pe.channel.ws.extend.wsdl.WsdlWebServiceDefinition">
+		<property name="wsdl"
+			value="src/META-INF/transport/eaccount/wsdl/depositPostService.wsdl" />
+	</bean>
+	<bean id="RunQue"
+		class="com.csii.pe.channel.ws.extend.wsdl.WsdlWebServiceDefinition">
+		<property name="wsdl"
+			value="src/META-INF/transport/eaccount/wsdl/batchService.wsdl" />
+	</bean>
+	<bean id="QueList"
+		class="com.csii.pe.channel.ws.extend.wsdl.WsdlWebServiceDefinition">
+		<property name="wsdl"
+			value="src/META-INF/transport/eaccount/wsdl/batchService.wsdl" />
+	</bean>
+	<bean id="NextBussDayRequest"
+		class="com.csii.pe.channel.ws.extend.wsdl.WsdlWebServiceDefinition">
+		<property name="wsdl"
+			value="src/META-INF/transport/eaccount/wsdl/systemPostService.wsdl" />
+	</bean>
+	<bean id="queryAgreementAcct"
+		class="com.csii.pe.channel.ws.extend.wsdl.WsdlWebServiceDefinition">
+		<property name="wsdl"
+			value="src/META-INF/transport/eaccount/wsdl/depositQueryService.wsdl" />
+	</bean>
+	<bean id="PayOffToWth"
+		class="com.csii.pe.channel.ws.extend.wsdl.WsdlWebServiceDefinition">
+		<property name="wsdl"
+			value="src/META-INF/transport/eaccount/wsdl/loanPostService.wsdl" />
+	</bean>
+	<bean id="CreateLoanAcct"
+		class="com.csii.pe.channel.ws.extend.wsdl.WsdlWebServiceDefinition">
+		<property name="wsdl"
+			value="src/META-INF/transport/eaccount/wsdl/loanPostService.wsdl" />
+	</bean>
+	<bean id="LoanDisb"
+		class="com.csii.pe.channel.ws.extend.wsdl.WsdlWebServiceDefinition">
+		<property name="wsdl"
+			value="src/META-INF/transport/eaccount/wsdl/loanPostService.wsdl" />
+	</bean>
+	<bean id="LoanDisbToDepAcct"
+		class="com.csii.pe.channel.ws.extend.wsdl.WsdlWebServiceDefinition">
+		<property name="wsdl"
+			value="src/META-INF/transport/eaccount/wsdl/loanPostService.wsdl" />
+	</bean>
+
+	<bean id="LoanSchedPmt"
+		class="com.csii.pe.channel.ws.extend.wsdl.WsdlWebServiceDefinition">
+		<property name="wsdl"
+			value="src/META-INF/transport/eaccount/wsdl/loanPostService.wsdl" />
+	</bean>
+	<bean id="DepInnerToLoanSpmt"
+		class="com.csii.pe.channel.ws.extend.wsdl.WsdlWebServiceDefinition">
+		<property name="wsdl"
+			value="src/META-INF/transport/eaccount/wsdl/loanPostService.wsdl" />
+	</bean>
+	<bean id="IntCreditPosting"
+		class="com.csii.pe.channel.ws.extend.wsdl.WsdlWebServiceDefinition">
+		<property name="wsdl"
+			value="src/META-INF/transport/eaccount/wsdl/depositPostService.wsdl" />
+	</bean>
+	<bean id="SignAgreementAcct"
+		class="com.csii.pe.channel.ws.extend.wsdl.WsdlWebServiceDefinition">
+		<property name="wsdl"
+			value="src/META-INF/transport/eaccount/wsdl/depositPostService.wsdl" />
+	</bean>
+	<bean id="TerminateAgreementAcct"
+		class="com.csii.pe.channel.ws.extend.wsdl.WsdlWebServiceDefinition">
+		<property name="wsdl"
+			value="src/META-INF/transport/eaccount/wsdl/depositPostService.wsdl" />
+	</bean>
+	<bean id="CreateIntelAcct"
+		class="com.csii.pe.channel.ws.extend.wsdl.WsdlWebServiceDefinition">
+		<property name="wsdl"
+			value="src/META-INF/transport/eaccount/wsdl/depositPostService.wsdl" />
+	</bean>
+	<bean id="ChangeAttachedCard"
+		class="com.csii.pe.channel.ws.extend.wsdl.WsdlWebServiceDefinition">
+		<property name="wsdl"
+			value="src/META-INF/transport/eaccount/wsdl/depositPostService.wsdl" />
+	</bean>
+
+	<bean id="InsCustomerApply"
+		class="com.csii.pe.channel.ws.extend.wsdl.WsdlWebServiceDefinition">
+		<property name="wsdl"
+			value="src/META-INF/transport/eaccount/wsdl/depositeService.wsdl" />
+	</bean>
+	<bean id="GetApplyInfo"
+		class="com.csii.pe.channel.ws.extend.wsdl.WsdlWebServiceDefinition">
+		<property name="wsdl"
+			value="src/META-INF/transport/eaccount/wsdl/depositeService.wsdl" />
+	</bean>
+	<bean id="LoanConsumeExtend"
+		class="com.csii.pe.channel.ws.extend.wsdl.WsdlWebServiceDefinition">
+		<property name="wsdl"
+			value="src/META-INF/transport/eaccount/wsdl/loanPostService.wsdl" />
+	</bean>
+ -->
+ </beans>

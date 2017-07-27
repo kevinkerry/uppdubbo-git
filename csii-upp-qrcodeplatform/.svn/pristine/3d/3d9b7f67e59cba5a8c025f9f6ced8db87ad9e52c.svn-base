@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+	<bean id="webServiceServlet" class="com.csii.pe.channel.ws.srv.http.WebServiceServlet" />
+
+	<bean id="messageFactory" class="com.csii.pe.channel.ws.AxiomSoapMessageFactory2">
+		<property name="payloadCaching" value="true" />
+		<property name="charsetEncoding" value="UTF-8" />
+	</bean>
+
+	<bean class="com.csii.pe.channel.ws.srv.DetailSoapFaultExceptionResolver">
+		<property name="faultNamespace" value="http://localhost:8080/ws/exception" />
+	</bean>
+
+	<bean id="sdoObjectFactory"
+		class="com.csii.pe.channel.ws.databinding.sdo.DefaultSdoObjectFactory" />
+
+	<bean id="serviceManager" class="com.csii.pe.channel.ws.DefaultServiceManager">
+		<property name="sdoObjectFactory" ref="sdoObjectFactory" />
+	</bean>
+
+	<bean id="sdoConverter"
+		class="com.csii.pe.channel.ws.databinding.sdo.DefaultSdoConverter">
+		<property name="dataFlatting" value="true" />
+		<property name="outputNull" value="false" />
+		<property name="useToSdoDefault" value="false" />
+	</bean>
+
+	<bean id="invoker" class="com.csii.pe.channel.ws.srv.DefaultInvoker">
+		<property name="coreController" ref="coreController" />
+		<property name="identityMapping" ref="identityMapping" />
+		<property name="identityName" value="TransCode" />
+	</bean>
+
+	<bean id="sdoMarshaller" class="com.csii.pe.channel.ws.databinding.sdo.SdoMarshaller">
+		<property name="sdoObjectFactory" ref="sdoObjectFactory" />
+		<property name="converter" ref="sdoConverter" />
+		<property name="validation" value="false" />
+		<property name="validationOnMarshalling" value="false" />
+		<property name="serverSide" value="true" />
+		<property name="serviceManager" ref="serviceManager" />
+	</bean>
+
+	<bean id="sdoEndpoint" class="com.csii.pe.channel.ws.srv.MarshallingPayloadEndpoint">
+		<property name="invoker" ref="invoker" />
+		<property name="marshaller" ref="sdoMarshaller" />
+	</bean>
+
+	<bean id="messageReceiver"
+		class="org.springframework.ws.soap.server.SoapMessageDispatcher">
+		<property name="endpointMappings" ref="sdoEndpoint" />
+	</bean>
+
+</beans>

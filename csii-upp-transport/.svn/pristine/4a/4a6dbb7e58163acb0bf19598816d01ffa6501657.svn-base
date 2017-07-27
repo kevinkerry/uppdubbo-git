@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE segment SYSTEM "packetutf8.dtd">
+<!-- 他行网银支付交易 -->
+<segment>
+	<!-- 交易码 -->
+	<xmlTag tagName="transCode">
+		<String name="transCode" defaultValue="999001"/>
+	</xmlTag>
+	<!-- 交易时间 -->
+	<xmlTag tagName="transTime">
+		<String name="transTime" defaultValue=""/>
+	</xmlTag>
+	<!-- 转出账号 -->
+	<xmlTag tagName="trsferONum">
+		<String name="trsferONum" defaultValue=""/>
+	</xmlTag>
+	<!-- 转出账号户名 -->
+	<xmlTag tagName="trsferOName">
+		<String name="trsferOName" defaultValue=""/>
+	</xmlTag>
+	<!-- 转出银行行号 -->
+	<xmlTag tagName="trsferOBank">
+		<String name="trsferOBank" defaultValue=""/>
+	</xmlTag>
+	<!-- 转入账号 -->
+	<xmlTag tagName="trsferINum">
+		<String name="trsferINum" defaultValue=""/>
+	</xmlTag>
+	<!-- 转入账号户名 -->
+	<xmlTag tagName="trsferIName">
+		<String name="trsferIName" defaultValue=""/>
+	</xmlTag>
+	<!-- 转入银行行号 -->
+	<xmlTag tagName="trsferIBank">
+		<String name="trsferIBank" defaultValue=""/>
+	</xmlTag>
+	<!-- 交易金额 -->
+	<xmlTag tagName="transAmount">
+		<String name="transAmount" defaultValue=""/>
+	</xmlTag>
+	<!-- 币种 -->
+	<xmlTag tagName="cuurrency">
+		<String name="cuurrency" defaultValue=""/>
+	</xmlTag>
+</segment>

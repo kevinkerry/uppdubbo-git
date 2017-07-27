@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spring:beans xmlns:spring="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.csii.com.cn/schema/pe"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd 
+	http://www.csii.com.cn/schema/pe http://www.csii.com.cn/schema/pe/pe-config.xsd">
+	<config>
+		<bean id="checkAlarmServer" class="com.csii.pe.service.schedule.AlarmServer"
+			init-method="start" destroy-method="shutdown">
+			<param name="name">cronScheduler</param>
+			<param name="transCodeFieldName">transCode</param>
+			<ref name="coreController">coreController</ref>
+			<ref name="executor">eventManagerThreadPool</ref>
+			<param name="cronOfLoader">0 0 0 * * * *</param>
+			<ref name="alarmLoader">jobLoader</ref>
+			<ref name="alarmListener">jobListener</ref>
+		</bean>
+		<bean id="jobListener" class="com.csii.pe.service.schedule.DefaultAlarmListener">
+			<!-- no other config, because no alarm table -->
+		</bean>
+		<bean id="jobLoader" class="com.csii.pe.service.schedule.BeanAlarmLoader">
+			<list name="entries">
+				<!-- 异常情况文件同步签约信息给1.0 <bean class="com.csii.pe.service.schedule.AlarmRecord"> 
+					<param name="key">FileSynSignInfo</param> <param name="mode">0</param> <param 
+					name="rule">0 */30 * * * * *</param> </bean> -->
+
+				<!-- 日终批量查询 -->
+				<bean class="com.csii.pe.service.schedule.AlarmRecord">
+					<param name="key">QueryTransfer</param>
+					<param name="mode">0</param>
+					<param name="rule">0 0 0 * * * *</param>
+				</bean>
+
+				<!-- 发送电子口岸通知 -->
+	<!-- 			<bean class="com.csii.pe.service.schedule.AlarmRecord">
+					<param name="key">SendMerNotify</param>
+					<param name="mode">0</param>
+					<param name="rule">0 */10 * * * * *</param>
+				</bean> -->
+
+			</list>
+		</bean>
+	</config>
+</spring:beans>

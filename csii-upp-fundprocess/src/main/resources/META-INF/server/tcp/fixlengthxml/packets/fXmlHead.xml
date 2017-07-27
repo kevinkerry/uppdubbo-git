@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Group SYSTEM "packetutf8.dtd">
+<Group name="Message"
+	xmlHead="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;">
+	<Group name="Head">
+		<!-- 交易码 -->
+		<xmlTag tagName="TransCode">
+			<String name="TransCode" />
+		</xmlTag>
+		<!-- 响应状态 -->
+		<xmlTag tagName="RespStatus">
+			<String name="RespStatus" />
+		</xmlTag>
+		<!-- 响应码 -->
+		<xmlTag tagName="RespCode">
+			<String name="RespCode" />
+		</xmlTag>
+		<!-- 响应信息 -->
+		<xmlTag tagName="RespMessage">
+			<String name="RespMessage" />
+		</xmlTag>
+		<!-- 总交易流水号 -->
+		<xmlTag tagName="TransNbr">
+			<String name="OverallTransNbr" />
+		</xmlTag>
+		<!-- 总交易日期 -->
+		<xmlTag tagName="TransDate">
+			<Date name="PostDate" pattern="yyyyMMdd"/>
+		</xmlTag>
+	</Group>
+	<Group name="Body">
+		<include keyName="TransCode" />
+	</Group>
+</Group>

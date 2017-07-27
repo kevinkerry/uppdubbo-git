@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spring:beans xmlns:spring="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.csii.com.cn/schema/pe"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd 
+	http://www.csii.com.cn/schema/pe http://www.csii.com.cn/schema/pe/pe-config.xsd">
+	<config>
+
+		<!-- <bean id="businessManager" class="com.csii.pp.entity.BusinessManager" 
+			init-method="init" /> -->
+		<bean id="cacheManagerFactory" class="com.csii.upp.batch.cache.CacheManagerFactory" />
+		<bean id="AutoAwareProcessor" class="com.csii.upp.batch.cache.AutoAwareProcessor">
+			<list name="mapping">
+				<param>com.csii.pp.cache.CacheableAware:setCacheManagerFactory(cacheManagerFactory)
+				</param>
+				<!-- <param>com.csii.pp.entity.BusinessManagerAware:setBusinessManager(businessManager)</param> -->
+			</list>
+		</bean>
+	</config>
+</spring:beans>

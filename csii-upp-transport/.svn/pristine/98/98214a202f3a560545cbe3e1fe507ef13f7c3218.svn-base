@@ -1,0 +1,400 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	targetNamespace="http://com.csii.bank.core/itl/post" xmlns:p1="http://com.csii.bank.core/itl/post"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://com.csii.bank.core/itl/post">
+	<wsdl:types>
+		<schema xmlns="http://www.w3.org/2001/XMLSchema"
+			attributeFormDefault="unqualified" elementFormDefault="qualified"
+			targetNamespace="http://com.csii.bank.core/itl/post" xmlns:base="http://com.csii.bank.core/base"
+			xmlns:itl="http://com.csii.bank.core/itl/post">
+			<import namespace="http://com.csii.bank.core/base"
+				schemaLocation="base.xsd" />
+			<complexType name="CreateItlAcctRequestType">
+				<sequence>
+					<element ref="base:BaseRequest" />
+					<element name="mjaccttypcd" type="string" />
+					<element name="miaccttypcd" type="string" />
+					<element name="branchnbr" type="string" />
+					<element name="acctname" type="string" />
+				</sequence>
+			</complexType>
+			<element name="CreateItlAcct" type="itl:CreateItlAcctRequestType" />
+			<complexType name="CreateItlAcctResponseType">
+				<sequence>
+					<element ref="base:BaseResponse" />
+					<element name="acctNbr" type="long" />
+				</sequence>
+			</complexType>
+			<element name="CreateItlAcctResponse" type="itl:CreateItlAcctResponseType" />
+			<complexType name="ItlTransferRequestType">
+				<sequence>
+					<element ref="base:BaseRequest" />
+					<element name="drAcctNbr" type="long" />
+					<element name="crAcctNbr" type="long" />
+					<element name="tranAmt" type="decimal" />
+					<element name="rtxnDesc" type="string" />
+				</sequence>
+			</complexType>
+			<element name="ItlTransfer" type="itl:ItlTransferRequestType" />
+			<complexType name="ItlTransferResponseType">
+				<sequence>
+					<element ref="base:BaseResponse" />
+					<element name="rtxnnbr" type="long" />
+				</sequence>
+			</complexType>
+			<element name="ItlTransferResponse" type="itl:ItlTransferResponseType" />
+			<complexType name="DepositOnCreditAcctRequestType">
+				<sequence>
+					<element ref="base:BaseRequest" />
+					<element name="recognitionId" type="string" />
+					<element name="payerCardNbr" type="string" />
+					<element name="payerName" type="string" />
+					<element name="currencyCd" type="string" />
+					<element name="tranAmt" type="decimal" />
+					<element name="summary" type="string" />
+				</sequence>
+			</complexType>
+			<element name="DepositOnCreditAcct" type="itl:DepositOnCreditAcctRequestType" />
+			<complexType name="DepositOnCreditAcctResponseType">
+				<sequence>
+					<element ref="base:BaseResponse" />
+					<element name="rtxnnbr" type="long" />
+					<element name="txnSeqId" type="string" />
+				</sequence>
+			</complexType>
+			<element name="DepositOnCreditAcctResponse" type="itl:DepositOnCreditAcctResponseType" />
+			<complexType name="ReturnRemittanceRequestType">
+				<sequence>
+					<element ref="base:BaseRequest" />
+					<element name="recognitionId" type="string" />
+					<element name="payeeCardNbr" type="string" />
+					<element name="payeeName" type="string" />
+					<element name="currencyCd" type="string" />
+					<element name="tranAmt" type="decimal" />
+					<element name="summary" type="string" />
+				</sequence>
+			</complexType>
+			<element name="ReturnRemittance" type="itl:ReturnRemittanceRequestType" />
+			<complexType name="ReturnRemittanceResponseType">
+				<sequence>
+					<element ref="base:BaseResponse" />
+					<element name="rtxnnbr" type="long" />
+					<element name="txnSeqId" type="string" />
+				</sequence>
+			</complexType>
+			<element name="ReturnRemittanceResponse" type="itl:ReturnRemittanceResponseType" />
+			<complexType name="CloseItlAcctRequestType">
+				<sequence>
+					<element ref="base:BaseRequest" />
+					<element name="acctNbr" type="long" />
+				</sequence>
+			</complexType>
+			<element name="CloseItlAcct" type="itl:CloseItlAcctRequestType" />
+			<complexType name="CloseItlAcctResponseType">
+				<sequence>
+					<element ref="base:BaseResponse" />
+				</sequence>
+			</complexType>
+			<element name="CloseItlAcctResponse" type="itl:CloseItlAcctResponseType" />
+			<complexType name="AcctItlWithdrawRequestType">
+				<sequence>
+					<element ref="base:BaseRequest" />
+					<element name="itlnbr" type="long" />
+					<element name="acctnbr" type="string" />
+					<element name="tranAmt" type="decimal" />
+					<element name="summary" type="string" />
+					<element name="currencyCd" type="string" />
+				</sequence>
+			</complexType>
+			<element name="AcctItlWithdraw" type="itl:AcctItlWithdrawRequestType" />
+			<complexType name="AcctItlWithdrawResponseType">
+				<sequence>
+					<element ref="base:BaseResponse" />
+					<element name="rtxnnbr" type="long" />
+					<element name="txnSeqId" type="string" />
+				</sequence>
+			</complexType>
+			<element name="AcctItlWithdrawResponse" type="itl:AcctItlWithdrawResponseType" />
+			<complexType name="AcctItlDepRequestType">
+				<sequence>
+					<element ref="base:BaseRequest" />
+					<element name="itlnbr" type="long" />
+					<element name="acctnbr" type="string" />
+					<element name="tranAmt" type="decimal" />
+					<element name="summary" type="string" />
+					<element name="currencyCd" type="string" />
+				</sequence>
+			</complexType>
+			<element name="AcctItlDep" type="itl:AcctItlDepRequestType" />
+			<complexType name="AcctItlDepResponseType">
+				<sequence>
+					<element ref="base:BaseResponse" />
+					<element name="rtxnnbr" type="long" />
+					<element name="txnSeqId" type="string" />
+				</sequence>
+			</complexType>
+			<element name="AcctItlDepResponse" type="itl:AcctItlDepResponseType" />
+			<complexType name="ItlPaymentRequestType">
+				<annotation>
+					<documentation>缴费应付</documentation>
+				</annotation>
+				<sequence>
+					<element ref="base:BaseRequest" />
+					<element name="currencyCd" type="string" />
+					<element name="tranAmt" type="decimal" />
+					<element name="summary" type="string" />
+					<element name="rtxnDesc" type="string" />
+				</sequence>
+			</complexType>
+			<element name="ItlPayment" type="itl:ItlPaymentRequestType" />
+			<complexType name="ItlPaymentResponseType">
+				<sequence>
+					<element ref="base:BaseResponse" />
+					<element name="rtxnNbr" type="long" />
+					<element name="txnSeqId" type="string" />
+				</sequence>
+			</complexType>
+			<element name="ItlPaymentResponse" type="itl:ItlPaymentResponseType" />
+			<complexType name="ItlRefundmentRequestType">
+				<annotation>
+					<documentation>缴费应收</documentation>
+				</annotation>
+				<sequence>
+					<element ref="base:BaseRequest" />
+					<element name="currencyCd" type="string" />
+					<element name="tranAmt" type="decimal" />
+					<element name="summary" type="string" />
+					<element name="rtxnDesc" type="string" />
+				</sequence>
+			</complexType>
+			<element name="ItlRefundment" type="itl:ItlRefundmentRequestType" />
+			<complexType name="ItlRefundmentResponseType">
+				<sequence>
+					<element ref="base:BaseResponse" />
+					<element name="rtxnNbr" type="long" />
+					<element name="txnSeqId" type="string" />
+				</sequence>
+			</complexType>
+			<element name="ItlRefundmentResponse" type="itl:ItlRefundmentResponseType" />
+		</schema>
+	</wsdl:types>
+	<wsdl:message name="ItlRefundmentResponse">
+		<wsdl:part element="p1:ItlRefundmentResponse" name="ItlRefundmentResponse">
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="AcctItlWithdraw">
+		<wsdl:part element="p1:AcctItlWithdraw" name="AcctItlWithdraw">
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="AcctItlDepResponse">
+		<wsdl:part element="p1:AcctItlDepResponse" name="AcctItlDepResponse">
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="AcctItlDep">
+		<wsdl:part element="p1:AcctItlDep" name="AcctItlDep">
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="CloseItlAcct">
+		<wsdl:part element="p1:CloseItlAcct" name="CloseItlAcct">
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="ItlTransfer">
+		<wsdl:part element="p1:ItlTransfer" name="ItlTransfer">
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="DepositOnCreditAcct">
+		<wsdl:part element="p1:DepositOnCreditAcct" name="DepositOnCreditAcct">
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="ReturnRemittance">
+		<wsdl:part element="p1:ReturnRemittance" name="ReturnRemittance">
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="CreateItlAcctResponse">
+		<wsdl:part element="p1:CreateItlAcctResponse" name="CreateItlAcctResponse">
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="ItlTransferResponse">
+		<wsdl:part element="p1:ItlTransferResponse" name="ItlTransferResponse">
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="CloseItlAcctResponse">
+		<wsdl:part element="p1:CloseItlAcctResponse" name="CloseItlAcctResponse">
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="ItlPaymentResponse">
+		<wsdl:part element="p1:ItlPaymentResponse" name="ItlPaymentResponse">
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="ItlPayment">
+		<wsdl:part element="p1:ItlPayment" name="ItlPayment">
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="ReturnRemittanceResponse">
+		<wsdl:part element="p1:ReturnRemittanceResponse" name="ReturnRemittanceResponse">
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="AcctItlWithdrawResponse">
+		<wsdl:part element="p1:AcctItlWithdrawResponse" name="AcctItlWithdrawResponse">
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="CreateItlAcct">
+		<wsdl:part element="p1:CreateItlAcct" name="CreateItlAcct">
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="DepositOnCreditAcctResponse">
+		<wsdl:part element="p1:DepositOnCreditAcctResponse" name="DepositOnCreditAcctResponse">
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="ItlRefundment">
+		<wsdl:part element="p1:ItlRefundment" name="ItlRefundment">
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:portType name="ItlPostServicePortType">
+		<wsdl:operation name="AcctItlDep">
+			<wsdl:input message="p1:AcctItlDep" name="AcctItlDep">
+			</wsdl:input>
+			<wsdl:output message="p1:AcctItlDepResponse" name="AcctItlDepResponse">
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="ItlPayment">
+			<wsdl:input message="p1:ItlPayment" name="ItlPayment">
+			</wsdl:input>
+			<wsdl:output message="p1:ItlPaymentResponse" name="ItlPaymentResponse">
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="ItlRefundment">
+			<wsdl:input message="p1:ItlRefundment" name="ItlRefundment">
+			</wsdl:input>
+			<wsdl:output message="p1:ItlRefundmentResponse" name="ItlRefundmentResponse">
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="CreateItlAcct">
+			<wsdl:input message="p1:CreateItlAcct" name="CreateItlAcct">
+			</wsdl:input>
+			<wsdl:output message="p1:CreateItlAcctResponse" name="CreateItlAcctResponse">
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="AcctItlWithdraw">
+			<wsdl:input message="p1:AcctItlWithdraw" name="AcctItlWithdraw">
+			</wsdl:input>
+			<wsdl:output message="p1:AcctItlWithdrawResponse" name="AcctItlWithdrawResponse">
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="DepositOnCreditAcct">
+			<wsdl:input message="p1:DepositOnCreditAcct" name="DepositOnCreditAcct">
+			</wsdl:input>
+			<wsdl:output message="p1:DepositOnCreditAcctResponse"
+				name="DepositOnCreditAcctResponse">
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="ItlTransfer">
+			<wsdl:input message="p1:ItlTransfer" name="ItlTransfer">
+			</wsdl:input>
+			<wsdl:output message="p1:ItlTransferResponse" name="ItlTransferResponse">
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="CloseItlAcct">
+			<wsdl:input message="p1:CloseItlAcct" name="CloseItlAcct">
+			</wsdl:input>
+			<wsdl:output message="p1:CloseItlAcctResponse" name="CloseItlAcctResponse">
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="ReturnRemittance">
+			<wsdl:input message="p1:ReturnRemittance" name="ReturnRemittance">
+			</wsdl:input>
+			<wsdl:output message="p1:ReturnRemittanceResponse" name="ReturnRemittanceResponse">
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="ItlPostServicePortTypeSoap11" type="p1:ItlPostServicePortType">
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="AcctItlDep">
+			<soap:operation soapAction="" />
+			<wsdl:input name="AcctItlDep">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="AcctItlDepResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="ItlPayment">
+			<soap:operation soapAction="" />
+			<wsdl:input name="ItlPayment">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="ItlPaymentResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="ItlRefundment">
+			<soap:operation soapAction="" />
+			<wsdl:input name="ItlRefundment">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="ItlRefundmentResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="CreateItlAcct">
+			<soap:operation soapAction="" />
+			<wsdl:input name="CreateItlAcct">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="CreateItlAcctResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="AcctItlWithdraw">
+			<soap:operation soapAction="" />
+			<wsdl:input name="AcctItlWithdraw">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="AcctItlWithdrawResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="DepositOnCreditAcct">
+			<soap:operation soapAction="" />
+			<wsdl:input name="DepositOnCreditAcct">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="DepositOnCreditAcctResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="ItlTransfer">
+			<soap:operation soapAction="" />
+			<wsdl:input name="ItlTransfer">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="ItlTransferResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="CloseItlAcct">
+			<soap:operation soapAction="" />
+			<wsdl:input name="CloseItlAcct">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="CloseItlAcctResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="ReturnRemittance">
+			<soap:operation soapAction="" />
+			<wsdl:input name="ReturnRemittance">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="ReturnRemittanceResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="ItlPostService">
+		<wsdl:port binding="p1:ItlPostServicePortTypeSoap11" name="ItlPostServicePortTypeSoap11">
+			<soap:address location="http://192.168.10.29:8099/itlPostService" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,14 @@
+#head
+STATUS=resultStatus
+RP_CDE=returncode
+HOSTDATE=transDate
+RP_MSG=returnmsg
+DOWNSYSTRANSNBR=downrtxnnbr
+DOWNSYSDATE=downrtxndate
+#790001
+BWRAWTRQ=transDate
+BWRAJYXH=transSeqnbr                                                                               
+CURR_AMT=acctAmt
+#790002
+RESULT=transStatus
+RESULTMSG=resultMsg

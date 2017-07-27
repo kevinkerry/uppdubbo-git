@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE segment SYSTEM "packetutf8.dtd">
+<segment>
+
+	<!-- 二维码地址 -->
+	<xmlTag tagName="codeUrl">
+		<String name="codeUrl"></String>
+	</xmlTag> 
+	
+	<xmlTag tagName="qrcodeNbr">
+		<String name="qrcodeNbr"></String>
+	</xmlTag>
+</segment>

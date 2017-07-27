@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE segment SYSTEM "packetutf8.dtd">
+<segment>
+		<!-- 交易号 -->
+	<xmlTag tagName="TransId">
+		<String name="transId" defaultValue="" />
+	</xmlTag>
+	<!-- 商户号 -->
+	<xmlTag tagName="MerNbr">
+		<String name="merNbr" defaultValue="" />
+	</xmlTag>
+	<!-- 用户编号 -->
+	<xmlTag tagName="UserNbr">
+		<String name="userNbr" defaultValue="" />
+	</xmlTag>
+	<!-- 二级商户号 -->
+	<xmlTag tagName="SubMerchantId">
+		<String name="subMerchantId" defaultValue="" />
+	</xmlTag>
+		<!-- 商户交易时间 -->
+	<xmlTag tagName="MerTransDateTime">
+		<String name="merTransDateTime" />
+	</xmlTag>
+	<!-- 币种 -->
+	<xmlTag tagName="CurrencyCd">
+		<String name="currencyCd" defaultValue="" />
+	</xmlTag>
+	<!-- 收款账户 -->
+	<xmlTag tagName="PayeeAcctNbr">
+		<String name="payeeAcctNbr" defaultValue="" />
+	</xmlTag>
+	<!--附加信息 -->
+	<xmlTag tagName="MsgExt">
+		<String name="msgExt"/>
+	</xmlTag>
+</segment>

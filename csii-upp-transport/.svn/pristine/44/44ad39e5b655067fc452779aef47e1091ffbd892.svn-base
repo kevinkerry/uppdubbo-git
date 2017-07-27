@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	   http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+	<!-- <import resource="classpath:/META-INF/transport/webservice/eaccount/transport.xml" /> -->
+	<import resource="classpath:/META-INF/transport/tcp/toEsb/transport.xml" />
+	<!-- <import resource="classpath:/META-INF/transport/webservice/eaccount/services.xml" /> -->
+	<import resource="classpath:/META-INF/transport/tcp/toQrCodePre/transport.xml" />
+	<import resource="classpath:/META-INF/transport/http/unionpay/transport.xml" />
+<!-- 	<import resource="classpath:/META-INF/transport/tcp/toPayment/transport.xml" /> -->
+	<import resource="classpath:/META-INF/transport/webservice/point/transport.xml" />
+	<!-- dubbo service config -->
+ 	<import resource="classpath:/META-INF/transport/dubbo/toPayment/dubbo-consumer-idmapping.xml" />
+ 	<import resource="classpath:/META-INF/transport/dubbo/toPayment/dubbo-consummer.xml" />
+ 	
+ 	<bean id="dummyTransport" class="com.csii.upp.transport.DummyTransport">
+		<property name="transport" ref="dummy"/>
+	</bean>
+	
+ 	<dubbo:consumer timeout="${dubbo.consumer.timeout}" retries="0" check="${dubbo.registry.check}" />
+		
+ 	<bean id="dubboConsumerIdResolver"  class="com.csii.upp.transport.DubboConsumerIdResolver">
+		<property name="idParameterName" value="srvChnlId" />
+		<property name="IdMapping">
+			<map>
+             </map>
+		</property>
+	</bean>
+</beans>

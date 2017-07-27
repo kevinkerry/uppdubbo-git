@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="INNERFUNDRTXN">
+	<resultMap id="getPayTransInfoResult" class="java.util.HashMap">
+		<result property="totalnum" column="totalnum_" />
+		<result property="upperSysNbr" column="uppersysnbr" />
+		<result property="innerRtxnNbr" column="innerrtxnnbr" />
+		<result property="overAllRtxnNbr" column="overallrtxnnbr" />
+		<result property="rtxnDate" column="rtxndate" javaType="string" />
+		<result property="payerAcctNbr" column="payeracctnbr" />
+		<result property="payerName" column="payername" />
+		<result property="payeeAcctNbr" column="payeeacctnbr" />
+		<result property="payeeName" column="payeename" />
+		<result property="transAmt" column="transamt" />
+		<result property="checkState" column="checkstate" />
+		<result property="returnCode" column="returncode" />
+		<result property="returnMsg" column="returnmsg" />
+		<result property="rtxnState" column="rtxnstate" />
+		<result property="payRtxnDate" column="payRtxnDate" javaType="string" />
+		<result property="rtxnNbr" column="rtxnNbr" nullValue="——" />
+		<result property="inNote" column="inNote" nullValue="——" />
+		<result property="outNote" column="outNote" nullValue="——" />
+	</resultMap>
+	<select id="getPayTransInfo" parameterClass="java.util.HashMap" resultMap="getPayTransInfoResult">
+		select a.uppersysnbr,
+		<isEqual prepend="" property="flag" compareValue="0">
+			a.upperrtxnnbr as rtxnNbr,
+		</isEqual>
+		NVL(a.upperrtxndate,a.downrtxndate) as payRtxnDate,
+		a.innerrtxnnbr,a.overallrtxnnbr,
+		a.rtxndate,a.payeracctnbr,a.payername,a.payeeacctnbr,a.payeename,
+		a.transamt,
+		case
+		when a.checkstate = '0' then '初始'
+		when a.checkstate =
+		'1' then '对账平'
+		when a.checkstate = '2' then '待对账'
+		when a.checkstate =
+		'3' then '对账不平 -关键域不匹配'
+		when a.checkstate = '4' then '对账不平-其他'
+		end as
+		checkstate ,
+		a.returncode,a.returnmsg,
+		case
+		when a.rtxnstate = '1' then
+		'成功'
+		when a.rtxnstate = '2' then '失败'
+		when a.rtxnstate = '3' then '待发送'
+		when a.rtxnstate = '4' then '已冲正或已撤销'
+		when a.rtxnstate = '5' then '处理中'
+		end as rtxnstate
+		<isEqual prepend="," property="flag" compareValue="1">
+			a.downrtxnnbr as rtxnNbr
+		</isEqual>
+		<isEqual prepend="," property="flag" compareValue="0">
+			b.note as inNote
+		</isEqual>
+		<isEqual prepend="," property="flag" compareValue="1">
+			null as inNote
+		</isEqual>
+		<isEqual prepend="," property="flag" compareValue="0">
+			null as outNote
+		</isEqual>
+		<isEqual prepend="," property="flag" compareValue="1">
+			b.note as outNote
+		</isEqual>
+		FROM INNERFUNDRTXN AS A
+		INNER JOIN (select
+		<isEqual property="flag" compareValue="0">
+			MIN(I.INNERRTXNNBR) INNERRTXNNBR,
+		</isEqual>
+		<isEqual property="flag" compareValue="1">
+			I.INNERRTXNNBR,
+		</isEqual>
+		I.OVERALLRTXNNBR
+		from INNERFUNDRTXN I inner join OVERALLRTXN O
+		on I.OVERALLRTXNNBR = O.OVERALLRTXNNBR
+		AND O.OVERALLRTXNTYPCD $example$
+		AND <![CDATA[I.rtxndate <= #endDate# and I.rtxndate >= #startDate#]]>
+		<isNotNull prepend="and" property="fundchannelcode">
+			I.fundchannelcode =
+			#fundchannelcode#
+		</isNotNull>
+		<isNotNull prepend="and" property="uppersysnbr">
+			I.uppersysnbr =
+			#uppersysnbr#
+		</isNotNull>
+		<isNotNull prepend="and" property="rtxnState">
+			I.rtxnState = #rtxnState#
+		</isNotNull>
+		<isNotNull prepend="and" property="upperRtxnNbr">
+			I.upperrtxnnbr =
+			#upperRtxnNbr#
+		</isNotNull>
+		<isNotNull prepend="and" property="downRtxnNbr">
+			I.downrtxnnbr =
+			#downRtxnNbr#
+		</isNotNull>
+		<isEqual property="flag" compareValue="0">
+			and I.rtxntypcd = #rtxntypcd#
+			group by I.OVERALLRTXNNBR
+		</isEqual>
+		) T
+		ON A.INNERRTXNNBR = T.INNERRTXNNBR and A.OVERALLRTXNNBR =
+		T.OVERALLRTXNNBR
+		INNER JOIN OVERALLRTXN AS B ON A.OVERALLRTXNNBR =
+		B.OVERALLRTXNNBR
+		WHERE 1 = 1
+	</select>
+	<resultMap class="java.util.HashMap" id="getInnerFundRtxnResult">
+		<result property="fundchannelcode" column="fundchannelcode" />
+		<result property="returncode" column="returncode" />
+		<result property="returnmsg" column="returnmsg" />
+		<result property="transamt" column="transamt" />
+		<result property="rtxnstate" column="rtxnstate" />
+	</resultMap>
+</sqlMap>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE segment SYSTEM "packetutf8.dtd">
+<segment>
+ 	<!-- 交易日期 -->
+	<xmlTag tagName="TransDate">
+		<String name="TransDate" />
+	</xmlTag>
+</segment>

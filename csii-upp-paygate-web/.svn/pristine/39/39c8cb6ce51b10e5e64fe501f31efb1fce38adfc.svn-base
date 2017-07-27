@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spring:beans xmlns:spring="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.csii.com.cn/schema/pe"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd 
+	http://www.csii.com.cn/schema/pe http://www.csii.com.cn/schema/pe/pe-config.xsd">
+
+	<config>
+
+		<style id="paygate.Plain">
+			<setting>
+				<param name="option">false</param>
+			</setting>
+		</style>
+
+		<style id="paygate.Signature">
+			<setting>
+				<param name="option">false</param>
+			</setting>
+		</style>
+
+		<style id="paygate.MerchantId">
+			<setting>
+				<param name="option">false</param>
+				<param name="length">1,20</param>
+			</setting>
+		</style>
+
+		<style id="paygate.TransName">
+			<setting>
+				<param name="option">false</param>
+				<param name="length">4</param>
+			</setting>
+		</style>
+
+		<style id="paygate.UrlPath">
+			<setting>
+				<param name="option">false</param>
+			</setting>
+		</style>
+
+		<style id="paygate.MerchantName">
+			<setting>
+				<param name="option">false</param>
+			</setting>
+		</style>
+
+		<style id="paygate.TranAbbr">
+			<setting>
+				<param name="option">false</param>
+				<param name="length">4</param>
+			</setting>
+		</style>
+
+		<style id="paygate.MerchantDateTime">
+			<setting>
+				<param name="option">false</param>
+				<param name="length">14</param>
+			</setting>
+		</style>
+
+		<style id="paygate.OrderId">
+			<setting>
+				<param name="option">false</param>
+				<param name="length">1,30</param>
+			</setting>
+		</style>
+
+		<style id="paygate.MerchantId">
+			<setting>
+				<param name="option">false</param>
+				<param name="length">1,20</param>
+			</setting>
+		</style>
+
+		<style id="paygate.TransAmount">
+			<setting>
+				<param name="option">false</param>
+				<param name="length">1,12</param>
+				<param name="type">decimal</param>
+			</setting>
+		</style>
+
+		<style id="paygate.OrigOrderId">
+			<setting>
+				<param name="option">false</param>
+				<param name="length">1,30</param>
+			</setting>
+		</style>
+
+		<style id="paygate.OrigDate">
+			<setting>
+				<param name="option">false</param>
+				<param name="length">8</param>
+			</setting>
+		</style>
+
+		<style id="paygate.MerchantDate">
+			<setting>
+				<param name="option">false</param>
+				<param name="length">8</param>
+			</setting>
+		</style>
+
+		<style id="paygate.OTranAbbr">
+			<setting>
+				<param name="option">false</param>
+				<param name="length">4</param>
+			</setting>
+		</style>
+
+		<style id="paygate.BeginOrderId">
+			<setting>
+				<param name="option">false</param>
+				<param name="length">1,30</param>
+			</setting>
+		</style>
+
+		<style id="paygate.EndOrderId">
+			<setting>
+				<param name="option">false</param>
+				<param name="length">1,30</param>
+			</setting>
+		</style>
+
+		<style id="paygate.ClearDate">
+			<setting>
+				<param name="option">false</param>
+				<param name="length">8</param>
+			</setting>
+		</style>
+
+		<style id="paygate.TermCode">
+			<setting>
+				<param name="option">true</param>
+				<param name="length">1,8</param>
+			</setting>
+		</style>
+
+		<style id="paygate.FileType">
+			<setting>
+				<param name="option">false</param>
+				<param name="length">1</param>
+			</setting>
+		</style>
+
+		<style id="paygate.Amount">
+			<setting>
+				<param name="option">false</param>
+				<param name="length">1,12</param>
+				<param name="type">decimal</param>
+			</setting>
+		</style>
+
+		<style id="paygate.SerialNo">
+			<setting>
+				<param name="option">false</param>
+				<param name="length">1,30</param>
+			</setting>
+		</style>
+	</config>
+</spring:beans>

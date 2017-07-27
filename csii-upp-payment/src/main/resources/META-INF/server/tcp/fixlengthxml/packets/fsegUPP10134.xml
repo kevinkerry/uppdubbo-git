@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE segment SYSTEM "packetutf8.dtd">
+<segment>
+	<!-- 付款卡号-->
+	
+  <xmlTag tagName="Authlist">
+	    <idxField name="Authlist" maxLoop="9999999">
+			<Group name="AuthDetail">
+		   		<xmlTag><String name="customName" /></xmlTag>
+	   		    <xmlTag><String name="Certtyp" /></xmlTag>
+	   		    <xmlTag><String name="Certno" /></xmlTag>
+	   		    <xmlTag><String name="Cardtyp" /></xmlTag>
+	   		    <xmlTag><String name="Cardno" /></xmlTag>
+	   		    <xmlTag><String name="Customtyp" /></xmlTag>
+	   		    <xmlTag><String name="Phoneno" /></xmlTag>
+	   		    <xmlTag><String name="Transtatus" /></xmlTag>
+	   		    
+	   		</Group>
+		</idxField>
+	</xmlTag>
+
+ 
+
+</segment>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE segment SYSTEM "packetutf8.dtd">
+<segment>
+	<!-- 富阳虚账户余额 -->
+	<xmlTag tagName="UserNbr">
+		<String name="UserNbr" />
+	</xmlTag>
+	<xmlTag tagName="BdoABal">
+		<String name="BdoABal" />
+	</xmlTag>
+	<!-- 富阳虚账户可用余额 -->
+	<xmlTag tagName="BdoBBal">
+		<String name="BdoBBal" />
+	</xmlTag>
+	<!-- 富阳虚账户保留余额-->
+	<xmlTag tagName="BdoGBal">
+		<String name="BdoGBal" />
+	</xmlTag>
+</segment>

@@ -1,0 +1,1004 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:p1="http://com.csii.bank.core/loan/post" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://com.csii.bank.core/loan/post" targetNamespace="http://com.csii.bank.core/loan/post">
+  <wsdl:types>
+    <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:base="http://com.csii.bank.core/base" xmlns:loan="http://com.csii.bank.core/loan/post" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://com.csii.bank.core/loan/post"><import namespace="http://com.csii.bank.core/base" schemaLocation="base.xsd"/><complexType name="AddAcctGrpRequestType"><sequence><element ref="base:BaseRequest"/></sequence></complexType><element name="AddAcctGrp" type="loan:AddAcctGrpRequestType"/><complexType name="AddAcctGrpResponseType"><annotation><documentation>电子帐户存款账户开户响应参数类型</documentation></annotation><sequence><element ref="base:BaseResponse"/><element name="acctgrpNbr" type="long"><annotation><documentation>账户组编号</documentation></annotation></element></sequence></complexType><element name="AddAcctGrpResponse" type="loan:AddAcctGrpResponseType"/><complexType name="AddAcctGrpAcctRequestType"><sequence><element ref="base:BaseRequest"/><element name="acctgrpNbr" type="long"/><element name="acctNbr" type="long"/><element name="masterAcctYn" type="string"/></sequence></complexType><element name="AddAcctGrpAcct" type="loan:AddAcctGrpAcctRequestType"/><complexType name="AddAcctGrpAcctResponseType"><annotation><documentation>电子帐户存款账户开户响应参数类型</documentation></annotation><sequence><element ref="base:BaseResponse"/></sequence></complexType><element name="AddAcctGrpAcctResponse" type="loan:AddAcctGrpAcctResponseType"/><complexType name="CreateLoanAcctRequestType"><sequence><element ref="base:BaseRequest"/><element name="acctName" type="string"/><element name="effDate" type="date"/><element name="matDate" type="date"/><element name="mjAcctTypCd" type="string"/><element name="miAcctTypCd" type="string"/><element name="ownerTypCd" type="string"/><element name="ownerNbr" type="string"/><element name="contractDate" type="date"/><element name="revolveLoanYN" type="string"/><element name="creditLimitAmt" type="decimal"/><element name="iouCd" type="string"/><element name="disbEndDate" nillable="true" type="date"/><element name="contractId" type="string"/><element name="acctNote" type="string"/><element name="purpCD" type="string"/><element name="odpYN" type="string"/><element name="odiYN" type="string"/><element name="waveDays" type="long"/><element name="pmtSchedId" type="string"/><element name="amortTerm" type="integer"/></sequence></complexType><element name="CreateLoanAcct" type="loan:CreateLoanAcctRequestType"/><complexType name="CreateLoanAcctResponseType"><sequence><element ref="base:BaseResponse"/><element name="acctNbr" type="long"/></sequence></complexType><element name="CreateLoanAcctResponse" type="loan:CreateLoanAcctResponseType"/><complexType name="LoanDisbRequestType"><sequence><element ref="base:BaseRequest"/><element name="acctNbr" type="long"/><element name="tranAmt" type="decimal"/><element name="effDate" type="date"/><element name="loanRate" type="decimal"/><element name="odpRate" type="decimal"/><element name="odiRate" type="decimal"/></sequence></complexType><element name="LoanDisb" type="loan:LoanDisbRequestType"/><complexType name="LoanDisbResponseType"><sequence><element ref="base:BaseResponse"/><element name="rtxnNbr" type="long"/><element name="intRate" type="decimal"/><element name="odpRate" type="decimal"/><element name="odiRate" type="decimal"/></sequence></complexType><element name="LoanDisbResponse" type="loan:LoanDisbResponseType"/><complexType name="LoanDisbToMediRequestType"><sequence><element ref="base:BaseRequest"/><element name="customerId" type="string"/><element name="contractId" type="string"/><element name="iouid" type="string"/><element name="ccy" type="string"/><element name="contractAmt" type="decimal"/><element name="contractStartDate" type="date"/><element name="contractEndDate" type="date"/><element name="disbEndDate" type="date"/><element name="effDate" type="date"/><element name="revolveLimitYN" type="string"/><element name="tranAmt" type="decimal"/><element name="mediId" type="string"/><element name="waveDays" type="long"/><element name="dateMat" type="date"/><element name="loanRate" type="decimal"/><element name="odprate" type="decimal"/><element name="odirate" type="decimal"/><element name="mjAcctTypCd" type="string"/><element name="miAcctTypCd" type="string"/><element name="pmtSchedId" type="string"/><element name="ctrlSeqNbr" type="long"/><element name="thirdpartMediid" type="string"/><element name="rtxnNote" type="string"/><element name="postScript" type="string"/><element name="amortTerm" type="integer"/></sequence></complexType><element name="LoanDisbToMedi" type="loan:LoanDisbToMediRequestType"/><complexType name="LoanDisbToMediResponseType"><sequence><element ref="base:BaseResponse"/><element name="masterAcctNbr" type="decimal"/><element name="acctLoanNbr" type="decimal"/><element name="rtxnNbr" type="decimal"/></sequence></complexType><element name="LoanDisbToMediResponse" type="loan:LoanDisbToMediResponseType"/><complexType name="RtxnRcvb"><sequence><element name="rcvbBalCatCd" type="string"/><element name="rcvbBalTypCd" type="string"/><element name="rcvbPmtAmt" type="decimal"/><element name="rcvbNbr" type="long"/></sequence></complexType><complexType name="LoanSchedPmtRequestType"><sequence><element ref="base:BaseRequest"/><element name="acctNbr" type="long"/><element name="pmtAmt" type="decimal"/><element maxOccurs="unbounded" minOccurs="0" name="rcvbList" nillable="true" type="loan:RtxnRcvb"/><element name="rtxnDesc" type="string"/><element name="effDate" type="date"/><element name="rtxnReasonCd" type="string"/><element name="futureRcvbYN" type="string"/><element name="genTypCd" type="string"/></sequence></complexType><element name="LoanSchedPmt" type="loan:LoanSchedPmtRequestType"/><complexType name="LoanSchedPmtResponseType"><sequence><element ref="base:BaseResponse"/><element name="rtxnNbr" type="long"/><element name="prinAmt" type="decimal"/><element name="intAmt" type="decimal"/><element name="odpIntAmt" type="decimal"/><element name="odiIntAmt" type="decimal"/><element name="unschedPrinAmt" type="decimal"/><element name="accrIntAmt" type="decimal"/><element name="accrOdpIntAmt" type="decimal"/><element name="accrOdiIntAmt" type="decimal"/><element name="defaultAmt" type="decimal"/><element name="cmsnChrgAmt" type="decimal"/></sequence></complexType><element name="LoanSchedPmtResponse" type="loan:LoanSchedPmtResponseType"/><complexType name="PayOffRequestType"><sequence><element ref="base:BaseRequest"/><element name="acctNbr" type="long"/><element name="effDate" type="date"/><element name="mediId" type="string"/></sequence></complexType><element name="PayOff" type="loan:PayOffRequestType"/><complexType name="PayOffResponseType"><sequence><element ref="base:BaseResponse"/><element name="rtxnNbr" type="long"/><element name="prinAmt" type="decimal"/><element name="intAmt" type="decimal"/><element name="odpIntAmt" type="decimal"/><element name="odiIntAmt" type="decimal"/><element name="defaultAmt" type="decimal"/><element name="cmsnChrgAmt" type="decimal"/></sequence></complexType><element name="PayOffResponse" type="loan:PayOffResponseType"/><complexType name="LoanPmtByEAcctRequestType"><sequence><element ref="base:BaseRequest"/><element name="iouid" type="string"/><element name="mediId" type="string"/><element name="mediPwd" type="string"/><element name="mediPwdCheck" type="string"/><element name="pmtAmt" type="decimal"/><element name="effDate" type="date"/><element maxOccurs="unbounded" minOccurs="0" name="rcvbList" nillable="true" type="loan:RtxnRcvb"/><element name="isReCalPmtYN" type="string"/><element name="futureRcvbYN" type="string"/><element name="rtxnNote" type="string"/><element name="postScript" type="string"/><element name="prepFeeAmt" type="decimal"/><element name="prepFeeWavAmt" type="decimal"/></sequence></complexType><element name="LoanPmtByEAcct" type="loan:LoanPmtByEAcctRequestType"/><complexType name="LoanPmtByEAcctResponseType"><sequence><element ref="base:BaseResponse"/><element name="rtxnNbr" type="long"/><element name="prinAmt" type="decimal"/><element name="intAmt" type="decimal"/><element name="odpIntAmt" type="decimal"/><element name="odiIntAmt" type="decimal"/><element name="unschedPrinAmt" type="decimal"/><element name="accrIntAmt" type="decimal"/><element name="accrOdpIntAmt" type="decimal"/><element name="accrOdiIntAmt" type="decimal"/><element name="defaultAmt" type="decimal"/><element name="cmsnChrgAmt" type="decimal"/></sequence></complexType><element name="LoanPmtByEAcctResponse" type="loan:LoanPmtByEAcctResponseType"/><complexType name="ChargeOffRequestType"><sequence><element ref="base:BaseRequest"/><element name="acctNbr" type="long"/><element name="rtxnNote" type="string"/><element name="postScript" type="string"/></sequence></complexType><element name="ChargeOff" type="loan:ChargeOffRequestType"/><complexType name="ChargeOffResponseType"><sequence><element ref="base:BaseResponse"/><element name="rtxnNbr" type="long"/></sequence></complexType><element name="ChargeOffResponse" type="loan:ChargeOffResponseType"/><complexType name="WthToPmtAfterChargeoffRequestType"><sequence><element ref="base:BaseRequest"/><element name="mediId" type="string"/><element name="acctnbr" type="long"/><element name="tranamt" type="decimal"/><element name="postScript" type="string"/><element name="rtxnNote" type="string"/><element name="mediPwd" type="string"/><element name="loanacctnbr" type="long"/></sequence></complexType><element name="WthToPmtAfterChargeoff" type="loan:WthToPmtAfterChargeoffRequestType"/><complexType name="WthToPmtAfterChargeoffResponseType"><sequence><element ref="base:BaseResponse"/></sequence></complexType><element name="WthToPmtAfterChargeoffResponse" type="loan:WthToPmtAfterChargeoffResponseType"/><complexType name="LoanExtensionManualRequestType"><sequence><element ref="base:BaseRequest"/><element name="acctNbr" type="long"/><element name="extSeqNbr" type="long"/><element name="rtxnNote" type="string"/><element name="postScript" type="string"/></sequence></complexType><element name="LoanExtensionManual" type="loan:LoanExtensionManualRequestType"/><complexType name="LoanExtensionManualResponseType"><sequence><element ref="base:BaseResponse"/></sequence></complexType><element name="LoanExtensionManualResponse" type="loan:LoanExtensionManualResponseType"/><complexType name="LoanApplyExtensionRequestType"><sequence><element ref="base:BaseRequest"/><element name="acctNbr" type="long"/><element name="applyDate" type="date"/><element name="newDateMat" type="date"/><element name="newMiAcctTypCd" type="string"/><element name="extAmt" type="decimal"/><element name="rtxnNote" type="string"/><element name="postScript" type="string"/></sequence></complexType><element name="LoanApplyExtension" type="loan:LoanApplyExtensionRequestType"/><complexType name="LoanApplyExtensionResponseType"><sequence><element ref="base:BaseResponse"/></sequence></complexType><element name="LoanApplyExtensionResponse" type="loan:LoanApplyExtensionResponseType"/><complexType name="AcctLoanInfoChgRequestType"><sequence><element ref="base:BaseRequest"/><element name="acctNbr" type="long"/><element name="graceDays" type="long"/><element name="partialPmtAllowedYN" type="string"/><element name="unschedPrinPmtsAllowedYN" type="string"/><element name="autoPmtYN" type="string"/><element name="pmtSchedId" type="string"/><element name="pmtDueDayNbr" type="long"/><element name="autoNpfmYN" type="string"/></sequence></complexType><element name="AcctLoanInfoChg" type="loan:AcctLoanInfoChgRequestType"/><complexType name="AcctLoanInfoChgResponseType"><sequence><element ref="base:BaseResponse"/><element name="newPmtAmt" type="decimal"/></sequence></complexType><element name="AcctLoanInfoChgResponse" type="loan:AcctLoanInfoChgResponseType"/><complexType name="LoanIntAdjustRequestType"><sequence><element ref="base:BaseRequest"/><element name="acctNbr" type="long"/><element name="balCatCd" type="string"/><element name="balTypCd" type="string"/><element name="tranAmt" type="decimal"/><element name="rtxnNote" type="string"/><element name="postScript" type="string"/></sequence></complexType><element name="LoanIntAdjust" type="loan:LoanIntAdjustRequestType"/><complexType name="LoanIntAdjustResponseType"><sequence><element ref="base:BaseResponse"/></sequence></complexType><element name="LoanIntAdjustResponse" type="loan:LoanIntAdjustResponseType"/><complexType name="LoanActToNonPerformRequestType"><sequence><element ref="base:BaseRequest"/><element name="acctNbr" type="long"/><element name="rtxnNote" type="string"/><element name="postScript" type="string"/></sequence></complexType><element name="LoanActToNonPerform" type="loan:LoanActToNonPerformRequestType"/><complexType name="LoanActToNonPerformResponseType"><sequence><element ref="base:BaseResponse"/></sequence></complexType><element name="LoanActToNonPerformResponse" type="loan:LoanActToNonPerformResponseType"/><complexType name="LoanNonPerformToActRequestType"><sequence><element ref="base:BaseRequest"/><element name="acctNbr" type="long"/><element name="autoNpfmYn" type="string"/><element name="rtxnNote" type="string"/><element name="postScript" type="string"/></sequence></complexType><element name="LoanNonPerformToAct" type="loan:LoanNonPerformToActRequestType"/><complexType name="LoanNonPerformToActResponseType"><sequence><element ref="base:BaseResponse"/></sequence></complexType><element name="LoanNonPerformToActResponse" type="loan:LoanNonPerformToActResponseType"/><complexType name="LoanConsumeRequestType"><sequence><element ref="base:BaseRequest"/><element name="customerId" type="string"/><element name="tranAmt" type="decimal"/><element name="mjAcctTypCd" type="string"/><element name="miAcctTypCd" type="string"/><element name="term" type="string"/></sequence></complexType><element name="LoanConsume" type="loan:LoanConsumeRequestType"/><complexType name="LoanConsumeResponseType"><sequence><element ref="base:BaseResponse"/><element name="acctNbr" type="long"/></sequence></complexType><element name="LoanConsumeResponse" type="loan:LoanConsumeResponseType"/><complexType name="WD_LoanConsumeExtendRequestType"><sequence><element ref="base:BaseRequest"/><element name="customerId" type="string"/><element name="iouid" type="string"/><element name="contractId" type="string"/><element name="ccy" type="string"/><element name="revolveLimitYN" type="string"/><element name="tranAmt" type="decimal"/><element name="mediId" type="string"/><element name="startDate" type="date"/><element name="dateMat" type="date"/><element name="pmtSchedId" type="string"/><element name="loanRate" type="decimal"/><element name="odirate" type="decimal"/><element name="limitAmt" type="decimal"/><element name="mjmiAcctTypCd" type="string"/><element name="holdMediid" type="string"/><element name="holdAcctnbr" type="string"/><element name="thirdpartMediid" type="string"/></sequence></complexType><element name="WD_LoanConsumeExtend" type="loan:WD_LoanConsumeExtendRequestType"/><complexType name="WD_LoanConsumeExtendResponseType"><sequence><element ref="base:BaseResponse"/><element name="masterAcctNbr" type="decimal"/></sequence></complexType><element name="WD_LoanConsumeExtendResponse" type="loan:WD_LoanConsumeExtendResponseType"/><complexType name="WD_LoanPaymentExtendRequestType"><sequence><element ref="base:BaseRequest"/><element name="iouid" type="string"/><element name="pmtAmt" type="decimal"/><element name="isReCalPmtYN" type="string"/></sequence></complexType><element name="WD_LoanPaymentExtend" type="loan:WD_LoanPaymentExtendRequestType"/><complexType name="WD_LoanPaymentExtendResponseType"><sequence><element ref="base:BaseResponse"/></sequence></complexType><element name="WD_LoanPaymentExtendResponse" type="loan:WD_LoanPaymentExtendResponseType"/><complexType name="AcctLoanChrgWavRequestType"><sequence><element ref="base:BaseRequest"/><element name="acctNbr" type="long"/><element name="postScript" type="string"/><element name="totalWavAmt" type="decimal"/><element maxOccurs="unbounded" minOccurs="0" name="chrgWavRequestList" type="loan:chrgWavRequestItem"/></sequence></complexType><element name="AcctLoanChrgWav" type="loan:AcctLoanChrgWavRequestType"/><complexType name="AcctLoanChrgWavResponseType"><sequence><element ref="base:BaseResponse"/></sequence></complexType><element name="AcctLoanChrgWavResponse" type="loan:AcctLoanChrgWavResponseType"/><complexType name="chrgWavRequestItem"><sequence><element name="balCatcd" type="string"/><element name="balTypcd" type="string"/><element name="rcvbNbr" type="long"/><element name="rcvbAmt" type="decimal"/><element name="unPaidAmt" type="decimal"/><element name="wavAmt" type="decimal"/></sequence></complexType><complexType name="LoanRtxnReversalRequestType"><sequence><element ref="base:BaseRequest"/><element name="revTxnSeqId" type="string"/><element name="reversalTypCd" type="string"/></sequence></complexType><element name="LoanRtxnReversal" type="loan:LoanRtxnReversalRequestType"/><complexType name="LoanRtxnReversalResponseType"><sequence><element ref="base:BaseResponse"/></sequence></complexType><element name="LoanRtxnReversalResponse" type="loan:LoanRtxnReversalResponseType"/><complexType name="CreateLoanAcctCCRequestType"><sequence><element ref="base:BaseRequest"/><element name="customerId" type="long"/><element name="limitAmt" type="decimal"/></sequence></complexType><element name="CreateLoanAcctCC" type="loan:CreateLoanAcctCCRequestType"/><complexType name="CreateLoanAcctCCResponseType"><sequence><element ref="base:BaseResponse"/><element name="customerId" type="string"/><element name="limitAmt" type="decimal"/></sequence></complexType><element name="CreateLoanAcctCCResponse" type="loan:CreateLoanAcctCCResponseType"/><complexType name="CCConsumeRequestType"><sequence><element ref="base:BaseRequest"/><element name="customerId" type="string"/><element name="orderNbr" type="long"/><element name="tranDate" type="date"/><element name="tranAmt" type="decimal"/></sequence></complexType><element name="CCConsume" type="loan:CCConsumeRequestType"/><complexType name="CCConsumeResponseType"><sequence><element ref="base:BaseResponse"/></sequence></complexType><element name="CCConsumeResponse" type="loan:CCConsumeResponseType"/><complexType name="CCConsumeInstmtRequestType"><sequence><element ref="base:BaseRequest"/><element name="acctNbr" type="long"/><element name="rtxnNbr" type="long"/><element name="term" type="int"/></sequence></complexType><element name="CCConsumeInstmt" type="loan:CCConsumeInstmtRequestType"/><complexType name="CCConsumeInstmtResponseType"><sequence><element ref="base:BaseResponse"/></sequence></complexType><element name="CCConsumeInstmtResponse" type="loan:CCConsumeInstmtResponseType"/><complexType name="CCPmtByEAcctRequestType"><sequence><element ref="base:BaseRequest"/><element name="customerId" type="string"/><element name="pmtAmt" type="decimal"/></sequence></complexType><element name="CCPmtByEAcct" type="loan:CCPmtByEAcctRequestType"/><complexType name="CCPmtByEAcctResponseType"><sequence><element ref="base:BaseResponse"/></sequence></complexType><element name="CCPmtByEAcctResponse" type="loan:CCPmtByEAcctResponseType"/><complexType name="UpdateAcctCCWavDaysRequestType"><sequence><element ref="base:BaseRequest"/><element name="mjAcctTypCd" type="string"/><element name="miAcctTypCd" type="string"/><element name="wavDays" type="long"/></sequence></complexType><element name="UpdateAcctCCWavDays" type="loan:UpdateAcctCCWavDaysRequestType"/><complexType name="UpdateAcctCCWavDaysResponseType"><sequence><element ref="base:BaseResponse"/><element maxOccurs="unbounded" minOccurs="0" name="getMjmiAcctTypCCList" type="loan:getMjmiAcctTypCCItem"/></sequence></complexType><element name="UpdateAcctCCWavDaysResponse" type="loan:UpdateAcctCCWavDaysResponseType"/><complexType name="getMjmiAcctTypCCItem"><sequence><element name="wavDays" type="long"/><element name="mjAcctTypCd" type="string"/><element name="miAcctTypCd" type="string"/></sequence></complexType><complexType name="AcctLoanNegAgrmtRequestType"><sequence><element ref="base:BaseRequest"/><element name="acctLoanNbr" type="long"/><element name="mediId" type="long"/></sequence></complexType><element name="AcctLoanNegAgrmt" type="loan:AcctLoanNegAgrmtRequestType"/><complexType name="AcctLoanNegAgrmtResponseType"><sequence><element ref="base:BaseResponse"/></sequence></complexType><element name="AcctLoanNegAgrmtResponse" type="loan:AcctLoanNegAgrmtResponseType"/><complexType name="DelNegAgrmtRequestType"><sequence><element ref="base:BaseRequest"/><element name="acctLoanNbr" type="long"/></sequence></complexType><element name="DelNegAgrmt" type="loan:DelNegAgrmtRequestType"/><complexType name="DelNegAgrmtResponseType"><sequence><element ref="base:BaseResponse"/></sequence></complexType><element name="DelNegAgrmtResponse" type="loan:DelNegAgrmtResponseType"/><complexType name="ProdLoanEditRequestType"><sequence><element ref="base:BaseRequest"/><element maxOccurs="unbounded" minOccurs="0" name="prodAddInfo" type="loan:prodAddInfoItems"/><element maxOccurs="unbounded" minOccurs="0" name="prodMaintainInfo" type="loan:prodAddInfoItems"/><element maxOccurs="unbounded" minOccurs="0" name="prodRemoveInfo" type="loan:prodAddInfoItems"/></sequence></complexType><element name="ProdLoanEdit" type="loan:ProdLoanEditRequestType"/><complexType name="ProdLoanEditResponseType"><sequence><element ref="base:BaseResponse"/></sequence></complexType><element name="ProdLoanEditResponse" type="loan:ProdLoanEditResponseType"/><complexType name="prodAddInfoItems"><sequence><element maxOccurs="unbounded" minOccurs="0" name="mjmiAcctTyp" type="loan:mjmiAcctTypItems"/><element maxOccurs="unbounded" minOccurs="0" name="mjmiAcctTypLoan" type="loan:mjmiAcctTypLoanItems"/><element maxOccurs="unbounded" minOccurs="0" name="mjmiPmtSchedList" type="loan:mjmiPmtSchedItems"/><element maxOccurs="unbounded" minOccurs="0" name="mjmiAcctIntHistList" type="loan:mjmiAcctIntHistItems"/><element maxOccurs="unbounded" minOccurs="0" name="mjmiAcctRtxnTypList" type="loan:mjmiAcctRtxnTypItems"/><element maxOccurs="unbounded" minOccurs="0" name="mjmiAcctGenRtxnList" type="loan:mjmiAcctGenRtxnItems"/><element maxOccurs="unbounded" minOccurs="0" name="mjmiAcctGlList" type="loan:mjmiAcctGlItems"/><element maxOccurs="unbounded" minOccurs="0" name="mjmiAcctAcctRoleList" type="loan:mjmiAcctAcctRoleItems"/><element maxOccurs="unbounded" minOccurs="0" name="mjmiAcctTypOfferHistList" type="loan:mjmiAcctTypOfferHistItems"/><element maxOccurs="unbounded" minOccurs="0" name="mjmiAcctBranchList" type="loan:mjmiAcctBranchItems"/><element maxOccurs="unbounded" minOccurs="0" name="mjmiAcctValRuleList" type="loan:mjmiAcctValRuleItems"/><element maxOccurs="unbounded" minOccurs="0" name="mjmiAcctUserFieldList" type="loan:mjmiAcctUserFieldItems"/><element maxOccurs="unbounded" minOccurs="0" name="mjmiAcctBalCatTypList" type="loan:mjmiAcctBalCatTypItems"/></sequence></complexType><complexType name="mjmiAcctTypItems"><sequence><element name="branchnbr" type="long"/><element name="mjaccttypcd" type="string"/><element name="miaccttypcd" type="string"/><element name="miaccttypname" type="string"/><element name="miaccttypdesc" type="string"/><element name="currencycd" type="string"/><element name="mjmiid" type="string"/><element name="effdate" type="date"/><element name="inactivedate" type="date"/><element name="displayseqnbr" type="int"/><element name="datelastmaint" type="date"/><element name="mainttellerid" type="string"/><element name="mainbranchnbr" type="long"/><element name="maintdate" type="date"/><element name="maintdatetime" type="date"/><element name="minbalamt" type="decimal"/><element name="maxbalamt" type="decimal"/></sequence></complexType><complexType name="mjmiAcctTypLoanItems"><sequence><element name="branchnbr" type="long"/><element name="mjaccttypcd" type="string"/><element name="miaccttypcd" type="string"/><element name="miaccttypname" type="string"/><element name="termunitcd" type="string"/><element name="termunitvalue" type="string"/><element name="termminvalue" type="string"/><element name="termmaxvalue" type="string"/><element name="intyn" type="string"/><element name="disacctloanyn" type="string"/><element name="nonaccrualdays" type="long"/><element name="pmtovryn" type="string"/><element name="trustloanyn" type="string"/><element name="amortchrgpct" type="decimal"/><element name="wavdays" type="long"/><element name="glyn" type="string"/><element name="soldableyn" type="string"/><element name="fundsourcecd" type="string"/><element name="suppodloanyn" type="string"/><element name="negminamt" type="decimal"/><element name="minloanamt" type="decimal"/><element name="maxloanamt" type="decimal"/><element name="loanlimityn" type="string"/><element name="revolveloanyn" type="string"/><element name="defaultcreditlimit" type="decimal"/><element name="pmtspdcd" type="string"/><element name="npfmpmtspdcd" type="string"/><element name="partialpmtallowedyn" type="string"/><element name="unschedprinpmtsallowedyn" type="string"/><element name="gracedays" type="string"/><element name="paidintaccronspmt" type="string"/><element name="paidintaccronautopmt" type="string"/><element name="recalcpmtonexcesspaid" type="string"/><element name="prepfeeconfignbr" type="long"/><element name="billingleaddays" type="string"/><element name="defaultdueday" type="long"/><element name="altpmtduedaynbr" type="long"/><element name="billaftermat" type="string"/><element name="loanratechgmethcd" type="string"/><element name="ratechangeleaddays" type="long"/><element name="ratechangerecalcpmtyn" type="string"/><element name="loanrateeffecttypcd" type="string"/><element name="pmtchangecalpercd" type="string"/><element name="pmtchangeleaddays" type="long"/><element name="masterlineyn" type="string"/><element name="rateeffecttypcd" type="string"/><element name="validyn" type="string"/><element name="instrumenttypcd" type="string"/><element name="datelastmaint" type="date"/><element name="mainttellerid" type="string"/><element name="mainbranchnbr" type="long"/><element name="maintdate" type="date"/><element name="maintdatetime" type="date"/><element name="billaftermat" type="string"/></sequence></complexType><complexType name="mjmiPmtSchedItems"><sequence><element name="branchnbr" type="long"/><element name="mjaccttypcd" type="string"/><element name="miaccttypcd" type="string"/><element name="miaccttypname" type="string"/><element name="pmtschedid" type="string"/><element name="defaultyn" type="string"/><element name="mainttellerid" type="string"/><element name="maintbranchnbr" type="long"/><element name="maintdate" type="date"/><element name="maintdatetime" type="date"/><element name="datelastmaint" type="date"/></sequence></complexType><complexType name="mjmiAcctIntHistItems"><sequence><element name="branchnbr" type="long"/><element name="mjaccttypcd" type="string"/><element name="miaccttypcd" type="string"/><element name="miaccttypname" type="string"/><element name="balcatcd" type="string"/><element name="baltypcd" type="string"/><element name="effdate" type="date"/><element name="inactivedate" type="date"/><element name="ratemethcd" type="string"/><element name="calcschednbr" type="long"/><element name="ratetypcd" type="string"/><element name="calcbaltypcd" type="string"/><element name="intmethcd" type="string"/><element name="intminamt" type="decimal"/><element name="intmaxamt" type="decimal"/><element name="intbase" type="int"/><element name="daysmethcd" type="string"/><element name="baltiermethcd" type="string"/><element name="minintrate" type="decimal"/><element name="maxintrate" type="decimal"/><element name="ratechangerndmethcd" type="string"/><element name="ratechangemethcd" type="string"/><element name="ratechangecalpercd" type="string"/><element name="ratechangeleaddays" type="int"/><element name="acctovryn" type="string"/><element name="acctdefaultreqdyn" type="string"/><element name="segintyn" type="string"/><element name="contractdaterateyn" type="string"/><element name="amortterm" type="long"/><element name="mainttellerid" type="string"/><element name="maintbranchnbr" type="long"/><element name="maintdate" type="date"/><element name="maintdatetime" type="date"/><element name="datelastmaint" type="date"/><element name="spreadtypcd" type="string"/><element name="spreadvalue" type="decimal"/><element name="calcschedbranchnbr" type="long"/></sequence></complexType><complexType name="mjmiAcctBalCatTypItems"><sequence><element name="branchnbr" type="long"/><element name="mjaccttypcd" type="string"/><element name="miaccttypcd" type="string"/><element name="miaccttypname" type="string"/><element name="balcatcd" type="string"/><element name="baltypcd" type="string"/><element name="mjmibalcattypdesc" type="string"/><element name="gleffectnbr" type="string"/><element name="reqdyn" type="string"/><element name="excesspaymentsseqnbr" type="long"/><element name="paymentseqnbr" type="long"/><element name="npfmpaymentseqnbr" type="long"/><element name="pmtpercent" type="long"/><element name="depseqnbr" type="int"/><element name="wthseqnbr" type="int"/><element name="ddepseqnbr" type="int"/><element name="dwthseqnbr" type="int"/><element name="oddfreqallowedyn" type="string"/><element name="mainttellerid" type="string"/><element name="maintbranchnbr" type="long"/><element name="maintdate" type="date"/><element name="maintdatetime" type="date"/><element name="datelastmaint" type="date"/></sequence></complexType><complexType name="mjmiAcctRtxnTypItems"><sequence><element name="branchnbr" type="long"/><element name="mjaccttypcd" type="string"/><element name="miaccttypcd" type="string"/><element name="miaccttypname" type="string"/><element name="rtxntypcd" type="string"/><element name="glaccttitlenbr" type="long"/><element name="effdate" type="date"/><element name="inactivedate" type="date"/><element name="mainttellerid" type="string"/><element name="maintbranchnbr" type="long"/><element name="optgenyn" type="string"/><element name="maintdate" type="date"/><element name="maintdatetime" type="date"/><element name="datelastmaint" type="date"/></sequence></complexType><complexType name="mjmiAcctGenRtxnItems"><sequence><element name="branchnbr" type="long"/><element name="mjaccttypcd" type="string"/><element name="miaccttypcd" type="string"/><element name="miaccttypname" type="string"/><element name="rtxntypcd" type="string"/><element name="genrtxntypcd" type="string"/><element name="optgenyn" type="string"/><element name="fundtypcd" type="string"/><element name="fundtypdtlcd" type="string"/><element name="effdate" type="date"/><element name="inactivedate" type="date"/><element name="mainttellerid" type="string"/><element name="maintbranchnbr" type="long"/><element name="maintdate" type="date"/><element name="maintdatetime" type="date"/><element name="datelastmaint" type="date"/></sequence></complexType><complexType name="mjmiAcctGlItems"><sequence><element name="branchnbr" type="long"/><element name="mjaccttypcd" type="string"/><element name="miaccttypcd" type="string"/><element name="miaccttypname" type="string"/><element name="balcatcd" type="string"/><element name="baltypcd" type="string"/><element name="glaccttitlenbr" type="long"/><element name="effdate" type="date"/><element name="inactivedate" type="date"/><element name="mainttellerid" type="string"/><element name="maintbranchnbr" type="long"/><element name="maintdate" type="date"/><element name="maintdatetime" type="date"/><element name="datelastmaint" type="date"/></sequence></complexType><complexType name="mjmiAcctAcctRoleItems"><sequence><element name="branchnbr" type="long"/><element name="mjaccttypcd" type="string"/><element name="miaccttypcd" type="string"/><element name="miaccttypname" type="string"/><element name="acctrolecd" type="string"/><element name="effdate" type="date"/><element name="inactivedate" type="date"/><element name="mainttellerid" type="string"/><element name="maintbranchnbr" type="long"/><element name="maintdate" type="date"/><element name="maintdatetime" type="date"/><element name="datelastmaint" type="date"/></sequence></complexType><complexType name="mjmiAcctTypOfferHistItems"><sequence><element name="branchnbr" type="long"/><element name="mjaccttypcd" type="string"/><element name="miaccttypcd" type="string"/><element name="miaccttypname" type="string"/><element name="effdate" type="date"/><element name="inactivedate" type="date"/><element name="mainttellerid" type="string"/><element name="maintbranchnbr" type="long"/><element name="maintdate" type="date"/><element name="maintdatetime" type="date"/><element name="datelastmaint" type="date"/></sequence></complexType><complexType name="mjmiAcctBranchItems"><sequence><element name="branchnbr" type="long"/><element name="mjaccttypcd" type="string"/><element name="miaccttypcd" type="string"/><element name="miaccttypname" type="string"/><element name="branchno" type="long"/><element name="effdate" type="date"/><element name="inactivedate" type="date"/><element name="mainttellerid" type="string"/><element name="maintbranchnbr" type="long"/><element name="maintdate" type="date"/><element name="maintdatetime" type="date"/><element name="datelastmaint" type="date"/></sequence></complexType><complexType name="mjmiAcctValRuleItems"><sequence><element name="branchnbr" type="long"/><element name="mjaccttypcd" type="string"/><element name="miaccttypcd" type="string"/><element name="miaccttypname" type="string"/><element name="valrulenbr" type="long"/><element name="ruleseqnbr" type="long"/><element name="effdate" type="date"/><element name="inactivedate" type="date"/><element name="mainttellerid" type="string"/><element name="maintbranchnbr" type="long"/><element name="maintdate" type="date"/><element name="maintdatetime" type="date"/><element name="datelastmaint" type="date"/></sequence></complexType><complexType name="mjmiAcctUserFieldItems"><sequence><element name="branchnbr" type="long"/><element name="mjaccttypcd" type="string"/><element name="miaccttypcd" type="string"/><element name="miaccttypname" type="string"/><element name="userfieldcd" type="string"/><element name="effdate" type="date"/><element name="inactivedate" type="date"/><element name="mainttellerid" type="string"/><element name="maintbranchnbr" type="long"/><element name="maintdate" type="date"/><element name="maintdatetime" type="date"/><element name="datelastmaint" type="date"/></sequence></complexType><complexType name="CreditLoanApplyLimitRequestType"><sequence><element ref="base:BaseRequest"/><element name="customerId" type="string"/><element name="limitAmt" type="decimal"/><element name="customerName" type="string"/></sequence></complexType><element name="CreditLoanApplyLimit" type="loan:CreditLoanApplyLimitRequestType"/><complexType name="CreditLoanApplyLimitResponseType"><sequence><element ref="base:BaseResponse"/></sequence></complexType><element name="CreditLoanApplyLimitResponse" type="loan:CreditLoanApplyLimitResponseType"/><complexType name="CreditLoanConsumeRequestType"><sequence><element ref="base:BaseRequest"/><element name="customerId" type="string"/><element name="tranAmt" type="decimal"/><element name="payMethod" type="string"/><element name="term" type="string"/><element name="orderNbr" type="long"/></sequence></complexType><element name="CreditLoanConsume" type="loan:CreditLoanConsumeRequestType"/><complexType name="CreditLoanConsumeResponseType"><sequence><element ref="base:BaseResponse"/></sequence></complexType><element name="CreditLoanConsumeResponse" type="loan:CreditLoanConsumeResponseType"/><complexType name="CreditLoanTransferRequestType"><sequence><element ref="base:BaseRequest"/><element name="itlAcctNbr" type="long"/><element name="mediId" type="string"/><element name="ownerName" type="string"/><element name="tranAmt" type="decimal"/></sequence></complexType><element name="CreditLoanTransfer" type="loan:CreditLoanTransferRequestType"/><complexType name="CreditLoanTransferResponseType"><sequence><element ref="base:BaseResponse"/><element name="newItlBalAmt" type="decimal"/></sequence></complexType><element name="CreditLoanTransferResponse" type="loan:CreditLoanTransferResponseType"/><complexType name="CreditLoanReturnRequestType"><sequence><element ref="base:BaseRequest"/><element name="orderNbr" type="long"/><element name="customerId" type="string"/><element name="customerName" type="string"/><element name="effDate" type="date"/><element name="tranAmt" type="decimal"/><element name="postDate" type="date"/><element name="returnAmt" type="decimal"/></sequence></complexType><element name="CreditLoanReturn" type="loan:CreditLoanReturnRequestType"/><complexType name="CreditLoanReturnResponseType"><sequence><element ref="base:BaseResponse"/><element name="returnModel" type="string"/></sequence></complexType><element name="CreditLoanReturnResponse" type="loan:CreditLoanReturnResponseType"/><complexType name="CreditLoanPmtRequestType"><sequence><element ref="base:BaseRequest"/><element name="mediId" type="string"/><element maxOccurs="unbounded" minOccurs="0" name="creditLoanPmtList" type="loan:creditLoanPmtItems"/></sequence></complexType><element name="CreditLoanPmt" type="loan:CreditLoanPmtRequestType"/><complexType name="CreditLoanPmtResponseType"><sequence><element ref="base:BaseResponse"/></sequence></complexType><element name="CreditLoanPmtResponse" type="loan:CreditLoanPmtResponseType"/><complexType name="creditLoanPmtItems"><sequence><element name="acctNbr" type="long"/><element name="totalAmt" type="decimal"/><element maxOccurs="unbounded" minOccurs="0" name="noteBal" type="loan:creditPmtItem"/><element maxOccurs="unbounded" minOccurs="0" name="cmsnChrg" type="loan:creditPmtItem"/><element maxOccurs="unbounded" minOccurs="0" name="odpInt" type="loan:creditPmtItem"/><element maxOccurs="unbounded" minOccurs="0" name="odpGInt" type="loan:creditPmtItem"/></sequence></complexType><complexType name="creditPmtItem"><sequence><element name="balCatCd" type="string"/><element name="balTypCd" type="string"/><element maxOccurs="unbounded" minOccurs="0" name="amtInfo" type="loan:creditPmtAmtItem"/><element name="totalAmt" type="decimal"/></sequence></complexType><complexType name="creditPmtAmtItem"><sequence><element name="amt" type="decimal"/><element name="rcvbNbr" type="long"/></sequence></complexType><complexType name="CCInstallmentRequestType"><sequence><element ref="base:BaseRequest"/><element name="acctNbr" type="long"/><element name="amrtAmt" type="decimal"/><element name="term" type="int"/><element name="stmtNbr" type="long"/><element name="rtxnNbr" type="long"/></sequence></complexType><element name="CCInstallment" type="loan:CCInstallmentRequestType"/><complexType name="CCInstallmentResponseType"><sequence><element ref="base:BaseResponse"/></sequence></complexType><element name="CCInstallmentResponse" type="loan:CCInstallmentResponseType"/><complexType name="CCRefundsRequestType"><sequence><element ref="base:BaseRequest"/><element name="orderNbr" type="long"/><element name="reFundsAmt" type="decimal"/></sequence></complexType><element name="CCRefunds" type="loan:CCRefundsRequestType"/><complexType name="CCRefundsResponseType"><sequence><element ref="base:BaseResponse"/></sequence></complexType><element name="CCRefundsResponse" type="loan:CCRefundsResponseType"/><complexType name="SubmitProductCCInfoRequestType"><sequence><element ref="base:BaseRequest"/><element maxOccurs="unbounded" minOccurs="0" name="mjmiAcctTypList" type="loan:mjmiAcctTypItems"/><element maxOccurs="unbounded" minOccurs="0" name="mjmiAcctTypccList" type="loan:mjmiAcctTypccItems"/><element maxOccurs="unbounded" minOccurs="0" name="mjmiAcctTypccTermList" type="loan:mjmiAcctTypccTermItems"/><element maxOccurs="unbounded" minOccurs="0" name="mjmiAcctTypccChrgList" type="loan:mjmiAcctTypccChrgItems"/><element maxOccurs="unbounded" minOccurs="0" name="mjmiAcctBalCatTypList" type="loan:mjmiAcctBalCatTypItems"/><element maxOccurs="unbounded" minOccurs="0" name="mjmiAcctRtxnTypList" type="loan:mjmiAcctRtxnTypItems"/><element maxOccurs="unbounded" minOccurs="0" name="mjmiAcctGlList" type="loan:mjmiAcctGlItems"/></sequence></complexType><element name="SubmitProductCCInfo" type="loan:SubmitProductCCInfoRequestType"/><complexType name="SubmitProductCCInfoResponseType"><sequence><element ref="base:BaseResponse"/></sequence></complexType><element name="SubmitProductCCInfoResponse" type="loan:SubmitProductCCInfoResponseType"/><complexType name="mjmiAcctTypccItems"><sequence><element name="branchnbr" type="long"/><element name="mjaccttypcd" type="string"/><element name="miaccttypcd" type="string"/><element name="miaccttypname" type="string"/><element name="stmtdaynbr" type="long"/><element name="pmtdaynbr" type="long"/><element name="limitamt" type="decimal"/><element name="wavdays" type="long"/><element name="gracedays" type="decimal"/><element name="mediid" type="string"/><element name="usegracedaysmaxtime" type="long"/><element name="largetransminamt" type="decimal"/><element name="ccchrgrulecd" type="string"/><element name="odloanmjaccttypcd" type="string"/><element name="odloanmiaccttypcd" type="string"/></sequence></complexType><complexType name="mjmiAcctTypccTermItems"><sequence><element name="branchnbr" type="long"/><element name="mjaccttypcd" type="string"/><element name="miaccttypcd" type="string"/><element name="miaccttypname" type="string"/><element name="term" type="long"/><element name="mainttellerid" type="string"/><element name="maintbranchnbr" type="long"/><element name="maintdate" type="date"/><element name="maintdatetime" type="date"/><element name="datelastmaint" type="date"/></sequence></complexType><complexType name="mjmiAcctTypccChrgItems"><sequence><element name="branchnbr" type="long"/><element name="mjaccttypcd" type="string"/><element name="miaccttypcd" type="string"/><element name="miaccttypname" type="string"/><element name="term" type="long"/><element name="chrgpct" type="decimal"/><element name="mainttellerid" type="string"/><element name="maintbranchnbr" type="long"/><element name="maintdate" type="date"/><element name="maintdatetime" type="date"/><element name="datelastmaint" type="date"/></sequence></complexType><complexType name="FeeRuleInfoSubmitRequestType"><sequence><element ref="base:BaseRequest"/><element maxOccurs="unbounded" minOccurs="0" name="feeRuleInfo" type="loan:feeRuleInfoItems"/></sequence></complexType><element name="FeeRuleInfoSubmit" type="loan:FeeRuleInfoSubmitRequestType"/><complexType name="FeeRuleInfoSubmitResponseType"><sequence><element ref="base:BaseResponse"/></sequence></complexType><element name="FeeRuleInfoSubmitResponse" type="loan:FeeRuleInfoSubmitResponseType"/><complexType name="feeRuleInfoItems"><sequence><element name="flag" type="string"/><element name="branchnbr" type="long"/><element name="feeconfignbr" type="long"/><element name="feeconfigdesc" type="string"/><element name="feetypcd" type="string"/><element name="fixfeeamt" type="decimal"/><element name="feecalcbaltypcd" type="string"/><element name="pcttypcd" type="string"/><element name="fixfeepct" type="decimal"/><element name="minfeeamt" type="decimal"/><element name="maxfeeamt" type="decimal"/></sequence></complexType><complexType name="SubmitLoanSoldAgreementInfoRequestType"><sequence><element ref="base:BaseRequest"/><element name="flag" type="string"/><element name="invrlanbr" type="long"/><element name="invrlaname" type="string"/><element name="poolamt" type="decimal"/><element name="currencycd" type="string"/><element name="packdate" type="date"/><element name="pooldate" type="date"/><element name="rcvbableacctnbr" type="long"/><element name="payableprinacctnbr" type="long"/><element name="currinvrlastatcd" type="string"/><element name="payableintcacctnbr" type="long"/><element name="invrlaorgnbr" type="long"/><element name="orgname" type="string"/></sequence></complexType><element name="SubmitLoanSoldAgreementInfo" type="loan:SubmitLoanSoldAgreementInfoRequestType"/><complexType name="SubmitLoanSoldAgreementInfoResponseType"><sequence><element ref="base:BaseResponse"/></sequence></complexType><element name="SubmitLoanSoldAgreementInfoResponse" type="loan:SubmitLoanSoldAgreementInfoResponseType"/><complexType name="LoanSoldAssetScreenOutRequestType"><sequence><element ref="base:BaseRequest"/><element name="branchNbr" type="long"/><element name="acctNbr" type="long"/><element name="invrLaNbr" type="long"/><element name="invrLaOrgNbr" type="long"/><element name="iouId" type="string"/><element name="currInvrLaAcctStatCd" type="string"/><element name="noteBalAmt" type="decimal"/><element name="intOfBank" type="decimal"/><element name="bankId" type="long"/><element name="tellerNbr" type="string"/></sequence></complexType><element name="LoanSoldAssetScreenOut" type="loan:LoanSoldAssetScreenOutRequestType"/><complexType name="LoanSoldAssetScreenOutResponseType"><sequence><element ref="base:BaseResponse"/></sequence></complexType><element name="LoanSoldAssetScreenOutResponse" type="loan:LoanSoldAssetScreenOutResponseType"/><complexType name="SubmitAcctLoanLinkedInfoRequestType"><sequence><element ref="base:BaseRequest"/><element name="flag" type="string"/><element name="invrlanbr" type="long"/><element name="acctnbr" type="long"/><element name="invrlaorgnbr" type="long"/><element name="iouid" type="string"/><element name="currinvrlaacctstatcd" type="string"/></sequence></complexType><element name="SubmitAcctLoanLinkedInfo" type="loan:SubmitAcctLoanLinkedInfoRequestType"/><complexType name="SubmitAcctLoanLinkedInfoResponseType"><sequence><element ref="base:BaseResponse"/></sequence></complexType><element name="SubmitAcctLoanLinkedInfoResponse" type="loan:SubmitAcctLoanLinkedInfoResponseType"/><complexType name="LoanSoldAssetIntoPoolRequestType"><sequence><element ref="base:BaseRequest"/><element name="branchNbr" type="long"/><element name="invrLaNbr" type="long"/><element name="invrLaOrgNbr" type="long"/><element name="noteBalAmt" type="decimal"/><element name="bankId" type="long"/><element name="tellerNbr" type="string"/></sequence></complexType><element name="LoanSoldAssetIntoPool" type="loan:LoanSoldAssetIntoPoolRequestType"/><complexType name="LoanSoldAssetIntoPoolResponseType"><sequence><element ref="base:BaseResponse"/></sequence></complexType><element name="LoanSoldAssetIntoPoolResponse" type="loan:LoanSoldAssetIntoPoolResponseType"/><complexType name="SubmitProductCCEditRequestType"><sequence><element ref="base:BaseRequest"/><element maxOccurs="unbounded" minOccurs="0" name="mjmiAcctTypList" type="loan:mjmiAcctTypItems"/><element maxOccurs="unbounded" minOccurs="0" name="mjmiAcctTypccList" type="loan:mjmiAcctItems"/><element maxOccurs="unbounded" minOccurs="0" name="mjmiAcctTypccTermList" type="loan:mjmiAcctTypTermItems"/><element maxOccurs="unbounded" minOccurs="0" name="mjmiAcctTypccChrgList" type="loan:mjmiAcctTypChrgItems"/><element maxOccurs="unbounded" minOccurs="0" name="mjmiAcctBalCatTypList" type="loan:mjmiAcctBalCatTypccItems"/><element maxOccurs="unbounded" minOccurs="0" name="mjmiAcctRtxnTypList" type="loan:mjmiAcctRtxnTypccItems"/><element maxOccurs="unbounded" minOccurs="0" name="mjmiAcctGlList" type="loan:mjmiAcctGlccItems"/></sequence></complexType><element name="SubmitProductCCEdit" type="loan:SubmitProductCCEditRequestType"/><complexType name="SubmitProductCCEditResponseType"><sequence><element ref="base:BaseResponse"/></sequence></complexType><element name="SubmitProductCCEditResponse" type="loan:SubmitProductCCEditResponseType"/><complexType name="mjmiAcctItems"><sequence><element name="branchnbr" type="long"/><element name="mjaccttypcd" type="string"/><element name="miaccttypcd" type="string"/><element name="miaccttypname" type="string"/><element name="stmtdaynbr" type="long"/><element name="pmtdaynbr" type="long"/><element name="limitamt" type="decimal"/><element name="wavdays" type="long"/><element name="gracedays" type="decimal"/><element name="mediid" type="string"/><element name="usegracedaysmaxtime" type="long"/><element name="largetransminamt" type="decimal"/><element name="ccchrgrulecd" type="string"/><element name="odloanmjaccttypcd" type="string"/><element name="odloanmiaccttypcd" type="string"/></sequence></complexType><complexType name="mjmiAcctTypTermItems"><sequence><element name="order" type="long"/><element name="flag" type="string"/><element name="key" type="string"/><element name="mjaccttypdesc" type="string"/><element name="miaccttypname" type="string"/><element name="term" type="long"/><element name="effdate" type="date"/><element name="branchnbr" type="long"/><element name="mjaccttypcd" type="string"/><element name="miaccttypcd" type="string"/></sequence></complexType><complexType name="mjmiAcctTypChrgItems"><sequence><element name="branchnbr" type="long"/><element name="mjaccttypcd" type="string"/><element name="miaccttypcd" type="string"/><element name="miaccttypname" type="string"/><element name="mjaccttypdesc" type="string"/><element name="effdate" type="date"/><element name="chrgpct" type="decimal"/><element name="order" type="long"/><element name="flag" type="string"/><element name="key" type="string"/><element name="term" type="loan:termOfMjmiAcctTypccChrgItem"/></sequence></complexType><complexType name="termOfMjmiAcctTypccChrgItem"><sequence><element name="effdate" type="date"/><element name="term" type="long"/><element name="mjaccttypdesc" type="string"/><element name="miaccttypname" type="string"/></sequence></complexType><complexType name="mjmiAcctBalCatTypccItems"><sequence><element name="mjaccttypdesc" type="string"/><element name="npfmpaymentseqnbr" type="long"/><element name="miaccttypcd" type="string"/><element name="baltypcd" type="string"/><element name="mjmibalcattypdesc" type="string"/><element name="paymentseqnbr" type="long"/><element name="balcatcd" type="string"/><element name="branchnbr" type="long"/><element name="miaccttypdesc" type="string"/><element name="reqdyn" type="string"/><element name="pmtpercent" type="long"/><element name="mjaccttypcd" type="string"/><element name="gleffectnbr" type="long"/><element name="baltypdesc" type="string"/><element name="miaccttypname" type="string"/><element name="order" type="long"/><element name="flag" type="string"/><element name="key" type="string"/></sequence></complexType><complexType name="mjmiAcctRtxnTypccItems"><sequence><element name="mjaccttypdesc" type="string"/><element name="branchnbr" type="long"/><element name="glaccttitlename" type="string"/><element name="miaccttypcd" type="string"/><element name="effdate" type="date"/><element name="mjaccttypcd" type="string"/><element name="rtxntypdesc" type="string"/><element name="order" type="long"/><element name="flag" type="string"/><element name="key" type="string"/><element name="rtxntypcd" type="loan:rtxntypcdOfMjmiAcctRtxnTypItem"/><element name="glaccttitlenbr" type="loan:glaccttitlenbrOfMjmiAcctRtxnTypItem"/></sequence></complexType><complexType name="rtxntypcdOfMjmiAcctRtxnTypItem"><sequence><element name="jefundtypyn" type="string"/><element name="rtxntypcd" type="string"/><element name="rtxntypdesc" type="string"/></sequence></complexType><complexType name="glaccttitlenbrOfMjmiAcctRtxnTypItem"><sequence><element name="userglacctnbr" type="long"/><element name="glaccttitlename" type="string"/><element name="glaccttitlenbr" type="long"/></sequence></complexType><complexType name="mjmiAcctGlccItems"><sequence><element name="effdate" type="date"/><element name="mjaccttypdesc" type="string"/><element name="miaccttypname" type="string"/><element name="branchnbr" type="long"/><element name="mjaccttypcd" type="string"/><element name="miaccttypcd" type="string"/><element name="order" type="long"/><element name="flag" type="string"/><element name="key" type="string"/><element name="balcattyp" type="loan:balcattypOfMjmiAcctGlItem"/><element name="glaccttitlenbr" type="loan:glaccttitlenbrOfMjmiAcctGlItem"/></sequence></complexType><complexType name="balcattypOfMjmiAcctGlItem"><sequence><element name="mjaccttypdesc" type="string"/><element name="npfmpaymentseqnbr" type="long"/><element name="miaccttypcd" type="string"/><element name="baltypcd" type="string"/><element name="mjmibalcattypdesc" type="string"/><element name="paymentseqnbr" type="long"/><element name="balcatcd" type="string"/><element name="branchnbr" type="long"/><element name="miaccttypdesc" type="string"/><element name="reqdyn" type="string"/><element name="pmtpercent" type="long"/><element name="mjaccttypcd" type="string"/><element name="gleffectnbr" type="long"/><element name="baltypdesc" type="string"/></sequence></complexType><complexType name="glaccttitlenbrOfMjmiAcctGlItem"><sequence><element name="userglacctnbr" type="long"/><element name="glaccttitlename" type="string"/><element name="glaccttitlenbr" type="long"/></sequence></complexType></schema>
+  </wsdl:types>
+  <wsdl:message name="LoanNonPerformToActResponse">
+    <wsdl:part element="tns:LoanNonPerformToActResponse" name="LoanNonPerformToActResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CCConsume">
+    <wsdl:part element="tns:CCConsume" name="CCConsume">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="LoanRtxnReversalResponse">
+    <wsdl:part element="tns:LoanRtxnReversalResponse" name="LoanRtxnReversalResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="PayOff">
+    <wsdl:part element="tns:PayOff" name="PayOff">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="LoanExtensionManual">
+    <wsdl:part element="tns:LoanExtensionManual" name="LoanExtensionManual">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WD_LoanPaymentExtendResponse">
+    <wsdl:part element="tns:WD_LoanPaymentExtendResponse" name="WD_LoanPaymentExtendResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="LoanSoldAssetIntoPoolResponse">
+    <wsdl:part element="tns:LoanSoldAssetIntoPoolResponse" name="LoanSoldAssetIntoPoolResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="LoanNonPerformToAct">
+    <wsdl:part element="tns:LoanNonPerformToAct" name="LoanNonPerformToAct">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CreditLoanReturnResponse">
+    <wsdl:part element="tns:CreditLoanReturnResponse" name="CreditLoanReturnResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ChargeOff">
+    <wsdl:part element="tns:ChargeOff" name="ChargeOff">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="LoanExtensionManualResponse">
+    <wsdl:part element="tns:LoanExtensionManualResponse" name="LoanExtensionManualResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="SubmitProductCCInfoResponse">
+    <wsdl:part element="tns:SubmitProductCCInfoResponse" name="SubmitProductCCInfoResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ChargeOffResponse">
+    <wsdl:part element="tns:ChargeOffResponse" name="ChargeOffResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CreditLoanApplyLimit">
+    <wsdl:part element="tns:CreditLoanApplyLimit" name="CreditLoanApplyLimit">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CreateLoanAcctResponse">
+    <wsdl:part element="tns:CreateLoanAcctResponse" name="CreateLoanAcctResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CCRefunds">
+    <wsdl:part element="tns:CCRefunds" name="CCRefunds">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="DelNegAgrmt">
+    <wsdl:part element="tns:DelNegAgrmt" name="DelNegAgrmt">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="LoanConsumeResponse">
+    <wsdl:part element="tns:LoanConsumeResponse" name="LoanConsumeResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CreditLoanReturn">
+    <wsdl:part element="tns:CreditLoanReturn" name="CreditLoanReturn">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="LoanSoldAssetScreenOut">
+    <wsdl:part element="tns:LoanSoldAssetScreenOut" name="LoanSoldAssetScreenOut">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CCInstallmentResponse">
+    <wsdl:part element="tns:CCInstallmentResponse" name="CCInstallmentResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="LoanActToNonPerform">
+    <wsdl:part element="tns:LoanActToNonPerform" name="LoanActToNonPerform">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="LoanIntAdjust">
+    <wsdl:part element="tns:LoanIntAdjust" name="LoanIntAdjust">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CCPmtByEAcct">
+    <wsdl:part element="tns:CCPmtByEAcct" name="CCPmtByEAcct">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="LoanPmtByEAcctResponse">
+    <wsdl:part element="tns:LoanPmtByEAcctResponse" name="LoanPmtByEAcctResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="FeeRuleInfoSubmitResponse">
+    <wsdl:part element="tns:FeeRuleInfoSubmitResponse" name="FeeRuleInfoSubmitResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="SubmitAcctLoanLinkedInfoResponse">
+    <wsdl:part element="tns:SubmitAcctLoanLinkedInfoResponse" name="SubmitAcctLoanLinkedInfoResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ProdLoanEdit">
+    <wsdl:part element="tns:ProdLoanEdit" name="ProdLoanEdit">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="LoanDisbResponse">
+    <wsdl:part element="tns:LoanDisbResponse" name="LoanDisbResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="LoanIntAdjustResponse">
+    <wsdl:part element="tns:LoanIntAdjustResponse" name="LoanIntAdjustResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="LoanConsume">
+    <wsdl:part element="tns:LoanConsume" name="LoanConsume">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CreditLoanPmt">
+    <wsdl:part element="tns:CreditLoanPmt" name="CreditLoanPmt">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="LoanDisbToMediResponse">
+    <wsdl:part element="tns:LoanDisbToMediResponse" name="LoanDisbToMediResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CreateLoanAcctCCResponse">
+    <wsdl:part element="tns:CreateLoanAcctCCResponse" name="CreateLoanAcctCCResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CCRefundsResponse">
+    <wsdl:part element="tns:CCRefundsResponse" name="CCRefundsResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="LoanApplyExtension">
+    <wsdl:part element="tns:LoanApplyExtension" name="LoanApplyExtension">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="LoanPmtByEAcct">
+    <wsdl:part element="tns:LoanPmtByEAcct" name="LoanPmtByEAcct">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CCConsumeResponse">
+    <wsdl:part element="tns:CCConsumeResponse" name="CCConsumeResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WthToPmtAfterChargeoffResponse">
+    <wsdl:part element="tns:WthToPmtAfterChargeoffResponse" name="WthToPmtAfterChargeoffResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WthToPmtAfterChargeoff">
+    <wsdl:part element="tns:WthToPmtAfterChargeoff" name="WthToPmtAfterChargeoff">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CreateLoanAcctCC">
+    <wsdl:part element="tns:CreateLoanAcctCC" name="CreateLoanAcctCC">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="LoanSoldAssetScreenOutResponse">
+    <wsdl:part element="tns:LoanSoldAssetScreenOutResponse" name="LoanSoldAssetScreenOutResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="SubmitProductCCInfo">
+    <wsdl:part element="tns:SubmitProductCCInfo" name="SubmitProductCCInfo">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AcctLoanChrgWavResponse">
+    <wsdl:part element="tns:AcctLoanChrgWavResponse" name="AcctLoanChrgWavResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CreditLoanTransfer">
+    <wsdl:part element="tns:CreditLoanTransfer" name="CreditLoanTransfer">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AcctLoanChrgWav">
+    <wsdl:part element="tns:AcctLoanChrgWav" name="AcctLoanChrgWav">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CreditLoanPmtResponse">
+    <wsdl:part element="tns:CreditLoanPmtResponse" name="CreditLoanPmtResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CCConsumeInstmtResponse">
+    <wsdl:part element="tns:CCConsumeInstmtResponse" name="CCConsumeInstmtResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CreditLoanTransferResponse">
+    <wsdl:part element="tns:CreditLoanTransferResponse" name="CreditLoanTransferResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="LoanActToNonPerformResponse">
+    <wsdl:part element="tns:LoanActToNonPerformResponse" name="LoanActToNonPerformResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="LoanRtxnReversal">
+    <wsdl:part element="tns:LoanRtxnReversal" name="LoanRtxnReversal">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AddAcctGrpAcct">
+    <wsdl:part element="tns:AddAcctGrpAcct" name="AddAcctGrpAcct">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="LoanSoldAssetIntoPool">
+    <wsdl:part element="tns:LoanSoldAssetIntoPool" name="LoanSoldAssetIntoPool">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="LoanDisb">
+    <wsdl:part element="tns:LoanDisb" name="LoanDisb">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WD_LoanConsumeExtendResponse">
+    <wsdl:part element="tns:WD_LoanConsumeExtendResponse" name="WD_LoanConsumeExtendResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="SubmitLoanSoldAgreementInfoResponse">
+    <wsdl:part element="tns:SubmitLoanSoldAgreementInfoResponse" name="SubmitLoanSoldAgreementInfoResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AcctLoanInfoChg">
+    <wsdl:part element="tns:AcctLoanInfoChg" name="AcctLoanInfoChg">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WD_LoanConsumeExtend">
+    <wsdl:part element="tns:WD_LoanConsumeExtend" name="WD_LoanConsumeExtend">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="DelNegAgrmtResponse">
+    <wsdl:part element="tns:DelNegAgrmtResponse" name="DelNegAgrmtResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AddAcctGrpResponse">
+    <wsdl:part element="tns:AddAcctGrpResponse" name="AddAcctGrpResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="LoanApplyExtensionResponse">
+    <wsdl:part element="tns:LoanApplyExtensionResponse" name="LoanApplyExtensionResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="UpdateAcctCCWavDays">
+    <wsdl:part element="tns:UpdateAcctCCWavDays" name="UpdateAcctCCWavDays">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="SubmitAcctLoanLinkedInfo">
+    <wsdl:part element="tns:SubmitAcctLoanLinkedInfo" name="SubmitAcctLoanLinkedInfo">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="UpdateAcctCCWavDaysResponse">
+    <wsdl:part element="tns:UpdateAcctCCWavDaysResponse" name="UpdateAcctCCWavDaysResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AddAcctGrpAcctResponse">
+    <wsdl:part element="tns:AddAcctGrpAcctResponse" name="AddAcctGrpAcctResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WD_LoanPaymentExtend">
+    <wsdl:part element="tns:WD_LoanPaymentExtend" name="WD_LoanPaymentExtend">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="PayOffResponse">
+    <wsdl:part element="tns:PayOffResponse" name="PayOffResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AcctLoanInfoChgResponse">
+    <wsdl:part element="tns:AcctLoanInfoChgResponse" name="AcctLoanInfoChgResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CreditLoanConsumeResponse">
+    <wsdl:part element="tns:CreditLoanConsumeResponse" name="CreditLoanConsumeResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CCPmtByEAcctResponse">
+    <wsdl:part element="tns:CCPmtByEAcctResponse" name="CCPmtByEAcctResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ProdLoanEditResponse">
+    <wsdl:part element="tns:ProdLoanEditResponse" name="ProdLoanEditResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CreateLoanAcct">
+    <wsdl:part element="tns:CreateLoanAcct" name="CreateLoanAcct">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AcctLoanNegAgrmt">
+    <wsdl:part element="tns:AcctLoanNegAgrmt" name="AcctLoanNegAgrmt">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CreditLoanApplyLimitResponse">
+    <wsdl:part element="tns:CreditLoanApplyLimitResponse" name="CreditLoanApplyLimitResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="LoanDisbToMedi">
+    <wsdl:part element="tns:LoanDisbToMedi" name="LoanDisbToMedi">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CreditLoanConsume">
+    <wsdl:part element="tns:CreditLoanConsume" name="CreditLoanConsume">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AcctLoanNegAgrmtResponse">
+    <wsdl:part element="tns:AcctLoanNegAgrmtResponse" name="AcctLoanNegAgrmtResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="LoanSchedPmtResponse">
+    <wsdl:part element="tns:LoanSchedPmtResponse" name="LoanSchedPmtResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="SubmitProductCCEditResponse">
+    <wsdl:part element="tns:SubmitProductCCEditResponse" name="SubmitProductCCEditResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AddAcctGrp">
+    <wsdl:part element="tns:AddAcctGrp" name="AddAcctGrp">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CCConsumeInstmt">
+    <wsdl:part element="tns:CCConsumeInstmt" name="CCConsumeInstmt">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="FeeRuleInfoSubmit">
+    <wsdl:part element="tns:FeeRuleInfoSubmit" name="FeeRuleInfoSubmit">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="SubmitProductCCEdit">
+    <wsdl:part element="tns:SubmitProductCCEdit" name="SubmitProductCCEdit">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CCInstallment">
+    <wsdl:part element="tns:CCInstallment" name="CCInstallment">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="SubmitLoanSoldAgreementInfo">
+    <wsdl:part element="tns:SubmitLoanSoldAgreementInfo" name="SubmitLoanSoldAgreementInfo">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="LoanSchedPmt">
+    <wsdl:part element="tns:LoanSchedPmt" name="LoanSchedPmt">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="LoanPostServicePortType">
+    <wsdl:operation name="LoanNonPerformToAct">
+      <wsdl:input message="tns:LoanNonPerformToAct" name="LoanNonPerformToAct">
+    </wsdl:input>
+      <wsdl:output message="tns:LoanNonPerformToActResponse" name="LoanNonPerformToActResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CCConsume">
+      <wsdl:input message="tns:CCConsume" name="CCConsume">
+    </wsdl:input>
+      <wsdl:output message="tns:CCConsumeResponse" name="CCConsumeResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoanRtxnReversal">
+      <wsdl:input message="tns:LoanRtxnReversal" name="LoanRtxnReversal">
+    </wsdl:input>
+      <wsdl:output message="tns:LoanRtxnReversalResponse" name="LoanRtxnReversalResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PayOff">
+      <wsdl:input message="tns:PayOff" name="PayOff">
+    </wsdl:input>
+      <wsdl:output message="tns:PayOffResponse" name="PayOffResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoanExtensionManual">
+      <wsdl:input message="tns:LoanExtensionManual" name="LoanExtensionManual">
+    </wsdl:input>
+      <wsdl:output message="tns:LoanExtensionManualResponse" name="LoanExtensionManualResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WD_LoanPaymentExtend">
+      <wsdl:input message="tns:WD_LoanPaymentExtend" name="WD_LoanPaymentExtend">
+    </wsdl:input>
+      <wsdl:output message="tns:WD_LoanPaymentExtendResponse" name="WD_LoanPaymentExtendResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoanSoldAssetIntoPool">
+      <wsdl:input message="tns:LoanSoldAssetIntoPool" name="LoanSoldAssetIntoPool">
+    </wsdl:input>
+      <wsdl:output message="tns:LoanSoldAssetIntoPoolResponse" name="LoanSoldAssetIntoPoolResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreditLoanReturn">
+      <wsdl:input message="tns:CreditLoanReturn" name="CreditLoanReturn">
+    </wsdl:input>
+      <wsdl:output message="tns:CreditLoanReturnResponse" name="CreditLoanReturnResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChargeOff">
+      <wsdl:input message="tns:ChargeOff" name="ChargeOff">
+    </wsdl:input>
+      <wsdl:output message="tns:ChargeOffResponse" name="ChargeOffResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SubmitProductCCInfo">
+      <wsdl:input message="tns:SubmitProductCCInfo" name="SubmitProductCCInfo">
+    </wsdl:input>
+      <wsdl:output message="tns:SubmitProductCCInfoResponse" name="SubmitProductCCInfoResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreditLoanApplyLimit">
+      <wsdl:input message="tns:CreditLoanApplyLimit" name="CreditLoanApplyLimit">
+    </wsdl:input>
+      <wsdl:output message="tns:CreditLoanApplyLimitResponse" name="CreditLoanApplyLimitResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateLoanAcct">
+      <wsdl:input message="tns:CreateLoanAcct" name="CreateLoanAcct">
+    </wsdl:input>
+      <wsdl:output message="tns:CreateLoanAcctResponse" name="CreateLoanAcctResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CCRefunds">
+      <wsdl:input message="tns:CCRefunds" name="CCRefunds">
+    </wsdl:input>
+      <wsdl:output message="tns:CCRefundsResponse" name="CCRefundsResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DelNegAgrmt">
+      <wsdl:input message="tns:DelNegAgrmt" name="DelNegAgrmt">
+    </wsdl:input>
+      <wsdl:output message="tns:DelNegAgrmtResponse" name="DelNegAgrmtResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoanConsume">
+      <wsdl:input message="tns:LoanConsume" name="LoanConsume">
+    </wsdl:input>
+      <wsdl:output message="tns:LoanConsumeResponse" name="LoanConsumeResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoanSoldAssetScreenOut">
+      <wsdl:input message="tns:LoanSoldAssetScreenOut" name="LoanSoldAssetScreenOut">
+    </wsdl:input>
+      <wsdl:output message="tns:LoanSoldAssetScreenOutResponse" name="LoanSoldAssetScreenOutResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CCInstallment">
+      <wsdl:input message="tns:CCInstallment" name="CCInstallment">
+    </wsdl:input>
+      <wsdl:output message="tns:CCInstallmentResponse" name="CCInstallmentResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoanActToNonPerform">
+      <wsdl:input message="tns:LoanActToNonPerform" name="LoanActToNonPerform">
+    </wsdl:input>
+      <wsdl:output message="tns:LoanActToNonPerformResponse" name="LoanActToNonPerformResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoanIntAdjust">
+      <wsdl:input message="tns:LoanIntAdjust" name="LoanIntAdjust">
+    </wsdl:input>
+      <wsdl:output message="tns:LoanIntAdjustResponse" name="LoanIntAdjustResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CCPmtByEAcct">
+      <wsdl:input message="tns:CCPmtByEAcct" name="CCPmtByEAcct">
+    </wsdl:input>
+      <wsdl:output message="tns:CCPmtByEAcctResponse" name="CCPmtByEAcctResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoanPmtByEAcct">
+      <wsdl:input message="tns:LoanPmtByEAcct" name="LoanPmtByEAcct">
+    </wsdl:input>
+      <wsdl:output message="tns:LoanPmtByEAcctResponse" name="LoanPmtByEAcctResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FeeRuleInfoSubmit">
+      <wsdl:input message="tns:FeeRuleInfoSubmit" name="FeeRuleInfoSubmit">
+    </wsdl:input>
+      <wsdl:output message="tns:FeeRuleInfoSubmitResponse" name="FeeRuleInfoSubmitResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SubmitAcctLoanLinkedInfo">
+      <wsdl:input message="tns:SubmitAcctLoanLinkedInfo" name="SubmitAcctLoanLinkedInfo">
+    </wsdl:input>
+      <wsdl:output message="tns:SubmitAcctLoanLinkedInfoResponse" name="SubmitAcctLoanLinkedInfoResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProdLoanEdit">
+      <wsdl:input message="tns:ProdLoanEdit" name="ProdLoanEdit">
+    </wsdl:input>
+      <wsdl:output message="tns:ProdLoanEditResponse" name="ProdLoanEditResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoanDisb">
+      <wsdl:input message="tns:LoanDisb" name="LoanDisb">
+    </wsdl:input>
+      <wsdl:output message="tns:LoanDisbResponse" name="LoanDisbResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreditLoanPmt">
+      <wsdl:input message="tns:CreditLoanPmt" name="CreditLoanPmt">
+    </wsdl:input>
+      <wsdl:output message="tns:CreditLoanPmtResponse" name="CreditLoanPmtResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoanDisbToMedi">
+      <wsdl:input message="tns:LoanDisbToMedi" name="LoanDisbToMedi">
+    </wsdl:input>
+      <wsdl:output message="tns:LoanDisbToMediResponse" name="LoanDisbToMediResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateLoanAcctCC">
+      <wsdl:input message="tns:CreateLoanAcctCC" name="CreateLoanAcctCC">
+    </wsdl:input>
+      <wsdl:output message="tns:CreateLoanAcctCCResponse" name="CreateLoanAcctCCResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoanApplyExtension">
+      <wsdl:input message="tns:LoanApplyExtension" name="LoanApplyExtension">
+    </wsdl:input>
+      <wsdl:output message="tns:LoanApplyExtensionResponse" name="LoanApplyExtensionResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WthToPmtAfterChargeoff">
+      <wsdl:input message="tns:WthToPmtAfterChargeoff" name="WthToPmtAfterChargeoff">
+    </wsdl:input>
+      <wsdl:output message="tns:WthToPmtAfterChargeoffResponse" name="WthToPmtAfterChargeoffResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AcctLoanChrgWav">
+      <wsdl:input message="tns:AcctLoanChrgWav" name="AcctLoanChrgWav">
+    </wsdl:input>
+      <wsdl:output message="tns:AcctLoanChrgWavResponse" name="AcctLoanChrgWavResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreditLoanTransfer">
+      <wsdl:input message="tns:CreditLoanTransfer" name="CreditLoanTransfer">
+    </wsdl:input>
+      <wsdl:output message="tns:CreditLoanTransferResponse" name="CreditLoanTransferResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CCConsumeInstmt">
+      <wsdl:input message="tns:CCConsumeInstmt" name="CCConsumeInstmt">
+    </wsdl:input>
+      <wsdl:output message="tns:CCConsumeInstmtResponse" name="CCConsumeInstmtResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddAcctGrpAcct">
+      <wsdl:input message="tns:AddAcctGrpAcct" name="AddAcctGrpAcct">
+    </wsdl:input>
+      <wsdl:output message="tns:AddAcctGrpAcctResponse" name="AddAcctGrpAcctResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WD_LoanConsumeExtend">
+      <wsdl:input message="tns:WD_LoanConsumeExtend" name="WD_LoanConsumeExtend">
+    </wsdl:input>
+      <wsdl:output message="tns:WD_LoanConsumeExtendResponse" name="WD_LoanConsumeExtendResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SubmitLoanSoldAgreementInfo">
+      <wsdl:input message="tns:SubmitLoanSoldAgreementInfo" name="SubmitLoanSoldAgreementInfo">
+    </wsdl:input>
+      <wsdl:output message="tns:SubmitLoanSoldAgreementInfoResponse" name="SubmitLoanSoldAgreementInfoResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AcctLoanInfoChg">
+      <wsdl:input message="tns:AcctLoanInfoChg" name="AcctLoanInfoChg">
+    </wsdl:input>
+      <wsdl:output message="tns:AcctLoanInfoChgResponse" name="AcctLoanInfoChgResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddAcctGrp">
+      <wsdl:input message="tns:AddAcctGrp" name="AddAcctGrp">
+    </wsdl:input>
+      <wsdl:output message="tns:AddAcctGrpResponse" name="AddAcctGrpResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAcctCCWavDays">
+      <wsdl:input message="tns:UpdateAcctCCWavDays" name="UpdateAcctCCWavDays">
+    </wsdl:input>
+      <wsdl:output message="tns:UpdateAcctCCWavDaysResponse" name="UpdateAcctCCWavDaysResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreditLoanConsume">
+      <wsdl:input message="tns:CreditLoanConsume" name="CreditLoanConsume">
+    </wsdl:input>
+      <wsdl:output message="tns:CreditLoanConsumeResponse" name="CreditLoanConsumeResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AcctLoanNegAgrmt">
+      <wsdl:input message="tns:AcctLoanNegAgrmt" name="AcctLoanNegAgrmt">
+    </wsdl:input>
+      <wsdl:output message="tns:AcctLoanNegAgrmtResponse" name="AcctLoanNegAgrmtResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoanSchedPmt">
+      <wsdl:input message="tns:LoanSchedPmt" name="LoanSchedPmt">
+    </wsdl:input>
+      <wsdl:output message="tns:LoanSchedPmtResponse" name="LoanSchedPmtResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SubmitProductCCEdit">
+      <wsdl:input message="tns:SubmitProductCCEdit" name="SubmitProductCCEdit">
+    </wsdl:input>
+      <wsdl:output message="tns:SubmitProductCCEditResponse" name="SubmitProductCCEditResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="LoanPostServicePortTypeSoap11" type="tns:LoanPostServicePortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="LoanNonPerformToAct">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="LoanNonPerformToAct">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="LoanNonPerformToActResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CCConsume">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="CCConsume">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="CCConsumeResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoanRtxnReversal">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="LoanRtxnReversal">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="LoanRtxnReversalResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PayOff">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="PayOff">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="PayOffResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoanExtensionManual">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="LoanExtensionManual">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="LoanExtensionManualResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WD_LoanPaymentExtend">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="WD_LoanPaymentExtend">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="WD_LoanPaymentExtendResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoanSoldAssetIntoPool">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="LoanSoldAssetIntoPool">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="LoanSoldAssetIntoPoolResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreditLoanReturn">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="CreditLoanReturn">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="CreditLoanReturnResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChargeOff">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="ChargeOff">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="ChargeOffResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SubmitProductCCInfo">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="SubmitProductCCInfo">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="SubmitProductCCInfoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreditLoanApplyLimit">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="CreditLoanApplyLimit">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="CreditLoanApplyLimitResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateLoanAcct">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="CreateLoanAcct">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="CreateLoanAcctResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CCRefunds">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="CCRefunds">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="CCRefundsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DelNegAgrmt">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="DelNegAgrmt">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="DelNegAgrmtResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoanConsume">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="LoanConsume">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="LoanConsumeResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoanSoldAssetScreenOut">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="LoanSoldAssetScreenOut">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="LoanSoldAssetScreenOutResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CCInstallment">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="CCInstallment">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="CCInstallmentResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoanActToNonPerform">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="LoanActToNonPerform">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="LoanActToNonPerformResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoanIntAdjust">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="LoanIntAdjust">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="LoanIntAdjustResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CCPmtByEAcct">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="CCPmtByEAcct">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="CCPmtByEAcctResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoanPmtByEAcct">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="LoanPmtByEAcct">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="LoanPmtByEAcctResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FeeRuleInfoSubmit">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="FeeRuleInfoSubmit">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="FeeRuleInfoSubmitResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SubmitAcctLoanLinkedInfo">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="SubmitAcctLoanLinkedInfo">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="SubmitAcctLoanLinkedInfoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProdLoanEdit">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="ProdLoanEdit">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="ProdLoanEditResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoanDisb">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="LoanDisb">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="LoanDisbResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreditLoanPmt">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="CreditLoanPmt">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="CreditLoanPmtResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoanDisbToMedi">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="LoanDisbToMedi">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="LoanDisbToMediResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateLoanAcctCC">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="CreateLoanAcctCC">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="CreateLoanAcctCCResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoanApplyExtension">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="LoanApplyExtension">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="LoanApplyExtensionResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WthToPmtAfterChargeoff">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="WthToPmtAfterChargeoff">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="WthToPmtAfterChargeoffResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AcctLoanChrgWav">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="AcctLoanChrgWav">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="AcctLoanChrgWavResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreditLoanTransfer">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="CreditLoanTransfer">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="CreditLoanTransferResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CCConsumeInstmt">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="CCConsumeInstmt">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="CCConsumeInstmtResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddAcctGrpAcct">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="AddAcctGrpAcct">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="AddAcctGrpAcctResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WD_LoanConsumeExtend">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="WD_LoanConsumeExtend">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="WD_LoanConsumeExtendResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SubmitLoanSoldAgreementInfo">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="SubmitLoanSoldAgreementInfo">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="SubmitLoanSoldAgreementInfoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AcctLoanInfoChg">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="AcctLoanInfoChg">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="AcctLoanInfoChgResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddAcctGrp">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="AddAcctGrp">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="AddAcctGrpResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAcctCCWavDays">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="UpdateAcctCCWavDays">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="UpdateAcctCCWavDaysResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreditLoanConsume">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="CreditLoanConsume">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="CreditLoanConsumeResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AcctLoanNegAgrmt">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="AcctLoanNegAgrmt">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="AcctLoanNegAgrmtResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoanSchedPmt">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="LoanSchedPmt">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="LoanSchedPmtResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SubmitProductCCEdit">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="SubmitProductCCEdit">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="SubmitProductCCEditResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="LoanPostService">
+    <wsdl:port binding="tns:LoanPostServicePortTypeSoap11" name="LoanPostServicePortTypeSoap11">
+      <soap:address location="http://172.16.35.44:8099/loanPostService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

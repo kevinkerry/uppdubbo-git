@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spring:beans xmlns:spring="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.csii.com.cn/schema/pe"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd 
+	http://www.csii.com.cn/schema/pe http://www.csii.com.cn/schema/pe/pe-config.xsd">
+
+
+	<config>
+		<transaction id="defaultTransaction" template="emptyTemplate">
+			<channels>
+				<channel type="http">
+					<param name="success"></param>
+				</channel>
+			</channels>
+		</transaction>
+
+		<transaction id="script" template="emptyTemplate">
+			<channels>
+				<channel type="http">
+					<param name="success">script,</param>
+				</channel>
+			</channels>
+		</transaction>
+
+		<transaction id="IPER" template="queryMgmtTemplate">
+			<actions>
+				<ref name="action">cardPwdPreAction</ref>
+			</actions>
+			<channels>
+				<channel type="http">
+					<param name="success">payprepage</param>
+					<param name="success1">stream,</param>
+					<param name="error">stream,</param>
+				</channel>
+			</channels>
+		</transaction>
+		<action id="cardPwdPreAction"
+			class="com.csii.upp.paygate.action.cardpwd.CardPwdPreAction">
+		</action>
+
+		<transaction id="XMCX" template="queryMgmtTemplate">
+			<actions>
+				<ref name="action">XMLimitCXAction</ref>
+			</actions>
+			<channels>
+				<channel type="http">
+					<param name="success">stream,</param>
+					<param name="error">stream,Error</param>
+				</channel>
+			</channels>
+		</transaction>
+		<action id="XMLimitCXAction" class="com.csii.upp.paygate.action.common.XMLimitCXAction"></action>
+
+		<transaction id="XMPM" template="paygatePayTemplate">
+			<actions>
+				<ref name="action">cardPwdAction</ref>
+			</actions>
+			<channels>
+				<channel type="http">
+					<param name="success">stream,</param>
+					<param name="error">stream,Error</param>
+				</channel>
+			</channels>
+		</transaction>
+		<!-- <action id="XMPMAction" class="com.csii.upp.paygate.action.common.XMPMAPayAction"></action> -->
+
+		<transaction id="cardPwdPre" template="paygatePayTemplate">
+			<actions>
+				<ref name="action">queryCardInfoAction</ref>
+			</actions>
+			<channels>
+				<channel type="http">
+					<param name="success">cardpwd/cardPwdConfirm</param>
+					<param name="success1">cardpwd/cardconfirm</param>
+					<param name="error">cardpwd/paramError</param>
+				</channel>
+			</channels>
+		</transaction>
+		<action id="queryCardInfoAction"
+			class="com.csii.upp.paygate.action.cardpwd.QueryCardInfoAction"></action>
+
+
+		<transaction id="cardPwdPay" template="paygatePayTemplate">
+			<actions>
+				<ref name="action">cardPwdAction</ref>
+			</actions>
+			<channels>
+				<channel type="http">
+					<param name="success">cardpwd/cardPwdResult</param>
+					<param name="success1">cardpwd/cardsuccess</param>
+					<param name="error">cardpwd/error</param>
+				</channel>
+			</channels>
+		</transaction>
+		<action id="cardPwdAction"
+			class="com.csii.upp.paygate.action.cardpwd.CardPwdPayAction"></action>
+
+		<!-- 错误页面返回处理 -->
+		<transaction id="backCardPwdPre" template="paygatePayTemplate">
+			<actions>
+				<ref name="action">backCardPwdPreAction</ref>
+			</actions>
+			<channels>
+				<channel type="http">
+					<param name="success">cardpwd/cardPwdPre</param>
+					<param name="success1">payprepage</param>
+					<param name="success2">fuyang/payprepagebank</param>
+					<param name="error">cardpwd/error</param>
+				</channel>
+			</channels>
+		</transaction>
+		<action id="backCardPwdPreAction"
+			class="com.csii.upp.paygate.action.cardpwd.BackCardPwdAction"></action>
+
+		<!-- <transaction id="PD18" template="trans2onlineTemplate"> <actions> 
+			<ref name="action">QuerySMSAction</ref> </actions> <channels> <channel type="http"> 
+			<param name="success">stream,</param> </channel> </channels> </transaction> 
+			<action id="QuerySMSAction" class="com.csii.pp.paygate.action.QuerySMSAction"> 
+			<ref name="cardPwdNotifySignVerifyHelper">cardPwdNotifySignVerifyHelper</ref> 
+			</action> -->
+
+		<transaction id="SGCT" template="queryMgmtTemplate">
+			<actions>
+				<ref name="action">SGCTAction</ref>
+			</actions>
+			<channels>
+				<channel type="http">
+					<param name="success">stream,</param>
+					<param name="error">stream,Error</param>
+				</channel>
+			</channels>
+		</transaction>
+		<action id="SGCTAction" class="com.csii.upp.paygate.action.cardpwd.SGCTAction"></action>
+
+		<transaction id="SGPM" template="queryMgmtTemplate">
+			<actions>
+				<ref name="action">SGPMAction</ref>
+			</actions>
+			<channels>
+				<channel type="http">
+					<param name="success">stream,</param>
+					<param name="error">stream,Error</param>
+				</channel>
+			</channels>
+		</transaction>
+		<action id="SGPMAction" class="com.csii.upp.paygate.action.cardpwd.SGPMAction"></action>
+	</config>
+</spring:beans>

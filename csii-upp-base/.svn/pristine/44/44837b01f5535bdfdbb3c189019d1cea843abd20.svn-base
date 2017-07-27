@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spring:beans xmlns:spring="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.csii.com.cn/schema/pe"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd 
+	http://www.csii.com.cn/schema/pe http://www.csii.com.cn/schema/pe/pe-config.xsd">
+	<config>
+		<!-- 责任链 -->
+		<command id="delegateCommand" class="com.csii.pe.chain.command.DelegateCommand" />
+		<command id="ruleCommand" class="com.csii.pe.chain.command.RuleCommand" />
+		<command id="validationCommand" class="com.csii.upp.command.StyleValidationCommand">
+			<map name="validators">
+				<ref name="option">optionValidator</ref>
+				<ref name="range">rangeValidator</ref>
+				<ref name="length">lengthValidator</ref>
+				<ref name="pattern">patternValidator</ref>
+				<ref name="type">typeValidator</ref>
+			</map>
+		</command>
+		<chain id="defaultChain">
+			<commands>
+				<ref>validationCommand</ref>
+				<ref>ruleCommand</ref>
+				<ref>delegateCommand</ref>
+			</commands>
+		</chain>
+		<chain id="emptyChain">
+			<commands>
+			</commands>
+		</chain>
+	</config>
+</spring:beans>

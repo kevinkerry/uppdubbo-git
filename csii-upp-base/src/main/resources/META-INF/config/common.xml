@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+                        http://www.springframework.org/schema/beans/spring-beans.xsd
+	                    http://www.springframework.org/schema/context
+                        http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<context:annotation-config/>
+	
+	<bean id="defaultSupportor" class="com.csii.upp.supportor.DefaultSupportor"></bean>
+
+	<bean id="attributeFactory" class="com.csii.upp.attribute.DefaultAttributeFactory"
+		init-method="initialize">
+		<property name="classNames">
+		 <list>
+		   	<value>com.csii.upp.dto.router.ReqSysHead</value>
+		   	<value>com.csii.upp.custom.common.api.data.base.BaseInput</value>
+		 </list>
+		</property>
+	</bean>
+
+	<bean id="objectMapMarshaller" class="com.csii.upp.marshaller.DefaultObjectMapMarshaller">
+		<property name="attributeFactory" ref="attributeFactory" />
+	</bean>
+
+	<!-- 异常处理类 -->
+	<bean id="exceptionHandler" class="com.csii.upp.handler.UppExceptionHandler" />
+</beans>

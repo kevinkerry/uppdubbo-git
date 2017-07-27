@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spring:beans xmlns:spring="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.csii.com.cn/schema/pe"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd 
+	http://www.csii.com.cn/schema/pe http://www.csii.com.cn/schema/pe/pe-config.xsd">
+
+	<config>
+		<sharedMap id="transactionIdmapping">
+			<map name="sourceMap">
+				<!-- 资金类交易码映射 -->
+				<param name="UPP30011">RTDT</param><!-- 充值 -->
+				<param name="UPP30012">RTCT</param>
+				<param name="DZZH300015">AUTN</param><!-- 实名认证 -->
+				<param name="DZZH100005">STXN</param>
+				<param name="DZZH100006">SPCT</param>
+				<param name="DZZH100007">BBOC</param><!-- 挂账 -->
+				<param name="DZZH400001">REVK</param><!-- 冲正/撤销 -->
+				<param name="FPUR">FPUR</param> <!-- 基金申购 -->
+				<param name="FRED">FRED</param> <!-- 基金赎回 --> 
+				<param name="QTXN">QTXN</param> <!-- 查询交易流水 -->
+				<param name="010033">VDAT</param><!-- 账户关系验证与查询 -->
+				<param name="020000">CONS</param><!-- 消费 -->
+				<param name="020020">CONC</param><!-- 消费撤销 -->
+				<param name="042000">REVK</param><!-- 消费冲正 -->
+				<param name="042020">REVK</param><!-- 消费撤销冲正 -->
+				<param name="022020">CONR</param><!-- 消费退货 -->
+
+				<!-- 支付类交易码映射 -->
+				<param name="UPP30000">UPAY</param><!-- 支付交易 -->
+				<param name="UPP30001">QCDI</param><!-- 查询卡信息 -->
+				<param name="UPP30002">CHCP</param><!-- 校验卡密码 -->
+				<param name="UPP30003">PAYR</param><!-- 退货交易 -->
+				<param name="UPP30004">QHDT</param><!-- 查询核心账务日期 -->
+				<param name="UPP30005">CVAP</param><!-- 富阳确认支付 -->
+				<param name="UPP30006">QIAI</param><!-- 查询内部账户信息 -->
+				<param name="UPP30007">VATF</param><!-- 虚账户转账 -->
+				<param name="UPP30008">QVAB</param><!-- 富阳虚账户余额查询 -->
+				<param name="UPP30009">OEBP</param><!-- 他行网银支付交易 -->
+				<param name="UPP30010">QOPS</param><!-- fundproces到银联查询订单支付情况 -->
+				<param name="UPP30014">SMSX</param><!-- 银联发送短信 -->
+				<param name="UPP30013">QAOS</param><!-- fundproces到银联查询他行卡快捷开通状态 -->
+				<param name="UPP30015">QRTS</param> <!-- 查询交易流水状态 -->
+				<param name="UPP30016">BTTF</param> <!-- 批量转账 -->
+				<param name="UPP30017">QBTT</param> <!-- 批量转账超时状态查询 -->
+				<param name="UPP30018">VTRT</param> <!-- 富阳退货交易 -->
+				<param name="UPP30019">QDTA</param><!-- 查询当日银联交易限额 -->
+				<param name="UPP30020">ROOP</param><!-- 跨行智能支付开通 -->
+				<param name="UPP30021">QUIN</param><!-- 积分查询 -->
+				<param name="UPP30024">SYMI</param><!-- 信息同步新增 -->
+				<param name="UPP30027">UPMI</param><!-- 信息同步修改 -->
+				<param name="UPP30025">QCUL</param><!-- 二维码信息查询 -->
+				<param name="UPP30026">QCTS</param><!-- 二维码订单状态查询 -->
+				<param name="UPP30022">PNTF</param><!-- 二维码前置支付结果通知 -->
+				<param name="UPP30023">ETRA</param><!-- 充值 -->
+				<param name="UPP30028">ETWA</param><!-- 提现 -->
+				<param name="UPP30032">QRCO</param><!-- 二维码下单 -->
+
+				<param name="UPP30029">EATL</param><!-- 查询小米付限额信息 -->
+				<param name="UPP30030">XMPAY</param><!-- 小米白条付 -->
+
+				<!-- 客户鉴权 -->
+				<param name="UPP30060">CATA</param> <!-- 客户鉴权 -->
+
+				<!-- MQ消息处理 -->
+				<param name="MQR0001">AMQR</param> <!-- 接收MQ消息 -->
+			</map>
+		</sharedMap>
+	</config>
+</spring:beans>

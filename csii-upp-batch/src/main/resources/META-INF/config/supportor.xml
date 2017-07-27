@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:util="http://www.springframework.org/schema/util" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       					   http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+	<bean id="applBean" class="com.csii.upp.batch.supportor.ApplBean"
+		init-method="init">
+		<!-- 对账文件解析模板路径 -->
+		<property name="checkFileParserPath" value="/META-INF/convert/checkFile.xml"></property>
+		<!-- 对账文件本地保存路径 -->
+		<property name="checkFileParserLocalPathMap">
+			<map>
+				<!--约定：此key必须和资金通道表的资金通道码转化为小写字母相同 -->
+				<entry key="simpleTestJob" value="j_01_Job" />
+				<entry key="eaccount" value="${eaccount.download.path}" />
+				<entry key="bill99" value="${bill99.download.path}" />
+				<entry key="cnaps2" value="${cnaps2.download.path}" />
+				<entry key="core" value="${core.download.path}" />
+				<entry key="ibps" value="${ibps.download.path}" />
+				<entry key="hvps" value="${hvps.download.path}" />
+				<entry key="beps" value="${beps.download.path}" />
+				<entry key="dpc" value="${dpc.download.path}" />
+				<entry key="pbc" value="${pbc.download.path}" />
+				<entry key="unionpayds1" value="${unionpay.download.path}" />
+				<entry key="unionpayds2" value="${unionpay.download.path}" />
+				<entry key="unionpaydf" value="${unionpay.download.path}" />
+				<entry key="unionpay" value="${unionpay.download.path}" />
+				<entry key="cups" value="${cups.download.path}" />
+				<entry key="fdps" value="${fdps.download.path}" />
+				<entry key="paym" value="${paym.download.path}" />
+				<entry key="qrcode" value="${qrcode.download.path}" />
+				<entry key="auth" value="${authority.download.path}" />
+				
+			</map>
+		</property>
+		<!-- 下发文件组装模板路径 -->
+		<property name="issueFileFormatPath" value="/META-INF/convert/issueFile.xml"></property>
+		<!-- 下发文件组装模板ID -->
+		<property name="issueFileFormatEAccountFileId" value="issueEAccountFile"></property>
+		<!-- 下发文件组装模板ID -->
+		<property name="issueFileFormatOtherFileId" value="issueOtherFile"></property>
+		<!--下发文件生成本地保存路径 -->
+		<property name="issueFileFormatLocalPath" value="${issueFile.path}"></property>
+		<!-- paym下发文件模板 -->
+		<property name="merchantFileFormatPaym" value="merchantFilePaym"></property>
+		<!-- paym下发积分文件模板  added by wangtao 20161107-->
+		<property name="merchantPointFileFormatPaym" value="merchantPointFilePaym"></property>
+		<!-- paym商户结算文件摸版 -->
+		<property name="settleFileFormatPaym" value="settlePaymFile"></property>
+		<!--生成商户对账文件本地保存路径 -->
+		<property name="merchantFileFormatLocalPath" value="${merchantFile.path}"></property>
+		<!--paym结算文件本地保存路径 -->
+		<property name="clearbalanceFileFormatLocalPath" value="${clearbalance.path}"></property>
+		<!--fdps对账下发文件本地保存路径 -->
+		<property name="checkFileGenerateLocalPath" value="${checkfilegenerate.path}"></property>
+		<!--fdps对账下发文件模板 -->
+		<property name="issueFileFormatFdps" value="issueFileFdps"></property>
+		<!--商户结算明细路径 -->
+		<property name="submerSettDetailPath" value="${submerSettDetail.path}"></property>
+		<!--商户结算交易明细路径 -->
+		<property name="submerTransDetailPath" value="${submerTransDetail.path}"></property>
+		<property name="errorTypCat" ref="errorTypCat"></property>
+	</bean>
+
+	<bean id="fieldParser" class="com.csii.upp.batch.xml.format.FieldParser">
+	</bean>
+	<bean id="batchApplSupportor" class="com.csii.upp.batch.supportor.BatchApplSupportor">
+	</bean>
+</beans>

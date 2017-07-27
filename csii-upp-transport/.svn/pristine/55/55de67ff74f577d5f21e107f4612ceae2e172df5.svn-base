@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE segment SYSTEM "packetutf8.dtd">
+<segment>
+	<!-- 商户号 -->
+	<xmlTag tagName="MerNbr">
+		<String name="merNbr" defaultValue="" />
+	</xmlTag>
+	<!-- 原商户流水 -->
+	<xmlTag tagName="OrigMerSeqNbr">
+		<String name="origMerSeqNbr"></String>
+	</xmlTag>
+	<!-- 原商户时间 -->
+	<xmlTag tagName="OrigMerDateTime">
+		<String name="origMerDateTime"></Date>
+	</xmlTag>
+	<!-- 原交易金额 -->
+	<xmlTag tagName="OrigTransAmt">
+		<String name="origTransAmt"></String>
+	</xmlTag>
+	<!-- 原因描述 -->
+	<xmlTag tagName="ReasonDesc">
+		<String name="reasondesc"></String>
+	</xmlTag>
+	<!-- 备注 -->
+	<xmlTag tagName="MsgExt">
+		<String name="msgExt"></String>
+	</xmlTag>
+</segment>

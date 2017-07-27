@@ -1,0 +1,22 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<bean id="batchService" class="com.csii.pe.channel.ws.wsdl.XsdWebServiceDefinition">
+		<property name="schemas"
+			value="classpath:/META-INF/server/webservice/xsd/batch.xsd" />
+		<property name="portTypeName" value="BatchServicePortType" />
+		<property name="targetNamespace" value="http://com.csii.bank.pay/batch" />
+		<property name="serviceName" value="BatchService" />
+		<property name="locationUri" value="http://localhost:9090/batchService" />
+		<property name="serviceManager" ref="serviceManager" />
+	</bean>
+ 	<bean id="onlineService" class="com.csii.pe.channel.ws.wsdl.XsdWebServiceDefinition">
+		<property name="schemas"
+			value="classpath:/META-INF/server/webservice/xsd/online.xsd" />
+		<property name="portTypeName" value="OnlineServicePortType" />
+		<property name="targetNamespace" value="http://com.csii.bank.pay/online" />
+		<property name="serviceName" value="OnlineService" />
+		<property name="locationUri" value="http://localhost:9090/onlineService" />
+		<property name="serviceManager" ref="serviceManager" />
+	</bean>
+</beans>

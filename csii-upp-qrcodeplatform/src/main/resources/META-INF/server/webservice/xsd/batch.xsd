@@ -1,0 +1,902 @@
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:base="http://com.csii.bank.pay/base"
+	xmlns:batch="http://com.csii.bank.pay/batch" targetNamespace="http://com.csii.bank.pay/batch"
+	elementFormDefault="qualified">
+	<import namespace="http://com.csii.bank.pay/base"
+		schemaLocation="base.xsd" />
+	<complexType name="CutOffRequestType">
+		<complexContent>
+			<annotation>
+				<documentation>资金平台日切请求参数类型</documentation>
+			</annotation>
+			<extension base="base:RequestHeader">
+				<sequence>
+					<element name="postDate" type="date">
+						<annotation>
+							<documentation>日切时间</documentation>
+						</annotation>
+					</element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<complexType name="CutOffResponseType">
+		<complexContent>
+			<annotation>
+				<documentation>资金平台日切应答参数类型</documentation>
+			</annotation>
+			<extension base="base:ResponseHeader">
+				<sequence>
+					<element name="postDate" type="date">
+						<annotation>
+							<documentation>日切时间</documentation>
+						</annotation>
+					</element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="CutOff" type="batch:CutOffRequestType" />
+	<element name="CutOffResponse" type="batch:CutOffResponseType" />
+	
+	
+	<complexType name="ibpsCutOffRequestType">
+		<complexContent>
+			<annotation>
+				<documentation>超级网银日切请求参数类型</documentation>
+			</annotation>
+			<extension base="base:RequestHeader">
+				<sequence>
+					<element name="XCHG_DATE" type="date">
+						<annotation>
+							<documentation>当前系统工作时间</documentation>
+						</annotation>
+					</element>
+					<element name="ORIG_XCHG_DATE" type="date">
+						<annotation>
+							<documentation>原系统工作时间</documentation>
+						</annotation>
+					</element>
+					<element name="NEXT_DATE" type="date">
+						<annotation>
+							<documentation>下一个工作日</documentation>
+						</annotation>
+					</element>
+					<element name="MSG_TYPE" type="string">
+						<annotation>
+							<documentation>渠道类型</documentation>
+						</annotation>
+					</element>
+					<element name="REMARK" type="string">
+						<annotation>
+							<documentation>附言</documentation>
+						</annotation>
+					</element>
+					<element name="ORIG_CCY_STATUS" type="string">
+						<annotation>
+							<documentation>原系统状态</documentation>
+						</annotation>
+					</element>
+					<element name="CCY_STATUS" type="string">
+						<annotation>
+							<documentation>系统状态</documentation>
+						</annotation>
+					</element>
+					<element name="HOLIDAY_FLAG" type="string">
+						<annotation>
+							<documentation>节假日表示</documentation>
+						</annotation>
+					</element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<complexType name="ibpsCutOffResponseType">
+		<complexContent>
+			<annotation>
+				<documentation>超级网银日切应答参数类型</documentation>
+			</annotation>
+			<extension base="base:ResponseHeader">
+				<sequence>
+					<element name="postDate" type="date">
+						<annotation>
+							<documentation>日切时间</documentation>
+						</annotation>
+					</element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="ibpsCutOff" type="batch:ibpsCutOffRequestType" />
+	<element name="ibpsCutOffResponse" type="batch:ibpsCutOffResponseType" />
+	
+	
+	
+	<complexType name="hvpsCutOffRequestType">
+		<complexContent>
+			<annotation>
+				<documentation>大额日切请求参数类型</documentation>
+			</annotation>
+			<extension base="base:RequestHeader">
+				<sequence>
+					<element name="XCHG_DATE" type="date">
+						<annotation>
+							<documentation>当前系统工作时间</documentation>
+						</annotation>
+					</element>
+					<element name="ORIG_XCHG_DATE" type="date">
+						<annotation>
+							<documentation>原系统工作时间</documentation>
+						</annotation>
+					</element>
+					<element name="NEXT_DATE" type="date">
+						<annotation>
+							<documentation>下一个工作日</documentation>
+						</annotation>
+					</element>
+					<element name="MSG_TYPE" type="string">
+						<annotation>
+							<documentation>渠道类型</documentation>
+						</annotation>
+					</element>
+					<element name="REMARK" type="string">
+						<annotation>
+							<documentation>附言</documentation>
+						</annotation>
+					</element>
+					<element name="ORIG_CCY_STATUS" type="string">
+						<annotation>
+							<documentation>原系统状态</documentation>
+						</annotation>
+					</element>
+					<element name="CCY_STATUS" type="string">
+						<annotation>
+							<documentation>系统状态</documentation>
+						</annotation>
+					</element>
+					<element name="HOLIDAY_FLAG" type="string">
+						<annotation>
+							<documentation>节假日表示</documentation>
+						</annotation>
+					</element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<complexType name="hvpsCutOffResponseType">
+		<complexContent>
+			<annotation>
+				<documentation>大额日切应答参数类型</documentation>
+			</annotation>
+			<extension base="base:ResponseHeader">
+				<sequence>
+					<element name="postDate" type="date">
+						<annotation>
+							<documentation>日切时间</documentation>
+						</annotation>
+					</element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="hvpsCutOff" type="batch:hvpsCutOffRequestType" />
+	<element name="hvpsCutOffResponse" type="batch:hvpsCutOffResponseType" />
+	
+	
+	<complexType name="dpcCutOffRequestType">
+		<complexContent>
+			<annotation>
+				<documentation>大同城日切请求参数类型</documentation>
+			</annotation>
+			<extension base="base:RequestHeader">
+				<sequence>	 
+					<element name="WORKDATE" type="string">
+						<annotation>
+							<documentation>系统工作日期</documentation>
+						</annotation>
+					</element>
+					<element name="WORKROUND" type="string">
+						<annotation>
+							<documentation>工作场次</documentation>
+						</annotation>
+					</element>
+					<element name="ROUNDNUM" type="string">
+						<annotation>
+							<documentation>本工作日最大工作场次</documentation>
+						</annotation>
+					</element>
+					<element name="MSG_TYPE" type="string">
+						<annotation>
+							<documentation>渠道类型</documentation>
+						</annotation>
+					</element>
+					<element name="CLEARDATE" type="string">
+						<annotation>
+							<documentation>清算日期</documentation>
+						</annotation>
+					</element>
+					<element name="CLEARROUND" type="string">
+						<annotation>
+							<documentation>清算场次</documentation>
+						</annotation>
+					</element>
+					<element name="EXCHGDATE" type="string">
+						<annotation>
+							<documentation>交换日期</documentation>
+						</annotation>
+					</element>
+					<element name="EXCHGROUND" type="string">
+						<annotation>
+							<documentation>交换场次</documentation>
+						</annotation>
+					</element>
+					<element name="TRNEND" type="string">
+						<annotation>
+							<documentation>未决交易结束标志</documentation>
+						</annotation>
+					</element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<complexType name="dpcCutOffResponseType">
+		<complexContent>
+			<annotation>
+				<documentation>大同城日切应答参数类型</documentation>
+			</annotation>
+			<extension base="base:ResponseHeader">
+				<sequence>
+					<element name="postDate" type="date">
+						<annotation>
+							<documentation>日切时间</documentation>
+						</annotation>
+					</element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="dpcCutOff" type="batch:dpcCutOffRequestType" />
+	<element name="dpcCutOffResponse" type="batch:dpcCutOffResponseType" />
+	
+	
+	
+
+	<complexType name="RunBatchRequestType">
+		<complexContent>
+			<annotation>
+				<documentation>批量任务执行请求参数类型</documentation>
+			</annotation>
+			<extension base="base:RequestHeader">
+				<sequence>
+					<element name="batchName" type="string">
+						<annotation>
+							<documentation>批量交易名称</documentation>
+						</annotation>
+					</element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<complexType name="RunBatchResponseType">
+		<complexContent>
+			<annotation>
+				<documentation>批量任务执行返回参数类型</documentation>
+			</annotation>
+			<extension base="base:ResponseHeader">
+				<sequence>
+					<element name="batchName" type="string">
+						<annotation>
+							<documentation>批量交易名称</documentation>
+						</annotation>
+					</element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="RB" type="batch:RunBatchRequestType" />
+	<element name="RBResponse" type="batch:RunBatchResponseType" />
+
+	<complexType name="RunQueRequestType">
+		<complexContent>
+			<annotation>
+				<documentation>队列运行请求参数类型</documentation>
+			</annotation>
+			<extension base="base:RequestHeader">
+				<sequence>
+					<element name="quenbr" type="long">
+						<annotation>
+							<documentation>队列号</documentation>
+						</annotation>
+					</element>
+					<element name="runseqnbr" type="long">
+						<annotation>
+							<documentation>运行序列号</documentation>
+						</annotation>
+					</element>
+					<element name="rundate" type="string">
+						<annotation>
+							<documentation>应用运行日期</documentation>
+						</annotation>
+					</element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<complexType name="RunQueResponseType">
+		<complexContent>
+			<annotation>
+				<documentation>队列运行返回参数类型</documentation>
+			</annotation>
+			<extension base="base:ResponseHeader" />
+		</complexContent>
+	</complexType>
+	<element name="RunQue" type="batch:RunQueRequestType" />
+	<element name="RunQueResponse" type="batch:RunQueResponseType" />
+
+	<complexType name="FileNotifyRequestType">
+		<complexContent>
+			<annotation>
+				<documentation>对账通知请求参数类型</documentation>
+			</annotation>
+			<extension base="base:RequestHeader">
+				<sequence>
+					<element name="FileNo" type="string">
+						<annotation>
+							<documentation>文件编号</documentation>
+						</annotation>
+					</element>
+					<element name="AccountDate" type="date">
+						<annotation>
+							<documentation>对账日期</documentation>
+						</annotation>
+					</element>
+					<element name="BatchType" type="string">
+						<annotation>
+							<documentation>批量类型</documentation>
+						</annotation>
+					</element>
+					<element name="FileName" type="string">
+						<annotation>
+							<documentation>文件名称</documentation>
+						</annotation>
+					</element>
+					<element name="FileName" type="string">
+						<annotation>
+							<documentation>文件名称</documentation>
+						</annotation>
+					</element>
+					<element name="Num" type="int">
+						<annotation>
+							<documentation>总比数</documentation>
+						</annotation>
+					</element>
+					<element name="Amount" type="decimal">
+						<annotation>
+							<documentation>总金额</documentation>
+						</annotation>
+					</element>
+					<element name="FilePath" type="string">
+						<annotation>
+							<documentation>文件目录</documentation>
+						</annotation>
+					</element>
+					<element name="ExtFld1" type="string">
+						<annotation>
+							<documentation>扩展1</documentation>
+						</annotation>
+					</element>
+					<element name="ExtFld2" type="string">
+						<annotation>
+							<documentation>扩展2</documentation>
+						</annotation>
+					</element>
+					<element name="ExtFld3" type="string">
+						<annotation>
+							<documentation>扩展3</documentation>
+						</annotation>
+					</element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<complexType name="FileNotifyResponseType">
+		<complexContent>
+			<annotation>
+				<documentation>对账通知返回参数类型</documentation>
+			</annotation>
+			<extension base="base:ResponseHeader" />
+		</complexContent>
+	</complexType>
+	<element name="FileNotify" type="batch:FileNotifyRequestType" />
+	<element name="FileNotifyResponse" type="batch:FileNotifyResponseType" />
+
+
+
+	<complexType name="CreateCheckFileRequestType">
+		<complexContent>
+			<annotation>
+				<documentation>生成对账文件用于测试</documentation>
+			</annotation>
+			<extension base="base:RequestHeader">
+				<sequence>
+					<element name="fundChannelCd" type="string">
+						<annotation>
+							<documentation>通道码</documentation>
+						</annotation>
+					</element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<complexType name="CreateCheckFileResponseType">
+		<complexContent>
+			<annotation>
+				<documentation>生成对账文件用于测试返回参数类型</documentation>
+			</annotation>
+			<extension base="base:ResponseHeader" />
+		</complexContent>
+	</complexType>
+	<element name="CreateCheckFile" type="batch:CreateCheckFileRequestType" />
+	<element name="CreateCheckFileResponse" type="batch:CreateCheckFileResponseType" />
+
+
+
+	<complexType name="QueListRequestType">
+		<complexContent>
+			<annotation>
+				<documentation>队列列表请求参数类型</documentation>
+			</annotation>
+			<extension base="base:RequestHeader" />
+		</complexContent>
+	</complexType>
+	<complexType name="QueListResponseType">
+		<complexContent>
+			<annotation>
+				<documentation>队列列表返回参数类型</documentation>
+			</annotation>
+			<extension base="base:ResponseHeader">
+				<sequence>
+					<element name="queAllList" type="batch:queAllType"
+						minOccurs="0" maxOccurs="unbounded" />
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="QueList" type="batch:QueListRequestType" />
+	<element name="QueListResponse" type="batch:QueListResponseType" />
+	<complexType name="LoadQueRequestType">
+		<sequence>
+			<element ref="base:BaseRequest" />
+			<element name="quenbr" type="long" />
+		</sequence>
+	</complexType>
+	<element name="LoadQue" type="batch:LoadQueRequestType" />
+	<complexType name="LoadQueResponseType">
+		<sequence>
+			<element ref="base:BaseResponse" />
+			<element name="quenbr" type="long" />
+			<element name="quetypcd" type="string" />
+			<element name="quedesc" type="string" />
+			<element name="datelastmaint" type="date" />
+			<element name="datelastrun" type="date" nillable="true" />
+			<element name="startdatetime" type="date" nillable="true" />
+			<element name="stopdatetime" type="date" nillable="true" />
+			<element name="seqnbr" type="long" />
+			<element name="autorun" type="string" />
+			<element name="cornexperess" type="string" />
+		</sequence>
+	</complexType>
+	<element name="LoadQueResponse" type="batch:LoadQueResponseType" />
+	<complexType name="EditQueRequestType">
+		<sequence>
+			<element ref="base:BaseRequest" />
+			<element name="quenbr" type="long" />
+			<element name="quetypcd" type="string" />
+			<element name="quedesc" type="string" />
+			<element name="datelastmaint" type="string" />
+			<element name="datelastrun" type="date" />
+			<element name="startdatetime" type="string" />
+			<element name="stopdatetime" type="string" />
+			<element name="seqnbr" type="long" />
+			<element name="autorun" type="string" />
+			<element name="cornexperess" type="string" />
+		</sequence>
+	</complexType>
+	<element name="EditQue" type="batch:EditQueRequestType" />
+	<complexType name="EditQueResponseType">
+		<sequence>
+			<element ref="base:BaseResponse" />
+		</sequence>
+	</complexType>
+	<element name="EditQueResponse" type="batch:EditQueResponseType" />
+	
+	<complexType name="queAllType">
+		<annotation>
+			<documentation>队列列表信息</documentation>
+		</annotation>
+		<sequence>
+			<element name="quenbr" type="long" />
+			<element name="quetypcd" type="string" />
+			<element name="quedesc" type="string" />
+			<element name="datelastmaint" type="date" />
+			<element name="datelastrun" type="date" />
+			<element name="startdatetime" type="date" />
+			<element name="stopdatetime" type="date" />
+			<element name="seqnbr" type="long" />
+			<element name="autorun" type="string" />
+			<element name="cornexperess" type="string" />
+		</sequence>
+	</complexType>
+
+	<complexType name="QueApplHistRequestType">
+		<complexContent>
+			<extension base="base:QueryRequestHeader">
+				<sequence>
+					<element name="quenbr" type="long" />
+					<element name="rundate" type="string" />
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="QueApplHist" type="batch:QueApplHistRequestType" />
+	<complexType name="QueApplHistResponseType">
+		<complexContent>
+			<extension base="base:QueryResponseHeader">
+				<sequence>
+					<element name="queApplHistList" type="batch:queApplHistListType"
+						minOccurs="0" maxOccurs="unbounded" />
+				</sequence>
+
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="QueApplHistResponse" type="batch:QueApplHistResponseType" />
+	
+		<!-- 支付交易查询(大额、小额、超网分别对应来账、往账  信息查询  湖北银行功能) -->
+	<complexType name="GetPayTransInfoRequestType">
+		<sequence>
+			<element ref="base:QueryRequest" />
+			<element name="fundChannel" type="string" />	<!-- 资金通道(大额、小额、超网) -->
+			<element name="transFlag" type="string" />		<!-- 来账、往账标志 -->
+			<element name="startDate" type="date" />		<!-- 起始日期 -->
+			<element name="endDate" type="date" />			<!-- 截止日期 -->
+			<element name="rtxnNbr" type="string" />		<!-- 支付流水 -->
+			<element name="rtxnState" type="string" />		<!-- 交易状态 -->
+		</sequence>
+	</complexType>
+	<element name="GetPayTransInfo" type="batch:GetPayTransInfoRequestType" />
+	<complexType name="GetPayTransInfoResponseType">
+		<sequence>
+			<element ref="base:QueryResponse" />
+			<element name="payTransList" type="batch:payTransList"
+				minOccurs="0" maxOccurs="unbounded" />
+		</sequence>
+	</complexType>
+	<element name="GetPayTransInfoResponse" type="batch:GetPayTransInfoResponseType" />
+	<complexType name="payTransList">
+		<sequence>
+			<element name="upperSysNbr" type="string"></element>	<!-- 上游渠道号  -->
+			<element name="upperRtxnDate" type="date"></element>	<!-- 上游交易日期 -->
+			<element name="upperRtxnNbr" type="string"></element>	<!-- 上游交易流水  -->
+			<element name="innerRtxnNbr" type="string"></element>	<!-- 内部交易流水 -->
+			<element name="overAllRtxnNbr" type="string"></element>	<!-- 总交易流水 -->
+			<element name="rtxnDate" type="string"></element>			<!-- 交易日期 -->
+			<element name="payerAcctNbr" type="string"></element>	<!-- 付款人账号 -->
+			<element name="payerName" type="string"></element>		<!-- 付款人姓名 -->
+			<element name="payeeAcctNbr" type="string"></element>	<!-- 收款人账号 -->
+			<element name="payeeName" type="string"></element>		<!-- 收款人姓名 -->
+			<element name="transAmt" type="decimal"></element>      <!-- 交易金额 -->
+			<element name="checkState" type="string"></element>	<!-- 对账状态 -->
+			<element name="returnCode" type="string"></element>     <!-- 返回码 -->
+			<element name="returnMsg" type="string"></element>      <!-- 返回信息 -->
+			<element name="rtxnState" type="string"></element>		<!-- 交易状态 -->
+			<element name="downRtxnNbr" type="string"></element>	<!-- 下游流水号 -->
+			<element name="downRtxnDate" type="date"></element>		<!-- 下游交易日期 -->
+			<element name="note" type="string"></element>			<!-- 行号 -->
+			<element name="payRtxnDate" type="string"></element>
+			<element name="rtxnNbr" type="string"></element>
+			<element name="inNote" type="string"></element>
+			<element name="outNote" type="string"></element>
+		</sequence>
+	</complexType>
+	
+	<!-- 资金通道查询 -->
+	<complexType name="GetAllFundchannelListRequestType">
+		<complexContent>
+			<annotation>
+					<documentation>资金通道查询参数类型</documentation>
+			</annotation>
+			<extension base="base:QueryRequestHeader" ></extension>
+		</complexContent>
+	</complexType>
+	<element name="GetAllFundchannelList" type="batch:GetAllFundchannelListRequestType" />
+	<complexType name="GetAllFundchannelListResponseType">
+		<complexContent>
+			<annotation>
+				<documentation>资金通道查询返回参数类型</documentation>
+			</annotation>
+			<extension base="base:QueryResponseHeader">
+				<sequence>
+					<element name="fundChannelList" type="batch:fundChannelList"
+					minOccurs="0" maxOccurs="unbounded" />
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="GetAllFundchannelListResponse" type="batch:GetAllFundchannelListResponseType" />
+	<complexType name="fundChannelList">
+		<sequence>
+			<element name="fundchannelcode" type="string"></element><!-- 渠道代码  -->
+			<element name="fundchannelname" type="string"></element><!-- 渠道名称 -->
+		</sequence>
+	</complexType>
+
+	<!-- 差错管理查询  -->
+	<complexType name="GetErrortRequestType">
+		<sequence>
+			<element ref="base:QueryRequest" />
+			<element name="pageNumStart" type="int" /><!-- 开始条数 -->
+			<element name="pageNumEnd" type="int" /><!-- 截止条数 -->
+			<element name="errorstate" type="string" /><!-- 处理状态 -->
+			<element name="errortyp" type="string" /><!-- 差错类型 --> 
+			<element name="innerrtxnnbr" type="string" /><!-- 内部交易流水号 --> 
+			<element name="rtxndatestar" type="string" /><!-- 开始时间 --> 
+			<element name="rtxndateend" type="string" /><!-- 结束时间 --> 
+			<element name="payername" type="string" /><!-- 付款人名称 -->
+			<element name="payeracctnbr" type="string" /><!-- 付款人账户 -->
+			<element name="fundchannelcode" type="string" /><!-- 资金通道编号 -->
+		</sequence>
+	</complexType>
+	<element name="GetErrort" type="batch:GetErrortRequestType" />
+	<complexType name="GetErrortResponseType">
+		<sequence>
+			<element ref="base:QueryResponse" />
+			<element name="errorList" type="batch:errorList"
+				minOccurs="0" maxOccurs="unbounded" />
+		</sequence>
+	</complexType>
+	<element name="GetErrortResponse" type="batch:GetErrortResponseType" />
+	<complexType name="errorList">
+		<sequence>
+			<element name="totalnum" type="string"></element><!-- 总条数  -->
+			<element name="errornbr" type="string"></element><!-- 差错号 -->
+			<element name="rtxndate" type="string"></element><!-- 交易时间  -->
+			<element name="errortyp" type="string"></element><!-- 差错类型 -->
+			<element name="rtxntyp" type="string"></element><!-- 交易类型  -->
+			<element name="payeracctnbr" type="string"></element><!-- 付款账户 -->
+			<element name="payername" type="string"></element><!-- 付款人名称  -->
+			<element name="payeeacctnbr" type="string"></element><!-- 收款人账户 -->
+			<element name="payeename" type="string"></element><!-- 收款人名称  -->
+			<element name="transamt" type="string"></element><!-- 交易金额 -->
+			<element name="errorstate" type="string"></element><!-- 处理状态  -->
+			<element name="fundchannelcode" type="string"></element><!-- 资金通道代码 -->
+			<element name="innerrtxnnbr" type="string"></element><!-- 内部交易流水号  -->
+		</sequence>
+	</complexType>
+
+	<!-- 差错管理修改人工处理 -->
+	<complexType name="EditErrorRequestType">
+		<sequence>
+			<element ref="base:QueryRequest" />
+			<element name="errornbr" type="string" /><!-- 差错号 --> 
+			<element name="errorstate" type="string" /><!-- 处理状态 -->
+		</sequence>
+	</complexType>
+	<element name="EditError" type="batch:EditErrorRequestType" />
+	<complexType name="EditErrorResponseType">
+		<sequence>
+			<element ref="base:QueryResponse" />
+		</sequence>
+	</complexType>
+	<element name="EditErrorResponse" type="batch:EditErrorResponseType" />
+
+	<complexType name="queApplHistListType">
+		<annotation>
+			<documentation>队列历史状态查询</documentation>
+		</annotation>
+		<sequence>
+			<element name="quenbr" type="long" />
+			<element name="applnbr" type="long" />
+			<element name="appldesc" type="string" />
+			<element name="quesubnbr" type="long" />
+			<element name="runseqnbr" type="long" />
+			<element name="startdatetime" type="string" />
+			<element name="stopdatetime" type="string" />
+			<element name="runntwknodenbr" type="long" />
+			<element name="datelastmaint" type="string" />
+			<element name="runningstat" type="long" />
+			<element name="rundate" type="date" />
+			<element name="detail" type="string" />
+		</sequence>
+	</complexType>
+    
+    <!-- 待挂退处理 -->
+	<complexType name="PBPSRequestType">
+		<complexContent>
+			<annotation>
+				<documentation>待挂退处理请求参数类型</documentation>
+			</annotation>
+			<extension base="base:RequestHeader">
+				<sequence>
+					<element name="errorNbr" type="string">
+						<annotation>
+							<documentation>差错号</documentation>
+						</annotation>
+					</element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="PBPS" type="batch:PBPSRequestType" />
+	<complexType name="PBPSResponseType">
+		<complexContent>
+			<annotation>
+				<documentation>待挂退处理返回参数类型</documentation>
+			</annotation>
+			<extension base="base:ResponseHeader">
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="PBPSResponse" type="batch:PBPSResponseType" />
+	
+	<!-- 银联差错流水查询 -->
+	<complexType name="GetErrRequestType">
+		<sequence>
+			<element ref="base:QueryRequest" />
+			<!-- <element name="fundchanelcode" type="string" /> --><!-- 交易渠道 -->
+			<element name="rtxndate" type="string" /><!-- 交易时间 -->
+			<!-- <element name="processtypcd" type="string" /> --><!-- 处理类型 -->
+			<!-- <element name="processstate" type="string" /> --><!--  -->
+		</sequence>
+	</complexType>
+	<element name="queryErrList" type="batch:GetErrRequestType" />
+	<complexType name="GetErrResponseType">
+		<sequence>
+			<element ref="base:QueryResponse" />
+			<element name="errList" type="batch:errList"
+				minOccurs="0" maxOccurs="unbounded" />
+		</sequence>
+	</complexType>
+	<element name="queryErrListResponse" type="batch:GetErrResponseType" />
+	<complexType name="errList">
+		<sequence>
+			<element name="rtxndate" type="string"></element><!-- 交易时间  -->
+			<element name="downrtxnnbr" type="string"></element><!--  -->
+			<element name="rtxntypcd" type="string"></element><!-- 交易类型  -->
+			<element name="payeracctnbr" type="string"></element><!-- 电子账户 -->
+			<element name="transamt" type="string"></element><!-- 交易金额型  -->
+			<element name="payerfeeamt" type="string"></element><!--  -->
+			<element name="payeefeeamt" type="string"></element><!--   -->
+			<element name="processtypcd" type="string"></element><!--处理类型 -->
+			<element name="processstate" type="string"></element><!--处理状态 -->
+			<element name="processrtxnnbr" type="string"></element><!--处理状态 -->
+		</sequence>
+	</complexType>
+	<!-- 银联差错流水更新 -->
+	<complexType name="updUnionErrorStreamRequestType">
+		<sequence>
+			<element ref="base:BaseRequest" />
+			<element name="rtxndate" type="string"></element><!-- 交易时间  -->
+			<element name="processrtxnnbr" type="string"></element><!-- 交易流水号  -->			
+			<element name="downrtxnnbr" type="string"></element><!-- 清算日期 -->
+			<element name="payeracctnbr" type="string"></element><!-- 电子账户 -->
+			<element name="transamt" type="decimal"></element><!-- 交易金额型  -->
+			<element name="payerfeeamt" type="decimal"></element><!--  -->
+			<element name="payeefeeamt" type="decimal"></element><!--   -->
+		</sequence>
+	</complexType>
+	<element name="updUnionErrorStream" type="batch:updUnionErrorStreamRequestType" />
+	<complexType name="updUnionErrorStreamResponseType">
+		<sequence>
+			<element ref="base:BaseResponse" />
+		</sequence>
+	</complexType>
+	<element name="updUnionErrorStreamResponse" type="batch:updUnionErrorStreamResponseType" />
+	
+	<!--总交易流水查询 -->
+	<complexType name="QueryOverAllRtxnHistRequestType">
+		<sequence>
+			<element ref="base:QueryRequest" />
+			<element name="overAllRtxnDate" type="string" />
+			<element name="overAllRtxnState" type="string" />
+			<element name="overAllRtxnNbr" type="string" />
+			<element name="upperRtxnNbr" type="string" />
+			<element name="innerRtxnNbr" type="string" />
+			<element name="payeeName" type="string" />
+			<element name="payerName" type="string" />
+			<element name="transAmt" type="string" />
+			<element name="downRtxnNbr" type="string" />
+		</sequence>
+	</complexType>
+	<element name="QueryOverAllRtxnHist" type="batch:QueryOverAllRtxnHistRequestType" />
+	<complexType name="QueryOverAllRtxnHistResponseType">
+		<sequence>
+			<element ref="base:QueryResponse" />
+			<element name="OverAllRtxnHistList" type="batch:OverAllRtxnHistList"
+				minOccurs="0" maxOccurs="unbounded" />
+		</sequence>
+	</complexType>
+	<element name="QueryOverAllRtxnHistResponse" type="batch:QueryOverAllRtxnHistResponseType" />
+	<complexType name="OverAllRtxnHistList">
+		<sequence>
+			<element name="overallrtxnnbr" type="string"></element>	<!-- 总交易流水号  -->
+			<element name="overallrtxntypcd" type="string"></element>	<!-- 总交易类型 -->
+			<element name="innerrtxnnbr" type="string"></element>	<!-- 内部交易流水号  -->
+			<element name="rtxntypcd" type="string"></element>	<!-- 内部交易类型 -->
+			<element name="upperrtxnnbr" type="string"></element>	<!-- 上游交易流水号-->
+			<element name="downrtxnnbr" type="string"></element>			<!-- 下游交易流水号-->
+			<element name="payeeacctnbr" type="string"></element>	<!-- 收款人账号 -->
+			<element name="payeename" type="string"></element>		<!-- 收款人名称 -->
+			<element name="payeracctnbr" type="string"></element>	<!-- 付款人账号 -->
+			<element name="payername" type="string"></element>		<!-- 付款人名称 -->
+			<element name="transamt" type="string"></element>      <!-- 交易金额 -->
+			<element name="overallrtxndate" type="string"></element>		<!-- 交易日期 -->
+			<element name="datelastmaint" type="string"></element>		<!-- 交易时间 -->
+			<element name="overallrtxnstate" type="string"></element>     <!-- 总流水交易状态 -->
+			<element name="rtxnstate" type="string"></element>     <!-- 内部流水交易状态 -->
+			<element name="inncheckstate" type="string"></element>      <!-- 内部对账状态 -->
+			<element name="ovalcheckstate" type="string"></element>      <!-- 总对账状态 -->
+			<element name="returncode" type="string"></element>		<!-- 返回码 -->
+			<element name="returnmsg" type="string"></element>	<!-- 返回信息 -->
+		</sequence>
+	</complexType>
+	<complexType name="QueryInnerFundRtxnRequestType">
+		<sequence>
+			<element ref="base:QueryRequest" />
+			<element name="overallrtxnnbr" type="string" />
+		</sequence>
+	</complexType>
+	<element name="QueryInnerFundRtxn" type="batch:QueryInnerFundRtxnRequestType" />
+	<complexType name="QueryInnerFundRtxnResponseType">
+		<sequence>
+			<element ref="base:QueryResponse" />
+			<element name="innerFundRtxnList" type="batch:innerFundRtxnList"
+				minOccurs="0" maxOccurs="unbounded" />
+		</sequence>
+	</complexType>
+	<element name="QueryInnerFundRtxnResponse" type="batch:QueryInnerFundRtxnResponseType" />
+	<complexType name="innerFundRtxnList">
+		<sequence>
+			<element name="fundchannelcode" type="string"></element>	<!-- 资金通道代码  -->
+			<element name="returncode" type="string"></element>	<!-- 返回码 -->
+			<element name="returnmsg" type="string"></element>	<!-- 返回信息  -->
+			<element name="transamt" type="string"></element>	<!-- 交易金额 -->
+			<element name="rtxnstate" type="string"></element>	<!-- 交易状态-->
+		</sequence>
+	</complexType>
+	
+	<!--渠道对账流水查询  -->
+	<complexType name="GetDownSysfundRtxnRequestType">
+		<sequence>
+			<element ref="base:QueryRequest" />
+			<element name="innerrtxnnbr" type="string" />
+			<element name="fundchannelcode" type="string" />
+			<element name="cleardate" type="string" />
+		</sequence>
+	</complexType>
+	<element name="GetDownSysfundRtxn" type="batch:GetDownSysfundRtxnRequestType" />
+	<complexType name="GetDownSysfundRtxnResponseType">
+		<sequence>
+			<element ref="base:QueryResponse" />
+			<element name="downSysfundRtxnList" type="batch:downSysfundRtxnList"
+				minOccurs="0" maxOccurs="unbounded" />
+		</sequence>
+	</complexType>
+	<element name="GetDownSysfundRtxnResponse" type="batch:GetDownSysfundRtxnResponseType" />
+	<complexType name="downSysfundRtxnList">
+		<sequence>
+			<element name="innerrtxnnbr" type="string"></element>	<!-- 交易流水号  -->
+			<element name="originnerrtxnnbr" type="string"></element>
+			<element name="downrtxnnbr" type="string"></element>	<!-- 内部流水号  -->
+			<element name="fundchannelcode" type="string"></element>	<!-- 渠道 -->
+			<element name="cleardate" type="string"></element>	<!-- 交易日期  -->
+			<element name="rtxntime" type="string"></element>	<!-- 交易时间  -->
+			<element name="rtxntypcd" type="string"></element>	<!-- 交易代码 -->
+			<element name="payeracctnbr" type="string"></element>	<!-- 付款人账号 -->
+			<element name="payername" type="string"></element>		<!-- 付款人名称 -->
+			<element name="payeeacctnbr" type="string"></element>	<!-- 收款人账号 -->
+			<element name="payeename" type="string"></element>		<!-- 收款人名称 -->
+			<element name="transamt" type="string"></element>	<!-- 交易金额-->
+			<element name="rtxnstate" type="string"></element>			<!-- 交易状态-->
+		</sequence>
+	</complexType>
+</schema>

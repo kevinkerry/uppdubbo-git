@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spring:beans xmlns:spring="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.csii.com.cn/schema/pe"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd 
+	http://www.csii.com.cn/schema/pe http://www.csii.com.cn/schema/pe/pe-config.xsd">
+
+
+	<config>
+		<!-- 图片验证码 -->
+		<bean id="vercodeTokenManager" class="com.csii.pe.accesscontrol.token.ResubmitTokenManager">
+			<param name="tokenName">_vTokenName</param>
+			<param name="tokenListName">_VDCTOKENLIST</param>
+			<param name="delayTime">600</param>
+			<param name="maxEntryNumber">1</param>
+			<param name="tokenLength">4</param>
+			<param name="ignoreCase">true</param>
+		</bean>
+
+		<!-- 生成退货交易Excel -->
+		<bean id="DrawTransDownload" class="com.csii.pe.transform.excel.SimpleExcelTransformer">
+			<param name="url">WEB-INF/excel/DrawTransDetail</param>
+			<map name="formatMapping">
+				<param name="BeginDate">1 1</param>
+				<param name="EndDate">2 1</param>
+				<list name="TransList">
+					<param>2 0 1 0 #Size</param>
+					<map>
+						<param name="TransTime">2 0</param>
+						<param name="TransCode">2 1</param>
+						<param name="CurrenCyCd">2 2</param>
+						<param name="TransAmt">2 3</param>
+						<param name="FeeAmt">2 4</param>
+						<param name="TransStatus">2 5</param>
+					</map>
+				</list>
+			</map>
+		</bean>
+
+		<!-- 生成支付交易Excel -->
+		<bean id="PayTransDownload" class="com.csii.pe.transform.excel.SimpleExcelTransformer">
+			<param name="url">WEB-INF/excel/PayTransDetail</param>
+			<map name="formatMapping">
+				<param name="BeginDate">1 1</param>
+				<param name="EndDate">2 1</param>
+				<list name="TransList">
+					<param>2 0 1 0 #Size</param>
+					<map>
+						<param name="TransTime">2 0</param>
+						<param name="TransCode">2 1</param>
+						<param name="PayerAcctName">2 2</param>
+						<param name="PayerAcctNbr">2 3</param>
+						<param name="CurrenCyCd">2 4</param>
+						<param name="TransAmt">2 5</param>
+						<param name="FeeAmt">2 6</param>
+						<param name="TransStatus">2 7</param>
+					</map>
+				</list>
+			</map>
+		</bean>
+
+	</config>
+</spring:beans>

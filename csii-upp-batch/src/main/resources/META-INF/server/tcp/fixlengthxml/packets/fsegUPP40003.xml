@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE segment SYSTEM "packetutf8.dtd">
+<segment>
+	<!-- 返回list -->
+	<xmlTag tagName="queApplHistList">
+		<idxField name="queApplHistList">
+			<Group name="TransDetail">
+				<xmlTag>
+					<String name="quenbr" />
+				</xmlTag>
+				<xmlTag>
+					<String name="applnbr" />
+				</xmlTag>
+				<xmlTag>
+					<String name="quesubnbr" />
+				</xmlTag>
+				<xmlTag>
+					<String name="runseqnbr" />
+				</xmlTag>
+				<xmlTag>
+					<String name="startdatetime"  />
+				</xmlTag>
+				<xmlTag>
+					<String name="stopdatetime"  />
+				</xmlTag>
+				<xmlTag>
+					<String name="runntwknodenbr" />
+				</xmlTag>
+				<xmlTag>
+					<String name="datelastmaint" />
+				</xmlTag>
+				<xmlTag>
+					<String name="runningstatus" />
+				</xmlTag>
+				<xmlTag>
+					<String name="rundate" />
+				</xmlTag>
+				<xmlTag>
+					<String name="datacount" />
+				</xmlTag>
+				<xmlTag>
+					<String name="rerunseqnbr" />
+				</xmlTag>
+				<xmlTag>
+					<String name="detail" />
+				</xmlTag>
+				<xmlTag>
+					<String name="appldesc" />
+				</xmlTag>
+				<xmlTag>
+					<String name="totalnum" />
+				</xmlTag>
+			</Group>
+		</idxField>
+	</xmlTag>
+</segment>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE segment SYSTEM "packetutf8.dtd">
+<segment>
+	<Group name="Message">
+	<!-- 交易id -->
+	<xmlTag tagName="TransId">
+		<String name="TransId"/>
+	</xmlTag>
+	<!-- 相应码-->
+	<xmlTag tagName="RespCode">
+		<String name="RespCode" />
+	</xmlTag>
+	<!-- 卡号 -->
+	<xmlTag tagName="RespMessage">
+		<String name="RespMessage"/>
+	</xmlTag>
+	<xmlTag tagName="MerchantId">
+		<String name="MerchantId"></String>
+	</xmlTag>
+	<xmlTag tagName="BatchNo">
+		<String name="BatchNo"></String>
+	</xmlTag>
+	<xmlTag tagName="MerTfType">
+		<String name="MerTfType"></String>
+	</xmlTag>
+	<xmlTag tagName="MerSettAcctBankNo">
+		<String name="MerSettAcctBankNo"></String>
+	</xmlTag>
+	<xmlTag tagName="MerSettAcctName">
+		<String name="MerSettAcctName"></String>
+	</xmlTag>
+	<xmlTag tagName="MerSettAcctNO">
+		<String name="MerSettAcctNO"></String>
+	</xmlTag>
+	<xmlTag tagName="MerSettAcctType">
+		<String name="MerSettAcctType"></String>
+	</xmlTag>
+	<xmlTag tagName="TotalNum">
+		<String name="TotalNum"></String>
+	</xmlTag>
+	<xmlTag tagName="Currency">
+		<String name="CurrencyCd"></String>
+	</xmlTag>
+	<!-- 转账列表 -->
+	 <xmlTag tagName="MerTransList">
+	    <idxField name="MerTransList" maxLoop="9999999">
+			<Group name="MerTransDetail">
+		   		<xmlTag><String name="SubMerchantId" /></xmlTag>
+	   		    <xmlTag><String name="SubMerSeqNo" /></xmlTag>
+	   		    <xmlTag><String name="SubMerchantName" /></xmlTag>
+	   		    <xmlTag><String name="TransferUsage" /></xmlTag>
+	   		    <xmlTag><String name="SubTransAmt" /></xmlTag>
+				<xmlTag><String name="SubMerDateTime"/></xmlTag>
+				<xmlTag><String name="AcctBankNo"/></xmlTag>
+				<xmlTag><String name="AcctName"/></xmlTag>
+				<xmlTag><String name="AcctNO"/></xmlTag>
+				<xmlTag><String name="AcctType"/></xmlTag>
+				<xmlTag><String name="TransSeqNo"/></xmlTag>
+				<xmlTag><String name="TransDate"/></xmlTag>
+				<xmlTag><String name="ClearDate"/></xmlTag>
+				<xmlTag><String name="TransStatus"/></xmlTag>
+				<xmlTag><String name="Memo"/></xmlTag>
+			</Group>
+		</idxField>
+	</xmlTag>
+	</Group>
+</segment>

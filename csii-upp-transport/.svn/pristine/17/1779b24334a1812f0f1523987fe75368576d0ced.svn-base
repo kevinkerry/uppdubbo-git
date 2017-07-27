@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE segment SYSTEM "packetutf8.dtd">
+<!-- 卡标识查询-->
+<segment>
+	<!-- 卡号 -->
+	<xmlTag tagName="PayerAcctNbr">
+		<String name="payerAcctNbr" defaultValue="" />
+	</xmlTag>
+</segment>

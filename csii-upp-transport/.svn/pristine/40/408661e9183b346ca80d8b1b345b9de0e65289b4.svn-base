@@ -1,0 +1,1671 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:p1="http://com.csii.bank.core/deposit/post" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://com.csii.bank.core/deposit/post" targetNamespace="http://com.csii.bank.core/deposit/post">
+  <wsdl:types>
+    <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:base="http://com.csii.bank.core/base" xmlns:dep="http://com.csii.bank.core/deposit/post" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://com.csii.bank.core/deposit/post"><import namespace="http://com.csii.bank.core/base" schemaLocation="base.xsd"/><complexType name="AssistDeductRequestType"><annotation><documentation>协助扣划请求参数类型</documentation></annotation><sequence><element ref="base:BaseRequest"/><element name="mediId" type="string"><annotation><documentation>电子账号</documentation></annotation></element><element name="deductTyp" type="string"><annotation><documentation>扣划类型</documentation></annotation></element><element name="deName" type="string"><annotation><documentation>户名</documentation></annotation></element><element name="currencyCd" type="string"><annotation><documentation>币种</documentation></annotation></element><element name="currTyp" type="string"><annotation><documentation>钞汇属性（默认现金）</documentation></annotation></element><element name="holdSeqNbr" nillable="true" type="long"><annotation><documentation>冻结编号</documentation></annotation></element><element name="holdDate" nillable="true" type="date"><annotation><documentation>冻结日期</documentation></annotation></element><element name="holdBkNbr" nillable="true" type="long"><annotation><documentation>冻结书编号</documentation></annotation></element><element name="cnDedutAmt" type="string"><annotation><documentation>可扣划金额</documentation></annotation></element><element name="origTransAmt" type="decimal"><annotation><documentation>扣划金额</documentation></annotation></element><element name="applNo" type="long"><annotation><documentation>扣划书编号</documentation></annotation></element><element name="executorOrgName" type="string"><annotation><documentation>执法部门</documentation></annotation></element><element name="executorName" type="string"><annotation><documentation>执行人名称</documentation></annotation></element><element name="executorIdTyp" type="string"><annotation><documentation>执法人证件类型</documentation></annotation></element><element name="executorIdNbr" type="string"><annotation><documentation>执法人证件编号</documentation></annotation></element><element name="secExecutorName" type="string"><annotation><documentation>第二执行人名称</documentation></annotation></element><element name="secExecutorIdTyp" type="string"><annotation><documentation>第二执行人证件类型</documentation></annotation></element><element name="secExecutorIdNbr" type="string"><annotation><documentation>第二执行人证件编号</documentation></annotation></element><element name="note" type="string"><annotation><documentation>备注</documentation></annotation></element><element name="rtxnDesc" nillable="true" type="string"><annotation><documentation>资金去向</documentation></annotation></element><element name="inMediId" nillable="true" type="string"><annotation><documentation>对方电子账户账号</documentation></annotation></element><element name="crName" nillable="true" type="string"><annotation><documentation>对方户名</documentation></annotation></element><element name="holdTransAmt" type="decimal"><annotation><documentation>冻结金额</documentation></annotation></element><element name="drAcctNbr" type="long"><annotation><documentation>借方账户（客户账）</documentation></annotation></element><element name="ordTransAmt" type="decimal"><annotation><documentation>可扣划金额</documentation></annotation></element><element name="origTransAmt" type="decimal"><annotation><documentation>要求扣划金额</documentation></annotation></element><element name="glAcctTitleName" type="string"><annotation><documentation>科目 </documentation></annotation></element><element name="unholdFlag" type="string"><annotation><documentation>部分解冻标识</documentation></annotation></element></sequence></complexType><element name="AssistDeduct" type="dep:AssistDeductRequestType"/><complexType name="AssistDeductResponseType"><annotation><documentation>协助扣划响应参数类型</documentation></annotation><sequence><element ref="base:BaseResponse"/></sequence></complexType><element name="AssistDeductResponse" type="dep:AssistDeductResponseType"/><complexType name="AcctFundPurchasesRequestType"><annotation><documentation>基金申购请求参数类型</documentation></annotation><sequence><element ref="base:BaseRequest"/><element name="mediId" type="string"><annotation><documentation>电子账号</documentation></annotation></element><element name="fullFlagYN" type="string"><annotation><documentation>是否全额申购</documentation></annotation></element><element name="currencyCd" type="string"><annotation><documentation>币种</documentation></annotation></element><element name="tranAmt" type="decimal"><annotation><documentation>交易金额</documentation></annotation></element><element name="mediPwdCheck" type="string"><annotation><documentation>是否验密</documentation></annotation></element><element name="mediSealTypCd" type="string"><annotation><documentation>验证方式</documentation></annotation></element><element name="mediPwd" type="string"><annotation><documentation>电子账户交易密码</documentation></annotation></element><element name="agreementtypcd" type="string"><annotation><documentation>签约类型 </documentation></annotation></element><element name="fiProdId" type="string"><annotation><documentation>签约产品代码</documentation></annotation></element><element name="summary" type="string"><annotation><documentation>摘要</documentation></annotation></element><element name="rtxnDesc" type="string"><annotation><documentation>备注</documentation></annotation></element><element name="businId" type="string"><annotation><documentation>商户内部账户标识</documentation></annotation></element></sequence></complexType><element name="AcctFundPurchases" type="dep:AcctFundPurchasesRequestType"/><complexType name="AcctFundPurchasesResponseType"><annotation><documentation>基金申购响应参数类型</documentation></annotation><sequence><element ref="base:BaseResponse"/><element name="txnSeqId" type="string"><annotation><documentation>账户系统流水号</documentation></annotation></element></sequence></complexType><element name="AcctFundPurchasesResponse" type="dep:AcctFundPurchasesResponseType"/><complexType name="AddAcctPledgeCtrlRequestType"><annotation><documentation>电子账户质押控制请求参数类型</documentation></annotation><sequence><element ref="base:BaseRequest"/><element name="mediId" type="string"><annotation><documentation>电子账号</documentation></annotation></element><element name="acctNbr" nillable="true" type="string"><annotation><documentation>系统账号</documentation></annotation></element><element name="mediPwdCheck" type="string"><annotation><documentation>是否验密</documentation></annotation></element><element name="mediSealTypCd" nillable="true" type="string"><annotation><documentation>验证方式</documentation></annotation></element><element name="mediPwd" nillable="true" type="string"><annotation><documentation>电子账号交易密码</documentation></annotation></element><element name="effDate" type="date"><annotation><documentation>控制生效日期</documentation></annotation></element><element name="inactiveDate" type="date"><annotation><documentation>控制失效日期</documentation></annotation></element><element name="termUnitCd" nillable="true" type="string"><annotation><documentation>控制期限</documentation></annotation></element><element name="termUnitValue" nillable="true" type="string"><annotation><documentation>控制期限数值</documentation></annotation></element><element name="nmonTxnTypCd" type="string"><annotation><documentation>操作类型</documentation></annotation></element><element name="acctHoldReasonCd" type="string"><annotation><documentation>控制原因</documentation></annotation></element><element name="acctHoldMethCd" type="string"><annotation><documentation>控制方式</documentation></annotation></element><element name="holdAmt" type="decimal"><annotation><documentation>控制金额</documentation></annotation></element><element name="postScript" nillable="true" type="string"><annotation><documentation>行方附言</documentation></annotation></element><element name="note" nillable="true" type="string"><annotation><documentation>客户备注</documentation></annotation></element></sequence></complexType><element name="AddAcctPledgeCtrl" type="dep:AddAcctPledgeCtrlRequestType"/><complexType name="AddAcctPledgeCtrlResponseType"><annotation><documentation>电子账户质押控制响应参数类型</documentation></annotation><sequence><element ref="base:BaseResponse"/><element name="ctrlSeqNbr" type="string"><annotation><documentation>控制序号</documentation></annotation></element></sequence></complexType><element name="AddAcctPledgeCtrlResponse" type="dep:AddAcctPledgeCtrlResponseType"/><complexType name="CreateDepositAcctRequestType"><annotation><documentation>电子帐户存款账户开户请求参数类型</documentation></annotation><sequence><element ref="base:BaseRequest"/><element name="mediId" nillable="true" type="string"><annotation><documentation>电子账号</documentation></annotation></element><element name="openAcctBranchNbr" type="long"><annotation><documentation>开户行号</documentation></annotation></element><element name="customerNbr" nillable="true" type="long"><annotation><documentation>客户统一编号</documentation></annotation></element><element name="customerName" type="string"><annotation><documentation>客户名称</documentation></annotation></element><element name="customerIDNbr" type="string"><annotation><documentation>证件号码</documentation></annotation></element><element name="customerIDTyp" type="string"><annotation><documentation>证件类型</documentation></annotation></element><element name="customerPhoneNbr" type="string"><annotation><documentation>电话号码</documentation></annotation></element><element name="mailAddr" nillable="true" type="string"><annotation><documentation>邮箱</documentation></annotation></element><element name="addr" nillable="true" type="string"><annotation><documentation>地址</documentation></annotation></element><element name="zipCode" nillable="true" type="string"><annotation><documentation>邮编</documentation></annotation></element><element name="mediSealTypCd" type="string"><annotation><documentation>验证方式</documentation></annotation></element><element name="mediPwd" type="string"><annotation><documentation>电子账户交易密码</documentation></annotation></element><element name="mediLev" type="string"><annotation><documentation>电子账户级别</documentation></annotation></element><element name="relCardNbr" type="string"><annotation><documentation>绑定卡号</documentation></annotation></element><element name="relCardBankNo" nillable="true" type="string"><annotation><documentation>绑定卡行号</documentation></annotation></element><element name="eBankId" nillable="true" type="string"><annotation><documentation>网银id</documentation></annotation></element><element name="cardAgreementTypCd" nillable="true" type="string"><annotation><documentation>电子账户卡类型</documentation></annotation></element><element name="mediAvailYN" type="string"><annotation><documentation>认证状态</documentation></annotation></element><element name="mediStatCd" nillable="true" type="string"><annotation><documentation>激活状态</documentation></annotation></element><element name="platformCd" nillable="true" type="string"><annotation><documentation>平台代码</documentation></annotation></element><element name="acctNote" nillable="true" type="string"><annotation><documentation>账户备注</documentation></annotation></element><element name="referrerName" nillable="true" type="string"><annotation><documentation>推荐人信息</documentation></annotation></element><element name="sampleid" nillable="true" type="string"><annotation><documentation>影像编号</documentation></annotation></element></sequence></complexType><element name="CreateDepositAcct" type="dep:CreateDepositAcctRequestType"/><complexType name="CreateDepositAcctResponseType"><annotation><documentation>电子帐户存款账户开户响应参数类型</documentation></annotation><sequence><element ref="base:BaseResponse"/><element name="customerNbr" nillable="true" type="long"><annotation><documentation>客户统一编号</documentation></annotation></element><element name="mediId" nillable="true" type="string"><annotation><documentation>电子帐号</documentation></annotation></element><element name="branchOrgNbr" nillable="true" type="long"><annotation><documentation>开户行号</documentation></annotation></element><element name="acctNbr" nillable="true" type="long"><annotation><documentation>活期结算账户号</documentation></annotation></element><element name="txnSeqId" nillable="true" type="string"><annotation><documentation>交易流水号</documentation></annotation></element></sequence></complexType><element name="CreateDepositAcctResponse" type="dep:CreateDepositAcctResponseType"/><complexType name="CreateOrgDepositAcctRequestType"><annotation><documentation>单位电子帐户存款账户开户请求参数类型</documentation></annotation><sequence><element ref="base:BaseRequest"/><element name="mediId" nillable="true" type="string"><annotation><documentation>电子账号</documentation></annotation></element><element name="openAcctBranchNbr" type="long"><annotation><documentation>开户行号</documentation></annotation></element><element name="customerNbr" nillable="true" type="long"><annotation><documentation>单位客户统一编号</documentation></annotation></element><element name="orgName" type="string"><annotation><documentation>企业名称</documentation></annotation></element><element name="orgIDNbr" type="string"><annotation><documentation>证件号码</documentation></annotation></element><element name="orgIDTyp" type="string"><annotation><documentation>证件类型</documentation></annotation></element><element name="orgPhoneNbr" type="string"><annotation><documentation>电话号码</documentation></annotation></element><element name="legalpersonName" nillable="true" type="string"><annotation><documentation>法人名称</documentation></annotation></element><element name="legalpersonIDNbr" nillable="true" type="string"><annotation><documentation>法人证件号码</documentation></annotation></element><element name="legalpersonIDTyp" type="string"><annotation><documentation>法人证件类型</documentation></annotation></element><element name="legalpersonPhoneNbr" type="string"><annotation><documentation>法人电话号</documentation></annotation></element><element name="operatorYN" type="string"><annotation><documentation>经办人是否为法人本人</documentation></annotation></element><element name="operatorName" nillable="true" type="string"><annotation><documentation>经办人名称</documentation></annotation></element><element name="operatorIDNbr" nillable="true" type="string"><annotation><documentation>经办人证件号码</documentation></annotation></element><element name="operatorIDTyp" type="string"><annotation><documentation>经办人证件类型</documentation></annotation></element><element name="operatorPhoneNbr" type="string"><annotation><documentation>经办人电话号</documentation></annotation></element><element name="mediSealTypCd" type="string"><annotation><documentation>验证方式</documentation></annotation></element><element name="mediPwd" type="string"><annotation><documentation>电子账户交易密码</documentation></annotation></element><element name="mediLev" type="string"><annotation><documentation>电子账户级别</documentation></annotation></element><element name="relCardNbr" type="string"><annotation><documentation>绑定卡号</documentation></annotation></element><element name="relCardBankNo" nillable="true" type="string"><annotation><documentation>绑定卡行号</documentation></annotation></element><element name="cardAgreementTypCd" nillable="true" type="string"><annotation><documentation>电子账户卡类型</documentation></annotation></element><element name="mediAvailYN" type="string"><annotation><documentation>认证状态</documentation></annotation></element><element name="mediStatCd" nillable="true" type="string"><annotation><documentation>激活状态</documentation></annotation></element><element name="platformCd" nillable="true" type="string"><annotation><documentation>平台代码</documentation></annotation></element><element name="acctNote" nillable="true" type="string"><annotation><documentation>账户备注</documentation></annotation></element><element name="orgtypcd" type="string"><annotation><documentation>单位客户类型编码</documentation></annotation></element></sequence></complexType><element name="CreateOrgDepositAcct" type="dep:CreateOrgDepositAcctRequestType"/><complexType name="CreateOrgDepositAcctResponseType"><annotation><documentation>单位电子帐户存款账户开户响应参数类型</documentation></annotation><sequence><element ref="base:BaseResponse"/><element name="customerNbr" nillable="true" type="long"><annotation><documentation>单位客户统一编号</documentation></annotation></element><element name="mediId" nillable="true" type="string"><annotation><documentation>电子帐号</documentation></annotation></element><element name="branchOrgNbr" nillable="true" type="long"><annotation><documentation>开户行号</documentation></annotation></element><element name="acctNbr" nillable="true" type="long"><annotation><documentation>活期结算账户号</documentation></annotation></element><element name="txnSeqId" nillable="true" type="string"><annotation><documentation>交易流水号</documentation></annotation></element></sequence></complexType><element name="CreateOrgDepositAcctResponse" type="dep:CreateOrgDepositAcctResponseType"/><complexType name="AcctInnerWithdrawalClearRequestType"><annotation><documentation>电子帐户资金转出请求参数类型</documentation></annotation><sequence><element ref="base:BaseRequest"/><element name="mediId" type="string"><annotation><documentation>付款人卡号</documentation></annotation></element><element name="mediOwnerName" type="string"><annotation><documentation>付款人姓名</documentation></annotation></element><element name="payeeCardNbr" type="string"><annotation><documentation>收款人账号</documentation></annotation></element><element name="payeeCardOrgNbr" type="string"><annotation><documentation>他行收款人行号</documentation></annotation></element><element name="payeeCardOrgName" type="string"><annotation><documentation>他行收款人行名</documentation></annotation></element><element name="payeeName" type="string"><annotation><documentation>收款人姓名</documentation></annotation></element><element name="currencyCd" type="string"><annotation><documentation>币种</documentation></annotation></element><element name="feeAmt" type="decimal"><annotation><documentation>费用金额</documentation></annotation></element><element name="tranAmt" type="decimal"><annotation><documentation>交易金额</documentation></annotation></element><element name="mediPwdCheck" type="string"><annotation><documentation>是否验密</documentation></annotation></element><element name="mediSealTypCd" type="string"><annotation><documentation>验证方式</documentation></annotation></element><element name="mediPwd" nillable="true" type="string"><annotation><documentation>电子账号交易密码</documentation></annotation></element><element name="summary" nillable="true" type="string"><annotation><documentation>摘要</documentation></annotation></element><element name="rtxnDesc" nillable="true" type="string"><annotation><documentation>备注</documentation></annotation></element></sequence></complexType><element name="AcctInnerWithdrawalClear" type="dep:AcctInnerWithdrawalClearRequestType"/><complexType name="AcctInnerWithdrawalClearResponseType"><annotation><documentation>电子帐户资金转出响应参数类型</documentation></annotation><sequence><element ref="base:BaseResponse"/><element name="rtxnNbr" type="long"><annotation><documentation>交易号</documentation></annotation></element><element name="txnSeqId" type="string"><annotation><documentation>账户系统流水号</documentation></annotation></element></sequence></complexType><element name="AcctInnerWithdrawalClearResponse" type="dep:AcctInnerWithdrawalClearResponseType"/><complexType name="AcctInnerWithdrawalRequestType"><annotation><documentation>电子帐户资金转出请求参数类型</documentation></annotation><sequence><element ref="base:BaseRequest"/><element name="mediId" type="string"><annotation><documentation>付款人卡号</documentation></annotation></element><element name="mediOwnerName" type="string"><annotation><documentation>付款人姓名</documentation></annotation></element><element name="payeeCardNbr" type="string"><annotation><documentation>收款人账号</documentation></annotation></element><element name="payeeCardOrgNbr" type="string"><annotation><documentation>他行收款人行号</documentation></annotation></element><element name="payeeCardOrgName" type="string"><annotation><documentation>他行收款人行名</documentation></annotation></element><element name="payeeName" type="string"><annotation><documentation>收款人姓名</documentation></annotation></element><element name="currencyCd" type="string"><annotation><documentation>币种</documentation></annotation></element><element name="feeAmt" type="decimal"><annotation><documentation>费用金额</documentation></annotation></element><element name="tranAmt" type="decimal"><annotation><documentation>交易金额</documentation></annotation></element><element name="mediPwdCheck" type="string"><annotation><documentation>是否验密</documentation></annotation></element><element name="mediSealTypCd" type="string"><annotation><documentation>验证方式</documentation></annotation></element><element name="mediPwd" nillable="true" type="string"><annotation><documentation>电子账号交易密码</documentation></annotation></element><element name="summary" nillable="true" type="string"><annotation><documentation>摘要</documentation></annotation></element><element name="rtxnDesc" nillable="true" type="string"><annotation><documentation>备注</documentation></annotation></element></sequence></complexType><element name="AcctInnerWithdrawal" type="dep:AcctInnerWithdrawalRequestType"/><complexType name="AcctInnerWithdrawalResponseType"><annotation><documentation>电子帐户资金转出响应参数类型</documentation></annotation><sequence><element ref="base:BaseResponse"/><element name="rtxnNbr" type="long"><annotation><documentation>交易号</documentation></annotation></element><element name="txnSeqId" type="string"><annotation><documentation>账户系统流水号</documentation></annotation></element></sequence></complexType><element name="AcctInnerWithdrawalResponse" type="dep:AcctInnerWithdrawalResponseType"/><complexType name="AcctRechargeRequestType"><annotation><documentation>电子账户行内充值请求参数类型</documentation></annotation><sequence><element ref="base:BaseRequest"/><element name="payerCardNbr" nillable="true" type="string"><annotation><documentation>付款人卡号</documentation></annotation></element><element name="payerName" type="string"><annotation><documentation>付款人姓名</documentation></annotation></element><element name="mediId" nillable="true" type="string"><annotation><documentation>收款人账号(卡号)</documentation></annotation></element><element name="ownerName" nillable="true" type="string"><annotation><documentation>收款人姓名</documentation></annotation></element><element name="currencyCd" nillable="true" type="string"><annotation><documentation>币种</documentation></annotation></element><element name="feeAmt" type="decimal"><annotation><documentation>费用金额</documentation></annotation></element><element name="tranAmt" nillable="true" type="decimal"><annotation><documentation>交易金额</documentation></annotation></element><element name="mediPwdCheck" nillable="true" type="string"><annotation><documentation>是否验密</documentation></annotation></element><element name="mediSealTypCd" type="string"><annotation><documentation>验证方式</documentation></annotation></element><element name="password" type="string"><annotation><documentation>电子账号交易密码</documentation></annotation></element><element name="summary" type="string"><annotation><documentation>摘要</documentation></annotation></element><element name="rtxnDesc" type="string"><annotation><documentation>备注</documentation></annotation></element></sequence></complexType><element name="AcctRecharge" type="dep:AcctRechargeRequestType"/><complexType name="AcctRechargeResponseType"><annotation><documentation>电子账户行内充值响应参数类型</documentation></annotation><sequence><element ref="base:BaseResponse"/><element name="rtxnNbr" type="long"><annotation><documentation>交易号</documentation></annotation></element><element name="txnSeqId" type="string"><annotation><documentation>账户系统流水号</documentation></annotation></element></sequence></complexType><element name="AcctRechargeResponse" type="dep:AcctRechargeResponseType"/><complexType name="AddAcctAcctCtrlRequestType"><annotation><documentation>电子账户控制请求参数类型</documentation></annotation><sequence><element ref="base:BaseRequest"/><element name="mediId" type="string"><annotation><documentation>电子账号</documentation></annotation></element><element name="acctNbr" type="long"><annotation><documentation>账号</documentation></annotation></element><element name="mediPwdCheck" type="string"><annotation><documentation>是否验密</documentation></annotation></element><element name="mediSealTypCd" nillable="true" type="string"><annotation><documentation>验证方式</documentation></annotation></element><element name="mediPwd" nillable="true" type="string"><annotation><documentation>电子账号交易密码</documentation></annotation></element><element name="effDate" type="date"><annotation><documentation>控制生效日期</documentation></annotation></element><element name="inactiveDate" type="date"><annotation><documentation>控制失效日期</documentation></annotation></element><element name="termUnitCd" nillable="true" type="string"><annotation><documentation>控制期限</documentation></annotation></element><element name="termUnitValue" nillable="true" type="string"><annotation><documentation>控制期限数值</documentation></annotation></element><element name="nmonTxnTypCd" type="string"><annotation><documentation>操作类型</documentation></annotation></element><element name="acctCtrlReasonCd" type="string"><annotation><documentation>控制原因</documentation></annotation></element><element name="acctCtrlMethCd" type="string"><annotation><documentation>控制方式</documentation></annotation></element><element name="ctrlAmt" type="decimal"><annotation><documentation>控制金额</documentation></annotation></element><element name="postScript" nillable="true" type="string"><annotation><documentation>行方附言</documentation></annotation></element><element name="note" nillable="true" type="string"><annotation><documentation>客户备注</documentation></annotation></element></sequence></complexType><element name="AddAcctAcctCtrl" type="dep:AddAcctAcctCtrlRequestType"/><complexType name="AddAcctAcctCtrlResponseType"><annotation><documentation>电子账户控制响应参数类型</documentation></annotation><sequence><element ref="base:BaseResponse"/><element name="ctrlSeqNo" type="string"><annotation><documentation>控制序号</documentation></annotation></element></sequence></complexType><element name="AddAcctAcctCtrlResponse" type="dep:AddAcctAcctCtrlResponseType"/><complexType name="AcctAcctHoldRequestType"><annotation><documentation>电子账户冻结请求参数类型</documentation></annotation><sequence><element ref="base:BaseRequest"/><element name="mediId" type="string"><annotation><documentation>电子账号</documentation></annotation></element><element name="acctNbr" nillable="true" type="long"><annotation><documentation>账号</documentation></annotation></element><element name="mediPwdCheck" nillable="true" type="string"><annotation><documentation>是否验密</documentation></annotation></element><element name="mediSealTypCd" nillable="true" type="string"><annotation><documentation>验证方式</documentation></annotation></element><element name="mediPwd" nillable="true" type="string"><annotation><documentation>电子账号交易密码</documentation></annotation></element><element name="effDate" type="date"><annotation><documentation>控制生效日期</documentation></annotation></element><element name="termUnitCd" type="string"><annotation><documentation>控制期限</documentation></annotation></element><element name="termUnitValue" type="string"><annotation><documentation>控制期限数值</documentation></annotation></element><element name="nMonTxnTypCd" type="string"><annotation><documentation>操作类型</documentation></annotation></element><element name="acctHoldMethCd" type="string"><annotation><documentation>控制方式</documentation></annotation></element><element name="holdAmt" type="decimal"><annotation><documentation>控制金额</documentation></annotation></element><element name="executApplyId" nillable="true" type="long"><annotation><documentation>执行编号</documentation></annotation></element><element name="executOrgName" nillable="true" type="string"><annotation><documentation>执行机构</documentation></annotation></element><element name="executPersIdTypCd" nillable="true" type="string"><annotation><documentation>第一执行人证件类型</documentation></annotation></element><element name="executPersId" nillable="true" type="string"><annotation><documentation>第一执行人证件号码</documentation></annotation></element><element name="executPersName" nillable="true" type="string"><annotation><documentation>第一执行人姓名</documentation></annotation></element><element name="executNextPersIdTypText" nillable="true" type="string"><annotation><documentation>第二执行人证件类型</documentation></annotation></element><element name="executNextPersId" nillable="true" type="string"><annotation><documentation>第二执行人证件号码</documentation></annotation></element><element name="executNextPersName" nillable="true" type="string"><annotation><documentation>第二执行人姓名</documentation></annotation></element></sequence></complexType><element name="AcctHold" type="dep:AcctAcctHoldRequestType"/><complexType name="AcctAcctHoldResponseType"><annotation><documentation>电子账户冻结响应参数类型</documentation></annotation><sequence><element ref="base:BaseResponse"/><element name="holdSeqNo" type="string"><annotation><documentation>冻结序号</documentation></annotation></element></sequence></complexType><element name="AcctHoldResponse" type="dep:AcctAcctHoldResponseType"/><complexType name="CreateIntelAcctRequestType"><sequence><element ref="base:BaseRequest"/><element name="mediId" type="string"/><element name="tranAmt" type="decimal"/><element name="intenang" type="decimal"/><element name="integralTransAmt" type="decimal"/></sequence></complexType><element name="CreateIntelAcct" type="dep:CreateIntelAcctRequestType"/><complexType name="CreateIntelAcctResponseType"><sequence><element ref="base:BaseResponse"/><element name="acctnbr" type="long"/><element name="txnSeqId" type="string"/></sequence></complexType><element name="CreateIntelAcctResponse" type="dep:CreateIntelAcctResponseType"/><complexType name="RedeemIntelAcctFundRequestType"><sequence><element ref="base:BaseRequest"/><element name="mediId" type="string"/><element name="tranAmt" type="decimal"/><element name="acctNbr" type="decimal"/><element name="mediPwdCheck" type="string"/><element name="mediSealTypcd" type="string"/><element name="password" type="string"/><element name="summary" type="string"/></sequence></complexType><element name="RedeemIntelAcctFund" type="dep:RedeemIntelAcctFundRequestType"/><complexType name="RedeemIntelAcctFundResponseType"><sequence><element ref="base:BaseResponse"/><element name="IntelAcctAvailBalAmt" type="decimal"/><element name="paidIntAmt" type="decimal"/></sequence></complexType><element name="RedeemIntelAcctFundResponse" type="dep:RedeemIntelAcctFundResponseType"/><complexType name="AcctUnctrlRequestType"><annotation><documentation>电子账户解控请求参数类型</documentation></annotation><sequence><element ref="base:BaseRequest"/><element name="ctrlSeqNo" nillable="true" type="long"><annotation><documentation>控制编号</documentation></annotation></element><element name="mediId" nillable="true" type="string"><annotation><documentation>电子帐号</documentation></annotation></element><element name="mediPwdCheck" nillable="true" type="string"><annotation><documentation>是否验密</documentation></annotation></element><element name="mediSealTypCd" type="string"><annotation><documentation>验证方式</documentation></annotation></element><element name="mediPwd" nillable="true" type="string"><annotation><documentation>电子账号交易密码</documentation></annotation></element><element name="nmonTxnTypCd" type="string"><annotation><documentation>操作类型</documentation></annotation></element><element name="postScript" type="string"><annotation><documentation>行方附言</documentation></annotation></element><element name="note" type="string"><annotation><documentation>客户备注</documentation></annotation></element><element name="tranAmt" nillable="true" type="decimal"><annotation><documentation>解控金额</documentation></annotation></element></sequence></complexType><element name="AcctUnctrl" type="dep:AcctUnctrlRequestType"/><complexType name="AcctUnctrlResponseType"><sequence><element ref="base:BaseResponse"/><element name="ctrlSeqNo" type="long"><annotation><documentation>控制编号</documentation></annotation></element></sequence></complexType><element name="AcctUnctrlResponse" type="dep:AcctUnctrlResponseType"/><complexType name="AcctUnholdRequestType"><annotation><documentation>电子账户解冻请求参数类型</documentation></annotation><sequence><element ref="base:BaseRequest"/><element name="acctNbr" type="long"><annotation><documentation>账号</documentation></annotation></element><element name="mediId" nillable="true" type="string"><annotation><documentation>电子帐号</documentation></annotation></element><element name="holdSeqNo" nillable="true" type="string"><annotation><documentation>冻结编号</documentation></annotation></element><element name="acctHoldMethCd" type="string"><annotation><documentation>冻结方式</documentation></annotation></element><element name="mediPwdCheck" nillable="true" type="string"><annotation><documentation>是否验密</documentation></annotation></element><element name="mediSealTypCd" type="string"><annotation><documentation>验证方式</documentation></annotation></element><element name="password" nillable="true" type="string"><annotation><documentation>电子账号交易密码</documentation></annotation></element><element name="nmonTxnTypCd" type="string"><annotation><documentation>操作类型</documentation></annotation></element><element name="postScript" type="string"><annotation><documentation>行方附言</documentation></annotation></element><element name="note" type="string"><annotation><documentation>客户备注</documentation></annotation></element></sequence></complexType><element name="AcctUnhold" type="dep:AcctUnholdRequestType"/><complexType name="AcctUnholdResponseType"><annotation><documentation>电子账户控冻响应参数类型</documentation></annotation><sequence><element ref="base:BaseResponse"/><element name="holdSeqNo" type="string"><annotation><documentation>冻结编号</documentation></annotation></element></sequence></complexType><element name="AcctUnholdResponse" type="dep:AcctUnholdResponseType"/><complexType name="OpenFamilyWalletRequestType"><annotation><documentation>开立亲情钱包请求参数类型</documentation></annotation><sequence><element ref="base:BaseRequest"/><element name="mediId" type="string"><annotation><documentation>电子账号</documentation></annotation></element><element name="walletMediId" type="string"><annotation><documentation>需要开通钱包的电子账户账号</documentation></annotation></element><element name="mediSealTypCd" nillable="true" type="string"><annotation><documentation>验证方式</documentation></annotation></element><element name="mediPwd" nillable="true" type="string"><annotation><documentation>电子账号交易密码</documentation></annotation></element><element name="walletName" type="string"><annotation><documentation>钱包名称</documentation></annotation></element><element name="maxTranAmt" type="decimal"><annotation><documentation>单笔最大限额</documentation></annotation></element><element name="dayMaxTranAmt" type="decimal"><annotation><documentation>日笔最大额度</documentation></annotation></element><element name="monMaxTranAmt" type="decimal"><annotation><documentation>月笔最大额度</documentation></annotation></element></sequence></complexType><element name="OpenFamilyWallet" type="dep:OpenFamilyWalletRequestType"/><complexType name="OpenFamilyWalletResponseType"><annotation><documentation>开立亲情钱包响应参数类型</documentation></annotation><sequence><element ref="base:BaseResponse"/><element name="acctNbr" type="long"><annotation><documentation>钱包账号</documentation></annotation></element></sequence></complexType><element name="OpenFamilyWalletResponse" type="dep:OpenFamilyWalletResponseType"/><complexType name="CloseFamilyWalletRequestType"><annotation><documentation>钱包解除关联请求参数类型</documentation></annotation><sequence><element ref="base:BaseRequest"/><element name="mediId" type="string"><annotation><documentation>电子账号</documentation></annotation></element><element name="acctNbr" type="string"><annotation><documentation>需要关闭钱包的电子账户账号</documentation></annotation></element><element name="mediSealTypCd" nillable="true" type="string"><annotation><documentation>验证方式</documentation></annotation></element><element name="mediPwd" nillable="true" type="string"><annotation><documentation>电子账号交易密码</documentation></annotation></element></sequence></complexType><element name="CloseFamilyWallet" type="dep:CloseFamilyWalletRequestType"/><complexType name="CloseFamilyWalletResponseType"><annotation><documentation>钱包解除关联响应参数类型</documentation></annotation><sequence><element ref="base:BaseResponse"/></sequence></complexType><element name="CloseFamilyWalletResponse" type="dep:CloseFamilyWalletResponseType"/><complexType name="MaintFamilyWalletRequestType"><annotation><documentation>亲情钱包维护请求参数类型</documentation></annotation><sequence><element ref="base:BaseRequest"/><element name="mediId" type="string"><annotation><documentation>电子账号</documentation></annotation></element><element name="acctNbr" type="string"><annotation><documentation>需要维护钱包的电子账户账号</documentation></annotation></element><element name="mediSealTypCd" nillable="true" type="string"><annotation><documentation>验证方式</documentation></annotation></element><element name="mediPwd" nillable="true" type="string"><annotation><documentation>电子账号交易密码</documentation></annotation></element><element name="walletName" type="string"><annotation><documentation>钱包名称</documentation></annotation></element><element name="maxTranAmt" type="decimal"><annotation><documentation>单笔最大限额</documentation></annotation></element><element name="dayMaxTranAmt" type="decimal"><annotation><documentation>日笔最大额度</documentation></annotation></element><element name="monMaxTranAmt" type="decimal"><annotation><documentation>月笔最大额度</documentation></annotation></element></sequence></complexType><element name="MaintFamilyWallet" type="dep:MaintFamilyWalletRequestType"/><complexType name="MaintFamilyWalletResponseType"><annotation><documentation>亲情钱包维护响应参数类型</documentation></annotation><sequence><element ref="base:BaseResponse"/></sequence></complexType><element name="MaintFamilyWalletResponse" type="dep:MaintFamilyWalletResponseType"/><complexType name="AcctFinPurchasesRequestType"><annotation><documentation>理财购买交易请求参数类型</documentation></annotation><sequence><element ref="base:BaseRequest"/><element name="mediId" type="string"><annotation><documentation>电子账户</documentation></annotation></element><element name="currencyCd" type="string"><annotation><documentation>币种</documentation></annotation></element><element name="prodCatCd" type="string"><annotation><documentation>产品类别</documentation></annotation></element><element name="prodName" nillable="true" type="string"><annotation><documentation>产品名称</documentation></annotation></element><element name="prodMediId" nillable="true" type="string"><annotation><documentation>产品账号</documentation></annotation></element><element name="mediSealTypCd" nillable="true" type="string"><annotation><documentation>验证方式</documentation></annotation></element><element name="mediPwd" nillable="true" type="string"><annotation><documentation>电子账号交易密码</documentation></annotation></element><element name="tranAmt" type="decimal"><annotation><documentation>交易金额</documentation></annotation></element><element name="summary" nillable="true" type="string"><annotation><documentation>摘要</documentation></annotation></element><element name="rtxnDesc" nillable="true" type="string"><annotation><documentation>备注</documentation></annotation></element><element name="ctrlSeqNo" nillable="true" type="long"><annotation><documentation>控制编号</documentation></annotation></element></sequence></complexType><element name="AcctFinPurchases" type="dep:AcctFinPurchasesRequestType"/><complexType name="AcctFinPurchasesResponseType"><annotation><documentation>理财购买交易响应参数类型</documentation></annotation><sequence><element ref="base:BaseResponse"/><element name="rtxnNbr" nillable="true" type="long"><annotation><documentation>交易号</documentation></annotation></element><element name="txnSeqId" nillable="true" type="string"><annotation><documentation>账户系统流水号</documentation></annotation></element></sequence></complexType><element name="AcctFinPurchasesResponse" type="dep:AcctFinPurchasesResponseType"/><complexType name="AcctFinRedemptionRequestType"><annotation><documentation>理财产品收益返还请求参数类型</documentation></annotation><sequence><element ref="base:BaseRequest"/><element name="mediId" type="string"><annotation><documentation>电子账户</documentation></annotation></element><element name="currencyCd" type="string"><annotation><documentation>币种</documentation></annotation></element><element name="prodCatCd" type="string"><annotation><documentation>产品类别</documentation></annotation></element><element name="prodName" nillable="true" type="string"><annotation><documentation>产品名称</documentation></annotation></element><element name="prodMediId" nillable="true" type="string"><annotation><documentation>产品账号</documentation></annotation></element><element name="tranAmt" type="decimal"><annotation><documentation>交易金额</documentation></annotation></element><element name="balAmt" nillable="true" type="decimal"><annotation><documentation>本金金额</documentation></annotation></element><element name="earneddAmt" nillable="true" type="decimal"><annotation><documentation>收益金额</documentation></annotation></element><element name="summary" nillable="true" type="string"><annotation><documentation>摘要</documentation></annotation></element><element name="rtxnDesc" nillable="true" type="string"><annotation><documentation>备注</documentation></annotation></element></sequence></complexType><element name="AcctFinRedemption" type="dep:AcctFinRedemptionRequestType"/><complexType name="AcctFinRedemptionResponseType"><annotation><documentation>理财产品收益返还响应参数类型</documentation></annotation><sequence><element ref="base:BaseResponse"/><element name="rtxnNbr" nillable="true" type="long"><annotation><documentation>交易号</documentation></annotation></element><element name="txnSeqId" nillable="true" type="string"><annotation><documentation>账户系统流水号</documentation></annotation></element></sequence></complexType><element name="AcctFinRedemptionResponse" type="dep:AcctFinRedemptionResponseType"/><complexType name="CloseElecAcctRequestType"><sequence><element ref="base:BaseRequest"/><element name="mediId" type="string"/><element name="mediPwdCheck" type="string"/><element name="mediPwd" nillable="true" type="string"/></sequence></complexType><element name="CloseElecAcct" type="dep:CloseElecAcctRequestType"/><complexType name="CloseElecAcctResponseType"><sequence><element ref="base:BaseResponse"/></sequence></complexType><element name="CloseElecAcctResponse" type="dep:CloseElecAcctResponseType"/><complexType name="WalletListType"><sequence><element name="acctNbr" type="long"><annotation><documentation>子账号</documentation></annotation></element><element name="currencyCd" type="string"><annotation><documentation>币种</documentation></annotation></element><element name="tranAmt" type="decimal"><annotation><documentation>交易金额</documentation></annotation></element></sequence></complexType><complexType name="AcctConsumeRequestType"><annotation><documentation>钱包消费请求参数类型</documentation></annotation><sequence><element ref="base:BaseRequest"/><element name="tranChanlId" nillable="true" type="string"><annotation><documentation>渠道标识号</documentation></annotation></element><element name="ownerName" nillable="true" type="string"><annotation><documentation>付款人姓名</documentation></annotation></element><element name="mediId" type="string"><annotation><documentation>付款人卡号</documentation></annotation></element><element name="payeeCardNbr" nillable="true" type="string"><annotation><documentation>收款人卡号</documentation></annotation></element><element name="payeeName" nillable="true" type="string"><annotation><documentation>收款人姓名</documentation></annotation></element><element name="mediPwdCheck" type="string"><annotation><documentation>是否验密</documentation></annotation></element><element name="mediSealTypCd" nillable="true" type="string"><annotation><documentation>验密方式</documentation></annotation></element><element name="mediPwd" nillable="true" type="string"><annotation><documentation>电子账号交易密码</documentation></annotation></element><element name="summary" nillable="true" type="string"><annotation><documentation>摘要</documentation></annotation></element><element name="rtxnDesc" nillable="true" type="string"><annotation><documentation>备注</documentation></annotation></element><element maxOccurs="unbounded" minOccurs="0" name="WalletList" type="dep:WalletListType"/></sequence></complexType><element name="AcctConsume" type="dep:AcctConsumeRequestType"/><complexType name="AcctConsumeResponseType"><annotation><documentation>钱包消费响应参数类型</documentation></annotation><sequence><element ref="base:BaseResponse"/><element name="rtxnNbr" nillable="true" type="long"><annotation><documentation>交易号</documentation></annotation></element><element name="txnSeqId" nillable="true" type="string"><annotation><documentation>账户系统流水号</documentation></annotation></element></sequence></complexType><element name="AcctConsumeResponse" type="dep:AcctConsumeResponseType"/><complexType name="ChangePwdRequestType"><annotation><documentation>电子帐户存款账户开户请求参数类型</documentation></annotation><sequence><element ref="base:BaseRequest"/><element name="mediId" type="string"><annotation><documentation>电子账号</documentation></annotation></element><element name="oldMediSealTypCd" type="string"><annotation><documentation>验证方式</documentation></annotation></element><element name="oldPwd" type="string"><annotation><documentation>旧交易密码</documentation></annotation></element><element name="newMediSealTypCd" type="string"><annotation><documentation>验证方式</documentation></annotation></element><element name="newPwd" type="string"><annotation><documentation>新交易密码</documentation></annotation></element></sequence></complexType><element name="ChangePwd" type="dep:ChangePwdRequestType"/><complexType name="ChangePwdResponseType"><annotation><documentation>电子帐户存款账户开户响应参数类型</documentation></annotation><sequence><element ref="base:BaseResponse"/><element name="txnSeqId" type="string"><annotation><documentation>账户系统流水号</documentation></annotation></element></sequence></complexType><element name="ChangePwdResponse" type="dep:ChangePwdResponseType"/><complexType name="AcctDepositForLoanRequestType"><annotation><documentation>电子账户存入（贷款）请求参数类型</documentation></annotation><sequence><element ref="base:BaseRequest"/><element name="mediId" nillable="true" type="string"><annotation><documentation>收款人账号(卡号)</documentation></annotation></element><element name="ownerName" nillable="true" type="string"><annotation><documentation>收款人姓名</documentation></annotation></element><element name="currencyCd" nillable="true" type="string"><annotation><documentation>币种</documentation></annotation></element><element name="tranAmt" nillable="true" type="decimal"><annotation><documentation>交易金额</documentation></annotation></element><element name="summary" type="string"><annotation><documentation>摘要</documentation></annotation></element><element name="rtxnDesc" type="string"><annotation><documentation>备注</documentation></annotation></element></sequence></complexType><element name="AcctDepositForLoan" type="dep:AcctDepositForLoanRequestType"/><complexType name="AcctDepositForLoanResponseType"><annotation><documentation>电子账户存入（贷款）响应参数类型</documentation></annotation><sequence><element ref="base:BaseResponse"/><element name="rtxnNbr" type="long"><annotation><documentation>交易号</documentation></annotation></element><element name="txnSeqId" type="string"><annotation><documentation>账户系统流水号</documentation></annotation></element></sequence></complexType><element name="AcctDepositForLoanResponse" type="dep:AcctDepositForLoanResponseType"/><complexType name="AcctWithdrawalForLoanRequestType"><annotation><documentation>电子账户存入（贷款）请求参数类型</documentation></annotation><sequence><element ref="base:BaseRequest"/><element name="mediId" nillable="true" type="string"><annotation><documentation>收款人账号(卡号)</documentation></annotation></element><element name="ownerName" nillable="true" type="string"><annotation><documentation>收款人姓名</documentation></annotation></element><element name="currencyCd" nillable="true" type="string"><annotation><documentation>币种</documentation></annotation></element><element name="tranAmt" nillable="true" type="decimal"><annotation><documentation>交易金额</documentation></annotation></element><element name="summary" type="string"><annotation><documentation>摘要</documentation></annotation></element><element name="rtxnDesc" type="string"><annotation><documentation>备注</documentation></annotation></element></sequence></complexType><element name="AcctWithdrawalForLoan" type="dep:AcctWithdrawalForLoanRequestType"/><complexType name="AcctWithdrawalForLoanResponseType"><annotation><documentation>电子账户存入（贷款）响应参数类型</documentation></annotation><sequence><element ref="base:BaseResponse"/><element name="rtxnNbr" type="long"><annotation><documentation>交易号</documentation></annotation></element><element name="txnSeqId" type="string"><annotation><documentation>账户系统流水号</documentation></annotation></element></sequence></complexType><element name="AcctWithdrawalForLoanResponse" type="dep:AcctWithdrawalForLoanResponseType"/><complexType name="AttachAcctRequestType"><annotation><documentation>关联介质请求参数类型</documentation></annotation><sequence><element ref="base:BaseRequest"/><element name="mediId" type="string"><annotation><documentation>介质号</documentation></annotation></element><element name="acctNbr" type="long"><annotation><documentation>子帐号</documentation></annotation></element><element name="mainMediYN" type="string"><annotation><documentation>是否主介质</documentation></annotation></element><element name="mainAcctYN" type="string"><annotation><documentation>是否主账号</documentation></annotation></element></sequence></complexType><element name="AttachAcct" type="dep:AttachAcctRequestType"/><complexType name="AttachAcctResponseType"><annotation><documentation>关联介质响应参数类型</documentation></annotation><sequence><element ref="base:BaseResponse"/></sequence></complexType><element name="AttachAcctResponse" type="dep:AttachAcctResponseType"/><complexType name="SignAgreementAcctRequestType"><annotation><documentation>电子账户签约请求</documentation></annotation><sequence><element ref="base:BaseRequest"/><element name="mediId" type="string"/><element name="agreementTypCd" type="string"/><element name="mediSealTypCd" nillable="true" type="string"/><element name="mediPwdCheck" nillable="true" type="string"/><element name="mediPwd" nillable="true" type="string"/><element name="fiProdId" nillable="true" type="string"/><element name="mjacctTypCd" nillable="true" type="string"/><element name="mjmiacctTypCd" nillable="true" type="string"/><element name="retainAmt" nillable="true" type="decimal"/><element name="agreementAmt" nillable="true" type="decimal"/><element name="currdateTranYn" nillable="true" type="string"/></sequence></complexType><element name="SignAgreementAcct" type="dep:SignAgreementAcctRequestType"/><complexType name="SignAgreementAcctResponseType"><annotation><documentation>电子账户签约响应</documentation></annotation><sequence><element ref="base:BaseResponse"/><element name="agreementSeqNo" type="string"/></sequence></complexType><element name="SignAgreementAcctResponse" type="dep:SignAgreementAcctResponseType"/><complexType name="TerminateAgreementAcctRequestType"><annotation><documentation>电子账户解约请求</documentation></annotation><sequence><element ref="base:BaseRequest"/><element name="mediId" type="string"/><element name="agreementSeqNo" type="string"/><element name="agreementTypCd" type="string"/><element name="mediSealTypCd" nillable="true" type="string"/><element name="mediPwdCheck" nillable="true" type="string"/><element name="mediPwd" nillable="true" type="string"/><element name="fiProdId" nillable="true" type="string"/></sequence></complexType><element name="TerminateAgreementAcct" type="dep:TerminateAgreementAcctRequestType"/><complexType name="TerminateAgreementAcctResponseType"><annotation><documentation>电子账户解约响应</documentation></annotation><sequence><element ref="base:BaseResponse"/></sequence></complexType><element name="TerminateAgreementAcctResponse" type="dep:TerminateAgreementAcctResponseType"/><complexType name="PersPhoneUpdateRequestType"><annotation><documentation>变更手机号请求参数类型</documentation></annotation><sequence><element ref="base:BaseRequest"/><element name="mediId" type="string"><annotation><documentation>电子账号</documentation></annotation></element><element name="mediPwdCheck" type="string"><annotation><documentation>是否验密</documentation></annotation></element><element name="mediSealTypCd" nillable="true" type="string"><annotation><documentation>验证方式</documentation></annotation></element><element name="mediPwd" nillable="true" type="string"><annotation><documentation>电子账号交易密码</documentation></annotation></element><element name="newPhoneNbr" type="string"><annotation><documentation>新手机号 </documentation></annotation></element></sequence></complexType><element name="PersPhoneUpdate" type="dep:PersPhoneUpdateRequestType"/><complexType name="PersPhoneUpdateResponseType"><annotation><documentation>变更手机号响应参数类型</documentation></annotation><sequence><element ref="base:BaseResponse"/></sequence></complexType><element name="PersPhoneUpdateResponse" type="dep:PersPhoneUpdateResponseType"/><complexType name="ChangeAttachedCardRequestType"><annotation><documentation>变更电子账户的绑定卡请求参数类型</documentation></annotation><sequence><element ref="base:BaseRequest"/><element name="mediId" type="string"><annotation><documentation>电子账号</documentation></annotation></element><element name="mediPwdCheck" type="string"><annotation><documentation>是否验密</documentation></annotation></element><element name="mediSealTypCd" nillable="true" type="string"><annotation><documentation>验证方式</documentation></annotation></element><element name="mediPwd" nillable="true" type="string"><annotation><documentation>电子账号交易密码</documentation></annotation></element><element name="relCardNbr" type="string"><annotation><documentation>绑定卡号 </documentation></annotation></element><element name="relCardBankNo" nillable="true" type="string"><annotation><documentation>绑定卡行号 </documentation></annotation></element><element name="mediLev" type="string"><annotation><documentation>电子账户级别 </documentation></annotation></element><element name="ignoreAmtYn" type="string"><annotation><documentation>是否忽略金额验证 </documentation></annotation></element></sequence></complexType><element name="ChangeAttachedCard" type="dep:ChangeAttachedCardRequestType"/><complexType name="ChangeAttachedCardResponseType"><annotation><documentation>变更电子账户的绑定卡响应参数类型</documentation></annotation><sequence><element ref="base:BaseResponse"/></sequence></complexType><element name="ChangeAttachedCardResponse" type="dep:ChangeAttachedCardResponseType"/><complexType name="ForceChangeAttachedCardRequestType"><annotation><documentation>强制变更电子账户的绑定卡请求参数类型</documentation></annotation><sequence><element ref="base:BaseRequest"/><element name="mediId" type="string"><annotation><documentation>电子账号</documentation></annotation></element><element name="mediPwdCheck" type="string"><annotation><documentation>是否验密</documentation></annotation></element><element name="mediSealTypCd" nillable="true" type="string"><annotation><documentation>验证方式</documentation></annotation></element><element name="mediPwd" nillable="true" type="string"><annotation><documentation>电子账号交易密码</documentation></annotation></element><element name="relCardNbr" type="string"><annotation><documentation>绑定卡号 </documentation></annotation></element><element name="relCardBankNo" nillable="true" type="string"><annotation><documentation>绑定卡行号 </documentation></annotation></element><element name="mediLev" type="string"><annotation><documentation>电子账户级别 </documentation></annotation></element></sequence></complexType><element name="ForceChangeAttachedCard" type="dep:ForceChangeAttachedCardRequestType"/><complexType name="ForceChangeAttachedCardResponseType"><annotation><documentation>强制变更电子账户的绑定卡响应参数类型</documentation></annotation><sequence><element ref="base:BaseResponse"/></sequence></complexType><element name="ForceChangeAttachedCardResponse" type="dep:ForceChangeAttachedCardResponseType"/><complexType name="AcctFundRedemptionRequestType"><annotation><documentation>基金赎回交易</documentation></annotation><sequence><element ref="base:BaseRequest"/><element name="mediId" type="string"/><element name="rtxnTypCd" type="string"/><element name="currencyCd" type="string"/><element name="tranAmt" type="decimal"/><element name="mediPwdCheck" type="string"/><element name="mediSealTypCd" nillable="true" type="string"/><element name="mediPwd" nillable="true" type="string"/><element name="agreementtypcd" nillable="true" type="string"/><element name="fiProdId" nillable="true" type="string"/><element name="summary" nillable="true" type="string"/><element name="rtxnDesc" nillable="true" type="string"/><element name="businId" type="string"><annotation><documentation>商户内部账户标识</documentation></annotation></element></sequence></complexType><element name="AcctFundRedemption" type="dep:AcctFundRedemptionRequestType"/><complexType name="AcctFundRedemptionResponseType"><annotation><documentation>基金赎回交易</documentation></annotation><sequence><element ref="base:BaseResponse"/><element name="rtxnnbr" type="long"><annotation><documentation>交易号</documentation></annotation></element><element name="txnSeqId" type="string"><annotation><documentation>账户系统流水号</documentation></annotation></element></sequence></complexType><element name="AcctFundRedemptionResponse" type="dep:AcctFundRedemptionResponseType"/><complexType name="ValidatePwdRequestType"><annotation><documentation>交易密码校验请求参数类型</documentation></annotation><sequence><element ref="base:BaseRequest"/><element name="mediId" type="string"><annotation><documentation>付款人卡号</documentation></annotation></element><element name="mediSealTypCd" type="string"><annotation><documentation>验证方式</documentation></annotation></element><element name="mediPwd" nillable="true" type="string"><annotation><documentation>电子账号交易密码</documentation></annotation></element></sequence></complexType><element name="ValidatePwd" type="dep:ValidatePwdRequestType"/><complexType name="ValidatePwdResponseType"><annotation><documentation>交易密码校验响应参数类型</documentation></annotation><sequence><element ref="base:BaseResponse"/><element name="remainCnt" type="long"><annotation><documentation>剩余密码次数</documentation></annotation></element></sequence></complexType><element name="ValidatePwdResponse" type="dep:ValidatePwdResponseType"/><complexType name="ResetPwdRequestType"><annotation><documentation>交易密码重置请求参数类型</documentation></annotation><sequence><element ref="base:BaseRequest"/><element name="mediId" type="string"><annotation><documentation>付款人卡号</documentation></annotation></element><element name="newMediSealTypCd" type="string"><annotation><documentation>新密码验证方式</documentation></annotation></element><element name="newPwd" nillable="true" type="string"><annotation><documentation>新电子账号交易密码</documentation></annotation></element></sequence></complexType><element name="ResetPwd" type="dep:ResetPwdRequestType"/><complexType name="ResetPwdResponseType"><annotation><documentation>交易密码重置响应参数类型</documentation></annotation><sequence><element ref="base:BaseResponse"/><element name="txnSeqId" type="string"><annotation><documentation>账户系统流水号</documentation></annotation></element></sequence></complexType><element name="ResetPwdResponse" type="dep:ResetPwdResponseType"/><complexType name="DepRtxnReversalRequestType"><annotation><documentation>交易冲正请求参数类型</documentation></annotation><sequence><element ref="base:BaseRequest"/><element name="extTxnId" type="string"><annotation><documentation>原外部交易号</documentation></annotation></element><element name="reversalTypCd" type="string"><annotation><documentation>冲正类型</documentation></annotation></element><element name="summary" nillable="true" type="string"><annotation><documentation>摘要</documentation></annotation></element><element name="rtxnDesc" nillable="true" type="string"><annotation><documentation>备注</documentation></annotation></element></sequence></complexType><element name="DepRtxnReversal" type="dep:DepRtxnReversalRequestType"/><complexType name="DepRtxnReversalResponseType"><annotation><documentation>交易冲正响应参数类型</documentation></annotation><sequence><element ref="base:BaseResponse"/><element name="rtxnNbr" type="long"><annotation><documentation>交易号</documentation></annotation></element><element name="txnSeqId" type="string"><annotation><documentation>账户系统流水号</documentation></annotation></element></sequence></complexType><element name="DepRtxnReversalResponse" type="dep:DepRtxnReversalResponseType"/><complexType name="FinancialPurchasesRequestType"><annotation><documentation>理财购买请求参数类型</documentation></annotation><sequence><element ref="base:BaseRequest"/><element name="mediId" type="string"><annotation><documentation>电子帐号</documentation></annotation></element><element name="mediPwdCheck" type="string"><annotation><documentation>是否验密</documentation></annotation></element><element name="mediSealTypCd" nillable="true" type="string"><annotation><documentation>验证方式</documentation></annotation></element><element name="mediPwd" nillable="true" type="string"><annotation><documentation>电子账号交易密码</documentation></annotation></element><element name="transAmt" type="decimal"><annotation><documentation>金额</documentation></annotation></element><element name="note" nillable="true" type="string"><annotation><documentation>备注</documentation></annotation></element><element name="batchNo" type="string"><annotation><documentation>批次号</documentation></annotation></element><element name="sysTypNo" nillable="true" type="string"><annotation><documentation>渠道类型编号（用于区分理财和P2P）</documentation></annotation></element></sequence></complexType><element name="FinancialPurchases" type="dep:FinancialPurchasesRequestType"/><complexType name="FinancialPurchasesResponseType"><annotation><documentation>理财购买响应参数类型</documentation></annotation><sequence><element ref="base:BaseResponse"/><element name="ctrlSeqNo" type="string"><annotation><documentation>控制编号</documentation></annotation></element><element name="txnSeqId" type="string"><annotation><documentation>账户系统流水号</documentation></annotation></element></sequence></complexType><element name="FinancialPurchasesResponse" type="dep:FinancialPurchasesResponseType"/><complexType name="FinancialPurchasesCancelRequestType"><annotation><documentation>理财撤销购买请求参数类型</documentation></annotation><sequence><element ref="base:BaseRequest"/><element name="mediId" type="string"><annotation><documentation>电子帐号</documentation></annotation></element><element name="mediPwdCheck" type="string"><annotation><documentation>是否验密</documentation></annotation></element><element name="mediSealTypCd" nillable="true" type="string"><annotation><documentation>验证方式</documentation></annotation></element><element name="mediPwd" nillable="true" type="string"><annotation><documentation>电子账号交易密码</documentation></annotation></element><element name="ctrlSeqNo" type="string"><annotation><documentation>控制编号</documentation></annotation></element><element name="batchNo" type="string"><annotation><documentation>原批次号</documentation></annotation></element><element name="extSeqNbr" type="string"><annotation><documentation>原外部交易流水号</documentation></annotation></element><element name="note" nillable="true" type="string"><annotation><documentation>备注</documentation></annotation></element><element name="sysTypNo" nillable="true" type="string"><annotation><documentation>渠道类型编号（用于区分理财和P2P）</documentation></annotation></element></sequence></complexType><element name="FinancialPurchasesCancel" type="dep:FinancialPurchasesCancelRequestType"/><complexType name="FinancialPurchasesCancelResponseType"><annotation><documentation>理财撤销购买响应参数类型</documentation></annotation><sequence><element ref="base:BaseResponse"/><element name="txnSeqId" type="string"><annotation><documentation>账户系统流水号</documentation></annotation></element></sequence></complexType><element name="FinancialPurchasesCancelResponse" type="dep:FinancialPurchasesCancelResponseType"/><complexType name="FinancialMaturityFileProcessRequestType"><annotation><documentation>理财到期批量文件处理请求参数类型</documentation></annotation><sequence><element ref="base:BaseRequest"/><element name="batchNo" nillable="true" type="string"><annotation><documentation>批次号</documentation></annotation></element><element name="totalAmt" nillable="true" type="decimal"><annotation><documentation>收益总金额</documentation></annotation></element><element name="fileNameDown" nillable="true" type="string"><annotation><documentation>理财分红文件名</documentation></annotation></element><element name="totalCorpAmt" nillable="true" type="decimal"><annotation><documentation>本金总金额</documentation></annotation></element></sequence></complexType><element name="FinancialMaturityFileProcess" type="dep:FinancialMaturityFileProcessRequestType"/><complexType name="FinancialMaturityFileProcessResponseType"><annotation><documentation>理财批量文件处理响应参数类型</documentation></annotation><sequence><element ref="base:BaseResponse"/><element name="txnSeqId" type="string"><annotation><documentation>账户系统流水号</documentation></annotation></element></sequence></complexType><element name="FinancialMaturityFileProcessResponse" type="dep:FinancialMaturityFileProcessResponseType"/><complexType name="FinancialPurchasesSuccessRequestType"><annotation><documentation>理财成立批量处理请求参数类型</documentation></annotation><sequence><element ref="base:BaseRequest"/><element name="batchNo" nillable="true" type="string"><annotation><documentation>批次号</documentation></annotation></element><element name="type" nillable="true" type="string"><annotation><documentation>类型（0.成立解控扣款1.不成立解控）</documentation></annotation></element><element name="sender" nillable="true" type="string"><annotation><documentation>交易渠道</documentation></annotation></element></sequence></complexType><element name="FinancialPurchasesSuccess" type="dep:FinancialPurchasesSuccessRequestType"/><complexType name="FinancialPurchasesSuccessResponseType"><annotation><documentation>理财成立批量处理响应参数类型</documentation></annotation><sequence><element ref="base:BaseResponse"/><element name="txnSeqId" type="string"><annotation><documentation>账户系统流水号</documentation></annotation></element></sequence></complexType><element name="FinancialPurchasesSuccessResponse" type="dep:FinancialPurchasesSuccessResponseType"/><complexType name="AddGlacctTypRequestType"><annotation><documentation>会计科目类型增加请求参数类型</documentation></annotation><sequence><element ref="base:BaseRequest"/><element name="glacctTypCD" nillable="true" type="string"><annotation><documentation>总账账户类型编码</documentation></annotation></element><element name="glacctTypDesc" type="string"><annotation><documentation>总账账户类型描述</documentation></annotation></element><element name="maintTellerId" type="string"><annotation><documentation>维护柜员</documentation></annotation></element><element name="maintBranchNbr" type="long"><annotation><documentation>维护机构</documentation></annotation></element><element name="maintDate" type="string"><annotation><documentation>维护日期</documentation></annotation></element><element name="maintDatetime" type="string"><annotation><documentation>维护时间</documentation></annotation></element></sequence></complexType><element name="AddGlacctTyp" type="dep:AddGlacctTypRequestType"/><complexType name="AddGlacctTypResponseType"><annotation><documentation>会计科目类型增加响应参数类型</documentation></annotation><sequence><element ref="base:BaseResponse"/><element name="txnSeqId" type="string"><annotation><documentation>账户系统流水号</documentation></annotation></element></sequence></complexType><element name="AddGlacctTypResponse" type="dep:AddGlacctTypResponseType"/><complexType name="UpdateGlacctTypRequestType"><annotation><documentation>会计科目类型修改请求参数类型</documentation></annotation><sequence><element ref="base:BaseRequest"/><element name="glacctTypCD" nillable="true" type="string"><annotation><documentation>总账账户类型编码</documentation></annotation></element><element name="glacctTypDesc" type="string"><annotation><documentation>总账账户类型描述</documentation></annotation></element><element name="maintTellerId" type="string"><annotation><documentation>维护柜员</documentation></annotation></element><element name="maintBranchNbr" type="long"><annotation><documentation>维护机构</documentation></annotation></element><element name="maintDate" type="string"><annotation><documentation>维护日期</documentation></annotation></element><element name="maintDatetime" type="string"><annotation><documentation>维护时间</documentation></annotation></element></sequence></complexType><element name="UpdateGlacctTyp" type="dep:UpdateGlacctTypRequestType"/><complexType name="UpdateGlacctTypResponseType"><annotation><documentation>会计科目类型修改响应参数类型</documentation></annotation><sequence><element ref="base:BaseResponse"/><element name="txnSeqId" type="string"><annotation><documentation>账户系统流水号</documentation></annotation></element></sequence></complexType><element name="UpdateGlacctTypResponse" type="dep:UpdateGlacctTypResponseType"/><complexType name="DeleteGlacctTypRequestType"><annotation><documentation>会计科目类型删除请求参数类型</documentation></annotation><sequence><element ref="base:BaseRequest"/><element name="glacctTypCD" nillable="true" type="string"><annotation><documentation>总账账户类型编码</documentation></annotation></element></sequence></complexType><element name="DeleteGlacctTyp" type="dep:DeleteGlacctTypRequestType"/><complexType name="DeleteGlacctTypResponseType"><annotation><documentation>会计科目类型删除响应参数类型</documentation></annotation><sequence><element ref="base:BaseResponse"/><element name="txnSeqId" type="string"><annotation><documentation>账户系统流水号</documentation></annotation></element></sequence></complexType><element name="DeleteGlacctTypResponse" type="dep:DeleteGlacctTypResponseType"/><complexType name="PwdExpireWarnRequestType"><annotation><documentation>密码到期提前预警请求参数类型</documentation></annotation><sequence><element ref="base:BaseRequest"/><element name="mediId" nillable="true" type="string"><annotation><documentation>电子账号</documentation></annotation></element><element name="sealTypCd" type="string"><annotation><documentation>验证方式</documentation></annotation></element></sequence></complexType><element name="PwdExpireWarn" type="dep:PwdExpireWarnRequestType"/><complexType name="PwdExpireWarnResponseType"><annotation><documentation>密码到期提前预警响应参数类型</documentation></annotation><sequence><element ref="base:BaseResponse"/><element name="warnStat" type="string"><annotation><documentation>密码到期状态</documentation></annotation></element><element name="remainDays" type="int"><annotation><documentation>距离到期日的天数</documentation></annotation></element></sequence></complexType><element name="PwdExpireWarnResponse" type="dep:PwdExpireWarnResponseType"/><complexType name="FundCheckFileRequestType"><annotation><documentation>基金对账文件生成请求参数类型</documentation></annotation><sequence><element ref="base:BaseRequest"/></sequence></complexType><element name="FundCheckFile" type="dep:FundCheckFileRequestType"/><complexType name="FundCheckFileResponseType"><annotation><documentation>基金对账文件生成响应参数类型</documentation></annotation><sequence><element ref="base:BaseResponse"/></sequence></complexType><element name="FundCheckFileResponse" type="dep:FundCheckFileResponseType"/><complexType name="UploadFileCheckRequestType"><annotation><documentation>基金对账文件上传请求参数类型</documentation></annotation><sequence><element ref="base:BaseRequest"/></sequence></complexType><element name="UploadFileCheck" type="dep:UploadFileCheckRequestType"/><complexType name="UploadFileCheckResponseType"><annotation><documentation>基金对账文件上传响应参数类型</documentation></annotation><sequence><element ref="base:BaseResponse"/><element name="resultMsg" type="string"><annotation><documentation>文件上传结果</documentation></annotation></element></sequence></complexType><element name="UploadFileCheckResponse" type="dep:UploadFileCheckResponseType"/><complexType name="AddBindCardRequestType"><annotation><documentation>添加绑定卡请求参数类型</documentation></annotation><sequence><element ref="base:BaseRequest"/><element name="mediId" type="string"><annotation><documentation>电子账号</documentation></annotation></element><element name="cardTypCd" nillable="true" type="string"><annotation><documentation>卡类型</documentation></annotation></element><element name="cardNo" type="string"><annotation><documentation>绑定卡号</documentation></annotation></element><element name="cardBankNo" nillable="true" type="string"><annotation><documentation>绑定卡行号</documentation></annotation></element><element name="cardBankName" nillable="true" type="string"><annotation><documentation>绑定卡行名</documentation></annotation></element><element name="cardBin" nillable="true" type="string"><annotation><documentation>发卡行标识码</documentation></annotation></element><element name="bindStatCd" nillable="true" type="string"><annotation><documentation>绑定状态</documentation></annotation></element><element name="txnDesc" nillable="true" type="string"><annotation><documentation>绑定备注</documentation></annotation></element><element name="bindTypCd" nillable="true" type="string"><annotation><documentation>绑定类型</documentation></annotation></element><element name="mediLevCd" nillable="true" type="string"><annotation><documentation>账户级别</documentation></annotation></element></sequence></complexType><element name="AddBindCard" type="dep:AddBindCardRequestType"/><complexType name="AddBindCardResponseType"><annotation><documentation>添加绑定卡响应参数类型</documentation></annotation><sequence><element ref="base:BaseResponse"/></sequence></complexType><element name="AddBindCardResponse" type="dep:AddBindCardResponseType"/><complexType name="DeleteBindCardRequestType"><annotation><documentation>删除绑定卡请求参数类型</documentation></annotation><sequence><element ref="base:BaseRequest"/><element name="mediId" type="string"><annotation><documentation>电子账号</documentation></annotation></element><element name="bindSeqNbr" type="decimal"><annotation><documentation>绑定卡序号</documentation></annotation></element></sequence></complexType><element name="DeleteBindCard" type="dep:DeleteBindCardRequestType"/><complexType name="DeleteBindCardResponseType"><annotation><documentation>删除绑定卡响应参数类型</documentation></annotation><sequence><element ref="base:BaseResponse"/></sequence></complexType><element name="DeleteBindCardResponse" type="dep:DeleteBindCardResponseType"/><complexType name="UpdateBindCardRequestType"><annotation><documentation>修改绑定卡请求参数类型</documentation></annotation><sequence><element ref="base:BaseRequest"/><element name="mediId" type="string"><annotation><documentation>电子账号</documentation></annotation></element><element name="bindSeqNbr" type="long"><annotation><documentation>绑定卡序号</documentation></annotation></element><element name="cardTypCd" nillable="true" type="string"><annotation><documentation>卡类型</documentation></annotation></element><element name="cardNo" nillable="true" type="string"><annotation><documentation>绑定卡号</documentation></annotation></element><element name="cardBankNo" nillable="true" type="string"><annotation><documentation>绑定卡行号</documentation></annotation></element><element name="cardBankName" nillable="true" type="string"><annotation><documentation>绑定卡行名</documentation></annotation></element><element name="cardBin" nillable="true" type="string"><annotation><documentation>发卡行标识码</documentation></annotation></element><element name="bindStatCd" nillable="true" type="string"><annotation><documentation>绑定状态</documentation></annotation></element><element name="txnDesc" nillable="true" type="string"><annotation><documentation>绑定备注</documentation></annotation></element><element name="bindTypCd" nillable="true" type="string"><annotation><documentation>绑定类型</documentation></annotation></element><element name="mediLevCd" nillable="true" type="string"><annotation><documentation>账户级别</documentation></annotation></element></sequence></complexType><element name="UpdateBindCard" type="dep:UpdateBindCardRequestType"/><complexType name="UpdateBindCardResponseType"><annotation><documentation>修改绑定卡响应参数类型</documentation></annotation><sequence><element ref="base:BaseResponse"/></sequence></complexType><element name="UpdateBindCardResponse" type="dep:UpdateBindCardResponseType"/><complexType name="GlintAccrualAdjustRequestType"><annotation><documentation>计提调整请求参数类型</documentation></annotation><sequence><element ref="base:BaseRequest"/><element name="mediid" type="string"><annotation><documentation>电子账号</documentation></annotation></element><element name="acctnbr" type="string"><annotation><documentation>系统账号</documentation></annotation></element><element name="type" type="string"><annotation><documentation>类型 ，GINT：计提调整 INT：利息调整</documentation></annotation></element><element name="balcatcd" type="string"><annotation><documentation>余额类别</documentation></annotation></element><element name="baltypcd" nillable="true" type="string"><annotation><documentation>余额类型</documentation></annotation></element><element name="adjustmentamount" nillable="true" type="decimal"><annotation><documentation>调整金额</documentation></annotation></element><element name="ispositive" type="string"><annotation><documentation>是否为正向调整</documentation></annotation></element><element name="intamt" type="decimal"><annotation><documentation>计提金额</documentation></annotation></element><element name="effdate" type="date"><annotation><documentation>生效日期</documentation></annotation></element><element name="desc" nillable="true" type="string"><annotation><documentation>交易描述</documentation></annotation></element></sequence></complexType><element name="GlintAccrualAdjust" type="dep:GlintAccrualAdjustRequestType"/><complexType name="GlintAccrualAdjustResponseType"><annotation><documentation>计提调整响应参数类型</documentation></annotation><sequence><element ref="base:BaseResponse"/></sequence></complexType><element name="GlintAccrualAdjustResponse" type="dep:GlintAccrualAdjustResponseType"/><complexType name="IntEnterAccountRequestType"><annotation><documentation>利息入账请求参数类型</documentation></annotation><sequence><element ref="base:BaseRequest"/><element name="acctNbr" type="string"><annotation><documentation>系统账号</documentation></annotation></element><element name="balCatCd" type="string"><annotation><documentation>余额类别</documentation></annotation></element><element name="balTypCd" nillable="true" type="string"><annotation><documentation>余额类型</documentation></annotation></element><element name="intAmt" type="decimal"><annotation><documentation>已计提利息</documentation></annotation></element><element name="taxAmt" nillable="true" type="decimal"><annotation><documentation>利息税金额</documentation></annotation></element><element name="rtxnDesc" nillable="true" type="string"><annotation><documentation>交易描述</documentation></annotation></element></sequence></complexType><element name="IntEnterAccount" type="dep:IntEnterAccountRequestType"/><complexType name="IntEnterAccountResponseType"><annotation><documentation>利息入账响应参数类型</documentation></annotation><sequence><element ref="base:BaseResponse"/></sequence></complexType><element name="IntEnterAccountResponse" type="dep:IntEnterAccountResponseType"/><complexType name="P2PCoreGenerateChargeRequestType"><annotation><documentation>P2P内部账归集请求参数类型</documentation></annotation><sequence><element ref="base:BaseRequest"/><element name="mediId" type="string"><annotation><documentation>电子账号</documentation></annotation></element><element name="acctNbr" type="long"><annotation><documentation>系统账号</documentation></annotation></element><element name="itlAcctNbr" type="long"><annotation><documentation>内部账账号</documentation></annotation></element><element name="type" type="string"><annotation><documentation>类型（0.成立解控扣款1.不成立解控）</documentation></annotation></element><element name="mediPwdCheck" type="string"><annotation><documentation>是否验密</documentation></annotation></element><element name="mediPwd" type="string"><annotation><documentation>密码</documentation></annotation></element><element name="tranAmt" nillable="true" type="decimal"><annotation><documentation>交易金额</documentation></annotation></element></sequence></complexType><element name="P2PCoreGenerateCharge" type="dep:P2PCoreGenerateChargeRequestType"/><complexType name="P2PCoreGenerateChargeResponseType"><annotation><documentation>P2P内部账归集响应参数类型</documentation></annotation><sequence><element ref="base:BaseResponse"/></sequence></complexType><element name="P2PCoreGenerateChargeResponse" type="dep:P2PCoreGenerateChargeResponseType"/><complexType name="CreatePlatformAcctRequestType"><annotation><documentation>电子帐户存款账户开户请求参数类型</documentation></annotation><sequence><element ref="base:BaseRequest"/><element name="mediId" nillable="true" type="string"><annotation><documentation>电子账号</documentation></annotation></element><element name="openAcctBranchNbr" type="long"><annotation><documentation>开户行号</documentation></annotation></element><element name="customerNbr" nillable="true" type="long"><annotation><documentation>客户统一编号</documentation></annotation></element><element name="customerName" type="string"><annotation><documentation>客户名称</documentation></annotation></element><element name="customerIDNbr" type="string"><annotation><documentation>证件号码</documentation></annotation></element><element name="customerIDTyp" type="string"><annotation><documentation>证件类型</documentation></annotation></element><element name="customerPhoneNbr" type="string"><annotation><documentation>电话号码</documentation></annotation></element><element name="mailAddr" nillable="true" type="string"><annotation><documentation>邮箱</documentation></annotation></element><element name="addr" nillable="true" type="string"><annotation><documentation>地址</documentation></annotation></element><element name="zipCode" nillable="true" type="string"><annotation><documentation>邮编</documentation></annotation></element><element name="mediSealTypCd" type="string"><annotation><documentation>验证方式</documentation></annotation></element><element name="mediPwd" type="string"><annotation><documentation>电子账户交易密码</documentation></annotation></element><element name="mediLev" type="string"><annotation><documentation>电子账户级别</documentation></annotation></element><element name="relCardNbr" type="string"><annotation><documentation>绑定卡号</documentation></annotation></element><element name="relCardBankNo" nillable="true" type="string"><annotation><documentation>绑定卡行号</documentation></annotation></element><element name="cardAgreementTypCd" nillable="true" type="string"><annotation><documentation>电子账户卡类型</documentation></annotation></element><element name="mediAvailYN" type="string"><annotation><documentation>认证状态</documentation></annotation></element><element name="mediStatCd" nillable="true" type="string"><annotation><documentation>激活状态</documentation></annotation></element><element name="platformCd" nillable="true" type="string"><annotation><documentation>平台代码</documentation></annotation></element><element name="cardFrtImgLink" nillable="true" type="string"><annotation><documentation>银行卡正面影像保存地址</documentation></annotation></element><element name="cardBakImgLink" nillable="true" type="string"><annotation><documentation>银行卡背面影像保存地址</documentation></annotation></element></sequence></complexType><element name="CreatePlatformAcct" type="dep:CreatePlatformAcctRequestType"/><complexType name="CreatePlatformAcctResponseType"><annotation><documentation>电子帐户存款账户开户响应参数类型</documentation></annotation><sequence><element ref="base:BaseResponse"/><element name="customerNbr" nillable="true" type="long"><annotation><documentation>客户统一编号</documentation></annotation></element><element name="mediId" nillable="true" type="string"><annotation><documentation>电子帐号</documentation></annotation></element><element name="branchOrgNbr" nillable="true" type="long"><annotation><documentation>开户行号</documentation></annotation></element><element name="acctNbr" nillable="true" type="long"><annotation><documentation>活期结算账户号</documentation></annotation></element><element name="txnSeqId" nillable="true" type="string"><annotation><documentation>交易流水号</documentation></annotation></element></sequence></complexType><element name="CreatePlatformAcctResponse" type="dep:CreatePlatformAcctResponseType"/><complexType name="AcctUnctrlTransferRequestType"><annotation><documentation>电子账户解控转账请求参数类型</documentation></annotation><sequence><element ref="base:BaseRequest"/><element name="mediId" type="string"><annotation><documentation>电子账号</documentation></annotation></element><element name="acctNbr" nillable="true" type="long"><annotation><documentation>系统账号</documentation></annotation></element><element name="ctrlSeqNo" type="long"><annotation><documentation>控制编号</documentation></annotation></element><element name="tranAmt" type="decimal"><annotation><documentation>解除控制金额</documentation></annotation></element><element name="transInAcctNbr" type="long"><annotation><documentation>转入系统账号</documentation></annotation></element><element name="postScript" nillable="true" type="string"><annotation><documentation>行方附言</documentation></annotation></element></sequence></complexType><element name="AcctUnctrlTransfer" type="dep:AcctUnctrlTransferRequestType"/><complexType name="AcctUnctrlTransferResponseType"><sequence><element ref="base:BaseResponse"/><element name="txnSeqId" nillable="true" type="string"><annotation><documentation>交易流水号</documentation></annotation></element></sequence></complexType><element name="AcctUnctrlTransferResponse" type="dep:AcctUnctrlTransferResponseType"/><complexType name="MediTransferRequestType"><annotation><documentation>电子账户转账请求参数类型</documentation></annotation><sequence><element ref="base:BaseRequest"/><element name="mediId" type="string"><annotation><documentation>转出电子账号</documentation></annotation></element><element name="tranAmt" type="decimal"><annotation><documentation>转账金额</documentation></annotation></element><element name="feeAmt" type="decimal"><annotation><documentation>手续费</documentation></annotation></element><element name="transInMediId" type="string"><annotation><documentation>转入电子账号</documentation></annotation></element><element name="transInAcctName" type="string"><annotation><documentation>转入账户名</documentation></annotation></element><element name="mediPwdCheck" type="string"><annotation><documentation>是否验密</documentation></annotation></element><element name="mediSealTypCd" type="string"><annotation><documentation>验证方式</documentation></annotation></element><element name="mediPwd" nillable="true" type="string"><annotation><documentation>电子账号交易密码</documentation></annotation></element><element name="summary" nillable="true" type="string"><annotation><documentation>交易摘要</documentation></annotation></element><element name="rtxnDesc" nillable="true" type="string"><annotation><documentation>转账附言</documentation></annotation></element></sequence></complexType><element name="MediTransfer" type="dep:MediTransferRequestType"/><complexType name="MediTransferResponseType"><sequence><element ref="base:BaseResponse"/><element name="rtxnNbr" nillable="true" type="long"><annotation><documentation>交易号</documentation></annotation></element><element name="txnSeqId" nillable="true" type="string"><annotation><documentation>账户系统流水号</documentation></annotation></element></sequence></complexType><element name="MediTransferResponse" type="dep:MediTransferResponseType"/><complexType name="MediConsumeRequestType"><annotation><documentation>电子账户消费请求参数类型</documentation></annotation><sequence><element ref="base:BaseRequest"/><element name="ownerName" nillable="true" type="string"><annotation><documentation>付款人姓名</documentation></annotation></element><element name="mediId" type="string"><annotation><documentation>付款人卡号</documentation></annotation></element><element name="currencyCd" type="string"><annotation><documentation>交易币种</documentation></annotation></element><element name="tranAmt" type="string"><annotation><documentation>交易金额</documentation></annotation></element><element name="mediPwdCheck" type="string"><annotation><documentation>是否验密</documentation></annotation></element><element name="mediSealTypCd" nillable="true" type="string"><annotation><documentation>验密方式</documentation></annotation></element><element name="mediPwd" nillable="true" type="string"><annotation><documentation>电子账号交易密码</documentation></annotation></element><element name="summary" nillable="true" type="string"><annotation><documentation>摘要</documentation></annotation></element><element name="rtxnDesc" nillable="true" type="string"><annotation><documentation>备注</documentation></annotation></element><element name="marketTranAmt" type="string"><annotation><documentation>营销工具交易金额</documentation></annotation></element><element name="businId" nillable="true" type="string"><annotation><documentation>商户ID</documentation></annotation></element><element name="acctNbr" type="long"><annotation><documentation>系统账号</documentation></annotation></element></sequence></complexType><element name="MediConsume" type="dep:MediConsumeRequestType"/><complexType name="MediConsumeResponseType"><annotation><documentation>电子账户消费响应参数类型</documentation></annotation><sequence><element ref="base:BaseResponse"/><element name="rtxnNbr" nillable="true" type="long"><annotation><documentation>交易号</documentation></annotation></element><element name="txnSeqId" nillable="true" type="string"><annotation><documentation>账户系统流水号</documentation></annotation></element><element name="yxTxnSeqId" nillable="true" type="string"><annotation><documentation>营销工具使用账户系统流水号</documentation></annotation></element></sequence></complexType><element name="MediConsumeResponse" type="dep:MediConsumeResponseType"/><complexType name="IdentityVerifierRequestType"><annotation><documentation>身份核查请求参数类型</documentation></annotation><sequence><element ref="base:BaseRequest"/><element name="channel" nillable="true" type="string"><annotation><documentation>平台编码</documentation></annotation></element><element name="persIdCd" type="string"><annotation><documentation>证件类型</documentation></annotation></element><element name="persIdNbr" type="string"><annotation><documentation>证件号码</documentation></annotation></element><element name="persName" type="string"><annotation><documentation>客户姓名</documentation></annotation></element></sequence></complexType><element name="IdentityVerifier" type="dep:IdentityVerifierRequestType"/><complexType name="IdentityVerifierResponseType"><annotation><documentation>身份核查响应参数类型</documentation></annotation><sequence><element ref="base:BaseResponse"/><element name="persIdCd" nillable="true" type="string"><annotation><documentation>证件类型</documentation></annotation></element><element name="persIdNbr" nillable="true" type="string"><annotation><documentation>证件号码</documentation></annotation></element><element name="effDate" type="date"><annotation><documentation>生效日期</documentation></annotation></element><element name="persName" nillable="true" type="string"><annotation><documentation>姓名</documentation></annotation></element><element name="verifier" nillable="true" type="string"><annotation><documentation>验证是否通过</documentation></annotation></element></sequence></complexType><element name="IdentityVerifierResponse" type="dep:IdentityVerifierResponseType"/><complexType name="BankCardVerifierRequestType"><annotation><documentation>卡鉴权请求参数类型</documentation></annotation><sequence><element ref="base:BaseRequest"/><element name="channel" nillable="true" type="string"><annotation><documentation>平台编码</documentation></annotation></element><element name="cardno" type="string"><annotation><documentation>验证卡卡号</documentation></annotation></element><element name="persIdCd" type="string"><annotation><documentation>证件类型</documentation></annotation></element><element name="persIdNbr" type="string"><annotation><documentation>证件号码</documentation></annotation></element><element name="persName" type="string"><annotation><documentation>客户姓名</documentation></annotation></element><element name="pwd" type="string"><annotation><documentation>内部卡鉴密码</documentation></annotation></element></sequence></complexType><element name="BankCardVerifier" type="dep:BankCardVerifierRequestType"/><complexType name="BankCardVerifierResponseType"><annotation><documentation>卡鉴权响应参数类型</documentation></annotation><sequence><element ref="base:BaseResponse"/><element name="persIdCd" nillable="true" type="string"><annotation><documentation>证件类型</documentation></annotation></element><element name="persIdNbr" nillable="true" type="string"><annotation><documentation>证件号码</documentation></annotation></element><element name="cardno" type="string"><annotation><documentation>验证卡卡号</documentation></annotation></element><element name="persName" nillable="true" type="string"><annotation><documentation>姓名</documentation></annotation></element><element name="verifier" nillable="true" type="string"><annotation><documentation>验证是否通过</documentation></annotation></element></sequence></complexType><element name="BankCardVerifierResponse" type="dep:BankCardVerifierResponseType"/><complexType name="RedReversalRtxnRequestType"><annotation><documentation>交易冲正请求参数类型</documentation></annotation><sequence><element ref="base:BaseRequest"/><element name="oldTxnseqid" type="string"><annotation><documentation>原外部交易号</documentation></annotation></element><element name="summary" nillable="true" type="string"><annotation><documentation>摘要</documentation></annotation></element><element name="rtxnDesc" nillable="true" type="string"><annotation><documentation>备注</documentation></annotation></element></sequence></complexType><element name="RedReversalRtxn" type="dep:RedReversalRtxnRequestType"/><complexType name="RedReversalRtxnResponseType"><annotation><documentation>交易冲正响应参数类型</documentation></annotation><sequence><element ref="base:BaseResponse"/><element name="rtxnNbr" type="long"><annotation><documentation>交易号</documentation></annotation></element><element name="txnSeqId" type="string"><annotation><documentation>账户系统流水号</documentation></annotation></element></sequence></complexType><element name="RedReversalRtxnResponse" type="dep:RedReversalRtxnResponseType"/><complexType name="GetCheckFileRequestType"><annotation><documentation>获取对账文件请求参数类型</documentation></annotation><sequence><element ref="base:BaseRequest"/><element name="coreDate" type="string"><annotation><documentation>记账日期</documentation></annotation></element></sequence></complexType><element name="GetCheckFile" type="dep:GetCheckFileRequestType"/><complexType name="GetCheckFileResponseType"><annotation><documentation>获取对账文件响应参数类型</documentation></annotation><sequence><element ref="base:BaseResponse"/><element name="filePath" type="string"><annotation><documentation>文件路径</documentation></annotation></element><element name="fileName" type="string"><annotation><documentation>文件名</documentation></annotation></element></sequence></complexType><element name="GetCheckFileResponse" type="dep:GetCheckFileResponseType"/><complexType name="UpdAcctLevelRequestType"><sequence><element ref="base:BaseRequest"/><element name="mediId" type="string"/><element name="mediLev" type="string"/></sequence></complexType><element name="UpdAcctLevel" type="dep:UpdAcctLevelRequestType"/><complexType name="UpdAcctLevelResponseType"><sequence><element ref="base:BaseResponse"/></sequence></complexType><element name="UpdAcctLevelResponse" type="dep:UpdAcctLevelResponseType"/><complexType name="AddPersAddrRequestType"><annotation><documentation>新增客户地址信息请求参数类型</documentation></annotation><sequence><element ref="base:BaseRequest"/><element name="persNbr" type="long"><annotation><documentation>个人客户编号</documentation></annotation></element><element name="addRuseCd" type="string"><annotation><documentation>地址用途</documentation></annotation></element><element name="addrName" type="string"><annotation><documentation>地址名称</documentation></annotation></element><element name="addrText" type="string"><annotation><documentation>地址信息</documentation></annotation></element><element name="areaName" type="string"><annotation><documentation>具体区域</documentation></annotation></element><element name="cityName" type="string"><annotation><documentation>城市代码</documentation></annotation></element><element name="ctryName" type="string"><annotation><documentation>国家代码</documentation></annotation></element><element name="districtName" type="string"><annotation><documentation>区县代码</documentation></annotation></element><element name="provinceName" type="string"><annotation><documentation>省份代码</documentation></annotation></element><element name="zipCode" type="string"><annotation><documentation>邮编</documentation></annotation></element></sequence></complexType><element name="AddPersAddr" type="dep:AddPersAddrRequestType"/><complexType name="AddPersAddrResponseType"><annotation><documentation>响应参数类型</documentation></annotation><sequence><element ref="base:BaseResponse"/></sequence></complexType><element name="AddPersAddrResponse" type="dep:AddPersAddrResponseType"/><complexType name="CreateMjmiDepositAcctNullRequestType"><annotation><documentation>电子帐户存款账户开户请求参数类型</documentation></annotation><sequence><element ref="base:BaseRequest"/><element name="mjAcctTypCd" nillable="true" type="string"><annotation><documentation>产品大类</documentation></annotation></element><element name="miAcctTypCd" nillable="true" type="string"><annotation><documentation>产品小类</documentation></annotation></element><element name="mediId" nillable="true" type="string"><annotation><documentation>电子账号</documentation></annotation></element><element name="tranAmt" nillable="true" type="decimal"><annotation><documentation>交易金额</documentation></annotation></element><element name="openAcctBranchNbr" type="long"><annotation><documentation>开户行号</documentation></annotation></element><element name="mediLev" type="string"><annotation><documentation>电子账户级别</documentation></annotation></element><element name="cardAgreementTypCd" nillable="true" type="string"><annotation><documentation>电子账户卡类型</documentation></annotation></element><element name="mediAvailYN" type="string"><annotation><documentation>认证状态</documentation></annotation></element><element name="mediStatCd" nillable="true" type="string"><annotation><documentation>激活状态</documentation></annotation></element></sequence></complexType><element name="CreateMjmiDepositAcctNull" type="dep:CreateMjmiDepositAcctNullRequestType"/><complexType name="CreateMjmiDepositAcctNullResponseType"><annotation><documentation>电子帐户存款账户开户响应参数类型</documentation></annotation><sequence><element ref="base:BaseResponse"/><element name="acctNbr" nillable="true" type="long"><annotation><documentation>活期结算账户号</documentation></annotation></element></sequence></complexType><element name="CreateMjmiDepositAcctNullResponse" type="dep:CreateMjmiDepositAcctNullResponseType"/><complexType name="AcctRefundRequestType"><annotation><documentation>电子账户退款请求参数类型</documentation></annotation><sequence><element ref="base:BaseRequest"/><element name="mediId" type="string"><annotation><documentation>电子账号</documentation></annotation></element><element name="tranAmt" type="decimal"><annotation><documentation>交易金额</documentation></annotation></element><element name="currencyCd" type="string"><annotation><documentation>币种</documentation></annotation></element><element name="summary" type="string"><annotation><documentation>摘要</documentation></annotation></element><element name="rtxnDesc" type="string"><annotation><documentation>交易说明</documentation></annotation></element></sequence></complexType><element name="AcctRefund" type="dep:AcctRefundRequestType"/><complexType name="AcctRefundResponseType"><annotation><documentation>电子账户退款响应参数类型</documentation></annotation><sequence><element ref="base:BaseResponse"/><element name="txnSeqId" type="string"><annotation><documentation>账户系统流水号</documentation></annotation></element></sequence></complexType><element name="AcctRefundResponse" type="dep:AcctRefundResponseType"/><complexType name="QuickRedeemYeahpayAcctRequestType"><annotation><documentation>余额宝快速赎回请求参数类型</documentation></annotation><sequence><element ref="base:BaseRequest"/><element name="countFundId" type="string"><annotation><documentation>资金归集户账号</documentation></annotation></element><element name="countTranAmt" type="decimal"><annotation><documentation>归集户转出金额</documentation></annotation></element><element name="advanceFundId" type="string"><annotation><documentation>垫资户账号</documentation></annotation></element><element name="advanceTranAmt" type="decimal"><annotation><documentation>垫资户转出金额</documentation></annotation></element><element name="mediId" type="string"><annotation><documentation>电子账号</documentation></annotation></element><element name="currencyCd" type="string"><annotation><documentation>币种</documentation></annotation></element><element name="mediPwdCheck" type="string"><annotation><documentation>是否验密</documentation></annotation></element><element name="password" type="string"><annotation><documentation>电子账号交易密码</documentation></annotation></element><element name="summary" type="string"><annotation><documentation>摘要</documentation></annotation></element><element name="rtxnDesc" type="string"><annotation><documentation>交易说明</documentation></annotation></element></sequence></complexType><element name="QuickRedeemYeahpayAcct" type="dep:QuickRedeemYeahpayAcctRequestType"/><complexType name="QuickRedeemYeahpayAcctResponseType"><annotation><documentation>余额宝快速赎回响应参数类型</documentation></annotation><sequence><element ref="base:BaseResponse"/><element name="txnSeqId" type="string"><annotation><documentation>账户系统流水号</documentation></annotation></element></sequence></complexType><element name="QuickRedeemYeahpayAcctResponse" type="dep:QuickRedeemYeahpayAcctResponseType"/><complexType name="YeahpayPurchaseRequestType"><annotation><documentation>余额宝申购 请求参数类型</documentation></annotation><sequence><element ref="base:BaseRequest"/><element name="countMoneyNbr" type="string"><annotation><documentation>资金归集户</documentation></annotation></element><element name="mediId" type="string"><annotation><documentation>电子账号</documentation></annotation></element><element name="tranAmt" type="decimal"><annotation><documentation>交易金额</documentation></annotation></element><element name="currencyCd" type="string"><annotation><documentation>币种</documentation></annotation></element><element name="mediPwdCheck" type="string"><annotation><documentation>是否验密</documentation></annotation></element><element name="mediPwd" type="string"><annotation><documentation>电子账户交易密码</documentation></annotation></element><element name="rtxnDesc" type="string"><annotation><documentation>交易说明</documentation></annotation></element><element name="summary" type="string"><annotation><documentation>摘要</documentation></annotation></element></sequence></complexType><element name="YeahpayPurchase" type="dep:YeahpayPurchaseRequestType"/><complexType name="YeahpayPurchaseResponseType"><annotation><documentation>余额宝响应参数类型</documentation></annotation><sequence><element ref="base:BaseResponse"/><element name="txnSeqId" type="string"><annotation><documentation>账户系统流水号</documentation></annotation></element></sequence></complexType><element name="YeahpayPurchaseResponse" type="dep:YeahpayPurchaseResponseType"/><complexType name="RedeemYeahpayAcctJobRequestType"><annotation><documentation>余额宝批量赎回请求参数类型</documentation></annotation><sequence><element ref="base:BaseRequest"/><element name="filePath" type="string"><annotation><documentation>文件路径</documentation></annotation></element><element name="fileName" type="string"><annotation><documentation>文件名</documentation></annotation></element></sequence></complexType><element name="RedeemYeahpayAcctJob" type="dep:RedeemYeahpayAcctJobRequestType"/><complexType name="RedeemYeahpayAcctJobResponseType"><annotation><documentation>余额宝批量赎回响应参数类型</documentation></annotation><sequence><element ref="base:BaseResponse"/></sequence></complexType><element name="RedeemYeahpayAcctJobResponse" type="dep:RedeemYeahpayAcctJobResponseType"/><complexType name="YeahpayPurchaseJobRequestType"><annotation><documentation>余额宝智能购买请求参数类型</documentation></annotation><sequence><element ref="base:BaseRequest"/><element name="filePath" type="string"><annotation><documentation>文件路径</documentation></annotation></element><element name="fileName" type="string"><annotation><documentation>文件名</documentation></annotation></element></sequence></complexType><element name="YeahpayPurchaseJob" type="dep:YeahpayPurchaseJobRequestType"/><complexType name="YeahpayPurchaseJobResponseType"><annotation><documentation>余额宝智能购买响应参数类型</documentation></annotation><sequence><element ref="base:BaseResponse"/></sequence></complexType><element name="YeahpayPurchaseJobResponse" type="dep:YeahpayPurchaseJobResponseType"/><complexType name="ApprvlFundRptRequestType"><annotation><documentation>审批报备信息请求参数类型</documentation></annotation><sequence><element ref="base:BaseRequest"/><element name="fundNbr" type="long"><annotation><documentation>资金序号</documentation></annotation></element><element name="branchNbr" type="long"><annotation><documentation>机构号</documentation></annotation></element><element name="apprvlStat" type="string"><annotation><documentation>审批状态</documentation></annotation></element><element name="apprvlName" type="string"><annotation><documentation>审批人</documentation></annotation></element><element name="rejectReasn" nillable="true" type="string"><annotation><documentation>拒绝原因</documentation></annotation></element></sequence></complexType><element name="ApprvlFundRpt" type="dep:ApprvlFundRptRequestType"/><complexType name="ApprvlFundRptResponseType"><annotation><documentation>审批报备信息响应参数类型</documentation></annotation><sequence><element ref="base:BaseResponse"/></sequence></complexType><element name="ApprvlFundRptResponse" type="dep:ApprvlFundRptResponseType"/><complexType name="AddFundRptRequestType"><annotation><documentation>新增报备信息请求参数类型</documentation></annotation><sequence><element ref="base:BaseRequest"/><element name="fundNbr" type="long"><annotation><documentation>资金序号</documentation></annotation></element><element name="branchNbr" type="long"><annotation><documentation>机构号</documentation></annotation></element><element name="buzType" nillable="true" type="string"><annotation><documentation>业务类型</documentation></annotation></element><element name="amount" type="long"><annotation><documentation>金额</documentation></annotation></element><element name="fundUse" nillable="true" type="string"><annotation><documentation>资金用途</documentation></annotation></element><element name="useDesc" nillable="true" type="string"><annotation><documentation>使用说明</documentation></annotation></element><element name="payer" type="string"><annotation><documentation>付款人</documentation></annotation></element><element name="dueBankName" type="string"><annotation><documentation>收款行名称</documentation></annotation></element><element name="useDate" type="date"><annotation><documentation>使用日期</documentation></annotation></element></sequence></complexType><element name="AddFundRpt" type="dep:AddFundRptRequestType"/><complexType name="AddFundRptResponseType"><annotation><documentation>新增报备信息响应参数类型</documentation></annotation><sequence><element ref="base:BaseResponse"/></sequence></complexType><element name="AddFundRptResponse" type="dep:AddFundRptResponseType"/><complexType name="AddPositionWarningRequestType"><sequence><element ref="base:BaseRequest"/><element name="ownerbranchnbr" type="long"><annotation><documentation>机构号</documentation></annotation></element><element name="branchname" nillable="true" type="string"><annotation><documentation>机构名</documentation></annotation></element><element name="positionvalue" type="string"><annotation><documentation>头寸额度</documentation></annotation></element><element name="overdraftvalue" type="decimal"><annotation><documentation>透支额度</documentation></annotation></element><element name="singlevalue" type="decimal"><annotation><documentation>单笔报备额度</documentation></annotation></element><element name="telephone" type="string"><annotation><documentation>联系人手机号</documentation></annotation></element><element name="warningvalue" type="decimal"><annotation><documentation>预警值</documentation></annotation></element><element name="tellname" type="string"/></sequence></complexType><element name="AddPositionWarning" type="dep:AddPositionWarningRequestType"/><complexType name="AddPositionWarningResponseType"><annotation><documentation>响应参数类型</documentation></annotation><sequence><element ref="base:BaseResponse"/></sequence></complexType><element name="AddPositionWarningResponse" type="dep:AddPositionWarningResponseType"/><complexType name="UpdatePositionWarningRequestType"><sequence><element ref="base:BaseRequest"/><element name="acctnbr" type="long"><annotation><documentation>系统账号</documentation></annotation></element><element name="positionvalue" type="decimal"><annotation><documentation>头寸额度</documentation></annotation></element><element name="overdraftvalue" type="decimal"><annotation><documentation>透支额度</documentation></annotation></element><element name="singlevalue" type="decimal"><annotation><documentation>单笔报备额度</documentation></annotation></element><element name="telephone" type="string"><annotation><documentation>联系人手机号</documentation></annotation></element><element name="warningvalue" type="decimal"><annotation><documentation>预警值</documentation></annotation></element><element name="usevalue" type="decimal"/><element name="tellname" type="string"/><element name="ownerbranchnbr" type="long"/></sequence></complexType><element name="UpdatePositionWarning" type="dep:UpdatePositionWarningRequestType"/><complexType name="UpdatePositionWarningResponseType"><annotation><documentation>响应参数类型</documentation></annotation><sequence><element ref="base:BaseResponse"/></sequence></complexType><element name="UpdatePositionWarningResponse" type="dep:UpdatePositionWarningResponseType"/><complexType name="AddPrepayBindCardRequestType"><sequence><element ref="base:BaseRequest"/><element name="mediIdpre" type="string"/><element name="mediIdrec" type="string"/><element name="sealValuePre" type="string"/><element name="mediPwd" type="string"/><element name="mediPwdCheck" type="string"/></sequence></complexType><element name="AddPrepayBindCard" type="dep:AddPrepayBindCardRequestType"/><complexType name="AddPrepayBindCardResponseType"><annotation><documentation>响应参数类型</documentation></annotation><sequence><element ref="base:BaseResponse"/></sequence></complexType><element name="AddPrepayBindCardResponse" type="dep:AddPrepayBindCardResponseType"/><complexType name="CreatePrepayCardRequestType"><annotation><documentation>预付卡参数类型</documentation></annotation><sequence><element ref="base:BaseRequest"/><element name="mediPwd" nillable="true" type="string"><annotation><documentation>购买预付卡账号交易密码</documentation></annotation></element><element name="newMediPwd" nillable="true" type="string"><annotation><documentation>预付卡密码</documentation></annotation></element><element name="mediPwdCheck" nillable="true" type="string"><annotation><documentation>是否验密</documentation></annotation></element><element name="mjAcctTypCd" nillable="true" type="string"><annotation><documentation>产品大类</documentation></annotation></element><element name="miAcctTypCd" nillable="true" type="string"><annotation><documentation>产品小类</documentation></annotation></element><element name="mediId" nillable="true" type="string"><annotation><documentation>电子账号</documentation></annotation></element><element name="tranAmt" nillable="true" type="decimal"><annotation><documentation>交易金额</documentation></annotation></element><element name="openAcctBranchNbr" type="long"><annotation><documentation>开户行号</documentation></annotation></element><element name="mediLev" type="string"><annotation><documentation>电子账户级别</documentation></annotation></element><element name="cardAgreementTypCd" nillable="true" type="string"><annotation><documentation>电子账户卡类型</documentation></annotation></element><element name="mediAvailYN" type="string"><annotation><documentation>认证状态</documentation></annotation></element><element name="mediStatCd" nillable="true" type="string"><annotation><documentation>激活状态</documentation></annotation></element></sequence></complexType><element name="CreatePrepayCard" type="dep:CreatePrepayCardRequestType"/><complexType name="CreatePrepayCardResponseType"><annotation><documentation>预付卡响应参数类型</documentation></annotation><sequence><element ref="base:BaseResponse"/><element name="acctNbr" nillable="true" type="long"><annotation><documentation>预付卡账户号</documentation></annotation></element><element name="newMediId" nillable="true" type="string"><annotation><documentation>预付卡电子号</documentation></annotation></element></sequence></complexType><element name="CreatePrepayCardResponse" type="dep:CreatePrepayCardResponseType"/></schema>
+  </wsdl:types>
+  <wsdl:message name="FinancialMaturityFileProcess">
+    <wsdl:part element="tns:FinancialMaturityFileProcess" name="FinancialMaturityFileProcess">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="RedReversalRtxnResponse">
+    <wsdl:part element="tns:RedReversalRtxnResponse" name="RedReversalRtxnResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="RedeemYeahpayAcctJob">
+    <wsdl:part element="tns:RedeemYeahpayAcctJob" name="RedeemYeahpayAcctJob">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AcctDepositForLoan">
+    <wsdl:part element="tns:AcctDepositForLoan" name="AcctDepositForLoan">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="PersPhoneUpdateResponse">
+    <wsdl:part element="tns:PersPhoneUpdateResponse" name="PersPhoneUpdateResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CreateIntelAcct">
+    <wsdl:part element="tns:CreateIntelAcct" name="CreateIntelAcct">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="RedeemIntelAcctFund">
+    <wsdl:part element="tns:RedeemIntelAcctFund" name="RedeemIntelAcctFund">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ResetPwdResponse">
+    <wsdl:part element="tns:ResetPwdResponse" name="ResetPwdResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CreatePrepayCard">
+    <wsdl:part element="tns:CreatePrepayCard" name="CreatePrepayCard">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AcctUnctrlTransferResponse">
+    <wsdl:part element="tns:AcctUnctrlTransferResponse" name="AcctUnctrlTransferResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="FinancialPurchasesSuccess">
+    <wsdl:part element="tns:FinancialPurchasesSuccess" name="FinancialPurchasesSuccess">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ValidatePwd">
+    <wsdl:part element="tns:ValidatePwd" name="ValidatePwd">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AcctFundPurchases">
+    <wsdl:part element="tns:AcctFundPurchases" name="AcctFundPurchases">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="PwdExpireWarn">
+    <wsdl:part element="tns:PwdExpireWarn" name="PwdExpireWarn">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="QuickRedeemYeahpayAcct">
+    <wsdl:part element="tns:QuickRedeemYeahpayAcct" name="QuickRedeemYeahpayAcct">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CreateMjmiDepositAcctNull">
+    <wsdl:part element="tns:CreateMjmiDepositAcctNull" name="CreateMjmiDepositAcctNull">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AttachAcctResponse">
+    <wsdl:part element="tns:AttachAcctResponse" name="AttachAcctResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ValidatePwdResponse">
+    <wsdl:part element="tns:ValidatePwdResponse" name="ValidatePwdResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="MaintFamilyWallet">
+    <wsdl:part element="tns:MaintFamilyWallet" name="MaintFamilyWallet">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="UpdatePositionWarningResponse">
+    <wsdl:part element="tns:UpdatePositionWarningResponse" name="UpdatePositionWarningResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="FinancialPurchases">
+    <wsdl:part element="tns:FinancialPurchases" name="FinancialPurchases">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="FundCheckFileResponse">
+    <wsdl:part element="tns:FundCheckFileResponse" name="FundCheckFileResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AcctRecharge">
+    <wsdl:part element="tns:AcctRecharge" name="AcctRecharge">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="DeleteBindCard">
+    <wsdl:part element="tns:DeleteBindCard" name="DeleteBindCard">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="OpenFamilyWallet">
+    <wsdl:part element="tns:OpenFamilyWallet" name="OpenFamilyWallet">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AcctHoldResponse">
+    <wsdl:part element="tns:AcctHoldResponse" name="AcctHoldResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="SignAgreementAcctResponse">
+    <wsdl:part element="tns:SignAgreementAcctResponse" name="SignAgreementAcctResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="FundCheckFile">
+    <wsdl:part element="tns:FundCheckFile" name="FundCheckFile">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AcctWithdrawalForLoanResponse">
+    <wsdl:part element="tns:AcctWithdrawalForLoanResponse" name="AcctWithdrawalForLoanResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AcctInnerWithdrawalClear">
+    <wsdl:part element="tns:AcctInnerWithdrawalClear" name="AcctInnerWithdrawalClear">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AcctInnerWithdrawal">
+    <wsdl:part element="tns:AcctInnerWithdrawal" name="AcctInnerWithdrawal">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CreatePlatformAcctResponse">
+    <wsdl:part element="tns:CreatePlatformAcctResponse" name="CreatePlatformAcctResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AddAcctAcctCtrl">
+    <wsdl:part element="tns:AddAcctAcctCtrl" name="AddAcctAcctCtrl">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AcctRefund">
+    <wsdl:part element="tns:AcctRefund" name="AcctRefund">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AcctUnholdResponse">
+    <wsdl:part element="tns:AcctUnholdResponse" name="AcctUnholdResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AcctFinPurchases">
+    <wsdl:part element="tns:AcctFinPurchases" name="AcctFinPurchases">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="RedReversalRtxn">
+    <wsdl:part element="tns:RedReversalRtxn" name="RedReversalRtxn">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="MediConsume">
+    <wsdl:part element="tns:MediConsume" name="MediConsume">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AddGlacctTyp">
+    <wsdl:part element="tns:AddGlacctTyp" name="AddGlacctTyp">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="IntEnterAccount">
+    <wsdl:part element="tns:IntEnterAccount" name="IntEnterAccount">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="YeahpayPurchaseResponse">
+    <wsdl:part element="tns:YeahpayPurchaseResponse" name="YeahpayPurchaseResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="BankCardVerifier">
+    <wsdl:part element="tns:BankCardVerifier" name="BankCardVerifier">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AddFundRpt">
+    <wsdl:part element="tns:AddFundRpt" name="AddFundRpt">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="SignAgreementAcct">
+    <wsdl:part element="tns:SignAgreementAcct" name="SignAgreementAcct">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="DeleteGlacctTyp">
+    <wsdl:part element="tns:DeleteGlacctTyp" name="DeleteGlacctTyp">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AcctRechargeResponse">
+    <wsdl:part element="tns:AcctRechargeResponse" name="AcctRechargeResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AcctFinRedemption">
+    <wsdl:part element="tns:AcctFinRedemption" name="AcctFinRedemption">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AcctUnctrlResponse">
+    <wsdl:part element="tns:AcctUnctrlResponse" name="AcctUnctrlResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="MediConsumeResponse">
+    <wsdl:part element="tns:MediConsumeResponse" name="MediConsumeResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="PwdExpireWarnResponse">
+    <wsdl:part element="tns:PwdExpireWarnResponse" name="PwdExpireWarnResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="IntEnterAccountResponse">
+    <wsdl:part element="tns:IntEnterAccountResponse" name="IntEnterAccountResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="FinancialPurchasesCancelResponse">
+    <wsdl:part element="tns:FinancialPurchasesCancelResponse" name="FinancialPurchasesCancelResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CreatePrepayCardResponse">
+    <wsdl:part element="tns:CreatePrepayCardResponse" name="CreatePrepayCardResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CreateDepositAcctResponse">
+    <wsdl:part element="tns:CreateDepositAcctResponse" name="CreateDepositAcctResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="FinancialMaturityFileProcessResponse">
+    <wsdl:part element="tns:FinancialMaturityFileProcessResponse" name="FinancialMaturityFileProcessResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AcctHold">
+    <wsdl:part element="tns:AcctHold" name="AcctHold">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AddPositionWarningResponse">
+    <wsdl:part element="tns:AddPositionWarningResponse" name="AddPositionWarningResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AddPersAddr">
+    <wsdl:part element="tns:AddPersAddr" name="AddPersAddr">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AddAcctPledgeCtrlResponse">
+    <wsdl:part element="tns:AddAcctPledgeCtrlResponse" name="AddAcctPledgeCtrlResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="UpdateBindCard">
+    <wsdl:part element="tns:UpdateBindCard" name="UpdateBindCard">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CloseFamilyWallet">
+    <wsdl:part element="tns:CloseFamilyWallet" name="CloseFamilyWallet">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GlintAccrualAdjustResponse">
+    <wsdl:part element="tns:GlintAccrualAdjustResponse" name="GlintAccrualAdjustResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="DepRtxnReversalResponse">
+    <wsdl:part element="tns:DepRtxnReversalResponse" name="DepRtxnReversalResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CreateIntelAcctResponse">
+    <wsdl:part element="tns:CreateIntelAcctResponse" name="CreateIntelAcctResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AcctUnhold">
+    <wsdl:part element="tns:AcctUnhold" name="AcctUnhold">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AddAcctPledgeCtrl">
+    <wsdl:part element="tns:AddAcctPledgeCtrl" name="AddAcctPledgeCtrl">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AcctDepositForLoanResponse">
+    <wsdl:part element="tns:AcctDepositForLoanResponse" name="AcctDepositForLoanResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AcctRefundResponse">
+    <wsdl:part element="tns:AcctRefundResponse" name="AcctRefundResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="OpenFamilyWalletResponse">
+    <wsdl:part element="tns:OpenFamilyWalletResponse" name="OpenFamilyWalletResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ApprvlFundRpt">
+    <wsdl:part element="tns:ApprvlFundRpt" name="ApprvlFundRpt">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AssistDeductResponse">
+    <wsdl:part element="tns:AssistDeductResponse" name="AssistDeductResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AddAcctAcctCtrlResponse">
+    <wsdl:part element="tns:AddAcctAcctCtrlResponse" name="AddAcctAcctCtrlResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="FinancialPurchasesCancel">
+    <wsdl:part element="tns:FinancialPurchasesCancel" name="FinancialPurchasesCancel">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="FinancialPurchasesSuccessResponse">
+    <wsdl:part element="tns:FinancialPurchasesSuccessResponse" name="FinancialPurchasesSuccessResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AttachAcct">
+    <wsdl:part element="tns:AttachAcct" name="AttachAcct">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AcctWithdrawalForLoan">
+    <wsdl:part element="tns:AcctWithdrawalForLoan" name="AcctWithdrawalForLoan">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="IdentityVerifierResponse">
+    <wsdl:part element="tns:IdentityVerifierResponse" name="IdentityVerifierResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="DepRtxnReversal">
+    <wsdl:part element="tns:DepRtxnReversal" name="DepRtxnReversal">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CloseElecAcctResponse">
+    <wsdl:part element="tns:CloseElecAcctResponse" name="CloseElecAcctResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CreateDepositAcct">
+    <wsdl:part element="tns:CreateDepositAcct" name="CreateDepositAcct">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AcctFundPurchasesResponse">
+    <wsdl:part element="tns:AcctFundPurchasesResponse" name="AcctFundPurchasesResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ForceChangeAttachedCard">
+    <wsdl:part element="tns:ForceChangeAttachedCard" name="ForceChangeAttachedCard">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AddFundRptResponse">
+    <wsdl:part element="tns:AddFundRptResponse" name="AddFundRptResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CreateOrgDepositAcctResponse">
+    <wsdl:part element="tns:CreateOrgDepositAcctResponse" name="CreateOrgDepositAcctResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="TerminateAgreementAcct">
+    <wsdl:part element="tns:TerminateAgreementAcct" name="TerminateAgreementAcct">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AcctFinPurchasesResponse">
+    <wsdl:part element="tns:AcctFinPurchasesResponse" name="AcctFinPurchasesResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AcctInnerWithdrawalClearResponse">
+    <wsdl:part element="tns:AcctInnerWithdrawalClearResponse" name="AcctInnerWithdrawalClearResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AcctUnctrl">
+    <wsdl:part element="tns:AcctUnctrl" name="AcctUnctrl">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AddPositionWarning">
+    <wsdl:part element="tns:AddPositionWarning" name="AddPositionWarning">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ApprvlFundRptResponse">
+    <wsdl:part element="tns:ApprvlFundRptResponse" name="ApprvlFundRptResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AddBindCard">
+    <wsdl:part element="tns:AddBindCard" name="AddBindCard">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="UpdateBindCardResponse">
+    <wsdl:part element="tns:UpdateBindCardResponse" name="UpdateBindCardResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="UpdateGlacctTyp">
+    <wsdl:part element="tns:UpdateGlacctTyp" name="UpdateGlacctTyp">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="RedeemIntelAcctFundResponse">
+    <wsdl:part element="tns:RedeemIntelAcctFundResponse" name="RedeemIntelAcctFundResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="UploadFileCheck">
+    <wsdl:part element="tns:UploadFileCheck" name="UploadFileCheck">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="PersPhoneUpdate">
+    <wsdl:part element="tns:PersPhoneUpdate" name="PersPhoneUpdate">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="RedeemYeahpayAcctJobResponse">
+    <wsdl:part element="tns:RedeemYeahpayAcctJobResponse" name="RedeemYeahpayAcctJobResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="UpdAcctLevel">
+    <wsdl:part element="tns:UpdAcctLevel" name="UpdAcctLevel">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CreateMjmiDepositAcctNullResponse">
+    <wsdl:part element="tns:CreateMjmiDepositAcctNullResponse" name="CreateMjmiDepositAcctNullResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AcctInnerWithdrawalResponse">
+    <wsdl:part element="tns:AcctInnerWithdrawalResponse" name="AcctInnerWithdrawalResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ChangeAttachedCardResponse">
+    <wsdl:part element="tns:ChangeAttachedCardResponse" name="ChangeAttachedCardResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="UpdAcctLevelResponse">
+    <wsdl:part element="tns:UpdAcctLevelResponse" name="UpdAcctLevelResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ResetPwd">
+    <wsdl:part element="tns:ResetPwd" name="ResetPwd">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AddPrepayBindCard">
+    <wsdl:part element="tns:AddPrepayBindCard" name="AddPrepayBindCard">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="UpdateGlacctTypResponse">
+    <wsdl:part element="tns:UpdateGlacctTypResponse" name="UpdateGlacctTypResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="UploadFileCheckResponse">
+    <wsdl:part element="tns:UploadFileCheckResponse" name="UploadFileCheckResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AcctUnctrlTransfer">
+    <wsdl:part element="tns:AcctUnctrlTransfer" name="AcctUnctrlTransfer">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="FinancialPurchasesResponse">
+    <wsdl:part element="tns:FinancialPurchasesResponse" name="FinancialPurchasesResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="YeahpayPurchaseJob">
+    <wsdl:part element="tns:YeahpayPurchaseJob" name="YeahpayPurchaseJob">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CloseFamilyWalletResponse">
+    <wsdl:part element="tns:CloseFamilyWalletResponse" name="CloseFamilyWalletResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="MediTransferResponse">
+    <wsdl:part element="tns:MediTransferResponse" name="MediTransferResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CreatePlatformAcct">
+    <wsdl:part element="tns:CreatePlatformAcct" name="CreatePlatformAcct">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetCheckFileResponse">
+    <wsdl:part element="tns:GetCheckFileResponse" name="GetCheckFileResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="YeahpayPurchase">
+    <wsdl:part element="tns:YeahpayPurchase" name="YeahpayPurchase">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AssistDeduct">
+    <wsdl:part element="tns:AssistDeduct" name="AssistDeduct">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AcctFundRedemptionResponse">
+    <wsdl:part element="tns:AcctFundRedemptionResponse" name="AcctFundRedemptionResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="YeahpayPurchaseJobResponse">
+    <wsdl:part element="tns:YeahpayPurchaseJobResponse" name="YeahpayPurchaseJobResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AcctConsume">
+    <wsdl:part element="tns:AcctConsume" name="AcctConsume">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="UpdatePositionWarning">
+    <wsdl:part element="tns:UpdatePositionWarning" name="UpdatePositionWarning">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="QuickRedeemYeahpayAcctResponse">
+    <wsdl:part element="tns:QuickRedeemYeahpayAcctResponse" name="QuickRedeemYeahpayAcctResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="MaintFamilyWalletResponse">
+    <wsdl:part element="tns:MaintFamilyWalletResponse" name="MaintFamilyWalletResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ForceChangeAttachedCardResponse">
+    <wsdl:part element="tns:ForceChangeAttachedCardResponse" name="ForceChangeAttachedCardResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AddGlacctTypResponse">
+    <wsdl:part element="tns:AddGlacctTypResponse" name="AddGlacctTypResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AddPersAddrResponse">
+    <wsdl:part element="tns:AddPersAddrResponse" name="AddPersAddrResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GlintAccrualAdjust">
+    <wsdl:part element="tns:GlintAccrualAdjust" name="GlintAccrualAdjust">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="IdentityVerifier">
+    <wsdl:part element="tns:IdentityVerifier" name="IdentityVerifier">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="P2PCoreGenerateChargeResponse">
+    <wsdl:part element="tns:P2PCoreGenerateChargeResponse" name="P2PCoreGenerateChargeResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CloseElecAcct">
+    <wsdl:part element="tns:CloseElecAcct" name="CloseElecAcct">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AcctFinRedemptionResponse">
+    <wsdl:part element="tns:AcctFinRedemptionResponse" name="AcctFinRedemptionResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="TerminateAgreementAcctResponse">
+    <wsdl:part element="tns:TerminateAgreementAcctResponse" name="TerminateAgreementAcctResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="BankCardVerifierResponse">
+    <wsdl:part element="tns:BankCardVerifierResponse" name="BankCardVerifierResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="P2PCoreGenerateCharge">
+    <wsdl:part element="tns:P2PCoreGenerateCharge" name="P2PCoreGenerateCharge">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AddPrepayBindCardResponse">
+    <wsdl:part element="tns:AddPrepayBindCardResponse" name="AddPrepayBindCardResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CreateOrgDepositAcct">
+    <wsdl:part element="tns:CreateOrgDepositAcct" name="CreateOrgDepositAcct">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ChangeAttachedCard">
+    <wsdl:part element="tns:ChangeAttachedCard" name="ChangeAttachedCard">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AddBindCardResponse">
+    <wsdl:part element="tns:AddBindCardResponse" name="AddBindCardResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="DeleteBindCardResponse">
+    <wsdl:part element="tns:DeleteBindCardResponse" name="DeleteBindCardResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="MediTransfer">
+    <wsdl:part element="tns:MediTransfer" name="MediTransfer">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetCheckFile">
+    <wsdl:part element="tns:GetCheckFile" name="GetCheckFile">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="DeleteGlacctTypResponse">
+    <wsdl:part element="tns:DeleteGlacctTypResponse" name="DeleteGlacctTypResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AcctConsumeResponse">
+    <wsdl:part element="tns:AcctConsumeResponse" name="AcctConsumeResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AcctFundRedemption">
+    <wsdl:part element="tns:AcctFundRedemption" name="AcctFundRedemption">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ChangePwd">
+    <wsdl:part element="tns:ChangePwd" name="ChangePwd">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ChangePwdResponse">
+    <wsdl:part element="tns:ChangePwdResponse" name="ChangePwdResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="DepositPostServicePortType">
+    <wsdl:operation name="FinancialMaturityFileProcess">
+      <wsdl:input message="tns:FinancialMaturityFileProcess" name="FinancialMaturityFileProcess">
+    </wsdl:input>
+      <wsdl:output message="tns:FinancialMaturityFileProcessResponse" name="FinancialMaturityFileProcessResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RedReversalRtxn">
+      <wsdl:input message="tns:RedReversalRtxn" name="RedReversalRtxn">
+    </wsdl:input>
+      <wsdl:output message="tns:RedReversalRtxnResponse" name="RedReversalRtxnResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RedeemYeahpayAcctJob">
+      <wsdl:input message="tns:RedeemYeahpayAcctJob" name="RedeemYeahpayAcctJob">
+    </wsdl:input>
+      <wsdl:output message="tns:RedeemYeahpayAcctJobResponse" name="RedeemYeahpayAcctJobResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AcctDepositForLoan">
+      <wsdl:input message="tns:AcctDepositForLoan" name="AcctDepositForLoan">
+    </wsdl:input>
+      <wsdl:output message="tns:AcctDepositForLoanResponse" name="AcctDepositForLoanResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PersPhoneUpdate">
+      <wsdl:input message="tns:PersPhoneUpdate" name="PersPhoneUpdate">
+    </wsdl:input>
+      <wsdl:output message="tns:PersPhoneUpdateResponse" name="PersPhoneUpdateResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateIntelAcct">
+      <wsdl:input message="tns:CreateIntelAcct" name="CreateIntelAcct">
+    </wsdl:input>
+      <wsdl:output message="tns:CreateIntelAcctResponse" name="CreateIntelAcctResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RedeemIntelAcctFund">
+      <wsdl:input message="tns:RedeemIntelAcctFund" name="RedeemIntelAcctFund">
+    </wsdl:input>
+      <wsdl:output message="tns:RedeemIntelAcctFundResponse" name="RedeemIntelAcctFundResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ResetPwd">
+      <wsdl:input message="tns:ResetPwd" name="ResetPwd">
+    </wsdl:input>
+      <wsdl:output message="tns:ResetPwdResponse" name="ResetPwdResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreatePrepayCard">
+      <wsdl:input message="tns:CreatePrepayCard" name="CreatePrepayCard">
+    </wsdl:input>
+      <wsdl:output message="tns:CreatePrepayCardResponse" name="CreatePrepayCardResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AcctUnctrlTransfer">
+      <wsdl:input message="tns:AcctUnctrlTransfer" name="AcctUnctrlTransfer">
+    </wsdl:input>
+      <wsdl:output message="tns:AcctUnctrlTransferResponse" name="AcctUnctrlTransferResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FinancialPurchasesSuccess">
+      <wsdl:input message="tns:FinancialPurchasesSuccess" name="FinancialPurchasesSuccess">
+    </wsdl:input>
+      <wsdl:output message="tns:FinancialPurchasesSuccessResponse" name="FinancialPurchasesSuccessResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidatePwd">
+      <wsdl:input message="tns:ValidatePwd" name="ValidatePwd">
+    </wsdl:input>
+      <wsdl:output message="tns:ValidatePwdResponse" name="ValidatePwdResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AcctFundPurchases">
+      <wsdl:input message="tns:AcctFundPurchases" name="AcctFundPurchases">
+    </wsdl:input>
+      <wsdl:output message="tns:AcctFundPurchasesResponse" name="AcctFundPurchasesResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PwdExpireWarn">
+      <wsdl:input message="tns:PwdExpireWarn" name="PwdExpireWarn">
+    </wsdl:input>
+      <wsdl:output message="tns:PwdExpireWarnResponse" name="PwdExpireWarnResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QuickRedeemYeahpayAcct">
+      <wsdl:input message="tns:QuickRedeemYeahpayAcct" name="QuickRedeemYeahpayAcct">
+    </wsdl:input>
+      <wsdl:output message="tns:QuickRedeemYeahpayAcctResponse" name="QuickRedeemYeahpayAcctResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateMjmiDepositAcctNull">
+      <wsdl:input message="tns:CreateMjmiDepositAcctNull" name="CreateMjmiDepositAcctNull">
+    </wsdl:input>
+      <wsdl:output message="tns:CreateMjmiDepositAcctNullResponse" name="CreateMjmiDepositAcctNullResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AttachAcct">
+      <wsdl:input message="tns:AttachAcct" name="AttachAcct">
+    </wsdl:input>
+      <wsdl:output message="tns:AttachAcctResponse" name="AttachAcctResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MaintFamilyWallet">
+      <wsdl:input message="tns:MaintFamilyWallet" name="MaintFamilyWallet">
+    </wsdl:input>
+      <wsdl:output message="tns:MaintFamilyWalletResponse" name="MaintFamilyWalletResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePositionWarning">
+      <wsdl:input message="tns:UpdatePositionWarning" name="UpdatePositionWarning">
+    </wsdl:input>
+      <wsdl:output message="tns:UpdatePositionWarningResponse" name="UpdatePositionWarningResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FinancialPurchases">
+      <wsdl:input message="tns:FinancialPurchases" name="FinancialPurchases">
+    </wsdl:input>
+      <wsdl:output message="tns:FinancialPurchasesResponse" name="FinancialPurchasesResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FundCheckFile">
+      <wsdl:input message="tns:FundCheckFile" name="FundCheckFile">
+    </wsdl:input>
+      <wsdl:output message="tns:FundCheckFileResponse" name="FundCheckFileResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AcctRecharge">
+      <wsdl:input message="tns:AcctRecharge" name="AcctRecharge">
+    </wsdl:input>
+      <wsdl:output message="tns:AcctRechargeResponse" name="AcctRechargeResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteBindCard">
+      <wsdl:input message="tns:DeleteBindCard" name="DeleteBindCard">
+    </wsdl:input>
+      <wsdl:output message="tns:DeleteBindCardResponse" name="DeleteBindCardResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OpenFamilyWallet">
+      <wsdl:input message="tns:OpenFamilyWallet" name="OpenFamilyWallet">
+    </wsdl:input>
+      <wsdl:output message="tns:OpenFamilyWalletResponse" name="OpenFamilyWalletResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AcctHold">
+      <wsdl:input message="tns:AcctHold" name="AcctHold">
+    </wsdl:input>
+      <wsdl:output message="tns:AcctHoldResponse" name="AcctHoldResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SignAgreementAcct">
+      <wsdl:input message="tns:SignAgreementAcct" name="SignAgreementAcct">
+    </wsdl:input>
+      <wsdl:output message="tns:SignAgreementAcctResponse" name="SignAgreementAcctResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AcctWithdrawalForLoan">
+      <wsdl:input message="tns:AcctWithdrawalForLoan" name="AcctWithdrawalForLoan">
+    </wsdl:input>
+      <wsdl:output message="tns:AcctWithdrawalForLoanResponse" name="AcctWithdrawalForLoanResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AcctInnerWithdrawalClear">
+      <wsdl:input message="tns:AcctInnerWithdrawalClear" name="AcctInnerWithdrawalClear">
+    </wsdl:input>
+      <wsdl:output message="tns:AcctInnerWithdrawalClearResponse" name="AcctInnerWithdrawalClearResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AcctInnerWithdrawal">
+      <wsdl:input message="tns:AcctInnerWithdrawal" name="AcctInnerWithdrawal">
+    </wsdl:input>
+      <wsdl:output message="tns:AcctInnerWithdrawalResponse" name="AcctInnerWithdrawalResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreatePlatformAcct">
+      <wsdl:input message="tns:CreatePlatformAcct" name="CreatePlatformAcct">
+    </wsdl:input>
+      <wsdl:output message="tns:CreatePlatformAcctResponse" name="CreatePlatformAcctResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddAcctAcctCtrl">
+      <wsdl:input message="tns:AddAcctAcctCtrl" name="AddAcctAcctCtrl">
+    </wsdl:input>
+      <wsdl:output message="tns:AddAcctAcctCtrlResponse" name="AddAcctAcctCtrlResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AcctRefund">
+      <wsdl:input message="tns:AcctRefund" name="AcctRefund">
+    </wsdl:input>
+      <wsdl:output message="tns:AcctRefundResponse" name="AcctRefundResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AcctUnhold">
+      <wsdl:input message="tns:AcctUnhold" name="AcctUnhold">
+    </wsdl:input>
+      <wsdl:output message="tns:AcctUnholdResponse" name="AcctUnholdResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AcctFinPurchases">
+      <wsdl:input message="tns:AcctFinPurchases" name="AcctFinPurchases">
+    </wsdl:input>
+      <wsdl:output message="tns:AcctFinPurchasesResponse" name="AcctFinPurchasesResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MediConsume">
+      <wsdl:input message="tns:MediConsume" name="MediConsume">
+    </wsdl:input>
+      <wsdl:output message="tns:MediConsumeResponse" name="MediConsumeResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddGlacctTyp">
+      <wsdl:input message="tns:AddGlacctTyp" name="AddGlacctTyp">
+    </wsdl:input>
+      <wsdl:output message="tns:AddGlacctTypResponse" name="AddGlacctTypResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IntEnterAccount">
+      <wsdl:input message="tns:IntEnterAccount" name="IntEnterAccount">
+    </wsdl:input>
+      <wsdl:output message="tns:IntEnterAccountResponse" name="IntEnterAccountResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="YeahpayPurchase">
+      <wsdl:input message="tns:YeahpayPurchase" name="YeahpayPurchase">
+    </wsdl:input>
+      <wsdl:output message="tns:YeahpayPurchaseResponse" name="YeahpayPurchaseResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BankCardVerifier">
+      <wsdl:input message="tns:BankCardVerifier" name="BankCardVerifier">
+    </wsdl:input>
+      <wsdl:output message="tns:BankCardVerifierResponse" name="BankCardVerifierResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddFundRpt">
+      <wsdl:input message="tns:AddFundRpt" name="AddFundRpt">
+    </wsdl:input>
+      <wsdl:output message="tns:AddFundRptResponse" name="AddFundRptResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteGlacctTyp">
+      <wsdl:input message="tns:DeleteGlacctTyp" name="DeleteGlacctTyp">
+    </wsdl:input>
+      <wsdl:output message="tns:DeleteGlacctTypResponse" name="DeleteGlacctTypResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AcctFinRedemption">
+      <wsdl:input message="tns:AcctFinRedemption" name="AcctFinRedemption">
+    </wsdl:input>
+      <wsdl:output message="tns:AcctFinRedemptionResponse" name="AcctFinRedemptionResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AcctUnctrl">
+      <wsdl:input message="tns:AcctUnctrl" name="AcctUnctrl">
+    </wsdl:input>
+      <wsdl:output message="tns:AcctUnctrlResponse" name="AcctUnctrlResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FinancialPurchasesCancel">
+      <wsdl:input message="tns:FinancialPurchasesCancel" name="FinancialPurchasesCancel">
+    </wsdl:input>
+      <wsdl:output message="tns:FinancialPurchasesCancelResponse" name="FinancialPurchasesCancelResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateDepositAcct">
+      <wsdl:input message="tns:CreateDepositAcct" name="CreateDepositAcct">
+    </wsdl:input>
+      <wsdl:output message="tns:CreateDepositAcctResponse" name="CreateDepositAcctResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddPositionWarning">
+      <wsdl:input message="tns:AddPositionWarning" name="AddPositionWarning">
+    </wsdl:input>
+      <wsdl:output message="tns:AddPositionWarningResponse" name="AddPositionWarningResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddPersAddr">
+      <wsdl:input message="tns:AddPersAddr" name="AddPersAddr">
+    </wsdl:input>
+      <wsdl:output message="tns:AddPersAddrResponse" name="AddPersAddrResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddAcctPledgeCtrl">
+      <wsdl:input message="tns:AddAcctPledgeCtrl" name="AddAcctPledgeCtrl">
+    </wsdl:input>
+      <wsdl:output message="tns:AddAcctPledgeCtrlResponse" name="AddAcctPledgeCtrlResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateBindCard">
+      <wsdl:input message="tns:UpdateBindCard" name="UpdateBindCard">
+    </wsdl:input>
+      <wsdl:output message="tns:UpdateBindCardResponse" name="UpdateBindCardResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CloseFamilyWallet">
+      <wsdl:input message="tns:CloseFamilyWallet" name="CloseFamilyWallet">
+    </wsdl:input>
+      <wsdl:output message="tns:CloseFamilyWalletResponse" name="CloseFamilyWalletResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GlintAccrualAdjust">
+      <wsdl:input message="tns:GlintAccrualAdjust" name="GlintAccrualAdjust">
+    </wsdl:input>
+      <wsdl:output message="tns:GlintAccrualAdjustResponse" name="GlintAccrualAdjustResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DepRtxnReversal">
+      <wsdl:input message="tns:DepRtxnReversal" name="DepRtxnReversal">
+    </wsdl:input>
+      <wsdl:output message="tns:DepRtxnReversalResponse" name="DepRtxnReversalResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ApprvlFundRpt">
+      <wsdl:input message="tns:ApprvlFundRpt" name="ApprvlFundRpt">
+    </wsdl:input>
+      <wsdl:output message="tns:ApprvlFundRptResponse" name="ApprvlFundRptResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AssistDeduct">
+      <wsdl:input message="tns:AssistDeduct" name="AssistDeduct">
+    </wsdl:input>
+      <wsdl:output message="tns:AssistDeductResponse" name="AssistDeductResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IdentityVerifier">
+      <wsdl:input message="tns:IdentityVerifier" name="IdentityVerifier">
+    </wsdl:input>
+      <wsdl:output message="tns:IdentityVerifierResponse" name="IdentityVerifierResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CloseElecAcct">
+      <wsdl:input message="tns:CloseElecAcct" name="CloseElecAcct">
+    </wsdl:input>
+      <wsdl:output message="tns:CloseElecAcctResponse" name="CloseElecAcctResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ForceChangeAttachedCard">
+      <wsdl:input message="tns:ForceChangeAttachedCard" name="ForceChangeAttachedCard">
+    </wsdl:input>
+      <wsdl:output message="tns:ForceChangeAttachedCardResponse" name="ForceChangeAttachedCardResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateOrgDepositAcct">
+      <wsdl:input message="tns:CreateOrgDepositAcct" name="CreateOrgDepositAcct">
+    </wsdl:input>
+      <wsdl:output message="tns:CreateOrgDepositAcctResponse" name="CreateOrgDepositAcctResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TerminateAgreementAcct">
+      <wsdl:input message="tns:TerminateAgreementAcct" name="TerminateAgreementAcct">
+    </wsdl:input>
+      <wsdl:output message="tns:TerminateAgreementAcctResponse" name="TerminateAgreementAcctResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddBindCard">
+      <wsdl:input message="tns:AddBindCard" name="AddBindCard">
+    </wsdl:input>
+      <wsdl:output message="tns:AddBindCardResponse" name="AddBindCardResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateGlacctTyp">
+      <wsdl:input message="tns:UpdateGlacctTyp" name="UpdateGlacctTyp">
+    </wsdl:input>
+      <wsdl:output message="tns:UpdateGlacctTypResponse" name="UpdateGlacctTypResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadFileCheck">
+      <wsdl:input message="tns:UploadFileCheck" name="UploadFileCheck">
+    </wsdl:input>
+      <wsdl:output message="tns:UploadFileCheckResponse" name="UploadFileCheckResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdAcctLevel">
+      <wsdl:input message="tns:UpdAcctLevel" name="UpdAcctLevel">
+    </wsdl:input>
+      <wsdl:output message="tns:UpdAcctLevelResponse" name="UpdAcctLevelResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChangeAttachedCard">
+      <wsdl:input message="tns:ChangeAttachedCard" name="ChangeAttachedCard">
+    </wsdl:input>
+      <wsdl:output message="tns:ChangeAttachedCardResponse" name="ChangeAttachedCardResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddPrepayBindCard">
+      <wsdl:input message="tns:AddPrepayBindCard" name="AddPrepayBindCard">
+    </wsdl:input>
+      <wsdl:output message="tns:AddPrepayBindCardResponse" name="AddPrepayBindCardResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="YeahpayPurchaseJob">
+      <wsdl:input message="tns:YeahpayPurchaseJob" name="YeahpayPurchaseJob">
+    </wsdl:input>
+      <wsdl:output message="tns:YeahpayPurchaseJobResponse" name="YeahpayPurchaseJobResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MediTransfer">
+      <wsdl:input message="tns:MediTransfer" name="MediTransfer">
+    </wsdl:input>
+      <wsdl:output message="tns:MediTransferResponse" name="MediTransferResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCheckFile">
+      <wsdl:input message="tns:GetCheckFile" name="GetCheckFile">
+    </wsdl:input>
+      <wsdl:output message="tns:GetCheckFileResponse" name="GetCheckFileResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AcctFundRedemption">
+      <wsdl:input message="tns:AcctFundRedemption" name="AcctFundRedemption">
+    </wsdl:input>
+      <wsdl:output message="tns:AcctFundRedemptionResponse" name="AcctFundRedemptionResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AcctConsume">
+      <wsdl:input message="tns:AcctConsume" name="AcctConsume">
+    </wsdl:input>
+      <wsdl:output message="tns:AcctConsumeResponse" name="AcctConsumeResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="P2PCoreGenerateCharge">
+      <wsdl:input message="tns:P2PCoreGenerateCharge" name="P2PCoreGenerateCharge">
+    </wsdl:input>
+      <wsdl:output message="tns:P2PCoreGenerateChargeResponse" name="P2PCoreGenerateChargeResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChangePwd">
+      <wsdl:input message="tns:ChangePwd" name="ChangePwd">
+    </wsdl:input>
+      <wsdl:output message="tns:ChangePwdResponse" name="ChangePwdResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="DepositPostServicePortTypeSoap11" type="tns:DepositPostServicePortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="FinancialMaturityFileProcess">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="FinancialMaturityFileProcess">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="FinancialMaturityFileProcessResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RedReversalRtxn">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="RedReversalRtxn">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="RedReversalRtxnResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RedeemYeahpayAcctJob">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="RedeemYeahpayAcctJob">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="RedeemYeahpayAcctJobResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AcctDepositForLoan">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="AcctDepositForLoan">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="AcctDepositForLoanResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PersPhoneUpdate">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="PersPhoneUpdate">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="PersPhoneUpdateResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateIntelAcct">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="CreateIntelAcct">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="CreateIntelAcctResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RedeemIntelAcctFund">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="RedeemIntelAcctFund">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="RedeemIntelAcctFundResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ResetPwd">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="ResetPwd">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="ResetPwdResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreatePrepayCard">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="CreatePrepayCard">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="CreatePrepayCardResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AcctUnctrlTransfer">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="AcctUnctrlTransfer">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="AcctUnctrlTransferResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FinancialPurchasesSuccess">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="FinancialPurchasesSuccess">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="FinancialPurchasesSuccessResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidatePwd">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="ValidatePwd">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="ValidatePwdResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AcctFundPurchases">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="AcctFundPurchases">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="AcctFundPurchasesResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PwdExpireWarn">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="PwdExpireWarn">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="PwdExpireWarnResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QuickRedeemYeahpayAcct">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="QuickRedeemYeahpayAcct">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="QuickRedeemYeahpayAcctResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateMjmiDepositAcctNull">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="CreateMjmiDepositAcctNull">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="CreateMjmiDepositAcctNullResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AttachAcct">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="AttachAcct">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="AttachAcctResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MaintFamilyWallet">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="MaintFamilyWallet">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="MaintFamilyWalletResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePositionWarning">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="UpdatePositionWarning">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="UpdatePositionWarningResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FinancialPurchases">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="FinancialPurchases">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="FinancialPurchasesResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FundCheckFile">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="FundCheckFile">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="FundCheckFileResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AcctRecharge">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="AcctRecharge">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="AcctRechargeResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteBindCard">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="DeleteBindCard">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="DeleteBindCardResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OpenFamilyWallet">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="OpenFamilyWallet">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="OpenFamilyWalletResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AcctHold">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="AcctHold">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="AcctHoldResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SignAgreementAcct">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="SignAgreementAcct">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="SignAgreementAcctResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AcctWithdrawalForLoan">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="AcctWithdrawalForLoan">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="AcctWithdrawalForLoanResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AcctInnerWithdrawalClear">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="AcctInnerWithdrawalClear">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="AcctInnerWithdrawalClearResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AcctInnerWithdrawal">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="AcctInnerWithdrawal">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="AcctInnerWithdrawalResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreatePlatformAcct">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="CreatePlatformAcct">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="CreatePlatformAcctResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddAcctAcctCtrl">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="AddAcctAcctCtrl">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="AddAcctAcctCtrlResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AcctRefund">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="AcctRefund">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="AcctRefundResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AcctUnhold">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="AcctUnhold">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="AcctUnholdResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AcctFinPurchases">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="AcctFinPurchases">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="AcctFinPurchasesResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MediConsume">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="MediConsume">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="MediConsumeResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddGlacctTyp">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="AddGlacctTyp">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="AddGlacctTypResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IntEnterAccount">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="IntEnterAccount">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="IntEnterAccountResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="YeahpayPurchase">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="YeahpayPurchase">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="YeahpayPurchaseResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BankCardVerifier">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="BankCardVerifier">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="BankCardVerifierResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddFundRpt">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="AddFundRpt">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="AddFundRptResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteGlacctTyp">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="DeleteGlacctTyp">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="DeleteGlacctTypResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AcctFinRedemption">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="AcctFinRedemption">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="AcctFinRedemptionResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AcctUnctrl">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="AcctUnctrl">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="AcctUnctrlResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FinancialPurchasesCancel">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="FinancialPurchasesCancel">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="FinancialPurchasesCancelResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateDepositAcct">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="CreateDepositAcct">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="CreateDepositAcctResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddPositionWarning">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="AddPositionWarning">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="AddPositionWarningResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddPersAddr">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="AddPersAddr">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="AddPersAddrResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddAcctPledgeCtrl">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="AddAcctPledgeCtrl">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="AddAcctPledgeCtrlResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateBindCard">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="UpdateBindCard">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="UpdateBindCardResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CloseFamilyWallet">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="CloseFamilyWallet">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="CloseFamilyWalletResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GlintAccrualAdjust">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="GlintAccrualAdjust">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="GlintAccrualAdjustResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DepRtxnReversal">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="DepRtxnReversal">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="DepRtxnReversalResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ApprvlFundRpt">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="ApprvlFundRpt">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="ApprvlFundRptResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AssistDeduct">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="AssistDeduct">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="AssistDeductResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IdentityVerifier">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="IdentityVerifier">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="IdentityVerifierResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CloseElecAcct">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="CloseElecAcct">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="CloseElecAcctResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ForceChangeAttachedCard">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="ForceChangeAttachedCard">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="ForceChangeAttachedCardResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateOrgDepositAcct">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="CreateOrgDepositAcct">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="CreateOrgDepositAcctResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TerminateAgreementAcct">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="TerminateAgreementAcct">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="TerminateAgreementAcctResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddBindCard">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="AddBindCard">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="AddBindCardResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateGlacctTyp">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="UpdateGlacctTyp">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="UpdateGlacctTypResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadFileCheck">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="UploadFileCheck">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="UploadFileCheckResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdAcctLevel">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="UpdAcctLevel">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="UpdAcctLevelResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChangeAttachedCard">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="ChangeAttachedCard">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="ChangeAttachedCardResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddPrepayBindCard">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="AddPrepayBindCard">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="AddPrepayBindCardResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="YeahpayPurchaseJob">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="YeahpayPurchaseJob">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="YeahpayPurchaseJobResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MediTransfer">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="MediTransfer">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="MediTransferResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCheckFile">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="GetCheckFile">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="GetCheckFileResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AcctFundRedemption">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="AcctFundRedemption">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="AcctFundRedemptionResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AcctConsume">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="AcctConsume">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="AcctConsumeResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="P2PCoreGenerateCharge">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="P2PCoreGenerateCharge">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="P2PCoreGenerateChargeResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChangePwd">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="ChangePwd">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="ChangePwdResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="DepositPostService">
+    <wsdl:port binding="tns:DepositPostServicePortTypeSoap11" name="DepositPostServicePortTypeSoap11">
+      <soap:address location="http://172.16.35.44:8099/depositPostService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

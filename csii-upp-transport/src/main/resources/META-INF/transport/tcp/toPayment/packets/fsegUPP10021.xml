@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE segment SYSTEM "packetutf8.dtd">
+<segment>
+	<!-- 交易号 -->
+	<xmlTag tagName="TransId">
+		<String name="transId" defaultValue="" />
+	</xmlTag>
+	<!-- 商户号 -->
+	<xmlTag tagName="MerNbr">
+		<String name="merNbr" defaultValue="" />
+	</xmlTag>
+	<!-- 商户流水号 -->
+	<xmlTag tagName="MerSeqNbr">
+		<String name="merSeqNbr" defaultValue="" />
+	</xmlTag>
+		<!-- 商户交易时间 -->
+	<xmlTag tagName="MerTransDateTime">
+		<String name="merTransDateTime" defaultValue="" />
+	</xmlTag>
+		<!-- 原商户流水号 -->
+	<xmlTag tagName="OrigMerSeqNbr">
+		<String name="origMerSeqNbr" defaultValue="" />
+	</xmlTag>
+		<!-- 二级商户号 -->
+	<xmlTag tagName="SubMerchantId">
+		<String name="subMerchantId" defaultValue="" />
+	</xmlTag>
+		<!-- 原商户交易时间 -->
+	<xmlTag tagName="OrigMerDateTime">
+		<String name="origMerDateTime" defaultValue=""  />
+	</xmlTag>
+		<!-- 原二级商户交易时间 -->
+	<xmlTag tagName="OrigSubMerDateTime">
+		<String name="origSubMerDateTime" defaultValue=""  />
+	</xmlTag>
+			<!-- 原二级商户交易流水 -->
+	<xmlTag tagName="OrigSubMerSeqNo">
+		<String name="origSubMerSeqNo" defaultValue="" />
+	</xmlTag>
+			<!-- 原交易金额 -->
+	<xmlTag tagName="OrigTransAmt">
+		<String name="origTransAmt" defaultValue="" />
+	</xmlTag>
+</segment>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE segment SYSTEM "packetutf8.dtd">
+<segment>
+	<xmlTag tagName="ReturnForm">
+		<String name="ReturnForm"></String>
+	</xmlTag>
+	<xmlTag tagName="MerURL1">
+		<String name="MerUrl1"/>
+	</xmlTag>
+	<!-- 二维码地址 -->
+	<xmlTag tagName="CodeUrl">
+		<String name="CodeUrl"></String>
+	</xmlTag>
+	
+	<xmlTag tagName="TransDate">
+		<String name="TransDate"></String>
+	</xmlTag>
+	<xmlTag tagName="TransSeqNo">
+		<String name="TransSeqNbr"/>
+	</xmlTag>
+	<xmlTag tagName="ClearDate">
+		<String name="HostClearDate"></String>
+	</xmlTag>
+	<xmlTag tagName="TransAmt">
+		<String name="TransAmt"></String>
+	</xmlTag>
+	
+	
+</segment>

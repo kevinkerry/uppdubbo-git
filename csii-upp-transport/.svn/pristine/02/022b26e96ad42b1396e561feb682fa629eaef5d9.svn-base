@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:util="http://www.springframework.org/schema/util" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       					   http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+	<bean id="eaccount.identityMapping" class="com.csii.pe.channel.ws.DefaultQNameMapping">
+		<property name="mapping">
+			<props>
+			    <!-- 电子帐户缴费 -->
+				<prop key="{http://com.csii.bank.core/deposit/post}AcctPayment">acctPayment</prop>
+		     	<!-- 电子帐户缴费退款 -->
+				<prop key="{http://com.csii.bank.core/deposit/post}AcctRefundment">acctRefundment</prop>
+			    <prop key="{http://com.csii.bank.core/customer/query}QueryPersonRequest">QueryPerson</prop>
+			    <prop key="{http://com.csii.bank.core/deposit/post}RtxnErrorCorrect">RtxnErrorCorrect</prop>
+				<prop key="{http://com.csii.bank.core/loan}GetAcctAmortSched">queryPettyLoanPayPlanInfo</prop>
+				<prop key="{http://com.csii.bank.core/loan}LoanSchedpmtDetail">querySchedpmtDetail</prop>
+				<prop key="{http://com.csii.bank.core/deposite}queryAcctTranDetail">queryAcctTranDetail</prop>
+				<prop key="{http://com.csii.bank.core/deposite}CreateAcct">CreateAcct</prop>
+				<prop key="{http://com.csii.bank.core/deposite}AcctTransOut">AcctTransOut</prop>
+				<prop key="{http://com.csii.bank.core/deposite}QueryTransDetail">QueryTransDetail</prop>
+				<prop key="{http://com.csii.bank.core/deposit/query}QueryEcAcctTxnHist">QueryEcAcctTxnHist</prop>
+				<prop key="{http://com.csii.bank.core/deposit/query}QueryDirectAcctInfo">queryDirectAcctInfo</prop>
+				<prop key="{http://com.csii.bank.core/itl}AccountRecharge">AccountRecharge</prop>
+				<prop key="{http://com.csii.bank.core/itl/post}AcctItlWithdraw">AcctItlWithdraw</prop>
+				<prop key="{http://com.csii.bank.core/itl/post}AcctItlDep">AcctItlDep</prop>
+				<prop key="{http://com.csii.bank.core/deposite}JCTisSign">JCTisSign</prop>
+				<prop key="{http://com.csii.bank.core/deposite}InsAgreementAcctJCT">InsAgreementAcctJCT</prop>
+				<prop key="{http://com.csii.bank.core/deposite}QueryAcctRegister">QueryAcctRegister</prop>
+				<prop key="{http://com.csii.bank.core/deposit/query}QueryIntelAcctList">IntelAcctListQuery</prop>
+				<prop key="{http://com.csii.bank.core/deposite}AcctHoldDBK">AcctHoldDBK</prop>
+				<prop key="{http://com.csii.bank.core/deposite}AcctUnholdDBK">AcctUnholdDBK</prop>
+				<prop key="{http://com.csii.bank.core/deposite}UpdAgreementAcctJCT">UpdAgreementAcctJCT</prop>
+				<prop
+					key="{http://com.csii.bank.core/deposite}GetPliesRichesEarningsQry">GetPliesRichesEarningsQry</prop>
+				<!--<prop key="{http://com.csii.bank.core/deposite}GetPliesRichesActBalanceQry">GetPliesRichesActBalanceQry</prop> -->
+				<prop key="{http://com.csii.bank.core/deposit/query}QueryIntelAcctInfo">QueryIntelAcctInfo</prop>
+				<prop
+					key="{http://com.csii.bank.core/deposit/query}QueryIntelAcctEarningHist">IntelAcctEarningHistQuery</prop>
+				<prop
+					key="{http://com.csii.bank.core/deposit/query}QueryIntelAcctTxnHist">QueryIntelAcctTxnHist</prop>
+				<prop key="{http://com.csii.bank.core/loan}GetAcctLoanLinesAmt">GetAcctLoanLinesAmt</prop>
+				<prop key="{http://com.csii.bank.core/deposite}InsAgreementAcctCNS">InsAgreementAcctCNS</prop>
+				<prop key="{http://com.csii.bank.core/loan}TerminateAcctLoan">TerminateAcctLoan</prop>
+				<prop key="{http://com.csii.bank.core/loan}PettyLoanSignType">PettyLoanSignType</prop>
+				<prop key="{http://com.csii.bank.core/deposite}PettyLoanSignAmt">PettyLoanSignAmt</prop>
+				<prop key="{http://com.csii.bank.core/loan}LoanAccountDetail">LoanAccountDetail</prop>
+				<prop key="{http://com.csii.bank.core/loan}LoanPayment">LoanPayment</prop>
+				<prop key="{http://com.csii.bank.core/deposite}CnsIsSign">CnsIsSign</prop>
+				<prop key="{http://com.csii.bank.core/deposit/post}PwdValid">PwdValid</prop>
+				<prop key="{http://com.csii.bank.core/deposit/post}UpPwd">UpPwd</prop>
+				<!-- PowerCoreTest Start -->
+				<prop key="{http://com.csii.bank.core/customer/post}CreatePers">CreatePers</prop>
+				<prop key="{http://com.csii.bank.core/deposit/post}CreateDepositAcct">CreateDepositAcct</prop>
+				<prop key="{http://com.csii.bank.core/deposit/post}AcctRecharge">AcctRecharge</prop>
+
+				<prop key="{http://com.csii.bank.core/deposit/post}AcctOuterRecharge">AcctOuterRecharge</prop>
+				<prop key="{http://com.csii.bank.core/deposit/post}AcctInnerWithdrawal">AcctInnerWithdrawal</prop>
+				<prop key="{http://com.csii.bank.core/deposit/post}AcctOuterWithdrawal">AcctOuterWithdrawal</prop>
+				<prop key="{http://com.csii.bank.core/deposit/post}AcctDeposit">AcctDeposit</prop>
+				<prop key="{http://com.csii.bank.core/deposit/post}AcctWithdrawal">AcctWithdrawal</prop>
+				<prop key="{http://com.csii.bank.core/deposit/post}AcctTransfer">AcctTransfer</prop>
+				<prop key="{http://com.csii.bank.core/deposit/post}AcctHold">AcctHold</prop>
+				<prop key="{http://com.csii.bank.core/deposit/post}AcctUnhold">AcctUnhold</prop>
+<!-- 				<prop key="{http://com.csii.bank.core/deposit/post}PwdValid">PwdValid_PowerCore</prop>
+				<prop key="{http://com.csii.bank.core/deposit/post}UpPwd">UpPwd_PowerCore</prop> -->
+				<prop key="{http://com.csii.bank.core/loan/post}PayOffToWth">PayOffToWth</prop>
+				<prop key="{http://com.csii.bank.core/loan/post}CreateLoanAcct">CreateLoanAcct</prop>
+				<prop key="{http://com.csii.bank.core/loan/post}LoanDisb">LoanDisb</prop>
+				<prop key="{http://com.csii.bank.core/loan/post}LoanSchedPmt">LoanSchedPmt</prop>
+				<prop key="{http://com.csii.bank.core/loan/post}DepInnerToLoanSpmt">DepInnerToLoanSpmt</prop>
+				<prop key="{http://com.csii.bank.core/deposit/post}IntCreditPosting">IntCreditPosting</prop>
+				<prop key="{http://com.csii.bank.core/loan/post}LoanDisbToDepAcct">LoanDisbToDepAcct</prop>
+				<prop key="{http://com.csii.bank.core/system/post}NextBussDayRequest">NextBussDayRequest</prop>
+				<prop key="{http://com.csii.bank.core/deposit/query}QueryAgreementAcct">queryAgreementAcct</prop>
+				<prop key="{http://com.csii.bank.core/batch}RunQue">RunQue</prop>
+				<prop key="{http://com.csii.bank.core/batch}QueList">QueList</prop>
+				<prop key="{http://com.csii.bank.core/deposit/post}SignAgreementAcct">SignAgreementAcct</prop>
+				<prop
+					key="{http://com.csii.bank.core/deposit/post}TerminateAgreementAcct">TerminateAgreementAcct</prop>
+				<prop key="{http://com.csii.bank.core/deposit/post}CreateIntelAcct">CreateIntelAcct</prop>
+				<prop key="{http://com.csii.bank.core/deposit/post}ChangeAttachedCard">ChangeAttachedCard</prop>
+				<prop key="{http://com.csii.bank.core/deposite}InsCustomerApply">InsCustomerApply</prop>
+				<prop key="{http://com.csii.bank.core/deposite}GetApplyInfo">GetApplyInfo</prop>
+				<prop key="{http://com.csii.bank.core/loan/post}LoanConsumeExtend">LoanConsumeExtend</prop>
+				<prop key="{http://com.csii.bank.core/itl/post}DepositOnCreditAcct">DepositOnCreditAcct</prop>
+				<prop key="{http://com.csii.bank.core/itl/post}ReturnRemittance">ReturnRemittance</prop>
+				<!-- 缴费应付 -->
+				<prop key="{http://com.csii.bank.core/itl/post}ItlPayment">itlPayment</prop>
+		     	<!-- 缴费应收 -->
+				<prop key="{http://com.csii.bank.core/itl/post}ItlRefundment">itlRefundment</prop>
+				<prop key="{http://com.csii.bank.core/deposit/post}PostSuspendRtxn">PostSuspendRtxn</prop>
+				<prop key="{http://com.csii.bank.core/deposit/query}QueryEcAcctTxn">QueryEcAcctTxn</prop>
+				<!-- 基金申购 -->
+				<prop key="{http://com.csii.bank.core/deposit/post}AcctFundPurchases">AcctFundPurchases</prop>
+				<!-- 基金赎回 -->
+				<prop key="{http://com.csii.bank.core/deposit/post}AcctFundRedemption">acctFundRedemption</prop>
+				
+				<prop key="{http://com.csii.bank.core/loan/query}CreditLoanQueryLimitAmt">CreditLoanQueryLimitAmt</prop>
+				<prop key="{http://com.csii.bank.core/loan/query}AcctCCQueryLimitAmt">AcctCCQueryLimitAmt</prop>
+				<prop key="{http://com.csii.bank.core/loan/post}CreditLoanConsume">CreditLoanConsume</prop>
+				<prop key="{http://com.csii.bank.core/loan/post}CCConsume">CCConsume</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="eaccount.messageFactory" class="com.csii.pe.channel.ws.AxiomSoapMessageFactory2">
+		<property name="payloadCaching" value="true" />
+		<property name="charsetEncoding" value="UTF-8" />
+	</bean>
+	
+	<bean id="eaccount.serviceManager" class="com.csii.pe.dynamic.channel.ws.DynamicServiceManager">
+		<property name="identityValue" value="*" />
+		<property name="importServiceDefinition" value="true" />
+		<property name="useSdo" value="true" />
+		<property name="useToDataDefault" value="false" />
+		<property name="useToSdoDefault" value="false" />
+		<property name="outputNull" value="false" />
+		<property name="dataFlatting" value="false" />
+	</bean>
+
+	<bean id="eaccount.sdoMarshaller" class="com.csii.upp.transport.ws.SdoMarshaller">
+		<property name="serviceManager" ref="eaccount.serviceManager" />
+		<property name="serverSide" value="false" />
+		<property name="validation" value="false" />
+		<property name="validationOnMarshalling" value="false" />
+	</bean>
+
+	<bean id="eaccount.webServiceTransport" class="com.csii.pe.channel.ws.client.CustomWebServiceGateway">
+		<constructor-arg ref="eaccount.messageFactory" />
+		<property name="serviceManager" ref="eaccount.serviceManager" />
+		<property name="marshaller" ref="eaccount.sdoMarshaller" />
+		<property name="identityName" value="transCode" />
+		<property name="identityMapping" ref="eaccount.identityMapping" />
+		<property name="defaultUri" value="http://localhost:8080/ws/" />
+		<property name="interceptors">
+			<list>
+				<bean class="com.csii.pe.channel.ws.client.PayloadLoggerClientInterceptor" />
+			</list>
+		</property>
+		<property name="messageSender">
+			<bean
+				class="org.springframework.ws.transport.http.CommonsHttpMessageSender">
+				<property name="connectionTimeout" value="6000" />
+				<property name="readTimeout" value="0" />
+			</bean>
+		</property>
+	</bean>
+</beans>

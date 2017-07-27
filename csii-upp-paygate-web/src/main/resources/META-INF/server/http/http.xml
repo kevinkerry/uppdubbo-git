@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spring:beans xmlns:spring="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.csii.com.cn/schema/pe"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd 
+	http://www.csii.com.cn/schema/pe http://www.csii.com.cn/schema/pe/pe-config.xsd">
+
+	<config>
+		<!-- URL Mapping -->
+<!-- 		<urlMapping id="urlMapping">
+			<param name="order">0</param>
+			<param name="defaultHandler">mainControllerAdapter</param>
+			<param name="urlDecode">true</param>
+			<param name="alwaysUseFullPath">false</param>
+			<interceptors>
+				<ref>localeInterceptor</ref>
+			</interceptors>
+			<mappings>
+				<param name="*.do">defaultControllerAdapter</param>
+				<param name="/main">mainControllerAdapter</param>
+				<param name="/app">appControllerAdapter</param>
+				<param name="/qrCode">qrCodeControllerAdapter</param>
+				<param name="/createOrder">qrCodeControllerAdapter</param>
+			</mappings>
+		</urlMapping> -->
+		
+		<bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+			<param name="order">0</param>
+			<param name="defaultHandler">mainControllerAdapter</param>
+			<param name="urlDecode">true</param>
+			<param name="alwaysUseFullPath">false</param>
+			<list name="interceptors">
+				<ref>localeInterceptor</ref>
+			</list>
+			<map name="mappings">
+				<param name="*.do">defaultControllerAdapter</param>
+				<param name="/main">mainControllerAdapter</param>
+				<!--param name="/tenpay">tenpayControllerAdapter</param> -->
+				<!-- <param name="/alipay">alipayControllerAdapter</param> -->
+				<param name="/app">appControllerAdapter</param>
+				<param name="/qrCode">qrCodeControllerAdapter</param>
+				<param name="/createOrder">qrCodeControllerAdapter</param>
+			</map>
+		</bean>
+		
+		
+
+		<httpInterceptor id="localeInterceptor"
+			class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+			<param name="paramName">_locale</param>
+		</httpInterceptor>
+
+		<sharedMap id="constantsMap">
+			<map name="sourceMap">
+			</map>
+		</sharedMap>
+
+		<localeResolver />
+
+		<!-- 卡密支付 -->
+		<bean id="defaultControllerAdapter" class="com.csii.upp.paygate.servlet.HttpMainControllerAdapter">
+			<ref name="controller">defaultController</ref>
+		</bean>
+		<bean id="defaultController" class="com.csii.pe.channel.http.servlet.MainController">
+			<param name="loginView">index</param>
+			<ref name="coreController">coreController</ref>
+			<ref name="constantsMap">constantsMap</ref>
+			<ref name="idResolver">idResolver</ref>
+			<ref name="contextResolver">contextResolver</ref>
+			<ref name="exceptionHandler">defaultExceptionHandler</ref>
+		</bean>
+
+		<bean id="defaultExceptionHandler" class="com.csii.upp.paygate.servlet.HttpViewExceptionHandler">
+			<param name="exceptionMessageCodeAttribute">RespCode</param>
+			<param name="exceptionMessageAttribute">RespMessage</param>
+			<param name="backToInputForValidationError">true</param>
+			<param name="cacheDataForErrorPage">false</param>
+			<ref name="exceptionHandler">exceptionHandler</ref>
+		</bean>
+
+		<!-- mainController适配器 -->
+		<bean id="mainControllerAdapter" class="com.csii.upp.paygate.servlet.HttpMainControllerAdapter">
+			<ref name="controller">mainController</ref>
+		</bean>
+
+		<!-- MVC controller -->
+		<bean id="mainController" class="com.csii.pe.channel.http.servlet.MainController">
+			<param name="loginView">index</param>
+			<ref name="coreController">coreController</ref>
+			<ref name="constantsMap">constantsMap</ref>
+			<ref name="idResolver">mainIdResolver</ref>
+			<ref name="contextResolver">mainContextResolver</ref>
+			<ref name="exceptionHandler">pagateexceptionHandler</ref>
+		</bean>
+
+		<bean id="mainIdResolver" class="com.csii.pe.channel.http.TransactionIdResolver">
+			<param name="idParameterName">TransId</param>
+		</bean>
+
+		<bean id="idResolver" class="com.csii.pe.channel.http.TransactionIdResolver">
+			<param name="idParameterName">transName</param>
+		</bean>
+
+		<bean id="contextResolver"
+			class="com.csii.pe.channel.http.servlet.DefaultContextResolver"></bean>
+
+		<bean id="mainContextResolver" class="com.csii.upp.paygate.servlet.MainContextResolverExtend">
+			<ref name="transformerFactory">xmlParserTransformerFactory</ref>
+			<param name="parserResolverName">xmlPacketParser</param>
+			<param name="defaultTransaction">defaultTransaction</param>
+			<param name="defaultEncoding">UTF-8</param>
+		</bean>
+
+		<bean id="pagateexceptionHandler" class="com.csii.upp.paygate.servlet.HttpViewExceptionHandler">
+			<param name="exceptionMessageCodeAttribute">respCode</param>
+			<param name="exceptionMessageAttribute">respMessage</param>
+			<param name="defaultErrorView">defaultError</param>
+			<param name="defaultPublicErrorView">defaultError</param>
+			<ref name="exceptionHandler">exceptionHandler</ref>
+		</bean>
+
+		<!-- app -->
+		<bean id="appControllerAdapter" class="com.csii.upp.paygate.servlet.HttpMainControllerAdapter">
+			<ref name="controller">appController</ref>
+		</bean>
+
+		<!-- app -->
+		<bean id="qrCodeControllerAdapter" class="com.csii.upp.paygate.servlet.HttpMainControllerAdapter">
+			<ref name="controller">qrCodeController</ref>
+		</bean>
+
+		<bean id="qrCodeController" class="com.csii.pe.channel.http.servlet.MainController">
+			<param name="loginView">index</param>
+			<ref name="coreController">coreController</ref>
+			<ref name="constantsMap">constantsMap</ref>
+			<ref name="idResolver">appIdResolver</ref>
+			<ref name="contextResolver">qrCodeContextResolver</ref>
+			<ref name="exceptionHandler">pagateexceptionHandler</ref>
+		</bean>
+
+		<bean id="qrCodeContextResolver" class="com.csii.upp.paygate.servlet.QrCodeJsonContextResolver">
+			<param name="charset">UTF-8</param>
+			<param name="defaultTransaction">defaultTransaction</param>
+		</bean>
+
+		<bean id="appController" class="com.csii.pe.channel.http.servlet.MainController">
+			<param name="loginView">index</param>
+			<ref name="coreController">coreController</ref>
+			<ref name="constantsMap">constantsMap</ref>
+			<ref name="idResolver">appIdResolver</ref>
+			<ref name="contextResolver">appContextResolver</ref>
+			<ref name="exceptionHandler">pagateexceptionHandler</ref>
+		</bean>
+
+		<bean id="appIdResolver" class="com.csii.pe.channel.http.TransactionIdResolver">
+			<param name="idParameterName">transName</param>
+		</bean>
+
+		<bean id="appContextResolver" class="com.csii.upp.paygate.servlet.AppJsonContextResolver">
+			<param name="charset">UTF-8</param>
+			<param name="defaultTransaction">defaultTransaction</param>
+		</bean>
+
+		<!-- <bean id="httpjsonstreamView" class="com.csii.upp.paygate.servlet.HttpJsonStreamView"> 
+			<param name="contentType">text/plain;charset=UTF-8</param> <param name="charset">UTF-8</param> 
+			<ref name="signature">commonSignature</ref> </bean> -->
+
+		<bean id="mainViewResolver" class="com.csii.pe.channel.http.servlet.HashMapViewResolver">
+			<map name="mapping">
+				<bean name="default" class="com.csii.pe.channel.http.servlet.UrlView">
+					<param name="cacheSeconds">0</param>
+					<param name="prefix">/WEB-INF/</param>
+					<param name="suffix">.jsp</param>
+					<param name="localeMode">0</param>
+					<!-- -1 prefix; 0 none; 1 suffix -->
+					<param name="clientType">false</param>
+					<param name="autoSave">true</param>
+				</bean>
+
+				<bean name="json" class="com.csii.pe.channel.http.servlet.JsonView">
+					<param name="contentType">application/json;charset=UTF-8</param>
+					<param name="jsonField">json</param>
+				</bean>
+
+				<bean name="servlet" class="com.csii.pe.channel.http.servlet.UrlView">
+					<param name="cacheSeconds">0</param>
+					<param name="prefix"></param>
+					<param name="suffix">.do</param>
+					<param name="localeMode">0</param>
+					<!-- -1 prefix; 0 none; 1 suffix -->
+					<param name="clientType">false</param>
+				</bean>
+
+				<bean name="download" class="com.csii.pe.channel.http.servlet.DownloadView">
+				</bean>
+
+				<bean name="stream" class="com.csii.pe.channel.http.servlet.StreamView">
+					<param name="contentType">text/plain;charset=UTF-8</param>
+					<param name="contentField">Content</param>
+				</bean>
+
+				<bean name="excel" class="com.csii.pe.channel.http.servlet.DownloadView">
+					<param name="contentType">application/vnd.ms-excel</param>
+				</bean>
+
+				<bean name="image" class="com.csii.pe.channel.http.servlet.StreamView">
+					<param name="contentType">image/jpeg</param>
+					<param name="contentField">Content</param>
+				</bean>
+
+				<bean name="script" class="com.csii.pe.channel.http.servlet.ScriptView">
+					<param name="fileEncoding">UTF-8</param>
+					<param name="compatiableFlag">true</param>
+					<param name="localeFlag">true</param>
+				</bean>
+
+				<!-- <ref name="jsonStream">httpjsonstreamView</ref> -->
+			</map>
+		</bean>
+	</config>
+</spring:beans>

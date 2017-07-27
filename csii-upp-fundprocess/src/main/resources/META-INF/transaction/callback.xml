@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spring:beans xmlns:spring="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.csii.com.cn/schema/pe"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd 
+	http://www.csii.com.cn/schema/pe http://www.csii.com.cn/schema/pe/pe-config.xsd">
+	<config>
+		<!-- 测试第三方异步回调 -->
+		<transaction id="CABA" template="callbackTemplate">
+			<actions>
+				<ref name="action">TestCallBack</ref>
+			</actions>
+			<channels>
+				<channel type="http">
+					<param name="success">stream,</param>
+				</channel>
+			</channels>
+		</transaction>
+		<action id="TestCallBack"
+			class="com.csii.upp.fundprocess.action.callback.TestCallBackAction" />
+		<!-- 测试银联代收回调 -->
+		<transaction id="UPDS" template="callbackTemplate">
+			<actions>
+				<ref name="action">TestCallBack</ref>
+			</actions>
+			<channels>
+				<channel type="http">
+					<param name="success">stream,</param>
+				</channel>
+			</channels>
+		</transaction>
+
+
+		<!-- 银联代收回调函数 -->
+		<transaction id="UnionPayDSCallBack" template="callbackTemplate">
+			<actions>
+				<ref name="action">UnionPayDSAfterAction</ref>
+			</actions>
+			<channels>
+				<channel type="http">
+					<param name="success">stream,</param>
+				</channel>
+			</channels>
+		</transaction>
+		<action id="UnionPayDSAfterAction"
+			class="com.csii.upp.fundprocess.action.callback.UnionPayDSAfterAction" />
+
+
+		<!-- 银联代付回调函数 -->
+		<transaction id="UnionPayDFCallBack" template="callbackTemplate">
+			<actions>
+				<ref name="action">UnionPayDFAfterAction</ref>
+			</actions>
+			<channels>
+				<channel type="http">
+					<param name="success">stream,</param>
+				</channel>
+			</channels>
+		</transaction>
+		<action id="UnionPayDFAfterAction"
+			class="com.csii.upp.fundprocess.action.callback.UnionPayDFAfterAction" />
+
+		<!-- 他行网银退货成功回调函数 -->
+		<transaction id="UnionPayRefundCallBack" template="callbackTemplate">
+			<actions>
+				<ref name="action">UnionPayRefundAfterAction</ref>
+			</actions>
+			<channels>
+				<channel type="http">
+					<param name="success">stream,</param>
+				</channel>
+			</channels>
+		</transaction>
+		<action id="UnionPayRefundAfterAction"
+			class="com.csii.upp.fundprocess.action.callback.UnionPayRefundAfterAction" />
+
+		<!-- 他行快捷支付接受异步通知 -->
+		<transaction id="UnionPayOtherBankQuickPayCallBack"
+			template="callbackTemplate">
+			<actions>
+				<ref name="action">UnionPayOtherBankQuickPayAfterAction</ref>
+			</actions>
+			<channels>
+				<channel type="http">
+					<param name="success">stream,</param>
+				</channel>
+			</channels>
+		</transaction>
+		<action id="UnionPayOtherBankQuickPayAfterAction"
+			class="com.csii.upp.fundprocess.action.callback.UnionPayOtherBankQuickPayAfterAction" />
+
+		<!-- 微信支付接受异步通知 -->
+		<transaction id="WXZFCallBack" template="callbackTemplate">
+			<actions>
+				<ref name="action">WXZFCallBackAction</ref>
+			</actions>
+			<channels>
+				<channel type="http">
+					<param name="success">stream,</param>
+				</channel>
+			</channels>
+		</transaction>
+		<action id="WXZFCallBackAction"
+			class="com.csii.upp.fundprocess.action.callback.WXZFCallBackAction" />
+
+		<!-- 他行快捷支付开通接受异步通知 -->
+		<transaction id="UnionPayOtherBankQuickPayRegisyterCallBack"
+			template="callbackTemplate">
+			<actions>
+				<ref name="action">UnionPayOtherBankQuickPayRegisyterAfterAction</ref>
+			</actions>
+			<channels>
+				<channel type="http">
+					<param name="success">stream,</param>
+				</channel>
+			</channels>
+		</transaction>
+		<action id="UnionPayOtherBankQuickPayRegisyterAfterAction"
+			class="com.csii.upp.fundprocess.action.callback.UnionPayOtherBankQuickPayRegisyterAfterAction" />
+
+
+		<!-- 网关支付和B2B接受异步通知 -->
+		<transaction id="UnionPayWGCallBack" template="callbackTemplate">
+			<actions>
+				<ref name="action">UnionPayWGAfterAction</ref>
+			</actions>
+			<channels>
+				<channel type="http">
+					<param name="success">stream,</param>
+				</channel>
+			</channels>
+		</transaction>
+		<action id="UnionPayWGAfterAction"
+			class="com.csii.upp.fundprocess.action.callback.UnionPayWGAfterAction" />
+
+		<!-- 消费撤销接受异步通知 -->
+		<transaction id="UnionPayCancelCallBack" template="callbackTemplate">
+			<actions>
+				<ref name="action">UnionPayCancelAfterAction</ref>
+			</actions>
+			<channels>
+				<channel type="http">
+					<param name="success">stream,</param>
+				</channel>
+			</channels>
+		</transaction>
+		<action id="UnionPayCancelAfterAction"
+			class="com.csii.upp.fundprocess.action.callback.UnionPayCancelAfterAction" />
+
+		<!--二维码支付接受异步通知 -->
+		<transaction id="PNTF" template="scanCodecallbackTemplate">
+			<actions>
+				<ref name="action">ScanCodePayNotifyAction</ref>
+			</actions>
+		</transaction>
+		<action id="ScanCodePayNotifyAction"
+			class="com.csii.upp.fundprocess.action.callback.ScanCodePayNotifyAction" />
+	</config>
+</spring:beans>

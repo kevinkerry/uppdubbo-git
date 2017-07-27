@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spring:beans xmlns:spring="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.csii.com.cn/schema/pe"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd 
+	http://www.csii.com.cn/schema/pe http://www.csii.com.cn/schema/pe/pe-config.xsd">
+
+	<config>
+		<!--IPEM为手机wap支付交易码 -->
+		<transaction id="IPEM" template="paygatePayTemplate">
+			<actions>
+				<ref name="action">wapIndexAction</ref>
+			</actions>
+			<channels>
+				<channel type="http">
+
+					<param name="success">mobile/PayGateMobileIndex</param>
+					<param name="success1">mobile/PayGateMobileForCardpwd</param>
+					<param name="success2">mobile/PayGateMobileForFois</param>
+					<param name="error">mobile/PayGateMobileTransfer</param>
+					<param name="success10">mobile/PayGateMobileTransfer</param>
+				</channel>
+			</channels>
+		</transaction>
+		<action id="wapIndexAction" class="com.csii.upp.paygate.action.wap.WapIndexAction">
+		</action>
+
+		<!--手机一码付获取二维码交易码 -->
+		<transaction id="QREM" template="paygatePayTemplate">
+			<actions>
+				<ref name="action">qremAction</ref>
+			</actions>
+			<channels>
+				<channel type="http">
+
+					<param name="success">qrcode/OneCode</param>
+				</channel>
+			</channels>
+		</transaction>
+		<action id="qremAction" class="com.csii.upp.paygate.action.wap.QremCodePayAction">
+		</action>
+
+		<!--手机一码付获取二维码交易码 -->
+		<transaction id="QRCM" template="paygatePayTemplate">
+			<actions>
+				<ref name="action">qrcmAction</ref>
+			</actions>
+			<channels>
+				<channel type="http">
+
+					<param name="success">qrcode/OneCode2</param>
+				</channel>
+			</channels>
+		</transaction>
+		<action id="qrcmAction" class="com.csii.upp.paygate.action.wap.QrcmCodePayAction">
+		</action>
+
+		<!--手机一码付获取二维码交易码 -->
+		<transaction id="check" template="paygatePayTemplate">
+			<actions>
+				<ref name="action">checkAction</ref>
+			</actions>
+			<channels>
+				<channel type="http">
+
+					<param name="success">qrcode/checkBrown</param>
+				</channel>
+			</channels>
+		</transaction>
+		<action id="checkAction" class="com.csii.upp.paygate.action.wap.CheckAction">
+		</action>
+
+		<!--手机一码付获取二维码交易码 -->
+		<transaction id="check1" template="paygatePayTemplate">
+			<actions>
+				<ref name="action">checkAction1</ref>
+			</actions>
+			<channels>
+				<channel type="http">
+
+					<param name="success">qrcode/checkBrown</param>
+				</channel>
+			</channels>
+		</transaction>
+		<action id="checkAction1" class="com.csii.upp.paygate.action.wap.CheckAction1">
+		</action>
+
+		<!--手机一码付统一下单交易码 -->
+		<transaction id="QRCO" template="paygatePayTemplate">
+			<actions>
+				<ref name="action">qrcoAction</ref>
+			</actions>
+			<channels>
+				<channel type="http">
+					<param name="success">json,</param>
+				</channel>
+			</channels>
+		</transaction>
+		<action id="qrcoAction" class="com.csii.upp.paygate.action.wap.QrcoCodePayAction">
+		</action>
+
+		<!--丰收E支付信息查询接口 -->
+		<transaction id="CheckFoisonAcct" template="paygatePayTemplate">
+			<actions>
+				<ref name="action">CheckFoisonAcctAction</ref>
+			</actions>
+			<channels>
+				<channel type="http">
+					<param name="success">mobile/PayGateMobileFoisonTransferConfirm</param>
+					<param name="success1">mobile/PayGateMobileFoisonRegisterLogin</param>
+					<param name="success2">mobile/PayGateMobileFoisonTransfer</param>
+					<param name="error">mobile/PayGateMobileFoisonTransfer</param>
+				</channel>
+			</channels>
+		</transaction>
+
+		<action id="CheckFoisonAcctAction"
+			class="com.csii.upp.paygate.action.wap.CheckFoisonAcctAction" />
+
+		<transaction id="MobileTransferConfirmForFoison" template="paygatePayTemplate">
+			<actions>
+				<ref name="action">MobileTransferConfirmForFoisonAction</ref>
+			</actions>
+			<channels>
+				<channel type="http">
+					<param name="success">mobile/PaygateMobileFosiSucess</param>
+					<param name="success1">mobile/PayGateMobileFoisonTransfer</param>
+					<param name="error">mobile/PayGateMobileFoisonTransfer</param>
+				</channel>
+			</channels>
+		</transaction>
+		<action id="MobileTransferConfirmForFoisonAction"
+			class="com.csii.upp.paygate.action.wap.MobileTransferConfirmForFoisonAction" />
+
+
+
+
+
+		<!--卡信息查询接口 -->
+		<transaction id="CheckCardInfo" template="paygatePayTemplate">
+			<actions>
+				<ref name="action">CheckCardInfoAction</ref>
+			</actions>
+			<channels>
+				<channel type="http">
+					<param name="success2">mobile/PayGateMobileTransferConfirmForDebit</param>
+					<param name="success3">mobile/PayGateMobileTransferConfirmForCredit</param>
+					<param name="error">mobile/PayGateMobileTransfer</param>
+				</channel>
+			</channels>
+		</transaction>
+
+		<action id="CheckCardInfoAction"
+			class="com.csii.upp.paygate.action.wap.CheckCardInfoAction" />
+
+
+		<!--手机wap卡密支付交易 -->
+		<transaction id="MobileTransferConfirm" template="paygatePayTemplate">
+			<actions>
+				<ref name="action">mobileTransferConfirmAction</ref>
+			</actions>
+			<channels>
+				<channel type="http">
+					<param name="success">mobile/PaygateMobileSuccess</param>
+					<param name="error">mobile/PayGateMobileTransfer</param>
+					<param name="success1">mobile/PayGateMobileTransfer</param>
+				</channel>
+			</channels>
+		</transaction>
+		<action id="mobileTransferConfirmAction"
+			class="com.csii.upp.paygate.action.wap.MobileTransferConfirmAction">
+		</action>
+
+		<transaction id="FS01MobileLogin" template="paygatePayTemplate">
+			<actions>
+				<ref name="action">RegisterLogin</ref>
+			</actions>
+			<channels>
+				<channel type="http">
+					<param name="success">mobile/PayGateMobileFoisonRegisterForDebit</param>
+					<param name="success1">mobile/PayGateMobileFoisonRegisterForCredit</param>
+					<param name="success2">mobile/PayGateMobileFoisonTransfer</param>
+					<param name="success10">mobile/PayGateMobileFoisonTransfer</param>
+				</channel>
+			</channels>
+		</transaction>
+
+		<transaction id="FS01MobileConfirm" template="paygatePayTemplate">
+			<actions>
+				<ref name="action">RegisterMobileConfirm</ref>
+			</actions>
+			<channels>
+				<channel type="http">
+					<param name="success">mobile/PaygateMobileFosiSucess</param>
+					<param name="success1">mobile/PayGateMobileFoisonTransfer</param>
+					<param name="error">mobile/PayGateMobileFoisonTransfer</param>
+				</channel>
+			</channels>
+		</transaction>
+
+
+		<action id="RegisterMobileConfirm"
+			class="com.csii.upp.paygate.action.wap.RegisterMobileConfirmAction">
+		</action>
+
+		<!--丰收E支付跨行查询接口 -->
+		<transaction id="CheckFoisonOtherAcct" template="paygatePayTemplate">
+			<actions>
+				<ref name="action">CheckFoisonOtherAcctAction</ref>
+			</actions>
+			<channels>
+				<channel type="http">
+					<param name="success">mobile/PayGateMobileQuickPayPre</param>
+					<param name="success1">mobile/PayGateMobileFoisonRegisterLogin</param>
+					<param name="success2">mobile/PayGateMobileFoisonTransferConfirm</param>
+					<param name="error">mobile/PayGateMobileFoisonTransfer</param>
+				</channel>
+			</channels>
+		</transaction>
+		<action id="CheckFoisonOtherAcctAction"
+			class="com.csii.upp.paygate.action.wap.CheckFoisonOtherAcctAction" />
+
+
+	</config>
+</spring:beans>

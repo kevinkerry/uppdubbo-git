@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE segment SYSTEM "packetutf8.dtd">
+<!-- 借记卡卡密校验接口 -->
+<segment>
+	<xmlTag tagName="CARD_NO">
+		<String name="payeracctnbr" defaultValue=""/>
+	</xmlTag>
+	<xmlTag tagName="CARD_PSWD">
+		<String name="payercardpwd" defaultValue=""/>
+	</xmlTag>
+	<xmlTag tagName="CERT_TYPE">
+		<String name="payeridtypcd" defaultValue=""/>
+	</xmlTag>
+	<xmlTag tagName="CERT_NO">
+		<String name="payeridnbr" defaultValue=""/>
+	</xmlTag>
+	<xmlTag tagName="CHK_BIT">
+		<String name="CHK_BIT" defaultValue="000000000"/>
+	</xmlTag>
+	<xmlTag tagName="CHK_PSWD">
+		<String name="checkpwdflag" defaultValue=""/>
+	</xmlTag>
+</segment>

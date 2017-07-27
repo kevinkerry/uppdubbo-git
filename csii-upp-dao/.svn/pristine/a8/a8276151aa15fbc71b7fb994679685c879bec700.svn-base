@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="INNERPRECLEARFUNDTRANSEXTEND">
+	<resultMap id="InnerfundtransForCheckErrorResultMap" class="java.util.HashMap">
+		<result column="ERRORNBR" property="errornbr" jdbcType="VARCHAR" />
+		<result column="INNERFUNDTRANSNBR" property="innerfundtransnbr" jdbcType="VARCHAR" />
+		<result column="DEBITDOWNTRANSNBR" property="debitdowntransnbr" jdbcType="VARCHAR" />
+		<result column="CREDITDOWNTRANSNBR" property="creditdowntransnbr" jdbcType="VARCHAR" />
+		<result column="TRANSDATE" property="transdate" jdbcType="DATE" />
+		<result column="OVERALLTRANSNBR" property="overalltransnbr" jdbcType="VARCHAR" />
+		<result column="DEALDATE" property="dealdate" jdbcType="DATE" />
+		<result column="DEALSTATUS" property="dealstatus" jdbcType="CHAR" />
+		<result column="CHECKERRORTYP" property="checkerrortyp" jdbcType="VARCHAR" />
+		<result column="TRANSCODE" property="transcode" jdbcType="VARCHAR" />
+		<result column="PAYERACCTNBR" property="payeracctnbr" jdbcType="VARCHAR" />
+		<result column="PAYERNAME" property="payername" jdbcType="VARCHAR" />
+		<result column="PAYEEACCTNBR" property="payeeacctnbr" jdbcType="VARCHAR" />
+		<result column="PAYEENAME" property="payeename" jdbcType="VARCHAR" />
+		<result column="TRANSAMT" property="transamt" jdbcType="DECIMAL" />
+		<result column="CURRENCYCD" property="currencycd" jdbcType="VARCHAR" />
+		<result column="TRANSSTATUS" property="transstatus" jdbcType="CHAR" />
+		<result column="FUNDCHANNELCODE" property="fundchannelcode" jdbcType="VARCHAR" />
+		<result column="ERRORSTATUS" property="errorstatus" jdbcType="CHAR" />
+		<result column="CLEARDATE" property="cleardate" jdbcType="DATE" />
+		<result column="CHECKSTATUS" property="checkstatus" jdbcType="VARCHAR" />
+		<result column="DATELASTMAINT" property="datelastmaint" jdbcType="TIMESTAMP" />
+		<result column="UPPERTRANSDATE" property="uppertransdate" jdbcType="DATE" />
+		<result column="UPPERTRANSTIME" property="uppertranstime" jdbcType="TIMESTAMP" />
+		<result column="UPPERTRANSNBR" property="uppertransnbr" jdbcType="VARCHAR" />
+		<result column="TRANSTIME" property="transtime" jdbcType="TIMESTAMP" />
+		<result column="ORIGUPPERSYSNBR" property="origuppersysnbr" jdbcType="VARCHAR" />
+		<result column="ORIGUPPERTRANSNBR" property="origuppertransnbr" jdbcType="VARCHAR" />
+		<result column="ORIGUPPERTRANSDATE" property="origuppertransdate" jdbcType="DATE" />
+		<result column="ORIGINNERTRANSNBR" property="originnertransnbr" jdbcType="VARCHAR" />
+		<result column="ORIGCLEARDATE" property="origcleardate" jdbcType="DATE" />
+		<result column="FEEAMT" property="feeamt" jdbcType="DECIMAL" />
+		<result column="RETURNCODE" property="returncode" jdbcType="VARCHAR" />
+		<result column="RETURNMSG" property="returnmsg" jdbcType="VARCHAR" />
+		<result column="DOWNTRANSNBR" property="downtransnbr" jdbcType="VARCHAR" />
+		<result column="DOWNTRANSDATE" property="downtransdate" jdbcType="DATE" />
+		<result column="DOWNTRANSTIME" property="downtranstime" jdbcType="TIMESTAMP" />
+		<result column="DOWNSYSNBR" property="downsysnbr" jdbcType="VARCHAR" />
+		<result column="UPPERSYSNBR" property="uppersysnbr" jdbcType="VARCHAR" />
+		<result column="CHECKDATAFLAG" property="checkdataflag" jdbcType="CHAR" />
+	</resultMap>
+
+	<select id="getInnerfundtransForCheckError" resultMap="InnerfundtransForCheckErrorResultMap"
+		parameterClass="java.util.HashMap">
+		select A.ERRORNBR,
+		A.INNERFUNDTRANSNBR, A.DEBITDOWNTRANSNBR, A.CREDITDOWNTRANSNBR,
+		A.TRANSDATE,
+		A.OVERALLTRANSNBR, A.DEALDATE, A.DEALSTATUS, A.CHECKERRORTYP, A.TRANSCODE,
+		A.PAYERACCTNBR,
+		A.PAYERNAME, A.PAYEEACCTNBR, A.PAYEENAME, A.TRANSAMT, A.CURRENCYCD, A.TRANSSTATUS,
+		A.FUNDCHANNELCODE, A.ERRORSTATUS, A.CLEARDATE, A.CHECKSTATUS,
+		A.DATELASTMAINT,
+		B.UPPERTRANSDATE, B.UPPERTRANSTIME, B.UPPERTRANSNBR, B.TRANSTIME, B.ORIGUPPERSYSNBR,
+		B.ORIGUPPERTRANSNBR, B.ORIGUPPERTRANSDATE, B.ORIGINNERTRANSNBR,
+		B.ORIGCLEARDATE, B.FEEAMT,
+		B.RETURNCODE, B.RETURNMSG, B.DOWNTRANSNBR, B.DOWNTRANSDATE, B.DOWNTRANSTIME,
+		B.DOWNSYSNBR,
+		B.UPPERSYSNBR, B.CHECKDATAFLAG from batchcheckerror A
+		left join innerfundtranshist B
+		on A.INNERFUNDTRANSNBR=B.INNERFUNDTRANSNBR
+		where
+		A.INNERFUNDTRANSNBR=#innerfundtransnbr# and A.ERRORNBR=#errornbr#
+	</select>
+	
+	<resultMap id="PreClearCheckResultMap" class="com.csii.upp.dto.extend.PreClearCheckTrans">
+		<result column="INNERFUNDTRANSNBR" property="innerfundtransnbr" jdbcType="VARCHAR" />
+		<result column="OVERALLTRANSNBR" property="overalltransnbr" jdbcType="VARCHAR" />
+		<result column="FUNDCHANNELCODE" property="fundchannelcode" jdbcType="VARCHAR" />
+		<result column="UPPERTRANSDATE" property="uppertransdate" jdbcType="DATE" />
+		<result column="UPPERTRANSTIME" property="uppertranstime" jdbcType="TIMESTAMP" />
+		<result column="TRANSDATE" property="transdate" jdbcType="DATE" />
+		<result column="UPPERTRANSNBR" property="uppertransnbr" jdbcType="VARCHAR" />
+		<result column="TRANSTIME" property="transtime" jdbcType="TIMESTAMP" />
+		<result column="CLEARDATE" property="cleardate" jdbcType="DATE" />
+		<result column="TRANSCODE" property="transcode" jdbcType="VARCHAR" />
+		<result column="PAYERACCTNBR" property="payeracctnbr" jdbcType="VARCHAR" />
+		<result column="PAYERNAME" property="payername" jdbcType="VARCHAR" />
+		<result column="PAYEEACCTNBR" property="payeeacctnbr" jdbcType="VARCHAR" />
+		<result column="PAYEENAME" property="payeename" jdbcType="VARCHAR" />
+		<result column="ORIGUPPERSYSNBR" property="origuppersysnbr" jdbcType="VARCHAR" />
+		<result column="ORIGUPPERTRANSNBR" property="origuppertransnbr" jdbcType="VARCHAR" />
+		<result column="ORIGUPPERTRANSDATE" property="origuppertransdate" jdbcType="DATE" />
+		<result column="ORIGINNERTRANSNBR" property="originnertransnbr" jdbcType="VARCHAR" />
+		<result column="ORIGCLEARDATE" property="origcleardate" jdbcType="DATE" />
+		<result column="CURRENCYCD" property="currencycd" jdbcType="VARCHAR" />
+		<result column="TRANSAMT" property="transamt" jdbcType="DECIMAL" />
+		<result column="FEEAMT" property="feeamt" jdbcType="DECIMAL" />
+		<result column="CHECKSTATUS" property="checkstatus" jdbcType="VARCHAR" />
+		<result column="RETURNCODE" property="returncode" jdbcType="VARCHAR" />
+		<result column="RETURNMSG" property="returnmsg" jdbcType="VARCHAR" />
+		<result column="TRANSSTATUS" property="transstatus" jdbcType="CHAR" />
+		<result column="DOWNTRANSNBR" property="downtransnbr" jdbcType="VARCHAR" />
+		<result column="DOWNTRANSDATE" property="downtransdate" jdbcType="DATE" />
+		<result column="DOWNTRANSTIME" property="downtranstime" jdbcType="TIMESTAMP" />
+		<result column="DOWNSYSNBR" property="downsysnbr" jdbcType="VARCHAR" />
+		<result column="UPPERSYSNBR" property="uppersysnbr" jdbcType="VARCHAR" />
+		<result column="CHECKDATAFLAG" property="checkdataflag" jdbcType="CHAR" />
+		<result column="DOWNTRANSDATE" property="downtransdate" jdbcType="DATE" />
+		<result column="DOWNTRANSCODE" property="downtranscode" jdbcType="VARCHAR" />
+		<result column="DOWNPAYERACCTNBR" property="downpayeracctnbr" jdbcType="VARCHAR" />
+		<result column="DOWNPAYERNAME" property="downpayername" jdbcType="VARCHAR" />
+		<result column="DOWNPAYEEACCTNBR" property="downpayeeacctnbr" jdbcType="VARCHAR" />
+		<result column="DOWNPAYEENAME" property="downpayeename" jdbcType="VARCHAR" />
+		<result column="DOWNCURRENCYCD" property="downcurrencycd" jdbcType="VARCHAR" />
+		<result column="DOWNTRANSAMT" property="downtransamt" jdbcType="DECIMAL" />
+		<result column="DOWNFEEAMT" property="downfeeamt" jdbcType="DECIMAL" />
+		<result column="DOWNCHECKSTATUS" property="downcheckstatus" jdbcType="VARCHAR" />
+		<result column="DOWNTRANSSTATUS" property="downtransstatus" jdbcType="CHAR" />
+		<result column="DOWNEXIST" property="downexist" jdbcType="VARCHAR" />
+		<result column="POINTDATAFLAG" property="pointdataflag" jdbcType="VARCHAR" />
+	</resultMap>
+
+	<select id="getPreClearCheckTrans" resultMap="PreClearCheckResultMap"
+		parameterClass="com.csii.upp.dto.extend.PreClearCheckTrans">
+		select A.INNERFUNDTRANSNBR, A.OVERALLTRANSNBR, A.FUNDCHANNELCODE,
+		A.UPPERTRANSDATE, A.UPPERTRANSTIME,
+		A.TRANSDATE, A.UPPERTRANSNBR, A.TRANSTIME, A.CLEARDATE, A.TRANSCODE,
+		A.PAYERACCTNBR, A.PAYERNAME,
+		A.PAYEEACCTNBR, A.PAYEENAME, A.ORIGUPPERSYSNBR, A.ORIGUPPERTRANSNBR,
+		A.ORIGUPPERTRANSDATE,
+		A.ORIGINNERTRANSNBR, A.ORIGCLEARDATE, A.CURRENCYCD, A.TRANSAMT, A.FEEAMT, A.CHECKSTATUS,
+		A.RETURNCODE,
+		A.RETURNMSG, A.TRANSSTATUS, A.DOWNTRANSNBR, A.DOWNTRANSDATE, A.DOWNTRANSTIME,
+		A.DOWNSYSNBR,
+		A.UPPERSYSNBR,A.CHECKDATAFLAG,B.TRANSDATE as DOWNTRANSDATE,B.TRANSCODE as DOWNTRANSCODE,B.PAYERACCTNBR as
+		DOWNPAYERACCTNBR,B.PAYERNAME as DOWNPAYERNAME,
+		B.PAYEEACCTNBR as DOWNPAYEEACCTNBR,B.PAYEENAME as DOWNPAYEENAME,B.CURRENCYCD as
+		DOWNCURRENCYCD,B.TRANSAMT as DOWNTRANSAMT,B.FEEAMT as DOWNFEEAMT,
+		B.CHECKSTATUS as DOWNCHECKSTATUS,B.TRANSSTATUS as DOWNTRANSSTATUS,'Y'
+		as DOWNEXIST,A.POINTDATAFLAG
+		from innerpreclearfundtrans A, Downsysfundtrans B
+		where A.INNERFUNDTRANSNBR=B.INNERFUNDTRANSNBR
+		and A.FUNDCHANNELCODE=#fundchannelcode:VARCHAR#
+		and A.CHECKSTATUS = #checkstatus:VARCHAR#
+		and B.FUNDCHANNELCODE=#fundchannelcode:VARCHAR#
+		and B.CHECKSTATUS = #checkstatus:VARCHAR#
+		UNION ALL
+		select A.INNERFUNDTRANSNBR, A.OVERALLTRANSNBR, A.FUNDCHANNELCODE,
+		A.UPPERTRANSDATE, A.UPPERTRANSTIME,
+		A.TRANSDATE, A.UPPERTRANSNBR, A.TRANSTIME, A.CLEARDATE, A.TRANSCODE,
+		A.PAYERACCTNBR, A.PAYERNAME,
+		A.PAYEEACCTNBR, A.PAYEENAME, A.ORIGUPPERSYSNBR, A.ORIGUPPERTRANSNBR,
+		A.ORIGUPPERTRANSDATE,
+		A.ORIGINNERTRANSNBR, A.ORIGCLEARDATE, A.CURRENCYCD, A.TRANSAMT, A.FEEAMT, A.CHECKSTATUS,
+		A.RETURNCODE,
+		A.RETURNMSG, A.TRANSSTATUS, A.DOWNTRANSNBR, A.DOWNTRANSDATE, A.DOWNTRANSTIME,
+		A.DOWNSYSNBR,
+		A.UPPERSYSNBR,A.CHECKDATAFLAG,B.TRANSDATE as DOWNTRANSDATE,B.TRANSCODE as DOWNTRANSCODE,B.PAYERACCTNBR as
+		DOWNPAYERACCTNBR,B.PAYERNAME as DOWNPAYERNAME,
+		B.PAYEEACCTNBR as DOWNPAYEEACCTNBR,B.PAYEENAME as DOWNPAYEENAME,B.CURRENCYCD as
+		DOWNCURRENCYCD,B.TRANSAMT as DOWNTRANSAMT,B.FEEAMT as DOWNFEEAMT,
+		B.CHECKSTATUS as DOWNCHECKSTATUS,B.TRANSSTATUS as DOWNTRANSSTATUS,'N'
+		as DOWNEXIST,A.POINTDATAFLAG
+		from innerpreclearfundtrans A left join Downsysfundtrans B on
+		A.INNERFUNDTRANSNBR = B.INNERFUNDTRANSNBR WHERE B.INNERFUNDTRANSNBR is NULL
+		and A.FUNDCHANNELCODE=#fundchannelcode:VARCHAR#
+		and A.CHECKSTATUS = #checkstatus:VARCHAR#
+		order by INNERFUNDTRANSNBR asc
+	</select>
+
+</sqlMap>

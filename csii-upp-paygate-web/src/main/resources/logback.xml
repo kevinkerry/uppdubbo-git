@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration>
+<configuration>
+	<property resource="config/log.properties" />
+	<conversionRule conversionWord="short"
+		converterClass="com.csii.pe.common.logging.ShortLoggerConverter" />
+	<conversionRule conversionWord="count"
+		converterClass="com.csii.pe.common.logging.CountingConverter" />
+	<appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<Pattern>
+			<![CDATA[
+				 %d{yyyy-MM-dd HH:mm:ss.SSS}%t >> %X{BizTrackNo} << [%-5level][%c] %m%n
+			]]>
+			</Pattern>
+		</layout>
+	</appender>
+
+	<appender name="DEBUG"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<Encoding>UTF-8</Encoding>
+		<file>${log.path.paygate}.debug.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${log.path.paygate}-%d{yyyy-MM-dd}.%i.debug.zip
+			</fileNamePattern>
+			<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<maxFileSize>200MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+			<maxHistory>999999</maxHistory>
+		</rollingPolicy>
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<pattern>
+			<![CDATA[
+				 %d{yyyy-MM-dd HH:mm:ss.SSS}%t >> %X{BizTrackNo} << [%-5level][%c] %m%n
+			]]>
+			</pattern>
+		</layout>
+		<filter class="ch.qos.logback.classic.filter.LevelFilter">
+			<level>DEBUG</level>
+		</filter>
+	</appender>
+
+	<appender name="ERROR"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<Encoding>UTF-8</Encoding>
+		<file>${log.path.paygate}.error.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${log.path.paygate}-%d{yyyy-MM-dd}.%i.error.zip
+			</fileNamePattern>
+			<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<maxFileSize>200MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+			<maxHistory>999999</maxHistory>
+		</rollingPolicy>
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<pattern>
+			<![CDATA[
+				 %d{yyyy-MM-dd HH:mm:ss.SSS}%t >> %X{BizTrackNo} << [%-5level][%c] %m%n
+			]]>
+			</pattern>
+		</layout>
+		<filter class="ch.qos.logback.classic.filter.LevelFilter">
+			<level>ERROR</level>
+			<onMatch>ACCEPT</onMatch>
+			<onMismatch>DENY</onMismatch>
+		</filter>
+	</appender>
+
+	<logger name="com.csii.pe.config" additivity="true">
+		<level value="error" />
+	</logger>
+	<logger name="org.springframework.beans" additivity="true">
+		<level value="error" />
+	</logger>
+	<logger name="org.eclipse.jetty.util" additivity="true">
+		<level value="error" />
+	</logger>
+	<logger name="org.eclipse.jetty.webapp" additivity="true">
+		<level value="error" />
+	</logger>
+	<logger name="org.eclipse.jetty.io" additivity="true">
+		<level value="error" />
+	</logger>
+	<logger name="org.apache" additivity="true">
+		<level value="error" />
+	</logger>
+	<logger name="com.alibaba.dubbo.remoting.exchange.support.header.HeartbeatHandler" additivity="true" level="error" />
+	<logger name="com.alibaba.dubbo.remoting.exchange.support.header.HeartBeatTask" additivity="true" level="error" />
+	<root>
+		<level value="${log.root.level}" />
+		<appender-ref ref="CONSOLE" />
+		<appender-ref ref="DEBUG" />
+		<appender-ref ref="ERROR" />
+	</root>
+
+</configuration>

@@ -1,0 +1,9 @@
+#internalName=externalName
+resultStatus=status
+returncode=responseCode
+returnmsg=responseTextMessage
+downrtxndate=workdate
+downrtxnnbr=agentserialno
+#channeltype=sourceId
+#rtxncode=transactionCode
+#rtxnnbr=seqNo

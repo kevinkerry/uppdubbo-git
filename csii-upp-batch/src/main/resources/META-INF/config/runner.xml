@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:util="http://www.springframework.org/schema/util" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       					   http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+	
+	<!--批量运行 -->
+	<bean id="batchRunner" class="com.csii.upp.batch.base.BatchRunner"></bean>
+	<bean id="batchSupportor" class="com.csii.upp.batch.base.BatchSupportor"></bean>
+	<!-- <bean id="batchScheduler" class="com.csii.upp.batch.base.BatchScheduler"/> -->
+ 	<bean id="batchScheduler" class="com.csii.upp.batch.base.BatchScheduler"
+		init-method="init" destroy-method="close">
+		<constructor-arg index="0" ref="quartzScheduler" />
+	</bean>
+	
+	<bean id="quartzTaskExecutor"
+		class="org.springframework.scheduling.quartz.SimpleThreadPoolTaskExecutor">
+		<property name="makeThreadsDaemons" value="true" />
+		<property name="threadCount" value="20" />
+		<property name="threadNamePrefix" value="QUARTZ-TASK-WORKER-" />
+		<property name="waitForJobsToCompleteOnShutdown" value="true" />
+	</bean>
+
+	<bean id="quartzScheduler"
+		class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="schedulerName" value="QUARTZ-TASK-" />
+		<property name="taskExecutor" ref="quartzTaskExecutor" />
+		<property name="jobFactory">
+			<bean class="org.quartz.simpl.PropertySettingJobFactory" />
+		</property>
+		<property name="waitForJobsToCompleteOnShutdown" value="true" />
+		<property name="quartzProperties">
+			<props>
+				<prop key="org.quartz.jobStore.class">org.quartz.simpl.RAMJobStore</prop>
+				<prop key="org.quartz.scheduler.instanceId">AUTO</prop>
+				<prop key="org.quartz.scheduler.skipUpdateCheck">true</prop>
+			</props>
+		</property>
+	</bean>
+</beans>

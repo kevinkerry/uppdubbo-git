@@ -1,0 +1,383 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:p1="http://com.csii.bank.core/batch" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://com.csii.bank.core/batch" targetNamespace="http://com.csii.bank.core/batch">
+  <wsdl:types>
+    <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:base="http://com.csii.bank.core/base" xmlns:batch="http://com.csii.bank.core/batch" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://com.csii.bank.core/batch"><import namespace="http://com.csii.bank.core/base" schemaLocation="base.xsd"/><complexType name="ApplStatusRequestType"><sequence><element ref="base:BaseRequest"/></sequence></complexType><element name="ApplStatus" type="batch:ApplStatusRequestType"/><complexType name="ApplStatusResponseType"><sequence><element ref="base:BaseResponse"/></sequence></complexType><element name="ApplStatusResponse" type="batch:ApplStatusResponseType"/><complexType name="QueStatusRequestType"><sequence><element ref="base:BaseRequest"/></sequence></complexType><element name="QueStatus" type="batch:QueStatusRequestType"/><complexType name="QueStatusResponseType"><sequence><element ref="base:BaseResponse"/></sequence></complexType><element name="QueStatusResponse" type="batch:QueStatusResponseType"/><complexType name="RunApplRequestType"><sequence><element ref="base:BaseRequest"/></sequence></complexType><element name="RunAppl" type="batch:RunApplRequestType"/><complexType name="RunApplResponseType"><sequence><element ref="base:BaseResponse"/></sequence></complexType><element name="RunApplResponse" type="batch:RunApplResponseType"/><complexType name="RunQueRequestType"><sequence><element ref="base:BaseRequest"/><element name="quenbr" type="long"/></sequence></complexType><element name="RunQue" type="batch:RunQueRequestType"/><complexType name="RunQueResponseType"><sequence><element ref="base:BaseResponse"/></sequence></complexType><element name="RunQueResponse" type="batch:RunQueResponseType"/><complexType name="RunTestRequestType"><sequence><element ref="base:BaseRequest"/><element name="cpsratechangecalpercd" type="string"/><element name="cpsmjaccttypcatcd" type="string"/><element name="cpdeffdate" type="date"/></sequence></complexType><element name="RunTest" type="batch:RunTestRequestType"/><complexType name="RunTestResponseType"><sequence><element ref="base:BaseResponse"/></sequence></complexType><element name="RunTestResponse" type="batch:RunTestResponseType"/><complexType name="QueListRequestType"><sequence><element ref="base:BaseRequest"/></sequence></complexType><element name="QueList" type="batch:QueListRequestType"/><complexType name="QueListResponseType"><sequence><element ref="base:BaseResponse"/><element maxOccurs="unbounded" minOccurs="0" name="queAllList" type="batch:queAllType"/></sequence></complexType><element name="QueListResponse" type="batch:QueListResponseType"/><complexType name="QueListByQuedescRequestType"><sequence><element ref="base:BaseRequest"/></sequence></complexType><element name="QueListByQuedesc" type="batch:QueListByQuedescRequestType"/><complexType name="QueListByQuedescResponseType"><sequence><element ref="base:BaseResponse"/><element maxOccurs="unbounded" minOccurs="0" name="queAllList" type="batch:queAllType"/></sequence></complexType><element name="QueListByQuedescResponse" type="batch:QueListByQuedescResponseType"/><complexType name="queAllType"><annotation><documentation>队列列表信息</documentation></annotation><sequence><element name="quenbr" type="long"/><element name="quetypcd" type="string"/><element name="quedesc" type="string"/><element name="datelastmaint" type="date"/><element name="datelastrun" type="date"/><element name="startdatetime" type="date"/><element name="stopdatetime" type="date"/><element name="seqnbr" type="long"/><element name="autorun" type="string"/><element name="cornexperess" type="string"/></sequence></complexType><complexType name="CreateQueRequestType"><sequence><element ref="base:BaseRequest"/><element name="quenbr" type="long"/><element name="quetypcd" type="string"/><element name="quedesc" type="string"/><element name="datelastmaint" type="date"/><element name="datelastrun" nillable="true" type="date"/><element name="startdatetime" nillable="true" type="date"/><element name="stopdatetime" nillable="true" type="date"/><element name="seqnbr" type="long"/><element name="autorun" type="string"/><element name="cornexperess" type="string"/></sequence></complexType><element name="CreateQue" type="batch:CreateQueRequestType"/><complexType name="CreateQueResponseType"><sequence><element ref="base:BaseResponse"/></sequence></complexType><element name="CreateQueResponse" type="batch:CreateQueResponseType"/><complexType name="LoadQueRequestType"><sequence><element ref="base:BaseRequest"/><element name="quenbr" type="long"/></sequence></complexType><element name="LoadQue" type="batch:LoadQueRequestType"/><complexType name="LoadQueResponseType"><sequence><element ref="base:BaseResponse"/><element name="quenbr" type="long"/><element name="quetypcd" type="string"/><element name="quedesc" type="string"/><element name="datelastmaint" type="date"/><element name="datelastrun" nillable="true" type="date"/><element name="startdatetime" nillable="true" type="date"/><element name="stopdatetime" nillable="true" type="date"/><element name="seqnbr" type="long"/><element name="autorun" type="string"/><element name="cornexperess" type="string"/></sequence></complexType><element name="LoadQueResponse" type="batch:LoadQueResponseType"/><complexType name="EditQueRequestType"><sequence><element ref="base:BaseRequest"/><element name="quenbr" type="long"/><element name="quetypcd" type="string"/><element name="quedesc" type="string"/><element name="datelastmaint" type="date"/><element name="datelastrun" type="date"/><element name="startdatetime" type="date"/><element name="stopdatetime" type="date"/><element name="seqnbr" type="long"/><element name="autorun" type="string"/><element name="cornexperess" type="string"/></sequence></complexType><element name="EditQue" type="batch:EditQueRequestType"/><complexType name="EditQueResponseType"><sequence><element ref="base:BaseResponse"/></sequence></complexType><element name="EditQueResponse" type="batch:EditQueResponseType"/><complexType name="DeleteQueRequestType"><sequence><element ref="base:BaseRequest"/><element name="quenbr" type="long"/></sequence></complexType><element name="DeleteQue" type="batch:DeleteQueRequestType"/><complexType name="DeleteQueResponseType"><sequence><element ref="base:BaseResponse"/></sequence></complexType><element name="DeleteQueResponse" type="batch:DeleteQueResponseType"/><complexType name="LoadQueApplInfoRequestType"><sequence><element ref="base:BaseRequest"/><element name="quenbr" type="long"/></sequence></complexType><element name="LoadQueApplInfo" type="batch:LoadQueApplInfoRequestType"/><complexType name="LoadQueApplInfoResponseType"><sequence><element ref="base:BaseResponse"/><element maxOccurs="unbounded" minOccurs="0" name="applList" type="batch:applAllType"/></sequence></complexType><element name="LoadQueApplInfoResponse" type="batch:LoadQueApplInfoResponseType"/><complexType name="applAllType"><annotation><documentation>应用列表信息</documentation></annotation><sequence><element name="quenbr" type="long"/><element name="applnbr" type="long"/><element name="appltypcd" type="string"/><element name="appldesc" type="string"/><element name="seqnbr" type="long"/><element name="appllangcd" type="string"/><element name="applname" type="string"/><element name="applnamesuf" type="string"/><element name="cashboxnbr" type="long"/><element name="cashboxreqdyn" type="string"/><element name="databaserole" type="string"/><element name="databasepswd" type="string"/><element name="datelastmaint" type="date"/><element name="updateyn" type="string"/><element name="acctcyclereqdyn" type="string"/><element name="prtspeccd" type="string"/><element name="inactivedate" type="date"/><element name="prtgrpcd" type="string"/><element name="excludeableyn" type="string"/><element name="batchrepairyn" type="string"/><element name="preapplnbr" type="long"/><element name="systemprocreqdyn" type="string"/><element name="exportapplyn" type="string"/><element name="offlineexportyn" type="string"/><element name="addroverrideyn" type="string"/><element name="excludableapplyn" type="string"/><element name="addrovracctrolecd" type="string"/><element name="prtbacksideyn" type="string"/><element name="overrideapplpath" type="string"/><element name="workflowyn" type="string"/><element name="authitemcd" type="string"/><element name="providerapplnbr" type="long"/><element name="menunbr" type="long"/><element name="nontaxownnoticeyn" type="string"/><element name="paralyn" type="string"/><element name="quotanbr" type="long"/></sequence></complexType><complexType name="CreateQueApplRequestType"><sequence><element ref="base:BaseRequest"/><element name="quenbr" type="long"/><element name="applnbr" type="long"/><element name="quesubnbr" type="long"/><element name="seqnbr" type="long"/><element name="criticalyn" type="string"/><element name="datelastmaint" type="date"/><element name="onyn" type="string"/><element maxOccurs="unbounded" minOccurs="0" name="queapplList" nillable="true" type="batch:queapplAllType"/></sequence></complexType><element name="CreateQueAppl" type="batch:CreateQueApplRequestType"/><complexType name="CreateQueApplResponseType"><sequence><element ref="base:BaseResponse"/></sequence></complexType><element name="CreateQueApplResponse" type="batch:CreateQueApplResponseType"/><complexType name="queapplAllType"><sequence><element name="quenbr" type="long"/><element name="applnbr" type="long"/><element name="quesubnbr" type="long"/><element name="seqnbr" type="long"/><element name="criticalyn" type="string"/><element name="datelastmaint" type="date"/><element name="onyn" type="string"/></sequence></complexType><complexType name="LoadAllBatchApplRequestType"><sequence><element ref="base:BaseRequest"/></sequence></complexType><element name="LoadAllBatchAppl" type="batch:LoadAllBatchApplRequestType"/><complexType name="LoadAllBatchApplResponseType"><sequence><element ref="base:BaseResponse"/><element maxOccurs="unbounded" minOccurs="0" name="applAllList" type="batch:applAllListType"/></sequence></complexType><element name="LoadAllBatchApplResponse" type="batch:LoadAllBatchApplResponseType"/><complexType name="applAllListType"><sequence><element name="applnbr" type="long"/><element name="appltypcd" type="string"/><element name="appldesc" type="string"/><element name="appllangcd" type="string"/><element name="applname" type="string"/><element name="applnamesuf" type="string"/><element name="cashboxnbr" type="long"/><element name="cashboxreqdyn" type="string"/><element name="databaserole" type="string"/><element name="databasepswd" type="string"/><element name="datelastmaint" type="date"/><element name="updateyn" type="string"/><element name="acctcyclereqdyn" type="string"/><element name="prtspeccd" type="string"/><element name="inactivedate" type="date"/><element name="prtgrpcd" type="string"/><element name="excludeableyn" type="string"/><element name="batchrepairyn" type="string"/><element name="preapplnbr" type="long"/><element name="systemprocreqdyn" type="string"/><element name="exportapplyn" type="string"/><element name="offlineexportyn" type="string"/><element name="addroverrideyn" type="string"/><element name="excludableapplyn" type="string"/><element name="addrovracctrolecd" type="string"/><element name="prtbacksideyn" type="string"/><element name="overrideapplpath" type="string"/><element name="workflowyn" type="string"/><element name="authitemcd" type="string"/><element name="providerapplnbr" type="long"/><element name="menunbr" type="long"/><element name="nontaxownnoticeyn" type="string"/><element name="paralyn" type="string"/><element name="quotanbr" type="long"/></sequence></complexType><complexType name="QueApplHistRequestType"><sequence><element ref="base:BaseRequest"/><element name="quenbr" type="long"/></sequence></complexType><element name="QueApplHist" type="batch:QueApplHistRequestType"/><complexType name="QueApplHistResponseType"><sequence><element ref="base:BaseResponse"/><element maxOccurs="unbounded" minOccurs="0" name="queApplHistList" type="batch:queApplHistListType"/></sequence></complexType><element name="QueApplHistResponse" type="batch:QueApplHistResponseType"/><complexType name="queApplHistListType"><annotation><documentation>队列历史状态查询</documentation></annotation><sequence><element ref="base:BaseResponse"/><element name="quenbr" type="long"/><element name="applnbr" type="long"/><element name="quesubnbr" type="long"/><element name="runseqnbr" type="long"/><element name="startdatetime" type="date"/><element name="stopdatetime" type="date"/><element name="runntwknodenbr" type="long"/><element name="datelastmaint" type="date"/><element name="runningstat" type="long"/><element name="rundate" type="date"/></sequence></complexType><complexType name="QueSnapshotRequestType"><sequence><element ref="base:BaseRequest"/></sequence></complexType><element name="QueSnapshot" type="batch:QueSnapshotRequestType"/><complexType name="QueSnapshotResponseType"><sequence><element ref="base:BaseResponse"/><element maxOccurs="unbounded" minOccurs="0" name="queSnapshotlist" type="batch:queSnapshotlist"/></sequence></complexType><element name="QueSnapshotResponse" type="batch:QueSnapshotResponseType"/><complexType name="queSnapshotlist"><sequence><element name="quenbr" type="long"/><element name="quedesc" type="string"/><element name="percent" type="float"/><element name="currcount" type="integer"/><element name="totalcount" type="integer"/><element name="status" type="string"/><element maxOccurs="unbounded" minOccurs="0" name="appllist" type="batch:appllist"/></sequence></complexType><complexType name="appllist"><sequence><element name="applnbr" type="long"/><element name="appldesc" type="string"/><element name="percent" type="float"/><element name="currcount" type="integer"/><element name="totalcount" type="integer"/><element name="status" type="string"/><element maxOccurs="unbounded" minOccurs="0" name="threadlist" type="batch:threadlist"/></sequence></complexType><complexType name="threadlist"><sequence><element name="threadnum" type="long"/><element name="threaddesc" type="string"/><element name="percent" type="float"/><element name="currcount" type="integer"/><element name="totalcount" type="integer"/><element name="status" type="string"/></sequence></complexType></schema>
+  </wsdl:types>
+  <wsdl:message name="EditQue">
+    <wsdl:part element="tns:EditQue" name="EditQue">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="RunQueResponse">
+    <wsdl:part element="tns:RunQueResponse" name="RunQueResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ApplStatusResponse">
+    <wsdl:part element="tns:ApplStatusResponse" name="ApplStatusResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="QueListResponse">
+    <wsdl:part element="tns:QueListResponse" name="QueListResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="QueStatus">
+    <wsdl:part element="tns:QueStatus" name="QueStatus">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="DeleteQueResponse">
+    <wsdl:part element="tns:DeleteQueResponse" name="DeleteQueResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ApplStatus">
+    <wsdl:part element="tns:ApplStatus" name="ApplStatus">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="EditQueResponse">
+    <wsdl:part element="tns:EditQueResponse" name="EditQueResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CreateQueApplResponse">
+    <wsdl:part element="tns:CreateQueApplResponse" name="CreateQueApplResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CreateQueResponse">
+    <wsdl:part element="tns:CreateQueResponse" name="CreateQueResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="QueSnapshot">
+    <wsdl:part element="tns:QueSnapshot" name="QueSnapshot">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="RunQue">
+    <wsdl:part element="tns:RunQue" name="RunQue">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CreateQueAppl">
+    <wsdl:part element="tns:CreateQueAppl" name="CreateQueAppl">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="RunAppl">
+    <wsdl:part element="tns:RunAppl" name="RunAppl">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="LoadQueApplInfoResponse">
+    <wsdl:part element="tns:LoadQueApplInfoResponse" name="LoadQueApplInfoResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="RunApplResponse">
+    <wsdl:part element="tns:RunApplResponse" name="RunApplResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="QueStatusResponse">
+    <wsdl:part element="tns:QueStatusResponse" name="QueStatusResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="LoadQue">
+    <wsdl:part element="tns:LoadQue" name="LoadQue">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="LoadQueApplInfo">
+    <wsdl:part element="tns:LoadQueApplInfo" name="LoadQueApplInfo">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="RunTest">
+    <wsdl:part element="tns:RunTest" name="RunTest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="QueApplHistResponse">
+    <wsdl:part element="tns:QueApplHistResponse" name="QueApplHistResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="QueList">
+    <wsdl:part element="tns:QueList" name="QueList">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="QueApplHist">
+    <wsdl:part element="tns:QueApplHist" name="QueApplHist">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CreateQue">
+    <wsdl:part element="tns:CreateQue" name="CreateQue">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="QueListByQuedesc">
+    <wsdl:part element="tns:QueListByQuedesc" name="QueListByQuedesc">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="RunTestResponse">
+    <wsdl:part element="tns:RunTestResponse" name="RunTestResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="QueSnapshotResponse">
+    <wsdl:part element="tns:QueSnapshotResponse" name="QueSnapshotResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="DeleteQue">
+    <wsdl:part element="tns:DeleteQue" name="DeleteQue">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="LoadAllBatchApplResponse">
+    <wsdl:part element="tns:LoadAllBatchApplResponse" name="LoadAllBatchApplResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="QueListByQuedescResponse">
+    <wsdl:part element="tns:QueListByQuedescResponse" name="QueListByQuedescResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="LoadAllBatchAppl">
+    <wsdl:part element="tns:LoadAllBatchAppl" name="LoadAllBatchAppl">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="LoadQueResponse">
+    <wsdl:part element="tns:LoadQueResponse" name="LoadQueResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="BatchServicePortType">
+    <wsdl:operation name="CreateQueAppl">
+      <wsdl:input message="tns:CreateQueAppl" name="CreateQueAppl">
+    </wsdl:input>
+      <wsdl:output message="tns:CreateQueApplResponse" name="CreateQueApplResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RunAppl">
+      <wsdl:input message="tns:RunAppl" name="RunAppl">
+    </wsdl:input>
+      <wsdl:output message="tns:RunApplResponse" name="RunApplResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoadQueApplInfo">
+      <wsdl:input message="tns:LoadQueApplInfo" name="LoadQueApplInfo">
+    </wsdl:input>
+      <wsdl:output message="tns:LoadQueApplInfoResponse" name="LoadQueApplInfoResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoadQue">
+      <wsdl:input message="tns:LoadQue" name="LoadQue">
+    </wsdl:input>
+      <wsdl:output message="tns:LoadQueResponse" name="LoadQueResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoadAllBatchAppl">
+      <wsdl:input message="tns:LoadAllBatchAppl" name="LoadAllBatchAppl">
+    </wsdl:input>
+      <wsdl:output message="tns:LoadAllBatchApplResponse" name="LoadAllBatchApplResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteQue">
+      <wsdl:input message="tns:DeleteQue" name="DeleteQue">
+    </wsdl:input>
+      <wsdl:output message="tns:DeleteQueResponse" name="DeleteQueResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RunQue">
+      <wsdl:input message="tns:RunQue" name="RunQue">
+    </wsdl:input>
+      <wsdl:output message="tns:RunQueResponse" name="RunQueResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueSnapshot">
+      <wsdl:input message="tns:QueSnapshot" name="QueSnapshot">
+    </wsdl:input>
+      <wsdl:output message="tns:QueSnapshotResponse" name="QueSnapshotResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueStatus">
+      <wsdl:input message="tns:QueStatus" name="QueStatus">
+    </wsdl:input>
+      <wsdl:output message="tns:QueStatusResponse" name="QueStatusResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueListByQuedesc">
+      <wsdl:input message="tns:QueListByQuedesc" name="QueListByQuedesc">
+    </wsdl:input>
+      <wsdl:output message="tns:QueListByQuedescResponse" name="QueListByQuedescResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ApplStatus">
+      <wsdl:input message="tns:ApplStatus" name="ApplStatus">
+    </wsdl:input>
+      <wsdl:output message="tns:ApplStatusResponse" name="ApplStatusResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueList">
+      <wsdl:input message="tns:QueList" name="QueList">
+    </wsdl:input>
+      <wsdl:output message="tns:QueListResponse" name="QueListResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueApplHist">
+      <wsdl:input message="tns:QueApplHist" name="QueApplHist">
+    </wsdl:input>
+      <wsdl:output message="tns:QueApplHistResponse" name="QueApplHistResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RunTest">
+      <wsdl:input message="tns:RunTest" name="RunTest">
+    </wsdl:input>
+      <wsdl:output message="tns:RunTestResponse" name="RunTestResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EditQue">
+      <wsdl:input message="tns:EditQue" name="EditQue">
+    </wsdl:input>
+      <wsdl:output message="tns:EditQueResponse" name="EditQueResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateQue">
+      <wsdl:input message="tns:CreateQue" name="CreateQue">
+    </wsdl:input>
+      <wsdl:output message="tns:CreateQueResponse" name="CreateQueResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BatchServicePortTypeSoap11" type="tns:BatchServicePortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="CreateQueAppl">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="CreateQueAppl">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="CreateQueApplResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RunAppl">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="RunAppl">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="RunApplResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoadQueApplInfo">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="LoadQueApplInfo">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="LoadQueApplInfoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoadQue">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="LoadQue">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="LoadQueResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoadAllBatchAppl">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="LoadAllBatchAppl">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="LoadAllBatchApplResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteQue">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="DeleteQue">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="DeleteQueResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RunQue">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="RunQue">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="RunQueResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueSnapshot">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="QueSnapshot">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="QueSnapshotResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueStatus">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="QueStatus">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="QueStatusResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueListByQuedesc">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="QueListByQuedesc">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="QueListByQuedescResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ApplStatus">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="ApplStatus">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="ApplStatusResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueList">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="QueList">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="QueListResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueApplHist">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="QueApplHist">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="QueApplHistResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RunTest">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="RunTest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="RunTestResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EditQue">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="EditQue">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="EditQueResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateQue">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="CreateQue">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="CreateQueResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="BatchService">
+    <wsdl:port binding="tns:BatchServicePortTypeSoap11" name="BatchServicePortTypeSoap11">
+      <soap:address location="http://127.0.0.1:8099/batchService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

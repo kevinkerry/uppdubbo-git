@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE segment SYSTEM "packetutf8.dtd">
+<segment>
+	<!-- 商户号 -->
+	 <xmlTag tagName="MerNbr"><String name="merNbr"/></xmlTag>
+	<!-- 交易金额 -->
+	 <xmlTag tagName="TransAmt"><String name="transAmt"/></xmlTag>
+	<!-- 扫码模式-->
+	 <xmlTag tagName="ScanCodeMode"><String name="scanCodeMode" /></xmlTag>
+	 <!-- 二维码类型-->
+	 <xmlTag tagName="CodeTypCd"><String name="codeTypCd" /></xmlTag>
+	 <!-- 打折金额-->
+	 <xmlTag tagName="Discountableamt"><BigDecimal name="discountableamt" /></xmlTag> 
+	 <!-- 是否支持信用卡 -->
+	 <xmlTag tagName="IsCredit"><String name="isCredit"/></xmlTag>
+	 <!-- 原二维码订单号 -->
+	 <xmlTag tagName="Qrcodeordernbr"><String name="qrcodeordernbr"/></xmlTag>
+	 <!-- 订单开始时间 -->
+	 <xmlTag tagName="TimeStart"><String name="timeStart"/></xmlTag>
+	 <!-- 订单截止时间 -->
+	 <xmlTag tagName="TimeExpire"><String name="timeExpire"/></xmlTag>
+	 <!-- 终端IP-->
+	 <xmlTag tagName="CustomerIp"><String name="customerIp"/></xmlTag>
+	 <!-- 商品信息列表-->
+	 <xmlTag tagName="ProductInfoDetail"><String name="productInfoDetail"/></xmlTag>
+	 <!-- 商品编号-->
+	 <xmlTag tagName="ProductId"><String name="productId"/></xmlTag>
+	 <!-- 商品描述 -->
+	 <xmlTag tagName="ProBody"><String name="proBody" /></xmlTag>
+	 <!-- 商品标题-->
+	 <xmlTag tagName="Subject"><String name="subject" /></xmlTag>
+	 <!-- 商户操作号-->
+	 <xmlTag tagName="OperatorId"><String name="operatorId" /></xmlTag>
+	 <!-- 商户门店号-->
+	 <xmlTag tagName="StoreId"><String name="storeId" /></xmlTag>
+	 <!-- 微信终端号-->
+	 <xmlTag tagName="TermId"><String name="termId" /></xmlTag>
+	 <!-- 允许付款时间-->
+	 <xmlTag tagName="TimeoutExpress"><String name="timeoutExpress" /></xmlTag>
+	 <!-- 支付宝门店号-->
+	 <xmlTag tagName="AlipayStoreId"><String name="alipayStoreId" /></xmlTag>
+	  <!-- 子商户交易列表 -->
+	 <xmlTag tagName="MerTransList">
+	    <idxField name="merTransList" maxLoop="9999999">
+			<Group name="MerTransDetail">
+		   		<xmlTag><String name="SubMerchantId" /></xmlTag>
+	   		    <xmlTag><String name="MerName" /></xmlTag>
+	   		    <xmlTag><String name="ThirdMerNbr" /></xmlTag>
+	   		    
+			</Group>
+		</idxField>
+	</xmlTag> 
+</segment>

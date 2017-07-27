@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE segment SYSTEM "packetutf8.dtd">
+<segment>
+	<xmlTag tagName="SubMerchantId">
+		<String name="subMerchantId" />
+	</xmlTag>
+	<!-- 商户号 -->
+	<xmlTag tagName="MerNbr">
+		<String name="merNbr" />
+	</xmlTag>
+	<xmlTag tagName="MerStatus">
+		<String name="merStatus" />
+	</xmlTag>
+	<xmlTag tagName="MerCifNbr">
+		<String name="merCifNbr" />
+	</xmlTag>
+	<!-- 商户名 -->
+	<xmlTag tagName="MerName">
+		<String name="merName" />
+	</xmlTag>
+	<xmlTag tagName="MerMngDeptNbr">
+		<String name="merMngDeptNbr" />
+	</xmlTag>
+	<xmlTag tagName="MerOpenDeptNbr">
+		<String name="merOpenDeptNbr" />
+	</xmlTag>
+	<xmlTag tagName="MerDevelopDeptNbr">
+		<String name="merDevelopDeptNbr" />
+	</xmlTag>
+	<xmlTag tagName="SettleAcctNbr">
+		<String name="settleAcctNbr" />
+	</xmlTag>
+	<xmlTag tagName="SettleAcctName">
+		<String name="settleAcctName" />
+	</xmlTag>
+
+	<xmlTag tagName="FeeAcctNbr">
+		<String name="feeAcctNbr" />
+	</xmlTag>
+	<xmlTag tagName="FeeAcctName">
+		<String name="feeAcctName" />
+	</xmlTag>
+	<xmlTag tagName="BailAcctNbr">
+		<String name="bailAcctNbr" />
+	</xmlTag>
+	<xmlTag tagName="BailAmt">
+		<String name="bailAmt" />
+	</xmlTag>
+	<xmlTag tagName="MerThirdPartAcctno">
+		<String name="MerThirdPartAcctno" />
+	</xmlTag>
+	
+	<xmlTag tagName="SettMode">
+		<String name="settMode" />
+	</xmlTag>
+	<xmlTag tagName="SettPeriod">
+		<String name="settPeriod" />
+	</xmlTag>
+	
+	<xmlTag tagName="FeeMode">
+		<String name="feeMode" />
+	</xmlTag>
+
+	<xmlTag tagName="FeeReturnFlag">
+		<String name="feeReturnFlag" />
+	</xmlTag>
+	<xmlTag tagName="MerOpenDate">
+		<String name="merOpenDate" />
+	</xmlTag>
+	<xmlTag tagName="OpenUserNbr">
+		<String name="openUserNbr" />
+	</xmlTag>
+	<xmlTag tagName="MerModifyDate">
+		<String name="merModifyDate" />
+	</xmlTag>
+	<xmlTag tagName="ModifyUserNbr">
+		<String name="modifyUserNbr" />
+	</xmlTag>
+	<xmlTag tagName="MerCloseDate">
+		<String name="merCloseDate" />
+	</xmlTag>
+	<xmlTag tagName="CloseUser">
+		<String name="closeUser" />
+	</xmlTag>
+	<xmlTag tagName="MerPlatformNbr">
+		<String name="merPlatformNbr" />
+	</xmlTag>
+	<xmlTag tagName="VirtualAcctNbr">
+		<String name="virtualAcctNbr" />
+	</xmlTag>
+	<xmlTag tagName="FeeSettPeriod">
+		<String name="feeSettPeriod" />
+	</xmlTag>
+	<xmlTag tagName="CalculateParam">
+		<String name="calculateParam" />
+	</xmlTag>
+	<xmlTag tagName="LowerLimitVal">
+		<String name="lowerLimitVal" />
+	</xmlTag>
+	<xmlTag tagName="UpperLimitVal">
+		<String name="upperLimitVal" />
+	</xmlTag>
+	<xmlTag tagName="PayModeCd">
+		<String name="payModeCd" />
+	</xmlTag>
+	<xmlTag tagName="CardTypeCd">
+		<String name="cardTypeCd" />
+	</xmlTag>
+	
+	<xmlTag tagName="ProfitSeqNbr">
+		<String name="profitSeqNbr" />
+	</xmlTag>
+	<xmlTag tagName="ProfitMode">
+		<String name="profitMode" />
+	</xmlTag>
+	<xmlTag tagName="ProfitPayEropenAmt">
+		<String name="profitPayEropenAmt" />
+	</xmlTag>
+	<xmlTag tagName="ProfitMerOpenAmt">
+		<String name="profitMerOpenAmt" />
+	</xmlTag>
+	<xmlTag tagName="ProfitMerDevelopAmt">
+		<String name="profitMerDevelopAmt" />
+	</xmlTag>
+	<xmlTag tagName="ProfitHeadBankAmt">
+		<String name="profitHeadBankAmt" />
+	</xmlTag>
+	<xmlTag tagName="ProfitThirdPartAmt">
+		<String name="profitThirdPartAmt" />
+	</xmlTag>
+	<xmlTag tagName="PayeeAcctNbr">
+		<String name="payeeAcctNbr" />
+	</xmlTag>
+	<xmlTag tagName="PayeeAcctName">
+		<String name="payeeAcctName" />
+	</xmlTag>
+	<xmlTag tagName="PayeeBankNbr">
+		<String name="payeeBankNbr" />
+	</xmlTag>
+	
+	<xmlTag tagName="InnerAcctCfmMode">
+		<String name="innerAcctCfmMode" />
+	</xmlTag>
+	<xmlTag tagName="AcctKind">
+		<String name="payeeAcctKind" />
+	</xmlTag>
+	<!-- 同步标识 -->
+	<xmlTag tagName="ProxySynType">
+		<String name="proxySynType" />
+	</xmlTag>
+	<!-- 同步状态 -->
+	<xmlTag tagName="ProxySynStatus">
+		<String name="proxySynStatus" />
+	</xmlTag>
+	<!-- 二维码商户名称 -->
+	<xmlTag tagName="MertName">
+		<String name="mertName" />
+	</xmlTag>
+	<!-- 商户简称 -->
+	<xmlTag tagName="MerShortName">
+		<String name="merShortName" />
+	</xmlTag>
+	<!-- 客服电话 -->
+	<xmlTag tagName="ServicePhone">
+		<String name="servicePhone" />
+	</xmlTag>
+	<!-- 联系人名称 -->
+	<xmlTag tagName="ContactName">
+		<String name="contactName" />
+	</xmlTag>
+	<!-- 联系人电话 -->
+	<xmlTag tagName="ContactMobile">
+		<String name="contactMobile" />
+	</xmlTag>
+	<!-- 联系人手机号 -->
+	<xmlTag tagName="ContactPhone">
+		<String name="contactPhone" />
+	</xmlTag>
+	<!-- 联系人邮箱 -->
+	<xmlTag tagName="ContactEmail">
+		<String name="contactEmail" />
+	</xmlTag>
+	<!-- 经营类目 -->
+	<xmlTag tagName="Business">
+		<String name="business" />
+	</xmlTag>
+	<!-- 商户备注 -->
+	<xmlTag tagName="MerRemark">
+		<String name="merRemark" />
+	</xmlTag>
+</segment>

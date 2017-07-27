@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE segment SYSTEM "packetutf8.dtd">
+<!-- 卡号手机号错误次数验证 -->
+<segment>
+	<!-- 查询标志 -->
+	<xmlTag tagName="QueryFlag">
+		<String name="queryFlag" />
+	</xmlTag>
+	<!-- 付款账户号 -->
+	<xmlTag tagName="PayerAcctNbr">
+		<String name="card" />
+	</xmlTag>
+	<!-- 手机号 -->
+	<xmlTag tagName="PayerPhoneNo">
+		<String name="phone" />
+	</xmlTag>
+	
+</segment>

@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spring:beans xmlns:spring="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.csii.com.cn/schema/pe"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd 
+	http://www.csii.com.cn/schema/pe http://www.csii.com.cn/schema/pe/pe-config.xsd">
+
+	<config>
+		<sharedMap id="fundProcessServiceMapping">
+			<map name="sourceMap">
+				<ref name="fee">feeService</ref>
+				<ref name="router">routerService</ref>
+				<!--约定：此key必须和资金通道表的资金通道码转化为小写字母相同 -->
+				<ref name="eaccount">eaccountService</ref>
+				<ref name="bill99">bill99Service</ref>
+				<ref name="cnaps2">cnaps2Service</ref>
+				<ref name="core">coreService</ref>
+				<ref name="ibps">ibpsService</ref>
+				<ref name="pbc">pbcService</ref>
+				<ref name="hvps">hvpsService</ref>
+				<ref name="beps">bepsService</ref>
+				<ref name="dpc">dpcService</ref>
+				<ref name="unionpay">unionPayService</ref>
+				<ref name="unionpayds1">unionPayService</ref>
+				<ref name="unionpayds2">unionPayService</ref>
+				<ref name="unionpaydf">unionPayService</ref>
+				<ref name="paym">paymService</ref>
+				<ref name="jfwg">pointService</ref>
+				<ref name="alipaycode">aliPayService</ref>
+				<ref name="alipay">aliPayService</ref>
+				<ref name="wechatcode">wechatService</ref>
+				<ref name="cicc">ciccService</ref>
+				<ref name="qsop">qsopService</ref>
+
+			</map>
+		</sharedMap>
+
+		<bean id="feeService" class="com.csii.upp.service.FeeService" />
+		<bean id="routerService" class="com.csii.upp.service.fundprocess.AutoRouterService">
+		</bean>
+		<bean id="eaccountService" class="com.csii.upp.service.fundprocess.EAccountService">
+			<!-- 日间异常最大处理次数 -->
+			<param name="expHandleMaxTimes">1</param>
+			<param name="mappingConfig">/META-INF/config/router/eaccount-mapping.properties</param>
+			<!-- <ref name="transport">eaccount.webServiceTransport</ref> -->
+			<ref name="transport">dummyTransport</ref>
+		</bean>
+		<bean id="bill99Service" class="com.csii.upp.service.fundprocess.Bill99Service">
+			<!-- 日间异常最大处理次数 -->
+			<param name="expHandleMaxTimes">1</param>
+			<!-- 不发送出去做档版 -->
+			<ref name="transport">dummyTransport</ref>
+		</bean>
+		<bean id="cnaps2Service" class="com.csii.upp.service.fundprocess.Cnaps2Service">
+			<!-- 日间异常最大处理次数 -->
+			<param name="expHandleMaxTimes">1</param>
+			<!-- 不发送出去做档版 -->
+			<ref name="transport">dummyTransport</ref>
+		</bean>
+		<bean id="coreService" class="com.csii.upp.service.fundprocess.CoreService">
+			<!-- 日间异常最大处理次数 -->
+			<param name="expHandleMaxTimes">1</param>
+			<param name="mappingConfig">/META-INF/config/router/core-mapping.properties</param>
+			<ref name="transport">dummyTransport</ref>
+			<!-- <ref name="transport">esb.transformTransport</ref> -->
+			<!-- <ref name="transport">dubbo.transformTransport</ref> -->
+
+		</bean>
+		<!-- 超级网银 -->
+		<bean id="ibpsService" class="com.csii.upp.service.fundprocess.IbpsService">
+			<!-- 日间异常最大处理次数 -->
+			<param name="expHandleMaxTimes">1</param>
+			<param name="mappingConfig">/META-INF/config/router/ibps-mapping.properties</param>
+			<!-- 不发送出去做档版 -->
+			<ref name="transport">dummyTransport</ref>
+			<!-- <ref name="transport">esb.transformTransport</ref> -->
+		</bean>
+		<bean id="pbcService" class="com.csii.upp.service.fundprocess.PbcService">
+			<!-- 日间异常最大处理次数 -->
+			<param name="expHandleMaxTimes">1</param>
+			<!-- 不发送出去做档版 -->
+			<ref name="transport">dummyTransport</ref>
+			<param name="mappingConfig">/META-INF/config/router/pbc-mapping.properties</param>
+			<!-- <ref name="transport">esb.transformTransport</ref> -->
+		</bean>
+		<bean id="hvpsService" class="com.csii.upp.service.fundprocess.HvpsService">
+			<!-- 日间异常最大处理次数 -->
+			<param name="expHandleMaxTimes">1</param>
+			<!-- 不发送出去做档版 <ref name="transport">jinshang.transformTransport</ref> -->
+			<param name="mappingConfig">/META-INF/config/router/hvps-mapping.properties</param>
+
+			<!--<ref name="transport">dummyTransport</ref> -->
+			<ref name="transport">esb.transformTransport</ref>
+		</bean>
+		<bean id="bepsService" class="com.csii.upp.service.fundprocess.BepsService">
+			<!-- 日间异常最大处理次数 -->
+			<param name="expHandleMaxTimes">1</param>
+			<param name="mappingConfig">/META-INF/config/router/beps-mapping.properties</param>
+
+			<ref name="transport">esb.transformTransport</ref>
+			<!--<ref name="transport">dummyTransport</ref> -->
+		</bean>
+		<bean id="dpcService" class="com.csii.upp.service.fundprocess.DpcService">
+			<!-- 日间异常最大处理次数 -->
+			<param name="expHandleMaxTimes">1</param>
+			<param name="mappingConfig">/META-INF/config/router/dpc-mapping.properties</param>
+			<!-- <ref name="transport">esb.transformTransport</ref> -->
+			<!-- 不发送出去做档版 -->
+			<ref name="transport">dummyTransport</ref>
+		</bean>
+
+		<bean id="unionPayService" class="com.csii.upp.service.fundprocess.UnionPayService">
+			<!-- 日间异常最大处理次数 -->
+			<param name="expHandleMaxTimes">1</param>
+			<!-- <ref name="transport">unionpay.transport</ref> -->
+			<param name="mappingConfig">/META-INF/config/router/unionpay-mapping.properties</param>
+			<!-- 不发送出去做档版 -->
+			<ref name="transport">dummyTransport</ref>
+		</bean>
+
+		<bean id="paymService" class="com.csii.upp.service.fundprocess.PaymService">
+			<param name="expHandleMaxTimes">1</param>
+			<ref name="transport">payment.transformTransport</ref>
+			<param name="mappingConfig">/META-INF/config/router/paym-mapping.properties</param>
+		</bean>
+		<bean id="pointService" class="com.csii.upp.service.fundprocess.PointService">
+			<!-- 日间异常最大处理次数 -->
+			<param name="expHandleMaxTimes">1</param>
+			<!-- <ref name="transport">unionpay.transport</ref> -->
+			<param name="mappingConfig">/META-INF/config/router/point-mapping.properties</param>
+			<!-- 不发送出去做档版 -->
+			<ref name="transport">dummyTransport</ref>
+			<!-- <ref name="transport">restWebServiceTransport</ref> -->
+		</bean>
+		<bean id="aliPayService" class="com.csii.upp.service.fundprocess.AliPayService">
+			<!-- 日间异常最大处理次数 -->
+			<param name="expHandleMaxTimes">1</param>
+			<!-- <ref name="transport">unionpay.transport</ref> -->
+			<param name="mappingConfig">/META-INF/config/router/alipay-mapping.properties</param>
+			<!-- 不发送出去做档版 -->
+			<ref name="transport">dummyTransport</ref>
+			<!-- <ref name="transport">codePre.transformTransport</ref> -->
+		</bean>
+		<bean id="wechatService" class="com.csii.upp.service.fundprocess.WechatService">
+			<!-- 日间异常最大处理次数 -->
+			<param name="expHandleMaxTimes">1</param>
+			<!-- <ref name="transport">unionpay.transport</ref> -->
+			<param name="mappingConfig">/META-INF/config/router/wechat-mapping.properties</param>
+			<!-- 不发送出去做档版 -->
+			<ref name="transport">dummyTransport</ref>
+			<!-- <ref name="transport">codePre.transformTransport</ref> -->
+		</bean>
+		<bean id="ciccService" class="com.csii.upp.service.fundprocess.CiccService">
+			<!-- 日间异常最大处理次数 -->
+			<param name="expHandleMaxTimes">1</param>
+			<!-- 不发送出去做档版 -->
+			<ref name="transport">dummyTransport</ref>
+		</bean>
+		<bean id="qsopService" class="com.csii.upp.service.fundprocess.QsopService">
+			<!-- 日间异常最大处理次数 -->
+			<param name="expHandleMaxTimes">1</param>
+			<!-- 不发送出去做档版 -->
+			<ref name="transport">dummyTransport</ref>
+		</bean>
+	</config>
+</spring:beans>

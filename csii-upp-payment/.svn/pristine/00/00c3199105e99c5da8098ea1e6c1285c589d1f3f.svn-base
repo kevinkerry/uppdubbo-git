@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE segment SYSTEM "packetutf8.dtd">
+<segment>
+	<!-- 卡号 -->
+	<xmlTag tagName="PayerAcctNbr">
+		<String name="PayerAcctNbr" />
+	</xmlTag>
+	<!--手机号 -->
+	<xmlTag tagName="PayerPhoneNo">
+		<String name="PayerPhoneNo"></String>
+	</xmlTag>
+	<!-- 短信流水号-->
+	<xmlTag tagName="SmsSqenbr">
+		<String name="SmsSqenbr"/>
+	</xmlTag>
+</segment>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE segment SYSTEM "packetutf8.dtd">
+<segment>
+	<xmlTag tagName="PayerAcctNbr">
+	<String name="PayerAcctNbr"></String>
+	</xmlTag>
+	<xmlTag tagName="PayerCardTypCd">
+		<String name="PayerCardTypCd"></String>
+	</xmlTag>
+	<xmlTag tagName="PayerAcctTypCd">
+		<String name="PayerAcctTypCd"></String>
+	</xmlTag>
+	<xmlTag tagName="PayerAcctKind">
+		<String name="PayerAcctKind"></String>
+	</xmlTag>
+	<xmlTag tagName="PayerAcctDeptNbr">
+		<String name="PayerAcctDeptNbr"></String>
+	</xmlTag>
+	<xmlTag tagName="PayerCardPwd">
+		<String name="PayerCardPwd"></String>
+	</xmlTag>
+	<xmlTag tagName="PayerCardCvv2">
+		<String name="PayerCardCvv2"></String>
+	</xmlTag>
+	<xmlTag tagName="PayerCardExpiredDate">
+		<String name="PayerCardExpiredDate"></String>
+	</xmlTag>
+	<xmlTag tagName="PayerIdNbr">
+		<String name="PayerIdNbr"></String>
+	</xmlTag>
+	<xmlTag tagName="PayerIdTypCd">
+		<String name="PayerIdTypCd"></String>
+	</xmlTag>
+	<xmlTag tagName="PayerPhoneNo">
+		<String name="PayerPhoneNo"></String>
+	</xmlTag>
+	<xmlTag tagName="CurrencyCd">
+		<String name="CurrencyCd"></String>
+	</xmlTag>
+	<xmlTag tagName="TransAmt">
+		<String name="TransAmt"></String>
+	</xmlTag>
+	<xmlTag tagName="PayeeAcctNbr">
+		<String name="PayeeAcctNbr"></String>
+	</xmlTag>
+	<xmlTag tagName="PayeeCardTypCd">
+		<String name="PayeeCardTypCd"></String>
+	</xmlTag>
+	<xmlTag tagName="PayeeAcctTypCd">
+		<String name="PayeeAcctTypCd"></String>
+	</xmlTag>
+	<xmlTag tagName="PayeeAcctKind">
+		<String name="PayeeAcctKind"></String>
+	</xmlTag>
+	<xmlTag tagName="PayeeCardExpiredDate">
+		<String name="PayeeCardExpiredDate"></String>
+	</xmlTag>
+	<xmlTag tagName="PayeeCardCvv2">
+		<String name="PayeeCardCvv2"></String>
+	</xmlTag>
+	<xmlTag tagName="PayeeIdNbr">
+		<String name="PayeeIdNbr"></String>
+	</xmlTag>
+	<xmlTag tagName="PayeeIdTypCd">
+		<String name="PayeeIdTypCd"></String>
+	</xmlTag>
+	<xmlTag tagName="PayeePhoneNo">
+		<String name="PayeePhoneNo"></String>
+	</xmlTag>
+	<xmlTag tagName="Note">
+		<String name="Note"></String>
+	</xmlTag>
+	</segment>

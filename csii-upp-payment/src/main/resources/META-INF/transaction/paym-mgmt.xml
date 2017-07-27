@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spring:beans xmlns:spring="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.csii.com.cn/schema/pe"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd 
+	http://www.csii.com.cn/schema/pe http://www.csii.com.cn/schema/pe/pe-config.xsd">
+	<config>
+		<!--注册 -->
+		<transaction id="ConfirmCancelSignInfo" template="queryMgmtTemplate">
+			<actions>
+				<ref name="action">confirmCancelSignInfoAction</ref>
+			</actions>
+		</transaction>
+		<action id="confirmCancelSignInfoAction"
+			class="com.csii.upp.payment.action.mgmt.ConfirmCancelSignInfoAction" />
+
+		<!--客户鉴权 -->
+		<transaction id="CustomAuthen" template="signatureSignTemplate">
+			<actions>
+				<ref name="action">customAuthenAction</ref>
+			</actions>
+		</transaction>
+		<action id="customAuthenAction"
+			class="com.csii.upp.payment.action.mgmt.CustomAuthenAction" />
+
+
+		<transaction id="UnHoldAcctStatus" template="queryMgmtTemplate">
+			<actions>
+				<ref name="action">unHoldAcctStatusAction</ref>
+			</actions>
+		</transaction>
+		<action id="unHoldAcctStatusAction"
+			class="com.csii.upp.payment.action.mgmt.UnHoldAcctStatusAction" />
+
+		<!--注册丰收e 插入信息 -->
+		<transaction id="AddSignInfo" template="queryMgmtTemplate">
+			<actions>
+				<ref name="action">addSignInfoAction</ref>
+			</actions>
+		</transaction>
+		<action id="addSignInfoAction" class="com.csii.upp.payment.action.mgmt.AddSignInfoAction" />
+
+		<!--强制注销 -->
+		<transaction id="CancelSignInfo" template="queryMgmtTemplate">
+			<actions>
+				<ref name="action">cancelSignInfoAction</ref>
+			</actions>
+		</transaction>
+		<action id="cancelSignInfoAction"
+			class="com.csii.upp.payment.action.mgmt.CancelSignInfoAction" />
+
+		<!--丰收e支付 冻结 -->
+		<transaction id="HoldAcctStatus" template="queryMgmtTemplate">
+			<actions>
+				<ref name="action">holdAcctStatusAction</ref>
+			</actions>
+		</transaction>
+		<action id="holdAcctStatusAction"
+			class="com.csii.upp.payment.action.mgmt.HoldAcctStatusAction" />
+
+		<!--丰收e支付调整交易限额 -->
+		<transaction id="QueryTransLimit" template="queryMgmtTemplate">
+			<actions>
+				<ref name="action">QueryTransLimitAction</ref>
+			</actions>
+		</transaction>
+		<action id="QueryTransLimitAction"
+			class="com.csii.upp.payment.action.query.QueryCtrlTransAction" />
+
+		<!--丰收e支付限额修改 -->
+		<transaction id="UpdateTransLimit" template="queryMgmtTemplate">
+			<actions>
+				<ref name="action">UpdateTransLimitAction</ref>
+			</actions>
+		</transaction>
+		<action id="UpdateTransLimitAction"
+			class="com.csii.upp.payment.action.mgmt.UpdateCtrlTransAction" />
+
+
+
+		<!-- 丰收E支付 注销 -->
+		<transaction id="CancelSignStatus" template="queryMgmtTemplate">
+			<actions>
+				<ref name="action">cancelSignStatusAction</ref>
+			</actions>
+		</transaction>
+		<action id="cancelSignStatusAction"
+			class="com.csii.upp.payment.action.mgmt.CancelSignStatusAction" />
+
+
+		<!-- 发送短信验证码 -->
+		<transaction id="SendSms" template="queryMgmtTemplate">
+			<actions>
+				<ref name="action">sendSmsAction</ref>
+			</actions>
+		</transaction>
+		<action id="sendSmsAction" class="com.csii.upp.payment.action.mgmt.SendSmsAction">
+			<param name="encoding">GBK</param>
+			<ref name="transport">sms.tcpTransport</ref>
+			<param name="validateTime">${smsCode.timeout}</param>
+		</action>
+
+		<!--验证短信验证码 -->
+		<transaction id="ValidateSms" template="queryMgmtTemplate">
+			<actions>
+				<ref name="action">validateSmsAction</ref>
+			</actions>
+		</transaction>
+		<!-- 验证短信验证码 -->
+		<action id="validateSmsAction" class="com.csii.upp.payment.action.mgmt.ValidateSmsAction">
+			<param name="smsTimeOut">${smsCode.timeout}</param>
+		</action>
+
+		<!--验密 -->
+		<transaction id="ValidationInfo" template="queryMgmtTemplate">
+			<actions>
+				<ref name="action">validationInfoAction</ref>
+			</actions>
+		</transaction>
+		<action id="validationInfoAction"
+			class="com.csii.upp.payment.action.mgmt.ValidationInfoAction" />
+
+		<!--跨行智能支付注册 -->
+		<transaction id="RegisterOtherPay" template="queryMgmtTemplate">
+			<actions>
+				<ref name="action">registerOtherPayAction</ref>
+			</actions>
+		</transaction>
+		<action id="registerOtherPayAction"
+			class="com.csii.upp.payment.action.mgmt.RegisterOtherPayAction" />
+		<!--跨行智能支付注册状态查询 -->
+		<transaction id="QueryReOtherPayStatus" template="queryMgmtTemplate">
+			<actions>
+				<ref name="action">queryReOtherPayStatusAction</ref>
+			</actions>
+		</transaction>
+		<action id="queryReOtherPayStatusAction"
+			class="com.csii.upp.payment.action.mgmt.QueryReOtherPayStatusAction" />
+	</config>
+</spring:beans>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spring:beans xmlns:spring="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.csii.com.cn/schema/pe"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd 
+	http://www.csii.com.cn/schema/pe http://www.csii.com.cn/schema/pe/pe-config.xsd">
+
+	<config>
+		<sharedMap id="transactionIdmapping">
+			<map name="sourceMap">
+				<param name="UPP40001">RunQue</param>
+				<param name="DZZH100004">FLNF</param>
+				<param name="UPP40002">fileNotify</param>
+				<param name="UPP40003">queApplHist</param>
+				<param name="UPP40004">CLTF</param>
+				<param name="UPP40005">QBES</param><!-- 差错结果查询 -->
+				<param name="UPP40006">PBPS</param><!-- 差错处理 -->
+				<param name="UPP40007">CAMT</param><!-- 银联核账查询 -->
+				<param name="UPP40008">SFEE</param><!-- 法人机构转账手续费 -->
+			</map>
+		</sharedMap>
+	</config>
+</spring:beans>

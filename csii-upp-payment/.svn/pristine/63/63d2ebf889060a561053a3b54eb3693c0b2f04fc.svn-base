@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE segment SYSTEM "packetutf8.dtd">
+<segment>
+	<Group name="Message">
+		<!-- 交易id -->
+		<xmlTag tagName="TransId">
+			<String name="TransId" />
+		</xmlTag>
+		<!-- 一级商户 -->
+		<xmlTag tagName="MerchantId">
+			<String name="MerNbr" />
+		</xmlTag>
+		<!-- 二级商户号 -->
+		<xmlTag tagName="SubMerchantId">
+			<String name="SubMerchantId" />
+		</xmlTag>
+		<!-- 用户编号 -->
+		<xmlTag tagName="UserNo">
+			<String name="UserNbr" />
+		</xmlTag>
+		<!-- 商户交易流水号 -->
+		<xmlTag tagName="MerSeqNo">
+			<String name="MerSeqNbr" />
+		</xmlTag>
+		<!-- 商户交易时间 -->
+		<xmlTag tagName="MerDateTime">
+			<String name="MerTransDateTime" />
+		</xmlTag>
+		<!-- 交易金额 -->
+		<xmlTag tagName="TransAmt">
+			<String name="TransAmt" />
+		</xmlTag>
+		<!-- 应答码 -->
+		<xmlTag tagName="RespCode">
+			<String name="RespCode" />
+		</xmlTag>
+		<!-- 应答消息 -->
+		<xmlTag tagName="RespMessage">
+			<String name="RespMessage" />
+		</xmlTag>
+		<!-- 总交易流水号金额 -->
+		<xmlTag tagName="TransSeqNo">
+			<String name="TransSeqNbr" />
+		</xmlTag>
+		<!-- 对账日期 -->
+		<xmlTag tagName="ClearDate">
+			<Date name="PostDate" pattern="yyyyMMdd" />
+		</xmlTag>
+
+		<!-- 附加信息 -->
+		<xmlTag tagName="MsgExt">
+			<String name="MsgExt" />
+		</xmlTag>
+	</Group>
+</segment>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE outboundPacket SYSTEM "packetutf8.dtd">
+<outboundPacket formatPrefix="f" nameOfBodyLength="BodyLength">
+	<segment>
+		<fixNumber name="BodyLength" length="8" add="8"  encoding="GB2312" filling="0"/>
+	</segment>
+	<include include="XmlHead" />
+</outboundPacket>

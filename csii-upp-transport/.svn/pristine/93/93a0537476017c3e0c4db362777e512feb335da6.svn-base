@@ -1,0 +1,6 @@
+#
+RespStatus=resultStatus
+RespCode=returncode
+RespMessage=returnmsg
+TransDate=downrtxndate
+TransNbr=downrtxnnbr

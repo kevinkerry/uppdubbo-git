@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="dubboPaymentResolver"  class="com.csii.pe.channel.stream.MappingTrsIdResolver">
+		<property name="idParameterName" value="transCode" />
+		<property name="mapping">
+            <map>
+                <entry key="UPP10050" value="IS_PAY_PAYM_QUERYORDERINFO" />
+                <entry key="UPP10002" value="IS_PAY_PAYM_QUERYSIGNINFOLIST" />
+                <entry key="UPP10003" value="IS_PAY_PAYM_PAYTRANS" />
+                <entry key="UPP10000" value="IS_PAY_PAYM_QUERYCARDINFO" />
+                <entry key="UPP10001" value="IS_PAY_PAYM_ADDSIGNINFO" />
+                <entry key="UPP10048" value="IS_PAY_PAYM_CREATEQRCODEBYTE" />
+                <entry key="UPP10049" value="IS_PAY_PAYM_QUERYQRCODEURL" />
+                <entry key="UPP10060" value="IS_PAY_PAYM_CUSTOMAUTHEN" />
+                <entry key="UPP20160" value="IS_PAY_PAYM_QUERYPAY" />
+                <entry key="UPP10134" value="IS_PAY_PAYM_QUERYAUTH" />
+                <entry key="UPP10020" value="IS_PAY_PAYM_CANCELORDER" />
+                <entry key="UPP10032" value="IS_PAY_PAYM_NOTIFYTRANSRESULT" />
+                <entry key="UPP10021" value="IS_PAY_PAYM_CONFIRMEDPAY" />
+                <entry key="UPP10031" value="IS_PAY_PAYM_QUERYORDERSTATUSPAYMENT" />
+                <entry key="UPP10030" value="IS_PAY_PAYM_QUERYVIRTUALACCTBALANCE" />
+                <entry key="UPP10024" value="IS_PAY_PAYM_VALIDATESMS" />
+                <entry key="UPP10036" value="IS_PAY_PAYM_QUERYSMSCODE" />
+                <entry key="UPP10025" value="IS_PAY_PAYM_GENERRATESUBMERCHANTID" />
+                <entry key="UPP10035" value="IS_PAY_PAYM_DELETESIGNINFO" />
+                <entry key="UPP10022" value="IS_PAY_PAYM_VALIDATECARDINFO" />
+                <entry key="UPP10034" value="IS_PAY_PAYM_SENDMESSAGEPAYMENT" />
+                <entry key="UPP10023" value="IS_PAY_PAYM_SENDSMS" />
+                <entry key="UPP10033" value="IS_PAY_PAYM_QUERYACCTOPENSTATUSPAYMENT" />
+                <entry key="UPP10018" value="IS_PAY_PAYM_VALIDATIONINFO" />
+                <entry key="UPP10028" value="IS_PAY_PAYM_BANKPAY" />
+                <entry key="UPP10017" value="IS_PAY_PAYM_RETURNTRANS" />
+                <entry key="UPP10016" value="IS_PAY_PAYM_QUERYYINYITONGSIGNINFO" />
+                <entry key="UPP10026" value="IS_PAY_PAYM_QUERYSINGLEONLINETRANS" />
+                <entry key="UPP10015" value="IS_PAY_PAYM_WITHDRAWTRANS" />
+                <entry key="UPP10027" value="IS_PAY_PAYM_SYCHSUBMER" />
+                <entry key="UPP10019" value="IS_PAY_PAYM_CANCELSIGNSTATUS" />
+                <entry key="UPP10041" value="IS_PAY_PAYM_QUERYCARDFLAG" />
+                <entry key="UPP10043" value="IS_PAY_PAYM_QUERYREOTHERPAYSTATUS" />
+                <entry key="UPP10042" value="IS_PAY_PAYM_REGISTEROTHERPAY" />
+                <entry key="UPP10011" value="IS_PAY_PAYM_QUERYSIGNDETAIL" />
+                <entry key="UPP10045" value="IS_PAY_PAYM_QUERYCARDPHONE" />
+                <entry key="UPP10080" value="IS_PAY_PAYM_SGCT" />
+                <entry key="UPP10081" value="IS_PAY_PAYM_SGPM" />
+                <entry key="UPP10012" value="IS_PAY_PAYM_ADDORDERINFO" />
+                <entry key="UPP10044" value="IS_PAY_PAYM_QUERYINTEGRAL" />
+                <entry key="UPP10013" value="IS_PAY_PAYM_QUERYTRANSLIMIT" />
+                <entry key="UPP10047" value="IS_PAY_PAYM_QUERYQRCODESTATUS" />
+                <entry key="UPP10014" value="IS_PAY_PAYM_UPDATETRANSLIMIT" />
+                <entry key="UPP10046" value="IS_PAY_PAYM_QUERYCARDDEPT" />
+                <entry key="UPP10005" value="IS_PAY_PAYM_HOLDACCTSTATUS" />
+                <entry key="UPP10038" value="IS_PAY_PAYM_BATCHTRANSFERPAYMENT" />
+                <entry key="UPP10112" value="IS_PAY_PAYM_XMLIMITCX" />
+                <entry key="UPP10007" value="IS_PAY_PAYM_QUERYSIGNINFO" />
+                <entry key="UPP10039" value="IS_PAY_PAYM_QUERYBATCHTRANSFERPAYMENT" />
+                <entry key="UPP10006" value="IS_PAY_PAYM_UNHOLDACCTSTATUS" />
+                <entry key="UPP10009" value="IS_PAY_PAYM_CONFIRMCANCELSIGNINFO" />
+                <entry key="UPP10008" value="IS_PAY_PAYM_CANCELSIGNINFO" />
+            </map>
+        </property>
+		
+	</bean>
+
+</beans>

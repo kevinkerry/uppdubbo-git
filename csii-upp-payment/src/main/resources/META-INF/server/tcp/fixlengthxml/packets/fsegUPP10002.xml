@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE segment SYSTEM "packetutf8.dtd">
+<segment>
+	<!-- 卡号  -->
+	<xmlTag tagName="PayerAcctNbr">
+		<String name="PayerAcctNbr"/>
+	</xmlTag>
+	<!-- 总页数-->
+	<xmlTag tagName="TotalPage">
+		<String name="TotalPage" />
+	</xmlTag>
+	<!-- 页码 -->
+	<xmlTag tagName="PageNum">
+		<String name="PageNum"/>
+	</xmlTag>
+	<!-- 记录数 -->
+	<xmlTag tagName="RecordNumber">
+		<String name="RecordNumber"/>
+	</xmlTag>
+	<!-- 手机号码 -->
+		<xmlTag tagName="PayerPhoneNo">
+		<String name="PayerPhoneNo"/>
+	</xmlTag>
+	<!-- 返回list -->
+	<xmlTag tagName="TransList">
+	 <idxField name="TransList">
+			<Group name="TransDetail">
+		   		<xmlTag><String name="TransStatus" /></xmlTag>
+	   		    <xmlTag><String name="Count" /></xmlTag>
+	   		    <xmlTag><String name="PayerAcctDeptNbr" /></xmlTag>
+	   		    <xmlTag><String name="PayeeAcctDeptNbr" /></xmlTag>
+	   		     <xmlTag><String name="PayerAcctNbr" /></xmlTag>
+	   		     <xmlTag><String name="PayerAcctName" /></xmlTag>
+	   		     <xmlTag><String name="PayeeAcctNbr" /></xmlTag>
+	   		     <xmlTag><String name="FeeAmt" /></xmlTag>	
+	   		      <xmlTag><String name="TransAmt" /></xmlTag>	 			  
+	   		     <xmlTag><String name="CurrenCyCd" /></xmlTag>
+	   		     <xmlTag><String name="TransCode" /></xmlTag>
+	   		     <xmlTag><String name="PayeeAcctTypCd" /></xmlTag>
+	   		     <xmlTag><String name="PayeeAcctName" /></xmlTag>
+	   		     <xmlTag>
+	             <Date name="TransTime"  pattern="yyyy-MM-dd HH:mm:ss" />
+	             </xmlTag>
+	   		     <xmlTag><String name="PayerCardTypCd" /></xmlTag>
+	   		     <xmlTag><String name="TransDate" /></xmlTag>
+	   		     <xmlTag><String name="AmtAmount" /></xmlTag>	 	   
+			</Group>
+		</idxField>
+	</xmlTag>
+</segment>

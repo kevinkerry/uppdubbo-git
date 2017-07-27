@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE segment SYSTEM "packetutf8.dtd">
+<segment>
+	<!-- 商户名称 -->
+	<xmlTag tagName="MerchantName">
+		<String name="MerchantName"></String>
+	</xmlTag>
+	
+	<!--订单金额 -->
+	<xmlTag tagName="TransAmt">
+		<String name="TransAmt"></String>
+	</xmlTag>
+</segment>

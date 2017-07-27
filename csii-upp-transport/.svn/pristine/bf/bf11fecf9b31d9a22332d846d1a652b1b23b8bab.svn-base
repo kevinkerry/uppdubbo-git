@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:p1="http://com.csii.bank.core/customer/post" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://com.csii.bank.core/customer/post" targetNamespace="http://com.csii.bank.core/customer/post">
+  <wsdl:types>
+    <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:base="http://com.csii.bank.core/base" xmlns:cust="http://com.csii.bank.core/customer/post" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://com.csii.bank.core/customer/post"><import namespace="http://com.csii.bank.core/base" schemaLocation="base.xsd"/><complexType name="CreatePersRequestType"><sequence><element ref="base:BaseRequest"/><element name="persName" type="string"/><element name="saluCd" type="string"/><element name="phoneUseCd" type="string"/><element name="phoneNbr" type="string"/><element name="persIdTypCd" type="string"/><element name="idNbr" type="string"/><element name="addrUseCd" type="string"/><element name="cityName" type="string"/><element name="ctryMailCd" type="string"/><element name="addrLineTypCd" type="string"/><element name="addrText" type="string"/><element name="mailText" type="string"/><element name="issueDate" type="date"/><element name="expireDate" type="date"/><element name="dateBirth" type="date"/><element name="mailUseCd" type="string"/></sequence></complexType><element name="CreatePers" type="cust:CreatePersRequestType"/><complexType name="CreatePersResponseType"><sequence><element ref="base:BaseResponse"/><element name="persNbr" type="long"/></sequence></complexType><element name="CreatePersResponse" type="cust:CreatePersResponseType"/></schema>
+  </wsdl:types>
+  <wsdl:message name="CreatePersResponse">
+    <wsdl:part element="tns:CreatePersResponse" name="CreatePersResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CreatePers">
+    <wsdl:part element="tns:CreatePers" name="CreatePers">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="CustomerPostServicePortType">
+    <wsdl:operation name="CreatePers">
+      <wsdl:input message="tns:CreatePers" name="CreatePers">
+    </wsdl:input>
+      <wsdl:output message="tns:CreatePersResponse" name="CreatePersResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CustomerPostServicePortTypeSoap11" type="tns:CustomerPostServicePortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="CreatePers">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="CreatePers">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="CreatePersResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CustomerPostService">
+    <wsdl:port binding="tns:CustomerPostServicePortTypeSoap11" name="CustomerPostServicePortTypeSoap11">
+      <soap:address location="http://127.0.0.1:8099/customerPostService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spring:beans xmlns:spring="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.csii.com.cn/schema/pe"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd 
+	http://www.csii.com.cn/schema/pe http://www.csii.com.cn/schema/pe/pe-config.xsd">
+	<config>
+
+		<bean id="eventManager" class="com.csii.upp.event.DefaultEventManager">
+			<list name="eventHandlers">
+				<ref>rtxnExcepEventHandler</ref>
+				<ref>preprocessfundtransHandler</ref>
+				<ref>PreProcessCupsRtxnHandler</ref>
+				<ref>runQueEventHandler</ref>
+				<ref>transferDeptFeeHandler</ref>
+				<ref>TimeOutTxnEventHandler</ref>
+				<ref>queryCodePayStatusHandler</ref>
+			</list>
+			<ref name="executor">eventManagerThreadPool</ref>
+		</bean>
+
+		<bean id="rtxnExcepEventHandler" class="com.csii.upp.batch.event.handler.RtxnExcepEventHandler">
+			<!-- 发送间隔(s) -->
+			<param name="timespace">30</param>
+		</bean>
+		<bean id="preprocessfundtransHandler"
+			class="com.csii.upp.batch.event.handler.PreprocessfundtransHandler">
+		</bean>
+		<bean id="PreProcessCupsRtxnHandler"
+			class="com.csii.upp.batch.event.handler.PreProcessCupsRtxnHandler">
+		</bean>
+
+		<bean id="runQueEventHandler" class="com.csii.upp.batch.event.handler.RunQueEventHandler">
+			<ref name="batchRunner">batchRunner</ref>
+		</bean>
+
+		<bean id="transferDeptFeeHandler"
+			class="com.csii.upp.batch.event.handler.TransferDeptFeeHandler">
+		</bean>
+
+		<bean id="TimeOutTxnEventHandler"
+			class="com.csii.upp.batch.event.handler.TimeOutTxnEventHandler" />
+
+		<bean id="queryCodePayStatusHandler"
+			class="com.csii.upp.batch.event.handler.QueryCodePayStatusHandler" />
+	</config>
+</spring:beans>

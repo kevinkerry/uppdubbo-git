@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spring:beans xmlns:spring="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.csii.com.cn/schema/pe"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd 
+	http://www.csii.com.cn/schema/pe http://www.csii.com.cn/schema/pe/pe-config.xsd">
+
+	<config>
+		<action id="commonInputAction" class="com.csii.upp.fundprocess.action.common.InputAction" />
+		<action id="commonOutputAction"
+			class="com.csii.upp.fundprocess.action.common.OutputAction" />
+		<action id="signCheckAction"
+			class="com.csii.upp.fundprocess.action.common.SignCheckAction" />
+		<action id="commonCallBackAction"
+			class="com.csii.upp.fundprocess.action.common.CallBackAction" />
+		<action id="requestRegAction"
+			class="com.csii.upp.fundprocess.action.common.RequestRegAction" />
+		<!-- 工作单元交易模版 -->
+		<template id="fundUppTemplate" class="com.csii.upp.template.BaseUppTemplate"
+			chain="defaultChain">
+			<ref name="exceptionHandler">exceptionHandler</ref>
+			<actions>
+				<ref name="reg">requestRegAction</ref>
+				<ref name="before">commonInputAction</ref>
+				<ref name="action">placeholderAction</ref>
+				<ref name="after">commonOutputAction</ref>
+			</actions>
+		</template>
+		<!-- 工作单元查询登记模版 -->
+		<template id="queryRegUppTemplate" class="com.csii.upp.template.BaseUppTemplate"
+			chain="defaultChain">
+			<ref name="exceptionHandler">exceptionHandler</ref>
+			<actions>
+				<ref name="reg">requestRegAction</ref>
+				<ref name="action">placeholderAction</ref>
+			</actions>
+		</template>
+
+		<template id="callbackTemplate" class="com.csii.upp.template.BaseUppTemplate"
+			chain="defaultChain">
+			<ref name="exceptionHandler">exceptionHandler</ref>
+			<actions>
+				<ref name="reg">requestRegAction</ref>
+				<ref name="check">signCheckAction</ref>
+				<ref name="before">commonCallBackAction</ref>
+				<ref name="action">placeholderAction</ref>
+				<ref name="after">commonOutputAction</ref>
+			</actions>
+		</template>
+
+		<template id="scanCodecallbackTemplate" class="com.csii.upp.template.BaseUppTemplate"
+			chain="defaultChain">
+			<ref name="exceptionHandler">exceptionHandler</ref>
+			<actions>
+				<ref name="reg">requestRegAction</ref>
+				<ref name="before">commonCallBackAction</ref>
+				<ref name="action">placeholderAction</ref>
+				<ref name="after">commonOutputAction</ref>
+			</actions>
+		</template>
+	</config>
+</spring:beans>

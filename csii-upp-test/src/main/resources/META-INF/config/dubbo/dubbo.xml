@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	   http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+ 	<!-- <import resource="classpath:/META-INF/config/dubbo/toPayment/dubbo-consummer.xml" /> -->
+ 	<import resource="classpath:/META-INF/config/dubbo/toFundProcess/dubbo-consummer.xml" />
+	<!-- <context:property-placeholder location="classpath*:/config/pe-config.properties" 
+		/> -->
+	<bean id="placeholderConfig"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:/config/env/dev/registry.properties</value>
+			</list>
+		</property>
+	</bean>
+
+	<dubbo:application name="dubbo-consumer" logger="slf4j"/>
+
+  	<dubbo:registry id="dubboRegitry" protocol="${dubbo.registry.protocol}"
+	address="${dubbo.registry.address}" timeout="${dubbo.registry.timeout}"
+	check="${dubbo.registry.check}" />
+	<dubbo:consumer timeout="${dubbo.registry.timeout}"
+		retries="0" check="${dubbo.registry.check}" />
+		
+		
+	<bean id="attributeFactory" class="com.csii.upp.attribute.DefaultAttributeFactory"
+		init-method="initialize">
+		<property name="classNames">
+		 <list>
+		   	<value>com.csii.upp.dto.router.ReqSysHead</value>
+		   	<value>com.csii.upp.custom.common.api.data.base.BaseInput</value>
+		 </list>
+		</property>
+	</bean>
+
+	<bean id="objectMapMarshaller" class="com.csii.upp.marshaller.DefaultObjectMapMarshaller">
+		<property name="attributeFactory" ref="attributeFactory" />
+	</bean>
+
+</beans>

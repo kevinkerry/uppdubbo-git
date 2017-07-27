@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE segment SYSTEM "packetutf8.dtd">
+<!--客户鉴权 -->
+<segment>
+	<xmlTag tagName="merId">
+		<String name="merId"></String>
+	</xmlTag>
+	<xmlTag tagName="customName">
+		<String name="customName"></String>
+	</xmlTag>
+	<xmlTag tagName="certTyp">
+		<String name="certTyp" defaultValue="1"></String>
+	</xmlTag>
+	<xmlTag tagName="certNo">
+		<String name="certNo"></String>
+	</xmlTag>
+	<xmlTag tagName="cardNo">
+		<String name="cardNo" defaultValue="1"></String>
+	</xmlTag>
+	<xmlTag tagName="cardTyp">
+		<String name="cardTyp"></String>
+	</xmlTag>
+	<xmlTag tagName="phoneNo">
+		<String name="phoneNo"></String>
+	</xmlTag>
+	<xmlTag tagName="remark">
+		<String name="remark"></String>
+	</xmlTag>
+</segment>

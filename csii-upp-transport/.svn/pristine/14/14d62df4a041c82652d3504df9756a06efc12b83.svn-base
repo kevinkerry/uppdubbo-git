@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE segment SYSTEM "packetutf8.dtd">
+	<!-- 卡信息查询 -->
+<segment>
+	<!-- 币种 -->
+	<xmlTag tagName="CurrencyCd">
+		<String name="currencyCd" defaultValue="CNY" />
+	</xmlTag>
+	<!-- 卡账号 -->
+	<xmlTag tagName="PayerAcctNbr">
+		<String name="payerAcctNbr" />
+	</xmlTag>
+	<!-- 卡类型 -->
+	<xmlTag tagName="PayerCardTypCd">
+		<String name="payerCardTypCd" defaultValue="" />
+	</xmlTag>
+</segment>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE segment SYSTEM "packetutf8.dtd">
+<!-- 他行快捷支付发送短信-->
+<segment>
+	<xmlTag tagName="PayerPhoneNo">
+		<String name="payerPhoneNo"></String>
+	</xmlTag>
+</segment>

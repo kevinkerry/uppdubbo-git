@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE segment SYSTEM "packetutf8.dtd">
+<!-- 卡密校验 -->
+<segment>
+	<!-- 卡账号 -->
+	<xmlTag tagName="PayerAcctNbr">
+		<String name="payerAcctNbr" />
+	</xmlTag>
+	<!-- 卡类型 -->
+	<xmlTag tagName="PayerCardTypCd">
+		<String name="payerCardTypCd" />
+	</xmlTag>
+	<!--证件类型 -->
+	<xmlTag tagName="PayerIdTypCd">
+		<String name="payerIdTypCd" />
+	</xmlTag>
+	<!-- 证件号 -->
+	<xmlTag tagName="PayerIdNbr">
+		<String name="payerIdNbr" />
+	</xmlTag>
+	<!-- 卡密码检查标志 -->
+	<xmlTag tagName="CheckCardPwdFlag">
+		<String name="checkCardPwdFlag" />
+	</xmlTag>
+	<!-- 卡密码 -->
+	<xmlTag tagName="PayerCardPwd">
+		<String name="payerCardPwd" defaultValue="" />
+	</xmlTag>
+	<!-- 有效期 -->
+	<xmlTag tagName="PayerCardExpiredDate">
+		<String name="payerCardExpiredDate" />
+	</xmlTag>
+</segment>

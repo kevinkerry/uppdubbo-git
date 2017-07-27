@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spring:beans xmlns:spring="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.csii.com.cn/schema/pe"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd 
+	http://www.csii.com.cn/schema/pe http://www.csii.com.cn/schema/pe/pe-config.xsd">
+
+
+	<config>
+		<!-- 系统配置属性文件 -->
+		<bean id="placeholderConfig"
+			class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+			<list name="locations">
+				<param>classpath:config/env/${core.environment}/base.properties
+				</param>
+				<param>classpath:config/env/${core.environment}/registry.properties
+				</param>
+				<param>classpath:config/env/${core.environment}/paygate.properties
+				</param>
+			</list>
+		</bean>
+	</config>
+</spring:beans>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE segment SYSTEM "packetutf8.dtd">
+<!-- 批量转账 -->
+<segment>
+	<!-- 卡账号 -->
+	<xmlTag tagName="PayerAcctNbr">
+		<String name="payerAcctNbr" />
+	</xmlTag>
+	<!-- 币种 -->
+	<xmlTag tagName="CurrencyCd">
+		<String name="currencyCd" />
+	</xmlTag>
+	<!-- 总金额 -->
+	<xmlTag tagName="TransAmt">
+		<String name="transAmt" />
+	</xmlTag>
+	<!-- 备用字段 -->
+	<xmlTag tagName="Note">
+		<String name="note" />
+	</xmlTag>
+	<!-- 付款人卡类型 -->
+	<xmlTag tagName="PayerCardTypCd">
+		<String name="payerCardTypCd" />
+	</xmlTag>
+	<!-- 付款人账号类型 -->
+	<xmlTag tagName="PayerAcctTypCd">
+		<String name="payerAcctTypCd" />
+	</xmlTag>
+	<!-- 信用卡cvv -->
+	<xmlTag tagName="PayerCardCvv2">
+		<String name="payerCardCvv2" />
+	</xmlTag>
+	<!-- 信用卡有效期 -->
+	<xmlTag tagName="PayerCardExpiredDate">
+		<String name="payerCardExpiredDate" />
+	</xmlTag>
+	<!-- 付款人账户姓名 -->
+	<xmlTag tagName="PayerAcctName">
+		<String name="payerAcctName" />
+	</xmlTag>
+	<!-- 转账机构号 -->
+	<xmlTag tagName="TranserDeptNbr">
+		<String name="transerDeptNbr" />
+	</xmlTag>
+	<!-- 收款账户列表 -->
+	<xmlTag tagName="PayeeAcctList">
+		<idxField name="payeeAcctList" maxLoop="9999999">
+			<Group name="Map">
+				<!-- 子订单发生额 -->
+				<xmlTag tagName="SubTransAmt">
+					<String name="SubTransAmt" />
+				</xmlTag>
+				<!-- 收款人账号 -->
+				<xmlTag tagName="PayeeAcctNbr">
+					<String name="PayeeAcctNbr" />
+				</xmlTag>
+				<!-- 收款名称 -->
+				<xmlTag tagName="PayeeAcctName">
+					<String name="PayeeAcctName" />
+				</xmlTag>
+				<!-- 收款账户开户行行号 -->
+				<xmlTag tagName="PayeeBankNbr">
+					<String name="PayeeBankNbr" />
+				</xmlTag>
+			</Group>
+		</idxField>
+	</xmlTag>
+</segment>

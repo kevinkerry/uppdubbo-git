@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="BATCHDOWNSYSTRANSHISTEXTEND">
+	<insert id="insertBatchDownSysTransHist" parameterClass="com.csii.upp.dto.generate.Batchdownsystrans">
+		INSERT INTO BatchDownSysTransHist (DOWNSYSTRANSNBR, TRANSSEQNBR, TRANSDATE,
+		DOWNSYSDATE, TRANSCODE,
+		CUSTCIFNBR, PAYERACCTNBR, PAYERACCTTYPCD, PAYERACCTDEPTNBR,
+		PAYERACCTNAME, PAYEEACCTNBR, PAYEEACCTDEPTNBR, PAYEEACCTTYPCD,
+		PAYEEACCTNAME, PAYERACCTKIND, PAYEEACCTKIND, PAYERCARDTYPCD,
+		PAYEECARDTYPCD, TRANSAMT, CURRENCYCD, TRANSSTATUS, CHECKSTATUS,
+		DEPARTMENTNBR, MEMO1, MEMO2, MEMO3)
+		VALUES(
+		#downsystransnbr#,#transseqnbr#,#transdate#,#downsysdate#,
+		#transcode#,#custcifnbr#,#payeracctnbr#,#payeraccttypcd#,
+		#payeracctdeptnbr#,#payeracctname#,#payeeacctnbr#,#payeeacctdeptnbr#,
+		#payeeaccttypcd#,#payeeacctname#,#payeracctkind#,#payeeacctkind#,
+		#payercardtypcd#,#payeecardtypcd#,#transamt#,#currencycd#,#transstatus#,
+		#checkstatus#,#departmentnbr#,#memo1#,#memo2#,#memo3#
+		)
+	</insert>
+</sqlMap>

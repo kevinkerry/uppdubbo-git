@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="BATCHDOWNSYSTRANS">
+    
+  <select id="getDownRtxnCnt" parameterClass="com.csii.upp.dto.generate.BatchDownSysTrans" resultClass="java.lang.Integer">
+	<![CDATA[
+    select count(*) 
+    from BATCHDOWNSYSTRANS
+    where TRANSDATE <= #transdate:DATE#
+      and CHECKSTATUS = #checkstate:DECIMAL#
+     ]]>
+  </select>
+ 
+ 
+  <resultMap class="java.util.HashMap" id="BATCHDOWNSYSTRANSHIST">
+		<result property="downsystransnbr" column="downsystransnbr" />
+		<result property="transseqnbr" column="transseqnbr" />
+		<result property="transdate" column="transdate" />
+		<result property="downsysdate" column="downsysdate" />
+		<result property="transcode" column="transcode" />
+		<result property="custcifnbr" column="custcifnbr" />
+		<result property="payeracctnbr" column="payeracctnbr" />
+		<result property="payeraccttypcd" column="payeraccttypcd" />
+		<result property="payeracctdeptnbr" column="payeracctdeptnbr" />
+		<result property="payeracctname" column="payeracctname" />
+		<result property="payeeacctnbr" column="payeeacctnbr" />
+		<result property="payeeacctdeptnbr" column="payeeacctdeptnbr" />
+		<result property="payeeaccttypcd" column="payeeaccttypcd" />
+		<result property="payeeacctname" column="payeeacctname" />
+		<result property="payeracctkind" column="payeracctkind" />
+		<result property="payeeacctkind" column="payeeacctkind" />
+		<result property="payercardtypcd" column="payercardtypcd" />
+		<result property="payeecardtypcd" column="payeecardtypcd" />
+		<result property="transamt" column="transamt" />
+		<result property="currencycd" column="currencycd" />
+		<result property="transstatus" column="transstatus" />
+		<result property="checkstatus" column="checkstatus" />
+		<result property="departmentnbr" column="departmentnbr" />
+		<result property="memo1" column="memo1" />
+		<result property="memo2" column="memo2" />
+		<result property="memo3" column="memo3" />
+		<result property="totalNum" column="totalnum_" />
+	</resultMap>
+ 
+</sqlMap>

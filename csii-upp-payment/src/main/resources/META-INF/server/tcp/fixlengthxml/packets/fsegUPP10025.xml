@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE segment SYSTEM "packetutf8.dtd">
+<segment>
+<!-- 交易号 -->
+	<xmlTag tagName="TransId">
+		<String name="TransId" defaultValue="" />
+	</xmlTag>
+		<!-- 商户号 -->
+	<xmlTag tagName="MerchantId">
+		<String name="MerNbr" defaultValue="" />
+	</xmlTag>
+		<!-- 外部电商二级商户编号 -->
+	<xmlTag tagName="OutSubMerchantId">
+		<String name="OutSubMerchantId" defaultValue=""/>
+	</xmlTag>
+	<!-- 二级商户编号 -->
+	<xmlTag tagName="SubMerchantId">
+		<String name="SubMerchantId" />
+	</xmlTag>
+	<!-- 商户平台号-->
+	<xmlTag tagName="MerType">
+		<String name="MerPlatformNbr"/>
+	</xmlTag>
+</segment>

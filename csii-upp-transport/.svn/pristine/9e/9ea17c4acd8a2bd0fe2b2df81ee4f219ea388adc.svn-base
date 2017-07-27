@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE segment SYSTEM "packetutf8.dtd">
+<!-- 二维码前置支付结果通知 -->
+<segment>
+	<!-- 交易代码 -->
+	<xmlTag tagName="TransId">
+		<String name="transId" />
+	</xmlTag>
+	<!-- 商户号 -->
+	<xmlTag tagName="MerId">
+		<String name="merId" />
+	</xmlTag>	
+	<!-- 付款人账号 -->
+	<xmlTag tagName="PayerAcctNbr">
+		<String name="payerAcctNbr" />
+	</xmlTag>
+	<!--付款人名称-->
+	<xmlTag tagName="PayerAcctName">   
+		<String name="payerAcctName" />
+	</xmlTag>	
+	<!--支付接入类型-->
+	<xmlTag tagName="PayAccessType">
+		<String name="payAccessType" />
+	</xmlTag>
+	<!--支付类型 -->
+	<xmlTag tagName="PayType">
+		<String name="payType" />
+	</xmlTag>
+	<!--二维码前置交易流水号 -->
+	<xmlTag tagName="TxnSeqId">
+		<String name="txnSeqId" />
+	</xmlTag>
+	<!--二维码前置交易时间-->
+	<xmlTag tagName="TxnTime">
+		<String name="txnTime" />
+	</xmlTag>
+	<!--清算日期 -->
+	<xmlTag tagName="ClearDate">
+		<String name="clearDate" />
+	</xmlTag>	
+	<!-- 订单号 -->
+	<xmlTag tagName="OrderId">
+		<String name="orderId" defaultValue="" />
+	</xmlTag>
+	<!-- 交易金额 -->
+	<xmlTag tagName="OrderAmount">
+		<String name="orderAmount" defaultValue="" />
+	</xmlTag>
+	<!-- 手续费金额 -->
+	<xmlTag tagName="FeeAmount">
+		<String name="feeAmount" defaultValue="" />
+	</xmlTag>	
+	<!-- 实收金额-->
+	<xmlTag tagName="ReceiptAmount">
+		<String name="receiptAmount" defaultValue="" />
+	</xmlTag>
+	<!-- 交易时间 -->
+	<xmlTag tagName="OrderTime">
+		<String name="orderTime" />
+	</xmlTag>
+	<!-- 币种-->
+	<xmlTag tagName="CurrencyType">
+		<String name="currencyType" defaultValue="" />
+	</xmlTag>	
+	<!-- 交易类型 -->
+	<xmlTag tagName="TransType">
+		<BigDecimal name="transType" />
+	</xmlTag>
+	<!-- 响应结果 -->
+	<xmlTag tagName="RespCode">
+		<BigDecimal name="respCode" />
+	</xmlTag>	
+	<!-- 应答描述 -->
+	<xmlTag tagName="RespMsg">
+		<BigDecimal name="respMsg" />
+	</xmlTag>	
+	<!-- 备用字段-->
+	<xmlTag tagName="Remark">
+		<String name="Remark" />
+	</xmlTag>
+</segment>

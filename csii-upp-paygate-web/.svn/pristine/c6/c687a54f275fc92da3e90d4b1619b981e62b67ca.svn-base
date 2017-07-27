@@ -1,0 +1,124 @@
+.bank01020000,.bank50,.bank52,.bank53,.bank01,.bank86,.bank801 {
+    background-position: 0 -33px
+}
+
+.bank01030000,.bank02 ,.bank802{
+    background-position: 0 -66px
+}
+
+.bank01040000, .bank56,.bank03,.bank87,.bank811{
+    background-position: 0 -99px
+}
+
+.bank01050000,.bank59,.bank04 ,.bank803{
+    background-position: 0 -132px
+}
+
+.bank03010000,.bank61,.bank62,.bank63,.bank64,.bank05,.bank25,.bank26,.bank27,.bank805 {
+    background-position: 0 -165px
+}
+
+.bank01000000,.bank01009998,.bank01009999,.bank06 {
+    background-position: 0 -198px
+}
+
+.bank03020000,.bank63020000,.bank70,.bank07,.bank90,.bank807{
+    background-position: 0 -231px
+}
+
+.bank03030000,.bank63030000,.bank79,.bank10,.bank28,.bank810 {
+    background-position: 0 -264px
+}
+
+.bank03040000,.bank03040001 ,.bank63040000,.bank14{
+    background-position: 0 -297px
+}
+
+/** update - by 0808**/
+.bank03050000,.bank03059998, .bank71,.bank08,.bank91,.bank808 {
+    background-position: 0 -295px
+}
+
+.bank03060000,.bank77,.bank18,.bank815{
+    background-position: 0 -328px
+}
+
+/*.bank03070000 {*/
+/*background-position: 0 -396px*/
+/*}*/
+
+.bank03080000,.bank63080000,.bank03080010,.bank65,.bank67,.bank68,.bank11,.bank88,.bank89,.bank806{
+    background-position: 0 -360px
+}
+
+.bank03090000,.bank17 {
+    background-position: 0 -393px
+}
+
+.bank03100000,.bank73,.bank74,.bank75,.bank12,.bank92,.bank29,.bank812 {
+    background-position: 0 -425px
+}
+
+.bank04105840,.bank04100000,.bank05105840,.bank06105840,.bank84,.bank16,.bank30,.bank813{
+    background-position: 0 -460px
+}
+
+/*.bank03170000 {*/
+/*background-position: 0 -594px*/
+/*}*/
+
+.bank04031000 ,.bank03131000,.bank64031000,.bank13{
+    background-position: 0 -493px
+}
+
+.bank04012900,.bank04012902,.bank04010000,.bank83,.bank09 {
+    background-position: 0 -525px
+}
+
+
+
+
+/*杭州银行*/
+.bank85{ background-position:0 -635px;}
+/*上海农商银行*/
+.bank20,.bank93{ background-position:0 -603px;}
+
+/*中国银行大额*/
+.bank99{ background-position:0 -564px;}
+/*中国建设银行大额*/
+.bank57{ background-position:0 -676px;}
+/*招商银行大额*/
+.bank69{ background-position:0 -742px;}
+/*中国工商银行大额*/
+.bank51{ background-position:0 -808px;}
+
+/*中国建设银行储蓄卡*/
+.bank60{ background-position:0 -709px;}
+/*招商银行储蓄卡*/
+.bank66{ background-position:0 -775px;}
+/*中国工商银行储蓄卡*/
+.bank54{ background-position:0 -842px;}
+/*中国农业银行储蓄卡*/
+.bank55{ background-position:0 -875px;}
+/*广发银行储蓄卡*/
+.bank78{ background-position:0 -908px;}
+/*中国民生银行储蓄卡*/
+.bank72{ background-position:0 -940px;}
+/*东亚银行储蓄卡*/
+.bank82{ background-position:0 -973px;}
+/*中国光大银行储蓄卡*/
+.bank80{ background-position:0 -1007px;}
+/*华夏银行储蓄卡*/
+.bank14,.bank23{ background-position:0 -1040px;}
+/*中国邮政储蓄银行储蓄卡*/
+.bank81{ background-position:0 -1072px;}
+/*浦发银行储蓄卡*/
+.bank76{ background-position:0 -1105px;}
+
+/*建设银行信用卡*/
+.bank58{ background-position:0 -1138px;}
+
+.bank14181000, .bank14181001,.bank21{ background-position:0 -1178px;}
+
+.bank809{background-position:0 -1250px;}
+.bank814{background-position:0 -1218px;}

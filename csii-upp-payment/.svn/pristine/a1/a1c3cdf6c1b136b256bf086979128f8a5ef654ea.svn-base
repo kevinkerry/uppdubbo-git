@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE segment SYSTEM "packetutf8.dtd">
+<segment>
+	<xmlTag tagName="InnerFundTransNbr">
+		<String name="InnerFundTransNbr" />
+	</xmlTag>
+	<xmlTag tagName="SendUnionPayTime">
+		<String name="SendUnionPayTime" />
+	</xmlTag>
+</segment>

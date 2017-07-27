@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	   http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+	   
+	   
+	<import resource="classpath:/META-INF/config/dubbo-registry.xml" />
+	<import resource="classpath:/META-INF/server/dubbo/service/paym-services.xml" />
+	
+ 	<!-- 提供方应用信息，用于计算依赖关系 -->
+    <dubbo:application name="upp-payment-provider" owner="${dubbo.application.owner}" organization="${dubbo.application.organization}" logger="slf4j"/>
+	<!-- 用dubbo协议在端口暴露服务 ，固定启动线程，限制服务器端接受的连接 -->
+	<dubbo:protocol id="dubbo" name="dubbo" port="${dubbo.protocol.port}" 
+		threadpool="${dubbo.protocol.dubbo.threadpool}" threads="${dubbo.protocol.dubbo.threads}" 
+		accepts="${dubbo.protocol.dubbo.accepts}"/>
+	<dubbo:provider  delay="-1" retries="0" timeout="${dubbo.provider.timeout}" />
+
+</beans>

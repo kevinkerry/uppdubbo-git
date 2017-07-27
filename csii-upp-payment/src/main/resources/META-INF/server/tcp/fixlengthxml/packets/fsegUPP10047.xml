@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE segment SYSTEM "packetutf8.dtd">
+<segment>
+	<xmlTag tagName="CodeTypCd">
+		<String name="CodeTypCd" defaultValue="" />
+	</xmlTag>
+	<xmlTag tagName="Qrcodeordernbr">
+		<String name="Qrcodeordernbr" defaultValue="" />
+	</xmlTag>
+	<xmlTag tagName="Alipayproxystatus">
+		<String name="Alipayproxystatus" defaultValue="" />
+	</xmlTag>
+	<xmlTag tagName="Wechatproxystatus">
+		<String name="Wechatproxystatus" defaultValue="" />
+	</xmlTag>
+	<xmlTag tagName="MerName">
+		<String name="MerName" defaultValue="" />
+	</xmlTag>
+	<xmlTag tagName="SubMerchantId">
+		<String name="SubMerchantId" defaultValue="" />
+	</xmlTag>
+	<xmlTag tagName="ThirdMerNbr">
+		<String name="ThirdMerNbr" defaultValue="" />
+	</xmlTag>
+</segment>

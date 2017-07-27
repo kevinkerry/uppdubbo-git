@@ -1,0 +1,14 @@
+Message=java.util.HashMap
+Head=com.csii.pe.transform.stream.xml.Merge2ParentMap
+Body=com.csii.pe.transform.stream.xml.Merge2ParentMap
+MerTransDetail=java.util.HashMap
+MerTransList=java.util.ArrayList
+CardList=java.util.ArrayList
+Map=java.util.HashMap
+TransList=java.util.ArrayList
+TransDetail=java.util.HashMap
+PayerPhoneNoList=java.util.ArrayList
+PointRecords=java.util.ArrayList
+PointRecordMap=com.csii.pe.transform.stream.xml.Merge2ParentMap
+AuthDetail=java.util.HashMap
+Authlist=java.util.ArrayList

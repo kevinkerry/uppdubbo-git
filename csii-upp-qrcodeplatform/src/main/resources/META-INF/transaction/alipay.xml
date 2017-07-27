@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spring:beans xmlns:spring="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.csii.com.cn/schema/pe"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	 http://www.springframework.org/schema/beans/spring-beans.xsd 
+	 http://www.springframework.org/schema/context 
+     http://www.springframework.org/schema/context/spring-context-4.0.xsd
+	 http://www.csii.com.cn/schema/pe 
+	 http://www.csii.com.cn/schema/pe/pe-config.xsd">
+<config>
+
+	<!--支付宝参数配置model bean  -->
+	<bean id="AlipayParameter" class="com.csii.upp.qrcodeplatform.action.constant.AlipayParameter">
+		<param name="notifyUrl">${pp.notifyUrl}</param>
+		<param name="appid">${Alipay.appId}</param>
+		<param name="mch_id">${Alipay.mch_id}</param>
+		<param name="merPrivateKey">${Alipay.merPrivateKey}</param>
+		<param name="publicKey">${Alipay.publicKey}</param>
+		<param name="charset">${Alipay.charset}</param>
+		<param name="url">${Alipay.url}</param>
+		<param name="maxQueryRetry">${Alipay.maxQueryRetry}</param>
+		<param name="queryDuration">${Alipay.queryDuration}</param>
+	</bean>
+
+	<!-- 支付宝扫码支付 -->
+	<transaction id="AlipayCode" template="qrCodeQueryTemplate">
+		<actions>
+			<ref name="queryction">AlipayCodeAction</ref>
+		</actions>
+	</transaction>
+	<action id="AlipayCodeAction" class="com.csii.upp.qrcodeplatform.action.pay.AlipayCodeAction">
+		<ref name="alipayParameter">AlipayParameter</ref>
+	</action>
+	
+</config>
+
+</spring:beans>

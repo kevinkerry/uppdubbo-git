@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="ONLINETRANSEXTEND">
+	<resultMap id="qryTrsDetailResult" class="java.util.HashMap">
+		<result property="TransCode" column="TRANSCODE" />
+		<result property="PayeeAcctNbr" column="PAYEEACCTNBR" />
+		<result property="TransDate" column="TRANSDATE" />
+		<result property="TransTime" column="TRANSTIME" />
+		<result property="FeeAmt" column="FEEAMT" />
+		<result property="TransAmt" column="TRANSAMT" />
+		<result property="TransStatus" column="TRANSSTATUS" />
+		<result property="PayerAcctNbr" column="PAYERACCTNBR" />
+		<result property="CurrenCyCd" column="CURRENCYCD" />
+		<result property="Count" column="COUNT" />
+		<result property="PayeeAcctDeptNbr" column="PAYEEACCTDEPTNBR" />
+		<result property="PayeeAcctTypCd" column="PAYEEACCTTYPCD" />
+		<result property="PayerAcctDeptNbr" column="PAYERACCTDEPTNBR" />
+		<result property="PayerAcctTypCd" column="PAYERACCTTYPCD" />
+		<result property="PayerAcctName" column="PAYERACCTNAME" />
+		<result property="PayeeAcctName" column="PAYEEACCTNAME" />
+	</resultMap>
+	<select id="queryTrsDetail" parameterClass="java.util.HashMap"
+		resultMap="qryTrsDetailResult">
+		SELECT * FROM(
+		SELECT
+		PayeeAcctName,OrigMerDate,PayerAcctName,
+		FEEAMT,TransDate,PayerAcctNbr,PayeeAcctNbr,OrigClearDate,ORIGSEQNBR,DownSysRespCode,TRANSAMT3,PAYEEACCTTYPCD,PAYERACCTTYPCD,
+		REFUNDMODE,date_format(TransTime,'%Y/%m/%d
+		%H:%i:%s')TransTime,TRANSAMT,CLEARDATE,MERTRANSDATE,MERTRANSDATETIME,
+		TRANSAMT4,PayeeAcctDeptNbr,PayerAcctDeptNbr,
+		(case CURRENCYCD
+		when 'CNY' then '人民币'
+		else '' end) as CURRENCYCD,
+		(case TRANSSTATUS
+		when '0' then '支付成功'
+		when '4' then '支付成功'
+		else '' end) as TRANSSTATUS,
+		(case TransTypCd
+		when '00' then '支付交易'
+		when '01' then '退货交易'
+		when '02' then '提现交易'
+		else '' end) as TransCode,
+		(case PAYTYPCD
+		when '1' then '丰收e支付'
+		else '' end) as PAYTYPCD,
+		MERSEQNBR,TRANSSEQNBR,RESPCODE,OrigSeqNbr
+		FROM (
+		SELECT * FROM ONLINETRANS WHERE PAYTYPCD IN ('1','3')
+		UNION
+		SELECT * FROM ONLINETRANSHIST WHERE PAYTYPCD IN ('1','3')
+		) WHERE
+		1=1 AND TRANSSTATUS IN ('0','4')
+		<dynamic prepend=" AND ">
+			<isNotEmpty prepend=" AND " property="PayerAcctNbr">
+				PAYERACCTNBR=#PayerAcctNbr#
+			</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="TransTypCd">
+				TRANSTYPCD =#TransTypCd#
+			</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="BeginDate">
+				TRANSDATE &gt;=#BeginDate#
+			</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="EndDate">
+				TRANSDATE
+				&lt;=#EndDate#
+			</isNotEmpty>
+		</dynamic>
+		)as D limit #startNo#,#endNo#
+	</select>
+
+	<select id="selectFoisonWithdrawList" parameterClass="java.util.HashMap"
+		resultMap="qryTrsDetailResult">
+		SELECT * FROM(
+		SELECT
+		PayeeAcctName,OrigMerDate,PayerAcctName,
+		FEEAMT,TransDate,PayerAcctNbr,PayeeAcctNbr,OrigClearDate,ORIGSEQNBR,DownSysRespCode,TRANSAMT3,PAYEEACCTTYPCD,PAYERACCTTYPCD,
+		REFUNDMODE,date_format(TransTime,'%Y/%m/%d
+		%H:%i:%s')TransTime,TRANSAMT,CLEARDATE,MERTRANSDATE,MERTRANSDATETIME,
+		TRANSAMT4,PayeeAcctDeptNbr,PayerAcctDeptNbr,
+		(case CURRENCYCD
+		when 'CNY' then '人民币'
+		else '' end) as CURRENCYCD,
+		(case TRANSSTATUS
+		when '0' then '退货成功'
+		when '4' then '退货成功'
+		else '' end) as TRANSSTATUS,
+		(case TransTypCd
+		when '00' then '支付交易'
+		when '01' then '退货交易'
+		when '02' then '提现交易'
+		else '' end) as TransCode,
+		(case PAYTYPCD
+		when '1' then '丰收e支付'
+		else '' end) as PAYTYPCD,
+		MERSEQNBR,TRANSSEQNBR,RESPCODE,OrigSeqNbr
+		FROM (
+		SELECT * FROM ONLINETRANS WHERE PAYTYPCD IN ('1','3')
+		UNION
+		SELECT * FROM ONLINETRANSHIST WHERE PAYTYPCD IN ('1','3')
+		) WHERE
+		1=1 AND TRANSSTATUS IN ('0','4')
+
+		<dynamic prepend=" AND ">
+			<isNotEmpty prepend=" AND " property="PayerAcctNbr">
+				PAYERACCTNBR=#PayerAcctNbr#
+			</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="TransTypCd">
+				TRANSTYPCD =#TransTypCd#
+			</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="BeginDate">
+				TRANSDATE &gt;=#BeginDate#
+			</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="EndDate">
+				TRANSDATE
+				&lt;=#EndDate#
+			</isNotEmpty>
+		</dynamic>
+		) as D
+		limit #startNo#,#endNo#
+	</select>
+
+	<!-- 查询账户交易明细总条数 -->
+	<select id="countTrans" parameterClass="java.util.HashMap"
+		resultClass="java.lang.Integer">
+		SELECT
+		COUNT(*)
+		FROM
+		(
+		SELECT * FROM ONLINETRANS
+		UNION
+		SELECT * FROM ONLINETRANSHIST
+		)WHERE 1=1 AND TRANSSTATUS IN ('0','4') AND PAYTYPCD IN ('1','3')
+
+		<dynamic prepend=" AND ">
+			<isNotEmpty prepend=" AND " property="PayerAcctNbr">
+				PAYERACCTNBR=#PayerAcctNbr#
+			</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="TransTypCd">
+				TRANSTYPCD =#TransTypCd#
+			</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="BeginDate">
+				TRANSDATE &gt;=#BeginDate#
+			</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="EndDate">
+				TRANSDATE
+				&lt;=#EndDate#
+			</isNotEmpty>
+		</dynamic>
+	</select>
+
+	<!-- 查询丰收e支付退货总条数 -->
+	<select id="selectFoisonWithdrawListCount" parameterClass="java.util.HashMap"
+		resultClass="java.lang.Integer">
+		SELECT
+		COUNT(*)
+		FROM
+		(
+		SELECT * FROM ONLINETRANS
+		UNION
+		SELECT * FROM ONLINETRANSHIST
+		)WHERE 1=1 AND TRANSSTATUS IN ('0','4') AND PAYTYPCD IN ('1','3')
+
+		<dynamic prepend=" AND ">
+			<isNotEmpty prepend=" AND " property="PayerAcctNbr">
+				PAYERACCTNBR=#PayerAcctNbr#
+			</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="TransTypCd">
+				TRANSTYPCD =#TransTypCd#
+			</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="BeginDate">
+				TRANSDATE &gt;=#BeginDate#
+			</isNotEmpty>
+			<isNotEmpty prepend=" AND " property="EndDate">
+				TRANSDATE
+				&lt;=#EndDate#
+			</isNotEmpty>
+		</dynamic>
+	</select>
+
+<insert id="insertOnlineTransToHist" parameterClass="java.util.HashMap">
+	insert into ONLINETRANSHIST (
+	TRANSSEQNBR, TRANSDATE, MERSEQNBR, DOWNSYSTRANSNBR, CHANNELNBR,
+  CLEARDATE, DOWNSYSDATE, MERTRANSDATE, MERTRANSDATETIME, TRANSTYPCD,
+  TRANSCODE, MERNBR, MEROPENDEPTNBR, MERDEVDEPTNBR, CUSTCIFNBR,
+  PAYERCARDTYPCD, PAYEECARDTYPCD, PAYERACCTNBR, PAYERACCTTYPCD,
+  PAYERACCTKIND, PAYERACCTDEPTNBR, PAYERACCTNAME, PAYEEACCTNBR,
+  PAYEEACCTDEPTNBR, PAYEEACCTKIND, PAYEEACCTTYPCD, PAYEEACCTNAME,
+  TRANSAMT, CURRENCYCD, REFUNDEDAMT, UNREFUNDAMT, TRANSAMT3, TRANSAMT4,
+  FEEAMT, DOWNSYSRESPCODE, RESPCODE, TRANSSTATUS, PROCSTEP, PROCSTATUS,
+  MEMO1, TRANSTIME, MEMO2, DEPARTMENTNBR, DOWNSYSDATETIME, SYSTEMCODE,
+  TRANSMODE, SIGNNBR, PROFITSEQNBR, CONFIRMEDAMT, CONFIRMEDCOUNT,
+  REFUNDMODE, INTERALAMT, INTERALFLAG, DEDUCTAMT, REALAMT, ORIGMERSEQNBR,
+  ORIGMERDATE, ORIGSEQNBR, ORIGCLEARDATE, CHECKSTATUS, PAYTYPCD,
+  CYBERTYPCD,DATELASTMAINT, CLIENTNO, BRANCHNO, POINTREACCTDEPTNBR,REFUNDDEDUCTAMT,UNREFUNDDEDUCTAMT, 
+  RECEIPTAMT, CODETYPCD, SCANCODEMODE, QRCODEORDERNBR, CODEURL, DISCOUNTABLEAMT, UNDISCOUNTABLEAMT)
+	select TRANSSEQNBR, TRANSDATE, MERSEQNBR, DOWNSYSTRANSNBR, CHANNELNBR,
+  CLEARDATE, DOWNSYSDATE, MERTRANSDATE, MERTRANSDATETIME, TRANSTYPCD,
+  TRANSCODE, MERNBR, MEROPENDEPTNBR, MERDEVDEPTNBR, CUSTCIFNBR,
+  PAYERCARDTYPCD, PAYEECARDTYPCD, PAYERACCTNBR, PAYERACCTTYPCD,
+  PAYERACCTKIND, PAYERACCTDEPTNBR, PAYERACCTNAME, PAYEEACCTNBR,
+  PAYEEACCTDEPTNBR, PAYEEACCTKIND, PAYEEACCTTYPCD, PAYEEACCTNAME,
+  TRANSAMT, CURRENCYCD, REFUNDEDAMT, UNREFUNDAMT, TRANSAMT3, TRANSAMT4,
+  FEEAMT, DOWNSYSRESPCODE, RESPCODE, TRANSSTATUS, PROCSTEP, PROCSTATUS,
+  MEMO1, TRANSTIME, MEMO2, DEPARTMENTNBR, DOWNSYSDATETIME, SYSTEMCODE,
+  TRANSMODE, SIGNNBR, PROFITSEQNBR, CONFIRMEDAMT, CONFIRMEDCOUNT,
+  REFUNDMODE, INTERALAMT, INTERALFLAG, DEDUCTAMT, REALAMT, ORIGMERSEQNBR,
+  ORIGMERDATE, ORIGSEQNBR, ORIGCLEARDATE, CHECKSTATUS, PAYTYPCD,
+  CYBERTYPCD,DATELASTMAINT, CLIENTNO, BRANCHNO, POINTREACCTDEPTNBR,REFUNDDEDUCTAMT,UNREFUNDDEDUCTAMT, 
+  RECEIPTAMT, CODETYPCD, SCANCODEMODE, QRCODEORDERNBR, CODEURL, DISCOUNTABLEAMT, UNDISCOUNTABLEAMT
+	<![CDATA[
+	from ONLINETRANS
+	where checkstatus = #checkStatus# 
+	]]>
+</insert>
+<insert id="insertOnlineTransToBatchClear" parameterClass="java.util.HashMap">
+	insert into BATCHCLEARTRANS (TRANSSEQNBR, TRANSDATE, MERSEQNBR, DOWNSYSTRANSNBR, CHANNELNBR,
+  CLEARDATE, DOWNSYSDATE, MERTRANSDATE, MERTRANSDATETIME, TRANSTYPCD,
+  TRANSCODE, MERNBR, MEROPENDEPTNBR, MERDEVDEPTNBR, PAYERACCTKIND,
+  PAYEEACCTKIND, CUSTCIFNBR, PAYERACCTNBR, PAYERACCTTYPCD, PAYERACCTDEPTNBR,
+  PAYERACCTNAME, PAYERCARDTYPCD, PAYEECARDTYPCD, PAYEEACCTNBR,
+  PAYEEACCTDEPTNBR, PAYEEACCTTYPCD, PAYEEACCTNAME, TRANSAMT, CURRENCYCD,
+  REFUNDEDAMT, UNREFUNDAMT, TRANSAMT3, TRANSAMT4, FEEAMT, DOWNSYSRESPCODE,
+  RESPCODE, TRANSSTATUS, PROCSTEP, PROCSTATUS, MEMO1, TRANSTIME,
+  MEMO2, DEPARTMENTNBR, DOWNSYSDATETIME, SYSTEMCODE, TRANSMODE,
+  SIGNNBR, PROFITSEQNBR, CONFIRMEDAMT, CONFIRMEDCOUNT, REFUNDMODE,
+  INTERALAMT, INTERALFLAG, DEDUCTAMT, REALAMT, ORIGMERSEQNBR,
+  ORIGMERDATE, ORIGSEQNBR, ORIGCLEARDATE, CHECKSTATUS, PAYTYPCD,
+  CYBERTYPCD,DATELASTMAINT, CLIENTNO, BRANCHNO, POINTREACCTDEPTNBR,REFUNDDEDUCTAMT,UNREFUNDDEDUCTAMT, 
+  RECEIPTAMT, CODETYPCD, SCANCODEMODE, QRCODEORDERNBR, CODEURL, DISCOUNTABLEAMT, UNDISCOUNTABLEAMT)
+	select TRANSSEQNBR, TRANSDATE, MERSEQNBR, DOWNSYSTRANSNBR, CHANNELNBR,
+  CLEARDATE, DOWNSYSDATE, MERTRANSDATE, MERTRANSDATETIME, TRANSTYPCD,
+  TRANSCODE, MERNBR, MEROPENDEPTNBR, MERDEVDEPTNBR, PAYERACCTKIND,
+  PAYEEACCTKIND, CUSTCIFNBR, PAYERACCTNBR, PAYERACCTTYPCD, PAYERACCTDEPTNBR,
+  PAYERACCTNAME, PAYERCARDTYPCD, PAYEECARDTYPCD, PAYEEACCTNBR,
+  PAYEEACCTDEPTNBR, PAYEEACCTTYPCD, PAYEEACCTNAME, TRANSAMT, CURRENCYCD,
+  REFUNDEDAMT, UNREFUNDAMT, TRANSAMT3, TRANSAMT4, FEEAMT, DOWNSYSRESPCODE,
+  RESPCODE, TRANSSTATUS, PROCSTEP, PROCSTATUS, MEMO1, TRANSTIME,
+  MEMO2, DEPARTMENTNBR, DOWNSYSDATETIME, SYSTEMCODE, TRANSMODE,
+  SIGNNBR, PROFITSEQNBR, CONFIRMEDAMT, CONFIRMEDCOUNT, REFUNDMODE,
+  INTERALAMT, INTERALFLAG, DEDUCTAMT, REALAMT, ORIGMERSEQNBR,
+  ORIGMERDATE, ORIGSEQNBR, ORIGCLEARDATE, CHECKSTATUS, PAYTYPCD,
+  CYBERTYPCD,DATELASTMAINT, CLIENTNO, BRANCHNO, POINTREACCTDEPTNBR,REFUNDDEDUCTAMT,UNREFUNDDEDUCTAMT, 
+  RECEIPTAMT, CODETYPCD, SCANCODEMODE, QRCODEORDERNBR, CODEURL, DISCOUNTABLEAMT, UNDISCOUNTABLEAMT
+	<![CDATA[
+	from ONLINETRANS
+	where checkstatus = #checkStatus# 
+    ]]>
+</insert>
+
+	<!-- 确认支付更新总交易流水表 -->
+	<update id="updateOnlineTrans" parameterClass="java.util.HashMap">
+		UPDATE
+		ONLINETRANS
+		SET
+		CONFIRMEDAMT=ifnull(CONFIRMEDAMT,0)+#TransAmt#,CONFIRMEDCOUNT=ifnull(CONFIRMEDCOUNT,0)+1,DATELASTMAINT
+		= CSII_CURRENTDATETIME()
+		WHERE
+		TRANSSEQNBR=#TransSeqNbr# AND
+		TRANSSTATUS NOT IN ('1','9')
+	</update>
+</sqlMap>

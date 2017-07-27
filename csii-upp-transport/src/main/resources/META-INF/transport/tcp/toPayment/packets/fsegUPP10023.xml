@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE segment SYSTEM "packetutf8.dtd">
+<segment>	
+	<!-- 手机号 -->
+	<xmlTag tagName="PayerPhoneNo">
+		<String name="payerPhoneNo"/>
+	</xmlTag>
+	<!-- 卡号 -->
+	<xmlTag tagName="PayerAcctNbr">
+		<String name="payerAcctNbr"/>
+	</xmlTag>
+	<!-- 交易类型 -->
+	<xmlTag tagName="TransTypCd">
+		<String name="transTypCd"/>
+	</xmlTag>
+	<!-- 交易金额 -->
+	<xmlTag tagName="TransAmt">
+		<String name="transAmt"/>
+	</xmlTag>
+		<!-- 付款人机构号 -->
+	<xmlTag tagName="PayerAcctDeptNbr">
+		<String name="payerAcctDeptNbr" />
+	</xmlTag>
+	
+</segment>

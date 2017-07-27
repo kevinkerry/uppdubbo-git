@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE segment SYSTEM "packetutf8.dtd">
+<segment>
+    <!-- 命令ID -->
+    <xmlTag tagName="CmdId">
+		<String name="CmdId" />
+	</xmlTag>
+	<!-- 时间 -->
+	<xmlTag tagName="OccuDate">
+		<String name="OccuDate" />
+	</xmlTag>
+	<!-- 协议版本 -->
+	<xmlTag tagName="ProtocolVersion">
+		<String name="ProtocolVersion" />
+	</xmlTag>
+	<!-- 查询请求ID -->
+	<xmlTag tagName="RequestID">
+		<String name="RequestID" />
+	</xmlTag>
+	<!-- 积分结果集 -->
+	<xmlTag tagName="PointRecords">
+		<idxField name="PointRecords" maxLoop="9999999">
+		    <Group name="PointRecordMap">
+				<!-- 行社编号 -->
+				<xmlTag tagName="BranchNo">
+					<String name="branchNo" />
+				</xmlTag>
+				<!-- 行社名称 -->
+				<xmlTag tagName="BranchName">
+					<String name="branchName" />
+				</xmlTag>
+				<!-- 行社积分总数 -->
+				<xmlTag tagName="integralTotal">
+					<String name="integralTotal" />
+				</xmlTag>
+				<!-- 客户内码 -->
+				<xmlTag tagName="ClientNo">
+					<String name="clientNo" />
+				</xmlTag>
+			</Group>
+		</idxField>
+	</xmlTag>
+</segment>

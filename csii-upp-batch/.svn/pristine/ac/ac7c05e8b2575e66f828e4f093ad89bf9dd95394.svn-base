@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<!-- 0-支付平台处理差错 -->
+	<!-- 1-冲电子账户账 -->
+	<!-- 2-补电子账户账 -->
+	<!-- 3-仅调整差错状态 -->
+	<!-- 4-抹柜面核心账 -->
+	<!-- 5-补柜面核心账 -->
+	<!-- 99-未归类差错 -->
+	<bean id="errorTypCat" class="com.csii.upp.batch.appl.eaccount.ErrorCategory">
+		<property name="errorCat">
+			<props>
+				<prop key="9">0</prop><!--手动处理—银联成功核心失败或未做，做银联退货 -->
+				<prop key="21">0</prop><!--手动处理—银联成功电子账户失败或未做，做银联退货 -->
+				<prop key="13">0</prop><!--人工处理-平台失败下游成功 -->
+				<prop key="12">0</prop><!--人工处理-平台有下游无 -->
+				<prop key="10">0</prop><!--手动处理—商户结算失败或超时，再做结算 -->
+				<prop key="15">5</prop><!--核心入账补账 -->
+				<prop key="19">4</prop><!--其它渠道冲正 -->
+				<prop key="17">1</prop><!-- 冲电子账户账 -->
+				<prop key="18">3</prop><!--人工处理-电子账户出金失败，其它渠道多金 -->
+				<prop key="22">3</prop><!--人工处理-电子账户入金成功，电子账户多金 -->
+				<prop key="23">3</prop><!--人工处理-电子账户冲正成功，其它渠道入金多金 -->
+				<prop key="Q6">3</prop><!--中间业务对记账多帐 -->
+				<prop key="P0">3</prop><!--积分营销资金冲正失败 -->
+				<prop key="P1">3</prop><!--积分客户资金扣减超时，发起营销资金冲正 -->
+				<prop key="P2">3</prop><!--积分营销资金退款超时，发起营销资金冲正-->
+				<prop key="P3">3</prop><!--积分营销资金扣减超时，发起营销资金冲正 -->
+				<prop key="11">3</prop><!--人工处理-关键域不匹配 -->
+				<prop key="30">0</prop><!--额度回滚 -->
+			</props>
+		</property>
+
+		<!-- 需要支付平台自动处理的差错 -->
+		<property name="autoHand">
+			<set>
+				<value type="java.lang.String">9</value><!--银联成功核心失败或未做，做银联退货 -->
+				<value type="java.lang.String">21</value><!--银联成功电子账户失败或未做，做银联退货 -->
+				<value type="java.lang.String">17</value><!-- 冲电子账户账 -->
+				<value type="java.lang.String">30</value><!--额度回滚 -->
+			</set>
+		</property>
+
+		<!-- 自动处理最大处理次数 -->
+		<property name="maxProTimes">
+			<props>
+				<prop key="17">3</prop><!-- 冲电子账户账 -->
+				<prop key="9">3</prop><!--手动处理—银联成功核心失败或未做，做银联退货 -->
+				<prop key="21">1</prop><!--手动处理—银联成功电子账户失败或未做，做银联退货 -->
+				<prop key="30">3</prop><!--额度回滚 -->
+			</props>
+		</property>
+	</bean>
+</beans>

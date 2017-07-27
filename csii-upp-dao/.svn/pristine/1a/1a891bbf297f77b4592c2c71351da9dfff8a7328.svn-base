@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="MERACCTINFOEXTEND">
+	<resultMap class="java.util.HashMap" id="MerAcctInfoExtendResult">
+		<result property="MerNbr" column="MERNBR" />
+		<result property="SettleAcctNbr" column="SETTLEACCTNBR" />
+		<result property="SettleAcctTyp" column="SETTLEACCTTYP" />
+		<result property="SettleAcctKind" column="SETTLEACCTKIND" />
+		<result property="AcctNbr" column="ACCTNBR" />
+		<result property="AcctKindCd" column="ACCTKINDCD" />
+		<result property="AcctTypCd" column="ACCTTYPCD" />
+		<result property="FeeAcctNbr" column="FEEACCTNBR" />
+		<result property="FeeAcctKind" column="FEEACCTKIND" />
+		<result property="FeeAcctTypCd" column="FEEACCTTPYCD" />
+        <result property="PayModeCd" column="PAYMODECD" />
+        <result property="MerFeeAcctNbr" column="MERFEEACCTNBR" />
+        <result property="MerFeeAcctKind" column="MERFEEACCTKIND" />
+        <result property="MerFeeAcctTyp" column="MERFEEACCTTYP" />
+	</resultMap>
+
+	<select id="getMerAcctInfoExtend" resultMap="MerAcctInfoExtendResult" parameterClass="java.util.HashMap">
+		  <![CDATA[ 
+		  select m.MERNBR, m.SETTLEACCTNBR, m.SETTLEACCTTYP, m.SETTLEACCTKIND, m.FEEACCTNBR as MERFEEACCTNBR,m.FEEACCTKIND as MERFEEACCTKIND,
+		  m.FEEACCTTYP as MERFEEACCTTYP,
+		         d.ACCTNBR, d.ACCTKINDCD, d.ACCTTYPCD, d.FEEACCTNBR, d.FEEACCTKIND, d.FEEACCTTPYCD ,m.PAYMODECD
+		         from DEPTACCTINFO d, MERACCTINFO m 
+		         where d.DEPTNBR = CONCAT(substr(m.MERDEVELOPDEPTNBR,1,3),'000') and d.INNERACCTCFMMODE = m.INNERACCTCFMMODE
+		         and m.MERNBR in (select distinct mernbr from BATCHMERDAYSETTLE where CLEARDATE=#ClearDate# AND SETTLESTATUS = #SettleStatus#)
+		   ]]>
+	</select>
+	
+	<select id="getMerAcctInfoExtend1" resultMap="MerAcctInfoExtendResult" parameterClass="java.util.HashMap">
+		  <![CDATA[ 
+		  select m.MERNBR, m.SETTLEACCTNBR, m.SETTLEACCTTYP, m.SETTLEACCTKIND, m.FEEACCTNBR as MERFEEACCTNBR,m.FEEACCTKIND as MERFEEACCTKIND,
+		  m.FEEACCTTYP as MERFEEACCTTYP,
+		         d.ACCTNBR, d.ACCTKINDCD, d.ACCTTYPCD, d.FEEACCTNBR, d.FEEACCTKIND, d.FEEACCTTPYCD ,m.PAYMODECD
+		         from DEPTACCTINFO d, MERACCTINFO m 
+		         where d.DEPTNBR = CONCAT(substr(m.MERDEVELOPDEPTNBR,1,3),'000') and d.INNERACCTCFMMODE = m.INNERACCTCFMMODE
+		         and m.MERNBR in (select distinct mernbr from BATCHFEEPROFITDAYSETTLE where CLEARDATE=#ClearDate# AND SETTLESTATUS = #SettleStatus#)
+		   ]]>
+	</select>	
+</sqlMap>
